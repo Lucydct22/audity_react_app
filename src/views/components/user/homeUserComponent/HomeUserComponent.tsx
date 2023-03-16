@@ -11,6 +11,7 @@ const HomeUserComponent = () => {
       <Theme />
       <Language />
       <h1>{t("title_user_home")}</h1>
+      <button></button>
     </div>
   )
 }

@@ -1,0 +1,13 @@
+@mixin titleH1() {
+    color: $font-primary-dark;
+    font-weight: bold;
+    font-size: 1.6em;
+
+    @media (min-width: $media-breakpoint-up-sm) {
+        font-size: 1.7em;
+    }
+
+    @media (min-width: $media-breakpoint-up-md) {
+        font-size: 1.9em;
+    }
+}
