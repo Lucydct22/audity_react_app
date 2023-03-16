@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.scss'
+import { RouterProvider } from "react-router-dom";
+import router from './router/router';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <h1>hola mundo</h1>
-  )
+    <RouterProvider
+      router={router}
+      fallbackElement={<div>Loading</div>}
+    />
+  );
 }
 
-export default App
+export default App;
