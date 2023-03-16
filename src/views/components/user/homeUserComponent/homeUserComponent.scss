@@ -1,0 +1,13 @@
+:root[data-theme="light"] {
+  --t-home-user-component-color: black;
+}
+
+:root[data-theme="dark"] {
+  --t-home-user-component-color: red;
+}
+
+.home-user-component {
+  h1 {
+    color: var(--t-home-user-component-color)
+  }
+}
