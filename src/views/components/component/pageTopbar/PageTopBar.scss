@@ -1,0 +1,71 @@
+@import '../../../../sass/variables.scss';
+
+html[data-theme='light'] {
+  --color-primary: #{$color-primary_light};
+  --color-border-1px: #{$color-border-1px_light};
+}
+
+html[data-theme='dark'] {
+  --color-primary: #{$color-primary_dark};
+  --color-border-1px: #{$color-border-1px_dark};
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 24px;
+  margin: 0;
+  border-bottom: var(--color-border-1px);
+}
+
+.search-topbar {
+  height: 100%;
+  padding: 0.4rem;
+  margin: 0;
+  width: 30%;
+  border: none;
+}
+
+.topbar-profile {
+  display: flex;
+  flex-direction: right;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.topbar-profile>img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.topbar-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+}
+
+.topbar-search input {
+  width: 80%;
+  background: none;
+}
+
+.topbar-search input:focus {
+  outline: none
+}
+
+.topbar-search input::placeholder {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+}

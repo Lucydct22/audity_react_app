@@ -1,15 +1,25 @@
+@import './sass/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@600&family=Open+Sans:wght@300;700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var($color-secundary);
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: var(--background-color);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+html[data-theme='light'] {
+  --background-color: #{$color-primary-bg_light};
+}
+
+html[data-theme='dark'] {
+  --background-color: #{$color-primary-bg_dark};
 }
