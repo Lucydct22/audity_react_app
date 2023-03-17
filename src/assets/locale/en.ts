@@ -4,6 +4,10 @@ const englishTranslation = {
   
   // Home
   title_user_home: 'User Home',
+
+    /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
+  // Home
+  search_placeholder: 'Search',
   
   // Profile
 

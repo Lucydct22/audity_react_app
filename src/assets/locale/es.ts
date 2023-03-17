@@ -7,6 +7,10 @@ const spanishTranslation = {
   
   // Profile
 
+  /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
+  // Home
+  search_placeholder: 'Buscar',
+
   /*~~~~~~~~~ ADMIN ~~~~~~~~~*/
   // Home
   title_admin_home: 'Inicio Administrador'
