@@ -1,0 +1,56 @@
+Product Requirements Document: Audity
+
+Overview:
+  The music streaming website is designed to provide users with a 
+  personalized and uninterrupted music listening experience. The 
+  website will allow users to search for and stream music from a 
+  vast library of songs, create playlists, ~...~, and 
+  discover new music.
+
+Features:
+  1-User Registration and Login:
+      The website will require users to register for an account using 
+      their email address or Google account. Users can also log 
+      in to the website using their credentials.
+
+  2-Search and Stream Music:
+      The website will have a search bar where users can search for 
+      their favorite songs, albums, and artists. The website will 
+      stream the selected music to the user in high-quality audio.
+
+  3-Create and Manage Playlists:
+      Users will be able to create and manage their playlists on the
+      website. They can add or remove songs from their playlists and
+      edit the playlist name.
+
+  4-Follow Artists and Discover New Music:
+      Users will be able to follow their favorite artists and get
+      updates on their latest music releases. The website will also
+      recommend new artists and songs to the user based on their
+      listening history.
+
+  5-Social Sharing:
+      Users will be able to share their playlists and favorite songs 
+      on social media platforms like Facebook and Twitter.
+
+  ~~ 6-Personalized Recommendations:
+        The website will use machine learning algorithms to provide 
+        personalized music recommendations to the user based on their 
+        listening history and preferences.
+
+  ~~ 7-Subscription Plans:
+        The website will offer subscription plans to users for an ad-free 
+        listening experience and access to premium features like offline 
+        listening and higher quality audio.
+
+Technical Requirements:
+  The website will be built using modern web technologies like 
+  React with TypeScript. The website will also need to 
+  integrate with third-party services like OAuth, 
+  social media platforms, and music databases.
+
+Conclusion:
+  The music streaming website will provide users with a seamless
+  and personalized music listening experience. The website will
+  be built using modern web technologies and will require
+  integration with third-party services.
