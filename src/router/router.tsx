@@ -4,16 +4,13 @@ import { createBrowserRouter } from "react-router-dom";
 // LAYOUTS
 const UserLayout = lazy(() => import('../views/layouts/userLayout'));
 const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
-const MusicLayout = lazy(() => import('../views/layouts/musicLayout'));
 
 // USER PAGES
-const HomeUser = lazy(() => import('../views/pages/user/homeUserPage'));
+const HomePage = lazy(() => import('../views/pages/user/homePage'));
+const MusiPage = lazy(() => import('../views/pages/music/musicPage'));
 
 // ADMIN PAGES
 const HomeAdmin = lazy(() => import('../views/pages/admin/homeAdminPage'));
-
-// MUSIC PAGES
-const HomeMusic = lazy(() => import('../views/pages/music/musicPage'));
 
 // MESSAGES PAGES
 const Error = lazy(() => import('../views/pages/errors'));
@@ -25,7 +22,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<></>}><HomeUser /></Suspense>,
+        element: <Suspense fallback={<></>}><HomePage /></Suspense>,
+      },
+      {
+        path: "music",
+        element: <Suspense fallback={<></>}><MusiPage /></Suspense>
       },
       {
         path: "*",
@@ -46,17 +47,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<></>}><Error /></Suspense>
       }
     ],
-  },
-  {
-    path: "music",
-    element: <Suspense fallback={<></>}><HomeMusic /></Suspense>,
-    children: [
-      {
-        path: "*",
-        element: <Suspense fallback={<></>}><Error /></Suspense>
-      }
-    ],
-  },
+  }
 ]);
 
 export default router;
