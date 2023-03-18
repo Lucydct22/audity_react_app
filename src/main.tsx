@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom/client'
-import App from './App'
+import ReactDOM from 'react-dom/client';
+import App from './App';
 import { Auth0Provider } from '@auth0/auth0-react';
-import './index.scss'
-import './i18n'
+import './utils/i18n';
+import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Auth0Provider
