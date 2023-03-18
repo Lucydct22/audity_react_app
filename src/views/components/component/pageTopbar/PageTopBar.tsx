@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import './PageTopBar.scss'
-import { BsSearch } from 'react-icons/bs'
+import './PageTopBar.scss';
+import { BsSearch } from 'react-icons/bs';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const PageTopBar = () => {
+const PageTopBarComponent = () => {
   const { t } = useTranslation();
   const { user } = useAuth0();
 
   return (
-    <header>
-
+    <header className='page-topbar'>
       <div className='topbar-search'>
         <BsSearch color='#52525d' />
         <input type="text" className='search-topbar' placeholder={t("search_placeholder") || ""} />
@@ -22,4 +21,4 @@ const PageTopBar = () => {
   )
 }
 
-export default PageTopBar;
+export default PageTopBarComponent;

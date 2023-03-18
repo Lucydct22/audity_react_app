@@ -5,8 +5,9 @@
   width: 212px;
   height: 270px;
   top: 0;
-  color: $color-secundary;
+  color: var(--color-primary);
   border-right: var(--color-border-1px);
+  background-color: var(--background-secundary);
 
   &__logo {
     display: flex;

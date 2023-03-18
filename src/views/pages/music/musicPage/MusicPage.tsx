@@ -1,14 +1,16 @@
-import PlayerBottomComponent from "../../../components/component/pagePlayerBottom/PlayerBottomComponent";
-import PageTopBar from "../../../components/component/pageTopbar/PageTopBar";
+import PlayerBottomComponent from "../../../components/component/pagePlayer/PlayerBottom";
+import PageTopBarComponent from "../../../components/component/pageTopbar/PageTopBar";
 import SidebarComponent from "../../../components/component/pageSidebar/Sidebar";
+import PageContentComponent from "../../../components/component/pageMain/pageContent";
 
 const MusicPage = () => {
   return (
-    <div>
+    <>
       <SidebarComponent />
-      <PageTopBar />
-      <PlayerBottomComponent /> 
-    </div>
+      <PageTopBarComponent />
+      <PageContentComponent />
+      <PlayerBottomComponent />
+    </>
   )
 }
 
