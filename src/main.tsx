@@ -10,6 +10,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     clientId={import.meta.env.VITE_APP_AUTH0_CLIENT_ID as string}
     authorizationParams={{ redirect_uri: window.location.origin + '/music' }}
   >
-      <App />
+    <App />
   </Auth0Provider>
 )
