@@ -6,9 +6,9 @@ import PageContentComponent from "../../../components/component/pageMain/pageCon
 const MusicPage = () => {
   return (
     <>
+      <PageContentComponent />
       <SidebarComponent />
       <PageTopBarComponent />
-      <PageContentComponent />
       <PlayerBottomComponent />
     </>
   )
