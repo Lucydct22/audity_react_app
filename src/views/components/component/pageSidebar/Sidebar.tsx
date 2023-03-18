@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import './SideBar.scss'
 import LogoWhite from '../../../../assets/img/png/logoAudityBlackTransp.png'
 import { FiMusic } from 'react-icons/fi'
+import { Link } from 'react-router-dom';
 
 const SidebarComponent = () => {
   const { t } = useTranslation();
@@ -10,7 +11,9 @@ const SidebarComponent = () => {
 
     <div className='side-bar-header'>
       <div className='side-bar-header__logo'>
-        <img src={LogoWhite} alt="logo" />
+        <Link to={'/'}>
+          <img src={LogoWhite} alt="logo" />
+        </Link>
       </div>
 
       <div className='side-bar-header__sections'>
