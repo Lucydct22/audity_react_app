@@ -4,13 +4,23 @@ $color-primary_dark: #fff;
 
 $color-secundary: #a2a2ad;
 
+
 /* BACKGROUND COLORS */
-$color-primary-bg_light: #fff;
-$color-primary-bg_dark: #121216;
+$background-primary_light: #fff;
+$background-primary_dark: #121216;
+
+$background-secundary_light: #fff;
+$background-secundary_dark: #23232d;
+
 
 /* BORDERS */
 $color-border-1px_light: 1px solid #eaeaea;
 $color-border-1px_dark: 1px solid #32323d;
+
+
+/* BUTTON HOVER BACKGROUND COLORS */
+$btn-hover_light: #eaeaea;
+$btn-hover_dark: #42424c;
 
 
 /* MEDIA QUERYS */
@@ -29,3 +39,22 @@ $media-breakpoint-up-md: 768px;
 $media-breakpoint-up-lg: 992px;
 $media-breakpoint-up-xl: 1200px;
 $media-breakpoint-up-xxl: 1600px;
+
+
+/* DATA THEME */
+
+html[data-theme='light'] {
+    --color-primary: #{$color-primary_light};
+    --color-border-1px: #{$color-border-1px_light};
+    --btn-hover: #{$btn-hover_light};
+    --background-primary: #{$background-primary_light};
+    --background-secundary: #{$background-secundary_light};
+}
+
+html[data-theme='dark'] {
+    --color-primary: #{$color-primary_dark};
+    --color-border-1px: #{$color-border-1px_dark};
+    --btn-hover: #{$btn-hover_dark};
+    --background-primary: #{$background-primary_dark};
+    --background-secundary: #{$background-secundary_dark};
+}
