@@ -6,7 +6,7 @@ const UserLayout = lazy(() => import('../views/layouts/basicLayout'));
 const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
 
 // USER PAGES
-const HomePage = lazy(() => import('../views/pages/basic/homePage'));
+const TestPage = lazy(() => import('../views/pages/basic/testPage'));
 const MusiPage = lazy(() => import('../views/pages/basic/musicPage'));
 
 // ADMIN PAGES
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<></>}><HomePage /></Suspense>,
+        element: <Suspense fallback={<></>}><TestPage /></Suspense>,
       },
       {
         path: "music",
