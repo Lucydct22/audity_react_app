@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Language from '../../UI/language/Language';
 import Theme from '../../UI/theme/Theme';
 import './homeUserComponent.scss';
@@ -11,7 +12,7 @@ const HomeUserComponent = () => {
       <Theme />
       <Language />
       <h1>{t("title_user_home")}</h1>
-      <button></button>
+      <Link to={'/music'}>Music</Link>
     </div>
   )
 }
