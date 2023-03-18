@@ -3,7 +3,7 @@
 .page-topbar {
   position: fixed;
   top: 0;
-  left: 220px;
+  left: 213px;
   right: 0;
   display: flex;
   justify-content: space-between;
@@ -12,17 +12,10 @@
   padding: 0 24px;
   margin: 0;
   border-bottom: var(--color-border-1px);
+  background-color: var(--background-primary);
 }
 
-.search-topbar {
-  height: 100%;
-  padding: 0.4rem;
-  margin: 0;
-  width: 30%;
-  border: none;
-}
-
-.topbar-profile {
+.page-topbar-profile {
   display: flex;
   flex-direction: right;
   border: none;
@@ -30,32 +23,39 @@
   width: 32px;
   height: 32px;
   padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
 }
 
-.topbar-profile>img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.topbar-search {
+.page-topbar-search {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 80%;
-}
 
-.topbar-search input {
-  width: 80%;
-  background: none;
-}
+  &__input {
+    width: 80%;
+    height: 2rem;
+    padding: 0.4rem;
+    margin: 0;
+    height: 100%;
+    width: 30%;
+    background: none;
+    border: none;
 
-.topbar-search input:focus {
-  outline: none
-}
+    &:focus {
+      outline: none
+    }
 
-.topbar-search input::placeholder {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 21px;
+    &::placeholder {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 21px;
+    }
+  }
 }

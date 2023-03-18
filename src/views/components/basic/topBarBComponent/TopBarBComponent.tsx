@@ -9,12 +9,12 @@ const TopBarBComponent = () => {
 
   return (
     <header className='page-topbar'>
-      <div className='topbar-search'>
+      <div className='page-topbar-search'>
         <BsSearch color='#52525d' />
-        <input type="text" className='search-topbar' placeholder={t("search_placeholder") || ""} />
+        <input type="text" className='page-topbar-search__input' placeholder={t("search_placeholder") || ""} />
       </div>
 
-      <button className='topbar-profile'>
+      <button className='page-topbar-profile'>
         <img src={user?.picture ? user.picture : 'https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg'} alt="avatar" />
       </button>
     </header>

@@ -1,14 +1,21 @@
 @import '../../../../sass/variables.scss';
 
-.side-bar-header {
+.page-sidebar {
   position: fixed;
   width: 212px;
   height: 270px;
+  margin: 0;
   top: 0;
-  color: var(--color-primary);
+  left: 0;
+  bottom: 0;
+  height: calc(100vh - 80px);
   border-right: var(--color-border-1px);
   background-color: var(--background-secundary);
+}
 
+.side-bar-header {
+  color: var(--color-primary);
+  margin: 0 20px;
   &__logo {
     display: flex;
     flex-direction: column;
