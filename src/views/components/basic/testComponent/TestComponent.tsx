@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'
-import Language from '../../UI/language/Language';
-import Theme from '../../UI/theme/Theme';
-import './homeUserComponent.scss';
+import Language from '../../../UI/language/Language';
+import Theme from '../../../UI/theme/Theme';
+import './testComponent.scss';
 
-const HomeUserComponent = () => {
+const TestComponent = () => {
   const { t } = useTranslation();
   const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0()
 
@@ -31,4 +31,4 @@ const HomeUserComponent = () => {
   )
 }
 
-export default HomeUserComponent;
+export default TestComponent;

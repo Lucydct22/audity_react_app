@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import './SideBar.scss'
+import './sidebarBComponent.scss'
 import LogoWhite from '../../../../assets/img/png/logoAudityBlackTransp.png'
 import { FiMusic } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
 
-const SidebarComponent = () => {
+const SidebarBComponent = () => {
   const { t } = useTranslation();
 
   return (
@@ -47,7 +47,7 @@ const SidebarComponent = () => {
   )
 }
 
-export default SidebarComponent;
+export default SidebarBComponent;
 
 
 {/* <p>{t("home_title_admin")}</p> */ }

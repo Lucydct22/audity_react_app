@@ -23,7 +23,7 @@
 
   label:after {
     content: "";
-    background-image: url("../../../../assets/img/png/sun.png");
+    background-image: url("../../../assets/img/png/sun.png");
     background-size: cover;
     width: 20px;
     height: 20px;
@@ -42,7 +42,7 @@
 
   input:checked+label:after {
     left: calc(100% - 5px);
-    background-image: url("../../../../assets/img/png/moon.png");
+    background-image: url("../../../assets/img/png/moon.png");
     -webkit-transform: translateX(-100%);
     -moz-transform: translateX(-100%);
     -ms-transform: translateX(-100%);

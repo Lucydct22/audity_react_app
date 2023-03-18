@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import './PageTopBar.scss';
+import './topBarBComponent.scss';
 import { BsSearch } from 'react-icons/bs';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const PageTopBarComponent = () => {
+const TopBarBComponent = () => {
   const { t } = useTranslation();
   const { user } = useAuth0();
 
@@ -21,4 +21,4 @@ const PageTopBarComponent = () => {
   )
 }
 
-export default PageTopBarComponent;
+export default TopBarBComponent;

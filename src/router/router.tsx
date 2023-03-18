@@ -2,12 +2,12 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 // LAYOUTS
-const UserLayout = lazy(() => import('../views/layouts/userLayout'));
+const UserLayout = lazy(() => import('../views/layouts/basicLayout'));
 const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
 
 // USER PAGES
-const HomePage = lazy(() => import('../views/pages/user/homePage'));
-const MusiPage = lazy(() => import('../views/pages/music/musicPage'));
+const HomePage = lazy(() => import('../views/pages/basic/homePage'));
+const MusiPage = lazy(() => import('../views/pages/basic/musicPage'));
 
 // ADMIN PAGES
 const HomeAdmin = lazy(() => import('../views/pages/admin/homeAdminPage'));

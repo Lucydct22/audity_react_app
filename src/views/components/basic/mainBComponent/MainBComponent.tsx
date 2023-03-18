@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import './pageContent.scss'
-import Language from '../../UI/language/Language';
-import Theme from '../../UI/theme/Theme';
+import './mainBComponent.scss'
+import Language from '../../../UI/language/Language';
+import Theme from '../../../UI/theme/Theme';
 
-const PageContentComponent = () => {
+const MainBComponent = () => {
   const { t } = useTranslation();
 
   return (
@@ -16,4 +16,4 @@ const PageContentComponent = () => {
   )
 }
 
-export default PageContentComponent;
+export default MainBComponent;

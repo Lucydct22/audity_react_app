@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import Language from '../../UI/language/Language';
-import Theme from '../../UI/theme/Theme';
+import Language from '../../../UI/language/Language';
+import Theme from '../../../UI/theme/Theme';
 
 const HomeAdminComponent = () => {
   const { t } = useTranslation();

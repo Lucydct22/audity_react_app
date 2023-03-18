@@ -1,4 +1,4 @@
-import HomeUserComponent from '../../../components/user/homeUserComponent/HomeUserComponent';
+import HomeUserComponent from '../../../components/basic/testComponent/TestComponent';
 
 const HomePage = () => {
   return (

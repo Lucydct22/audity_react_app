@@ -15,7 +15,7 @@ import { IoVolumeMuteOutline } from "react-icons/io5";
 
 
 
-const PlayerBottomComponent = () => {
+const PlayerBComponent = () => {
   const [songState, setSongState] = useState(false);
   const [songLike, setSongLike] = useState(false);
   const [songVolume, setSongVolume] = useState(false);
@@ -95,4 +95,4 @@ const PlayerBottomComponent = () => {
   )
 }
 
-export default PlayerBottomComponent;
+export default PlayerBComponent;
