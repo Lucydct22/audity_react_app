@@ -1,9 +1,9 @@
 import HomeUserComponent from '../../../components/user/homeUserComponent/HomeUserComponent';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <HomeUserComponent />
   )
 }
 
-export default Home;
+export default HomePage;
