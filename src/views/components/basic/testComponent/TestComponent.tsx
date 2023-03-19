@@ -7,7 +7,7 @@ import './testComponent.scss';
 
 const TestComponent = () => {
   const { t } = useTranslation();
-  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0()
+  const { user, loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0()
 
   if (isLoading) return <h1>Loading</h1>
 
@@ -15,7 +15,7 @@ const TestComponent = () => {
     <div className='home-user-component'>
       <Theme />
       <Language />
-      <h1>{t("title_user_home")}</h1>
+      <h1>{t("title_user_home")} {user?.name}</h1>
       <Link to={'/music'}>Music</Link>
       <br />
       {isAuthenticated ? (
