@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 type Props = {
   title: string,
-  description?: string,
+  description: string,
   children: React.ReactNode
 }
 
