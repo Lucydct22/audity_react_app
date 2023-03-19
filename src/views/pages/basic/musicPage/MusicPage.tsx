@@ -2,15 +2,19 @@ import PlayerBottomComponent from "../../../components/basic/playerBComponent/Pl
 import PageTopBarComponent from "../../../components/basic/topBarBComponent/TopBarBComponent";
 import SidebarComponent from "../../../components/basic/sidebarBComponent/SidebarBComponent";
 import PageContentComponent from "../../../components/basic/mainBComponent/MainBComponent";
+import HelmetSEO from "../../../utils/HelmetSEO";
 
 const MusicPage = () => {
   return (
-    <>
+    <HelmetSEO
+      title='Music | Audity'
+      description='Audity Music Page'
+    >
       <SidebarComponent />
       <PageTopBarComponent />
       <PageContentComponent />
       <PlayerBottomComponent />
-    </>
+    </HelmetSEO>
   )
 }
 
