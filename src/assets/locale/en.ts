@@ -3,7 +3,7 @@ const englishTranslation = {
   // Login/register
   
   // Home
-  title_user_home: 'User Home',
+  title_user_home: 'Hello',
 
     /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
   // Home

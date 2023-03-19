@@ -3,7 +3,7 @@ const spanishTranslation = {
   // Login/register
   
   // Home
-  title_user_home: 'Inicio Usuario',
+  title_user_home: 'Hola',
   
   // Profile
 
