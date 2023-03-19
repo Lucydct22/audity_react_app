@@ -15,7 +15,7 @@ const TestComponent = () => {
     <div className='home-user-component'>
       <Theme />
       <Language />
-      <h1>{t("title_user_home")} {user?.name}</h1>
+      {isAuthenticated && <h1>{t("title_user_home")} {user?.name}</h1>}
       <Link to={'/music'}>Music</Link>
       <br />
       {isAuthenticated ? (
