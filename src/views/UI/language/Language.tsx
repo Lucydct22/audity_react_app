@@ -8,8 +8,9 @@ const lngs = [
 const Language = () => {
   const { i18n } = useTranslation();
 
-  const handleTrans = (code: string) => {
+  const handleTrans = (code: string) => { 
     i18n.changeLanguage(code);
+    document.documentElement.setAttribute("lang", code);
   };
 
   return (
