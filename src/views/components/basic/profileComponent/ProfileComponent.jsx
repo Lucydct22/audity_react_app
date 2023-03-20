@@ -67,26 +67,26 @@ const ProfileComponent = () => {
         <span>Audity account</span>
         <label >Your email</label>
         <div>
-        <input type="email" value={user.email} name="email" readOnly={!editMode} placeholder="email" onChange={handleInputChange} />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
+          <input type="email" value={user.email} name="email" readOnly={!editMode} placeholder="email" onChange={handleInputChange} />
+          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
         </div>
         <label >Your password</label>
         <div>
-        <input type="password" value={user.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
+          <input type="password" value={user.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
+          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
         </div>
         <label >Username</label>
         <div>
-        <input type="text" value={user.username} name="username" readOnly={!editMode} placeholder="username" onChange={handleInputChange} />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
+          <input type="text" value={user.username} name="username" readOnly={!editMode} placeholder="username" onChange={handleInputChange} />
+          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
         </div>
 
       </div>
       <div className="user-settings__private-info" >
         <label >Date of birth</label>
         <div>
-        <input type="date" value={user.birth_day} name="birth_day" placeholder="user.birth_day" readOnly={!editMode} onChange={handleInputChange} />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
+          <input type="date" value={user.birth_day} name="birth_day" placeholder="user.birth_day" readOnly={!editMode} onChange={handleInputChange} />
+          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
         </div>
 
         <label >Country</label>
@@ -100,7 +100,7 @@ const ProfileComponent = () => {
           className="select"
         />
         {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-       
+
 
         <label >Language</label>
         <Select
@@ -112,7 +112,7 @@ const ProfileComponent = () => {
           className="select"
         />
         {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-       
+
       </div>
       <button className='user-settings__btn-delete'>Delete profile</button>
     </div>
