@@ -19,8 +19,12 @@ $color-border-1px_dark: 1px solid #32323d;
 
 
 /* BUTTON HOVER BACKGROUND COLORS */
-$btn-hover_light: #eaeaea;
-$btn-hover_dark: #42424c;
+$background-on-hover_light: #eaeaea;
+$background-on-hover_dark: #42424c;
+
+/* BUTTON HOVER BACKGROUND COLORS */
+$popper-shadow_light: 0 4px 20px 0 #1919223d;
+$popper-shadow_dark: 0 4px 20px 0 #0000003d;
 
 
 /* MEDIA QUERYS */
@@ -46,15 +50,18 @@ $media-breakpoint-up-xxl: 1600px;
 html[data-theme='light'] {
     --color-primary: #{$color-primary_light};
     --color-border-1px: #{$color-border-1px_light};
-    --btn-hover: #{$btn-hover_light};
+    --background-on-hover: #{$background-on-hover_light};
     --background-primary: #{$background-primary_light};
     --background-secundary: #{$background-secundary_light};
+    --popper-shadow: #{$popper-shadow_light};
+
 }
 
 html[data-theme='dark'] {
     --color-primary: #{$color-primary_dark};
     --color-border-1px: #{$color-border-1px_dark};
-    --btn-hover: #{$btn-hover_dark};
+    --background-on-hover: #{$background-on-hover_dark};
     --background-primary: #{$background-primary_dark};
     --background-secundary: #{$background-secundary_dark};
+    --popper-shadow: #{$popper-shadow_dark};
 }
