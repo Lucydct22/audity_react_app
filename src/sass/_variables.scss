@@ -22,6 +22,7 @@ $color-border-1px_dark: 1px solid #32323d;
 $background-on-hover_light: #eaeaea;
 $background-on-hover_dark: #42424c;
 
+
 /* BUTTON HOVER BACKGROUND COLORS */
 $popper-shadow_light: 0 4px 20px 0 #1919223d;
 $popper-shadow_dark: 0 4px 20px 0 #0000003d;
@@ -46,7 +47,6 @@ $media-breakpoint-up-xxl: 1600px;
 
 
 /* DATA THEME */
-
 html[data-theme='light'] {
     --color-primary: #{$color-primary_light};
     --color-border-1px: #{$color-border-1px_light};
@@ -54,7 +54,6 @@ html[data-theme='light'] {
     --background-primary: #{$background-primary_light};
     --background-secundary: #{$background-secundary_light};
     --popper-shadow: #{$popper-shadow_light};
-
 }
 
 html[data-theme='dark'] {

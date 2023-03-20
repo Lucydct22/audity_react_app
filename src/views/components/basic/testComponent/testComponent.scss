@@ -1,17 +1,14 @@
+@import '../../../../sass/mixins';
 @import '../../../../sass/animation';
 @import '../../../../sass/variables';
 
-:root[data-theme="light"] {
-  --t-home-user-component-color: #{$color-primary_light};
-}
-
-:root[data-theme="dark"] {
-  --t-home-user-component-color: #{$color-primary_dark};
-}
-
 .home-user-component {
   h1 {
-    color: var(--t-home-user-component-color);
-    @include fadeIn(2s)
+    color: var(--color-primary);
+    @include fadeIn(2s);
+  }
+
+  &__anchor {
+    @include anchorText();
   }
 }
