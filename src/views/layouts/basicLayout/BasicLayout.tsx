@@ -4,6 +4,9 @@ import PlayerBottomComponent from "../../components/basic/playerBComponent/Playe
 import PageTopBarComponent from "../../components/basic/topBarBComponent/TopBarBComponent";
 
 const BasicLayout = () => {
+  const theme = localStorage.getItem("theme");
+  theme && document.documentElement.setAttribute("data-theme", theme);
+  
   return (
     <>
       <SidebarBComponent />
