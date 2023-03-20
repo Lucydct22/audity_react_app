@@ -11,6 +11,14 @@ const spanishTranslation = {
   // Home
   search_placeholder: 'Buscar',
 
+  /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
+
+  sidebar_music: 'Musica',
+  sidebar_radio: 'Radio',
+  sidebar_browser: 'Navegador',
+  sidebar_favorites: 'Favoritos',
+  sidebar_yourstudio: 'Tu estudio',
+
   /*~~~~~~~~~ ADMIN ~~~~~~~~~*/
   // Home
   title_admin_home: 'Inicio Administrador'

@@ -2,7 +2,11 @@ import { useTranslation } from 'react-i18next';
 import './sidebarBComponent.scss'
 import LogoWhite from '../../../../assets/img/png/logoAudityBlackTransp.png'
 import { FiMusic } from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+import { AiOutlineHeart } from 'react-icons/ai'
+import { RiRadioLine } from 'react-icons/ri'
+import { CgBrowser } from 'react-icons/cg'
+import { BsMusicPlayer } from 'react-icons/bs'
+import { Link, NavLink } from 'react-router-dom';
 
 const SidebarBComponent = () => {
   const { t } = useTranslation();
@@ -18,34 +22,37 @@ const SidebarBComponent = () => {
         </div>
 
         <div className='side-bar-header__sections'>
-          <div className='side-bar-header__sections--music'>
-            <FiMusic />
-            <p>Music</p>
-          </div>
+          <NavLink to={'/music'} className='side-bar-header__sections--options'>
+            <FiMusic className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_music")}</p>
+          </NavLink>
 
-          <div>
+          <NavLink to={'/radio'} className='side-bar-header__sections--options'>
+            <RiRadioLine className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_radio")}</p>
+          </NavLink>
 
-            <p>Radio</p>
-          </div>
+          <NavLink to={'/browse'} className='side-bar-header__sections--options'>
+            <CgBrowser className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_browser")}</p>
+          </NavLink>
 
-          <div>
+          <NavLink to={'/favorites'} className='side-bar-header__sections--options'>
+            <AiOutlineHeart className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_favorites")}</p>
+          </NavLink>
 
-            <p>Browse</p>
-          </div>
+          <NavLink to={'/your-studio'} className='side-bar-header__sections--options'>
+            <BsMusicPlayer className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_yourstudio")}</p>
+          </NavLink>
 
-          <div>
-
-            <p>Favorites</p>
-          </div>
-
-          <div>
-
-            <p>Your Studio</p>
-          </div>
-
+          <NavLink to={'/test'} className='side-bar-header__sections--options'>
+            <p>Test</p>
+          </NavLink>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
 
