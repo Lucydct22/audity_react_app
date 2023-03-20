@@ -6,7 +6,7 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { RiRadioLine } from 'react-icons/ri'
 import { CgBrowser } from 'react-icons/cg'
 import { BsMusicPlayer } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const SidebarBComponent = () => {
   const { t } = useTranslation();
@@ -22,34 +22,38 @@ const SidebarBComponent = () => {
         </div>
 
         <div className='side-bar-header__sections'>
-          <div className='side-bar-header__sections--options'>
+          <NavLink to={'/music'} className='side-bar-header__sections--options'>
             <FiMusic />
             <p>Music</p>
-          </div>
-            
-          <div className='side-bar-header__sections--options'>
+          </NavLink>
+
+          <NavLink to={'/radio'} className='side-bar-header__sections--options'>
             <RiRadioLine />
             <p>Radio</p>
-          </div>
+          </NavLink>
 
-          <div className='side-bar-header__sections--options'>
+          <NavLink to={'/browse'} className='side-bar-header__sections--options'>
             <CgBrowser />
             <p>Browse</p>
-          </div>
+          </NavLink>
 
-          <div className='side-bar-header__sections--options'>
+          <NavLink to={'/favorites'} className='side-bar-header__sections--options'>
             <AiOutlineHeart />
             <p>Favorites</p>
-          </div>
+          </NavLink>
 
-          <div className='side-bar-header__sections--options'>
+          <NavLink to={'/your-studio'} className='side-bar-header__sections--options'>
             <BsMusicPlayer />
             <p>Your Studio</p>
-          </div>
+          </NavLink>
 
+          <NavLink to={'/test'} className='side-bar-header__sections--options'>
+            <BsMusicPlayer />
+            <p>Test</p>
+          </NavLink>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
 
