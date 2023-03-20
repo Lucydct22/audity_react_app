@@ -4,12 +4,13 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Language from '../../../UI/language/Language';
 import Theme from '../../../UI/theme/Theme';
 import './testComponent.scss';
+import Spinner from '../../../UI/spinner/Spinner';
 
 const TestComponent = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0()
 
-  if (isLoading) return <h1>Loading</h1>
+  if (isLoading) return <Spinner />
 
   return (
     <div className='home-user-component'>
