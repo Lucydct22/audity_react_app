@@ -27,8 +27,18 @@
       width: 120px;
     }
   }
-}
+  &__sections {
+    text-decoration: none;
 
-.side-bar-header__sections {
-  
+    &--options {
+      display: flex;
+      align-content: center;
+      margin: 10px;
+
+      &__icon {
+      margin-top: 17px;
+      margin-right: 20px;
+      }
+    }
+  }
 }

@@ -23,32 +23,31 @@ const SidebarBComponent = () => {
 
         <div className='side-bar-header__sections'>
           <NavLink to={'/music'} className='side-bar-header__sections--options'>
-            <FiMusic />
-            <p>Music</p>
+            <FiMusic className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_music")}</p>
           </NavLink>
 
           <NavLink to={'/radio'} className='side-bar-header__sections--options'>
-            <RiRadioLine />
-            <p>Radio</p>
+            <RiRadioLine className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_radio")}</p>
           </NavLink>
 
           <NavLink to={'/browse'} className='side-bar-header__sections--options'>
-            <CgBrowser />
-            <p>Browse</p>
+            <CgBrowser className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_browser")}</p>
           </NavLink>
 
           <NavLink to={'/favorites'} className='side-bar-header__sections--options'>
-            <AiOutlineHeart />
-            <p>Favorites</p>
+            <AiOutlineHeart className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_favorites")}</p>
           </NavLink>
 
           <NavLink to={'/your-studio'} className='side-bar-header__sections--options'>
-            <BsMusicPlayer />
-            <p>Your Studio</p>
+            <BsMusicPlayer className='side-bar-header__sections--options__icon'/>
+            <p>{t("sidebar_yourstudio")}</p>
           </NavLink>
 
           <NavLink to={'/test'} className='side-bar-header__sections--options'>
-            <BsMusicPlayer />
             <p>Test</p>
           </NavLink>
         </div>
