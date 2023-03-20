@@ -11,6 +11,7 @@
   height: calc(100vh - 80px);
   border-right: var(--color-border-1px);
   background-color: var(--background-secundary);
+  z-index: 10;
 }
 
 .side-bar-header {
