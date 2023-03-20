@@ -1,0 +1,112 @@
+@import "../../../../sass/variables";
+
+.user-settings {
+  position: relative;
+  top: 57px;
+  justify-content: center;
+  margin-left: 212px;
+  padding: 80px;
+  color: $color-primary_light;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+
+  &__image {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+  }
+
+  &__account {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    div {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      margin-bottom: 10px;
+      font-size: 2rem;
+      border-bottom: 1px solid gray;
+    }
+
+    label {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    input {
+      background-color: $background-primary_light;
+      border: $color-border-1px_light;
+      border-radius: 5px;
+      padding: 12px;
+      outline: none;
+      width: 80%;
+    }
+
+    button {
+      width: 5rem;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      height: 100%;
+    }
+
+  }
+
+
+  &__private-info {
+
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+
+    label {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    input {
+      background-color: $background-primary_light;
+      border: $color-border-1px_light;
+      outline: none;
+      color: black;
+      border-radius: 5px;
+      padding: 12px;
+      width: 80%;
+    }
+
+    button {
+      width: 5rem;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      margin-left: 0;
+      height: 40px;
+
+    }
+  }
+
+
+  &__btn-delete {
+    padding: 5px;
+    outline: none;
+    border-radius: 20px;
+    background-color: rgb(167, 45, 45);
+    border-color: rgb(167, 45, 45);
+    width: 15rem;
+    margin-left: 80%;
+    margin-bottom: 50px;
+  }
+
+  &__btn-delete:hover {
+    background-color: $btn-hover_dark;
+    border-color: $btn-hover_dark;
+  }
+
+}
