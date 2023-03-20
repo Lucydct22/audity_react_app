@@ -9,9 +9,7 @@ const MusicPage = () => {
     <HelmetSEO
       title='Music | Audity'
       description='Audity Music Page'
-    >
-      <SidebarComponent />
-      <PageTopBarComponent />
+    >   
       <PageContentComponent />
       <PlayerBottomComponent />
     </HelmetSEO>
