@@ -20,9 +20,21 @@
     {
       "id": "1",
       "userId": "1",
-      "playlistId": ["1", "2", "3"],
-      "likes": ["1","2","3"],
-      "historyReproduction": ["1","2","3"]
+      "playlistId": [
+        "1",
+        "2",
+        "3"
+      ],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
+      "historyReproduction": [
+        "1",
+        "2",
+        "3"
+      ]
     }
   ],
   "playlists": [
@@ -32,7 +44,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644625060/tracks-thumbnails-dev/car_yx6ld1.jpg",
       "description": "Get your mic on with this beats. You are going to sing all the way down",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -42,7 +60,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644625058/tracks-thumbnails-dev/driving_g56eyw.jpg",
       "description": "Take it easy on the wheels with this hits",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -53,7 +77,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644625056/tracks-thumbnails-dev/relax_coqdlx.jpg",
       "description": "Stressed? Don´t worry the final project will soon be over. Relax in the meantime with this hits.",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -63,7 +93,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644625049/tracks-thumbnails-dev/boogie_rcl1zd.jpg",
       "description": "Take the dance floor and try to get your groove on with this beats",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -73,7 +109,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644624690/tracks-thumbnails-dev/smile_kpfzj8.jpg",
       "description": "For those times when you are feeling down.",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -83,7 +125,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644626587/tracks-thumbnails-dev/brennan-ehrhardt-HALe2SmkWAI-unsplash_c1yhnz.jpg",
       "description": "Feeling homey. Let´s keep it warm.",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -93,7 +141,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644626067/tracks-thumbnails-dev/fly_hx4xyp.jpg",
       "description": "Have no money for a space trip but you can have a space hit!",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -103,7 +157,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644626096/tracks-thumbnails-dev/hits_nuk3qf.webp",
       "description": "Have no plans but will be happy to hear you are happy.",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -113,7 +173,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644626587/tracks-thumbnails-dev/amy-shamblen-lJt-3NUFng4-unsplash_z4icus.jpg",
       "description": "Have you finished your master project? Let´s party!",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -123,7 +189,13 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644627361/tracks-thumbnails-dev/glitter_ru5qsp.jpg",
       "description": "Let´s get glittering.",
       "publicAccessible": false,
-      "musicList": ["1", "2", "3", "4", "5"],
+      "musicList": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     }
@@ -136,7 +208,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583924/tracks-dev/Rxbyn_-_better_off_alone_fvhwp8.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/better_off_alone_gfmcby.jpg",
       "genre": "piano",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "1",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -148,7 +224,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583929/tracks-dev/Color_Out_-_Alone_aw3gmk.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/alone_rfib7a.jpg",
       "genre": "poprock",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "2",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -160,7 +240,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583928/tracks-dev/Mahidevran_Rock_Band_-_Mahidevran_-_Maze_of_sorrow_ips3zs.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/Maze_of_sorrow_r1crlr.jpg",
       "genre": "chillout",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "3",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -172,7 +256,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583928/tracks-dev/Smoking_With_Poets_-_to__Aurora_t2qnaw.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/aurora_omys8y.jpg",
       "genre": "indie",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "4",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -184,7 +272,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583922/tracks-dev/Infraction_-_Sensitive_vsu6qr.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583756/tracks-thumbnails-dev/Sensitive_unevif.jpg",
       "genre": "pop",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "5",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -196,7 +288,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644583924/tracks-dev/Social_Square_-_Tantalizing_Youth_eykq87.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644583757/tracks-thumbnails-dev/Tantalizing_Youth_bfshzo.jpg",
       "genre": "rock",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "6",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -208,7 +304,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644584871/tracks-dev/Igor_Pumphonia_-_Igor_Pumphonia_-_Point_Of_Light_kjgbyz.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644584802/tracks-thumbnails-dev/Igor_Pumphonia_-_Point_Of_Light_urg7nn.jpg",
       "genre": "electronic",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "7",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -220,7 +320,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644584996/tracks-dev/Laurence_DaNova_-_Marsupial_1_bxvpkj.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644585151/tracks-thumbnails-dev/Lurence_Danova_oeew0j.jpg",
       "genre": "indie",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "8",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -232,7 +336,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644585238/tracks-dev/Tab_-_Chasing_Tomorrow__feat._Jade_Gritty__leh4r1.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644585210/tracks-thumbnails-dev/TAB_fxakq3.jpg",
       "genre": "electronic",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "9",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -244,7 +352,11 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644427496/tracks-thumbnails/thumbnail-1644427496210_qqpy4a.jpg",
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644523019/tracks/track-1644523017728_qb6wq4.mp3",
       "genre": "soul",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -256,7 +368,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644585554/tracks-dev/The_Devil_Music_Co._-_Head_Over_Heels__Friend_Group_Remix__buotnt.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644585551/tracks-thumbnails-dev/Head_Over_Heels_Friend_Group_Remix_c9uatt.jpg",
       "genre": "poprock",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "11",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -268,7 +384,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644586422/tracks-dev/The.madpix.project_-_Under_Water_2_gyvrkl.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644586423/tracks-thumbnails-dev/Under_Water_yoirsy.jpg",
       "genre": "electronic",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "12",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -280,7 +400,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644586627/tracks-dev/A8_MUSIC_PRODUCTIONS_-_Better_umwfkh.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644586622/tracks-thumbnails-dev/A8_vxgyaf.jpg",
       "genre": "pop",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "13",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -292,7 +416,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644586724/tracks-dev/MODUS_-_My_Love_z7tzk1.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644586719/tracks-thumbnails-dev/My_love_wqjuiz.jpg",
       "genre": "pop",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "14",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -304,7 +432,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644586823/tracks-dev/P_Steve_Officiel_-_Bebe_go_r0hlbl.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644586816/tracks-thumbnails-dev/bebe_go_zdfn6e.jpg",
       "genre": "reggaeton",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "15",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -316,7 +448,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644587062/tracks-dev/Kevin_S._-_Reflections__feat._Mathias_Hagen__lypkgw.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644587058/tracks-thumbnails-dev/Reflections_qvdzan.jpg",
       "genre": "alternative",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "16",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -328,7 +464,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644587219/tracks-dev/Lessky_-_Un_Ratito_Nama__Prod__Duran_The_Coach__npuws5.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644587222/tracks-thumbnails-dev/Un_ratito_m2aeq0.jpg",
       "genre": "reggaeton",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "17",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -340,7 +480,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644587961/tracks-dev/Kuzinmuzin_-_Sax_Is_My_Cardio_fqmvwb.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644587960/tracks-thumbnails-dev/Sax_kgjfn8.jpg",
       "genre": "funk",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "18",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -352,7 +496,11 @@
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644653754/tracks-dev/PeryCreep_-_Chill_Lofi_Hip_Hop_Type_Beat_l2k8zv.mp3",
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644653692/tracks-thumbnails-dev/Chill_Lofi_Hip_Hop_Type_Beat_ltpm24.jpg",
       "genre": "groovy",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "19",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -364,7 +512,11 @@
       "thumbnail": "https://res.cloudinary.com/dmkdsujzh/image/upload/v1644602996/tracks-thumbnails-dev/Monday_8am_amfdta.jpg",
       "url": "https://res.cloudinary.com/dmkdsujzh/video/upload/v1644602494/tracks-dev/D_JAY_KOI_-_We_got_the_vibes___Feat_Fil_Straughan__uz9qw7.mp3",
       "genre": "folk",
-      "likes": ["1", "2", "3"],
+      "likes": [
+        "1",
+        "2",
+        "3"
+      ],
       "album": "20",
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
@@ -376,7 +528,9 @@
       "name": "Flyga",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cfb34a37cfed6297d8c18231",
       "artist": "Kim Cesarion",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -385,7 +539,9 @@
       "name": "XXX (Bow Wow Wow)",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273256e16efc88a39e4795d5f32",
       "artist": "C.Gambino",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -394,7 +550,9 @@
       "name": "Stay A Little Longer",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732cf9821eb5087702a63330b5",
       "artist": "Nicky Romero",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -403,7 +561,9 @@
       "name": "WTF",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730b7020f4bce3fc16f5370df3",
       "artist": "Denz",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -412,7 +572,9 @@
       "name": "Vivaldi",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a7fc8699c8a8c6dc4b90c948",
       "artist": "Jesper Swärd",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -421,7 +583,9 @@
       "name": "Velvet Pony Trax 11 part 2",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
       "artist": "Axel Boman",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -430,7 +594,9 @@
       "name": "PARTYPINGLA",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
       "artist": "Rasmus Hultgren",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -439,7 +605,9 @@
       "name": "Someone To Love",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
       "artist": "Dimitri Vangelis & Wyman",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -448,7 +616,9 @@
       "name": "I samma bil",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
       "artist": "Hemliga Klubben",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -457,7 +627,9 @@
       "name": "Ofiltrerad",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d43759a300274388d5b3ac7d",
       "artist": "Steph K",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -466,7 +638,9 @@
       "name": "Closer",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e04542a5b2f5c4e80b8043f9",
       "artist": "Romeo",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -475,7 +649,9 @@
       "name": "YOUNG",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27350414c15d3e534effd5840ab",
       "artist": "SINAN",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -484,7 +660,9 @@
       "name": "THE REAL",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273189b84e563687baf99c8d800",
       "artist": "Chapee",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -493,7 +671,9 @@
       "name": "Eternal Light Brigade",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732f4d9bfec9c13fc7979ed942",
       "artist": "Les Big Byrd",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -502,7 +682,9 @@
       "name": "Tombolo (Réédition)",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273966b2b28801e75d7d293c3a9",
       "artist": "Kalash",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -511,7 +693,9 @@
       "name": "KARIMO II",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aa311f30a24a7002e089c379",
       "artist": "Karim Alger",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -520,7 +704,9 @@
       "name": "Midnight FM",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d62e4c88ec0df746317863af",
       "artist": "Prof. Stranger",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -529,7 +715,9 @@
       "name": "Jag såg en kvinna",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273897c8155c64e1436daf8a466",
       "artist": "Ken Ring",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -538,7 +726,9 @@
       "name": "Alltid varit här",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273940bcb3763667fa773d46a29",
       "artist": "Rozh",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     },
@@ -547,7 +737,9 @@
       "name": "38",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a009515d20b39aa065540314",
       "artist": "Arre",
-      "genres": ["folk"],
+      "genres": [
+        "folk"
+      ],
       "createdAt": "2023-03-14T09:17:23.739+00:00",
       "updatedAt": "2023-03-14T09:17:23.739+00:00"
     }
