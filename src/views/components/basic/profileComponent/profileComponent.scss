@@ -86,20 +86,19 @@
       padding: 5px;
       border-radius: 5px;
       margin: 5px;
-      margin-left: 0;
       height: 40px;
-
     }
   }
 
 
   &__btn-delete {
-    padding: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
     outline: none;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: rgb(167, 45, 45);
     border-color: rgb(167, 45, 45);
-    width: 15rem;
+    width: 10rem;
     margin-left: 80%;
     margin-bottom: 50px;
   }
