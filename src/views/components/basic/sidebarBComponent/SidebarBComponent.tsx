@@ -2,6 +2,10 @@ import { useTranslation } from 'react-i18next';
 import './sidebarBComponent.scss'
 import LogoWhite from '../../../../assets/img/png/logoAudityBlackTransp.png'
 import { FiMusic } from 'react-icons/fi'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { RiRadioLine } from 'react-icons/ri'
+import { CgBrowser } from 'react-icons/cg'
+import { BsMusicPlayer } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 
 const SidebarBComponent = () => {
@@ -18,28 +22,28 @@ const SidebarBComponent = () => {
         </div>
 
         <div className='side-bar-header__sections'>
-          <div className='side-bar-header__sections--music'>
+          <div className='side-bar-header__sections--options'>
             <FiMusic />
             <p>Music</p>
           </div>
-
-          <div>
-
+            
+          <div className='side-bar-header__sections--options'>
+            <RiRadioLine />
             <p>Radio</p>
           </div>
 
-          <div>
-
+          <div className='side-bar-header__sections--options'>
+            <CgBrowser />
             <p>Browse</p>
           </div>
 
-          <div>
-
+          <div className='side-bar-header__sections--options'>
+            <AiOutlineHeart />
             <p>Favorites</p>
           </div>
 
-          <div>
-
+          <div className='side-bar-header__sections--options'>
+            <BsMusicPlayer />
             <p>Your Studio</p>
           </div>
 
