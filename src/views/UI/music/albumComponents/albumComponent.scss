@@ -3,13 +3,29 @@
 
 .Album {
   background-color: antiquewhite;
+
   div {
     background-color: aqua;
-    margin: 5px;
-    border: 5px solid black;
   }
+
 }
 
+.slick-arrow {
+  color: yellowgreen;
+  background-color: yellowgreen;
+}
+
+.slick-prev {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.slick-next {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 .album-carousel {
   &__title {
