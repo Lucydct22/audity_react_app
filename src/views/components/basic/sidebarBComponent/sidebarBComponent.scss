@@ -1,6 +1,6 @@
 @import '../../../../sass/variables.scss';
 
-.page-sidebar {
+.side-bar {
   position: fixed;
   width: 212px;
   height: 270px;
@@ -12,19 +12,59 @@
   border-right: var(--color-border-1px);
   background-color: var(--background-secundary);
   z-index: 10;
-}
 
-.side-bar-header {
-  color: var(--color-primary);
-  margin: 0 20px;
-  &__logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+  &-header {
+    color: var(--color-primary);
 
-    img {
-      width: 120px;
+    &__logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+
+      img {
+        width: 120px;
+      }
+    }
+
+    &__sections {
+      margin-top: 50px;
+
+      &--options {
+        display: flex;
+        align-content: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-decoration: none;
+        font-size: 15px;
+        height: 50px;
+        color: var(--color-primary);
+
+        p {
+          margin: 0;
+          margin-left: 10px;
+        }
+
+        &__icon {
+          margin-left: 20px;
+        }
+
+        &__decoration {
+          height: 24px;
+          width: 3px;
+          background-color: $color-main;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+
+  .active {
+    color: $color-main;
+    font-weight: bold;
+
+    .side-bar-header__sections--options__decoration {
+      visibility: visible;
     }
   }
 }

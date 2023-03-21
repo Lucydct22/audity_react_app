@@ -1,0 +1,14 @@
+@import '../../../../../sass/mixins';
+@import '../../../../../sass/animation';
+@import '../../../../../sass/variables';
+
+.home-user-component {
+  h1 {
+    color: var(--color-primary);
+    @include fadeIn(2s);
+  }
+
+  &__anchor {
+    @include anchorText();
+  }
+}

@@ -11,3 +11,16 @@
         font-size: 1.9em;
     }
 }
+
+@mixin anchorText() {
+    color: #ef5466; // $color-main
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        color: #ca2a36;
+    }
+}
