@@ -1,6 +1,6 @@
-import PageContentComponent from "../../../components/basic/StructureMain/mainBComponent/MainBComponent";
+import MusicPageComponent from "../../../components/basic/structureMainBComponent/musicPageComponent/MusicPageComponent";
 import HelmetSEO from "../../../utils/HelmetSEO";
-import StructureMain from '../../../components/basic/StructureMain';
+import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
 
 const MusicPage = () => {
   return (
@@ -8,9 +8,9 @@ const MusicPage = () => {
       title='Music | Audity'
       description='Audity Music Page'
     >
-      <StructureMain>
-        <PageContentComponent />
-      </StructureMain>
+      <StructureMainBComponent>
+        <MusicPageComponent />
+      </StructureMainBComponent>
     </HelmetSEO>
   )
 }
