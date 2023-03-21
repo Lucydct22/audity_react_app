@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import './sidebarBComponent.scss'
+import './SidebarBComponent.scss'
 import LogoWhite from '../../../../assets/img/png/logoAudityBlackTransp.png'
 import { FiMusic } from 'react-icons/fi'
 import { AiOutlineHeart } from 'react-icons/ai'

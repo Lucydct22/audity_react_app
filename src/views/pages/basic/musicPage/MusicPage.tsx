@@ -1,13 +1,16 @@
-import PageContentComponent from "../../../components/basic/mainBComponent/MainBComponent";
+import PageContentComponent from "../../../components/basic/StructureMain/mainBComponent/MainBComponent";
 import HelmetSEO from "../../../utils/HelmetSEO";
+import StructureMain from '../../../components/basic/StructureMain';
 
 const MusicPage = () => {
   return (
     <HelmetSEO
       title='Music | Audity'
       description='Audity Music Page'
-    >   
-      <PageContentComponent />
+    >
+      <StructureMain>
+        <PageContentComponent />
+      </StructureMain>
     </HelmetSEO>
   )
 }

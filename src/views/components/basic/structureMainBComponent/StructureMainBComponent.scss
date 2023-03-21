@@ -1,0 +1,16 @@
+@import '../../../../sass/variables';
+
+.page-main {
+  position: relative;
+  top: 57px;
+  display: flex;
+  justify-content: center;
+  margin-left: 212px;
+  padding-bottom: 81px;
+
+  &__page-content {
+    width: 1504px;
+    padding: 24px;
+    color: var(--color-primary);
+  }
+}
