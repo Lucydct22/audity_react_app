@@ -5,8 +5,8 @@ const englishTranslation = {
   // Home
   title_user_home: 'Hello',
 
-    /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  // Home
+    /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
+
   search_placeholder: 'Search',
   
   // Profile
@@ -18,6 +18,16 @@ const englishTranslation = {
   sidebar_browser: 'Browser',
   sidebar_favorites: 'Favorites',
   sidebar_yourstudio: 'Your Studio',
+
+      /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
+// Home
+
+  musicpage_albumtitle: 'Playlist you\'ll love',
+  musicpage_albumtitle2: 'New release for you',
+  musicpage_albumtracks: 'Tracks',
+  musicpage_dailytitle: 'Your dailylist',
+    musicpage_artirstitle: 'Artist',
+
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   // Home
