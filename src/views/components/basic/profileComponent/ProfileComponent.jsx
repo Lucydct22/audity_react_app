@@ -7,6 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 
 
+
 const ProfileComponent = () => {
 
   const { t } = useTranslation();
@@ -94,17 +95,15 @@ return <StructureMainBComponent><Spinner /></StructureMainBComponent>
             <label >{t("profile_email")}</label>
             <div>
               <input type="email" value={userData.email} name="email" readOnly={!editMode} placeholder={user.email} onChange={handleInputChange} />
-              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+              
             </div>
             <label >{t("profile_password")}</label>
             <div>
               <input type="password" value={userData.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
-              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
             </div>
             <label >{t("profile_username")}</label>
             <div>
               <input type="text" value={userData.nickname} name="username" readOnly={!editMode} placeholder={user.nickname} onChange={handleInputChange} />
-              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
             </div>
 
           </div>
@@ -115,8 +114,7 @@ return <StructureMainBComponent><Spinner /></StructureMainBComponent>
               <div className='user-settings__select-item'>
                 <label >{t("profile_birthday")}</label>
                 <div className="input-group">
-                  <input type="date" value={userData.birth_day} name="birth_day" placeholder={user.birth_day} readOnly={!editMode} onChange={handleInputChange} />
-                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+                  <input type="date" className="input-group__bthd" value={userData.birth_day} name="birth_day" placeholder={user.birth_day} readOnly={!editMode} onChange={handleInputChange} />
                 </div>
               </div>
 
@@ -124,15 +122,17 @@ return <StructureMainBComponent><Spinner /></StructureMainBComponent>
                 <label >{t("profile_country")}</label>
                 <div className="input-group">
                   <Select
+                  width='200px'
                     options={countries}
                     value={selectedCountry}
-                    defaultValue={languages[1]}
+                    placeholder={countries[0]}
+                    defaultValue={"selectedCountry"}
                     isDisabled={!editMode}
                     onclick={handleChange}
                     onChange={(value) => setSelectedCountry(value)}
-                    className="select"
+                    className="user-settings__select-item--select"
+                    classNamePrefix="dropdown-input"
                   />
-                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
                 </div>
               </div>
 
@@ -145,13 +145,14 @@ return <StructureMainBComponent><Spinner /></StructureMainBComponent>
                     defaultValue={languages[1]}
                     isDisabled={!editMode}
                     onChange={(value) => setSelectedLanguage(value)}
-                    className="select"
+                    className="user-settings__select-item--select"
+                    classNamePrefix="dropdown-input"
                   />
-                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
                 </div>
               </div>
             </div>
-            <button className='user-settings__btn-delete'>{t('profile_btn_delete')}</button>
+            {editMode ? <button onClick={handleSave} className='user-settings__btn--save'>{t("profile_btn_save")}</button> : <button onClick={handleChange} className='user-settings__btn--modify'>{t("profile_btn_change")}</button>}
+            <button className='user-settings__btn--delete'>{t('profile_btn_delete')}</button>
           </div>
         </div>
       </StructureMainBComponent>
