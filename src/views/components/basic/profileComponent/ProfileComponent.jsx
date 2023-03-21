@@ -1,54 +1,78 @@
 import Select from 'react-select';
 import { useState } from 'react';
-import './profileComponent.scss'
+import Spinner from '../../../UI/spinner/Spinner';
+import './profileComponent.scss';
+import StructureMainBComponent from '../structureMainBComponent/StructureMainBComponent';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useTranslation } from 'react-i18next';
+
 
 const ProfileComponent = () => {
 
+  const { t } = useTranslation();
+
   //const { user, setUser } = useContext(UserContext);
 
-  const [user, setUser] = useState({ email: '', password: '', username: '', birth_day: '' })
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  if(isLoading){
+return <StructureMainBComponent><Spinner /></StructureMainBComponent>
+}
+
+  const [userData, setUserData] = useState({
+    email: user.email,
+    password: '12345',
+    username: user.nickname,
+    birth_day: '14/07/1993',
+    avatar: user.picture
+  })
+
   const [editMode, setEditMode] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState({ value: userData.country, label: userData.country });
+  const [selectedLanguage, setSelectedLanguage] = useState({ value: userData.language, label: userData.language });
+
+
 
   const countries = [
-    { value: 'Spain', label: 'Spain' },
-    { value: 'Canada', label: 'Canada' },
-    { value: 'United States', label: 'United States' }
+    { value: 'Spain', label: t("profile_select_country_one") },
+    { value: 'Canada', label: t("profile_select_country_two") },
+    { value: 'United States', label: t("profile_select_country_three") }
   ];
 
   const languages = [
-    { value: 'Spanish', label: 'Spanish' },
-    { value: 'English', label: 'English' }
+    { value: 'Spanish', label: t("profile_select_language_one") },
+    { value: 'English', label: t("profile_select_language_two") }
   ];
 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser({
-      ...user,
+    setUserData({
+      ...userData,
       [name]: value
     });
   }
 
-  const handleCountryChange = (value) => {
-    setUser({
-      ...user,
-      country: value,
-
+  const handleCountryChange = (selectedOption) => {
+    setSelectedCountry(selectedOption);
+    setUserData({
+      ...userData,
+      country: selectedOption.value,
     })
   }
 
-  const handleLanguageChange = (value) => {
-    setUser({
-      ...user,
-      language: value
-
+  const handleLanguageChange = (selectedOption) => {
+    selectedLanguage(selectedOption);
+    setUserData({
+      ...userData,
+      language: selectedOption.value
     })
   }
 
   const handleChange = () => {
     setEditMode(true);
+    //setUserData(userData.email: e.target.value)
+
   }
 
   const handleSave = () => {
@@ -57,65 +81,81 @@ const ProfileComponent = () => {
 
 
   return (
-    <div className='user-settings'>
-      <div className="user-settings__image">
-        <img src="" alt="your foto" className="user-settings-profile-foto" />
-        <p>You're inside your personal details</p>
-      </div>
+    <>
+      <StructureMainBComponent>
+        <div className='user-settings'>
+          <div className="user-settings__image">
+            <img src={user.picture} alt="your foto" className="user-settings-profile-foto" />
+            <p>{t("profile_intro")}</p>
+          </div>
 
-      <div className="user-settings__account" >
-        <span>Audity account</span>
-        <label >Your email</label>
-        <div>
-          <input type="email" value={user.email} name="email" readOnly={!editMode} placeholder="email" onChange={handleInputChange} />
-          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
+          <div className="user-settings__account" >
+            <span>{t('profile_account')}</span>
+            <label >{t("profile_email")}</label>
+            <div>
+              <input type="email" value={userData.email} name="email" readOnly={!editMode} placeholder={user.email} onChange={handleInputChange} />
+              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+            </div>
+            <label >{t("profile_password")}</label>
+            <div>
+              <input type="password" value={userData.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
+              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+            </div>
+            <label >{t("profile_username")}</label>
+            <div>
+              <input type="text" value={userData.nickname} name="username" readOnly={!editMode} placeholder={user.nickname} onChange={handleInputChange} />
+              {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+            </div>
+
+          </div>
+          <div className="user-settings__private-info" >
+
+            <div className='user-settings__select-container'>
+
+              <div className='user-settings__select-item'>
+                <label >{t("profile_birthday")}</label>
+                <div className="input-group">
+                  <input type="date" value={userData.birth_day} name="birth_day" placeholder={user.birth_day} readOnly={!editMode} onChange={handleInputChange} />
+                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+                </div>
+              </div>
+
+              <div className='user-settings__select-item'>
+                <label >{t("profile_country")}</label>
+                <div className="input-group">
+                  <Select
+                    options={countries}
+                    value={selectedCountry}
+                    defaultValue={languages[1]}
+                    isDisabled={!editMode}
+                    onclick={handleChange}
+                    onChange={(value) => setSelectedCountry(value)}
+                    className="select"
+                  />
+                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+                </div>
+              </div>
+
+              <div className='user-settings__select-item'>
+                <label >{t("profile_language")}</label>
+                <div className="input-group">
+                  <Select
+                    options={languages}
+                    value={selectedLanguage}
+                    defaultValue={languages[1]}
+                    isDisabled={!editMode}
+                    onChange={(value) => setSelectedLanguage(value)}
+                    className="select"
+                  />
+                  {editMode ? <button onClick={handleSave}>{t("profile_btn_save")}</button> : <button onClick={handleChange}>{t("profile_btn_change")}</button>}
+                </div>
+              </div>
+            </div>
+            <button className='user-settings__btn-delete'>{t('profile_btn_delete')}</button>
+          </div>
         </div>
-        <label >Your password</label>
-        <div>
-          <input type="password" value={user.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
-          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-        </div>
-        <label >Username</label>
-        <div>
-          <input type="text" value={user.username} name="username" readOnly={!editMode} placeholder="username" onChange={handleInputChange} />
-          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-        </div>
-
-      </div>
-      <div className="user-settings__private-info" >
-        <label >Date of birth</label>
-        <div>
-          <input type="date" value={user.birth_day} name="birth_day" placeholder="user.birth_day" readOnly={!editMode} onChange={handleInputChange} />
-          {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-        </div>
-
-        <label >Country</label>
-        <Select
-          options={countries}
-          value={countries[2]}
-          defaultValue={languages[1]}
-          isDisabled={!editMode}
-          onclick={handleChange}
-          onChange={(value) => setSelectedCountry(value)}
-          className="select"
-        />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-
-
-        <label >Language</label>
-        <Select
-          options={languages}
-          value={languages[1]}
-          defaultValue={languages[1]}
-          isDisabled={!editMode}
-          onChange={(value) => setSelectedLanguage(value)}
-          className="select"
-        />
-        {editMode ? <button onClick={handleSave}>Save</button> : <button onClick={handleChange}>Change</button>}
-
-      </div>
-      <button className='user-settings__btn-delete'>Delete profile</button>
-    </div>
+      </StructureMainBComponent>
+    </>
 
   )
 }
