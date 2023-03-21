@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import ApiTestPage from "../views/pages/apiTestPage/ApiTestPage";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('../views/layouts/basicLayout'));
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<></>}><TestPage /></Suspense>,
+        element: <Suspense fallback={<></>}><ApiTestPage /></Suspense>,
       },
       {
         path: "music",
