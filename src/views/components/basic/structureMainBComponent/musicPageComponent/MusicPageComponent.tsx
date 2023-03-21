@@ -12,12 +12,12 @@ const MusicPageComponent = () => {
   return (
     <>
       <Language />
-        <DailyListComponent />
-        <ArtistComponent />
-        <AlbumComponent />
-        <GenresComponent />
-      
-    </>  
+      <DailyListComponent />
+      <ArtistComponent />
+      <AlbumComponent />
+      <GenresComponent />
+
+    </>
   )
 }
 

@@ -1,6 +1,16 @@
 @import '../../../../sass/variables';
 @import '../../../../sass/animation';
 
+.Album {
+  background-color: antiquewhite;
+  div {
+    background-color: aqua;
+    margin: 5px;
+    border: 5px solid black;
+  }
+}
+
+
 .album-carousel {
   &__title {
     font-size: 24px;
@@ -15,21 +25,21 @@
     gap: 15px;
     padding: 50px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.575);
-   
+
 
     &--thumbnail {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
 
-    &:hover {
-      img {
-        opacity: 0.7;
+      &:hover {
+        img {
+          opacity: 0.7;
+        }
       }
-    }
 
       img {
-        box-shadow: 0 1px 6px rgba(25,25,34,.16);
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
         border-radius: 4px;
       }
 
@@ -52,7 +62,7 @@
           cursor: pointer;
           background-color: rgba(255, 255, 255, 0.500);
           border-radius: 50%;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
           svg {
             height: 17px;
@@ -61,7 +71,7 @@
 
           &:hover {
             background-color: #f4f4f4;
-            border-radius: 100%; 
+            border-radius: 100%;
           }
         }
 
@@ -77,7 +87,7 @@
           cursor: pointer;
           background-color: rgba(255, 255, 255, 0.500);
           border-radius: 50%;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
           svg {
             height: 17px;
