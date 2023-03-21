@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './topBarBComponent.scss';
 import Language from '../../../UI/language/Language';
@@ -31,10 +32,10 @@ const TopBarBComponent = () => {
               <div className='page-topbar-action__popper--wrapper__icon'>
                 <GoTriangleUp />
               </div>
-              <div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
+              <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
                 <span>Account Settings</span>
                 <FiChevronRight size='1.4rem' />
-              </div>
+              </div></Link>
               <div className='page-topbar-action__popper--wrapper__content'>
                 <span className='cursor-default'>System theme</span>
                 <Theme />
