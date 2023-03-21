@@ -10,13 +10,14 @@ export interface Playlist {
 }
 
 export interface Track {
+  likedBy: any;
   id: string;
   name: string;
   artist: string;
   url: string;
   thumbnail: string;
   genre: string[];
-  likes: string[];
+  likes: string[];//changed 
   album: string;
   createdAt: Date;
   updatedAt: Date;
