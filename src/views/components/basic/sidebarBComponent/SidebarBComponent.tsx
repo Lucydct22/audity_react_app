@@ -62,6 +62,3 @@ const SidebarBComponent = () => {
 }
 
 export default SidebarBComponent;
-
-
-{/* <p>{t("home_title_admin")}</p> */ }
