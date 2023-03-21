@@ -41,7 +41,7 @@
   }
 
   input:checked+label {
-    background: #ef5466; // $color-main
+    background: $color-main;
   }
 
   input:checked+label:after {
