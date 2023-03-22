@@ -24,3 +24,70 @@
         color: $color-main-hover;
     }
 }
+
+@mixin carousel() {
+
+    @media (min-width: $media-breakpoint-up-xl) {
+        width: 1300px;
+    }
+
+    @media (max-width: $media-breakpoint-up-xl) {
+        width: 1100px;
+    }
+
+    @media (max-width: $media-breakpoint-up-lg) {
+        width: 900px;
+    }
+
+    @media (max-width: $media-breakpoint-up-md) {
+        width: 700px;
+    }
+
+    @media (max-width: $media-breakpoint-up-sm) {
+        width: 500px;
+    }
+}
+
+@mixin carousel-thumbnail-btn() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary);
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 12px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.500);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    svg {
+        height: 17px;
+        width: 17px;
+    }
+
+    &:hover {
+        background-color: #f4f4f4;
+        border-radius: 100%;
+    }
+}
+
+@mixin simple-btn-with-hover($height: 18px, $width: 18px, $padding: 0.4rem) {
+    color: var(--color-primary);
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: $padding;
+    cursor: pointer;
+
+    svg {
+        height: $height;
+        width: $width;
+    }
+
+    &:hover {
+        background-color: var(--background-on-hover);
+        border-radius: 100%;
+    }
+}
