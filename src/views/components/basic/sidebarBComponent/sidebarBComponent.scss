@@ -45,6 +45,12 @@
 
         &__icon {
           margin-left: 20px;
+
+          &--dropdown {
+            margin-left: 35px;
+            color: $color-secundary;
+            font-size: 12px;
+          }
         }
 
         &__decoration {
@@ -57,12 +63,14 @@
     }
   }
 
-
   .active {
-    color: $color-main;
+    color: $color-main !important;
 
     .side-bar-header__sections--options__decoration {
       visibility: visible;
+    }
+    .side-bar-header__sections--options__icon--dropdown {
+      color: $color-main;
     }
   }
 }
