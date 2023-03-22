@@ -1,27 +1,6 @@
 import { basePath } from "../utils/config";
 import { Track } from "../../interfaces/music";
 
-// export function getTracksApi() {
-// 	const url = `${basePath}/tracks`;
-// 	return fetch(url)
-// 		.then(response => { return response.json() })
-// 		.then((result: Track) => { return result })
-// }
-
-//pokemon example 
-
-// export const getPokemonByName = async (name: string):Promise<IPokemon> => {
-//   const response = await fetch(`${process.env.REACT_APP_API_URL}/pokemon/${name}`)
-//   const data = await response.json()
-//   return data as IPokemon
-// }
-
-// interface IPokemonCardProps {
-//   name: string,
-//   type: string,
-//   image: string
-// }
-
 
 export const getTracksApi = async (): Promise<Track> => {
 	const response = await fetch(`${basePath}/tracks`)
@@ -35,6 +14,7 @@ export const getTrackByIdApi = async (trackId: string): Promise<Track> => {
 	return data as Track
 }
 
+//DELETE
 export const deleteTrackByIdApi = async (trackId: string): Promise<Track> => {
 	const params = {
 		method: "DELETE",
@@ -48,7 +28,6 @@ export const deleteTrackByIdApi = async (trackId: string): Promise<Track> => {
 }
 
 //UPDATE 
-
 export const updateTrackApi = async (trackId: string, data: Partial<Track>): Promise<Track> => {
 	const params = {
 		method: "PUT",
@@ -57,13 +36,12 @@ export const updateTrackApi = async (trackId: string, data: Partial<Track>): Pro
 		},
 		body: JSON.stringify(data),
 	}
-	const response = await fetch(`${basePath}/track/${trackId}`, params)
+	const response = await fetch(`${basePath}/tracks/${trackId}`, params)
 	const result = await response.json()
 	return result as Track
 }
 
 //ADD
-
 export const addTrackApi = async (newTrack: Partial<Track>): Promise<Track> => {
 	const params = {
 		method: "POST",
@@ -75,4 +53,38 @@ export const addTrackApi = async (newTrack: Partial<Track>): Promise<Track> => {
 	const response = await fetch(`${basePath}/track`, params)
 	const data = await response.json()
 	return data as Track
+}
+
+//LIKE TRACK API
+export const likeDislikeTrackApi = async (trackId: string, data: any): Promise<Track> => {
+	const response = await fetch(`${basePath}/tracks/${trackId}`);
+	const result = await response.json();
+
+	let oldLikes = result.likes;
+	const haveLike = oldLikes.includes(data.likeuserId);
+
+	if (!haveLike) {
+		oldLikes.push(data.likeuserId)
+	} else {
+		oldLikes.forEach((like: string, index: number) => {
+			if (like == data.likeuserId)
+				oldLikes.splice(index, 1)
+		});
+	}
+
+	const newLikes = {
+		...result,
+		likes: oldLikes
+	}
+
+	const params = {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(newLikes),
+	}
+	const responsePut = await fetch(`${basePath}/tracks/${trackId}`, params)
+	const resultPut = await responsePut.json()
+	return resultPut as Track
 }
