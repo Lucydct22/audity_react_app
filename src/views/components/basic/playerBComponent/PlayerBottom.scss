@@ -1,4 +1,5 @@
-@import '../../../../sass/variables.scss';
+@import '../../../../sass/variables';
+@import '../../../../sass/mixins';
 
 .page-player {
   position: fixed;
@@ -29,11 +30,7 @@
   align-items: center;
 
   .page-player-bottom__btn {
-    padding: 5px;
-    svg {
-      width: 35px;
-      height: 35px;
-    }
+    @include simple-btn-with-hover(35px, 35px, 5px);
   }
 }
 
@@ -84,20 +81,5 @@
 }
 
 .page-player-bottom__btn {
-  color: var(--color-primary);
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0.4rem;
-  cursor: pointer;
-
-  svg {
-    height: 18px;
-    width: 18px;
-  }
-
-  &:hover {
-    background-color: var(--background-on-hover);
-    border-radius: 100%;
-  }
+  @include simple-btn-with-hover();
 }
