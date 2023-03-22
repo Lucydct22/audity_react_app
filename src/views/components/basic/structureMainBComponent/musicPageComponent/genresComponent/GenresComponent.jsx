@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './genresComponent.scss';
 import GradientImg1 from '../../../../../../assets/img/gradients/1.jpg'
 
@@ -41,7 +41,7 @@ export default class MultipleItems extends Component {
           breakpoint: 1475,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
             initialSlide: 2
           }
         },
@@ -61,10 +61,10 @@ export default class MultipleItems extends Component {
           <TranslateTitle />
           <span className='genres-carousel__head--btn'>
             <button className='genres-carousel__head--btn__prev' onClick={this.previous}>
-              <IoIosArrowBack />
+              <HiOutlineChevronLeft />
             </button>
             <button className='genres-carousel__head--btn__next' onClick={this.next}>
-              <IoIosArrowForward />
+              <HiOutlineChevronRight />
             </button>
           </span>
         </div>
@@ -96,7 +96,7 @@ const RenderGenres = () => {
     <section className='genres-carousel__container--section'>
       <div className='genres-carousel__container--section__thumbnail'>
         <img src={GradientImg1} alt="IMG" />
-        <Link className='genres-carousel__container--section__thumbnail--description' to={'#'}>Soul</Link>
+        <p className='genres-carousel__container--section__thumbnail--description' to={'#'}>Soul</p>
       </div>
     </section>
   )

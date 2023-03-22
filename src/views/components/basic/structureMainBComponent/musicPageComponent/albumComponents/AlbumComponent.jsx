@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './albumComponent.scss';
 import AlbumImg1 from '../../../../../../assets/img/albums/1.jpg';
 
@@ -38,7 +38,7 @@ export default class MultipleItems extends Component {
           breakpoint: 1475,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
             initialSlide: 2
           }
         },
@@ -58,10 +58,10 @@ export default class MultipleItems extends Component {
           <TranslateTitle />
           <span className='album-carousel__head--btn'>
             <button className='album-carousel__head--btn__prev' onClick={this.previous}>
-              <IoIosArrowBack />
+              <HiOutlineChevronLeft />
             </button>
             <button className='album-carousel__head--btn__next' onClick={this.next}>
-              <IoIosArrowForward />
+              <HiOutlineChevronRight />
             </button>
           </span>
         </div>

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './dailyListComponent.scss';
 import AlbumImg2 from '../../../../../../assets/img/albums/2.jpg';
 import GreyDailyLogo from '../../../../../../assets/img/png/grey-daily-icon.png'
@@ -42,7 +42,7 @@ export default class MultipleItems extends Component {
           breakpoint: 1475,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
             initialSlide: 2
           }
         },
@@ -69,10 +69,10 @@ export default class MultipleItems extends Component {
           <TranslateTitle />
           <span className='daily-carousel__head--btn'>
             <button className='daily-carousel__head--btn__prev' onClick={this.previous}>
-              <IoIosArrowBack />
+              <HiOutlineChevronLeft />
             </button>
             <button className='daily-carousel__head--btn__next' onClick={this.next}>
-              <IoIosArrowForward />
+              <HiOutlineChevronRight />
             </button>
           </span>
         </div>

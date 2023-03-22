@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './artistComponent.scss';
 import AlbumImg4 from '../../../../../../assets/img/albums/4.jpg';
 
@@ -40,7 +40,7 @@ export default class MultipleItems extends Component {
           breakpoint: 1475,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 4,
             initialSlide: 2
           }
         },
@@ -60,10 +60,10 @@ export default class MultipleItems extends Component {
           <TranslateTitle />
           <span className='artist-carousel__head--btn'>
             <button className='artist-carousel__head--btn__prev' onClick={this.previous}>
-              <IoIosArrowBack />
+              <HiOutlineChevronLeft />
             </button>
             <button className='artist-carousel__head--btn__next' onClick={this.next}>
-              <IoIosArrowForward />
+              <HiOutlineChevronRight />
             </button>
           </span>
         </div>
