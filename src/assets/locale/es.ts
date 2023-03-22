@@ -42,6 +42,18 @@ const spanishTranslation = {
   profile_select_country_three: 'Estados Unidos',
   profile_select_language_one: 'Español',
   profile_select_language_two: 'Inglés',
+
+  /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
+
+  track_list_track: 'CANCIÓN',
+  track_list_artist: 'ARTISTA',
+  track_list_album: 'ÁLBUM',
+  track_list_rating: 'RATING',
+
+
+
+
+
   
 }
 
