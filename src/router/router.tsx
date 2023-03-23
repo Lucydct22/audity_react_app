@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ApiTestPage from "../views/pages/apiTestPage/ApiTestPage";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('../views/layouts/basicLayout'));

@@ -19,6 +19,13 @@ const SidebarBComponent = () => {
 
   const location = useLocation();
 
+  const handleToggleDropdown = () => {
+    if (!location.pathname == '/album' || !location.pathname == '/artist') {
+      setToggleDropdown(!toggleDropdown);
+    } else {
+      setToggleDropdown(true);
+    }
+  }
 
   useEffect(() => {
     let handler = (e) => {
@@ -51,7 +58,7 @@ const SidebarBComponent = () => {
           </Link>
         </div>
         <div className="side-bar-header__sections">
-          <NavLink to={"/music"} className="side-bar-header__sections--options">
+          <NavLink to={"/"} className="side-bar-header__sections--options">
             <div className="side-bar-header__sections--options__decoration"></div>
             <FiMusic
               size={20}
@@ -70,8 +77,8 @@ const SidebarBComponent = () => {
           </NavLink>
 
           <Link to="#"
-            className="side-bar-header__sections--options"
-            onClick={() => setToggleDropdown(!toggleDropdown)}
+            className={`side-bar-header__sections--options ${toggleDropdown ? "cursor-default" : null}`}
+            onClick={handleToggleDropdown}
           >
             <div className="side-bar-header__sections--options__decoration"></div>
             <CgBrowser
