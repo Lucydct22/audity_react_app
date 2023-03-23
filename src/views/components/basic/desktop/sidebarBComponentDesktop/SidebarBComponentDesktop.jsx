@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./sidebarBComponentDesktop.scss";
-import LogoWhite from "../../../../../assets/img/png/logoAudityBlackTransp.png";
+import LogoLightTheme from "../../../../../assets/img/png/logoAudityBlackTransp.png";
+import LogoDarkTheme from "../../../../../assets/img/png/logoAudityWhiteTransp.png";
 import { FiMusic } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineLibraryMusic } from "react-icons/md";
@@ -10,17 +11,19 @@ import { FaGuitar } from "react-icons/fa";
 import { RiRadioLine } from "react-icons/ri";
 import { CgBrowser } from "react-icons/cg";
 import { BsMusicPlayer } from "react-icons/bs";
+import { ThemeContext } from "../../../../../context/theme/ThemeContext";
 
 const SidebarBComponentDesktop = () => {
   const { t } = useTranslation();
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <nav className="side-bar">
       <div className="side-bar-header">
         <div className="side-bar-header__logo">
           <Link to={"/"}>
-            <img src={LogoWhite} alt="logo" />
+            <img src={theme === 'light' ? LogoLightTheme : LogoDarkTheme} alt="logo" />
           </Link>
         </div>
         <div className="side-bar-header__sections">
