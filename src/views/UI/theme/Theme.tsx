@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/theme/ThemeContext";
 import "./theme.scss";
 
 const Theme = () => {
-  const theme = localStorage.getItem("theme");
+  const { theme, setTheme } = useContext(ThemeContext)
 
   if (!theme) localStorage.setItem("theme", "light");
   theme && document.documentElement.setAttribute("data-theme", theme);
@@ -11,9 +12,11 @@ const Theme = () => {
     if (e.target.checked) {
       localStorage.setItem("theme", "dark");
       document.documentElement.setAttribute("data-theme", "dark");
+      setTheme('dark')
     } else {
       localStorage.setItem("theme", "light");
       document.documentElement.setAttribute("data-theme", "light");
+      setTheme('light')
     }
   }
 
