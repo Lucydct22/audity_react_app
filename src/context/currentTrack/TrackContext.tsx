@@ -1,16 +1,19 @@
 import { createContext, useReducer } from "react";
-import { initCurrentTrackAction } from "../../reducers/track/trackActions";
+import { initCurrentTrackAction, nextTrackAction, previousTrackAction } from "../../reducers/track/trackActions";
 import trackReducer from "../../reducers/track/trackReducer";
 import * as TrackTypes from '../../reducers/track/trackTypes';
 import { currentTrack, trackData } from "./trackObjects";
 
 const initialState = {
 	currentTrack,
+	album: [],
 	trackData,
 	initCurrentTrack: () => { },
 	playCurrentTrack: () => { },
 	pauseCurrentTrack: () => { },
 	updateCurrentTime: () => { },
+	nextTrack: () => { },
+	previousTrack: () => { }
 }
 
 export const TrackContext = createContext(initialState);
@@ -37,13 +40,23 @@ export const TrackProvider = ({ children }: any) => {
 		})
 	}
 
+	const nextTrack = function () {
+		nextTrackAction(dispatch, trackState)
+	}
+
+	const previousTrack = function () {
+		previousTrackAction(dispatch, trackState)
+	}
+
 	return (
 		<TrackContext.Provider value={{
 			...trackState,
 			initCurrentTrack,
 			playCurrentTrack,
 			pauseCurrentTrack,
-			updateCurrentTime
+			updateCurrentTime,
+			nextTrack,
+			previousTrack
 		}}>
 			{children}
 		</TrackContext.Provider>
