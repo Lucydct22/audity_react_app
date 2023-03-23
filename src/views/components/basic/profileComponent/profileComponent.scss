@@ -1,7 +1,12 @@
 @import "../../../../sass/variables";
+@import "../../../../sass/mixins";
 
 .user-settings {
   width: 60%;
+
+  @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+    width: 70%;
+  }
 
   &__image {
     display: flex;
@@ -32,7 +37,7 @@
     span {
       margin-bottom: 10px;
       font-size: 2rem;
-      border-bottom: 1px solid gray;
+      border-bottom: var(--color-border-1px);
     }
 
     label {
@@ -49,22 +54,11 @@
       width: 80%;
       color: var(--color-primary);
 
-      &::placeholder{
+      &::placeholder {
         color: $color-secundary;
-
       }
-      
-    }
-
-    button {
-      width: 5rem;
-      padding: 5px;
-      border-radius: 5px;
-      margin: 5px;
-      height: 100%;
     }
   }
-
 
   &__private-info {
     margin-left: 1rem;
@@ -83,9 +77,8 @@
       padding-left: 12px;
       color: var(--color-primary);
 
-      &::placeholder{
+      &::placeholder {
         color: $color-secundary;
-
       }
     }
 
@@ -99,7 +92,12 @@
     display: flex;
     flex-direction: row;
 
-    button{
+    @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    button {
       margin-left: 5px;
     }
   }
@@ -107,7 +105,6 @@
   &__select-item {
     margin-top: 30px;
     margin-right: 50px;
-
   }
 
   .input-group {
@@ -117,15 +114,14 @@
     width: 100%;
     justify-content: space-between;
 
-    input{
+    input {
       width: 220px;
       height: 30px;
     }
 
-  
-    .dropdown-input{
-    
-      &__control{
+    .dropdown-input {
+
+      &__control {
         background-color: var(--background-secundary);
         border: var(--color-border-1px);
         color: var(--color-primary);
@@ -135,67 +131,88 @@
       &__menu {
         background-color: var(--background-secundary);
       }
-    
+
       &__option {
         background-color: var(--background-secundary);
-    
+
         &--is-focused {
           background-color: var(--background-on-hover);
           color: var(--color-primary);
         }
       }
 
-      &__input-container{
+      &__input-container {
         color: var(--color-primary);
       }
 
-      &__single-value{
+      &__single-value {
         color: var(--color-primary);
       }
-    
+
       &__group {
         color: gray;
       }
-    
+
       &__menu-portal {
         border: var(--color-border-1px);
       }
     }
   }
 
-
-
   &__btn {
     padding: 15px;
     font-size: 1.2rem;
     outline: none;
-    border-radius: 5px;
-    
+    border-radius: 25px;
 
-    &--modify{
+    &--modify {
       background-color: $color-main;
       border-color: $color-main;
       display: block;
       margin: 30px;
       margin-left: 0;
       width: 100px;
+
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        display: inline;
+      }
     }
 
-    &--save{
+    &--save {
       background-color: rgb(24, 90, 12);
       border-color: rgb(24, 90, 12);
       display: block;
       margin: 30px;
       margin-left: 0;
       width: 100px;
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        display: inline;
+      }
     }
 
-    &--delete{
-      background-color: rgb(167, 45, 45);
+    &--delete {
+      background-color: transparent;
       border-color: rgb(167, 45, 45);
       display: block;
       margin: 30px;
       margin-left: 0;
+      color: rgb(167, 45, 45);
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        display: inline;
+      }
+    }
+
+    &--delete:hover {
+      background-color: rgb(167, 45, 45);
+      border-color: rgb(167, 45, 45);
+      color: white;
+      display: block;
+      margin: 30px;
+      margin-left: 0;
+      opacity: 0.5;
     }
   }
 
@@ -203,5 +220,9 @@
     background-color: $background-on-hover_light;
     border-color: $background-on-hover_light;
   }
-
 }
+
+// ***** RESPONSIVE MOBILE*****// 
+
+
+@media only screen and (max-width: #{$media-breakpoint-down-sm}) {}
