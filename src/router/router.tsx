@@ -26,10 +26,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<></>}><ApiTestPage /></Suspense>,
-      },
-      {
-        path: "music",
         element: <Suspense fallback={<></>}><MusicPage /></Suspense>,
       },
       {
