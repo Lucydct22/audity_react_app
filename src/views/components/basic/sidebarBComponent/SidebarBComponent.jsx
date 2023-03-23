@@ -51,7 +51,7 @@ const SidebarBComponent = () => {
           </Link>
         </div>
         <div className="side-bar-header__sections">
-          <NavLink to={"/music"} className="side-bar-header__sections--options">
+          <NavLink to={"/"} className="side-bar-header__sections--options">
             <div className="side-bar-header__sections--options__decoration"></div>
             <FiMusic
               size={20}
