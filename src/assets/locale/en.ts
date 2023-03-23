@@ -1,17 +1,19 @@
 const englishTranslation = {
   /*~~~~~~~~~~~~~ USER ~~~~~~~~~~~~~*/
   // Login/register
-  
+
   // Home
   title_user_home: 'Hello',
 
-    /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
-
-  search_placeholder: 'Search',
-  
   // Profile
 
-    /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
+  /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
+
+  search_placeholder: 'Search',
+
+  // Profile
+
+  /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
 
   sidebar_music: 'Music',
   sidebar_radio: 'Radio',
@@ -19,15 +21,15 @@ const englishTranslation = {
   sidebar_favorites: 'Favorites',
   sidebar_yourstudio: 'Your Studio',
 
-      /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-// Home
+  /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
+  // Home
 
   musicpage_albumtitle: 'Playlist you\'ll love',
   musicpage_albumtitle2: 'New release for you',
   musicpage_albumtracks: 'Tracks',
   musicpage_dailytitle: 'Your dailylist',
-    musicpage_artirstitle: 'Artist',
-
+  musicpage_artirstitle: 'Artist',
+  musicpage_genres: 'Genres',
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   // Home

@@ -1,23 +1,22 @@
 import { useTranslation } from 'react-i18next';
 import './MusicPageComponent.scss'
 import Language from '../../../../UI/language/Language';
-import DailyListComponent from '../../../../UI/music/dailyListComponent';
-import GenresComponent from '../../../../UI/music/genresComponent';
-import ArtistComponent from '../../../../UI/music/artistComponent';
-import AlbumComponent from '../../../../UI/music/albumComponents';
+import DailyListComponent from './dailyListComponent';
+import ArtistComponent from './artistComponent';
+import AlbumComponent from './albumComponents';
+import GenresComponent from './genresComponent';
 
 const MusicPageComponent = () => {
   const { t } = useTranslation();
 
   return (
     <>
+      <GenresComponent />
+      <ArtistComponent />
+      <DailyListComponent />
+      <AlbumComponent />
       <Language />
-        <DailyListComponent />
-        <ArtistComponent />
-        <AlbumComponent />
-        <GenresComponent />
-      
-    </>  
+    </>
   )
 }
 
