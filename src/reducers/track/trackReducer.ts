@@ -7,7 +7,7 @@ export default function trackReducer(state: any, action: any) {
 		case TrackTypes.INIT_CURRENT_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
-				album: payload.album,
+				tracksList: payload.tracksList,
 				trackData: payload.trackData,
 			}
 
@@ -15,7 +15,7 @@ export default function trackReducer(state: any, action: any) {
 			state.trackData.audio.play();
 			return {
 				currentTrack: state.currentTrack,
-				album: state.album,
+				tracksList: state.tracksList,
 				trackData: { ...state.trackData, isPlaying: true }
 			}
 
@@ -23,14 +23,14 @@ export default function trackReducer(state: any, action: any) {
 			state.trackData.audio.pause();
 			return {
 				currentTrack: state.currentTrack,
-				album: state.album,
+				tracksList: state.tracksList,
 				trackData: { ...state.trackData, isPlaying: false }
 			}
 
 		case TrackTypes.UPDATE_CURRENT_TIME:
 			return {
 				currentTrack: state.currentTrack,
-				album: state.album,
+				tracksList: state.tracksList,
 				trackData: {
 					...state.trackData,
 					currentTime: payload,
@@ -41,14 +41,14 @@ export default function trackReducer(state: any, action: any) {
 		case TrackTypes.NEXT_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
-				album: state.album,
+				tracksList: state.tracksList,
 				trackData: payload.trackData
 			}
 
 		case TrackTypes.PREV_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
-				album: state.album,
+				tracksList: state.tracksList,
 				trackData: payload.trackData
 			}
 
