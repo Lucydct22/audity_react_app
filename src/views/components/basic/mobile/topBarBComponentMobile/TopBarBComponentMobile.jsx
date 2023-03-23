@@ -20,7 +20,6 @@ const TopBarBComponentMobile = () => {
     let handler = (e) => {
       if (!popperRef.current.contains(e.target)) {
         setPopperOpen(false);
-        console.log(popperRef.current);
       }
     };
 
