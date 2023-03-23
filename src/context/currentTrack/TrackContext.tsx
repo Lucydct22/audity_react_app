@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
-import { initCurrentTrackAction } from "../reducers/track/trackActions";
-import trackReducer from "../reducers/track/trackReducer";
-import * as TrackTypes from '../reducers/track/trackTypes';
+import { initCurrentTrackAction } from "../../reducers/track/trackActions";
+import trackReducer from "../../reducers/track/trackReducer";
+import * as TrackTypes from '../../reducers/track/trackTypes';
 import { currentTrack, trackData } from "./trackObjects";
 
 const initialState = {

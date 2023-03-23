@@ -2,6 +2,7 @@ import * as TrackTypes from './trackTypes';
 
 export default function trackReducer(state: any, action: any) {
 	const { type, payload } = action;
+	
 	switch (type) {
 		case TrackTypes.INIT_CURRENT_TRACK:
 			return {

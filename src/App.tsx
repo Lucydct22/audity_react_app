@@ -1,4 +1,4 @@
-import { TrackProvider } from "./context/TrackContext";
+import { TrackProvider } from "./context/currentTrack/TrackContext";
 import { RouterProvider } from "react-router-dom";
 import router from './router/router';
 

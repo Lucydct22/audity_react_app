@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { TrackContext } from '../../../../context/TrackContext';
+import { TrackContext } from '../../../../context/currentTrack/TrackContext';
 import { formatToSecondsTrack } from '../../../../utils/formatToSecondsTrack';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
