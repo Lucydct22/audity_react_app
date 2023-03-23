@@ -14,13 +14,14 @@
     margin: 15px;
     padding-right: 15px;
 
-    img {
+    .user-settings-profile-foto {
       border-radius: 100%;
+      max-width: 100px;
     }
 
     p {
       margin-left: 15px;
-      margin-top: 15px;
+      margin-top: 45px;
     }
   }
 
