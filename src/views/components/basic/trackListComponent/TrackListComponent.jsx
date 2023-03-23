@@ -1,15 +1,11 @@
 import TrackItemComponent from "./TrackItemComponent";
 import './trackListStyle.scss'; 
-import { getTracksApi } from "../../../../api/music/traks";
-import React, { useEffect } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
 import image from './../../../../assets/img/png/beyonce.png'
 
 const  TrackListComponent = () => {
-
   const { t } = useTranslation();
-
 
   return (
     <>
@@ -26,7 +22,6 @@ const  TrackListComponent = () => {
           <td>{t("track_list_rating")}</td>
         </tr>
         </thead>
-
         <tbody>
         <TrackItemComponent
               id={"1"}
@@ -43,19 +38,5 @@ const  TrackListComponent = () => {
     </>
   )
 }
-
 export default TrackListComponent
 
-/*{Tracks.map( (track) => {
-            return (
-              <TrackItemComponent
-              id={track.id}
-              name={track.name}
-              artist={track.artist}
-              thumbnail={track.thumbnail}
-              likes= {track.likes}
-              album={track.album}
-              />
-            )
-          })}*/
-        

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './topBarBComponent.scss';
-import Language from '../../../UI/language/Language';
 import Theme from '../../../UI/theme/Theme';
 import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
@@ -18,7 +17,7 @@ const TopBarBComponent = () => {
   return (
     <header className='page-topbar'>
       <div className='page-topbar-search'>
-        <CiSearch color='#a2a2ad' size={'1.6rem'}/>
+        <CiSearch color='#a2a2ad' size={'1.6rem'} />
         <input type="text" className='page-topbar-search__input' placeholder={t("search_placeholder") || ""} />
       </div>
 
@@ -40,17 +39,15 @@ const TopBarBComponent = () => {
                 <span className='cursor-default'>System theme</span>
                 <Theme />
               </div>
-              <div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
-                {isAuthenticated ? (
-                  <span onClick={() => logout()}>
-                    Log out
-                  </span>
-                ) : (
-                  <span onClick={() => loginWithRedirect()}>
-                    Login
-                  </span>
-                )}
-              </div>
+              {isAuthenticated ? (
+                <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
+                  Log out
+                </span>
+              ) : (
+                <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+                  Login
+                </span>
+              )}
             </div>
           </div>
           : null

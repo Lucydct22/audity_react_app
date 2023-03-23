@@ -1,5 +1,5 @@
 import Select from 'react-select';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import StructureMainBComponent from '../structureMainBComponent/StructureMainBComponent';

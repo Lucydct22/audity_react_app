@@ -14,7 +14,7 @@ const Language = () => {
   };
 
   return (
-    <div style={{ padding: '50px' }}>
+    <div style={{ padding: '30px' }}>
       {lngs.map((lng, i) => {
         const { code, native } = lng;
         return <button key={i} onClick={() => handleTrans(code)}>{native}</button>;

@@ -33,7 +33,6 @@
       &--options {
         display: flex;
         align-content: center;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         text-decoration: none;
         font-size: 15px;
         height: 50px;
@@ -46,6 +45,12 @@
 
         &__icon {
           margin-left: 20px;
+
+          &--dropdown {
+            margin-left: 35px;
+            color: $color-secundary;
+            font-size: 12px;
+          }
         }
 
         &__decoration {
@@ -58,13 +63,14 @@
     }
   }
 
-
   .active {
-    color: $color-main;
-    font-weight: bold;
+    color: $color-main !important;
 
     .side-bar-header__sections--options__decoration {
       visibility: visible;
+    }
+    .side-bar-header__sections--options__icon--dropdown {
+      color: $color-main;
     }
   }
 }

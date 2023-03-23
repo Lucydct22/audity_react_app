@@ -7,9 +7,11 @@ const spanishTranslation = {
 
   // Profile
 
-  /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  // Home
+  /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
+
   search_placeholder: 'Buscar',
+
+  // Profile
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
 
@@ -18,6 +20,16 @@ const spanishTranslation = {
   sidebar_browser: 'Navegador',
   sidebar_favorites: 'Favoritos',
   sidebar_yourstudio: 'Tu estudio',
+
+  /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
+  // Home
+
+  musicpage_albumtitle: 'Playlist que te encantarán',
+  musicpage_albumtitle2: 'Nuevos lanzamientos para ti',
+  musicpage_albumtracks: 'Canciones',
+  musicpage_dailytitle: 'Tu lista de hoy',
+  musicpage_artirstitle: 'Artista',
+  musicpage_genres: 'Géneros',
 
   /*~~~~~~~~~ ADMIN ~~~~~~~~~*/
   // Home
