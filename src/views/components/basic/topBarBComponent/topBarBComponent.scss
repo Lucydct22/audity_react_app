@@ -99,6 +99,10 @@
         color: var(--background-secundary);
       }
 
+      a {
+        text-decoration: none;
+      }
+
       &__content {
         display: flex;
         align-items: center;
@@ -131,4 +135,23 @@
       }
     }
   }
+
+  .popperActive {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: 500ms ease;
+  }
+  
+  .popperInactive {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: 500ms ease;
+  }
+}
+
+.page-topbar-action__popper::before {
+  content: '';
+  transform: rotate(45deg);
 }
