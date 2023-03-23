@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { TrackContext } from '../../../../context/currentTrack/TrackContext';
-import { formatToSecondsTrack } from '../../../../utils/formatToSecondsTrack';
+import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
+import { formatToSecondsTrack } from '../../../../../utils/formatToSecondsTrack';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import './PlayerBottom.scss'
+import './playerBComponentDesktop.scss'
 
-const PlayerBComponent = () => {
+const PlayerBComponentDesktop = () => {
   const [songLike, setSongLike] = useState(false);
   const [songVolume, setSongVolume] = useState(false);
   const {
@@ -88,4 +88,4 @@ const PlayerBComponent = () => {
   )
 }
 
-export default PlayerBComponent;
+export default PlayerBComponentDesktop;

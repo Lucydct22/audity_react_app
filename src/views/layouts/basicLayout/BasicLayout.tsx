@@ -1,18 +1,42 @@
+import { Suspense } from "react";
 import { Outlet } from 'react-router-dom'
-import SidebarBComponent from "../../components/basic/sidebarBComponent";
-import PlayerBottomComponent from "../../components/basic/playerBComponent";
-import PageTopBarComponent from "../../components/basic/topBarBComponent";
+import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
+import { responsiveBreak } from "../../../utils/componentsConstants";
+// Desktop
+import SidebarBComponentDesktop from "../../components/basic/desktop/sidebarBComponentDesktop";
+import PlayerBComponentDesktop from "../../components/basic/desktop/playerBComponentDesktop";
+import TopBarBComponentDesktop from "../../components/basic/desktop/topBarBComponentDesktop";
+// Mobile
+import SidebarBComponentMobile from "../../components/basic/mobile/sidebarBComponentMobile";
+import PlayerBComponentMobile from "../../components/basic/mobile/playerBComponentMobile";
+import TopBarBComponentMobile from "../../components/basic/mobile/topBarBComponentMobile";
 
 const BasicLayout = () => {
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
-  
+  const [innerWidth] = useWindowSizeReport();
+
   return (
     <>
-      <SidebarBComponent />
-      <PageTopBarComponent />
-      <Outlet />
-      <PlayerBottomComponent />
+      <Suspense fallback={<></>}>
+        {(innerWidth > responsiveBreak) ? (
+          <>
+            <SidebarBComponentDesktop />
+            <TopBarBComponentDesktop />
+          </>
+        ) : (
+          <>
+            <SidebarBComponentMobile />
+            <TopBarBComponentMobile />
+          </>
+        )}
+
+        <div className='main-layout__main'>
+          <Outlet />
+        </div>
+
+        {(innerWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
+      </Suspense>
     </>
   )
 }
