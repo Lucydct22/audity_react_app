@@ -73,6 +73,21 @@
     }
 }
 
+@mixin buttonPrimary() {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    border: 0px;
+    margin: 0px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 15px;
+    color: white;
+    background-color: $color-main;
+}
+
 @mixin simple-btn-with-hover($height: 18px, $width: 18px, $padding: 0.4rem) {
     color: var(--color-primary);
     background: none;
