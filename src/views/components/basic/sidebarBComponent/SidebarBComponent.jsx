@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./sidebarBComponent.scss";
 import LogoWhite from "../../../../assets/img/png/logoAudityBlackTransp.png";
@@ -8,16 +10,41 @@ import { FaGuitar } from "react-icons/fa";
 import { RiRadioLine } from "react-icons/ri";
 import { CgBrowser } from "react-icons/cg";
 import { BsMusicPlayer } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
-import React, { useState } from "react";
 
 const SidebarBComponent = () => {
   const { t } = useTranslation();
+
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  let dropdownRef = useRef();
+
+  const location = useLocation();
+
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!dropdownRef.current.contains(e.target)) {
+        setToggleDropdown(false);
+        console.log(dropdownRef.current);
+      }
+    };
+
+    if (location.pathname == '/album' || location.pathname == '/artist') {
+      setToggleDropdown(true);
+    } else {
+      document.addEventListener("mousedown", handler);
+
+      return () => {
+        document.removeEventListener("mousedown", handler);
+      }
+    }
+
+    console.log(location.pathname);
+
+  });
 
   return (
     <nav className="side-bar">
-      <div className="side-bar-header">
+      <div className="side-bar-header" ref={dropdownRef}>
         <div className="side-bar-header__logo">
           <Link to={"/"}>
             <img src={LogoWhite} alt="logo" />
@@ -42,7 +69,7 @@ const SidebarBComponent = () => {
             <p>{t("sidebar_radio")}</p>
           </NavLink>
 
-          <NavLink to={"/"}
+          <Link to="#"
             className="side-bar-header__sections--options"
             onClick={() => setToggleDropdown(!toggleDropdown)}
           >
@@ -52,32 +79,27 @@ const SidebarBComponent = () => {
               className="side-bar-header__sections--options__icon"
             />
             <p>{t("sidebar_browser")}</p>
-          </NavLink>
+          </Link>
 
-          {toggleDropdown ? (
-            <div>
-              <div>
-                <NavLink to={"/artist"} className="side-bar-header__sections--options">
-                  <div className="side-bar-header__sections--options__decoration"></div>
-                  <FaGuitar
-                    size={15}
-                    className="side-bar-header__sections--options__icon--dropdown"
-                  />
-                  <p className="side-bar-header__sections--options__icon--dropdown">Artist</p>
-                </NavLink>
-                <NavLink to={"/album"} className="side-bar-header__sections--options">
-                  <div className="side-bar-header__sections--options__decoration"></div>
-                  <MdOutlineLibraryMusic
-                    size={15}
-                    className="side-bar-header__sections--options__icon--dropdown"
-                  />
-                  <p className="side-bar-header__sections--options__icon--dropdown">Album</p>
-                </NavLink>
-              </div>
-              
-            </div>
-          ) : null}
+          <div className={`side-bar-header__sections--dropdown ${toggleDropdown ? 'dropdownActive' : 'dropdownInactive'}`}>
+            <NavLink to={"/artist"} className="side-bar-header__sections--dropdown__link">
+              <div className="side-bar-header__sections--dropdown__link--decoration"></div>
+              <FaGuitar
+                size={15}
+                className="side-bar-header__sections--dropdown__link--icon"
+              />
+              <p className="side-bar-header__sections--dropdown__link--icon">Artist</p>
+            </NavLink>
+            <NavLink to={"/album"} className="side-bar-header__sections--dropdown__link">
+              <div className="side-bar-header__sections--dropdown__link--decoration"></div>
+              <MdOutlineLibraryMusic
+                size={15}
+                className="side-bar-header__sections--dropdown__link--icon"
+              />
+              <p className="side-bar-header__sections--dropdown__link--icon">Album</p>
+            </NavLink>
 
+          </div>
           <NavLink
             to={"/favorites"}
             className="side-bar-header__sections--options"
