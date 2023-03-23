@@ -5,21 +5,21 @@ export interface Playlist {
   description: string;
   publicAccessible: boolean;
   musicList: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 }
 
-export interface Track {
+export interface Track {  
   id: string;
   name: string;
   artist: string;
   url: string;
   thumbnail: string;
   genre: string[];
-  likes: string[];
+  likes: string[];//changed 
   album: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 }
 
 export interface Albums {
@@ -28,8 +28,8 @@ export interface Albums {
   genres: string[];
   imageUrl: string;
   artist: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 }
 
 export interface Artist {
@@ -37,13 +37,13 @@ export interface Artist {
   name: string;
   genres: string[];
   photoUrl: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 }
 
 export interface Genres {
   id: string;
   name: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | number;
+  updatedAt: Date | number;
 }
