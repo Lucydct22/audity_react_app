@@ -30,6 +30,10 @@
     &__sections {
       margin-top: 50px;
 
+      .cursor-default {
+        cursor: default;
+      }
+
       &--options {
         display: flex;
         align-content: center;
