@@ -1,61 +1,111 @@
 @import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixins.scss';
 
-.album-page {
+.artist-page {
 	display: flex;
 
 	&__image {
-		width: 234px;
-		height: 234px;
+		margin-left: 100px;
 
 		img {
-			border-radius: 4px;
+			border-radius: 50%;
 			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+			width: 250px;
+			height: 250px;
+
 		}
 	}
 
 	&__section {
+		margin-top: 50px;
 
 		&--details {
 
 			&__title {
 				display: inline;
+				margin: 0;
 
 				h1 {
 					font-family: 'Anek Gujarati', sans-serif;
 					font-size: 32px;
 					margin: 0;
 					color: var(--color-primary);
+					margin-left: 50px;
 				}
 			}
 
 			&__songs {
-				display: inline;
+
+				p {
+					margin-left: 50px;
+					margin-bottom: 40px;
+				}
 			}
 		}
 
 		&--buttons {
 
 			&__container {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin-left: 50px;
 
 				&--play {
+					margin-right: 30px;
 
-					&__btn {}
+					&__btn {
+						display: inline-flex;
+						justify-content: center;
+						align-items: center;
+						width: 220px;
+						border: 0px;
+						margin: 0px;
+						padding: 10px;
+						cursor: pointer;
+						border-radius: 20px;
+						font-size: 15px;
+						color: white;
+						background-color: $color-main;
+
+						span {
+							padding: 0px 10px;
+							padding-top: 2px;
+						}
+					}
 				}
 
 				&--like {
 
-					&__btn {}
+					margin-right: 20px;
 
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 				}
 
 				&--follow {
 
-					&__btn {}
-
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 				}
 			}
 		}
 	}
 
+	&__search-bar {
+		display: flex;
+		margin-top: 20px;
+		margin-left: 100px;
+
+		&__input {
+			width: 400px;
+			height: 25px;
+			border: 1px solid rgba(128, 128, 128, 0.505);
+			border-radius: 4px;
+		}
+	}
 
 }

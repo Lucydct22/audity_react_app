@@ -1,112 +1,104 @@
 @import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixins.scss';
 
 .album-page {
 	display: flex;
 
 	&__image {
-		width: 234px;
-		height: 234px;
+		margin-left: 100px;
 
 		img {
 			border-radius: 4px;
 			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+			width: 250px;
+			height: 250px;
 		}
 	}
 
 	&__section {
+		margin-top: 50px;
 
 		&--details {
 
 			&__title {
 				display: inline;
+				margin: 0;
+
 
 				h1 {
 					font-family: 'Anek Gujarati', sans-serif;
 					font-size: 32px;
 					margin: 0;
 					color: var(--color-primary);
+					margin-left: 50px;
 				}
 			}
 
 			&__songs {
-				display: inline;
+
+				p {
+					margin-left: 50px;
+					margin-bottom: 40px;
+				}
 			}
 		}
 
 		&--buttons {
 
 			&__container {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin-left: 50px;
+
 
 				&--play {
+					margin-right: 30px;
 
-					&__btn {}
+					&__btn {
+
+						@include buttonPrimary();
+					}
+
+					span {
+						padding: 0px 10px;
+						padding-top: 2px;
+					}
 				}
 
 				&--like {
 
-					&__btn {}
+					margin-right: 20px;
+
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 
 				}
 
 				&--follow {
 
-					&__btn {}
-
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 				}
 			}
 		}
 	}
 
+	&__search-bar {
+		display: flex;
+		margin-top: 20px;
+		margin-left: 100px;
+
+
+		&__input {
+			width: 400px;
+			height: 25px;
+			border: 1px solid rgba(128, 128, 128, 0.505);
+			border-radius: 4px;
+		}
+	}
 
 }
-
-
-// .album-page__span {
-// 	font-size: 2rem;
-// 	font-weight: bold;
-// 	margin-bottom: 1rem;
-// }
-
-// .album-page__paragraph {
-// 	font-size: 1.2rem;
-// 	margin-bottom: 2rem;
-// }
-
-
-// .album_page__playlikefollow {
-// 	display: flex;
-// 	justify-content: space-between;
-// 	align-items: center;
-// }
-
-// .album-page__buttons {
-// 	display: flex;
-// 	align-items: center;
-// }
-
-// .album-page__buttons button {
-// 	background-color: #fff;
-// 	border: 1px solid #ccc;
-// 	border-radius: 4px;
-// 	color: #333;
-// 	cursor: pointer;
-// 	font-size: 1rem;
-// 	margin-right: 1rem;
-// 	padding: 0.5rem 1rem;
-// 	transition: all 0.2s ease-in-out;
-// }
-
-// .album-page__buttons button:hover {
-// 	background-color: #ccc;
-// 	border-color: #999;
-// 	color: #fff;
-// }
-
-// .album-page__buttons button svg {
-// 	margin-right: 0.5rem;
-// }
-
-// .album-page__action {
-// 	display: flex;
-
-// }
