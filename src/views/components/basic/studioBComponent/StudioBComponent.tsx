@@ -1,12 +1,8 @@
-import Gif1 from '../../../../assets/img/gif/giphy.gif'
-import "./studioBComponent.scss";
+import CommingSoon from '../../../UI/commingSoon/CommingSoon';
 
 function StudioBComponent() {
   return (
-    <div className='studio-page'>
-      <img src={ Gif1 } alt="gif" />
-      <h1>We are sorry for the inconvenience, we keep working on it ...</h1>
-    </div>
+    <CommingSoon />
   )
 }
 
