@@ -1,25 +1,33 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { TrackContext } from '../../../../context/currentTrack/TrackContext';
+import { formatToSecondsTrack } from '../../../../utils/formatToSecondsTrack';
+import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './PlayerBottom.scss'
 
-import { MdSkipPrevious } from "react-icons/md";
-import { MdPause } from "react-icons/md";
-import { MdPlayArrow } from "react-icons/md";
-import { MdSkipNext } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
-import { IoAddOutline } from "react-icons/io5";
-import { IoShuffleOutline } from "react-icons/io5";
-import { IoRepeatOutline } from "react-icons/io5";
-import { IoVolumeHighOutline } from "react-icons/io5";
-import { IoVolumeMuteOutline } from "react-icons/io5";
-
-
-
 const PlayerBComponent = () => {
-  const [songState, setSongState] = useState(false);
   const [songLike, setSongLike] = useState(false);
   const [songVolume, setSongVolume] = useState(false);
+  const {
+    trackData,
+    currentTrack,
+    initCurrentTrack,
+    playCurrentTrack,
+    pauseCurrentTrack,
+    updateCurrentTime
+  } = useContext(TrackContext);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateCurrentTime()
+    }, 500);
+    return () => clearInterval(interval);
+  }, [trackData]);
+
+  useEffect(() => {
+    initCurrentTrack()
+  }, [])
 
   return (
     <div className='page-player'>
@@ -29,47 +37,38 @@ const PlayerBComponent = () => {
           <button className='page-player-bottom__btn'>
             <MdSkipPrevious />
           </button>
-          {songState ?
-            <button className='page-player-bottom__btn' onClick={() => setSongState(!songState)}>
-              <MdPause />
-            </button>
-            :
-            <button className='page-player-bottom__btn' onClick={() => setSongState(!songState)}>
-              <MdPlayArrow />
-            </button>
-          }
+          <button
+            onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
+            className='page-player-bottom__btn'
+          >
+            {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
+          </button>
           <button className='page-player-bottom__btn'>
             <MdSkipNext />
           </button>
         </div>
 
         <div className='player-bottom-track'>
-          00:00
+          {formatToSecondsTrack(trackData.currentTime)}
           <div className='player-bottom-track__container'>
             <div className='player-bottom-track__container--heading'>
               <div className='player-bottom-track__container--heading__title'>
-                Piece Of Your Heart · Meduza
+                {`${currentTrack.name} - ${currentTrack.artist}`}
               </div>
               <div className='player-bottom-track__container--heading__actions'>
                 <button className='page-player-bottom__btn'>
                   <IoAddOutline />
                 </button>
-                {songLike ?
-                  <button className='page-player-bottom__btn' onClick={() => setSongLike(!songLike)}>
-                    <AiFillHeart size='1.5rem' color='#ef5466' />
-                  </button>
-                  :
-                  <button className='page-player-bottom__btn' onClick={() => setSongLike(!songLike)}>
-                    <AiOutlineHeart />
-                  </button>
-                }
+                <button className='page-player-bottom__btn' onClick={() => setSongLike(!songLike)}>
+                  {songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
+                </button>
               </div>
             </div>
             <div className='player-bottom-track__container--seekbar'>
               <hr />
             </div>
           </div>
-          2:34
+          {(trackData.duration / 60).toFixed(2)}
         </div>
 
         <div className='player-bottom-options'>
@@ -79,15 +78,9 @@ const PlayerBComponent = () => {
           <button className='page-player-bottom__btn'>
             <IoRepeatOutline />
           </button>
-          {songVolume ?
-            <button className='page-player-bottom__btn' onClick={() => setSongVolume(!songVolume)}>
-              <IoVolumeMuteOutline />
-            </button>
-            :
-            <button className='page-player-bottom__btn' onClick={() => setSongVolume(!songVolume)}>
-              <IoVolumeHighOutline />
-            </button>
-          }
+          <button className='page-player-bottom__btn' onClick={() => setSongVolume(!songVolume)}>
+            {songVolume ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+          </button>
         </div>
 
       </div>
