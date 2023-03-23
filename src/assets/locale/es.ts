@@ -66,7 +66,15 @@ const spanishTranslation = {
 
 
 
-  
+
+  /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
+  // 
+  album_playbutton: 'Reproducir',
+  album_pausebutton: 'Reproduciendo',
+  album_likebutton: 'Me gusta',
+  album_likedbutton: 'Fav',
+  album_followbutton: 'Seguir',
+  album_followingbutton: 'Siguiendo',
 }
 
 export default spanishTranslation;

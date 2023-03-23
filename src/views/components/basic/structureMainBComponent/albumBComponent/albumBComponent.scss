@@ -1,0 +1,112 @@
+@import '../../../../../sass/variables.scss';
+
+.album-page {
+	display: flex;
+
+	&__image {
+		width: 234px;
+		height: 234px;
+
+		img {
+			border-radius: 4px;
+			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+		}
+	}
+
+	&__section {
+
+		&--details {
+
+			&__title {
+				display: inline;
+
+				h1 {
+					font-family: 'Anek Gujarati', sans-serif;
+					font-size: 32px;
+					margin: 0;
+					color: var(--color-primary);
+				}
+			}
+
+			&__songs {
+				display: inline;
+			}
+		}
+
+		&--buttons {
+
+			&__container {
+
+				&--play {
+
+					&__btn {}
+				}
+
+				&--like {
+
+					&__btn {}
+
+				}
+
+				&--follow {
+
+					&__btn {}
+
+				}
+			}
+		}
+	}
+
+
+}
+
+
+// .album-page__span {
+// 	font-size: 2rem;
+// 	font-weight: bold;
+// 	margin-bottom: 1rem;
+// }
+
+// .album-page__paragraph {
+// 	font-size: 1.2rem;
+// 	margin-bottom: 2rem;
+// }
+
+
+// .album_page__playlikefollow {
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// }
+
+// .album-page__buttons {
+// 	display: flex;
+// 	align-items: center;
+// }
+
+// .album-page__buttons button {
+// 	background-color: #fff;
+// 	border: 1px solid #ccc;
+// 	border-radius: 4px;
+// 	color: #333;
+// 	cursor: pointer;
+// 	font-size: 1rem;
+// 	margin-right: 1rem;
+// 	padding: 0.5rem 1rem;
+// 	transition: all 0.2s ease-in-out;
+// }
+
+// .album-page__buttons button:hover {
+// 	background-color: #ccc;
+// 	border-color: #999;
+// 	color: #fff;
+// }
+
+// .album-page__buttons button svg {
+// 	margin-right: 0.5rem;
+// }
+
+// .album-page__action {
+// 	display: flex;
+
+// }

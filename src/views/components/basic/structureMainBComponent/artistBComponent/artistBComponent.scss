@@ -1,0 +1,61 @@
+@import '../../../../../sass/variables.scss';
+
+.album-page {
+	display: flex;
+
+	&__image {
+		width: 234px;
+		height: 234px;
+
+		img {
+			border-radius: 4px;
+			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+		}
+	}
+
+	&__section {
+
+		&--details {
+
+			&__title {
+				display: inline;
+
+				h1 {
+					font-family: 'Anek Gujarati', sans-serif;
+					font-size: 32px;
+					margin: 0;
+					color: var(--color-primary);
+				}
+			}
+
+			&__songs {
+				display: inline;
+			}
+		}
+
+		&--buttons {
+
+			&__container {
+
+				&--play {
+
+					&__btn {}
+				}
+
+				&--like {
+
+					&__btn {}
+
+				}
+
+				&--follow {
+
+					&__btn {}
+
+				}
+			}
+		}
+	}
+
+
+}

@@ -9,7 +9,9 @@ const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
 // USER PAGES
 const TestPage = lazy(() => import('../views/pages/basic/testPage'));
 const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
-const ProfilePage = lazy(()=> import('../views/pages/basic/profilePage'))
+const ProfilePage = lazy(() => import('../views/pages/basic/profilePage'))
+const AlbumPage = lazy(() => import('../views/pages/basic/albumPage'));
+const ArtistPage = lazy(() => import('../views/pages/basic/artistPage'));
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -28,7 +30,15 @@ const router = createBrowserRouter([
       },
       {
         path: "music",
-        element: <Suspense fallback={<></>}><MusicPage /></Suspense>
+        element: <Suspense fallback={<></>}><MusicPage /></Suspense>,
+      },
+      {
+        path: "album",
+        element: <Suspense fallback={<></>}><AlbumPage /></Suspense>,
+      },
+      {
+        path: "artist",
+        element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
       },
       {
         path: "settings",
