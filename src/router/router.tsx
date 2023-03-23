@@ -9,6 +9,7 @@ const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
 // USER PAGES
 const TestPage = lazy(() => import('../views/pages/basic/testPage'));
 const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
+const ProfilePage = lazy(()=> import('../views/pages/basic/profilePage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "music",
         element: <Suspense fallback={<></>}><MusicPage /></Suspense>
+      },
+      {
+        path: "settings",
+        element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
       },
       {
         path: "*",

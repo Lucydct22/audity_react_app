@@ -2,7 +2,7 @@ export interface User {
   id:             string;
   first_name:     string;
   last_name:      string;
-  age:            number;
+  birth_day:      number;  //??
   counrty:        string;
   language:       string; 
   email:          string;
@@ -12,6 +12,7 @@ export interface User {
   isLoggedin:     boolean;
   createdAt:      Date;
   updatedAt:      Date;
+  username:       string;
 }
 
 export interface UserActivity {

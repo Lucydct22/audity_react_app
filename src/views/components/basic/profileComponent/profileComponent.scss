@@ -1,0 +1,207 @@
+@import "../../../../sass/variables";
+
+.user-settings {
+  width: 60%;
+
+  &__image {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    padding-right: 15px;
+
+    img {
+      border-radius: 100%;
+    }
+
+    p {
+      margin-left: 15px;
+      margin-top: 15px;
+    }
+  }
+
+  &__account {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    div {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      margin-bottom: 10px;
+      font-size: 2rem;
+      border-bottom: 1px solid gray;
+    }
+
+    label {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    input {
+      background-color: var(--background-secundary);
+      border: var(--color-border-1px);
+      border-radius: 5px;
+      padding: 12px;
+      outline: none;
+      width: 80%;
+      color: var(--color-primary);
+
+      &::placeholder{
+        color: $color-secundary;
+
+      }
+      
+    }
+
+    button {
+      width: 5rem;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 5px;
+      height: 100%;
+    }
+  }
+
+
+  &__private-info {
+    margin-left: 1rem;
+
+    label {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    input {
+      background-color: var(--background-secundary);
+      border: var(--color-border-1px);
+      outline: none;
+      border-radius: 5px;
+      padding: 6px;
+      padding-left: 12px;
+      color: var(--color-primary);
+
+      &::placeholder{
+        color: $color-secundary;
+
+      }
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+
+  &__select-container {
+    display: flex;
+    flex-direction: row;
+
+    button{
+      margin-left: 5px;
+    }
+  }
+
+  &__select-item {
+    margin-top: 30px;
+    margin-right: 50px;
+
+  }
+
+  .input-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+    input{
+      width: 220px;
+      height: 30px;
+    }
+
+  
+    .dropdown-input{
+    
+      &__control{
+        background-color: var(--background-secundary);
+        border: var(--color-border-1px);
+        color: var(--color-primary);
+        width: 220px;
+      }
+
+      &__menu {
+        background-color: var(--background-secundary);
+      }
+    
+      &__option {
+        background-color: var(--background-secundary);
+    
+        &--is-focused {
+          background-color: var(--background-on-hover);
+          color: var(--color-primary);
+        }
+      }
+
+      &__input-container{
+        color: var(--color-primary);
+      }
+
+      &__single-value{
+        color: var(--color-primary);
+      }
+    
+      &__group {
+        color: gray;
+      }
+    
+      &__menu-portal {
+        border: var(--color-border-1px);
+      }
+    }
+  }
+
+
+
+  &__btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    outline: none;
+    border-radius: 5px;
+    
+
+    &--modify{
+      background-color: $color-main;
+      border-color: $color-main;
+      display: block;
+      margin: 30px;
+      margin-left: 0;
+      width: 100px;
+    }
+
+    &--save{
+      background-color: rgb(24, 90, 12);
+      border-color: rgb(24, 90, 12);
+      display: block;
+      margin: 30px;
+      margin-left: 0;
+      width: 100px;
+    }
+
+    &--delete{
+      background-color: rgb(167, 45, 45);
+      border-color: rgb(167, 45, 45);
+      display: block;
+      margin: 30px;
+      margin-left: 0;
+    }
+  }
+
+  &__btn:hover {
+    background-color: $background-on-hover_light;
+    border-color: $background-on-hover_light;
+  }
+
+}
