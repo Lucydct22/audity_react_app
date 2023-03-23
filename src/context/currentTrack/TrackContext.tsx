@@ -1,12 +1,16 @@
 import { createContext, useReducer } from "react";
-import { initCurrentTrackAction, nextTrackAction, previousTrackAction } from "../../reducers/track/trackActions";
+import {
+	initCurrentTrackAction,
+	nextTrackAction,
+	previousTrackAction
+} from "../../reducers/track/trackActions";
 import trackReducer from "../../reducers/track/trackReducer";
 import * as TrackTypes from '../../reducers/track/trackTypes';
 import { currentTrack, trackData } from "./trackObjects";
 
 const initialState = {
 	currentTrack,
-	album: [],
+	tracksList: [],
 	trackData,
 	initCurrentTrack: () => { },
 	playCurrentTrack: () => { },
