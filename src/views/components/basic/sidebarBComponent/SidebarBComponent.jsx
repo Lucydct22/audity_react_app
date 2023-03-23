@@ -113,7 +113,7 @@ const SidebarBComponent = () => {
           </NavLink>
 
           <NavLink
-            to={"/your-studio"}
+            to={"/studio"}
             className="side-bar-header__sections--options"
           >
             <div className="side-bar-header__sections--options__decoration"></div>

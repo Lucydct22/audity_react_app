@@ -1,0 +1,13 @@
+@import '../../../../sass/variables.scss';
+
+.studio-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 500px;
+    height: 500px;  
+  }
+}
