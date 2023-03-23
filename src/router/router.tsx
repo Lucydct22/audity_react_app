@@ -12,6 +12,9 @@ const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
 const ProfilePage = lazy(() => import('../views/pages/basic/profilePage'))
 const AlbumPage = lazy(() => import('../views/pages/basic/albumPage'));
 const ArtistPage = lazy(() => import('../views/pages/basic/artistPage'));
+const StudioPage = lazy(() => import ('../views/pages/basic/studioPage'))
+const FavoritesPage = lazy(() => import ('../views/pages/basic/favoritesPage'))
+const RadioPage = lazy(() => import ('../views/pages/basic/radioPage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -29,12 +32,24 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<></>}><MusicPage /></Suspense>,
       },
       {
+        path: "radio",
+        element: <Suspense fallback={<></>}><RadioPage /></Suspense>,
+      },
+      {
         path: "album",
         element: <Suspense fallback={<></>}><AlbumPage /></Suspense>,
       },
       {
         path: "artist",
         element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
+      },
+      {
+        path: "favorites",
+        element: <Suspense fallback={<></>}><FavoritesPage /></Suspense>
+      },
+      {
+        path: "studio",
+        element: <Suspense fallback={<></>}><StudioPage /></Suspense>
       },
       {
         path: "settings",
