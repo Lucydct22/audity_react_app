@@ -16,17 +16,17 @@ $background-secundary_light: #fff;
 $background-secundary_dark: #23232d;
 
 
-/* BORDERS */
-$color-border-1px_light: 1px solid #eaeaea;
-$color-border-1px_dark: 1px solid #32323d;
-
-
 /* BUTTON HOVER BACKGROUND COLORS */
 $background-on-hover_light: #eaeaea;
 $background-on-hover_dark: #42424c;
 
 
-/* BUTTON HOVER BACKGROUND COLORS */
+/* BORDERS */
+$color-border-1px_light: 1px solid #eaeaea;
+$color-border-1px_dark: 1px solid #32323d;
+
+
+/* Shadows */
 $popper-shadow_light: 0 4px 20px 0 #1919223d;
 $popper-shadow_dark: 0 4px 20px 0 #0000003d;
 
@@ -47,6 +47,7 @@ $media-breakpoint-up-md: 1175px;
 $media-breakpoint-up-lg: 1475px;
 $media-breakpoint-up-xl: 1600px;
 $media-breakpoint-up-xxl: 1800px;
+
 
 
 /* DATA THEME */
