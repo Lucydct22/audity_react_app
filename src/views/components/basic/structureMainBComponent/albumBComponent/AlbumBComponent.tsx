@@ -1,10 +1,9 @@
-import React from 'react';
 import './albumBComponent.scss';
 import { useTranslation } from 'react-i18next';
-import Language from '../../../../UI/language/Language';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faPause, faPlay, faThumbsUp, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPause, faPlay, faThumbsUp, faUserCheck, faUserPlus, faTh } from '@fortawesome/free-solid-svg-icons';
+import Albumimg1 from '../../../../../assets/img/albums/8.jpg'
 
 export default function AlbumBComponent() {
 	const { t } = useTranslation();
@@ -28,7 +27,7 @@ export default function AlbumBComponent() {
 		<>
 			<div className="album-page">
 				<div className="album-page__image">
-					<img src="src/resources/artist.png" alt="Image description" />
+					<img src={Albumimg1} alt="Image description" />
 				</div>
 				<section className="album-page__section">
 					<div className="album-page__section--details">
@@ -36,7 +35,7 @@ export default function AlbumBComponent() {
 							<h1>Album name</h1>
 						</div>
 						<div className="album-page__section--details__songs">
-							<p>15 songs</p>
+							<p>15 {t('page_pnumber')}</p>
 						</div>
 					</div>
 
@@ -46,11 +45,11 @@ export default function AlbumBComponent() {
 								<button className="album-page__section--buttons__container--play__btn" onClick={handlePlayClick}>
 									{isPlaying ? (
 										<>
-											<FontAwesomeIcon icon={faPause} /> {t('album_pausebutton')}
+											<FontAwesomeIcon icon={faPause} /> <span>{t('pausebutton')}</span>
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faPlay} /> {t('album_playbutton')}
+											<FontAwesomeIcon icon={faPlay} /> <span>{t('playbutton')}</span>
 										</>
 									)}
 								</button>
@@ -59,11 +58,11 @@ export default function AlbumBComponent() {
 								<button className="album-page__section--buttons__container--like__btn" onClick={handleLikeClick}>
 									{isLiked ? (
 										<>
-											<FontAwesomeIcon icon={faHeart} /> {t('album_likedbutton')}
+											<FontAwesomeIcon icon={faHeart} />
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faThumbsUp} /> {t('album_likebutton')}
+											<FontAwesomeIcon icon={faThumbsUp} />
 										</>
 									)}
 								</button>
@@ -72,11 +71,11 @@ export default function AlbumBComponent() {
 								<button className="album-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
 									{isFollowing ? (
 										<>
-											<FontAwesomeIcon icon={faUserCheck} /> {t('album_followingbutton')}
+											<FontAwesomeIcon icon={faUserCheck} />
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faUserPlus} /> {t('album_followbutton')}
+											<FontAwesomeIcon icon={faUserPlus} />
 										</>
 									)}
 								</button>
@@ -85,7 +84,6 @@ export default function AlbumBComponent() {
 					</div>
 				</section>
 			</div>
-			<Language />
 		</>
 	);
 }

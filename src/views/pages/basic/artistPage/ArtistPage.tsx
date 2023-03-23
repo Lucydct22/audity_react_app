@@ -1,18 +1,17 @@
-import React from 'react'
-import AlbumBComponent from "../../../components/basic/structureMainBComponent/albumBComponent/AlbumBComponent";
 import HelmetSEO from "../../../utils/HelmetSEO";
 import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
-import { Outlet } from "react-router-dom";
-import { Translation } from "react-i18next";
+import ArtistBComponent from '../../../components/basic/structureMainBComponent/artistBComponent/ArtistBComponent';
+import TrackListComponent from '../../../components/basic/trackListComponent/TrackListComponent';
 
 const ArtistPage = () => {
 	return (
 		<HelmetSEO
 			title='Artist | Audity'
-			description='Audity Album Page'
+			description='Audity Artist Page'
 		>
 			<StructureMainBComponent>
-				<AlbumBComponent />
+				<ArtistBComponent />
+				<TrackListComponent />
 			</StructureMainBComponent>
 		</HelmetSEO>
 	)

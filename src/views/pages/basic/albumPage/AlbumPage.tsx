@@ -1,9 +1,7 @@
 import AlbumBComponent from "../../../components/basic/structureMainBComponent/albumBComponent/AlbumBComponent";
 import HelmetSEO from "../../../utils/HelmetSEO";
 import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
-import { Outlet } from "react-router-dom";
-import { Translation } from "react-i18next";
-
+import TrackListComponent from "../../../components/basic/trackListComponent/TrackListComponent";
 
 const AlbumPage = () => {
 	return (
@@ -13,6 +11,7 @@ const AlbumPage = () => {
 		>
 			<StructureMainBComponent>
 				<AlbumBComponent />
+				<TrackListComponent />
 			</StructureMainBComponent>
 		</HelmetSEO>
 	)
