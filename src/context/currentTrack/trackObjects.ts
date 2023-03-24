@@ -20,5 +20,6 @@ export const trackData = {
 	isPlaying: false,
 	isMuted: false,
 	hasLoop: false,
-	volume: 0
+	volume: 0,
+	shuffle: false
 }
