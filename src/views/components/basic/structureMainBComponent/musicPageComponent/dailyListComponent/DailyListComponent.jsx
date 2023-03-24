@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
+import { getPlaylistApi } from '../../../../../../api/music/playlists';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,89 +11,80 @@ import './dailyListComponent.scss';
 import AlbumImg2 from '../../../../../../assets/img/albums/2.jpg';
 import GreyDailyLogo from '../../../../../../assets/img/png/grey-daily-icon.png'
 
-export default class MultipleItems extends Component {
-  state = {
-    display: true,
-    width: 1800,
-  };
+export default function DailyListComponent() {
+  let slider = new Slider();
+  const [playlists, setPlaylists] = useState(undefined)
 
-  constructor(props) {
-    super(props);
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-  }
-  next() {
-    this.slider.slickNext();
-  }
-  previous() {
-    this.slider.slickPrev();
+  useEffect(() => {
+    let isMounted = true;
+    getPlaylistApi().then(res => {
+      isMounted && res && setPlaylists(res);
+    })
+    return () => { isMounted = false }
+  }, [])
+
+  function next() {
+    slider.slickNext();
   }
 
-  render() {
-    const settings = {
-      arrows: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 5,
-      initialSlide: 0,
-      adaptiveHeight: true,
-      responsive: [
-        {
-          breakpoint: 1475,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            initialSlide: 2
-          }
-        },
-        {
-          breakpoint: 1175,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            initialSlide: 2
-          }
+  function previous() {
+    slider.slickPrev();
+  }
+
+  const settings = {
+    arrows: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1475,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          initialSlide: 2
         }
-      ]
-    };
-    return (
-      <div className='daily-carousel'>
-        <div className='daily-carousel__head'>
-          <TranslateTitle />
-          <span className='daily-carousel__head--btn'>
-            <button className='daily-carousel__head--btn__prev' onClick={this.previous}>
-              <HiOutlineChevronLeft />
-            </button>
-            <button className='daily-carousel__head--btn__next' onClick={this.next}>
-              <HiOutlineChevronRight />
-            </button>
-          </span>
-        </div>
-        <div className='daily-carousel__container'>
-          <Slider ref={c => (this.slider = c)} {...settings}>
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-            <RenderDaily />
-          </Slider>
-        </div>
+      },
+      {
+        breakpoint: 1175,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      }
+    ]
+  };
+  return (
+    <div className='daily-carousel'>
+      <div className='daily-carousel__head'>
+        <TranslateTitle />
+        <span className='daily-carousel__head--btn'>
+          <button className='daily-carousel__head--btn__prev' onClick={previous}>
+            <HiOutlineChevronLeft />
+          </button>
+          <button className='daily-carousel__head--btn__next' onClick={next}>
+            <HiOutlineChevronRight />
+          </button>
+        </span>
       </div>
-    );
-  }
+      <div className='daily-carousel__container'>
+        {playlists && (
+          <Slider ref={c => (slider = c)} {...settings}>
+            {playlists.map(playlist => {
+              return <RenderPlaylist key={playlist.id} playlist={playlist} />
+            })}
+          </Slider>
+        )}
+      </div>
+    </div>
+  );
 }
 
-
-
-const RenderDaily = () => {
-  const { t } = useTranslation();
-
+const RenderPlaylist = ({ playlist }) => {
   return (
     <section className='daily-carousel__container--section'>
       <div className='daily-carousel__container--section__thumbnail'>
@@ -105,15 +97,13 @@ const RenderDaily = () => {
         </div>
         <div className='daily-carousel__container--section__thumbnail--logo-daily'>
           <img src={GreyDailyLogo} alt="Grey Daily Logo Audity" />
-          <p className='daily-carousel__container--section__thumbnail--logo-daily__description' to={'#'}>daily</p>
+          <p className='daily-carousel__container--section__thumbnail--logo-daily__description' to={'#'}>{playlist.name}</p>
         </div>
       </div>
       <Link className='daily-carousel__container--section__description' to={'#'}>Featuring Lucky Brown, Latin Mafia, Balbi El Chamako</Link>
     </section>
   )
 }
-
-
 
 const TranslateTitle = () => {
   const { t } = useTranslation();
