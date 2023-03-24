@@ -8,7 +8,6 @@ import { FiMusic } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaGuitar } from "react-icons/fa";
-import { RiRadioLine } from "react-icons/ri";
 import { CgBrowser } from "react-icons/cg";
 import { BsMusicPlayer } from "react-icons/bs";
 import { ThemeContext } from "../../../../../context/theme/ThemeContext";
@@ -36,14 +35,14 @@ const SidebarBComponentDesktop = () => {
             <p>{t("sidebar_music")}</p>
           </NavLink>
 
-          <NavLink to={"/radio"} className="side-bar-header__sections--options">
+          {/* <NavLink to={"/radio"} className="side-bar-header__sections--options">
             <div className="side-bar-header__sections--options__decoration"></div>
             <RiRadioLine
               size={20}
               className="side-bar-header__sections--options__icon"
             />
             <p>{t("sidebar_radio")}</p>
-          </NavLink>
+          </NavLink> */}
 
           <Link to={"#"}
             className="side-bar-header__sections--options"
@@ -102,11 +101,7 @@ const SidebarBComponentDesktop = () => {
               size={20}
               className="side-bar-header__sections--options__icon"
             />
-            <p>{t("sidebar_yourstudio")}</p>
-          </NavLink>
-
-          <NavLink to={"/test"} className="side-bar-header__sections--options">
-            <p>Test</p>
+            <p>{t("sidebar_studio")}</p>
           </NavLink>
         </div>
       </div>

@@ -1,53 +1,16 @@
 @import '../../../../../sass/variables.scss';
 
 .page-topbar {
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 213px;
+  left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: right;
   height: 56px;
-  padding: 0 24px;
+  padding: 0 12px;
   margin: 0;
-  border-bottom: var(--color-border-1px);
-  background-color: var(--background-primary);
   z-index: 10;
-}
-
-.page-topbar-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 80%;
-
-  svg {
-    color: var(--color-primary);
-  }
-
-  &__input {
-    width: 80%;
-    height: 2rem;
-    padding: 0.4rem;
-    margin: 0;
-    height: 100%;
-    width: 30%;
-    background: none;
-    border: none;
-    color: var(--color-primary);
-
-    &:focus {
-      outline: none
-    }
-
-    &::placeholder {
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 21px;
-      color: $color-secundary;
-    }
-  }
 }
 
 .page-topbar-action {

@@ -1,1 +1,1 @@
-export { default } from './SidebarBComponentDesktop';
+export { default } from './SidebarBComponentMobile';
