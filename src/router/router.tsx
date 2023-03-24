@@ -1,5 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import useWindowSizeReport from "../hooks/useWindowSizeReport";
+import { responsiveBreak } from "../utils/componentsConstants";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('../views/layouts/basicLayout'));
@@ -11,9 +13,10 @@ const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
 const ProfilePage = lazy(() => import('../views/pages/basic/profilePage'))
 const AlbumPage = lazy(() => import('../views/pages/basic/albumPage'));
 const ArtistPage = lazy(() => import('../views/pages/basic/artistPage'));
-const StudioPage = lazy(() => import ('../views/pages/basic/studioPage'))
-const FavoritesPage = lazy(() => import ('../views/pages/basic/favoritesPage'))
-const RadioPage = lazy(() => import ('../views/pages/basic/radioPage'))
+const StudioPage = lazy(() => import('../views/pages/basic/studioPage'))
+const FavoritesPage = lazy(() => import('../views/pages/basic/favoritesPage'))
+const RadioPage = lazy(() => import('../views/pages/basic/radioPage'))
+const SearchPage = lazy(() => import('../views/pages/basic/searchPage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -49,6 +52,21 @@ const router = createBrowserRouter([
       {
         path: "studio",
         element: <Suspense fallback={<></>}><StudioPage /></Suspense>
+      },
+      {
+        path: "search",
+        element:
+          <Suspense fallback={<></>}>
+            {(innerWidth > responsiveBreak) ? (
+              <>
+                <MusicPage />
+              </>
+            ) : (
+              <>
+                <SearchPage />
+              </>
+            )}
+          </Suspense>
       },
       {
         path: "settings",
