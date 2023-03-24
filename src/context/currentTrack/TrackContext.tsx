@@ -20,7 +20,8 @@ const initialState = {
 	previousTrack: () => { },
 	muteTrack: () => { },
 	loopTrack: () => { },
-	changeCurrentTime: () => { }
+	changeCurrentTime: () => { },
+	shuffleTracksList: () => { }
 }
 
 export const TrackContext = createContext(initialState);
@@ -80,6 +81,13 @@ export const TrackProvider = ({ children }: any) => {
 		})
 	}
 
+	const shuffleTracksList = function () {
+		dispatch({
+			type: TrackTypes.SHUFFLE_TRACKS_LIST,
+			payload: { shuffle: trackState.trackData.shuffle }
+		})
+	}
+
 	return (
 		<TrackContext.Provider value={{
 			...trackState,
@@ -91,7 +99,8 @@ export const TrackProvider = ({ children }: any) => {
 			previousTrack,
 			muteTrack,
 			loopTrack,
-			changeCurrentTime
+			changeCurrentTime,
+			shuffleTracksList
 		}}>
 			{children}
 		</TrackContext.Provider>
