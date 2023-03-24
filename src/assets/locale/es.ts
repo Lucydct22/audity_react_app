@@ -13,7 +13,9 @@ const spanishTranslation = {
   sidebar_radio: 'Radio',
   sidebar_browser: 'Navegador',
   sidebar_favorites: 'Favoritos',
-  sidebar_yourstudio: 'Tu estudio',
+  sidebar_studio: 'Estudio',
+  sidebar_search: 'Buscar',
+  sidebar_account: 'Cuanta',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
   musicpage_albumtitle: 'Playlist que te encantarán',

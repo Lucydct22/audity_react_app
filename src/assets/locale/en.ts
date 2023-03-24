@@ -11,7 +11,9 @@ const englishTranslation = {
   sidebar_radio: 'Radio',
   sidebar_browser: 'Browser',
   sidebar_favorites: 'Favorites',
-  sidebar_yourstudio: 'Your Studio',
+  sidebar_studio: 'Studio',
+  sidebar_search: 'Search',
+  sidebar_account: 'Account',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
   musicpage_albumtitle: 'Playlist you\'ll love',

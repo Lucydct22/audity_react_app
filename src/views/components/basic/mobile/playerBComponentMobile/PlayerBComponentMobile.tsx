@@ -34,52 +34,29 @@ const PlayerBComponentMobile = () => {
       <div className='player-bottom'>
 
         <div className='player-bottom-controls'>
-          <button className='page-player-bottom__btn'>
-            <MdSkipPrevious />
-          </button>
           <button
             onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
-            className='page-player-bottom__btn'
+            className='player-bottom-controls__controls-action'
           >
             {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
-          </button>
-          <button className='page-player-bottom__btn'>
-            <MdSkipNext />
           </button>
         </div>
 
         <div className='player-bottom-track'>
-          {formatToSeconds(trackData.currentTime)}
-          <div className='player-bottom-track__container'>
-            <div className='player-bottom-track__container--heading'>
-              <div className='player-bottom-track__container--heading__title'>
-                {`${currentTrack.name} - ${currentTrack.artist}`}
-              </div>
-              <div className='player-bottom-track__container--heading__actions'>
-                <button className='page-player-bottom__btn'>
-                  <IoAddOutline />
-                </button>
-                <button className='page-player-bottom__btn' onClick={() => setSongLike(!songLike)}>
-                  {songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
-                </button>
-              </div>
-            </div>
-            <div className='player-bottom-track__container--seekbar'>
-              <hr />
-            </div>
+          <div className='player-bottom-track__title'>
+            {currentTrack.name}
           </div>
-          {(trackData.duration / 60).toFixed(2)}
+          <div className='player-bottom-track__artist'>
+            {currentTrack.artist}
+          </div>
         </div>
 
-        <div className='player-bottom-options'>
-          <button className='page-player-bottom__btn'>
-            <IoShuffleOutline />
+        <div className='player-bottom-controls'>
+          <button className='player-bottom-controls__btn' onClick={() => setSongLike(!songLike)}>
+            {songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
           </button>
-          <button className='page-player-bottom__btn'>
-            <IoRepeatOutline />
-          </button>
-          <button className='page-player-bottom__btn' onClick={() => setSongVolume(!songVolume)}>
-            {songVolume ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+          <button className='player-bottom-controls__controls-action'>
+            <MdSkipNext />
           </button>
         </div>
 
