@@ -58,6 +58,12 @@ const spanishTranslation = {
   likedbutton: 'Fav',
   followbutton: 'Seguir',
   followingbutton: 'Siguiendo',
+
+  /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
+track_item_playlist: 'Añadir a playlist',
+track_item_download: 'Descargar',
+track_item_ranking: 'Ranking: ',
+track_item_duration: 'Duración: ',
 }
 
 export default spanishTranslation;

@@ -56,5 +56,12 @@ const englishTranslation = {
   likedbutton: 'Fav',
   followingbutton: 'Following',
 
+  /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
+track_item_playlist: 'Add to playlist',
+track_item_download: 'Download',
+track_item_ranking: 'Ranking: ',
+track_item_duration: 'Duration: ',
+
+
 }
 export default englishTranslation;
