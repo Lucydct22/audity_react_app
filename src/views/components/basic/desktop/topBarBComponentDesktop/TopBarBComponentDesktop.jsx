@@ -8,7 +8,6 @@ import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 
-
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
