@@ -66,6 +66,13 @@ export default function trackReducer(state: any, action: any) {
 				trackData: { ...state.trackData, hasLoop: payload.hasLoop }
 			}
 
+		case TrackTypes.CHANGE_CURRENT_TIME:
+			return {
+				currentTrack: state.currentTrack,
+				tracksList: state.tracksList,
+				trackData: { ...state.trackData, currentTime: payload.currentTime }
+			}
+
 		default:
 			return state;
 	}
