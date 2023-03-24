@@ -1,11 +1,9 @@
 export function initAudio(data: any) {
-	const audio = document.createElement("audio");
+	const audio = new Audio();
 	audio.src = data.url;
-	audio.setAttribute("controls", "none");
-	audio.setAttribute("preload", "auto");
-	audio.setAttribute("loop", 'false');
-	audio.setAttribute("muted", 'false');
-	audio.style.display = "none";
-	document.body.appendChild(audio);
+	audio.preload = 'auto';
+	audio.loop = false;
+	audio.muted = false;
+	audio.volume = 0.5;
 	return audio;
 }
