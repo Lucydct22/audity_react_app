@@ -47,10 +47,21 @@ const topBarBComponentDesktop = () => {
             <div className='page-topbar-action__popper--wrapper__icon'>
               <GoTriangleUp />
             </div>
+
+            { isAuthenticated ? (
             <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
               <span>Account Settings</span>
               <FiChevronRight size='1.4rem' />
-            </div></Link>
+            </div>
+            </Link>) 
+            : (
+              <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+              <span>Account Settings</span>
+              <FiChevronRight size='1.4rem' />
+            </div>
+            )
+            }
+
             <div className='page-topbar-action__popper--wrapper__content'>
               <span className='cursor-default'>System theme</span>
               <Theme />

@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time }) => {
 
-  const { t } = useTranslation;
+  const { t } = useTranslation();
   const windowWidth = useWindowSizeReport();
 
   const [popperOpen, setPopperOpen] = useState(false);
@@ -59,10 +59,10 @@ const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time })
           </div>
           <div className={`track-list-item-mobile ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
             <div className='track-list-item-mobile__dropbox--wrapper'>
-              <div className='track-list-item-mobile__dropbox--wrapper__icon'><IoAddOutline />Add to playlist</div>
-              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineDownload />Download</div>
-              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiFillHeart />Ranking:{likes}</div>
-              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineClockCircle />Duration: {time}</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><IoAddOutline />{t('track_item_playlist')}</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineDownload />{t('track_item_download')}</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiFillHeart />{t('track_item_ranking')}{likes}</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineClockCircle />{t('track_item_duration')}{time}</div>
             </div>
           </div>
 
