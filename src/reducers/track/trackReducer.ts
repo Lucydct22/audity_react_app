@@ -52,6 +52,20 @@ export default function trackReducer(state: any, action: any) {
 				trackData: payload.trackData
 			}
 
+		case TrackTypes.MUTE_TRACK:
+			return {
+				currentTrack: state.currentTrack,
+				tracksList: state.tracksList,
+				trackData: { ...state.trackData, isMuted: payload.isMuted }
+			}
+
+		case TrackTypes.LOOP_TRACK:
+			return {
+				currentTrack: state.currentTrack,
+				tracksList: state.tracksList,
+				trackData: { ...state.trackData, hasLoop: payload.hasLoop }
+			}
+
 		default:
 			return state;
 	}

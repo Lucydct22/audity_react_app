@@ -17,5 +17,8 @@ export const trackData = {
 	duration: 0,
 	currentTime: 0,
 	timeToEnd: 0,
-	isPlaying: false
+	isPlaying: false,
+	isMuted: false,
+	hasLoop: false,
+	volume: 0
 }

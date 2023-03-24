@@ -17,7 +17,9 @@ const PlayerBComponentDesktop = () => {
     pauseCurrentTrack,
     updateCurrentTime,
     nextTrack,
-    previousTrack
+    previousTrack,
+    muteTrack,
+    loopTrack
   } = useContext(TrackContext);
 
   useEffect(() => {
@@ -77,11 +79,11 @@ const PlayerBComponentDesktop = () => {
           <button className='page-player-bottom__btn'>
             <IoShuffleOutline />
           </button>
-          <button className='page-player-bottom__btn'>
-            <IoRepeatOutline />
+          <button className='page-player-bottom__btn' onClick={loopTrack}>
+            {trackData.hasLoop ? <IoRepeatOutline /> : <IoRepeatOutline />}
           </button>
-          <button className='page-player-bottom__btn' onClick={() => setSongVolume(!songVolume)}>
-            {songVolume ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+          <button className='page-player-bottom__btn' onClick={muteTrack}>
+            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
           </button>
         </div>
 
