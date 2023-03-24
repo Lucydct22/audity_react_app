@@ -1,5 +1,5 @@
 import TrackItemComponent from "../../trackListComponent/TrackItemComponent";
-import '../../trackListComponent/trackListStyle.scss';
+import './trackListMobileStyle.scss'; 
 import { useTranslation } from 'react-i18next';
 import image from '../../../../../assets/img/png/beyonce.png';
 
