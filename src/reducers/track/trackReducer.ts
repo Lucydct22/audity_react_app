@@ -38,6 +38,13 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
+		case TrackTypes.CHANGE_CURRENT_TIME:
+			return {
+				currentTrack: state.currentTrack,
+				tracksList: state.tracksList,
+				trackData: { ...state.trackData, currentTime: parseInt(payload.currentTime) }
+			}
+
 		case TrackTypes.NEXT_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
@@ -66,11 +73,11 @@ export default function trackReducer(state: any, action: any) {
 				trackData: { ...state.trackData, hasLoop: payload.hasLoop }
 			}
 
-		case TrackTypes.CHANGE_CURRENT_TIME:
+		case TrackTypes.SHUFFLE_TRACKS_LIST:
 			return {
 				currentTrack: state.currentTrack,
 				tracksList: state.tracksList,
-				trackData: { ...state.trackData, currentTime: parseInt(payload.currentTime) }
+				trackData: { ...state.trackData, shuffle: !payload.shuffle }
 			}
 
 		default:
