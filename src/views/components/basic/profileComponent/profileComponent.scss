@@ -11,17 +11,20 @@
   &__image {
     display: flex;
     flex-direction: row;
-    margin: 15px;
     padding-right: 15px;
 
     .user-settings-profile-foto {
       border-radius: 100%;
       max-width: 100px;
-    }
 
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        width: 60px;
+        height: 60px;
+      }
+
+    }
     p {
       margin-left: 15px;
-      margin-top: 45px;
     }
   }
 
@@ -39,11 +42,20 @@
       margin-bottom: 10px;
       font-size: 2rem;
       border-bottom: var(--color-border-1px);
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        font-size: 1.5rem;
+      }
+
     }
 
     label {
       margin: 5px 0;
       font-size: 1.2rem;
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        font-size: 1rem;
+      }
     }
 
     input {
@@ -67,6 +79,10 @@
     label {
       margin: 5px 0;
       font-size: 1.2rem;
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+        font-size: 1rem;
+      }
     }
 
     input {
@@ -85,7 +101,7 @@
 
     button {
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 50px;
     }
   }
 
@@ -176,7 +192,8 @@
 
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        display: inline;
+        margin: 10px;
+        margin-top: 30px;
       }
     }
 
@@ -189,27 +206,29 @@
       width: 100px;
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        display: inline;
+        margin: 10px;
+        margin-top: 30px;
       }
     }
 
     &--delete {
+      width: 120px;
       background-color: transparent;
-      border-color: rgb(167, 45, 45);
+      border-color: rgb(247, 16, 16);
       display: block;
       margin: 30px;
       margin-left: 0;
-      color: rgb(167, 45, 45);
+      color: rgb(247, 16, 16);
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        display: inline;
+        margin: 10px;
       }
     }
 
     &--delete:hover {
-      background-color: rgb(167, 45, 45);
-      border-color: rgb(167, 45, 45);
-      color: white;
+      background-color: rgb(235, 235, 235);
+      border-color: rgb(247, 16, 16);
+      color: rgb(247, 16, 16);
       display: block;
       margin: 30px;
       margin-left: 0;
