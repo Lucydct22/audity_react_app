@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { TrackContext } from '../../../../context/currentTrack/TrackContext';
-import { formatToSecondsTrack } from '../../../../utils/formatToSecondsTrack';
+import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
+import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import './PlayerBottom.scss'
+import './playerBComponentDesktop.scss'
 
-const PlayerBComponent = () => {
+const PlayerBComponentDesktop = () => {
   const [songLike, setSongLike] = useState(false);
   const [songVolume, setSongVolume] = useState(false);
   const {
@@ -15,7 +15,9 @@ const PlayerBComponent = () => {
     initCurrentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
-    updateCurrentTime
+    updateCurrentTime,
+    nextTrack,
+    previousTrack
   } = useContext(TrackContext);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const PlayerBComponent = () => {
       <div className='player-bottom'>
 
         <div className='player-bottom-controls'>
-          <button className='page-player-bottom__btn'>
+          <button onClick={previousTrack} className='page-player-bottom__btn'>
             <MdSkipPrevious />
           </button>
           <button
@@ -43,13 +45,13 @@ const PlayerBComponent = () => {
           >
             {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
           </button>
-          <button className='page-player-bottom__btn'>
+          <button onClick={nextTrack} className='page-player-bottom__btn'>
             <MdSkipNext />
           </button>
         </div>
 
         <div className='player-bottom-track'>
-          {formatToSecondsTrack(trackData.currentTime)}
+          {formatToSeconds(trackData.currentTime)}
           <div className='player-bottom-track__container'>
             <div className='player-bottom-track__container--heading'>
               <div className='player-bottom-track__container--heading__title'>
@@ -68,7 +70,7 @@ const PlayerBComponent = () => {
               <hr />
             </div>
           </div>
-          {(trackData.duration / 60).toFixed(2)}
+          {formatToSeconds(trackData.duration)}
         </div>
 
         <div className='player-bottom-options'>
@@ -88,4 +90,4 @@ const PlayerBComponent = () => {
   )
 }
 
-export default PlayerBComponent;
+export default PlayerBComponentDesktop;

@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import './topBarBComponent.scss';
-import Theme from '../../../UI/theme/Theme';
+import './topBarBComponentMobile.scss';
+import Theme from '../../../../UI/theme/Theme';
 import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 
 
-const TopBarBComponent = () => {
+const TopBarBComponentMobile = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
@@ -83,4 +83,4 @@ const TopBarBComponent = () => {
   )
 }
 
-export default TopBarBComponent;
+export default TopBarBComponentMobile;

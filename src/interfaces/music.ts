@@ -26,6 +26,7 @@ export interface Albums {
   id: string;
   name: string;
   genres: string[];
+  tracks: [string]
   imageUrl: string;
   artist: string;
   createdAt: Date | number;

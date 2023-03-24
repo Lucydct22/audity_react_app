@@ -1,0 +1,19 @@
+@import '../../../sass/variables';
+
+.comming-soon-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  user-select: none;
+
+  img {
+    width: 500px;
+    height: 500px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}

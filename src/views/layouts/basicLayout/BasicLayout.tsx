@@ -1,19 +1,41 @@
+import { Suspense, lazy } from "react";
 import { Outlet } from 'react-router-dom'
-import SidebarBComponent from "../../components/basic/sidebarBComponent";
-import PlayerBottomComponent from "../../components/basic/playerBComponent";
-import PageTopBarComponent from "../../components/basic/topBarBComponent";
+import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
+import { responsiveBreak } from "../../../utils/componentsConstants";
+// Desktop
+const SidebarBComponentDesktop = lazy(() => import('../../components/basic/desktop/sidebarBComponentDesktop'));
+const PlayerBComponentDesktop = lazy(() => import('../../components/basic/desktop/playerBComponentDesktop'));
+const TopBarBComponentDesktop = lazy(() => import('../../components/basic/desktop/topBarBComponentDesktop'));
+// Mobile
+const SidebarBComponentMobile = lazy(() => import('../../components/basic/mobile/sidebarBComponentMobile'));
+const PlayerBComponentMobile = lazy(() => import('../../components/basic/mobile/playerBComponentMobile'));
+const TopBarBComponentMobile = lazy(() => import('../../components/basic/mobile/topBarBComponentMobile'));
 
 const BasicLayout = () => {
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
-  
+  const [innerWidth] = useWindowSizeReport();
+
   return (
-    <>
-      <SidebarBComponent />
-      <PageTopBarComponent />
-      <Outlet />
-      <PlayerBottomComponent />
-    </>
+    <Suspense fallback={<></>}>
+      {(innerWidth > responsiveBreak) ? (
+        <>
+          <SidebarBComponentDesktop />
+          <TopBarBComponentDesktop />
+        </>
+      ) : (
+        <>
+          <SidebarBComponentMobile />
+          <TopBarBComponentMobile />
+        </>
+      )}
+
+      <div className='main-layout__main'>
+        <Outlet />
+      </div>
+
+      {(innerWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
+    </Suspense>
   )
 }
 

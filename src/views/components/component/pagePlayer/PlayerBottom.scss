@@ -1,0 +1,104 @@
+@import '../../../../sass/variables.scss';
+
+.page-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  padding: 0 24px;
+  margin: 0;
+  border-top: var(--color-border-1px);
+  background-color: var(--background-secundary);
+}
+
+.player-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.player-bottom-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .page-player-bottom__btn {
+    padding: 5px;
+
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
+.player-bottom-track {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 75px;
+  color: var(--color-primary);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 87%;
+    padding: 0 10px;
+
+    &--heading {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 400;
+    }
+
+    &--seekbar {
+      hr {
+        border: none;
+        border-radius: 6px;
+        height: 2px;
+        margin: 1px 0;
+        background: #72727d;
+
+        &:hover {
+          height: 4px;
+          margin: 0;
+        }
+      }
+
+      cursor: pointer;
+      margin: 6px 0;
+    }
+  }
+}
+
+.player-bottom-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-player-bottom__btn {
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0.4rem;
+  cursor: pointer;
+
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  &:hover {
+    background-color: var(--background-on-hover);
+    border-radius: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-export function formatToSecondsTrack(secs) {
+export default function formatToSeconds(secs) {
   secs = parseInt(secs);
   let ss = secs % 60;
   const mm = Math.floor(secs / 60.0);
