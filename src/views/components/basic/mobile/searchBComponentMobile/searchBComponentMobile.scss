@@ -1,0 +1,41 @@
+@import '../../../../../sass/variables';
+
+.mobile-search {
+
+  &__title {
+    font-size: 20px;
+    font: bold;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    display: flex;
+
+    input {
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 12px 30px;
+      width: 200px;
+    }
+
+    span {
+      display: flex;
+      position: absolute;
+      color: black;
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+  }
+
+  &__genres {
+    padding: 0;
+    margin-top: 15px;
+
+    &--section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+      
+    }
+  }
+}

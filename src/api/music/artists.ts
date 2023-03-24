@@ -3,13 +3,13 @@ import { Artist } from "../../interfaces/music";
 
 
 export const getArtistApi = async (): Promise<Artist> => {
-	const response = await fetch(`${basePath}/artist`)
+	const response = await fetch(`${basePath}/artists`)
 	const data = await response.json()
 	return data as Artist
 }
 
 export const getArtistByIdApi = async (artistId: string): Promise<Artist> => {
-	const response = await fetch(`${basePath}/artist/${artistId}`)
+	const response = await fetch(`${basePath}/artists/${artistId}`)
 	const data = await response.json()
 	return data as Artist
 }
@@ -21,7 +21,7 @@ export const deleteArtistByIdApi = async (artistId: string): Promise<Artist> => 
 			"Content-Type": "application/json",
 		}
 	}
-	const response = await fetch(`${basePath}/artist/${artistId.toString()}`, params)
+	const response = await fetch(`${basePath}/artists/${artistId.toString()}`, params)
 	const data = await response.json()
 	return data as Artist
 }
@@ -36,7 +36,7 @@ export const updateArtistApi = async (artistId: string, data: Partial<Artist>): 
 		},
 		body: JSON.stringify(data),
 	}
-	const response = await fetch(`${basePath}/artist/${artistId}`, params)
+	const response = await fetch(`${basePath}/s/${artistId}`, params)
 	const result = await response.json()
 	return result as Artist
 }
@@ -51,7 +51,7 @@ export const addArtistApi = async (newArtist: Partial<Artist>): Promise<Artist> 
 		},
 		body: JSON.stringify(newArtist),
 	}
-	const response = await fetch(`${basePath}/artist`, params)
+	const response = await fetch(`${basePath}/artists`, params)
 	const data = await response.json()
 	return data as Artist
 }

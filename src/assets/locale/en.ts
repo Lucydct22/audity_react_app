@@ -64,6 +64,8 @@ track_item_download: 'Download',
 track_item_ranking: 'Ranking: ',
 track_item_duration: 'Duration: ',
 
+  /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
+  error_message: 'We are sorry for the inconvenience, we keep working on it ...',
 
 }
 export default englishTranslation;

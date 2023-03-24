@@ -3,13 +3,13 @@ import { Playlist } from "../../interfaces/music";
 
 
 export const getPlaylistApi = async (): Promise<Playlist> => {
-	const response = await fetch(`${basePath}/playlist`)
+	const response = await fetch(`${basePath}/playlists`)
 	const data = await response.json()
 	return data as Playlist
 }
 
 export const getPlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
-	const response = await fetch(`${basePath}/playlist/${playlistId}`)
+	const response = await fetch(`${basePath}/playlists/${playlistId}`)
 	const data = await response.json()
 	return data as Playlist
 }
@@ -21,7 +21,7 @@ export const deletePlaylistByIdApi = async (playlistId: string): Promise<Playlis
 			"Content-Type": "application/json",
 		}
 	}
-	const response = await fetch(`${basePath}/playlist/${playlistId.toString()}`, params)
+	const response = await fetch(`${basePath}/playlists/${playlistId.toString()}`, params)
 	const data = await response.json()
 	return data as Playlist
 }
@@ -36,7 +36,7 @@ export const updatePlaylistApi = async (playlistId: string, data: Partial<Playli
 		},
 		body: JSON.stringify(data),
 	}
-	const response = await fetch(`${basePath}/playlist/${playlistId}`, params)
+	const response = await fetch(`${basePath}/playlists/${playlistId}`, params)
 	const result = await response.json()
 	return result as Playlist
 }
@@ -51,7 +51,7 @@ export const addPlaylistApi = async (newPlaylist: Partial<Playlist>): Promise<Pl
 		},
 		body: JSON.stringify(newPlaylist),
 	}
-	const response = await fetch(`${basePath}/playlist`, params)
+	const response = await fetch(`${basePath}/playlists`, params)
 	const data = await response.json()
 	return data as Playlist
 }
