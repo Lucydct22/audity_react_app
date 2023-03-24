@@ -31,6 +31,25 @@ const  TrackListDisplayComponent = () => {
               time={"3:54"}
               album={"Number 4"}
               />
+         <TrackItemComponent
+              id={"1"}
+              name={"Run the World"}
+              artist={"Beyonce"}
+              thumbnail={image}
+              likes= {" 1000"}
+              time={"3:54"}
+              album={"Number 4"}
+              />
+           <TrackItemComponent
+              id={"1"}
+              name={"Run the World"}
+              artist={"Beyonce"}
+              thumbnail={image}
+              likes= {" 1000"}
+              time={"3:54"}
+              album={"Number 4"}
+              />
+
         </tbody>
       </table>
       </>

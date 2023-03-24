@@ -1,15 +1,31 @@
 import './trackListStyle.scss';
-import { IoAddOutline } from "react-icons/io5";
-import { AiFillHeart } from "react-icons/ai";
-import { AiOutlineDownload } from "react-icons/ai";
+import { useState, useEffect, useRef } from 'react';
+import { IoAddOutline, IoEllipsisVerticalSharp } from "react-icons/io5";
+import { AiFillHeart, AiOutlineDownload, AiOutlineClockCircle } from "react-icons/ai";
 import { responsiveBreak } from "../../../../utils/componentsConstants";
 import useWindowSizeReport from "../../../../hooks/useWindowSizeReport";
-import { IoEllipsisVerticalSharp } from "react-icons/io5";
-
+import { MdPlayArrow } from "react-icons/md";
+import { useTranslation } from 'react-i18next';
 
 const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time }) => {
 
-  const windowWidth = useWindowSizeReport()
+  const { t } = useTranslation;
+  const windowWidth = useWindowSizeReport();
+
+  const [popperOpen, setPopperOpen] = useState(false);
+  let popperRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!popperRef.current.contains(e.target)) {
+        setPopperOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  });
 
   return (
     <>
@@ -24,25 +40,35 @@ const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time })
           <td className='track-list-item__td-icon'><AiFillHeart className='track-list-item__td-icon-heart' />{likes}</td>
         </tr>
       ) : (
-        <div key={id} className="track-list-item-mobile">
-          <div className="track-list-item-mobile-div">
-            <img src={thumbnail} alt={name} />
-            <div className="track-list-item-mobile-div__track">
-              <span>{name}</span>
-              <div className="track-list-item-mobile-div__track-album">
-                <span>{artist} - </span>
-                <span>{album}</span>
+        <div>
+          <div key={id} className="track-list-item-mobile" ref={popperRef}>
+            <div className="track-list-item-mobile-div">
+              <img src={thumbnail} alt={name} />
+              <div className="track-list-item-mobile-div__track">
+                <span>{name}</span>
+                <div className="track-list-item-mobile-div__track-album">
+                  <span>{artist} - </span>
+                  <span>{album}</span>
+                </div>
               </div>
             </div>
+            <div className="track-list-item-mobile__icons-mobile">
+              <MdPlayArrow className='track-list-item-mobile__icons-mobile__td-icon-arrow' />
+              <IoEllipsisVerticalSharp className='track-list-item-mobile__icons-mobile__td-icon-points' onClick={() => setPopperOpen(!popperOpen)} />
+            </div>
           </div>
-          <div className="track-list-item-mobile__icons-mobile">
-            <AiFillHeart className='track-list-item-mobile__icons-mobile__td-icon-heart' />
-            <IoEllipsisVerticalSharp className='track-list-item-mobile__icons-mobile__td-icon-points'/>
+          <div className={`track-list-item-mobile ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
+            <div className='track-list-item-mobile__dropbox--wrapper'>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><IoAddOutline />Add to playlist</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineDownload />Download</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiFillHeart />Ranking:{likes}</div>
+              <div className='track-list-item-mobile__dropbox--wrapper__icon'><AiOutlineClockCircle />Duration: {time}</div>
+            </div>
           </div>
+
         </div>
       )
       }
-
     </>
   )
 }
