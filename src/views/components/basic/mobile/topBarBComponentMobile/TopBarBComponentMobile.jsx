@@ -34,10 +34,6 @@ const TopBarBComponentMobile = () => {
 
   return (
     <header className='page-topbar'>
-      <div className='page-topbar-search'>
-        <CiSearch color='#a2a2ad' size={'1.6rem'} />
-        <input type="text" className='page-topbar-search__input' placeholder={t("search_placeholder") || ""} />
-      </div>
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
           <img src={user?.picture ? user.picture : 'https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg'} alt="avatar" />

@@ -3,13 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./sidebarBComponentMobile.scss";
 import { FiMusic, FiSearch } from "react-icons/fi";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import { CgBrowser } from "react-icons/cg";
 import { BsMusicPlayer } from "react-icons/bs";
 
 const SidebarBComponentMobile = () => {
   const { t } = useTranslation();
-  const [toggleDropdown, setToggleDropdown] = useState(false);
 
   return (
     <nav className="side-bar">
@@ -44,16 +43,17 @@ const SidebarBComponentMobile = () => {
             />
             <p>{t("sidebar_search")}</p>
           </NavLink>
-
+          
           <NavLink
-            to={"/account"}
+            to={"/favorites"}
             className="side-bar-header__sections--options"
           >
-            <AiOutlineUser
+            <div className="side-bar-header__sections--options__decoration"></div>
+            <AiOutlineHeart
               size={20}
               className="side-bar-header__sections--options__icon"
             />
-            <p>{t("sidebar_account")}</p>
+            <p>{t("sidebar_favorites")}</p>
           </NavLink>
 
           <NavLink
@@ -76,17 +76,7 @@ const SidebarBComponentMobile = () => {
             <p>{t("sidebar_radio")}</p>
           </NavLink> */}
 
-          {/* <NavLink
-            to={"/favorites"}
-            className="side-bar-header__sections--options"
-          >
-            <div className="side-bar-header__sections--options__decoration"></div>
-            <AiOutlineHeart
-              size={20}
-              className="side-bar-header__sections--options__icon"
-            />
-            <p>{t("sidebar_favorites")}</p>
-          </NavLink> */}
+          
         </div>
       </div>
     </nav>
