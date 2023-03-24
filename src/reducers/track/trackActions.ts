@@ -23,13 +23,14 @@ export const initCurrentTrackAction = function (dispatch: any) {
 						trackData: {
 							url: res.url,
 							audio: audio,
-							duration: duration,
+							duration: Math.round(duration),
 							currentTime: audio.currentTime,
 							timeToEnd: duration - audio.currentTime,
 							isPlaying: false,
 							isMuted: false,
 							hasLoop: false,
-							volume: 0.5
+							volume: 0.5,
+							shuffle: false
 						}
 					}
 				})
@@ -42,7 +43,7 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 	const { tracksList, currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracksList, currentTrack.id);
 	trackData.isPlaying && trackData?.audio.pause();
-	trackData.audio = null;
+	trackData.audio = null;	
 
 	getTrackByIdApi(trackId).then(async res => {
 		const audio: any = initAudio(res);
@@ -56,13 +57,14 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 				trackData: {
 					url: res.url,
 					audio: audio,
-					duration: duration,
+					duration: Math.round(duration),
 					currentTime: audio.currentTime,
 					timeToEnd: duration - audio.currentTime,
 					isPlaying: trackData.isPlaying,
-					isMuted: false,
-					hasLoop: false,
-					volume: 0.5
+					isMuted: trackData.isMuted,
+					hasLoop: trackData.hasLoop,
+					volume: trackData.volume,
+					shuffle: trackData.shuffle
 				}
 			}
 		})
@@ -88,13 +90,14 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 				trackData: {
 					url: res.url,
 					audio: audio,
-					duration: duration,
+					duration: Math.round(duration),
 					currentTime: audio.currentTime,
 					timeToEnd: duration - audio.currentTime,
 					isPlaying: trackData.isPlaying,
-					isMuted: false,
-					hasLoop: false,
-					volume: 0.5
+					isMuted: trackData.isMuted,
+					hasLoop: trackData.hasLoop,
+					volume: trackData.volume,
+					shuffle: trackData.shuffle
 				}
 			}
 		})
