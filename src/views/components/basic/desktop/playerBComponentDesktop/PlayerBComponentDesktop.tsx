@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
+import ProgressBar from './progressBar/ProgressBar';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -8,7 +9,6 @@ import './playerBComponentDesktop.scss'
 
 const PlayerBComponentDesktop = () => {
   const [songLike, setSongLike] = useState(false);
-  const [songVolume, setSongVolume] = useState(false);
   const {
     trackData,
     currentTrack,
@@ -23,10 +23,14 @@ const PlayerBComponentDesktop = () => {
   } = useContext(TrackContext);
 
   useEffect(() => {
+    let isMounted = true;
     const interval = setInterval(() => {
-      updateCurrentTime()
+      trackData.duration && isMounted && updateCurrentTime()
     }, 500);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      isMounted = false;
+    };
   }, [trackData]);
 
   useEffect(() => {
@@ -68,9 +72,7 @@ const PlayerBComponentDesktop = () => {
                 </button>
               </div>
             </div>
-            <div className='player-bottom-track__container--seekbar'>
-              <hr />
-            </div>
+            <ProgressBar />
           </div>
           {formatToSeconds(trackData.duration)}
         </div>
