@@ -70,7 +70,7 @@ const PlayerBComponentDesktop = () => {
               <hr />
             </div>
           </div>
-          {(trackData.duration / 60).toFixed(2)}
+          {formatToSeconds(trackData.duration)}
         </div>
 
         <div className='player-bottom-options'>
