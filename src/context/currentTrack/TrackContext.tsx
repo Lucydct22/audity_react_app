@@ -40,7 +40,7 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const updateCurrentTime = function () {
-		trackState?.trackData.audio.ended && nextTrack()		
+		trackState?.trackData?.audio?.ended && nextTrack()		
 		dispatch({
 			type: TrackTypes.UPDATE_CURRENT_TIME,
 			payload: Math.round(trackState.trackData.audio.currentTime)
