@@ -60,6 +60,9 @@ const spanishTranslation = {
   likedbutton: 'Fav',
   followbutton: 'Seguir',
   followingbutton: 'Siguiendo',
+
+    /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
+  error_message: 'Lamentamos las molestias, seguimos trabajando en ello...'
 }
 
 export default spanishTranslation;
