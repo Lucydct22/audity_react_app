@@ -58,5 +58,8 @@ const englishTranslation = {
   likedbutton: 'Fav',
   followingbutton: 'Following',
 
+  /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
+  error_message: 'We are sorry for the inconvenience, we keep working on it ...',
+
 }
 export default englishTranslation;
