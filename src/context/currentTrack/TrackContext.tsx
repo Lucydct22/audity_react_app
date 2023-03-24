@@ -19,7 +19,8 @@ const initialState = {
 	nextTrack: () => { },
 	previousTrack: () => { },
 	muteTrack: () => { },
-	loopTrack: () => { }
+	loopTrack: () => { },
+	changeCurrentTime: () => { }
 }
 
 export const TrackContext = createContext(initialState);
@@ -40,7 +41,7 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const updateCurrentTime = function () {
-		trackState?.trackData?.audio?.ended && nextTrack()		
+		trackState?.trackData?.audio?.ended && nextTrack()
 		dispatch({
 			type: TrackTypes.UPDATE_CURRENT_TIME,
 			payload: Math.round(trackState.trackData.audio.currentTime)
@@ -59,15 +60,23 @@ export const TrackProvider = ({ children }: any) => {
 		trackState.trackData.audio.muted = !trackState.trackData.audio.muted;
 		dispatch({
 			type: TrackTypes.MUTE_TRACK,
-			payload: {isMuted: trackState.trackData.audio.muted}
+			payload: { isMuted: trackState.trackData.audio.muted }
 		})
 	}
 
-		const loopTrack = function () {
+	const loopTrack = function () {
 		trackState.trackData.audio.loop = !trackState.trackData.audio.loop;
 		dispatch({
 			type: TrackTypes.LOOP_TRACK,
 			payload: { hasLoop: trackState.trackData.audio.loop }
+		})
+	}
+
+	const changeCurrentTime = function (currentTime: any) {
+		trackState.trackData.audio.currentTime = currentTime;
+		dispatch({
+			type: TrackTypes.CHANGE_CURRENT_TIME,
+			payload: { currentTime: currentTime }
 		})
 	}
 
@@ -81,7 +90,8 @@ export const TrackProvider = ({ children }: any) => {
 			nextTrack,
 			previousTrack,
 			muteTrack,
-			loopTrack
+			loopTrack,
+			changeCurrentTime
 		}}>
 			{children}
 		</TrackContext.Provider>
