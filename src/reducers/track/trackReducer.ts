@@ -70,7 +70,7 @@ export default function trackReducer(state: any, action: any) {
 			return {
 				currentTrack: state.currentTrack,
 				tracksList: state.tracksList,
-				trackData: { ...state.trackData, currentTime: payload.currentTime }
+				trackData: { ...state.trackData, currentTime: parseInt(payload.currentTime) }
 			}
 
 		default:
