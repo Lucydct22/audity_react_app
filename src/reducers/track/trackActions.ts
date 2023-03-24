@@ -26,7 +26,10 @@ export const initCurrentTrackAction = function (dispatch: any) {
 							duration: duration,
 							currentTime: audio.currentTime,
 							timeToEnd: duration - audio.currentTime,
-							isPlaying: false
+							isPlaying: false,
+							isMuted: false,
+							hasLoop: false,
+							volume: 0.5
 						}
 					}
 				})
@@ -36,13 +39,14 @@ export const initCurrentTrackAction = function (dispatch: any) {
 }
 
 export const nextTrackAction = function (dispatch: any, trackState: any) {
-	const trackId = tracksCycle(trackState.tracksList, trackState.currentTrack.id);
+	const {tracksList, currentTrack, trackData} = trackState;
+	const trackId = tracksCycle(tracksList, currentTrack.id);
 
 	getTrackByIdApi(trackId).then(async res => {
 		const audio: any = initAudio(res);
 		const duration: any = await getDuration(res.url);
-		trackState.trackData.audio.pause();
-		trackState.trackData.isPlaying && audio.play();
+		trackData.audio.pause();
+		trackData.isPlaying && audio.play();
 
 		return dispatch({
 			type: TrackTypes.NEXT_TRACK,
@@ -54,7 +58,10 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 					duration: duration,
 					currentTime: audio.currentTime,
 					timeToEnd: duration - audio.currentTime,
-					isPlaying: trackState.trackData.isPlaying
+					isPlaying: trackData.isPlaying,
+					isMuted: false,
+					hasLoop: false,
+					volume: 0.5
 				}
 			}
 		})
@@ -62,14 +69,15 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 }
 
 export const previousTrackAction = function (dispatch: any, trackState: any) {
-	const tracksReverse = trackState.tracksList.reverse();
-	const trackId = tracksCycle(tracksReverse, trackState.currentTrack.id);
+	const {tracksList, currentTrack, trackData} = trackState;
+	const tracksReverse = [...tracksList].reverse();
+	const trackId = tracksCycle(tracksReverse, currentTrack.id);
 
 	getTrackByIdApi(trackId).then(async res => {
 		const audio: any = initAudio(res);
 		const duration: any = await getDuration(res.url);
-		trackState.trackData.audio.pause();
-		trackState.trackData.isPlaying && audio.play();
+		trackData.audio.pause();
+		trackData.isPlaying && audio.play();
 
 		return dispatch({
 			type: TrackTypes.PREV_TRACK,
@@ -81,7 +89,10 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 					duration: duration,
 					currentTime: audio.currentTime,
 					timeToEnd: duration - audio.currentTime,
-					isPlaying: trackState.trackData.isPlaying
+					isPlaying: trackData.isPlaying,
+					isMuted: false,
+					hasLoop: false,
+					volume: 0.5
 				}
 			}
 		})
