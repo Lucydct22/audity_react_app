@@ -528,6 +528,7 @@
       "name": "Flyga",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273cfb34a37cfed6297d8c18231",
       "artist": "Kim Cesarion",
+      "tracks": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
       "genres": [
         "folk"
       ],
@@ -539,6 +540,7 @@
       "name": "XXX (Bow Wow Wow)",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273256e16efc88a39e4795d5f32",
       "artist": "C.Gambino",
+      "tracks": ["5", "6", "7", "8"],
       "genres": [
         "folk"
       ],
@@ -550,6 +552,7 @@
       "name": "Stay A Little Longer",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732cf9821eb5087702a63330b5",
       "artist": "Nicky Romero",
+      "tracks": ["9", "10", "11", "12"],
       "genres": [
         "folk"
       ],
@@ -561,6 +564,7 @@
       "name": "WTF",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2730b7020f4bce3fc16f5370df3",
       "artist": "Denz",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -572,6 +576,7 @@
       "name": "Vivaldi",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a7fc8699c8a8c6dc4b90c948",
       "artist": "Jesper Swärd",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -583,6 +588,7 @@
       "name": "Velvet Pony Trax 11 part 2",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27347d2bc41f459a0422c3dfff5",
       "artist": "Axel Boman",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -594,6 +600,7 @@
       "name": "PARTYPINGLA",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e467c6a0b070f390daa47693",
       "artist": "Rasmus Hultgren",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -605,6 +612,7 @@
       "name": "Someone To Love",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e9e5fbbde2d4147260db99bf",
       "artist": "Dimitri Vangelis & Wyman",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -616,6 +624,7 @@
       "name": "I samma bil",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27349108981b176704992078242",
       "artist": "Hemliga Klubben",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -627,6 +636,7 @@
       "name": "Ofiltrerad",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d43759a300274388d5b3ac7d",
       "artist": "Steph K",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -638,6 +648,7 @@
       "name": "Closer",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273e04542a5b2f5c4e80b8043f9",
       "artist": "Romeo",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -649,6 +660,7 @@
       "name": "YOUNG",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b27350414c15d3e534effd5840ab",
       "artist": "SINAN",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -660,6 +672,7 @@
       "name": "THE REAL",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273189b84e563687baf99c8d800",
       "artist": "Chapee",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -671,6 +684,7 @@
       "name": "Eternal Light Brigade",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b2732f4d9bfec9c13fc7979ed942",
       "artist": "Les Big Byrd",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -682,6 +696,7 @@
       "name": "Tombolo (Réédition)",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273966b2b28801e75d7d293c3a9",
       "artist": "Kalash",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -693,6 +708,7 @@
       "name": "KARIMO II",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273aa311f30a24a7002e089c379",
       "artist": "Karim Alger",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -704,6 +720,7 @@
       "name": "Midnight FM",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273d62e4c88ec0df746317863af",
       "artist": "Prof. Stranger",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -715,6 +732,7 @@
       "name": "Jag såg en kvinna",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273897c8155c64e1436daf8a466",
       "artist": "Ken Ring",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -726,6 +744,7 @@
       "name": "Alltid varit här",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273940bcb3763667fa773d46a29",
       "artist": "Rozh",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
@@ -737,6 +756,7 @@
       "name": "38",
       "imageUrl": "https://i.scdn.co/image/ab67616d0000b273a009515d20b39aa065540314",
       "artist": "Arre",
+      "tracks": ["1", "2", "3", "4"],
       "genres": [
         "folk"
       ],
