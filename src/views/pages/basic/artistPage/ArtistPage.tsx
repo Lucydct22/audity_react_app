@@ -2,6 +2,7 @@ import HelmetSEO from "../../../utils/HelmetSEO";
 import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
 import ArtistBComponent from '../../../components/basic/structureMainBComponent/artistBComponent/ArtistBComponent';
 import TrackListComponent from '../../../components/basic/trackListComponent/TrackListComponent';
+import RenderArtist from "../../../components/basic/structureMainBComponent/musicPageComponent/artistComponent/renderArtist/RenderArtist";
 
 const ArtistPage = () => {
 	return (
@@ -10,8 +11,9 @@ const ArtistPage = () => {
 			description='Audity Artist Page'
 		>
 			<StructureMainBComponent>
-				<ArtistBComponent />
-				<TrackListComponent />
+        <RenderArtist />
+				{/* <ArtistBComponent />
+				<TrackListComponent /> */}
 			</StructureMainBComponent>
 		</HelmetSEO>
 	)

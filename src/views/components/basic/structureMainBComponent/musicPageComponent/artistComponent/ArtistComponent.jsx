@@ -3,10 +3,9 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './artistComponent.scss';
-import AlbumImg4 from '../../../../../../assets/img/albums/4.jpg';
+import RenderArtist from './renderArtist/RenderArtist';
 
 export default class MultipleItems extends Component {
   state = {
@@ -86,9 +85,13 @@ export default class MultipleItems extends Component {
   }
 }
 
+const TranslateTitle = () => {
+  const { t } = useTranslation();
 
+  return <h2 className='artist-carousel__head--title'>{t("musicpage_artirstitle")}</h2>;
+} 
 
-const RenderArtist = () => {
+/* const RenderArtist = () => {
 
   return (
     <section className='artist-carousel__container--section'>
@@ -100,11 +103,7 @@ const RenderArtist = () => {
     </section>
   )
 }
+*/
 
 
 
-const TranslateTitle = () => {
-  const { t } = useTranslation();
-
-  return <h2 className='artist-carousel__head--title'>{t("musicpage_artirstitle")}</h2>;
-}
