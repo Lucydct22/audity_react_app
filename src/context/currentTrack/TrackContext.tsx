@@ -17,7 +17,9 @@ const initialState = {
 	pauseCurrentTrack: () => { },
 	updateCurrentTime: () => { },
 	nextTrack: () => { },
-	previousTrack: () => { }
+	previousTrack: () => { },
+	muteTrack: () => { },
+	loopTrack: () => { }
 }
 
 export const TrackContext = createContext(initialState);
@@ -38,7 +40,7 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const updateCurrentTime = function () {
-		trackState.trackData.audio.ended && nextTrack()		
+		trackState?.trackData.audio.ended && nextTrack()		
 		dispatch({
 			type: TrackTypes.UPDATE_CURRENT_TIME,
 			payload: Math.round(trackState.trackData.audio.currentTime)
@@ -53,6 +55,22 @@ export const TrackProvider = ({ children }: any) => {
 		previousTrackAction(dispatch, trackState)
 	}
 
+	const muteTrack = function () {
+		trackState.trackData.audio.muted = !trackState.trackData.audio.muted;
+		dispatch({
+			type: TrackTypes.MUTE_TRACK,
+			payload: {isMuted: trackState.trackData.audio.muted}
+		})
+	}
+
+		const loopTrack = function () {
+		trackState.trackData.audio.loop = !trackState.trackData.audio.loop;
+		dispatch({
+			type: TrackTypes.LOOP_TRACK,
+			payload: { hasLoop: trackState.trackData.audio.loop }
+		})
+	}
+
 	return (
 		<TrackContext.Provider value={{
 			...trackState,
@@ -61,7 +79,9 @@ export const TrackProvider = ({ children }: any) => {
 			pauseCurrentTrack,
 			updateCurrentTime,
 			nextTrack,
-			previousTrack
+			previousTrack,
+			muteTrack,
+			loopTrack
 		}}>
 			{children}
 		</TrackContext.Provider>
