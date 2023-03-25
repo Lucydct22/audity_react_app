@@ -2,6 +2,7 @@ import { getTracksApi, getTrackByIdApi } from "../../api/music/tracks";
 import { getDuration } from "../../utils/tracks/getDuration";
 import { initAudio } from "../../utils/tracks/initAudio";
 import makeArrayOfTrackIds from "../../utils/tracks/makeArrayOfTrackIds";
+import shuffleArray from "../../utils/tracks/shuffleArray";
 import { tracksCycle } from "../../utils/tracks/tracksCycle";
 import * as TrackTypes from './trackTypes'
 
@@ -12,8 +13,8 @@ export const initCurrentTrackAction = function (dispatch: any) {
 
 		getTrackByIdApi(random.toString()).then(async res => {
 			if (res) {
-				const audio: any = initAudio(res);
-				const duration: any = await getDuration(res.url);
+				const audio: HTMLAudioElement = initAudio(res);
+				const duration: any = await getDuration(audio);
 
 				return dispatch({
 					type: TrackTypes.INIT_CURRENT_TRACK,
@@ -43,11 +44,11 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 	const { tracksList, currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracksList, currentTrack.id);
 	trackData.isPlaying && trackData?.audio.pause();
-	trackData.audio = null;	
+	trackData.audio = null;
 
 	getTrackByIdApi(trackId).then(async res => {
-		const audio: any = initAudio(res);
-		const duration: any = await getDuration(res.url);
+		const audio: HTMLAudioElement = initAudio(res);
+		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 
 		return dispatch({
@@ -79,8 +80,8 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 	trackData.audio = null;
 
 	getTrackByIdApi(trackId).then(async res => {
-		const audio: any = initAudio(res);
-		const duration: any = await getDuration(res.url);
+		const audio: HTMLAudioElement = initAudio(res);
+		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 
 		return dispatch({
@@ -101,5 +102,23 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 				}
 			}
 		})
+	})
+}
+
+export const shuffleTracksListAction = function (dispatch: any, trackState: any) {
+	const newList = function () {
+		let newTrackList = trackState.tracksList;
+		if (trackState.trackData.shuffle) {
+			newTrackList.sort((a: any, b: any) => {
+				return a - b;
+			})
+		} else {
+			return shuffleArray(newTrackList)
+		}
+		return newTrackList;
+	}
+	return dispatch({
+		type: TrackTypes.SHUFFLE_TRACKS_LIST,
+		payload: { tracksList: newList() }
 	})
 }
