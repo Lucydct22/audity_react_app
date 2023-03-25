@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
@@ -12,22 +12,9 @@ const PlayerBComponentMobile = () => {
   const {
     trackData,
     currentTrack,
-    initCurrentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
-    updateCurrentTime
   } = useContext(TrackContext);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      updateCurrentTime()
-    }, 500);
-    return () => clearInterval(interval);
-  }, [trackData]);
-
-  useEffect(() => {
-    initCurrentTrack()
-  }, [])
 
   return (
     <div className='page-player-mobile'>
