@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
 import ProgressBar from './progressBar/ProgressBar';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
@@ -14,24 +14,12 @@ const PlayerBComponentDesktop = () => {
     currentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
-    updateCurrentTime,
     nextTrack,
     previousTrack,
     muteTrack,
     loopTrack,
     shuffleTracksList
   } = useContext(TrackContext);
-
-  useEffect(() => {
-    let isMounted = true;
-    const interval = setInterval(() => {
-      isMounted && trackData.duration && updateCurrentTime()
-    }, 500);
-    return () => {
-      clearInterval(interval);
-      isMounted = false;
-    };
-  }, [trackData]);
 
   return (
     <div className='page-player'>
