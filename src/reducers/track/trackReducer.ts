@@ -12,7 +12,6 @@ export default function trackReducer(state: any, action: any) {
 			}
 
 		case TrackTypes.PLAY_CURRENT_TRACK:
-			state.trackData.audio.play();
 			return {
 				currentTrack: state.currentTrack,
 				tracksList: state.tracksList,
@@ -20,7 +19,6 @@ export default function trackReducer(state: any, action: any) {
 			}
 
 		case TrackTypes.PAUSE_CURRENT_TRACK:
-			state.trackData.audio.pause();
 			return {
 				currentTrack: state.currentTrack,
 				tracksList: state.tracksList,
@@ -76,8 +74,8 @@ export default function trackReducer(state: any, action: any) {
 		case TrackTypes.SHUFFLE_TRACKS_LIST:
 			return {
 				currentTrack: state.currentTrack,
-				tracksList: state.tracksList,
-				trackData: { ...state.trackData, shuffle: !payload.shuffle }
+				tracksList: payload.tracksList,
+				trackData: { ...state.trackData, shuffle: !state.trackData.shuffle }
 			}
 
 		default:
