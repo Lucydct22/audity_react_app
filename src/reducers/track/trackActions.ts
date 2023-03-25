@@ -1,9 +1,9 @@
 import { getTracksApi, getTrackByIdApi } from "../../api/music/tracks";
-import { getDuration } from "../../utils/tracks/getDuration";
-import { initAudio } from "../../utils/tracks/initAudio";
+import getDuration from "../../utils/tracks/getDuration";
+import initAudio from "../../utils/tracks/initAudio";
 import makeArrayOfTrackIds from "../../utils/tracks/makeArrayOfTrackIds";
 import shuffleArray from "../../utils/tracks/shuffleArray";
-import { tracksCycle } from "../../utils/tracks/tracksCycle";
+import tracksCycle from "../../utils/tracks/tracksCycle";
 import * as TrackTypes from './trackTypes'
 
 export const initCurrentTrackAction = function (dispatch: any) {
