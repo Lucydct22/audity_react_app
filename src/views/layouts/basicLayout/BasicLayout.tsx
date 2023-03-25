@@ -1,4 +1,5 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useContext } from "react";
+import { TrackContext } from "../../../context/currentTrack/TrackContext";
 import { Outlet } from 'react-router-dom'
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { responsiveBreak } from "../../../utils/componentsConstants";
@@ -19,9 +20,25 @@ import TopBarBComponentMobile from "../../components/basic/mobile/topBarBCompone
 // const TopBarBComponentMobile = lazy(() => import('../../components/basic/mobile/topBarBComponentMobile'));
 
 const BasicLayout = () => {
+  const { trackData, initCurrentTrack, updateCurrentTime } = useContext(TrackContext);
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
   const [innerWidth] = useWindowSizeReport();
+
+  useEffect(() => {
+    initCurrentTrack()
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const interval = setInterval(() => {
+      isMounted && trackData.duration && updateCurrentTime()
+    }, 500);
+    return () => {
+      clearInterval(interval);
+      isMounted = false;
+    };
+  }, [trackData]);
 
   return (
     <Suspense fallback={<></>}>
