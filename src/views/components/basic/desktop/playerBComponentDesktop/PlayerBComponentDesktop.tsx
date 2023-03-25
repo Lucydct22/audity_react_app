@@ -12,7 +12,6 @@ const PlayerBComponentDesktop = () => {
   const {
     trackData,
     currentTrack,
-    initCurrentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
     updateCurrentTime,
@@ -26,17 +25,13 @@ const PlayerBComponentDesktop = () => {
   useEffect(() => {
     let isMounted = true;
     const interval = setInterval(() => {
-      trackData.duration && isMounted && updateCurrentTime()
+      isMounted && trackData.duration && updateCurrentTime()
     }, 500);
     return () => {
       clearInterval(interval);
       isMounted = false;
     };
   }, [trackData]);
-
-  useEffect(() => {
-    initCurrentTrack()
-  }, [])
 
   return (
     <div className='page-player'>
