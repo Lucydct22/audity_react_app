@@ -2,7 +2,8 @@ import { createContext, useReducer } from "react";
 import {
 	initCurrentTrackAction,
 	nextTrackAction,
-	previousTrackAction
+	previousTrackAction,
+	shuffleTracksListAction
 } from "../../reducers/track/trackActions";
 import trackReducer from "../../reducers/track/trackReducer";
 import * as TrackTypes from '../../reducers/track/trackTypes';
@@ -34,10 +35,12 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const playCurrentTrack = function () {
+		trackState.trackData.audio.play();
 		dispatch({ type: TrackTypes.PLAY_CURRENT_TRACK })
 	}
 
 	const pauseCurrentTrack = function () {
+		trackState.trackData.audio.pause();
 		dispatch({ type: TrackTypes.PAUSE_CURRENT_TRACK })
 	}
 
@@ -46,6 +49,14 @@ export const TrackProvider = ({ children }: any) => {
 		dispatch({
 			type: TrackTypes.UPDATE_CURRENT_TIME,
 			payload: Math.round(trackState.trackData.audio.currentTime)
+		})
+	}
+
+	const changeCurrentTime = function (currentTime: number) {
+		trackState.trackData.audio.currentTime = currentTime;
+		dispatch({
+			type: TrackTypes.CHANGE_CURRENT_TIME,
+			payload: { currentTime: currentTime }
 		})
 	}
 
@@ -73,19 +84,8 @@ export const TrackProvider = ({ children }: any) => {
 		})
 	}
 
-	const changeCurrentTime = function (currentTime: any) {
-		trackState.trackData.audio.currentTime = currentTime;
-		dispatch({
-			type: TrackTypes.CHANGE_CURRENT_TIME,
-			payload: { currentTime: currentTime }
-		})
-	}
-
 	const shuffleTracksList = function () {
-		dispatch({
-			type: TrackTypes.SHUFFLE_TRACKS_LIST,
-			payload: { shuffle: trackState.trackData.shuffle }
-		})
+		shuffleTracksListAction(dispatch, trackState)
 	}
 
 	return (
