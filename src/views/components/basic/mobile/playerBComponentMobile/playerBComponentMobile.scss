@@ -1,7 +1,7 @@
 @import '../../../../../sass/variables';
 @import '../../../../../sass/mixins';
 
-.page-player {
+.page-player-mobile {
   position: fixed;
   bottom: 60px;
   left: 0;
@@ -18,14 +18,14 @@
   z-index: 11;
 }
 
-.player-bottom {
+.player-bottom-mobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.player-bottom-controls {
+.player-bottom-controls-mobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +55,7 @@
   }
 }
 
-.player-bottom-track {
+.player-bottom-track-mobile {
   display: flex;
   flex-direction: column;
   flex: 1;

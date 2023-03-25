@@ -1,6 +1,6 @@
 @import '../../../../../sass/variables.scss';
 
-.page-topbar {
+.page-topbar-mobile {
   position: absolute;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   z-index: 10;
 }
 
-.page-topbar-action {
+.page-topbar-mobile-action {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,7 +114,7 @@
   }
 }
 
-.page-topbar-action__popper::before {
+.page-topbar-mobile-action__popper::before {
   content: '';
   transform: rotate(45deg);
 }
