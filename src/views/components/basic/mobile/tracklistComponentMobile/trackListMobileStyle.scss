@@ -9,6 +9,8 @@
   border-right: var(--color-border-1px);
   border-top-right-radius: 10px;
   color: var(----color-primary);
+  width: 95vw;
+  justify-content: space-between;
 
   &__dropbox {
     
@@ -21,7 +23,7 @@
         margin: 5px;
         align-items: center;
       }
-    }
+    } 
   }
 
   &__icons-mobile{
@@ -53,7 +55,6 @@
   &__icons-mobile {
     display: flex;
     flex-direction: row;
-    justify-content: right;
     gap: 10px;
     padding: 10px;
     font-size: 18px;
@@ -66,18 +67,4 @@
   }
 }
 
-.popperActive {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: 0.5s ease;
-}
-
-.popperInactive {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-100%);
-  transition: 0.5s ease;
-  height: 0;
-}
 
