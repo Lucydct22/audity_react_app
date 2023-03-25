@@ -1,4 +1,4 @@
-export function initAudio(data: any) {
+export default function initAudio(data: any) {
 	const audio = new Audio();
 	audio.src = data.url;
 	audio.preload = 'auto';
