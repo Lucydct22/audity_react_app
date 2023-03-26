@@ -5,7 +5,7 @@ import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentDesktop.scss'
-import CurrentTracksListContext from '../../../../../context/currentTracksList/CurrentTracksListContext';
+import CurrentTracklistContext from '../../../../../context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from '../../../../../context/currentTrack/CurrentTrackContext';
 
 const PlayerBComponentDesktop = () => {
@@ -20,7 +20,10 @@ const PlayerBComponentDesktop = () => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-  const { shuffle, shuffleTracksList } = useContext(CurrentTracksListContext);
+  const {
+    shuffle,
+    shuffleTracklist
+  } = useContext(CurrentTracklistContext);
 
   return (
     <div className='page-player'>
@@ -63,7 +66,7 @@ const PlayerBComponentDesktop = () => {
         </div>
 
         <div className='player-bottom-options'>
-          <button className='page-player-bottom__btn' onClick={shuffleTracksList}>
+          <button className='page-player-bottom__btn' onClick={shuffleTracklist}>
             {shuffle ? <IoShuffleOutline /> : <IoShuffleOutline color='#C1C1C1' />}
           </button>
           <button className='page-player-bottom__btn' onClick={loopTrack}>

@@ -30,9 +30,9 @@ export const initCurrentTrackAction = async function (dispatch: any) {
 	})
 }
 
-export const nextTrackAction = async function (dispatch: any, trackState: any, tracksList: any) {
+export const nextTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
 	const { currentTrack, trackData } = trackState;
-	const trackId = tracksCycle(tracksList.tracks, currentTrack.id);
+	const trackId = tracksCycle(tracklist.tracks, currentTrack.id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;
 
@@ -62,9 +62,9 @@ export const nextTrackAction = async function (dispatch: any, trackState: any, t
 	})
 }
 
-export const previousTrackAction = async function (dispatch: any, trackState: any, tracksList: any) {
+export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
 	const { currentTrack, trackData } = trackState;
-	const tracksReverse = [...tracksList.tracks].reverse();
+	const tracksReverse = [...tracklist.tracks].reverse();
 	const trackId = tracksCycle(tracksReverse, currentTrack.id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;

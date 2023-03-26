@@ -1,5 +1,5 @@
 import { useContext, useReducer } from "react";
-import CurrentTracksListContext from "../currentTracksList/CurrentTracksListContext";
+import CurrentTracklistContext from "../currentTracklist/CurrentTracklistContext";
 import CurrentTrackContext from "./CurrentTrackContext";
 import initialCurrentTrackState from "./initialCurrentTrackState";
 import currentTrackReducer from "../../reducers/currentTrack/currentTrackReducer";
@@ -12,7 +12,7 @@ import {
 
 export default function CurrentTrackProvider({ children }: any) {
 	const [currentTrackState, dispatch] = useReducer(currentTrackReducer, initialCurrentTrackState);
-	const tracksList = useContext(CurrentTracksListContext);
+	const currentTracklist = useContext(CurrentTracklistContext);
 	const { trackData } = currentTrackState;
 	const { audio } = trackData;
 
@@ -47,11 +47,11 @@ export default function CurrentTrackProvider({ children }: any) {
 	}
 
 	const nextTrack = function () {
-		nextTrackAction(dispatch, currentTrackState, tracksList)
+		nextTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
 	const previousTrack = function () {
-		previousTrackAction(dispatch, currentTrackState, tracksList)
+		previousTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
 	const muteTrack = function () {

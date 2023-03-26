@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useContext } from "react";
 import CurrentTrackContext from "../../../context/currentTrack/CurrentTrackContext";
-import CurrentTracksListContext from "../../../context/currentTracksList/CurrentTracksListContext";
+import CurrentTracklistContext from "../../../context/currentTracklist/CurrentTracklistContext";
 import { Outlet } from 'react-router-dom'
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { responsiveBreak } from "../../../utils/componentsConstants";
@@ -23,7 +23,7 @@ const TopBarBComponentMobile = lazy(() => import('../../components/basic/mobile/
 
 const BasicLayout = () => {
   const { trackData, initCurrentTrack, updateCurrentTime } = useContext(CurrentTrackContext);
-  const { initCurrentTracksList } = useContext(CurrentTracksListContext);
+  const { initCurrentTracklist } = useContext(CurrentTracklistContext);
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
   const [innerWidth] = useWindowSizeReport();
@@ -33,7 +33,7 @@ const BasicLayout = () => {
   }, []);
 
     useEffect(() => {
-    initCurrentTracksList()
+    initCurrentTracklist()
   }, []);
 
   useEffect(() => {

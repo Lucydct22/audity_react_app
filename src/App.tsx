@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router-dom";
 import router from './router/router';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ThemeProvider } from "./context/theme/ThemeContext";
-import { CurrentTracksListProvider } from "./context/currentTracksList/CurrentTracksListProvider";
+import CurrentTracklistProvider from "./context/currentTracklist/CurrentTracklistProvider";
 import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
 import { isLocalhost } from './utils/isLocalhost';
 
@@ -18,14 +18,14 @@ const App = () => {
       authorizationParams={{ redirect_uri: window.location.origin + '/' }}
     >
       <ThemeProvider>
-        <CurrentTracksListProvider>
+        <CurrentTracklistProvider>
           <CurrentTrackProvider>
             <RouterProvider
               router={router}
               fallbackElement={<></>}
             />
           </CurrentTrackProvider>
-        </CurrentTracksListProvider>
+        </CurrentTracklistProvider>
       </ThemeProvider>
     </Auth0Provider>
   );

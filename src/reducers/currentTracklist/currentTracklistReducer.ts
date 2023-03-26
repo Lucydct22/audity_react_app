@@ -1,10 +1,10 @@
-import * as CurrentTracksListReducer from './currentTracksListTypes';
+import * as CurrentTracklistReducer from './currentTracklistTypes';
 
-export default function currentTracksListReducer(state: any, action: any) {
+export default function currentTracklistReducer(state: any, action: any) {
 	const { type, payload } = action;
 
 	switch (type) {
-		case CurrentTracksListReducer.INIT_CURRENT_TRACKS_LIST:
+		case CurrentTracklistReducer.INIT_CURRENT_TRACKLIST:
 			return {
 				listType: payload.listType,
 				listId: payload.listId,
@@ -12,7 +12,7 @@ export default function currentTracksListReducer(state: any, action: any) {
 				shuffle: false
 			}
 
-		case CurrentTracksListReducer.SHUFFLE_TRACKS_LIST:
+		case CurrentTracklistReducer.SHUFFLE_TRACKLIST:
 			return {
 				...state,
 				tracks: payload.tracks,
