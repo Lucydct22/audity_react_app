@@ -33,8 +33,7 @@ export default function trackReducer(state: any, action: any) {
 				...state,
 				trackData: {
 					...state.trackData,
-					currentTime: payload,
-					timeToEnd: state.trackData.duration - payload
+					currentTime: payload
 				}
 			}
 
