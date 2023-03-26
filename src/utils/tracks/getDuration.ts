@@ -1,9 +1,7 @@
-export function getDuration(src: any) {
+export default function getDuration(audio: HTMLAudioElement) {
 	return new Promise(function (resolve) {
-		var audio = new Audio();
 		audio.addEventListener("loadedmetadata", function () {
 			resolve(audio.duration);
 		});
-		audio.src = src;
 	});
 }

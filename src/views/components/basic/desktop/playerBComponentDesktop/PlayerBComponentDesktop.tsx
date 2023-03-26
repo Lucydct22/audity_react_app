@@ -1,37 +1,29 @@
-import { useContext, useEffect, useState } from 'react';
-import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
+import { useContext, useState } from 'react';
+import ProgressBar from './progressBar/ProgressBar';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentDesktop.scss'
+import CurrentTracklistContext from '../../../../../context/currentTracklist/CurrentTracklistContext';
+import CurrentTrackContext from '../../../../../context/currentTrack/CurrentTrackContext';
 
 const PlayerBComponentDesktop = () => {
   const [songLike, setSongLike] = useState(false);
-  const [songVolume, setSongVolume] = useState(false);
   const {
     trackData,
     currentTrack,
-    initCurrentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
-    updateCurrentTime,
     nextTrack,
     previousTrack,
     muteTrack,
-    loopTrack
-  } = useContext(TrackContext);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      updateCurrentTime()
-    }, 500);
-    return () => clearInterval(interval);
-  }, [trackData]);
-
-  useEffect(() => {
-    initCurrentTrack()
-  }, [])
+    loopTrack,
+  } = useContext(CurrentTrackContext);
+  const {
+    shuffle,
+    shuffleTracklist
+  } = useContext(CurrentTracklistContext);
 
   return (
     <div className='page-player'>
@@ -68,19 +60,17 @@ const PlayerBComponentDesktop = () => {
                 </button>
               </div>
             </div>
-            <div className='player-bottom-track__container--seekbar'>
-              <hr />
-            </div>
+            <ProgressBar />
           </div>
           {formatToSeconds(trackData.duration)}
         </div>
 
         <div className='player-bottom-options'>
-          <button className='page-player-bottom__btn'>
-            <IoShuffleOutline />
+          <button className='page-player-bottom__btn' onClick={shuffleTracklist}>
+            {shuffle ? <IoShuffleOutline /> : <IoShuffleOutline color='#C1C1C1' />}
           </button>
           <button className='page-player-bottom__btn' onClick={loopTrack}>
-            {trackData.hasLoop ? <IoRepeatOutline /> : <IoRepeatOutline />}
+            {trackData.hasLoop ? <IoRepeatOutline /> : <IoRepeatOutline color='#C1C1C1' />}
           </button>
           <button className='page-player-bottom__btn' onClick={muteTrack}>
             {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}

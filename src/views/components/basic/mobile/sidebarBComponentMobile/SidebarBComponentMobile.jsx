@@ -11,67 +11,67 @@ const SidebarBComponentMobile = () => {
   const { t } = useTranslation();
 
   return (
-    <nav className="side-bar">
-      <div className="side-bar-header">
-        <div className="side-bar-header__sections">
-          <NavLink to={"/"} className="side-bar-header__sections--options">
+    <nav className="side-bar-mobile">
+      <div className="side-bar-mobile-header">
+        <div className="side-bar-mobile-header__sections">
+          <NavLink to={"/"} className="side-bar-mobile-header__sections--options">
             <FiMusic
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_music")}</p>
           </NavLink>
 
           <NavLink
             to={"/browser"}
-            className="side-bar-header__sections--options"
+            className="side-bar-mobile-header__sections--options"
           >
             <CgBrowser
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_browser")}</p>
           </NavLink>
 
           <NavLink
             to={"/search"}
-            className="side-bar-header__sections--options"
+            className="side-bar-mobile-header__sections--options"
           >
             <FiSearch
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_search")}</p>
           </NavLink>
           
           <NavLink
             to={"/favorites"}
-            className="side-bar-header__sections--options"
+            className="side-bar-mobile-header__sections--options"
           >
-            <div className="side-bar-header__sections--options__decoration"></div>
+            <div className="side-bar-mobile-header__sections--options__decoration"></div>
             <AiOutlineHeart
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_favorites")}</p>
           </NavLink>
 
           <NavLink
             to={"/studio"}
-            className="side-bar-header__sections--options"
+            className="side-bar-mobile-header__sections--options"
           >
             <BsMusicPlayer
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_studio")}</p>
           </NavLink>
 
-          {/* <NavLink to={"/radio"} className="side-bar-header__sections--options">
-            <div className="side-bar-header__sections--options__decoration"></div>
+          {/* <NavLink to={"/radio"} className="side-bar-mobile-header__sections--options">
+            <div className="side-bar-mobile-header__sections--options__decoration"></div>
             <RiRadioLine
               size={20}
-              className="side-bar-header__sections--options__icon"
+              className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_radio")}</p>
           </NavLink> */}

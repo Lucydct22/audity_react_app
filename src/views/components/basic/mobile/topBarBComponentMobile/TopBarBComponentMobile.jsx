@@ -33,14 +33,14 @@ const TopBarBComponentMobile = () => {
   });
 
   return (
-    <header className='page-topbar'>
-      <div className='page-topbar-action' ref={popperRef}>
-        <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
+    <header className='page-topbar-mobile'>
+      <div className='page-topbar-mobile-action' ref={popperRef}>
+        <button className='page-topbar-mobile-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
           <img src={user?.picture ? user.picture : 'https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg'} alt="avatar" />
         </button>
-        <div className={`page-topbar-action__popper ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
-          <div className='page-topbar-action__popper--wrapper'>
-            <div className='page-topbar-action__popper--wrapper__icon'>
+        <div className={`page-topbar-mobile-action__popper ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
+          <div className='page-topbar-mobile-action__popper--wrapper'>
+            <div className='page-topbar-mobile-action__popper--wrapper__icon'>
               <GoTriangleUp />
             </div>
 
@@ -63,11 +63,11 @@ const TopBarBComponentMobile = () => {
               <Theme />
             </div>
             {isAuthenticated ? (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
+              <span className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
                 Log out
               </span>
             ) : (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+              <span className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
                 Login
               </span>
             )}

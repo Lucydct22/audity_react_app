@@ -8,8 +8,7 @@ import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 
-
-const topBarBComponentDesktop = () => {
+const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
@@ -17,7 +16,7 @@ const topBarBComponentDesktop = () => {
   let popperRef = useRef();
 
   useEffect(() => {
-    let handler = (e) => {
+    const handler = (e) => {
       if (!popperRef.current.contains(e.target)) {
         setPopperOpen(false);
       }
@@ -25,12 +24,11 @@ const topBarBComponentDesktop = () => {
 
     document.addEventListener("mousedown", handler);
 
-
     return () => {
       document.removeEventListener("mousedown", handler);
     }
 
-  });
+  }, []);
 
   return (
     <header className='page-topbar'>
@@ -82,4 +80,4 @@ const topBarBComponentDesktop = () => {
   )
 }
 
-export default topBarBComponentDesktop;
+export default TopBarBComponentDesktop;

@@ -1,18 +1,33 @@
-import { TrackProvider } from "./context/currentTrack/TrackContext";
 import { RouterProvider } from "react-router-dom";
 import router from './router/router';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { ThemeProvider } from "./context/theme/ThemeContext";
+import CurrentTracklistProvider from "./context/currentTracklist/CurrentTracklistProvider";
+import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
+import { isLocalhost } from './utils/isLocalhost';
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <TrackProvider>
-        <RouterProvider
-          router={router}
-          fallbackElement={<></>}
-        />
-      </TrackProvider>
-    </ThemeProvider>
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      clientId={
+        isLocalhost
+          ? import.meta.env.VITE_DEVELOPMENT_AUTH0_CLIENT_ID as string
+          : import.meta.env.VITE_PRODUCTION_AUTH0_CLIENT_ID as string
+      }
+      authorizationParams={{ redirect_uri: window.location.origin + '/' }}
+    >
+      <ThemeProvider>
+        <CurrentTracklistProvider>
+          <CurrentTrackProvider>
+            <RouterProvider
+              router={router}
+              fallbackElement={<></>}
+            />
+          </CurrentTrackProvider>
+        </CurrentTracklistProvider>
+      </ThemeProvider>
+    </Auth0Provider>
   );
 }
 
