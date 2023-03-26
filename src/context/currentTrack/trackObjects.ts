@@ -21,5 +21,4 @@ export const trackData = {
 	isMuted: false,
 	hasLoop: false,
 	volume: 0,
-	shuffle: false
 }
