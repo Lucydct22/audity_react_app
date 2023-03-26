@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { useContext, useReducer } from "react";
 import {
 	initCurrentTrackAction,
 	nextTrackAction,
@@ -7,52 +7,39 @@ import {
 import trackReducer from "../../reducers/track/trackReducer";
 import * as TrackTypes from '../../reducers/track/trackTypes';
 import CurrentTracksListContext from "../currentTracksList/CurrentTracksListContext";
-import { currentTrack, trackData } from "./trackObjects";
+import CurrentTrackContext from "./CurrentTrackContext";
+import initialTrackState from "./initialTrackState";
 
-const initialState = {
-	currentTrack,
-	trackData,
-	initCurrentTrack: () => { },
-	playCurrentTrack: () => { },
-	pauseCurrentTrack: () => { },
-	updateCurrentTime: () => { },
-	nextTrack: () => { },
-	previousTrack: () => { },
-	muteTrack: () => { },
-	loopTrack: () => { },
-	changeCurrentTime: () => { },
-}
-
-export const TrackContext = createContext(initialState);
-
-export const TrackProvider = ({ children }: any) => {
-	const [trackState, dispatch] = useReducer(trackReducer, initialState);
+export default function CurrentTrackProvider({ children }: any) {
+	const [trackState, dispatch] = useReducer(trackReducer, initialTrackState);
 	const tracksList = useContext(CurrentTracksListContext);
+	const { trackData } = trackState;
+	const { audio } = trackData;
 
 	const initCurrentTrack = function () {
 		initCurrentTrackAction(dispatch);
 	}
 
 	const playCurrentTrack = function () {
-		trackState.trackData.audio.play();
+		audio.play();
 		dispatch({ type: TrackTypes.PLAY_CURRENT_TRACK })
 	}
 
 	const pauseCurrentTrack = function () {
-		trackState.trackData.audio.pause();
+		audio.pause();
 		dispatch({ type: TrackTypes.PAUSE_CURRENT_TRACK })
 	}
 
 	const updateCurrentTime = function () {
-		trackState?.trackData?.audio?.ended && nextTrack()
+		audio.ended && nextTrack()
 		dispatch({
 			type: TrackTypes.UPDATE_CURRENT_TIME,
-			payload: Math.round(trackState.trackData.audio.currentTime)
+			payload: Math.round(audio.currentTime)
 		})
 	}
 
 	const changeCurrentTime = function (currentTime: number) {
-		trackState.trackData.audio.currentTime = currentTime;
+		audio.currentTime = currentTime;
 		dispatch({
 			type: TrackTypes.CHANGE_CURRENT_TIME,
 			payload: { currentTime: currentTime }
@@ -68,23 +55,23 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const muteTrack = function () {
-		trackState.trackData.audio.muted = !trackState.trackData.audio.muted;
+		audio.muted = !audio.muted;
 		dispatch({
 			type: TrackTypes.MUTE_TRACK,
-			payload: { isMuted: trackState.trackData.audio.muted }
+			payload: { isMuted: audio.muted }
 		})
 	}
 
 	const loopTrack = function () {
-		trackState.trackData.audio.loop = !trackState.trackData.audio.loop;
+		audio.loop = !audio.loop;
 		dispatch({
 			type: TrackTypes.LOOP_TRACK,
-			payload: { hasLoop: trackState.trackData.audio.loop }
+			payload: { hasLoop: audio.loop }
 		})
 	}
 
 	return (
-		<TrackContext.Provider value={{
+		<CurrentTrackContext.Provider value={{
 			...trackState,
 			initCurrentTrack,
 			playCurrentTrack,
@@ -97,6 +84,6 @@ export const TrackProvider = ({ children }: any) => {
 			changeCurrentTime,
 		}}>
 			{children}
-		</TrackContext.Provider>
+		</CurrentTrackContext.Provider>
 	)
 }

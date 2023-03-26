@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
 import ProgressBar from './progressBar/ProgressBar';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
@@ -7,6 +6,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentDesktop.scss'
 import CurrentTracksListContext from '../../../../../context/currentTracksList/CurrentTracksListContext';
+import CurrentTrackContext from '../../../../../context/currentTrack/CurrentTrackContext';
 
 const PlayerBComponentDesktop = () => {
   const [songLike, setSongLike] = useState(false);
@@ -19,7 +19,7 @@ const PlayerBComponentDesktop = () => {
     previousTrack,
     muteTrack,
     loopTrack,
-  } = useContext(TrackContext);
+  } = useContext(CurrentTrackContext);
   const { shuffle, shuffleTracksList } = useContext(CurrentTracksListContext);
 
   return (

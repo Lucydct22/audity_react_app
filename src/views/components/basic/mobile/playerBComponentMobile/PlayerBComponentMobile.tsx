@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { TrackContext } from '../../../../../context/currentTrack/TrackContext';
+import CurrentTrackContext from '../../../../../context/currentTrack/CurrentTrackContext';
 import formatToSeconds from '../../../../../utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -14,7 +14,7 @@ const PlayerBComponentMobile = () => {
     currentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
-  } = useContext(TrackContext);
+  } = useContext(CurrentTrackContext);
 
   return (
     <div className='page-player-mobile'>

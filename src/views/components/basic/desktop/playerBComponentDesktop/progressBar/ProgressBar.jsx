@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { TrackContext } from '../../../../../../context/currentTrack/TrackContext';
+import CurrentTrackContext from '../../../../../../context/currentTrack/CurrentTrackContext';
 import './progressBar.scss'
 
 export default function ProgressBar() {
-	const { trackData, changeCurrentTime } = useContext(TrackContext);
+	const { trackData, changeCurrentTime } = useContext(CurrentTrackContext);
 
 	return (
 		<div className="progress-bar">
