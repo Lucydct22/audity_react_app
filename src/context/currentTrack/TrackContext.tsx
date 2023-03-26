@@ -1,17 +1,16 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import {
 	initCurrentTrackAction,
 	nextTrackAction,
 	previousTrackAction,
-	shuffleTracksListAction
 } from "../../reducers/track/trackActions";
 import trackReducer from "../../reducers/track/trackReducer";
 import * as TrackTypes from '../../reducers/track/trackTypes';
+import CurrentTracksListContext from "../currentTracksList/CurrentTracksListContext";
 import { currentTrack, trackData } from "./trackObjects";
 
 const initialState = {
 	currentTrack,
-	tracksList: [],
 	trackData,
 	initCurrentTrack: () => { },
 	playCurrentTrack: () => { },
@@ -22,13 +21,13 @@ const initialState = {
 	muteTrack: () => { },
 	loopTrack: () => { },
 	changeCurrentTime: () => { },
-	shuffleTracksList: () => { }
 }
 
 export const TrackContext = createContext(initialState);
 
 export const TrackProvider = ({ children }: any) => {
 	const [trackState, dispatch] = useReducer(trackReducer, initialState);
+	const tracksList = useContext(CurrentTracksListContext);
 
 	const initCurrentTrack = function () {
 		initCurrentTrackAction(dispatch);
@@ -61,11 +60,11 @@ export const TrackProvider = ({ children }: any) => {
 	}
 
 	const nextTrack = function () {
-		nextTrackAction(dispatch, trackState)
+		nextTrackAction(dispatch, trackState, tracksList)
 	}
 
 	const previousTrack = function () {
-		previousTrackAction(dispatch, trackState)
+		previousTrackAction(dispatch, trackState, tracksList)
 	}
 
 	const muteTrack = function () {
@@ -84,10 +83,6 @@ export const TrackProvider = ({ children }: any) => {
 		})
 	}
 
-	const shuffleTracksList = function () {
-		shuffleTracksListAction(dispatch, trackState)
-	}
-
 	return (
 		<TrackContext.Provider value={{
 			...trackState,
@@ -100,7 +95,6 @@ export const TrackProvider = ({ children }: any) => {
 			muteTrack,
 			loopTrack,
 			changeCurrentTime,
-			shuffleTracksList
 		}}>
 			{children}
 		</TrackContext.Provider>
