@@ -14,8 +14,7 @@ export default function currentTracksListReducer(state: any, action: any) {
 
 		case CurrentTracksListReducer.SHUFFLE_TRACKS_LIST:
 			return {
-				listType: state.listType,
-				listId: state.listId,
+				...state,
 				tracks: payload.tracks,
 				shuffle: !state.shuffle,
 			}
