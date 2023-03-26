@@ -35,11 +35,11 @@ REACT_APP_API_URL=http://localhost:5100
 
 ## Authors 
 
-[David Pizarro Frick](https://github.com/DTPF)
-[Iuliia Shikhanova](https://github.com/IuliiaNova)
-[Joe Joy](https://github.com/joejoyjoy)
-[Javier Pascual Tunez](https://github.com/Javier-jpt)
-[Lucia Tena](https://github.com/Lucydct22)
+[David Pizarro Frick](https://github.com/DTPF), 
+[Iuliia Shikhanova](https://github.com/IuliiaNova), 
+[Joe Joy](https://github.com/joejoyjoy), 
+[Javier Pascual Tunez](https://github.com/Javier-jpt), 
+[Lucia Tena](https://github.com/Lucydct22), 
 
 
 
