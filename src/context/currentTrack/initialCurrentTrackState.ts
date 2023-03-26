@@ -1,4 +1,4 @@
-const initialTrackState = {
+const initialCurrentTrackState = {
 	currentTrack: {
 		id: '',
 		name: '',
@@ -32,4 +32,4 @@ const initialTrackState = {
 	changeCurrentTime: () => { },
 }
 
-export default initialTrackState;
+export default initialCurrentTrackState;

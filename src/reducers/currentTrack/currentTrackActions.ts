@@ -2,7 +2,7 @@ import { getTrackByIdApi } from "../../api/music/tracks";
 import getDuration from "../../utils/tracks/getDuration";
 import initAudio from "../../utils/tracks/initAudio";
 import tracksCycle from "../../utils/tracks/tracksCycle";
-import * as TrackTypes from './trackTypes'
+import * as CurrentTrackTypes from './currentTrackTypes'
 
 export const initCurrentTrackAction = async function (dispatch: any) {
 	await getTrackByIdApi('1').then(async res => {
@@ -11,7 +11,7 @@ export const initCurrentTrackAction = async function (dispatch: any) {
 			const duration: any = await getDuration(audio);
 
 			return dispatch({
-				type: TrackTypes.INIT_CURRENT_TRACK,
+				type: CurrentTrackTypes.INIT_CURRENT_TRACK,
 				payload: {
 					currentTrack: res,
 					trackData: {
@@ -44,7 +44,7 @@ export const nextTrackAction = async function (dispatch: any, trackState: any, t
 		trackData.hasLoop && (audio.loop = true);
 
 		return dispatch({
-			type: TrackTypes.NEXT_TRACK,
+			type: CurrentTrackTypes.NEXT_TRACK,
 			payload: {
 				currentTrack: res,
 				trackData: {
@@ -77,7 +77,7 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 		trackData.hasLoop && (audio.loop = true);
 
 		return dispatch({
-			type: TrackTypes.PREV_TRACK,
+			type: CurrentTrackTypes.PREV_TRACK,
 			payload: {
 				currentTrack: res,
 				trackData: {

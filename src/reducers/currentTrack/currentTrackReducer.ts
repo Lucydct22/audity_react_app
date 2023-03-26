@@ -1,16 +1,16 @@
-import * as TrackTypes from './trackTypes';
+import * as CurrentTrackTypes from './currentTrackTypes';
 
-export default function trackReducer(state: any, action: any) {
+export default function currentTrackReducer(state: any, action: any) {
 	const { type, payload } = action;
 
 	switch (type) {
-		case TrackTypes.INIT_CURRENT_TRACK:
+		case CurrentTrackTypes.INIT_CURRENT_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
 				trackData: payload.trackData,
 			}
 
-		case TrackTypes.PLAY_CURRENT_TRACK:
+		case CurrentTrackTypes.PLAY_CURRENT_TRACK:
 			return {
 				...state,
 				trackData: {
@@ -19,7 +19,7 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
-		case TrackTypes.PAUSE_CURRENT_TRACK:
+		case CurrentTrackTypes.PAUSE_CURRENT_TRACK:
 			return {
 				...state,
 				trackData: {
@@ -28,7 +28,7 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
-		case TrackTypes.UPDATE_CURRENT_TIME:
+		case CurrentTrackTypes.UPDATE_CURRENT_TIME:
 			return {
 				...state,
 				trackData: {
@@ -37,7 +37,7 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
-		case TrackTypes.CHANGE_CURRENT_TIME:
+		case CurrentTrackTypes.CHANGE_CURRENT_TIME:
 			return {
 				...state,
 				trackData: {
@@ -46,19 +46,19 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
-		case TrackTypes.NEXT_TRACK:
+		case CurrentTrackTypes.NEXT_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
 				trackData: payload.trackData
 			}
 
-		case TrackTypes.PREV_TRACK:
+		case CurrentTrackTypes.PREV_TRACK:
 			return {
 				currentTrack: payload.currentTrack,
 				trackData: payload.trackData
 			}
 
-		case TrackTypes.MUTE_TRACK:
+		case CurrentTrackTypes.MUTE_TRACK:
 			return {
 				...state,
 				trackData: {
@@ -67,7 +67,7 @@ export default function trackReducer(state: any, action: any) {
 				}
 			}
 
-		case TrackTypes.LOOP_TRACK:
+		case CurrentTrackTypes.LOOP_TRACK:
 			return {
 				...state,
 				trackData: {
