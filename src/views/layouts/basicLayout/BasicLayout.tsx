@@ -9,6 +9,7 @@ import TopBarBComponentDesktop from "../../components/basic/desktop/topBarBCompo
 import SidebarBComponentMobile from "../../components/basic/mobile/sidebarBComponentMobile";
 import PlayerBComponentMobile from "../../components/basic/mobile/playerBComponentMobile";
 import TopBarBComponentMobile from "../../components/basic/mobile/topBarBComponentMobile";
+import CurrentTracksListContext from "../../../context/currentTracksList/CurrentTracksListContext";
 
 // Desktop
 // const SidebarBComponentDesktop = lazy(() => import('../../components/basic/desktop/sidebarBComponentDesktop'));
@@ -21,12 +22,17 @@ import TopBarBComponentMobile from "../../components/basic/mobile/topBarBCompone
 
 const BasicLayout = () => {
   const { trackData, initCurrentTrack, updateCurrentTime } = useContext(TrackContext);
+  const { initCurrentTracksList } = useContext(CurrentTracksListContext);
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
   const [innerWidth] = useWindowSizeReport();
 
   useEffect(() => {
     initCurrentTrack()
+  }, []);
+
+    useEffect(() => {
+    initCurrentTracksList()
   }, []);
 
   useEffect(() => {
