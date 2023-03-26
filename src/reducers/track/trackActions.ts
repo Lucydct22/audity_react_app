@@ -50,6 +50,8 @@ export const nextTrackAction = function (dispatch: any, trackState: any) {
 		const audio: HTMLAudioElement = initAudio(res);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
+		trackData.isMuted && (audio.muted = true);
+		trackData.hasLoop && (audio.loop = true);
 
 		return dispatch({
 			type: TrackTypes.NEXT_TRACK,
@@ -83,6 +85,8 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 		const audio: HTMLAudioElement = initAudio(res);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
+		trackData.isMuted && (audio.muted = true);
+		trackData.hasLoop && (audio.loop = true);
 
 		return dispatch({
 			type: TrackTypes.PREV_TRACK,
@@ -106,19 +110,18 @@ export const previousTrackAction = function (dispatch: any, trackState: any) {
 }
 
 export const shuffleTracksListAction = function (dispatch: any, trackState: any) {
-	const newList = function () {
-		let newTrackList = trackState.tracksList;
-		if (trackState.trackData.shuffle) {
-			newTrackList.sort((a: any, b: any) => {
-				return a - b;
-			})
+	const { tracksList, trackData } = trackState;
+
+	const orderedTracksList = function () {
+		if (trackData.shuffle) {
+			return tracksList.sort((a: number, b: number) => { return a - b });
 		} else {
-			return shuffleArray(newTrackList)
+			return shuffleArray(tracksList)
 		}
-		return newTrackList;
 	}
+
 	return dispatch({
 		type: TrackTypes.SHUFFLE_TRACKS_LIST,
-		payload: { tracksList: newList() }
+		payload: { tracksList: orderedTracksList() }
 	})
 }
