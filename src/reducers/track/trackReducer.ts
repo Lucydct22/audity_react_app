@@ -12,19 +12,25 @@ export default function trackReducer(state: any, action: any) {
 
 		case TrackTypes.PLAY_CURRENT_TRACK:
 			return {
-				currentTrack: state.currentTrack,
-				trackData: { ...state.trackData, isPlaying: true }
+				...state,
+				trackData: {
+					...state.trackData,
+					isPlaying: true
+				}
 			}
 
 		case TrackTypes.PAUSE_CURRENT_TRACK:
 			return {
-				currentTrack: state.currentTrack,
-				trackData: { ...state.trackData, isPlaying: false }
+				...state,
+				trackData: {
+					...state.trackData,
+					isPlaying: false
+				}
 			}
 
 		case TrackTypes.UPDATE_CURRENT_TIME:
 			return {
-				currentTrack: state.currentTrack,
+				...state,
 				trackData: {
 					...state.trackData,
 					currentTime: payload,
@@ -34,8 +40,11 @@ export default function trackReducer(state: any, action: any) {
 
 		case TrackTypes.CHANGE_CURRENT_TIME:
 			return {
-				currentTrack: state.currentTrack,
-				trackData: { ...state.trackData, currentTime: parseInt(payload.currentTime) }
+				...state,
+				trackData: {
+					...state.trackData,
+					currentTime: parseInt(payload.currentTime)
+				}
 			}
 
 		case TrackTypes.NEXT_TRACK:
@@ -52,14 +61,20 @@ export default function trackReducer(state: any, action: any) {
 
 		case TrackTypes.MUTE_TRACK:
 			return {
-				currentTrack: state.currentTrack,
-				trackData: { ...state.trackData, isMuted: payload.isMuted }
+				...state,
+				trackData: {
+					...state.trackData,
+					isMuted: payload.isMuted
+				}
 			}
 
 		case TrackTypes.LOOP_TRACK:
 			return {
-				currentTrack: state.currentTrack,
-				trackData: { ...state.trackData, hasLoop: payload.hasLoop }
+				...state,
+				trackData: {
+					...state.trackData,
+					hasLoop: payload.hasLoop
+				}
 			}
 
 		default:
