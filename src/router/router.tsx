@@ -17,6 +17,7 @@ const StudioPage = lazy(() => import('../views/pages/basic/studioPage'))
 const FavoritesPage = lazy(() => import('../views/pages/basic/favoritesPage'))
 const RadioPage = lazy(() => import('../views/pages/basic/radioPage'))
 const SearchPage = lazy(() => import('../views/pages/basic/searchPage'))
+const PlaylistsPage = lazy(() => import('../views/pages/basic/playlistPage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
+      },
+      {
+        path: "playlists",
+        element: <Suspense fallback={<></>}><PlaylistsPage /></Suspense>
       },
       {
         path: "*",
