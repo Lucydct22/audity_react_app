@@ -28,7 +28,12 @@
     "react-router-dom": "^6.9.0",
     "react-select": "^5.7.1",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "workbox-core": "^6.5.4",
+    "workbox-expiration": "^6.5.4",
+    "workbox-precaching": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4"
   },
   "devDependencies": {
     "@esbuild/linux-x64": "^0.17.12",
