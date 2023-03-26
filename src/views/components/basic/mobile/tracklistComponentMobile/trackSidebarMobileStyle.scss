@@ -3,7 +3,8 @@
 .popActive {
   left: 0;
   right: 0;
-  height: 700px;
+  bottom: -110%;
+  height: 100vh;
   width: 100vw !important;
   transform: translateY(-100%);
   position: fixed;
@@ -16,6 +17,7 @@
   align-items: center;
   padding-top: 50px;
   justify-content: flex-start !important;
+  z-index: 10;
 
 
   .track-list-item-mobile-pop-div {
@@ -68,16 +70,12 @@
     &__line:hover {
       background-color: var(--background-on-hover);
       }
-
-
     }
-
-
 
 .popInactive {
   left: 0;
   right: 0;
-  transform: translateY(0);
+  transform: translateY(0%);
   height: 0;
   overflow: hidden;
   //transition: all 0.3s ease;
