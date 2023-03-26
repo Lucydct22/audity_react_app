@@ -1,8 +1,26 @@
-import { currentTrack, trackData } from "./currentTrackObjects";
-
 const initialTrackState = {
-	currentTrack,
-	trackData,
+	currentTrack: {
+		id: '',
+		name: '',
+		artist: '',
+		url: '',
+		thumbnail: '',
+		genre: '',
+		likes: '',
+		album: '',
+		createdAt: 0,
+		updatedAt: 0
+	},
+	trackData: {
+		url: '',
+		audio: null,
+		duration: 0,
+		currentTime: 0,
+		isPlaying: false,
+		isMuted: false,
+		hasLoop: false,
+		volume: 0,
+	},
 	initCurrentTrack: () => { },
 	playCurrentTrack: () => { },
 	pauseCurrentTrack: () => { },
