@@ -12,7 +12,6 @@ const AlbumPage = ({ }) => {
 
 		const getAlbums = async () => {
 			const albumsData = await getAlbumsApi()
-			console.log(albumsData)
 			setAlbums(albumsData)
 		}
 

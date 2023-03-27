@@ -46,7 +46,6 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
       ...userData,
       [name]: value
     });*/
-    console.log("hola")
   }
 
   const handleCountryChange = (selectedOption) => {

@@ -8,8 +8,6 @@ import { getArtistApi } from '../../../../api/music/artists';
 const ArtistPage = () => {
 	const [artists, setArtists] = useState([]);
 
-	console.log(artists);
-
 	useEffect(() => {
 		let isMounted = true;
 		getArtistApi().then(res => {
