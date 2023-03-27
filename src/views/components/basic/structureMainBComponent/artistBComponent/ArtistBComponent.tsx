@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faPause, faPlay, faThumbsUp, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export default function ArtistBComponent() {
 	const { t } = useTranslation();
@@ -17,10 +18,6 @@ export default function ArtistBComponent() {
 	const handleFollowClick = () => {
 		setIsFollowing((prevState) => !prevState);
 	};
-
-	const handleLikeClick = () => {
-		setIsLiked((prevState) => !prevState);
-	}
 
 	return (
 		<>
@@ -54,16 +51,8 @@ export default function ArtistBComponent() {
 								</button>
 							</div>
 							<div className="artist-page__section--buttons__container--like">
-								<button className="artist-page__section--buttons__container--like__btn" onClick={handleLikeClick}>
-									{isLiked ? (
-										<>
-											<FontAwesomeIcon icon={faHeart} />
-										</>
-									) : (
-										<>
-											<FontAwesomeIcon icon={faThumbsUp} />
-										</>
-									)}
+								<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
+									{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
 								</button>
 							</div>
 							<div className="artist-page__section--buttons__container--follow">
