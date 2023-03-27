@@ -67,7 +67,7 @@ const SidebarBComponentDesktop = () => {
                   />
                   <p className="side-bar-header__sections--options__icon--dropdown">Artist</p>
                 </NavLink>
-                <NavLink to={"/album"} className="side-bar-header__sections--options">
+                <NavLink to={"/albums"} className="side-bar-header__sections--options">
                   <div className="side-bar-header__sections--options__decoration"></div>
                   <MdOutlineLibraryMusic
                     size={15}

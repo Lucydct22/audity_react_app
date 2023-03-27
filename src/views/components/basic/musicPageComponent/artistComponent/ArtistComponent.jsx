@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getArtistApi } from '../../../../../api/music/artists';
+import { RenderArtist } from './renderArtist/RenderArtist';
+import { useTranslation } from 'react-i18next';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useTranslation } from 'react-i18next';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './artistComponent.scss';
-// import AlbumImg4 from '../../../../../../assets/img/albums/4.jpg';
-import { RenderArtist } from './renderArtist/renderArtist';
 
 export default function ArtistSlider() {
   let slider = new Slider();
