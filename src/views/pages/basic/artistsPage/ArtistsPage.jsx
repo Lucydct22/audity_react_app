@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import HelmetSEO from "../../../utils/HelmetSEO";
-import { RenderArtist } from '../../../components/basic/musicPageComponent/artistsSlider/renderArtist/RenderArtist';
 import { getArtistApi } from '../../../../api/music/artists';
-import './artistsPage.scss';
+import ArtistsBComponent from '../../../components/basic/artistsBComponent/ArtistsBComponent';
+import HelmetSEO from "../../../utils/HelmetSEO";
 
 const ArtistsPage = () => {
 	const [artists, setArtists] = useState([]);
@@ -17,21 +16,13 @@ const ArtistsPage = () => {
 		return () => { isMounted = false }
 	}, [])
 
-
 	return (
 		isNaN(parseInt(params.artistId)) ? (
 			<HelmetSEO
-				title='Artist | Audity'
-				description='Audity Artist Page'
+				title='Artists | Audity'
+				description='Audity Artists Page'
 			>
-				<div className="artists-page-content">
-					<h1>Artist Page</h1>
-					<div className='artists-page-content__grid'>
-						{artists &&
-							artists.map(artist => <RenderArtist key={artist.id} artist={artist} />)
-						}
-					</div>
-				</div>
+				<ArtistsBComponent artists={artists} />
 			</HelmetSEO>
 		) : (
 			<Outlet />

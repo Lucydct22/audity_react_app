@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import './renderArtist.scss';
 
-export const RenderArtist = ({ artist }) => {
-
+export default function RenderArtist ({ artist }) {
   return (
     <Link className='render-artist' to={`/artists/${artist.id}`}>
       <div className='render-artist__thumbnail'>

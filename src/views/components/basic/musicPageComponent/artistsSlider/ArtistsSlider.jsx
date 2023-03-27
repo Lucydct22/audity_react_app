@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getArtistApi } from '../../../../../api/music/artists';
-import { RenderArtist } from './renderArtist/RenderArtist';
+import RenderArtist from './renderArtist';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import Slider from 'react-slick';

@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import './albumsPage.scss'
-import HelmetSEO from "../../../utils/HelmetSEO";
-import RenderAlbum from "../../../components/basic/musicPageComponent/albumsSlider/renderAlbum";
-import { getAlbumsApi } from '../../../../api/music/albums';
 import { Outlet, useParams } from 'react-router-dom';
+import { getAlbumsApi } from '../../../../api/music/albums';
+import AlbumsBComponent from '../../../components/basic/albumsBComponent/AlbumsBComponent';
+import HelmetSEO from "../../../utils/HelmetSEO";
 
 const AlbumsPage = ({ }) => {
 	const [albums, setAlbums] = useState([]);
@@ -20,17 +19,10 @@ const AlbumsPage = ({ }) => {
 	return (
 		isNaN(parseInt(params.albumId)) ? (
 			<HelmetSEO
-				title='Album | Audity'
-				description='Audity Album Page'
+				title='Albums | Audity'
+				description={`Audity | Albums`}
 			>
-				<div className="albums-page-content">
-					<h1>Album Page</h1>
-					<div className='albums-page-content__grid'>
-						{albums.map(album => {
-							return <RenderAlbum key={album.id} album={album} />
-						})}
-					</div>
-				</div>
+				<AlbumsBComponent albums={albums} />
 			</HelmetSEO >
 		) : (
 			<Outlet />

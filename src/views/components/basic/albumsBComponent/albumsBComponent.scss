@@ -1,4 +1,5 @@
 @import "../../../../sass/variables";
+@import "../../../../sass/animation";
 
 .albums-page-content {
 
@@ -8,8 +9,8 @@
 
 	&__grid {
 		display: grid !important;
-
 		grid-template-columns: repeat(5, 1fr);
+		@include fadeIn();
 	}
 
 }
