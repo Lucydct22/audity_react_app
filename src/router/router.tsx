@@ -44,10 +44,12 @@ const router = createBrowserRouter([
       {
         path: "artists",
         element: <Suspense fallback={<></>}><ArtistsPage /></Suspense>,
-      },
-      {
-        path: "artists/:artistId",
-        element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
+        children: [
+          {
+            path: ":artistId",
+            element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
+          },
+        ]
       },
       {
         path: "favorites",
