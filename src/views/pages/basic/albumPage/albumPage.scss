@@ -1,0 +1,14 @@
+@import "../../../../sass/variables";
+
+.album-page-content {
+
+	h1 {
+		font-size: 25px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+	}
+
+}

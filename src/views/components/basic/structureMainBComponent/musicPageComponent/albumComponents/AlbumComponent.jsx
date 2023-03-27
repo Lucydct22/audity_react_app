@@ -10,6 +10,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './albumComponent.scss';
 import AlbumImg1 from '../../../../../../assets/img/albums/1.jpg';
+import { RenderAlbum } from './renderAlbum/RenderAlbum';
 
 export default function GenresComponent() {
   let slider = new Slider();
@@ -85,26 +86,48 @@ export default function GenresComponent() {
   );
 }
 
-const RenderAlbum = ({ album }) => {
-  const { t } = useTranslation();
-
-  return (
-    <section className='album-carousel__container--section'>
-      <div className='album-carousel__container--section__thumbnail'>
-        <img src={AlbumImg1} alt="IMG" />
-        <div className='album-carousel__container--section__thumbnail--btn'>
-          <button className='album-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
-          <button className='album-carousel__container--section__thumbnail--btn__like' type='button'><AiOutlineHeart size='14px' color='#191919' /></button>
-        </div>
-      </div>
-      <Link className='album-carousel__container--section__description' to={'#'}>{album.name}</Link>
-      <Link className='album-carousel__container--section__details' to={'#'}>30 {t("musicpage_albumtracks")} - 4,165 fans</Link>
-    </section>
-  )
-}
-
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
   return <h2 className='album-carousel__head--title'>{t("musicpage_albumtitle")}</h2>;
 }
+
+// export const RenderAlbum = () => {
+//   const { t } = useTranslation();
+
+//   return (
+//     <section className='album-carousel__container--section'>
+//       <div className='album-carousel__container--section__thumbnail'>
+//         <img src={AlbumImg1} alt="IMG" />
+//         <div className='album-carousel__container--section__thumbnail--btn'>
+//           <button className='album-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
+//           <button className='album-carousel__container--section__thumbnail--btn__like' type='button'><AiOutlineHeart size='14px' color='#191919' /></button>
+//         </div>
+//       </div>
+//       <Link className='album-carousel__container--section__description' to={'#'}>Baladas 00's</Link>
+//       <Link className='album-carousel__container--section__details' to={'#'}>30 {t("musicpage_albumtracks")} - 4,165 fans</Link>
+//     </section>
+//   )
+// }
+
+
+
+
+
+// const RenderAlbum = ({ album }) => {
+//   const { t } = useTranslation();
+
+//   return (
+//     <section className='album-carousel__container--section'>
+//       <div className='album-carousel__container--section__thumbnail'>
+//         <img src={AlbumImg1} alt="IMG" />
+//         <div className='album-carousel__container--section__thumbnail--btn'>
+//           <button className='album-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
+//           <button className='album-carousel__container--section__thumbnail--btn__like' type='button'><AiOutlineHeart size='14px' color='#191919' /></button>
+//         </div>
+//       </div>
+//       <Link className='album-carousel__container--section__description' to={'#'}>{album.name}</Link>
+//       <Link className='album-carousel__container--section__details' to={'#'}>30 {t("musicpage_albumtracks")} - 4,165 fans</Link>
+//     </section>
+//   )
+// }
