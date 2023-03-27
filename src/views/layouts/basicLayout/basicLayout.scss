@@ -1,0 +1,24 @@
+@import '../../../sass/variables';
+
+.basic-layout__main {
+  position: relative;
+  top: 57px;
+  display: flex;
+  justify-content: center;
+  margin-left: 212px;
+  padding-bottom: 81px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 120px;
+  }
+
+  &--content {
+    width: 1504px;
+    padding: 24px;
+    color: var(--color-primary);
+  }
+}

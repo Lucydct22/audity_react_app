@@ -4,6 +4,7 @@ import CurrentTracklistContext from "../../../context/currentTracklist/CurrentTr
 import { Outlet } from 'react-router-dom'
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { responsiveBreak } from "../../../utils/componentsConstants";
+import './basicLayout.scss';
 
 // import SidebarBComponentDesktop from "../../components/basic/desktop/sidebarBComponentDesktop";
 // import PlayerBComponentDesktop from "../../components/basic/desktop/playerBComponentDesktop";
@@ -32,7 +33,7 @@ const BasicLayout = () => {
     initCurrentTrack()
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     initCurrentTracklist()
   }, []);
 
@@ -61,9 +62,17 @@ const BasicLayout = () => {
         </>
       )}
 
-      <div className='main-layout__main'>
-        <Outlet />
-      </div>
+      {/* <main className='page-main'>
+        <div className='page-main__page-content'>
+          {children}
+        </div>
+      </main> */}
+
+      <main className='basic-layout__main'>
+        <div className='basic-layout__main--content'>
+          <Outlet />
+        </div>
+      </main>
 
       {(innerWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
     </Suspense>

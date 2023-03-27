@@ -1,13 +1,14 @@
 @import "../../../../sass/variables";
 
-.artists-page-content {
+.albums-page-content {
 
 	h1 {
 		font-size: 25px;
 	}
 
 	&__grid {
-		display: grid;
+		display: grid !important;
+
 		grid-template-columns: repeat(5, 1fr);
 	}
 

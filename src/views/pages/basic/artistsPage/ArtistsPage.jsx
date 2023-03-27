@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import './artistsPage.scss';
 import HelmetSEO from "../../../utils/HelmetSEO";
-import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
-import { RenderArtist } from '../../../components/basic/structureMainBComponent/musicPageComponent/artistComponent/renderArtist/renderArtist';
+import { RenderArtist } from '../../../components/basic/musicPageComponent/artistComponent/renderArtist/renderArtist';
 import { getArtistApi } from '../../../../api/music/artists';
 
 const ArtistsPage = () => {
@@ -21,16 +20,14 @@ const ArtistsPage = () => {
 			title='Artist | Audity'
 			description='Audity Artist Page'
 		>
-			<StructureMainBComponent>
-				<div className="artist-page-content">
+				<div className="artists-page-content">
 					<h1>Artist Page</h1>
-					<div className='artist-page-content__grid'>
+					<div className='artists-page-content__grid'>
 						{artists &&
 							artists.map(artist => <RenderArtist key={artist.id} artist={artist} />)
 						}
 					</div>
 				</div>
-			</StructureMainBComponent>
 		</HelmetSEO>
 	)
 }

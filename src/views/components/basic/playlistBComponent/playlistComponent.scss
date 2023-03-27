@@ -1,0 +1,126 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+
+.playlist-page {
+  
+	display: flex;
+
+  @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+	&__image {
+		margin-left: 100px;
+
+    @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+      margin: 0 auto;
+      }
+
+
+		img {
+			border-radius: 4px;
+			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+			width: 250px;
+			height: 250px;
+
+      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+      width: 200px;
+			height: 200px;
+      }
+		}
+	}
+
+	&__section {
+		margin-top: 50px;
+
+    @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+      margin: 0 auto;
+    }
+
+		&--details {
+
+			&__title {
+				display: inline;
+				margin: 0;
+
+				h1 {
+					font-family: 'Anek Gujarati', sans-serif;
+					font-size: 32px;
+					margin: 0;
+					color: var(--color-primary);
+					margin-left: 50px;
+
+          @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+            font-size: 25px;
+            padding: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+            }
+				}
+			}
+
+			&__songs {
+				p {
+					margin-left: 50px;
+					margin-bottom: 40px;
+
+          @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+            margin-left: 50px;
+					margin-bottom: 20px;
+          margin-top: 0;
+            }
+				}
+			}
+		}
+
+		&--buttons {
+			&__container {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin-left: 50px;
+
+        @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+				margin-left: 0;
+          }
+
+
+				&--play {
+					margin-right: 30px;
+
+					&__btn {
+						@include buttonPrimary();
+
+            @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
+              width: 120px;
+                }
+					}
+
+					span {
+						padding: 0px 10px;
+						padding-top: 2px;
+					}
+				}
+
+				&--like {
+					margin-right: 20px;
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
+				}
+
+				&--follow {
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
+				}
+			}
+		}
+	}
+
+}

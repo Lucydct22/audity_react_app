@@ -1,7 +1,5 @@
-import MusicPageComponent from "../../../components/basic/structureMainBComponent/musicPageComponent/MusicPageComponent";
+import MusicPageComponent from "../../../components/basic/musicPageComponent/MusicPageComponent";
 import HelmetSEO from "../../../utils/HelmetSEO";
-import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
-import { Outlet } from "react-router-dom";
 
 const MusicPage = () => {
   return (
@@ -9,9 +7,7 @@ const MusicPage = () => {
       title='Music | Audity'
       description='Audity Music Page'
     >
-      <StructureMainBComponent>
-        <MusicPageComponent />
-      </StructureMainBComponent>
+      <MusicPageComponent />
     </HelmetSEO>
   )
 }

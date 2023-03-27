@@ -1,0 +1,87 @@
+@import '../../../../../sass/';
+
+.slick-track {
+  display: flex !important;
+  justify-content: center;
+}
+
+.genres-carousel {
+  margin: 0 auto;
+
+  @include carousel-responsive();
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 20px;
+
+    &--title {
+      display: inline;
+      margin: 0;
+      font-size: 24px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+
+      &__prev {
+        display: flex;
+        @include simple-btn-with-hover(18px, 18px, 10px);
+      }
+
+      &__next {
+        display: flex;
+        @include simple-btn-with-hover(18px, 18px, 10px);
+      }
+    }
+  }
+
+  &__container {
+    margin-bottom: 2rem;
+
+    &--section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 20px;
+
+      &__thumbnail {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          img {
+            opacity: 0.7;
+          }
+        }
+
+        img {
+          width: 100%;
+          box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+          border-radius: 4px;
+        }
+
+        &--description {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          font-size: 24px;
+          font-weight: 700;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

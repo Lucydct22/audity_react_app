@@ -7,17 +7,16 @@ const BasicLayout = lazy(() => import('../views/layouts/basicLayout'));
 const AdminLayout = lazy(() => import('../views/layouts/adminLayout'));
 
 // USER PAGES
-const TestPage = lazy(() => import('../views/pages/basic/testPage'));
 const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
 const ProfilePage = lazy(() => import('../views/pages/basic/profilePage'))
-const AlbumPage = lazy(() => import('../views/pages/basic/albumPage'));
+const AlbumsPage = lazy(() => import('../views/pages/basic/albumsPage'));
 const ArtistsPage = lazy(() => import('../views/pages/basic/artistsPage'));
 const ArtistPage = lazy(() => import('../views/pages/basic/artistPage'));
 const StudioPage = lazy(() => import('../views/pages/basic/studioPage'))
 const FavoritesPage = lazy(() => import('../views/pages/basic/favoritesPage'))
 const RadioPage = lazy(() => import('../views/pages/basic/radioPage'))
 const SearchPage = lazy(() => import('../views/pages/basic/searchPage'))
-const PlaylistsPage = lazy(() => import('../views/pages/basic/playlistPage'))
+const PlaylistPage = lazy(() => import('../views/pages/basic/playlistPage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('../views/pages/admin/homeAdminPage'));
@@ -40,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "album",
-        element: <Suspense fallback={<></>}><AlbumPage /></Suspense>,
+        element: <Suspense fallback={<></>}><AlbumsPage /></Suspense>,
       },
       {
         path: "artists",
@@ -71,7 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "playlists",
-        element: <Suspense fallback={<></>}><PlaylistsPage /></Suspense>
+        element: <Suspense fallback={<></>}><PlaylistPage /></Suspense>
       },
       {
         path: "*",
