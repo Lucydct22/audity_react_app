@@ -1,0 +1,70 @@
+@import '../../../../../sass/variables';
+
+.track-list-item-mobile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: var(--color-border-1px);
+  border-bottom: var(--color-border-1px);
+  border-right: var(--color-border-1px);
+  border-top-right-radius: 10px;
+  color: var(----color-primary);
+  width: 95vw;
+  justify-content: space-between;
+
+  &__dropbox {
+    
+    &--wrapper {
+      margin: 0 auto;
+
+      &__icon {
+        display: flex;
+        gap: 15px;
+        margin: 5px;
+        align-items: center;
+      }
+    } 
+  }
+
+  &__icons-mobile{
+    margin-left: 55px;
+  }
+
+  
+  .track-list-item-mobile-div {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      width: 50px;
+      margin-right: 5px;
+    }
+
+    &__track {
+      margin-top: 3%;
+      font-weight: bold;
+      font-family: 14px;
+
+      div {
+        font-weight: lighter;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__icons-mobile {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    font-size: 18px;
+
+    &__td-icon-arrow {
+      border: 1px solid rgb(136, 136, 136);
+      fill:rgb(136, 136, 136);
+      border-radius: 100%;
+    }
+  }
+}
+
+

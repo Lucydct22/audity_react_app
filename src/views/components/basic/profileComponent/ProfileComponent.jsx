@@ -7,7 +7,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import TrackListComponent from '../trackListComponent/TrackListComponent';
 
-
   const ProfileComponent = () => {
 
   const { t } = useTranslation();
@@ -41,7 +40,6 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
     { value: 'English', label: t("profile_select_language_two") }
   ];
 
-
   const handleInputChange = (e) => {
     /*const { name, value } = e.target;
     setUserData({
@@ -69,13 +67,11 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
 
   const handleChange = () => {
     setEditMode(true);
-    //setUserData(userData.email: e.target.value)
   }
 
   const handleSave = () => {
     setEditMode(false);
   }
-
 
   return (
     <>
@@ -85,13 +81,11 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
             <img src={userData.picture} alt="your foto" className="user-settings-profile-foto" />
             <p>{t("profile_intro")}</p>
           </div>
-
           <div className="user-settings__account" >
             <span>{t('profile_account')}</span>
             <label >{t("profile_email")}</label>
             <div>
               <input type="email" value={userData.email} name="email" readOnly={!editMode} placeholder={userData.email} onChange={handleInputChange} />
-
             </div>
             <label >{t("profile_password")}</label>
             <div>
@@ -101,19 +95,15 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
             <div>
               <input type="text" value={userData.nickname} name="username" readOnly={!editMode} placeholder={userData.nickname} onChange={handleInputChange} />
             </div>
-
           </div>
           <div className="user-settings__private-info" >
-
             <div className='user-settings__select-container'>
-
               <div className='user-settings__select-item'>
                 <label >{t("profile_birthday")}</label>
                 <div className="input-group">
                   <input type="date" className="input-group__bthd" value={userData.birth_day} name="birth_day" placeholder={userData.birth_day} readOnly={!editMode} onChange={handleInputChange} />
                 </div>
               </div>
-
               <div className='user-settings__select-item'>
                 <label >{t("profile_country")}</label>
                 <div className="input-group">
@@ -129,7 +119,6 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
                   />
                 </div>
               </div>
-
               <div className='user-settings__select-item'>
                 <label >{t("profile_language")}</label>
                 <div className="input-group">
@@ -148,7 +137,6 @@ import TrackListComponent from '../trackListComponent/TrackListComponent';
             {editMode ? <button onClick={handleSave} className='user-settings__btn--save'>{t("profile_btn_save")}</button> : <button onClick={handleChange} className='user-settings__btn--modify'>{t("profile_btn_change")}</button>}
             <button className='user-settings__btn--delete'>{t('profile_btn_delete')}</button>
           </div>
-
         </div>
         <TrackListComponent />
       </StructureMainBComponent>
