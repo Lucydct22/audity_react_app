@@ -15,7 +15,6 @@ export const getAlbumsByIdApi = async (albumsId: string): Promise<Albums> => {
 }
 
 //DELETE
-
 export const deleteAlbumsByIdApi = async (albumsId: string): Promise<Albums> => {
 	const params = {
 		method: "DELETE",
@@ -29,8 +28,7 @@ export const deleteAlbumsByIdApi = async (albumsId: string): Promise<Albums> => 
 }
 
 
-//UPDATE 
-
+//UPDATE
 export const updateAlbumApi = async (albumId: string, data: Partial<Albums>): Promise<Albums> => {
 	const params = {
 		method: "PUT",
@@ -45,7 +43,6 @@ export const updateAlbumApi = async (albumId: string, data: Partial<Albums>): Pr
 }
 
 //ADD
-
 export const addAlbumApi = async (newAlbum: Partial<Albums>): Promise<Albums> => {
 	const params = {
 		method: "POST",

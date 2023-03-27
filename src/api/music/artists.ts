@@ -26,8 +26,7 @@ export const deleteArtistByIdApi = async (artistId: string): Promise<Artist> => 
 	return data as Artist
 }
 
-//UPDATE 
-
+//UPDATE
 export const updateArtistApi = async (artistId: string, data: Partial<Artist>): Promise<Artist> => {
 	const params = {
 		method: "PUT",
@@ -42,7 +41,6 @@ export const updateArtistApi = async (artistId: string, data: Partial<Artist>): 
 }
 
 //ADD
-
 export const addArtistApi = async (newArtist: Partial<Artist>): Promise<Artist> => {
 	const params = {
 		method: "POST",

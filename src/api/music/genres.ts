@@ -26,8 +26,7 @@ export const deleteGenresByIdApi = async (genresId: string): Promise<Genres> => 
 	return data as Genres
 }
 
-//UPDATE 
-
+//UPDATE
 export const updateGenresApi = async (genresId: string, data: Partial<Genres>): Promise<Genres> => {
 	const params = {
 		method: "PUT",
@@ -42,7 +41,6 @@ export const updateGenresApi = async (genresId: string, data: Partial<Genres>): 
 }
 
 //ADD
-
 export const addGenresApi = async (newGenres: Partial<Genres>): Promise<Genres> => {
 	const params = {
 		method: "POST",

@@ -26,8 +26,7 @@ export const deletePlaylistByIdApi = async (playlistId: string): Promise<Playlis
 	return data as Playlist
 }
 
-//UPDATE 
-
+//UPDATE
 export const updatePlaylistApi = async (playlistId: string, data: Partial<Playlist>): Promise<Playlist> => {
 	const params = {
 		method: "PUT",
@@ -42,7 +41,6 @@ export const updatePlaylistApi = async (playlistId: string, data: Partial<Playli
 }
 
 //ADD
-
 export const addPlaylistApi = async (newPlaylist: Partial<Playlist>): Promise<Playlist> => {
 	const params = {
 		method: "POST",
