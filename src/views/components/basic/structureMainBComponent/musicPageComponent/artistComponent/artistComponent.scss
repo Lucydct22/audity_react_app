@@ -5,10 +5,10 @@
   justify-content: center;
 }
 
-.artist-carousel {
+.carousel-component {
   margin: 0 auto;
 
-  @include carousel();
+  @include carousel-responsive();
 
   &__head {
     display: flex;
