@@ -97,10 +97,10 @@ const RenderPlaylist = ({ playlist }) => {
         </div>
         <div className='daily-carousel__container--section__thumbnail--logo-daily'>
           <img src={GreyDailyLogo} alt="Grey Daily Logo Audity" />
-          <p className='daily-carousel__container--section__thumbnail--logo-daily__description' to={'#'}>{playlist.name}</p>
+          <p className='daily-carousel__container--section__thumbnail--logo-daily__description'>daily</p>
         </div>
       </div>
-      <Link className='daily-carousel__container--section__description' to={'#'}>Featuring Lucky Brown, Latin Mafia, Balbi El Chamako</Link>
+      <Link className='daily-carousel__container--section__description' to={'#'}>{playlist.name}</Link>
     </section>
   )
 }
