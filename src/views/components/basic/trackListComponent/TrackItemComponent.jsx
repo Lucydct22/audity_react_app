@@ -18,7 +18,7 @@ const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time })
 
   useEffect(() => {
     let handler = (e) => {
-      if (!popperRef.current.contains(e.target)) {
+      if (!popperRef?.current?.contains(e.target)) {
         setPopperOpen(false);
       }
     };
