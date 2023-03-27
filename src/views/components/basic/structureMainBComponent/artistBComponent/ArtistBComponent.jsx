@@ -23,7 +23,7 @@ export default function ArtistBComponent() {
 		})
 		return () => { isMounted = false }
 	}, [])
-	console.log(artist);
+
 	const handlePlayClick = () => {
 		setIsPlaying((prevState) => !prevState);
 	};

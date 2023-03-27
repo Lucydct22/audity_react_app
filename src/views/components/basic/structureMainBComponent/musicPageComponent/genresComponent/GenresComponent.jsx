@@ -83,7 +83,6 @@ export default function GenresComponent() {
 
 const RenderGenres = ({ genre }) => {
   let img = new IMG()
-  console.log(img)
 
   return (
     <section className='genres-carousel__container--section'>
