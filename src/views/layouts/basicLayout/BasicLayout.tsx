@@ -62,12 +62,6 @@ const BasicLayout = () => {
         </>
       )}
 
-      {/* <main className='page-main'>
-        <div className='page-main__page-content'>
-          {children}
-        </div>
-      </main> */}
-
       <main className='basic-layout__main'>
         <div className='basic-layout__main--content'>
           <Outlet />
