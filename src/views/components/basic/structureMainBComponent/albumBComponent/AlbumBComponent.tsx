@@ -2,8 +2,9 @@ import './albumBComponent.scss';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faPause, faPlay, faThumbsUp, faUserCheck, faUserPlus, faTh } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faUserCheck, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import Albumimg1 from '../../../../../assets/img/albums/8.jpg'
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export default function AlbumBComponent() {
 	const { t } = useTranslation();
@@ -18,10 +19,6 @@ export default function AlbumBComponent() {
 	const handleFollowClick = () => {
 		setIsFollowing((prevState) => !prevState);
 	};
-
-	const handleLikeClick = () => {
-		setIsLiked((prevState) => !prevState);
-	}
 
 	return (
 		<>
@@ -55,16 +52,8 @@ export default function AlbumBComponent() {
 								</button>
 							</div>
 							<div className="album-page__section--buttons__container--like">
-								<button className="album-page__section--buttons__container--like__btn" onClick={handleLikeClick}>
-									{isLiked ? (
-										<>
-											<FontAwesomeIcon icon={faHeart} />
-										</>
-									) : (
-										<>
-											<FontAwesomeIcon icon={faThumbsUp} />
-										</>
-									)}
+								<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
+									{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
 								</button>
 							</div>
 							<div className="album-page__section--buttons__container--follow">
