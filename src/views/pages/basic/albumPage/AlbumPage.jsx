@@ -28,7 +28,7 @@ const AlbumPage = ({ }) => {
 			<StructureMainBComponent>
 				<div className="album-page-content">
 					<h1>Album Page</h1>
-					<div className='artist-page-content__grid'>
+					<div className='album-page-content__grid'>
 						{albums.map(album => {
 							return <RenderAlbum key={album.id} album={album} />
 						})}
