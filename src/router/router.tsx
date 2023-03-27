@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import useWindowSizeReport from "../hooks/useWindowSizeReport";
 import { responsiveBreak } from "../utils/componentsConstants";
 
 // LAYOUTS
@@ -12,6 +11,7 @@ const TestPage = lazy(() => import('../views/pages/basic/testPage'));
 const MusicPage = lazy(() => import('../views/pages/basic/musicPage'));
 const ProfilePage = lazy(() => import('../views/pages/basic/profilePage'))
 const AlbumPage = lazy(() => import('../views/pages/basic/albumPage'));
+const ArtistsPage = lazy(() => import('../views/pages/basic/artistsPage'));
 const ArtistPage = lazy(() => import('../views/pages/basic/artistPage'));
 const StudioPage = lazy(() => import('../views/pages/basic/studioPage'))
 const FavoritesPage = lazy(() => import('../views/pages/basic/favoritesPage'))
@@ -43,7 +43,11 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<></>}><AlbumPage /></Suspense>,
       },
       {
-        path: "artist",
+        path: "artists",
+        element: <Suspense fallback={<></>}><ArtistsPage /></Suspense>,
+      },
+      {
+        path: "artists/:artistId",
         element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
       },
       {
@@ -58,15 +62,7 @@ const router = createBrowserRouter([
         path: "search",
         element:
           <Suspense fallback={<></>}>
-            {(innerWidth > responsiveBreak) ? (
-              <>
-                <MusicPage />
-              </>
-            ) : (
-              <>
-                <SearchPage />
-              </>
-            )}
+            {(innerWidth > responsiveBreak) ? <MusicPage /> : <SearchPage />}
           </Suspense>
       },
       {

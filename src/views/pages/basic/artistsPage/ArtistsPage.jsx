@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import './artistPage.scss';
+import './artistsPage.scss';
 import HelmetSEO from "../../../utils/HelmetSEO";
 import StructureMainBComponent from "../../../components/basic/structureMainBComponent/StructureMainBComponent";
 import { RenderArtist } from '../../../components/basic/structureMainBComponent/musicPageComponent/artistComponent/renderArtist/renderArtist';
 import { getArtistApi } from '../../../../api/music/artists';
 
-const ArtistPage = () => {
+const ArtistsPage = () => {
 	const [artists, setArtists] = useState([]);
 
 	useEffect(() => {
@@ -35,4 +35,4 @@ const ArtistPage = () => {
 	)
 }
 
-export default ArtistPage;
+export default ArtistsPage;

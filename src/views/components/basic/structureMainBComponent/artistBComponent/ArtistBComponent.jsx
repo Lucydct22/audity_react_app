@@ -1,16 +1,29 @@
-import './artistBComponent.scss';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faPause, faPlay, faThumbsUp, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import './artistBComponent.scss';
+import { useParams } from 'react-router-dom';
+import { getArtistByIdApi } from '../../../../../api/music/artists';
+
 
 export default function ArtistBComponent() {
 	const { t } = useTranslation();
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	const { artistId } = useParams();
+	const [artist, setArtist] = useState(undefined);
 
+	useEffect(() => {
+		let isMounted = true;
+		artistId && getArtistByIdApi(artistId.toString()).then(res => {
+			isMounted && res && setArtist(res);
+		})
+		return () => { isMounted = false }
+	}, [])
+	console.log(artist);
 	const handlePlayClick = () => {
 		setIsPlaying((prevState) => !prevState);
 	};
@@ -23,12 +36,12 @@ export default function ArtistBComponent() {
 		<>
 			<div className="artist-page">
 				<div className="artist-page__image">
-					<img src="src/resources/artist.png" alt="Image description" />
+					<img src={artist?.photoUrl} alt="Image description" />
 				</div>
 				<section className="artist-page__section">
 					<div className="artist-page__section--details">
 						<div className="artist-page__section--details__title">
-							<h1>ARTIST</h1>
+							<h1>{artist?.name}</h1>
 						</div>
 						<div className="artist-page__section--details__songs">
 							<p>500.655 Fans</p>
@@ -41,11 +54,13 @@ export default function ArtistBComponent() {
 								<button className="artist-page__section--buttons__container--play__btn" onClick={handlePlayClick}>
 									{isPlaying ? (
 										<>
-											<FontAwesomeIcon icon={faPause} /> <span>{t('pausebutton')}</span>
+											<FontAwesomeIcon icon={faPause} />
+											<span>{t('pausebutton')}</span>
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faPlay} /> <span>{t('playbutton')}</span>
+											<FontAwesomeIcon icon={faPlay} />
+											<span>{t('playbutton')}</span>
 										</>
 									)}
 								</button>

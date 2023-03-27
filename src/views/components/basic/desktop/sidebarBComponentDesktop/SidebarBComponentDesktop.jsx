@@ -59,7 +59,7 @@ const SidebarBComponentDesktop = () => {
           {toggleDropdown ? (
             <div>
               <div>
-                <NavLink to={"/artist"} className="side-bar-header__sections--options">
+                <NavLink to={"/artists"} className="side-bar-header__sections--options">
                   <div className="side-bar-header__sections--options__decoration"></div>
                   <FaGuitar
                     size={15}

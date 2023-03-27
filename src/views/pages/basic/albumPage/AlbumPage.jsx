@@ -9,16 +9,12 @@ const AlbumPage = ({ }) => {
 	const [albums, setAlbums] = useState([])
 
 	useEffect(() => {
-
 		const getAlbums = async () => {
 			const albumsData = await getAlbumsApi()
 			setAlbums(albumsData)
 		}
-
 		getAlbums()
-
 	}, [])
-
 
 	return (
 		<HelmetSEO
@@ -26,16 +22,16 @@ const AlbumPage = ({ }) => {
 			description='Audity Album Page'
 		>
 			<StructureMainBComponent>
-				<div className="album-page-content">
-					<h1>Album Page</h1>
-					<div className='album-page-content__grid'>
-						{albums.map(album => {
-							return <RenderAlbum key={album.id} album={album} />
-						})}
+					<div className="album-page-content">
+						<h1>Album Page</h1>
+						<div className='album-page-content__grid'>
+							{albums.map(album => {
+								return <RenderAlbum key={album.id} album={album} />
+							})}
+						</div>
 					</div>
-				</div>
 			</StructureMainBComponent>
-		</HelmetSEO>
+		</HelmetSEO >
 	)
 }
 
