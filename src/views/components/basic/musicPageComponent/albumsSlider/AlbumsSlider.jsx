@@ -4,14 +4,14 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { FaPlay } from 'react-icons/fa';
-import { AiOutlineHeart } from 'react-icons/ai';
+// import { Link } from 'react-router-dom';
+// import { FaPlay } from 'react-icons/fa';
+// import { AiOutlineHeart } from 'react-icons/ai';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
-import './albumComponent.scss';
-import { RenderAlbum } from './renderAlbum/RenderAlbum';
+import './albumsSlider.scss';
+import RenderAlbum from './renderAlbum';
 
-export default function GenresComponent() {
+export default function AlbumsSlider() {
   let slider = new Slider();
   const [albums, setAlbums] = useState(undefined)
 

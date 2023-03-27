@@ -6,9 +6,9 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './artistComponent.scss';
+import './artistsSlider.scss';
 
-export default function ArtistSlider() {
+export default function ArtistsSlider() {
   let slider = new Slider();
   const [artists, setArtists] = useState(undefined);
 

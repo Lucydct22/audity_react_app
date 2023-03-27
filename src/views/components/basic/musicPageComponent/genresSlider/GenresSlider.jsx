@@ -5,11 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import './genresComponent.scss';
+import './genresSlider.scss';
 import IMG from './GenresImages';
 
 
-export default function GenresComponent() {
+export default function GenresSlider() {
   let slider = new Slider();
   const [genres, setGenres] = useState(undefined)
 

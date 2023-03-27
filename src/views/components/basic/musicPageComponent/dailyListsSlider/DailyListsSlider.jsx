@@ -7,11 +7,11 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
-import './dailyListComponent.scss';
+import './dailyListsSlider.scss';
 import AlbumImg2 from '../../../../../assets/img/albums/2.jpg';
 import GreyDailyLogo from '../../../../../assets/img/png/grey-daily-icon.png'
 
-export default function DailyListComponent() {
+export default function DailyListsSlider() {
   let slider = new Slider();
   const [playlists, setPlaylists] = useState(undefined)
 

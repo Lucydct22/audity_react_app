@@ -1,6 +1,6 @@
 import './searchBComponentMobile.scss'
 import { useTranslation } from 'react-i18next';
-import GenresRenderComponent from '../../musicPageComponent/genresComponent/genresRender/GenresRenderComponent';
+import GenresRenderComponent from '../../musicPageComponent/genresSlider/genresRender/GenresRenderComponent';
 import { CiSearch } from 'react-icons/ci';
 
 function SearchBComponentMobile() {

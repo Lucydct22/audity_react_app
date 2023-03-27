@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import HelmetSEO from "../../../utils/HelmetSEO";
-import { RenderArtist } from '../../../components/basic/musicPageComponent/artistComponent/renderArtist/RenderArtist';
+import { RenderArtist } from '../../../components/basic/musicPageComponent/artistsSlider/renderArtist/RenderArtist';
 import { getArtistApi } from '../../../../api/music/artists';
 import './artistsPage.scss';
 

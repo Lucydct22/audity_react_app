@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './albumsPage.scss'
 import HelmetSEO from "../../../utils/HelmetSEO";
-import { RenderAlbum } from "../../../components/basic/musicPageComponent/albumComponents/renderAlbum/RenderAlbum";
+import RenderAlbum from "../../../components/basic/musicPageComponent/albumsSlider/renderAlbum";
 import { getAlbumsApi } from '../../../../api/music/albums';
 import { Outlet, useParams } from 'react-router-dom';
 
