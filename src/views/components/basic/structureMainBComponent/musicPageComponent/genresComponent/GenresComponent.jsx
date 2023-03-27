@@ -4,9 +4,10 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import './genresComponent.scss';
-import GradientImg1 from '../../../../../../assets/img/gradients/1.jpg'
+import IMG from './GenresImages';
+
 
 export default function GenresComponent() {
   let slider = new Slider();
@@ -81,10 +82,13 @@ export default function GenresComponent() {
 }
 
 const RenderGenres = ({ genre }) => {
+  let img = new IMG()
+  console.log(img)
+
   return (
     <section className='genres-carousel__container--section'>
       <div className='genres-carousel__container--section__thumbnail'>
-        <img src={GradientImg1} alt="IMG" />
+        <img src={img[genre.id]} alt={genre.name} />
         <p className='genres-carousel__container--section__thumbnail--description' to={'#'}>{genre?.name}</p>
       </div>
     </section>
