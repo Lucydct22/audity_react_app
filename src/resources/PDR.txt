@@ -33,15 +33,10 @@ Features:
       Users will be able to share their playlists and favorite songs 
       on social media platforms like Facebook and Twitter.
 
-  ~~ 6-Personalized Recommendations:
+  6-Personalized Recommendations:
         The website will use machine learning algorithms to provide 
         personalized music recommendations to the user based on their 
         listening history and preferences.
-
-  ~~ 7-Subscription Plans:
-        The website will offer subscription plans to users for an ad-free 
-        listening experience and access to premium features like offline 
-        listening and higher quality audio.
 
 Technical Requirements:
   The website will be built using modern web technologies like 
