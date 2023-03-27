@@ -1,0 +1,58 @@
+@import "../../../../../../../sass/variables";
+@import "../../../../../../../sass/mixins";
+
+
+.render-album {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
+
+	&__thumbnail {
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+
+		&:hover {
+			img {
+				opacity: 0.7;
+			}
+		}
+
+		img {
+			width: 100%;
+			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+			border-radius: 4px;
+		}
+
+		&--btn {
+			display: flex;
+			position: absolute;
+			left: 20px;
+			bottom: 20px;
+			gap: 10px;
+
+			&__play {
+				@include carousel-thumbnail-btn();
+			}
+
+			&__like {
+				@include carousel-thumbnail-btn();
+			}
+		}
+	}
+
+	&__description {
+		display: block;
+		font-weight: 700;
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
+	&__details {
+		display: block;
+		font-weight: 400;
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+}
