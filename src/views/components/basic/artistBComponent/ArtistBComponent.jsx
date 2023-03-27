@@ -1,28 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPause, faPlay, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './artistBComponent.scss';
-import { useParams } from 'react-router-dom';
-import { getArtistByIdApi } from '../../../../api/music/artists';
 
 
-export default function ArtistBComponent() {
+export default function ArtistBComponent({ artist }) {
 	const { t } = useTranslation();
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
-	const { artistId } = useParams();
-	const [artist, setArtist] = useState(undefined);
-
-	useEffect(() => {
-		let isMounted = true;
-		artistId && getArtistByIdApi(artistId.toString()).then(res => {
-			isMounted && res && setArtist(res);
-		})
-		return () => { isMounted = false }
-	}, [])
 
 	const handlePlayClick = () => {
 		setIsPlaying((prevState) => !prevState);
