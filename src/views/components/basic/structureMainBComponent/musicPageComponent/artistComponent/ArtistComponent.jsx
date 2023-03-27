@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './artistComponent.scss';
+import AlbumImg4 from '../../../../../../assets/img/albums/4.jpg';
+import { RenderArtist } from './renderArtist/renderArtist';
 
 export default function ArtistSlider() {
   let slider = new Slider();
@@ -56,19 +58,19 @@ export default function ArtistSlider() {
   };
 
   return (
-    <div className='artist-carousel'>
-      <div className='artist-carousel__head'>
+    <div className='carousel-component'>
+      <div className='carousel-component__head'>
         <TranslateTitle />
-        <span className='artist-carousel__head--btn'>
-          <button className='artist-carousel__head--btn__prev' onClick={previous}>
+        <span className='carousel-component__head--btn'>
+          <button className='carousel-component__head--btn__prev' onClick={previous}>
             <HiOutlineChevronLeft />
           </button>
-          <button className='artist-carousel__head--btn__next' onClick={next}>
+          <button className='carousel-component__head--btn__next' onClick={next}>
             <HiOutlineChevronRight />
           </button>
         </span>
       </div>
-      <div className='artist-carousel__container'>
+      <div className='carousel-component__container'>
         {artists && (
           <Slider ref={c => (slider = c)} {...settings}>
             {artists.map(artist => {
@@ -81,20 +83,34 @@ export default function ArtistSlider() {
   );
 }
 
-const RenderArtist = ({ artist }) => {
-  return (
-    <section className='artist-carousel__container--section'>
-      <div className='artist-carousel__container--section__thumbnail'>
-        <img src={artist.photoUrl} alt={artist.name} />
-      </div>
-      <Link className='artist-carousel__container--section__description' to={'#'}>{artist.name}</Link>
-      <Link className='artist-carousel__container--section__details' to={'#'}>80,165,532 fans</Link>
-    </section>
-  )
-}
-
+//const RenderArtist = ({ artist }) => {
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
-  return <h2 className='artist-carousel__head--title'>{t("musicpage_artirstitle")}</h2>;
+  return <h2 className='carousel-component__head--title'>{t("musicpage_artirstitle")}</h2>;
 }
+
+// const RenderArtist = ({ artist }) => {
+//   return (
+//     <section className='artist-carousel__container--section'>
+//       <div className='artist-carousel__container--section__thumbnail'>
+//         <img src={artist.photoUrl} alt={artist.name} />
+//       </div>
+//       <Link className='artist-carousel__container--section__description' to={'#'}>{artist.name}</Link>
+//       <Link className='artist-carousel__container--section__details' to={'#'}>80,165,532 fans</Link>
+//     </section>
+//   )
+// }
+
+/* export const RenderArtist = () => {
+
+  return (
+    <section className='carousel-component__container--section'>
+      <div className='carousel-component__container--section__thumbnail'>
+        <img src={AlbumImg4} alt="IMG" />
+      </div>
+      <Link className='carousel-component__container--section__description' to={'#'}>La Rosalia</Link>
+      <Link className='carousel-component__container--section__details' to={'#'}>80,165,532 fans</Link>
+    </section>
+  )
+} */
