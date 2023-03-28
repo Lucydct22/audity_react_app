@@ -7,11 +7,11 @@ import HelmetSEO from '../../../utils/HelmetSEO';
 
 export default function AlbumPage() {
 	const { albumId } = useParams();
-	const [album, setAlbum] = useState(undefined);
+	const [album, setAlbum] = useState();
 
 	useEffect(() => {
 		let isMounted = true;
-		albumId && getAlbumsByIdApi(albumId.toString()).then(res => {
+		albumId && getAlbumsByIdApi(albumId.toString()).then((res: any) => {
 			isMounted && res && setAlbum(res);
 		})
 		return () => { isMounted = false }
@@ -19,7 +19,7 @@ export default function AlbumPage() {
 
 	return (
 		<HelmetSEO
-			title={`album | ${album?.name}`}
+			title={`album | ${name}`}
 			description='Audity Album Page'
 		>
 			<AlbumBComponent album={album} />

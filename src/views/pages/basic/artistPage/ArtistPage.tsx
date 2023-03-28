@@ -7,11 +7,11 @@ import HelmetSEO from '../../../utils/HelmetSEO';
 
 export default function ArtistPage() {
 	const { artistId } = useParams();
-	const [artist, setArtist] = useState(undefined);
+	const [artist, setArtist]: any = useState(undefined);
 
 	useEffect(() => {
 		let isMounted = true;
-		artistId && getArtistByIdApi(artistId.toString()).then(res => {
+		artistId && getArtistByIdApi(artistId.toString()).then((res: any) => {
 			isMounted && res && setArtist(res);
 		})
 		return () => { isMounted = false }

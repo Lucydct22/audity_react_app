@@ -6,11 +6,11 @@ import HelmetSEO from "../../../utils/HelmetSEO";
 
 const AlbumsPage = ({ }) => {
 	const [albums, setAlbums] = useState([]);
-	const params = useParams();
+	const params: any = useParams();
 
 	useEffect(() => {
 		const getAlbums = async () => {
-			const albumsData = await getAlbumsApi()
+			const albumsData: any = await getAlbumsApi()
 			setAlbums(albumsData)
 		}
 		getAlbums()
