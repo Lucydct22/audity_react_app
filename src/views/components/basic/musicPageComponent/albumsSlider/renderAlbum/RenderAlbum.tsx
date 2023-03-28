@@ -4,7 +4,7 @@ import { FaPlay } from 'react-icons/fa';
 import { AiOutlineHeart } from 'react-icons/ai';
 import './renderAlbum.scss';
 
-export default function RenderAlbum ({ album }) {
+export default function RenderAlbum ({ album }: any) {
 	const { t } = useTranslation();
 	const { imageUrl, name } = album;
 
