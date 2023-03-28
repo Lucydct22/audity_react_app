@@ -1,4 +1,4 @@
-import CommingSoon from '../../../UI/commingSoon/CommingSoon';
+import CommingSoon from '@/views/UI/commingSoon';
 
 function RadioBComponent() {
   return (

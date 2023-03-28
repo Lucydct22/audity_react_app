@@ -1,6 +1,6 @@
-import { getTracksApi } from "../../api/music/tracks";
-import makeArrayOfTrackIds from "../../utils/tracks/makeArrayOfTrackIds";
-import shuffleArray from "../../utils/tracks/shuffleArray";
+import { getTracksApi } from "@/api/music/tracks";
+import makeArrayOfTrackIds from "@/utils/tracks/makeArrayOfTrackIds";
+import shuffleArray from "@/utils/tracks/shuffleArray";
 import * as CurrentTracklistReducer from './currentTracklistTypes';
 
 

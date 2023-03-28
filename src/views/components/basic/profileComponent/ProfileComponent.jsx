@@ -4,7 +4,7 @@ import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
-import TrackListComponent from '../trackListComponent/TrackListComponent';
+import TrackListComponent from '@/views/components/basic/trackListComponent';
 
 const ProfileComponent = () => {
 

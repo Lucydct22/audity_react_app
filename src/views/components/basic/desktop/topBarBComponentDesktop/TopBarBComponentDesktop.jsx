@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import './topBarBComponentDesktop.scss';
-import Theme from '../../../../UI/theme/Theme';
+import { useTranslation } from 'react-i18next';
+import Theme from '@/views/UI/theme/Theme';
 import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
+import './topBarBComponentDesktop.scss';
 
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();

@@ -1,5 +1,5 @@
 import { basePath } from "../utils/config";
-import { Genres } from "../../interfaces/music";
+import { Genres } from "@/interfaces/music";
 
 
 export const getGenresApi = async (): Promise<Genres> => {

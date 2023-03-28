@@ -1,5 +1,5 @@
-import HelmetSEO from "../../../utils/HelmetSEO";
-import ProfileComponent from "../../../components/basic/profileComponent/ProfileComponent";
+import HelmetSEO from "@/views/utils/HelmetSEO";
+import ProfileComponent from "@/views/components/basic/profileComponent";
 
 
 const ProfilePage = () => {
@@ -7,9 +7,9 @@ const ProfilePage = () => {
     <HelmetSEO
       title='Music | Audity'
       description='Audity Profile Page'
-    >   
-  
-    <ProfileComponent />
+    >
+
+      <ProfileComponent />
     </HelmetSEO>
   )
 }
