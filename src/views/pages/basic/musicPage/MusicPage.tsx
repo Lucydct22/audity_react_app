@@ -1,5 +1,5 @@
-import MusicPageComponent from "../../../components/basic/musicPageComponent/MusicPageComponent";
-import HelmetSEO from "../../../utils/HelmetSEO";
+import MusicPageComponent from "@/views/components/basic/musicPageComponent/MusicPageComponent";
+import HelmetSEO from "@/views/utils/HelmetSEO";
 
 const MusicPage = () => {
   return (

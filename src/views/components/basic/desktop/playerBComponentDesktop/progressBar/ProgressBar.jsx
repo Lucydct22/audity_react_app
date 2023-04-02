@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import CurrentTrackContext from '../../../../../../context/currentTrack/CurrentTrackContext';
+import CurrentTrackContext from '@/context/currentTrack/CurrentTrackContext';
 import './progressBar.scss'
 
 export default function ProgressBar() {

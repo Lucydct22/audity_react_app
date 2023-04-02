@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Artist } from '../../../../../../interfaces/music';
 import './renderArtist.scss';
 
 export default function RenderArtist ({ artist }: any) {

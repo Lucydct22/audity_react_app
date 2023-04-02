@@ -1,4 +1,4 @@
-import CommingSoon from '../../../UI/commingSoon';
+import CommingSoon from '@/views/UI/commingSoon';
 
 function FavoritesBComponent() {
   return (

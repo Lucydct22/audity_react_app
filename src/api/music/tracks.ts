@@ -1,5 +1,5 @@
 import { basePath } from "../utils/config";
-import { Track } from "../../interfaces/music";
+import { Track } from "@/interfaces/music";
 
 
 export const getTracksApi = async (): Promise<Track> => {

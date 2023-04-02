@@ -1,4 +1,4 @@
-import { Artist } from "../../../../interfaces/music";
+import { Artist } from "@/interfaces/music";
 import RenderAlbum from "../musicPageComponent/albumsSlider/renderAlbum/RenderAlbum";
 import './albumsBComponent.scss';
 

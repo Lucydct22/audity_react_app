@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArtistByIdApi } from '../../../../api/music/artists';
-import ArtistBComponent from '../../../components/basic/artistBComponent/ArtistBComponent'
-import TrackListComponent from '../../../components/basic/trackListComponent/TrackListComponent'
-import HelmetSEO from '../../../utils/HelmetSEO';
+import { getArtistByIdApi } from '@/api/music/artists';
+import ArtistBComponent from '@/views/components/basic/artistBComponent/ArtistBComponent'
+import TrackListComponent from '@/views/components/basic/trackListComponent/TrackListComponent'
+import HelmetSEO from '@/views/utils/HelmetSEO';
 
 export default function ArtistPage() {
 	const { artistId } = useParams();

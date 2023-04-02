@@ -1,5 +1,5 @@
 import './genresRenderComponent.scss'
-import GradientImg4 from '../../../../../../assets/img/gradients/4.jpg'
+import GradientImg4 from '@/assets/img/gradients/4.jpg'
 
 function GenresRenderComponent() {
   return (
