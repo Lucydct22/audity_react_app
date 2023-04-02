@@ -11,5 +11,9 @@
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		@include fadeIn();
+
+		@media (max-width: 1300px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 }

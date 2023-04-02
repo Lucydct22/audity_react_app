@@ -50,7 +50,7 @@ export default function AlbumBComponent({ album }) {
 							</button>
 						</div>
 						<div className="album-page__section--buttons__container--like">
-							<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
+							<button className="album-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
 								{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
 							</button>
 						</div>

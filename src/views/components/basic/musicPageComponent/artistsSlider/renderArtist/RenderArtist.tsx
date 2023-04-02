@@ -4,7 +4,7 @@ import './renderArtist.scss';
 
 export default function RenderArtist ({ artist }: any) {
   return (
-    <Link className='render-artist' to={`/artists/${artist.id}`}>
+    <Link to={`/artists/${artist.id}`} className='render-artist'>
       <div className='render-artist__thumbnail'>
         <img src={artist.photoUrl} alt={artist.name} />
       </div>
