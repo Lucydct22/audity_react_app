@@ -4,7 +4,7 @@ import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
-import TrackListComponent from '@/views/components/basic/trackListComponent';
+import TrackListComponent from "@/views/components/basic/trackListComponent/TrackListComponent";
 
 const ProfileComponent = () => {
 
@@ -75,7 +75,7 @@ const ProfileComponent = () => {
     <>
       <div className='user-settings'>
         <div className="user-settings__image">
-          <img src={userData.picture} alt="your foto" className="user-settings-profile-foto" />
+          <img src={userData.picture} alt="your foto" className="user-settings__image--profile" />
           <p>{t("profile_intro")}</p>
         </div>
         <div className="user-settings__account" >
