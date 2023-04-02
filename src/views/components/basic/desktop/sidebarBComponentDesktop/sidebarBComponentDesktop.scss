@@ -10,7 +10,7 @@
   bottom: 0;
   height: calc(100vh - 80px);
   border-right: var(--color-border-1px);
-  background-color: var(--background-secundary);
+  background-color: var(--background-secondary);
   z-index: 10;
 
   &-header {
@@ -48,7 +48,7 @@
 
           &--dropdown {
             margin-left: 35px;
-            color: $color-secundary;
+            color: $color-secondary;
             font-size: 12px;
           }
         }

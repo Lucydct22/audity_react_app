@@ -12,11 +12,11 @@
   padding: 0 24px;
   margin: 0;
   border-top: var(--color-border-1px);
-  background-color: var(--background-secundary);
+  background-color: var(--background-secondary);
   z-index: 11;
 
   &-header {
-    color: $color-secundary;
+    color: $color-secondary;
     width: 100%;
 
     &__sections {
@@ -31,7 +31,7 @@
         gap: 3px;
         text-decoration: none;
         font-size: 12px;
-        color: $color-secundary;
+        color: $color-secondary;
 
         p {
           margin: 0;
