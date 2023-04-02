@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useLongPress, LongPressDetectEvents } from "use-long-press";
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -8,8 +10,21 @@ export default function RenderAlbum({ album }: any) {
 	const { t } = useTranslation();
 	const { imageUrl, name } = album;
 
+	const [isLongPressed, setIsLongPressed] = useState(false);
+
+	const callback = React.useCallback(() => {
+		setIsLongPressed(true)
+	}, []);
+	const bind = useLongPress(callback, {
+		onCancel: e => setIsLongPressed(false),
+		threshold: 260,
+		captureEvent: true,
+		cancelOnMovement: false,
+		detect: LongPressDetectEvents.BOTH
+	});
+
 	return (
-		<Link to={`/albums/${album.id}`} className='render-album'>
+		<Link to={!isLongPressed ? `/albums/${album.id}` : '#'} {...bind()} className='render-album'>
 			<div className='render-album__thumbnail'>
 				<img src={imageUrl} alt="IMG" />
 				<div className='render-album__thumbnail--btn'>

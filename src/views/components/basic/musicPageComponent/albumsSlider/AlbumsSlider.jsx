@@ -52,7 +52,7 @@ export default function AlbumsSlider() {
         breakpoint: 1175,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           initialSlide: 2
         }
       }

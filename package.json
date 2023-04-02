@@ -28,10 +28,10 @@
     "react-router-dom": "^6.9.0",
     "react-select": "^5.7.1",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "use-long-press": "^2.0.3"
   },
   "devDependencies": {
-    
     "@types/node": "^16.18.16",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
