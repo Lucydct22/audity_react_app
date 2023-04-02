@@ -6,6 +6,7 @@ import Theme from '@/views/UI/theme/Theme';
 import { CiSearch } from 'react-icons/ci';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
+import Language from '@/views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
 
 const TopBarBComponentDesktop = () => {
@@ -46,24 +47,30 @@ const TopBarBComponentDesktop = () => {
               <GoTriangleUp />
             </div>
 
-            { isAuthenticated ? (
-            <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            </Link>) 
-            : (
-              <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            )
+            {isAuthenticated ? (
+              <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
+                <span>Account Settings</span>
+                <FiChevronRight size='1.4rem' />
+              </div>
+              </Link>)
+              : (
+                <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+                  <span>Account Settings</span>
+                  <FiChevronRight size='1.4rem' />
+                </div>
+              )
             }
 
             <div className='page-topbar-action__popper--wrapper__content'>
               <span className='cursor-default'>System theme</span>
               <Theme />
             </div>
+
+            <div className='page-topbar-action__popper--wrapper__content'>
+              <span className='cursor-default'>Language</span>
+              <Language />
+            </div>
+
             {isAuthenticated ? (
               <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
                 Log out
