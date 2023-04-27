@@ -5,6 +5,7 @@ import { ThemeProvider } from "./context/theme/ThemeContext";
 import CurrentTracklistProvider from "./context/currentTracklist/CurrentTracklistProvider";
 import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
 import { isLocalhost } from './utils/isLocalhost';
+import UserProvider from "./context/user/UserProvider";
 
 const App = () => {
   return (
@@ -17,16 +18,18 @@ const App = () => {
       }
       authorizationParams={{ redirect_uri: window.location.origin + '/' }}
     >
-      <ThemeProvider>
-        <CurrentTracklistProvider>
-          <CurrentTrackProvider>
-            <RouterProvider
-              router={router}
-              fallbackElement={<></>}
-            />
-          </CurrentTrackProvider>
-        </CurrentTracklistProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider>
+          <CurrentTracklistProvider>
+            <CurrentTrackProvider>
+              <RouterProvider
+                router={router}
+                fallbackElement={<></>}
+              />
+            </CurrentTrackProvider>
+          </CurrentTracklistProvider>
+        </ThemeProvider>
+      </UserProvider>
     </Auth0Provider>
   );
 }

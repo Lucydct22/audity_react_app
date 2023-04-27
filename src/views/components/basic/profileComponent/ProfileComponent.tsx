@@ -1,24 +1,30 @@
 import Select from 'react-select';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import TrackListComponent from "@/views/components/basic/trackListComponent/TrackListComponent";
+import UserContext from '@/context/user/UserContext';
 
 const ProfileComponent = () => {
-
   const { t } = useTranslation();
-  const { user, isLoading } = useAuth0();
+  const { user: userAuth0, isLoading, getIdTokenClaims } = useAuth0();
   const [editMode, setEditMode] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState();
   const [selectedLanguage, setSelectedLanguage] = useState();
+  const { user } = useContext(UserContext)
+
+  //use context of user to get data from db  
 
   if (isLoading) {
     return <Spinner />
   }
 
-  const { email, nickname, picture } = user;
+  if (!userAuth0) return
+
+  const { picture } = userAuth0;
+  const { email, nickname } = user;
 
   const userData = {
     email: email,
@@ -39,7 +45,7 @@ const ProfileComponent = () => {
     { value: 'English', label: t("profile_select_language_two") }
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     /*const { name, value } = e.target;
     setUserData({
       ...userData,
@@ -47,7 +53,7 @@ const ProfileComponent = () => {
     });*/
   }
 
-  const handleCountryChange = (selectedOption) => {
+  const handleCountryChange = (selectedOption: any) => {
     setSelectedCountry(selectedOption);
     /*setUserData({
       ...userData,
@@ -55,8 +61,9 @@ const ProfileComponent = () => {
     })*/
   }
 
-  const handleLanguageChange = (selectedOption) => {
-    selectedLanguage(selectedOption);
+  const handleLanguageChange = (selectedOption: any) => {
+    if (!selectedOption) return
+    setSelectedLanguage(selectedOption);
     /*setUserData({
       ...userData,
       language: selectedOption.value
@@ -109,8 +116,8 @@ const ProfileComponent = () => {
                   value={selectedCountry}
                   placeholder={countries[0].value}
                   isDisabled={!editMode}
-                  onclick={handleChange}
-                  onChange={(value) => setSelectedCountry(value)}
+                  // onclick={handleChange}
+                  onChange={(value: any) => setSelectedCountry(value)}
                   className="user-settings__select-item--select"
                   classNamePrefix="dropdown-input"
                 />
@@ -124,7 +131,7 @@ const ProfileComponent = () => {
                   value={selectedLanguage}
                   placeholder={languages[0].value}
                   isDisabled={!editMode}
-                  onChange={(value) => setSelectedLanguage(value)}
+                  onChange={(value: any) => setSelectedLanguage(value)}
                   className="user-settings__select-item--select"
                   classNamePrefix="dropdown-input"
                 />
