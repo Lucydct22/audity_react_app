@@ -1,4 +1,4 @@
-import { registerLoginUserAPI } from '@/api/user';
+import { registerLoginUserAPI } from '@/api/user.api';
 import * as UserTypes from './user.types'
 
 export async function registerLoginUserAction(dispatch: any, user: any) {
