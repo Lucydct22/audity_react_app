@@ -12,10 +12,12 @@ export default function UserProvider({ children }: any) {
 	useEffect(() => {
 		const registerLoginUser = async () => {
 			const user = await getIdTokenClaims()
-			action.registerLoginUserAction(dispatch, user)
+			if(user){
+				action.registerLoginUserAction(dispatch, user)
+			}
 		}
 		registerLoginUser()
-	}, [isAuthenticated])
+	}, [isAuthenticated, user])
 
 	const updateUserInfo = useCallback(() => {
 		console.log('callback');
