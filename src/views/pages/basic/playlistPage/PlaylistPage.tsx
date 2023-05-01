@@ -1,6 +1,6 @@
-import HelmetSEO from "@/views/utils/HelmetSEO";
-import TrackListComponent from "@/views/components/basic/trackListComponent/TrackListComponent";
-import PlaylistComponent from "@/views/components/basic/playlistBComponent/PlaylistComponent";
+import HelmetSEO from "views/utils/HelmetSEO";
+import TrackListComponent from "views/components/basic/trackListComponent/TrackListComponent";
+import PlaylistComponent from "views/components/basic/playlistBComponent/PlaylistComponent";
 
 const PlaylistPage = () => {
 	return (

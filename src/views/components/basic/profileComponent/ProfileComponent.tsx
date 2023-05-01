@@ -4,10 +4,10 @@ import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
-import TrackListComponent from "@/views/components/basic/trackListComponent/TrackListComponent";
-import UserContext from '@/context/user/UserContext';
+import TrackListComponent from "views/components/basic/trackListComponent/TrackListComponent";
+import UserContext from 'context/user/UserContext';
 
-const ProfileComponent = () => {
+export default function ProfileComponent () {
   const { t } = useTranslation();
   const { user: userAuth0, isLoading, getIdTokenClaims } = useAuth0();
   const [editMode, setEditMode] = useState(false);
@@ -21,9 +21,9 @@ const ProfileComponent = () => {
     return <Spinner />
   }
 
-  if (!userAuth0) return
+  // if (!userAuth0) return
 
-  const { picture } = userAuth0;
+  // const { picture } = userAuth0;
   const { email, nickname } = user;
 
   const userData = {
@@ -31,7 +31,7 @@ const ProfileComponent = () => {
     password: '12345',
     nickname: nickname,
     birth_day: '1993-07-14',
-    picture: picture
+    picture: user?.picture
   };
 
   const countries = [
@@ -146,4 +146,4 @@ const ProfileComponent = () => {
     </>
   )
 }
-export default ProfileComponent;
+// export default ProfileComponent;

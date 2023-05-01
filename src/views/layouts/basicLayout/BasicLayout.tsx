@@ -1,26 +1,26 @@
 import { Suspense, lazy, useEffect, useContext } from "react";
-import CurrentTrackContext from "@/context/currentTrack/CurrentTrackContext";
-import CurrentTracklistContext from "@/context/currentTracklist/CurrentTracklistContext";
+import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
+import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
 import { Outlet } from 'react-router-dom'
-import useWindowSizeReport from "@/hooks/useWindowSizeReport";
-import { responsiveBreak } from "@/utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
+import { responsiveBreak } from "utils/componentsConstants";
 import './basicLayout.scss';
 
-// import SidebarBComponentDesktop from "@/views/components/basic/desktop/sidebarBComponentDesktop";
-// import PlayerBComponentDesktop from "@/views/components/basic/desktop/playerBComponentDesktop";
-// import TopBarBComponentDesktop from "@/views/components/basic/desktop/topBarBComponentDesktop";
-// import SidebarBComponentMobile from "@/views/components/basic/mobile/sidebarBComponentMobile";
-// import PlayerBComponentMobile from "@/views/components/basic/mobile/playerBComponentMobile";
-// import TopBarBComponentMobile from "@/views/components/basic/mobile/topBarBComponentMobile";
+// import SidebarBComponentDesktop from "views/components/basic/desktop/sidebarBComponentDesktop";
+// import PlayerBComponentDesktop from "views/components/basic/desktop/playerBComponentDesktop";
+// import TopBarBComponentDesktop from "views/components/basic/desktop/topBarBComponentDesktop";
+// import SidebarBComponentMobile from "views/components/basic/mobile/sidebarBComponentMobile";
+// import PlayerBComponentMobile from "views/components/basic/mobile/playerBComponentMobile";
+// import TopBarBComponentMobile from "views/components/basic/mobile/topBarBComponentMobile";
 
 // Desktop
-const SidebarBComponentDesktop = lazy(() => import('@/views/components/basic/desktop/sidebarBComponentDesktop'));
-const PlayerBComponentDesktop = lazy(() => import('@/views/components/basic/desktop/playerBComponentDesktop'));
-const TopBarBComponentDesktop = lazy(() => import('@/views/components/basic/desktop/topBarBComponentDesktop'));
+const SidebarBComponentDesktop = lazy(() => import('views/components/basic/desktop/sidebarBComponentDesktop'));
+const PlayerBComponentDesktop = lazy(() => import('views/components/basic/desktop/playerBComponentDesktop'));
+const TopBarBComponentDesktop = lazy(() => import('views/components/basic/desktop/topBarBComponentDesktop'));
 // Mobile
-const SidebarBComponentMobile = lazy(() => import('@/views/components/basic/mobile/sidebarBComponentMobile'));
-const PlayerBComponentMobile = lazy(() => import('@/views/components/basic/mobile/playerBComponentMobile'));
-const TopBarBComponentMobile = lazy(() => import('@/views/components/basic/mobile/topBarBComponentMobile'));
+const SidebarBComponentMobile = lazy(() => import('views/components/basic/mobile/sidebarBComponentMobile'));
+const PlayerBComponentMobile = lazy(() => import('views/components/basic/mobile/playerBComponentMobile'));
+const TopBarBComponentMobile = lazy(() => import('views/components/basic/mobile/topBarBComponentMobile'));
 
 const BasicLayout = () => {
   const { trackData, initCurrentTrack, updateCurrentTime } = useContext(CurrentTrackContext);

@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import CurrentTracklistContext from '@/context/currentTracklist/CurrentTracklistContext';
-import CurrentTrackContext from '@/context/currentTrack/CurrentTrackContext';
-import formatToSeconds from '@/utils/tracks/formatToSeconds';
+import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import formatToSeconds from 'utils/tracks/formatToSeconds';
 import ProgressBar from './progressBar/ProgressBar';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";

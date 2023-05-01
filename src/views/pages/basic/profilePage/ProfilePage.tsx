@@ -1,5 +1,5 @@
-import HelmetSEO from "@/views/utils/HelmetSEO";
-import ProfileComponent from "@/views/components/basic/profileComponent";
+import HelmetSEO from "views/utils/HelmetSEO";
+import ProfileComponent from "views/components/basic/profileComponent";
 
 
 const ProfilePage = () => {

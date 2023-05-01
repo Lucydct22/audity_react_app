@@ -1,7 +1,7 @@
-import { getTrackByIdApi } from "@/api/music/tracks";
-import getDuration from "@/utils/tracks/getDuration";
-import initAudio from "@/utils/tracks/initAudio";
-import tracksCycle from "@/utils/tracks/tracksCycle";
+import { getTrackByIdApi } from "api/music/tracks";
+import getDuration from "utils/tracks/getDuration";
+import initAudio from "utils/tracks/initAudio";
+import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
 export const initCurrentTrackAction = async function (dispatch: any) {

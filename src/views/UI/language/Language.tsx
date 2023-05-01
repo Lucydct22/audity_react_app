@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { useTranslation } from "react-i18next";
-import English from "@/assets/img/png/English.png";
-import Spanish from "@/assets/img/png/Spanish.png";
+import English from "assets/img/png/English.png";
+import Spanish from "assets/img/png/Spanish.png";
 import './Language.scss';
 
 const lngs = [

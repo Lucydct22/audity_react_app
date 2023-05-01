@@ -2,7 +2,7 @@ import TrackItemComponent from "./TrackItemComponent";
 import './trackListStyle.scss'; 
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
-import image from '@/assets/img/png/beyonce.png'
+import image from 'assets/img/png/beyonce.png'
 
 const  TrackListDisplayComponent = () => {
   const { t } = useTranslation();

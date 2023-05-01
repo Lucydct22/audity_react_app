@@ -1,5 +1,5 @@
-import HelmetSEO from "@/views/utils/HelmetSEO";
-import FavoritesBComponent from "@/views/components/basic/favoritesBComponent/FavoritesBComponent";
+import HelmetSEO from "views/utils/HelmetSEO";
+import FavoritesBComponent from "views/components/basic/favoritesBComponent/FavoritesBComponent";
 
 function FavoritesPage() {
 	return (

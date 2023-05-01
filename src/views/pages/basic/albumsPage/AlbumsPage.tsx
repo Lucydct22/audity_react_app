@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
-import { getAlbumsApi } from '@/api/music/albums';
-import AlbumsBComponent from '@/views/components/basic/albumsBComponent/AlbumsBComponent';
-import HelmetSEO from "@/views/utils/HelmetSEO";
+import { getAlbumsApi } from 'api/music/albums';
+import AlbumsBComponent from 'views/components/basic/albumsBComponent/AlbumsBComponent';
+import HelmetSEO from "views/utils/HelmetSEO";
 
 const AlbumsPage = ({ }) => {
 	const [albums, setAlbums] = useState([]);

@@ -1,8 +1,8 @@
 import { useReducer, useMemo, useEffect, useCallback } from 'react'
 import UserContext from './UserContext'
 import initialUserState from './initialUserState'
-import userReducer from '@/reducers/user/user.reducer'
-import * as action from "@/reducers/user/user.actions";
+import userReducer from 'reducers/user/user.reducer'
+import * as action from "reducers/user/user.actions";
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserProvider({ children }: any) {
@@ -12,7 +12,7 @@ export default function UserProvider({ children }: any) {
 	useEffect(() => {
 		const registerLoginUser = async () => {
 			const user = await getIdTokenClaims()
-			if(user){
+			if (user) {
 				action.registerLoginUserAction(dispatch, user)
 			}
 		}
@@ -21,9 +21,7 @@ export default function UserProvider({ children }: any) {
 
 	const updateUserInfo = useCallback(() => {
 		console.log('callback');
-	},
-		[],
-	)
+	}, [])
 
 
 	const userMemo = useMemo(

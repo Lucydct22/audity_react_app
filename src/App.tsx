@@ -10,11 +10,11 @@ import UserProvider from "./context/user/UserProvider";
 const App = () => {
   return (
     <Auth0Provider
-      domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      domain={process.env.REACT_APP_AUTH0_DOMAIN as string}
       clientId={
         isLocalhost
-          ? import.meta.env.VITE_DEVELOPMENT_AUTH0_CLIENT_ID as string
-          : import.meta.env.VITE_PRODUCTION_AUTH0_CLIENT_ID as string
+          ? process.env.REACT_APP_DEVELOPMENT_AUTH0_CLIENT_ID as string
+          : process.env.REACT_APP_PRODUCTION_AUTH0_CLIENT_ID as string
       }
       authorizationParams={{ redirect_uri: window.location.origin + '/' }}
     >

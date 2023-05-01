@@ -1,8 +1,8 @@
 import TrackListDisplayComponent from "./TrackListDisplayComponent";
 import TrackListMobileComponent from "../mobile/tracklistComponentMobile/TrackListMobileComponent";
 import './trackListStyle.scss'; 
-import { responsiveBreak } from "@/utils/componentsConstants";
-import useWindowSizeReport from "@/hooks/useWindowSizeReport";
+import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 
 const  TrackListComponent = () => {
   const windowWidth = useWindowSizeReport()

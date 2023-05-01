@@ -1,9 +1,15 @@
 import { basePath } from "../utils/config";
-import { Genres } from "@/interfaces/music";
+import { Genres } from "interfaces/music";
 
 
-export const getGenresApi = async (): Promise<Genres> => {
-	const response = await fetch(`${basePath}/genres`)
+export const getGenresApi = async (token: any): Promise<Genres> => {	
+	const params = {
+		method: "GET",
+		headers: {
+      Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await fetch(`${basePath}/genres`, params)
 	const data = await response.json()
 	return data as Genres
 }

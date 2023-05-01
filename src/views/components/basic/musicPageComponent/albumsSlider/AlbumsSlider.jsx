@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAlbumsApi } from '@/api/music/albums';
+import { getAlbumsApi } from 'api/music/albums';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -75,7 +75,7 @@ export default function AlbumsSlider() {
       <div className='album-carousel__container'>
         {albums && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {albums.map(album => {
+            {albums?.map(album => {
               return <RenderAlbum key={album.id} album={album} />
             })}
           </Slider>

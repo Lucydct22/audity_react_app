@@ -1,7 +1,7 @@
-import TrackItemComponent from "@/views/components/basic/trackListComponent/TrackItemComponent";
+import TrackItemComponent from "views/components/basic/trackListComponent/TrackItemComponent";
 import './trackListMobileStyle.scss';
 // import { useTranslation } from 'react-i18next';
-import image from '@/assets/img/png/beyonce.png';
+import image from 'assets/img/png/beyonce.png';
 
 const TrackListMobileComponent = () => {
   // const { t } = useTranslation();

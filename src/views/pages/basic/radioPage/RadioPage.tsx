@@ -1,5 +1,5 @@
-import HelmetSEO from "@/views/utils/HelmetSEO";
-import RadioBComponent from "@/views/components/basic/radioBComponent";
+import HelmetSEO from "views/utils/HelmetSEO";
+import RadioBComponent from "views/components/basic/radioBComponent";
 
 function FavoritesPage() {
 	return (

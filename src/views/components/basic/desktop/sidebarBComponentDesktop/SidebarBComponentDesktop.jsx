@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ThemeContext } from "@/context/theme/ThemeContext";
+import { ThemeContext } from "context/theme/ThemeContext";
 import { useTranslation } from "react-i18next";
-import LogoLightTheme from "@/assets/img/png/logoAudityBlackTransp.png";
-import LogoDarkTheme from "@/assets/img/png/logoAudityWhiteTransp.png";
+import LogoLightTheme from "assets/img/png/logoAudityBlackTransp.png";
+import LogoDarkTheme from "assets/img/png/logoAudityWhiteTransp.png";
 import { FiMusic } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineLibraryMusic } from "react-icons/md";

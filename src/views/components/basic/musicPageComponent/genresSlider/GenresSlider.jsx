@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getGenresApi } from '@/api/music/genres';
+import { getGenresApi } from 'api/music/genres';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,19 +7,27 @@ import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import './genresSlider.scss';
 import IMG from './GenresImages';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function GenresSlider() {
   let slider = new Slider();
   const [genres, setGenres] = useState(undefined)
+  const { getIdTokenClaims, user, isAuthenticated } = useAuth0()
 
   useEffect(() => {
     let isMounted = true;
-    getGenresApi().then(res => {
-      isMounted && res && setGenres(res);
-    })
+    const getGenres = async () => {
+      const token = await getIdTokenClaims()
+      token && getGenresApi(token.__raw).then(async res => {
+        console.log(res);
+        isMounted && res && setGenres(res.genres);
+        console.log(res);
+      })
+    }
+    getGenres()
     return () => { isMounted = false }
-  }, [])
+  }, [user])
 
   function next() {
     slider.slickNext();
@@ -69,7 +77,7 @@ export default function GenresSlider() {
         </span>
       </div>
       <div className='genres-carousel__container'>
-        {genres && (
+        {genres?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
             {genres.map(genre => {
               return <RenderGenres key={genre.id} genre={genre} />

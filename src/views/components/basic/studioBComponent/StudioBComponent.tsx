@@ -1,4 +1,4 @@
-import CommingSoon from '@/views/UI/commingSoon/CommingSoon';
+import CommingSoon from 'views/UI/commingSoon/CommingSoon';
 
 function StudioBComponent() {
   return (

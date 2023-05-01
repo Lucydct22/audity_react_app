@@ -2,13 +2,13 @@ import { useContext, useReducer } from "react";
 import CurrentTracklistContext from "../currentTracklist/CurrentTracklistContext";
 import CurrentTrackContext from "./CurrentTrackContext";
 import initialCurrentTrackState from "./initialCurrentTrackState";
-import currentTrackReducer from "@/reducers/currentTrack/currentTrackReducer";
-import * as CurrentTrackTypes from '@/reducers/currentTrack/currentTrackTypes';
+import currentTrackReducer from "reducers/currentTrack/currentTrackReducer";
+import * as CurrentTrackTypes from 'reducers/currentTrack/currentTrackTypes';
 import {
 	initCurrentTrackAction,
 	nextTrackAction,
 	previousTrackAction,
-} from "@/reducers/currentTrack/currentTrackActions";
+} from "reducers/currentTrack/currentTrackActions";
 
 export default function CurrentTrackProvider({ children }: any) {
 	const [currentTrackState, dispatch] = useReducer(currentTrackReducer, initialCurrentTrackState);

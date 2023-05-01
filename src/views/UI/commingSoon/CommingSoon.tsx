@@ -1,4 +1,4 @@
-import Gif1 from '@/assets/img/gif/giphy1-unscreen.gif';
+import Gif1 from 'assets/img/gif/giphy1-unscreen.gif';
 import "./commingSoon.scss";
 import { useTranslation } from 'react-i18next';
 
