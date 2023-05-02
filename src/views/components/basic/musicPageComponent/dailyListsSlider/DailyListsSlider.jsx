@@ -72,9 +72,9 @@ export default function DailyListsSlider() {
         </span>
       </div>
       <div className='daily-carousel__container'>
-        {playlists && (
+        {playlists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {playlists.map(playlist => {
+            {playlists?.map(playlist => {
               return <RenderPlaylist key={playlist.id} playlist={playlist} />
             })}
           </Slider>

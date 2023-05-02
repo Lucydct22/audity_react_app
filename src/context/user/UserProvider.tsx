@@ -7,13 +7,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserProvider({ children }: any) {
 	const [userState, dispatch] = useReducer(userReducer, initialUserState)
-	const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
-
+	const { user, isAuthenticated, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
+	
 	useEffect(() => {
 		const registerLoginUser = async () => {
-			const user = await getIdTokenClaims()
-			if (user) {
-				action.registerLoginUserAction(dispatch, user)
+			const userAuth0 = await getIdTokenClaims()
+			const token = await getAccessTokenSilently()
+			if (userAuth0) {
+				action.registerLoginUserAction(dispatch, user, token)
 			}
 		}
 		registerLoginUser()
@@ -22,7 +23,6 @@ export default function UserProvider({ children }: any) {
 	const updateUserInfo = useCallback(() => {
 		console.log('callback');
 	}, [])
-
 
 	const userMemo = useMemo(
 		() => ({

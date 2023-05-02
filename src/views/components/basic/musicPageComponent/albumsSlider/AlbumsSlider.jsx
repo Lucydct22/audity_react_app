@@ -73,7 +73,7 @@ export default function AlbumsSlider() {
         </span>
       </div>
       <div className='album-carousel__container'>
-        {albums && (
+        {albums?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
             {albums?.map(album => {
               return <RenderAlbum key={album.id} album={album} />

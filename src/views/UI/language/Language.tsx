@@ -34,8 +34,8 @@ const Language = () => {
           const { code, native, img } = lng;
 
           return (
-            <div className="language-switcher__section--container">
-              <button key={i} onClick={() => handleTrans(code)} className="language-switcher__section--container__btn">
+            <div key={i} className="language-switcher__section--container">
+              <button onClick={() => handleTrans(code)} className="language-switcher__section--container__btn">
                 <img src={img} alt={native} className={actualCode==code ? "language-switcher__section--container__btn--imgActive" : "language-switcher__section--container__btn--img"} />
               </button>
             </div>

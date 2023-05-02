@@ -16,7 +16,10 @@ const App = () => {
           ? process.env.REACT_APP_DEVELOPMENT_AUTH0_CLIENT_ID as string
           : process.env.REACT_APP_PRODUCTION_AUTH0_CLIENT_ID as string
       }
-      authorizationParams={{ redirect_uri: window.location.origin + '/' }}
+      authorizationParams={{
+        redirect_uri: window.location.origin + '/',
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE
+      }}
     >
       <UserProvider>
         <ThemeProvider>

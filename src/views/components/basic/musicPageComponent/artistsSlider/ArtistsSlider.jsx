@@ -69,9 +69,9 @@ export default function ArtistsSlider() {
         </span>
       </div>
       <div className='carousel-component__container'>
-        {artists && (
+        {artists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {artists.map(artist => {
+            {artists?.map(artist => {
               return <RenderArtist key={artist.id} artist={artist} />
             })}
           </Slider>

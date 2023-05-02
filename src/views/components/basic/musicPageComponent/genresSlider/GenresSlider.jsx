@@ -79,8 +79,8 @@ export default function GenresSlider() {
       <div className='genres-carousel__container'>
         {genres?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {genres.map(genre => {
-              return <RenderGenres key={genre.id} genre={genre} />
+            {genres?.map(genre => {
+              return <RenderGenres key={genre._id} genre={genre} />
             })}
           </Slider>
         )}
