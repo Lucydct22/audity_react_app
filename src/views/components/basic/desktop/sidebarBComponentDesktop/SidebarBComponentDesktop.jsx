@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 import LogoLightTheme from "assets/img/png/logoAudityBlackTransp.png";
 import LogoDarkTheme from "assets/img/png/logoAudityWhiteTransp.png";
 import { FiMusic } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
+import { VscLibrary } from "react-icons/vsc";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaGuitar } from "react-icons/fa";
-import { CgBrowser } from "react-icons/cg";
-import { BsMusicPlayer } from "react-icons/bs";
+import { SlCompass } from "react-icons/sl";
+// import { BsMusicPlayer } from "react-icons/bs";
 import "./sidebarBComponentDesktop.scss";
 
 const SidebarBComponentDesktop = () => {
@@ -35,25 +35,17 @@ const SidebarBComponentDesktop = () => {
             <p>{t("sidebar_music")}</p>
           </NavLink>
 
-          {/* <NavLink to={"/radio"} className="side-bar-header__sections--options">
-            <div className="side-bar-header__sections--options__decoration"></div>
-            <RiRadioLine
-              size={20}
-              className="side-bar-header__sections--options__icon"
-            />
-            <p>{t("sidebar_radio")}</p>
-          </NavLink> */}
 
           <Link to={"#"}
             className="side-bar-header__sections--options"
             onClick={() => setToggleDropdown(!toggleDropdown)}
           >
             <div className="side-bar-header__sections--options__decoration"></div>
-            <CgBrowser
+            <SlCompass
               size={20}
               className="side-bar-header__sections--options__icon"
             />
-            <p>{t("sidebar_browser")}</p>
+            <p>{t("sidebar_explore")}</p>
           </Link>
 
           {toggleDropdown ? (
@@ -72,7 +64,7 @@ const SidebarBComponentDesktop = () => {
                   <MdOutlineLibraryMusic
                     size={15}
                     className="side-bar-header__sections--options__icon--dropdown"
-                  />
+                    />
                   <p className="side-bar-header__sections--options__icon--dropdown">Album</p>
                 </NavLink>
               </div>
@@ -81,18 +73,27 @@ const SidebarBComponentDesktop = () => {
           ) : null}
 
           <NavLink
-            to={"/favorites"}
+            to={"/library"}
             className="side-bar-header__sections--options"
-          >
+            >
             <div className="side-bar-header__sections--options__decoration"></div>
-            <AiOutlineHeart
+            <VscLibrary
               size={20}
               className="side-bar-header__sections--options__icon"
-            />
-            <p>{t("sidebar_favorites")}</p>
+              />
+            <p>{t("sidebar_library")}</p>
           </NavLink>
+          
+              {/* <NavLink to={"/radio"} className="side-bar-header__sections--options">
+                <div className="side-bar-header__sections--options__decoration"></div>
+                <RiRadioLine
+                  size={20}
+                  className="side-bar-header__sections--options__icon"
+                />
+                <p>{t("sidebar_radio")}</p>
+              </NavLink> */}
 
-          <NavLink
+          {/* <NavLink
             to={"/studio"}
             className="side-bar-header__sections--options"
           >
@@ -102,7 +103,7 @@ const SidebarBComponentDesktop = () => {
               className="side-bar-header__sections--options__icon"
             />
             <p>{t("sidebar_studio")}</p>
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     </nav>

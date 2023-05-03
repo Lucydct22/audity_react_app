@@ -11,8 +11,8 @@ const spanishTranslation = {
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Musica',
   sidebar_radio: 'Radio',
-  sidebar_browser: 'Navegador',
-  sidebar_favorites: 'Favoritos',
+  sidebar_explore: 'Explorar',
+  sidebar_library: 'Mi Biblioteca',
   sidebar_studio: 'Estudio',
   sidebar_search: 'Buscar',
   sidebar_account: 'Cuanta',
