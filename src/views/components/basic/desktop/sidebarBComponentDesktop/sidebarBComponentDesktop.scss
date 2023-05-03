@@ -35,6 +35,8 @@
         align-items: center;
         text-decoration: none;
         font-size: 15px;
+        font-weight: 700;
+        
         height: 50px;
         color: var(--color-primary);
 
@@ -50,6 +52,7 @@
             margin-left: 35px;
             color: $color-secondary;
             font-size: 12px;
+            font-weight: 400;
           }
         }
 

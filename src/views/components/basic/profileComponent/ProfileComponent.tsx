@@ -82,7 +82,7 @@ export default function ProfileComponent () {
     <>
       <div className='user-settings'>
         <div className="user-settings__image">
-          <img src={userData.picture} alt="your foto" className="user-settings__image--profile" />
+          <img src={userData.picture} alt="your photo" className="user-settings__image--profile" />
           <p>{t("profile_intro")}</p>
         </div>
         <div className="user-settings__account" >

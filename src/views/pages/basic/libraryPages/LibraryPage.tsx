@@ -1,5 +1,5 @@
 import HelmetSEO from "views/utils/HelmetSEO";
-import ExploreBComponent from "views/components/basic/libraryBComponent/libraryBComponent";
+// import ExploreBComponent from "views/components/basic/libraryBComponent/libraryBComponent";
 
 function ExplorePage() {
   return (
@@ -7,7 +7,7 @@ function ExplorePage() {
       title='Explore | Audity'
       description='Audity Explore Page'
     >
-      <ExploreBComponent />
+      <h1>Helokdowkdo akdo jad aj</h1>
     </HelmetSEO>
   )
 }

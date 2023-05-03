@@ -1,0 +1,100 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixins.scss';
+
+.library-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-bottom: var(--color-border-1px);
+  border-width: 2px;
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+    }
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__name {
+        font-family: 'Anek Gujarati', sans-serif;
+        font-size: 32px;
+        line-height: 28px;
+        margin: 0;
+        color: var(--color-primary);
+      }
+
+      &__desc {
+        color: $color-secondary;
+        margin: 12px 0;
+      }
+
+      &__btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        border: 0px;
+        margin: 0px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 20px;
+        font-size: 15px;
+        font-weight: 700;
+        color: white;
+        background-color: $color-main;
+
+        span {
+          padding: 0px 10px;
+          padding-top: 2px;
+        }
+      }
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    gap: 30px;
+
+    &--options {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: $color-secondary;
+      font-weight: 400;
+      font-size: 17px;
+      gap: 10px;
+
+      &__label {
+        margin: 0;
+      }
+
+      &__decoration {
+        border: 1px solid $color-main;
+        visibility: hidden;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .active {
+    color: $color-main !important;
+
+    .library-header__navbar--options__decoration {
+      visibility: visible;
+    }
+
+    .library-header__navbar--options__label {
+      color: var(--color-primary);
+    }
+  }
+}
