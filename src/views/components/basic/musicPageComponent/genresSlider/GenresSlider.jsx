@@ -13,13 +13,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 export default function GenresSlider() {
   let slider = new Slider();
   const [genres, setGenres] = useState(undefined)
-  const { getIdTokenClaims, user, isAuthenticated } = useAuth0()
+  const { user, getAccessTokenSilently } = useAuth0()
 
   useEffect(() => {
     let isMounted = true;
     const getGenres = async () => {
-      const token = await getIdTokenClaims()
-      token && getGenresApi(token.__raw).then(async res => {
+      const token = await getAccessTokenSilently()
+      token && getGenresApi(token).then(async res => {
         console.log(res);
         isMounted && res && setGenres(res.genres);
         console.log(res);
@@ -91,11 +91,11 @@ export default function GenresSlider() {
 
 const RenderGenres = ({ genre }) => {
   let img = new IMG()
-
+  console.log(genre);
   return (
     <section className='genres-carousel__container--section'>
       <div className='genres-carousel__container--section__thumbnail'>
-        <img src={img[genre.id]} alt={genre.name} />
+        <img src={genre.thumbnail} alt={genre.name} />
         <p className='genres-carousel__container--section__thumbnail--description' to={'#'}>{genre?.name}</p>
       </div>
     </section>
