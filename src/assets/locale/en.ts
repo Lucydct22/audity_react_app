@@ -9,8 +9,8 @@ const englishTranslation = {
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Music',
   sidebar_radio: 'Radio',
-  sidebar_browser: 'Browser',
-  sidebar_favorites: 'Favorites',
+  sidebar_explore: 'Explore',
+  sidebar_library: 'My Library',
   sidebar_studio: 'Studio',
   sidebar_search: 'Search',
   sidebar_account: 'Account',
