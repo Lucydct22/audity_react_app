@@ -1,0 +1,19 @@
+@import "../../../../sass/variables";
+@import "../../../../sass/animation";
+
+.playlist-page-content {
+
+	h1 {
+		font-size: 25px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		@include fadeIn();
+
+		@media (max-width: 1300px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}

@@ -13,9 +13,10 @@ const AlbumsPage = lazy(() => import('views/pages/basic/albumsPage'));
 const AlbumPage = lazy(() => import('views/pages/basic/albumPage'));
 const ArtistsPage = lazy(() => import('views/pages/basic/artistsPage'));
 const ArtistPage = lazy(() => import('views/pages/basic/artistPage'));
+const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
+const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const LibraryPage = lazy(() => import('views/pages/basic/libraryPage'))
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
-const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'))
 const StudioPage = lazy(() => import('views/pages/basic/studioPage'))
 
 // ADMIN PAGES
@@ -54,6 +55,16 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: "playlists",
+        element: <Suspense fallback={<></>}><PlaylistsPage /></Suspense>,
+        children: [
+          {
+            path: ":playlistId",
+            element: <Suspense fallback={<></>}><PlaylistPage /></Suspense>,
+          },
+        ]
+      },
+      {
         path: "library",
         element: <Suspense fallback={<></>}><LibraryPage /></Suspense>
       },
@@ -71,10 +82,6 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
-      },
-      {
-        path: "playlists",
-        element: <Suspense fallback={<></>}><PlaylistPage /></Suspense>
       },
       {
         path: "*",

@@ -6,6 +6,7 @@ import LogoLightTheme from "assets/img/png/logoAudityBlackTransp.png";
 import LogoDarkTheme from "assets/img/png/logoAudityWhiteTransp.png";
 import { FiMusic } from "react-icons/fi";
 import { VscLibrary } from "react-icons/vsc";
+import { IoHeadsetOutline } from "react-icons/io5";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaGuitar } from "react-icons/fa";
 import { SlCompass } from "react-icons/sl";
@@ -66,6 +67,14 @@ const SidebarBComponentDesktop = () => {
                     className="side-bar-header__sections--options__icon--dropdown"
                     />
                   <p className="side-bar-header__sections--options__icon--dropdown">Album</p>
+                </NavLink>
+                <NavLink to={"/playlists"} className="side-bar-header__sections--options">
+                  <div className="side-bar-header__sections--options__decoration"></div>
+                  <IoHeadsetOutline
+                    size={15}
+                    className="side-bar-header__sections--options__icon--dropdown"
+                    />
+                  <p className="side-bar-header__sections--options__icon--dropdown">Playlist</p>
                 </NavLink>
               </div>
 
