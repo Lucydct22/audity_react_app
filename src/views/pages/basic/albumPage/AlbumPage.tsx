@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAlbumsByIdApi } from 'api/music/albums';
+import { getAlbumByIdApi } from 'api/music/albums';
 import AlbumBComponent from 'views/components/basic/albumBComponent';
 import TrackListComponent from 'views/components/basic/trackListComponent/TrackListComponent'
 import HelmetSEO from 'views/utils/HelmetSEO';
@@ -11,8 +11,8 @@ export default function AlbumPage() {
 
 	useEffect(() => {
 		let isMounted = true;
-		albumId && getAlbumsByIdApi(albumId.toString()).then((res: any) => {
-			isMounted && res && setAlbum(res);
+		albumId && getAlbumByIdApi(albumId.toString()).then((res: any) => {
+			isMounted && res && setAlbum(res.album);
 		})
 		return () => { isMounted = false }
 	}, [albumId])

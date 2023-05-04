@@ -7,7 +7,7 @@ export default function PlaylistsBComponent({ playlists }: any) {
 			<h1>Playlist Page</h1>
 			<div className='playlist-page-content__grid'>
 				{playlists &&
-					playlists.map((playlist: any) => <RenderPlaylist key={playlist.id} playlist={playlist} />)
+					playlists.map((playlist: any) => <RenderPlaylist key={playlist._id} playlist={playlist} />)
 				}
 			</div>
 		</div>

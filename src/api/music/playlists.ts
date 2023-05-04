@@ -9,7 +9,7 @@ export const getPlaylistApi = async (): Promise<Playlist> => {
 }
 
 export const getPlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
-	const response = await fetch(`${basePath}/playlists/${playlistId}`)
+	const response = await fetch(`${basePath}/playlist/${playlistId}`)
 	const data = await response.json()
 	return data as Playlist
 }

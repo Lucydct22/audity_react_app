@@ -1,6 +1,6 @@
 import React from 'react'
 import { getTracksApi, getTrackByIdApi, deleteTrackByIdApi, updateTrackApi, addTrackApi, likeDislikeTrackApi } from '../../../api/music/tracks';
-import { getAlbumsApi, getAlbumsByIdApi, deleteAlbumsByIdApi, updateAlbumApi, addAlbumApi } from '../../../api/music/albums';
+import { getAlbumsApi, getAlbumByIdApi, deleteAlbumsByIdApi, updateAlbumApi, addAlbumApi } from '../../../api/music/albums';
 import { getArtistApi, getArtistByIdApi, deleteArtistByIdApi, updateArtistApi, addArtistApi } from '../../../api/music/artists';
 import { getPlaylistApi, getPlaylistByIdApi, deletePlaylistByIdApi, updatePlaylistApi, addPlaylistApi } from '../../../api/music/playlists';
 import { getGenresApi, getGenresByIdApi, deleteGenresByIdApi, updateGenresApi, addGenresApi } from '../../../api/music/genres';

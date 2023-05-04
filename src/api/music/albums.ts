@@ -8,10 +8,10 @@ export const getAlbumsApi = async (): Promise<Albums> => {
 	return data as Albums
 }
 
-export const getAlbumsByIdApi = async (albumsId: string): Promise<Albums> => {
-	const response = await fetch(`${basePath}/albums/${albumsId}`)
+export const getAlbumByIdApi = async (albumId: string): Promise<Albums> => {
+	const response = await fetch(`${basePath}/album/${albumId}`)
 	const data = await response.json()
-	return data as Albums
+	return data
 }
 
 //DELETE

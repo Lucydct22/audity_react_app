@@ -9,7 +9,7 @@ export const getArtistApi = async (): Promise<Artist> => {
 }
 
 export const getArtistByIdApi = async (artistId: string): Promise<Artist> => {
-	const response = await fetch(`${basePath}/artists/${artistId}`)
+	const response = await fetch(`${basePath}/artist/${artistId}`)
 	const data = await response.json()
 	return data as Artist
 }

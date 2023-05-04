@@ -4,20 +4,20 @@ import { getPlaylistApi } from 'api/music/playlists';
 import PlaylistsBComponent from 'views/components/basic/playlistsBComponent/PlaylistsBComponent';
 import HelmetSEO from "views/utils/HelmetSEO";
 
-const PlaylistPage = () => {
+const PlaylistsPage = () => {
 	const [playlists, setPlaylists] = useState([]);
-	const params: any = useParams();
+	const { playlistId }: any = useParams();
 
 	useEffect(() => {
 		let isMounted = true;
 		getPlaylistApi().then((res: any) => {
-			isMounted && res && setPlaylists(res);
+			isMounted && res && setPlaylists(res.playlist);
 		})
 		return () => { isMounted = false }
 	}, [])
 
 	return (
-		isNaN(parseInt(params.playlistId)) ? (
+		!playlistId ? (
 			<HelmetSEO
 				title='Playlist | Audity'
 				description='Audity Playlist Page'
@@ -30,4 +30,4 @@ const PlaylistPage = () => {
 	)
 }
 
-export default PlaylistPage;
+export default PlaylistsPage;

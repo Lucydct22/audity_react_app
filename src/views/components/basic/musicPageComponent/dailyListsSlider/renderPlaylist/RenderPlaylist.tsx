@@ -9,7 +9,9 @@ import './renderPlaylist.scss';
 
 export default function RenderPlaylist({ playlist }: any) {
   const { t } = useTranslation();
-  const { id, name } = playlist;
+  const { _id, name, cover } = playlist;
+  console.log(playlist);
+  
 
   const [isLongPressed, setIsLongPressed] = useState(false);
 
@@ -25,10 +27,10 @@ export default function RenderPlaylist({ playlist }: any) {
   });
 
   return (
-    <Link to={!isLongPressed ? `/playlist/${id}` : '#'} {...bind()} className='render-playlist'>
+    <Link to={!isLongPressed ? `/playlists/${_id}` : '#'} {...bind()} className='render-playlist'>
       <div className='render-playlist__thumbnail'>
         <div className='render-playlist__thumbnail--picture'>
-          <img src={AlbumImg2} alt="IMG" />
+          <img src={cover} alt="IMG" />
           <div className='render-playlist__thumbnail--picture__fade'></div>
         </div>
         <div className='render-playlist__thumbnail--btn'>

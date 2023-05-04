@@ -12,7 +12,7 @@ export default function PlaylistPage() {
 	useEffect(() => {
 		let isMounted = true;
 		playlistId && getPlaylistByIdApi(playlistId.toString()).then((res: any) => {
-			isMounted && res && setPlaylist(res);
+			isMounted && res && setPlaylist(res.playlist);
 		})
 		return () => { isMounted = false }
 	}, [playlistId])

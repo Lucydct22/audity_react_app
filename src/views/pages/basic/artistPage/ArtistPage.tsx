@@ -12,7 +12,7 @@ export default function ArtistPage() {
 	useEffect(() => {
 		let isMounted = true;
 		artistId && getArtistByIdApi(artistId.toString()).then((res: any) => {
-			isMounted && res && setArtist(res);
+			isMounted && res && setArtist(res.artist);
 		})
 		return () => { isMounted = false }
 	}, [artistId])
