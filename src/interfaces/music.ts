@@ -23,7 +23,7 @@ export interface Track {
 }
 
 export interface Albums {
-  id: string;
+  _id: string;
   name: string;
   genres: string[];
   tracks: [string]
@@ -34,7 +34,7 @@ export interface Albums {
 }
 
 export interface Artist {
-  id: string;
+  _id: string;
   name: string;
   genres: string[];
   photoUrl: string;

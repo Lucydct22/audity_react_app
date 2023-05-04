@@ -9,11 +9,9 @@ const ArtistsPage = () => {
 	const params: any = useParams();
 
 	useEffect(() => {
-		let isMounted = true;
 		getArtistApi().then((res: any) => {
-			isMounted && res && setArtists(res);
+			res && setArtists(res.artists);
 		})
-		return () => { isMounted = false }
 	}, [])
 
 	return (

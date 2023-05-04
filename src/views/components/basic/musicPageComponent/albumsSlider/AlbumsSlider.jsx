@@ -18,7 +18,7 @@ export default function AlbumsSlider() {
   useEffect(() => {
     let isMounted = true;
     getAlbumsApi().then(res => {
-      isMounted && res && setAlbums(res);
+      isMounted && res && setAlbums(res.albums);
     })
     return () => { isMounted = false }
   }, []);
@@ -76,7 +76,7 @@ export default function AlbumsSlider() {
         {albums?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
             {albums?.map(album => {
-              return <RenderAlbum key={album.id} album={album} />
+              return <RenderAlbum key={album._id} album={album} />
             })}
           </Slider>
         )}

@@ -5,8 +5,8 @@ import * as CurrentTracklistReducer from './currentTracklistTypes';
 
 
 export const initCurrentTracklistAction = function (dispatch: any) {
-	getTracksApi().then(async tracksResponse => {
-		const tracklist = makeArrayOfTrackIds(tracksResponse);
+	getTracksApi().then(async (tracksResponse: any) => {		
+		const tracklist = makeArrayOfTrackIds(tracksResponse.tracks);
 		return dispatch({
 			type: CurrentTracklistReducer.INIT_CURRENT_TRACKLIST,
 			payload: { listType: 'all', listId: 'all-songs', tracks: tracklist }

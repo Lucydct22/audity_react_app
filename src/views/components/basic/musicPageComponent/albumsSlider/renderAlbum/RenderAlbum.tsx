@@ -9,7 +9,6 @@ import './renderAlbum.scss';
 export default function RenderAlbum({ album }: any) {
 	const { t } = useTranslation();
 	const { imageUrl, name } = album;
-
 	const [isLongPressed, setIsLongPressed] = useState(false);
 
 	const callback = React.useCallback(() => {
@@ -24,7 +23,7 @@ export default function RenderAlbum({ album }: any) {
 	});
 
 	return (
-		<Link to={!isLongPressed ? `/albums/${album.id}` : '#'} {...bind()} className='render-album'>
+		<Link to={!isLongPressed ? `/albums/${album._id}` : '#'} {...bind()} className='render-album'>
 			<div className='render-album__thumbnail'>
 				<img src={imageUrl} alt="IMG" />
 				<div className='render-album__thumbnail--btn'>

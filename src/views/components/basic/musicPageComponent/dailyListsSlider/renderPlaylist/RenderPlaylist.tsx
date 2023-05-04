@@ -39,7 +39,7 @@ export default function RenderPlaylist({ playlist }: any) {
           <p className='render-playlist__thumbnail--logo-daily__description'>daily</p>
         </div>
       </div>
-      <Link className='render-playlist__description' to={'#'}>{name}</Link>
+      {/* <Link className='render-playlist__description' to={'#'}>{name}</Link> */}
     </Link>
   )
 }

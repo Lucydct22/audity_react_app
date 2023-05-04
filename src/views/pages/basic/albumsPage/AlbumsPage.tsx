@@ -10,8 +10,8 @@ const AlbumsPage = ({ }) => {
 
 	useEffect(() => {
 		const getAlbums = async () => {
-			const albumsData: any = await getAlbumsApi()
-			setAlbums(albumsData)
+			const response: any = await getAlbumsApi()
+			setAlbums(response.albums)
 		}
 		getAlbums()
 	}, [])

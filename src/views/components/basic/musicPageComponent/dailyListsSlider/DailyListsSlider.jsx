@@ -17,7 +17,7 @@ export default function DailyListsSlider() {
   useEffect(() => {
     let isMounted = true;
     getPlaylistApi().then(res => {
-      isMounted && res && setPlaylists(res);
+      isMounted && res && setPlaylists(res.playlist);
     })
     return () => { isMounted = false }
   }, [])
@@ -74,7 +74,7 @@ export default function DailyListsSlider() {
         {playlists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
             {playlists?.map(playlist => {
-              return <RenderPlaylist key={playlist.id} playlist={playlist} />
+              return <RenderPlaylist key={playlist._id} playlist={playlist} />
             })}
           </Slider>
         )}

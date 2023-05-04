@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { getGenresApi } from 'api/music/genres';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -6,8 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import './genresSlider.scss';
-import IMG from './GenresImages';
-import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function GenresSlider() {
@@ -20,9 +19,7 @@ export default function GenresSlider() {
     const getGenres = async () => {
       const token = await getAccessTokenSilently()
       token && getGenresApi(token).then(async res => {
-        console.log(res);
         isMounted && res && setGenres(res.genres);
-        console.log(res);
       })
     }
     getGenres()
@@ -90,8 +87,6 @@ export default function GenresSlider() {
 }
 
 const RenderGenres = ({ genre }) => {
-  let img = new IMG()
-  console.log(genre);
   return (
     <section className='genres-carousel__container--section'>
       <div className='genres-carousel__container--section__thumbnail'>

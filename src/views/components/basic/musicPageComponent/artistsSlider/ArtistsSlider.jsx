@@ -15,7 +15,7 @@ export default function ArtistsSlider() {
   useEffect(() => {
     let isMounted = true;
     getArtistApi().then(res => {
-      isMounted && res && setArtists(res);
+      isMounted && res && setArtists(res.artists);
     })
     return () => { isMounted = false }
   }, [])
@@ -72,7 +72,7 @@ export default function ArtistsSlider() {
         {artists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
             {artists?.map(artist => {
-              return <RenderArtist key={artist.id} artist={artist} />
+              return <RenderArtist key={artist._id} artist={artist} />
             })}
           </Slider>
         )}

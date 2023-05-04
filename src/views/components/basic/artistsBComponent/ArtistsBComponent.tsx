@@ -7,7 +7,7 @@ export default function ArtistsBComponent({ artists }: any) {
 			<h1>Artist Page</h1>
 			<div className='artists-page-content__grid'>
 				{artists &&
-					artists.map((artist: any) => <RenderArtist key={artist.id} artist={artist} />)
+					artists.map((artist: any) => <RenderArtist key={artist._id} artist={artist} />)
 				}
 			</div>
 		</div>

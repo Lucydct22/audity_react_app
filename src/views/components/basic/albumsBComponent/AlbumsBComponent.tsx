@@ -8,7 +8,7 @@ export default function AlbumsBComponent({ albums }: any) {
 			<h1>Album Page</h1>
 			<div className='albums-page-content__grid'>
 				{albums.map((album: Artist) => {
-					return <RenderAlbum key={album.id} album={album} />
+					return <RenderAlbum key={album._id} album={album} />
 				})}
 			</div>
 		</div>
