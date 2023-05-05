@@ -3,18 +3,19 @@
 
 .user-settings {
   margin: 0 auto;
-  padding: 0 20px;
   padding-top: 24px;
   @include web-responsive();
+  max-width: 685px;
 
-  &__image {
+  &__profile {
     display: flex;
     align-items: center;
-    padding-right: 15px;
+    gap: 24px;
 
-    &--profile {
+    &--image {
+      width: 125px;
+      height: 125px;
       border-radius: 50%;
-      max-width: 100px;
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         width: 60px;
@@ -23,8 +24,23 @@
 
     }
 
-    p {
-      margin-left: 15px;
+    &--info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__name {
+        font-family: 'Anek Gujarati', sans-serif;
+        font-size: 18px;
+        line-height: 16px;
+        margin: 0;
+        color: var(--color-primary);
+      }
+
+      &__desc {
+        color: $color-secondary;
+        margin: 12px 0;
+      }
     }
   }
 
@@ -132,7 +148,6 @@
 
   .input-group {
     margin-top: 10px;
-    width: 100%;
 
     input {
       width: calc(100% - 18px);

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from "react-i18next";
 import { TiArrowShuffle } from "react-icons/ti";
+import PersonPlaceholder160 from 'assets/img/webp/profile-placeholder-160x160.webp'
 
 const LibraryHeader = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const LibraryHeader = () => {
   return (
     <header className="library-header">
       <div className="library-header__profile">
-        <img src={user?.picture} alt="your photo" />
+        <img src={user?.picture ? user.picture : PersonPlaceholder160} alt="your photo" />
         <div className="library-header__profile--info">
           <span className="library-header__profile--info__name">My name</span>
           <span className="library-header__profile--info__desc">{t('library_header_profile_desc')}</span>
