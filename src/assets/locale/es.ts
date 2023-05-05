@@ -1,8 +1,6 @@
 const spanishTranslation = {
   /*~~~~~~~~~ USER ~~~~~~~~~*/
   // Login/register
-
-  // Home
   title_user_home: 'Hola',
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
@@ -12,6 +10,9 @@ const spanishTranslation = {
   sidebar_music: 'Musica',
   sidebar_radio: 'Radio',
   sidebar_explore: 'Explorar',
+  sidebar_explore_artist: 'Artistas',
+  sidebar_explore_album: 'Álbums',
+  sidebar_explore_playlist: 'Playlists',
   sidebar_library: 'Mi Biblioteca',
   sidebar_studio: 'Estudio',
   sidebar_search: 'Buscar',
@@ -48,11 +49,20 @@ const spanishTranslation = {
   profile_name: "Tu nombre",
   profile_lastname: "Tu apellido",
 
+  /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
+  library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
+  library_header_profile_btn: 'Mi música en modo aleatorio',
+
+  library_header_navbar_highlights: 'Destacados',
+  library_header_navbar_favorite: 'Canciones favoritas',
+  library_header_navbar_playlist: 'Playlists',
+  library_header_navbar_upload: 'Mis canciones',
+
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
-  track_list_track: 'CANCIÓN',
-  track_list_artist: 'ARTISTA',
-  track_list_album: 'ÁLBUM',
-  track_list_rating: 'RATING',
+  library_header_track: 'CANCIÓN',
+  library_header_artist: 'ARTISTA',
+  library_header_album: 'ÁLBUM',
+  library_header_rating: 'RATING',
 
   /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
   page_pnumber: 'Canciones',
@@ -64,12 +74,12 @@ const spanishTranslation = {
   followingbutton: 'Siguiendo',
 
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
-track_item_playlist: 'Añadir a playlist',
-track_item_download: 'Descargar',
-track_item_ranking: 'Ranking: ',
-track_item_duration: 'Duración: ',
+  track_item_playlist: 'Añadir a playlist',
+  track_item_download: 'Descargar',
+  track_item_ranking: 'Ranking: ',
+  track_item_duration: 'Duración: ',
 
-    /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
+  /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'Lamentamos las molestias, seguimos trabajando en ello...'
 }
 
