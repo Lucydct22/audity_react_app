@@ -7,8 +7,10 @@ const LibraryHeader = lazy(() => import('views/components/basic/libraryBComponen
 const LibraryLayout = () => {
   return (
     <Suspense fallback={<></>}>
-      <LibraryHeader />
-      <Outlet />
+      <section className="library-page">
+        <LibraryHeader />
+        <Outlet />
+      </section>
     </Suspense>
   )
 }

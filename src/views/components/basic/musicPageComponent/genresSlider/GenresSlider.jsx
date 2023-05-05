@@ -90,7 +90,7 @@ const RenderGenres = ({ genre }) => {
   return (
     <section className='genres-carousel__container--section'>
       <div className='genres-carousel__container--section__thumbnail'>
-        <img src={genre.thumbnail} alt={genre.name} />
+        <img src={genre.imageUrl} alt={genre.name} />
         <p className='genres-carousel__container--section__thumbnail--description' to={'#'}>{genre?.name}</p>
       </div>
     </section>

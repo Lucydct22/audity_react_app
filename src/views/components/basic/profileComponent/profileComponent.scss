@@ -3,7 +3,9 @@
 
 .user-settings {
   margin: 0 auto;
-  max-width: 875px;
+  padding: 0 20px;
+  padding-top: 24px;
+  @include web-responsive();
 
   &__image {
     display: flex;

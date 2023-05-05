@@ -104,7 +104,7 @@
           left: 20px;
           bottom: 15px;
 
-          @media (max-width: $media-breakpoint-up-sm) {
+          @media (max-width: $media-breakpoint-desktop-up-sm) {
             left: 10px;
             bottom: 5px;
           }
@@ -113,7 +113,7 @@
             width: 28px;
             height: 100%;
 
-            @media (max-width: $media-breakpoint-up-sm) {
+            @media (max-width: $media-breakpoint-desktop-up-sm) {
               width: 18px;
               height: 100%;
             }
@@ -126,7 +126,7 @@
             color: #fff;
             text-decoration: none;
 
-            @media (max-width: $media-breakpoint-up-sm) {
+            @media (max-width: $media-breakpoint-desktop-up-sm) {
               font-size: 18px;
             }
           }

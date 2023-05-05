@@ -10,9 +10,6 @@ import './renderPlaylist.scss';
 export default function RenderPlaylist({ playlist }: any) {
   const { t } = useTranslation();
   const { _id, name, cover } = playlist;
-  console.log(playlist);
-  
-
   const [isLongPressed, setIsLongPressed] = useState(false);
 
   const callback = React.useCallback(() => {

@@ -7,6 +7,7 @@
   gap: 24px;
   border-bottom: var(--color-border-1px);
   border-width: 2px;
+  @include web-responsive();
 
   &__profile {
     display: flex;
@@ -38,24 +39,7 @@
       }
 
       &__btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 220px;
-        border: 0px;
-        margin: 0px;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 20px;
-        font-size: 15px;
-        font-weight: 700;
-        color: white;
-        background-color: $color-main;
-
-        span {
-          padding: 0px 10px;
-          padding-top: 2px;
-        }
+        @include buttonPrimary(fit-content);
       }
     }
   }
