@@ -35,7 +35,7 @@ const spanishTranslation = {
   profile_email: 'Tu correo electrónico',
   profile_password: 'Tu contraseña',
   profile_username: 'Tu nombre de usuario',
-  profile_birthday: 'Fecha de nacimiento',
+  profile_birthday: 'Nacimiento',
   profile_country: 'País',
   profile_language: 'Idioma',
   profile_btn_save: 'Guardar',

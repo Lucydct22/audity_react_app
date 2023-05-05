@@ -81,7 +81,6 @@ export default function ArtistsSlider() {
   );
 }
 
-//const RenderArtist = ({ artist }) => {
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
