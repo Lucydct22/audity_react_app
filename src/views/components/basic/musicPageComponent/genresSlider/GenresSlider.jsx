@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import RenderGenres from './genresRender/RenderGenres';
 import { getGenresApi } from 'api/music/genres';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -84,17 +85,6 @@ export default function GenresSlider() {
       </div>
     </div>
   );
-}
-
-const RenderGenres = ({ genre }) => {
-  return (
-    <section className='genres-carousel__container--section'>
-      <div className='genres-carousel__container--section__thumbnail'>
-        <img src={genre.imageUrl} alt={genre.name} />
-        <p className='genres-carousel__container--section__thumbnail--description' to={'#'}>{genre?.name}</p>
-      </div>
-    </section>
-  )
 }
 
 const TranslateTitle = () => {
