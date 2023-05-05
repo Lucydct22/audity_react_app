@@ -20,6 +20,16 @@ export default function userReducer(state: any, action: any) {
 				}
 			}
 
+		case UserTypes.UPDATE_USER_COUNTRY:
+			console.log(payload);
+			return {
+				...state,
+				dbUser: {
+					...state.dbUser,
+					country: payload
+				}
+			}
+
 		default:
 			return state
 	}

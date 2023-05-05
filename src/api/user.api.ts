@@ -27,3 +27,19 @@ export const updateUserLanguageAPI = async ( token: string, lang: any): Promise<
 	const dataLanguage = await response.json()
 	return dataLanguage
 }
+
+export const updateUserCountryAPI = async ( token: string, count: any): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+      Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(count),
+	}
+	const response = await fetch(`${basePath}/update-user-country`, params)
+	const dataCountry = await response.json()
+	return dataCountry
+}
+
+

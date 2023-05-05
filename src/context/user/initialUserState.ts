@@ -13,7 +13,8 @@ const initialUserState = {
 		picture: '',
 		following: [],
 	},
-	updateUserLanguage: (lang: string) => { }
+	updateUserLanguage: (lang: string) => { },
+	updateUserCountry: (count: string) => { }
 }
 
 export default initialUserState
