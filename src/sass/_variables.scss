@@ -50,13 +50,23 @@ $media-breakpoint-down-xl: 1199.98px;
 $media-breakpoint-down-xxl: 1699.98px;
 
 // Responsive up size
-$media-breakpoint-up-xs: 320px;
-$media-breakpoint-up-sm: 975px;
-$media-breakpoint-up-md: 1175px;
-$media-breakpoint-up-lg: 1475px;
-$media-breakpoint-up-xl: 1600px;
-$media-breakpoint-up-xxl: 1800px;
+$media-breakpoint-desktop-up-xxs: 970px;
+$media-breakpoint-desktop-up-xs: 1070px;
+$media-breakpoint-desktop-up-sm: 1175px;
+$media-breakpoint-desktop-up-md: 1270px;
+$media-breakpoint-desktop-up-lg: 1420px;
+$media-breakpoint-desktop-up-xl: 1570px;
+$media-breakpoint-desktop-up-xxl: 1800px;
 
+$media-breakpoint-mobile-up-4xs: 320px;
+$media-breakpoint-mobile-up-3xs: 360px;
+$media-breakpoint-mobile-up-xxs: 380px;
+$media-breakpoint-mobile-up-xs: 410px;
+$media-breakpoint-mobile-up-sm: 490px;
+$media-breakpoint-mobile-up-md: 575px;
+$media-breakpoint-mobile-up-lg: 650px;
+$media-breakpoint-mobile-up-xl: 750px;
+$media-breakpoint-mobile-up-xxl: 815px;
 
 
 /* DATA THEME */

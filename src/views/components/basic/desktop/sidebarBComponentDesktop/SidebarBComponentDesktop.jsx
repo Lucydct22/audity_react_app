@@ -58,7 +58,7 @@ const SidebarBComponentDesktop = () => {
                     size={15}
                     className="side-bar-header__sections--options__icon--dropdown"
                   />
-                  <p className="side-bar-header__sections--options__icon--dropdown">Artist</p>
+                  <p className="side-bar-header__sections--options__icon--dropdown">{t("sidebar_explore_artist")}</p>
                 </NavLink>
                 <NavLink to={"/albums"} className="side-bar-header__sections--options">
                   <div className="side-bar-header__sections--options__decoration"></div>
@@ -66,7 +66,7 @@ const SidebarBComponentDesktop = () => {
                     size={15}
                     className="side-bar-header__sections--options__icon--dropdown"
                     />
-                  <p className="side-bar-header__sections--options__icon--dropdown">Album</p>
+                  <p className="side-bar-header__sections--options__icon--dropdown">{t("sidebar_explore_album")}</p>
                 </NavLink>
                 <NavLink to={"/playlists"} className="side-bar-header__sections--options">
                   <div className="side-bar-header__sections--options__decoration"></div>
@@ -74,7 +74,7 @@ const SidebarBComponentDesktop = () => {
                     size={15}
                     className="side-bar-header__sections--options__icon--dropdown"
                     />
-                  <p className="side-bar-header__sections--options__icon--dropdown">Playlist</p>
+                  <p className="side-bar-header__sections--options__icon--dropdown">{t("sidebar_explore_playlist")}</p>
                 </NavLink>
               </div>
 

@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import './libraryHeader.scss'
 import Spinner from '../../../../UI/spinner/Spinner';
 import { NavLink } from "react-router-dom";
@@ -20,28 +19,28 @@ const LibraryHeader = () => {
         <img src={user?.picture} alt="your photo" />
         <div className="library-header__profile--info">
           <span className="library-header__profile--info__name">My name</span>
-          <span className="library-header__profile--info__desc">Your favorite artists, albums and playlists all in one place</span>
+          <span className="library-header__profile--info__desc">{t('library_header_profile_desc')}</span>
           <button className="library-header__profile--info__btn">
-            <TiArrowShuffle />
-            <span>SHUFFLE MY MUSIC</span>
+            <TiArrowShuffle size="20" />
+            <span>{t('library_header_profile_btn')}</span>
           </button>
         </div>
       </div>
       <nav className="library-header__navbar">
         <NavLink to={"/library"} className="library-header__navbar--options" end>
-          <p className="library-header__navbar--options__label">Highlights</p>
+          <p className="library-header__navbar--options__label">{t('library_header_navbar_highlights')}</p>
           <hr className="library-header__navbar--options__decoration" />
         </NavLink>
         <NavLink to={"favorites"} className="library-header__navbar--options">
-          <p className="library-header__navbar--options__label">Favorite tracks</p>
+          <p className="library-header__navbar--options__label">{t('library_header_navbar_favorite')}</p>
           <div className="library-header__navbar--options__decoration"></div>
         </NavLink>
         <NavLink to={"playlists"} className="library-header__navbar--options">
-          <p className="library-header__navbar--options__label">My Playlists</p>
+          <p className="library-header__navbar--options__label">{t('library_header_navbar_playlist')}</p>
           <div className="library-header__navbar--options__decoration"></div>
         </NavLink>
         <NavLink to={"uploads"} className="library-header__navbar--options">
-          <p className="library-header__navbar--options__label">Upload songs</p>
+          <p className="library-header__navbar--options__label">{t('library_header_navbar_upload')}</p>
           <div className="library-header__navbar--options__decoration"></div>
         </NavLink>
       </nav>
