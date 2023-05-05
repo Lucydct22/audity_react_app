@@ -42,6 +42,8 @@ const englishTranslation = {
   profile_select_country_three: 'United States',
   profile_select_language_one: 'Spanish',
   profile_select_language_two: 'English',
+  profile_name: "Your name",
+  profile_lastname: "Your lastname",
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',

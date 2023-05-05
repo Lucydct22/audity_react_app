@@ -1,42 +1,21 @@
-import React, { useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
-import English from "assets/img/png/English.png";
-import Spanish from "assets/img/png/Spanish.png";
 import './Language.scss';
-
-const lngs = [
-  {
-    code: "en",
-    native: "English",
-    img: English
-  },
-  {
-    code: "es",
-    native: "Spanish",
-    img: Spanish
-  },
-];
+import UserContext from "context/user/UserContext";
+import { LanguageContext, languages } from "context/language/LanguageContext";
 
 const Language = () => {
-  const { i18n } = useTranslation();
-  const [actualCode, setActualCode] = useState('en');
-
-  const handleTrans = (code: string) => {
-    i18n.changeLanguage(code);
-    document.documentElement.setAttribute("lang", code);
-    setActualCode(code);
-  };
+  const { language, setLanguageAction } = useContext(LanguageContext)
 
   return (
     <div className="language-switcher">
       <div className="language-switcher__section">
-        {lngs.map((lng, i) => {
-          const { code, native, img } = lng;
-
+        {languages.map((lng, i) => {
+          const { code, label, img } = lng;
           return (
             <div key={i} className="language-switcher__section--container">
-              <button onClick={() => handleTrans(code)} className="language-switcher__section--container__btn">
-                <img src={img} alt={native} className={actualCode==code ? "language-switcher__section--container__btn--imgActive" : "language-switcher__section--container__btn--img"} />
+              <button onClick={() => setLanguageAction(code)} className="language-switcher__section--container__btn">
+                <img src={img} alt={label} className={language==code ? "language-switcher__section--container__btn--imgActive" : "language-switcher__section--container__btn--img"} />
               </button>
             </div>
           )

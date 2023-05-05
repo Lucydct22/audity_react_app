@@ -6,6 +6,7 @@ import CurrentTracklistProvider from "./context/currentTracklist/CurrentTracklis
 import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
 import { isLocalhost } from './utils/isLocalhost';
 import UserProvider from "./context/user/UserProvider";
+import { LanguageProvider } from "context/language/LanguageContext";
 
 const App = () => {
   return (
@@ -22,16 +23,18 @@ const App = () => {
       }}
     >
       <UserProvider>
-        <ThemeProvider>
-          <CurrentTracklistProvider>
-            <CurrentTrackProvider>
-              <RouterProvider
-                router={router}
-                fallbackElement={<></>}
-              />
-            </CurrentTrackProvider>
-          </CurrentTracklistProvider>
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <CurrentTracklistProvider>
+              <CurrentTrackProvider>
+                <RouterProvider
+                  router={router}
+                  fallbackElement={<></>}
+                />
+              </CurrentTrackProvider>
+            </CurrentTracklistProvider>
+          </ThemeProvider>
+        </LanguageProvider>
       </UserProvider>
     </Auth0Provider>
   );

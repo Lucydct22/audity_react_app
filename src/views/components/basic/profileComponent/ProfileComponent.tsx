@@ -4,35 +4,24 @@ import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
-import TrackListComponent from "views/components/basic/trackListComponent/TrackListComponent";
 import UserContext from 'context/user/UserContext';
+import { LanguageContext, languages } from 'context/language/LanguageContext';
+
 
 export default function ProfileComponent () {
   const { t } = useTranslation();
-  const { user: userAuth0, isLoading, getIdTokenClaims } = useAuth0();
+  const { isLoading, getIdTokenClaims } = useAuth0();
   const [editMode, setEditMode] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState();
   const [selectedLanguage, setSelectedLanguage] = useState();
-  const { user } = useContext(UserContext)
+  const { dbUser, updateUserLanguage } = useContext(UserContext)
+  const { language, setLanguageAction } = useContext(LanguageContext)
 
-  //use context of user to get data from db  
+  
 
   if (isLoading) {
     return <Spinner />
   }
-
-  // if (!userAuth0) return
-
-  // const { picture } = userAuth0;
-  const { email, nickname } = user;
-
-  const userData = {
-    email: email,
-    password: '12345',
-    nickname: nickname,
-    birth_day: '1993-07-14',
-    picture: user?.picture
-  };
 
   const countries = [
     { value: 'Spain', label: t("profile_select_country_one") },
@@ -40,10 +29,6 @@ export default function ProfileComponent () {
     { value: 'United States', label: t("profile_select_country_three") }
   ];
 
-  const languages = [
-    { value: 'Spanish', label: t("profile_select_language_one") },
-    { value: 'English', label: t("profile_select_language_two") }
-  ];
 
   const handleInputChange = (e: any) => {
     /*const { name, value } = e.target;
@@ -51,23 +36,6 @@ export default function ProfileComponent () {
       ...userData,
       [name]: value
     });*/
-  }
-
-  const handleCountryChange = (selectedOption: any) => {
-    setSelectedCountry(selectedOption);
-    /*setUserData({
-      ...userData,
-      country: selectedOption.value,
-    })*/
-  }
-
-  const handleLanguageChange = (selectedOption: any) => {
-    if (!selectedOption) return
-    setSelectedLanguage(selectedOption);
-    /*setUserData({
-      ...userData,
-      language: selectedOption.value
-    })*/
   }
 
   const handleChange = () => {
@@ -82,22 +50,26 @@ export default function ProfileComponent () {
     <>
       <div className='user-settings'>
         <div className="user-settings__image">
-          <img src={userData.picture} alt="your photo" className="user-settings__image--profile" />
+          <img src={dbUser.picture} alt="your photo" className="user-settings__image--profile" />
           <p>{t("profile_intro")}</p>
         </div>
         <div className="user-settings__account" >
           <span>{t('profile_account')}</span>
           <label >{t("profile_email")}</label>
           <div>
-            <input type="email" value={userData.email} name="email" readOnly={!editMode} placeholder={userData.email} onChange={handleInputChange} />
+            <input type="email" value={dbUser.email} name="email" readOnly={!editMode} placeholder={dbUser.email} onChange={handleInputChange} />
           </div>
-          <label >{t("profile_password")}</label>
+          <label >{t("profile_name")}</label>
           <div>
-            <input type="password" value={userData.password} name="password" readOnly={!editMode} placeholder="password" onChange={handleInputChange} />
+            <input type="text" value={dbUser.name} name="username" readOnly={!editMode} placeholder={dbUser.name} onChange={handleInputChange} />
+          </div>
+          <label >{t("profile_lastname")}</label>
+          <div>
+            <input type="text" value={dbUser.lastname} name="username" readOnly={!editMode} placeholder={dbUser.lastname} onChange={handleInputChange} />
           </div>
           <label >{t("profile_username")}</label>
           <div>
-            <input type="text" value={userData.nickname} name="username" readOnly={!editMode} placeholder={userData.nickname} onChange={handleInputChange} />
+            <input type="text" value={dbUser.nickname} name="username" readOnly={!editMode} placeholder={dbUser.nickname} onChange={handleInputChange} />
           </div>
         </div>
         <div className="user-settings__private-info" >
@@ -105,7 +77,7 @@ export default function ProfileComponent () {
             <div className='user-settings__select-item'>
               <label >{t("profile_birthday")}</label>
               <div className="input-group">
-                <input type="date" className="input-group__bthd" value={userData.birth_day} name="birth_day" placeholder={userData.birth_day} readOnly={!editMode} onChange={handleInputChange} />
+                <input type="date" className="input-group__bthd" value={dbUser.dateOfBirth} name="birth_day" placeholder={dbUser.dateOfBirth} readOnly={!editMode} onChange={handleInputChange} />
               </div>
             </div>
             <div className='user-settings__select-item'>
@@ -114,10 +86,10 @@ export default function ProfileComponent () {
                 <Select
                   options={countries}
                   value={selectedCountry}
-                  placeholder={countries[0].value}
+                  placeholder={dbUser.country}
                   isDisabled={!editMode}
                   // onclick={handleChange}
-                  onChange={(value: any) => setSelectedCountry(value)}
+                 // onChange={(value: any) => updateUserLanguage()}
                   className="user-settings__select-item--select"
                   classNamePrefix="dropdown-input"
                 />
@@ -126,15 +98,17 @@ export default function ProfileComponent () {
             <div className='user-settings__select-item'>
               <label >{t("profile_language")}</label>
               <div className="input-group">
+                 {/*<Language />*/}
                 <Select
                   options={languages}
-                  value={selectedLanguage}
-                  placeholder={languages[0].value}
+                  //value={languages}
+                  //defaultValue={dbUser.language}
+                  placeholder={language === 'es' ?  t("profile_select_language_one") :  t("profile_select_language_two")}
                   isDisabled={!editMode}
-                  onChange={(value: any) => setSelectedLanguage(value)}
+                  onChange={(e: any) => setLanguageAction(e.code)}
                   className="user-settings__select-item--select"
                   classNamePrefix="dropdown-input"
-                />
+                /> 
               </div>
             </div>
           </div>
@@ -142,7 +116,6 @@ export default function ProfileComponent () {
           <button className='user-settings__btn--delete'>{t('profile_btn_delete')}</button>
         </div>
       </div>
-      <TrackListComponent />
     </>
   )
 }

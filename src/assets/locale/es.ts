@@ -45,6 +45,8 @@ const spanishTranslation = {
   profile_select_country_three: 'Estados Unidos',
   profile_select_language_one: 'Español',
   profile_select_language_two: 'Inglés',
+  profile_name: "Tu nombre",
+  profile_lastname: "Tu apellido",
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'CANCIÓN',
