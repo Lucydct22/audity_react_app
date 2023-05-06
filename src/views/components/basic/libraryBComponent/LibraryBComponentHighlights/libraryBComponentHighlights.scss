@@ -1,48 +1,16 @@
 @import '../../../../../sass';
 
 .library-highlights {
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
 
-  .library-highlights-carousel {
-    width: 100%;
-    height: 250px;
-  }
-
-  .swiper-wrapper {
-    width: 90%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: $color-secondary;
-
-    /* Center slide text vertically */
+  &__content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .swiper-carousel-button-prev {
-    width: fit-content;
-    background-color: aquamarine;
-    z-index: 5;
-  }
-
-  .swiper-carousel-button-next {
-    width: fit-content;
-    background-color: aquamarine;
-    z-index: 5;
-  }
-
-  .swiper-button-disabled {
-    background-color: rgb(27, 156, 113);
+    flex-direction: column;
+    gap: 24px;
+    @include web-responsive();
   }
 }
