@@ -19,7 +19,7 @@ const spanishTranslation = {
   sidebar_account: 'Cuanta',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist que te encantarán',
+  musicpage_albumtitle: 'Álbumes que te encantarán',
   musicpage_albumtitle2: 'Nuevos lanzamientos para ti',
   musicpage_albumtracks: 'Canciones',
   musicpage_dailytitle: 'Tu lista de hoy',

@@ -19,7 +19,7 @@ const englishTranslation = {
   sidebar_account: 'Account',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist you\'ll love',
+  musicpage_albumtitle: 'Albums you\'ll love',
   musicpage_albumtitle2: 'New release for you',
   musicpage_albumtracks: 'Tracks',
   musicpage_dailytitle: 'Your dailylist',
