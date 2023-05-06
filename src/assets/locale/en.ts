@@ -57,6 +57,8 @@ const englishTranslation = {
   library_header_navbar_playlist: 'My Playlists',
   library_header_navbar_upload: 'Upload songs',
 
+  library_header_body_highlights_playlist_title: 'Playlists',
+
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',
   track_list_artist: 'ARTIST',

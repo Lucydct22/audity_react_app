@@ -58,6 +58,8 @@ const spanishTranslation = {
   library_header_navbar_playlist: 'Playlists',
   library_header_navbar_upload: 'Mis canciones',
 
+  library_header_body_highlights_playlist_title: 'Playlists',
+
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',
   library_header_artist: 'ARTISTA',

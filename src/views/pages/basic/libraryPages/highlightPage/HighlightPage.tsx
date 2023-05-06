@@ -1,14 +1,13 @@
 import HelmetSEO from "views/utils/HelmetSEO";
-// import ExploreBComponent from "views/components/basic/libraryBComponent/libraryBComponent";
+import LibraryBComponentHighlights from "views/components/basic/libraryBComponent/LibraryBComponentHighlights/LibraryBComponentHighlights";
 
 function HighlightPage() {
   return (
     <HelmetSEO
-      title='Highlight | Audity'
+      title='Your Highlight | Audity'
       description='Audity Highlight Page'
     >
-      {/* <ExploreBComponent /> */}
-      <h1>Highlight page content is here</h1>
+      <LibraryBComponentHighlights />
     </HelmetSEO>
   )
 }
