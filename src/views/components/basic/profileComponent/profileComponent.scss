@@ -4,7 +4,7 @@
 .user-settings {
   margin: 0 auto;
   padding-top: 24px;
-  @include web-responsive();
+
   max-width: 685px;
 
   &__profile {

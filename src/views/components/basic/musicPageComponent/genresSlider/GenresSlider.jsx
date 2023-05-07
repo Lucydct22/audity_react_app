@@ -11,11 +11,9 @@ import "swiper/css/navigation";
 import './genresSlider.scss';
 import { Navigation, FreeMode } from "swiper";
 import { responsiveBreak } from "utils/componentsConstants";
-import useWindowSizeReport from 'hooks/useWindowSizeReport';
-
 
 export default function GenresSlider() {
-  const windowWidth = useWindowSizeReport();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -34,7 +32,18 @@ export default function GenresSlider() {
     return () => { isMounted = false }
   }, [user])
 
-  if (windowWidth >= responsiveBreak) {
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", changeWidth)
+
+    return () => {
+      window.removeEventListener("resize", changeWidth)
+    }
+  })
+
+  if (screenWidth > responsiveBreak) {
     return (
       <div className="genres-carousel">
         <div className="genres-carousel__head">
@@ -60,17 +69,14 @@ export default function GenresSlider() {
             }}
             breakpoints={{
               815: {
-                slidesPerView: 4,
-                spaceBetween: 15,
+                slidesPerView: 3,
               },
-              1175: {
+              1024: {
                 slidesPerView: 4,
-                spaceBetween: 15,
               },
-              1475: {
-                slidesPerView: 4,
-                spaceBetween: 32,
-              },
+              1300: {
+                slidesPerView: 5,
+              }
             }}
             modules={[Navigation]}
             className="swiper-carousel">
@@ -95,20 +101,14 @@ export default function GenresSlider() {
       <div className='genres-carousel__container'>
         <Swiper
           slidesPerView={3.3}
-          spaceBetween={25}
+          spaceBetween={15}
           freeMode={true}
           breakpoints={{
             150: {
               slidesPerView: 2.2,
-              spaceBetween: 15,
             },
             560: {
               slidesPerView: 2.2,
-              spaceBetween: 15,
-            },
-            814: {
-              slidesPerView: 3.3,
-              spaceBetween: 25,
             }
           }}
           modules={[FreeMode]}

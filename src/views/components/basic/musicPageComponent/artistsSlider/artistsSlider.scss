@@ -3,12 +3,10 @@
 .artists-carousel {
   margin: 0 auto;
 
-  @include web-responsive();
-
   &__head {
     display: flex;
     justify-content: space-between;
-    margin: 15px 0;
+    margin-bottom: 15px;
 
     &--title {
       display: inline;
@@ -36,5 +34,9 @@
 
   &__container {
     margin-bottom: 2rem;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin-bottom: 3rem;
+    }
   }
 }
