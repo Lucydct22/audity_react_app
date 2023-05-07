@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react';
 import { getAlbumsApi } from 'api/music/albums';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-// import { Link } from 'react-router-dom';
-// import { FaPlay } from 'react-icons/fa';
-// import { AiOutlineHeart } from 'react-icons/ai';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
-import './albumsSlider.scss';
 import RenderAlbum from './renderAlbum';
+import { useState, useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import './albumsSlider.scss';
+import { Navigation, FreeMode } from "swiper";
+import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from 'hooks/useWindowSizeReport';
 
 export default function AlbumsSlider() {
-  let slider = new Slider();
+  const windowWidth = useWindowSizeReport();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   const [albums, setAlbums] = useState(undefined)
 
   useEffect(() => {
@@ -23,66 +27,96 @@ export default function AlbumsSlider() {
     return () => { isMounted = false }
   }, []);
 
-  function next() {
-    slider.slickNext();
+  if (windowWidth >= responsiveBreak) {
+    return (
+      <div className="album-carousel">
+        <div className="album-carousel__head">
+          <TranslateTitle />
+          <span className="album-carousel__head--btn">
+            <button ref={prevRef} className="swiper-carousel-button-prev">
+              <HiOutlineChevronLeft />
+            </button>
+            <button ref={nextRef} className="swiper-carousel-button-next">
+              <HiOutlineChevronRight />
+            </button>
+          </span>
+        </div>
+        <div className='album-carousel__container'>
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={32}
+            onInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+            breakpoints={{
+              815: {
+                slidesPerView: 4,
+                spaceBetween: 15,
+              },
+              1175: {
+                slidesPerView: 4,
+                spaceBetween: 15,
+              },
+              1475: {
+                slidesPerView: 4,
+                spaceBetween: 32,
+              },
+            }}
+            modules={[Navigation]}
+            className="swiper-carousel">
+            {albums?.map(album => {
+              return (
+                <SwiperSlide key={album._id}>
+                  <RenderAlbum album={album} />
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+        </div>
+      </div>
+    )
   }
-
-  function previous() {
-    slider.slickPrev();
-  }
-
-  const settings = {
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1475,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 1175,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 2
-        }
-      }
-    ]
-  };
 
   return (
-    <div className='album-carousel'>
-      <div className='album-carousel__head'>
+    <div className="album-carousel">
+      <div className="album-carousel__head">
         <TranslateTitle />
-        <span className='album-carousel__head--btn'>
-          <button className='album-carousel__head--btn__prev' onClick={previous}>
-            <HiOutlineChevronLeft />
-          </button>
-          <button className='album-carousel__head--btn__next' onClick={next}>
-            <HiOutlineChevronRight />
-          </button>
-        </span>
       </div>
       <div className='album-carousel__container'>
-        {albums?.length > 0 && (
-          <Slider ref={c => (slider = c)} {...settings}>
-            {albums?.map(album => {
-              return <RenderAlbum key={album._id} album={album} />
-            })}
-          </Slider>
-        )}
+        <Swiper
+          slidesPerView={3.3}
+          spaceBetween={25}
+          freeMode={true}
+          breakpoints={{
+            150: {
+              slidesPerView: 2.2,
+              spaceBetween: 15,
+            },
+            560: {
+              slidesPerView: 2.2,
+              spaceBetween: 15,
+            },
+            814: {
+              slidesPerView: 3.3,
+              spaceBetween: 25,
+            }
+          }}
+          modules={[FreeMode]}
+          className="swiper-carousel">
+          {albums?.map(album => {
+            return (
+              <SwiperSlide key={album._id}>
+                <RenderAlbum album={album} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
     </div>
-  );
+  )
 }
 
 const TranslateTitle = () => {
@@ -90,43 +124,3 @@ const TranslateTitle = () => {
 
   return <h2 className='album-carousel__head--title'>{t("musicpage_albumtitle")}</h2>;
 }
-
-// export const RenderAlbum = () => {
-//   const { t } = useTranslation();
-
-//   return (
-//     <section className='album-carousel__container--section'>
-//       <div className='album-carousel__container--section__thumbnail'>
-//         <img src={AlbumImg1} alt="IMG" />
-//         <div className='album-carousel__container--section__thumbnail--btn'>
-//           <button className='album-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
-//           <button className='album-carousel__container--section__thumbnail--btn__like' type='button'><AiOutlineHeart size='14px' color='#191919' /></button>
-//         </div>
-//       </div>
-//       <Link className='album-carousel__container--section__description' to={'#'}>Baladas 00's</Link>
-//       <Link className='album-carousel__container--section__details' to={'#'}>30 {t("musicpage_albumtracks")} - 4,165 fans</Link>
-//     </section>
-//   )
-// }
-
-
-
-
-
-// const RenderAlbum = ({ album }) => {
-//   const { t } = useTranslation();
-
-//   return (
-//     <section className='album-carousel__container--section'>
-//       <div className='album-carousel__container--section__thumbnail'>
-//         <img src={AlbumImg1} alt="IMG" />
-//         <div className='album-carousel__container--section__thumbnail--btn'>
-//           <button className='album-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
-//           <button className='album-carousel__container--section__thumbnail--btn__like' type='button'><AiOutlineHeart size='14px' color='#191919' /></button>
-//         </div>
-//       </div>
-//       <Link className='album-carousel__container--section__description' to={'#'}>{album.name}</Link>
-//       <Link className='album-carousel__container--section__details' to={'#'}>30 {t("musicpage_albumtracks")} - 4,165 fans</Link>
-//     </section>
-//   )
-// }

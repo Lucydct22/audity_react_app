@@ -18,13 +18,13 @@ export default function RenderCarouselItem({ list, type }: any) {
           className={type !== "artists" ? 'render-carousel-item__thumbnail--img' : 'render-carousel-item__thumbnail--imgArtist'}/>
         <div className={type !== "artists" ? 'render-carousel-item__thumbnail--btn' : 'render-carousel-item__thumbnail--btnArtist'}>
           {type !== "artists" ?
-            <button className='render-carousel-item__thumbnail--btn__play' type='button'>
+            <div className='render-carousel-item__thumbnail--btn__play'>
               <FaPlay size='14px' color='#191919' />
-            </button>
+            </div>
             : null}
-          <button className='render-carousel-item__thumbnail--btn__like' type='button'>
+          <div className='render-carousel-item__thumbnail--btn__like'>
             <AiFillHeart size='14px' color='#ca2a36' />
-          </button>
+          </div>
         </div>
       </div>
       <p className='render-carousel-item__description'>{name}</p>

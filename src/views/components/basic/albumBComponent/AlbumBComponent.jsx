@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { MdPause, MdPlayArrow } from "react-icons/md";
+import { SlUserFollowing, SlUserUnfollow } from "react-icons/sl";
 import './albumBComponent.scss';
 
 export default function AlbumBComponent({ album }) {
@@ -40,11 +40,11 @@ export default function AlbumBComponent({ album }) {
 							<button className="album-page__section--buttons__container--play__btn" onClick={handlePlayClick}>
 								{isPlaying ? (
 									<>
-										<FontAwesomeIcon icon={faPause} /> <span>{t('pausebutton')}</span>
+										<MdPause size={20} /> <span>{t('pausebutton')}</span>
 									</>
 								) : (
 									<>
-										<FontAwesomeIcon icon={faPlay} /> <span>{t('playbutton')}</span>
+										<MdPlayArrow size={20} /> <span>{t('playbutton')}</span>
 									</>
 								)}
 							</button>
@@ -58,11 +58,11 @@ export default function AlbumBComponent({ album }) {
 							<button className="album-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
 								{isFollowing ? (
 									<>
-										<FontAwesomeIcon icon={faUserCheck} />
+										<SlUserFollowing />
 									</>
 								) : (
 									<>
-										<FontAwesomeIcon icon={faUserPlus} />
+										<SlUserUnfollow />
 									</>
 								)}
 							</button>

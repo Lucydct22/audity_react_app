@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import './swiperCarousel.scss'
+import { useTranslation } from 'react-i18next';
 import { getPlaylistApi } from 'api/music/playlists';
 import { getAlbumsApi } from 'api/music/albums';
 import { getArtistApi } from 'api/music/artists';
@@ -11,6 +12,18 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import { Navigation, FreeMode } from "swiper";
 import { responsiveBreak } from "utils/componentsConstants";
 import RenderCarouselItem from "./renderCarouselItem/RenderCarouselItem";
+
+/* import { useState, useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import './swiperCarousel.scss'
+import { getPlaylistApi } from 'api/music/playlists';
+import { getAlbumsApi } from 'api/music/albums';
+import { getArtistApi } from 'api/music/artists';
+import { Navigation, FreeMode } from "swiper";
+import { responsiveBreak } from "utils/componentsConstants"; */
 
 export default function SwiperCarousel({ data }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
@@ -70,7 +83,7 @@ export default function SwiperCarousel({ data }) {
     return (
       <div className="swiper-component">
         <div className="swiper-component__header">
-          <span className="swiper-component__header--title">{data}</span>
+          <TranslateTitle data={data} />
           <span className="swiper-component__header--btn">
             <button ref={prevRef} className="swiper-carousel-button-prev">
               <HiOutlineChevronLeft />
@@ -122,7 +135,7 @@ export default function SwiperCarousel({ data }) {
   return (
     <div className="swiper-component">
       <div className="swiper-component__header">
-        <span className="swiper-component__header--title">{data}</span>
+        <TranslateTitle data={data} />
       </div>
       <div className='swiper-component__container'>
         <Swiper
@@ -156,4 +169,10 @@ export default function SwiperCarousel({ data }) {
       </div>
     </div>
   )
+}
+
+const TranslateTitle = ({ data }) => {
+  const { t } = useTranslation();
+
+  return <h2 className='swiper-component__header--title'>{t(`library_highlights_${data}`)}</h2>;
 }

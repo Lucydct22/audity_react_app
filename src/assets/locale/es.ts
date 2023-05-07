@@ -54,8 +54,14 @@ const spanishTranslation = {
   library_header_profile_btn: 'Mi música en modo aleatorio',
 
   library_header_navbar_highlights: 'Destacados',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Álbumes',
+  library_highlights_artists: 'Artistas',
+
   library_header_navbar_favorite: 'Canciones favoritas',
+
   library_header_navbar_playlist: 'Playlists',
+
   library_header_navbar_upload: 'Mis canciones',
 
   library_header_body_highlights_playlist_title: 'Playlists',

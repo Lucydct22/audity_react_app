@@ -27,23 +27,3 @@
     margin: 0;
   }
 }
-
-
-.swiper-carousel {
-  width: 100%;
-}
-
-.swiper-carousel-button-prev {
-  display: flex;
-  @include simple-btn-with-hover(18px, 18px, 10px);
-}
-
-.swiper-carousel-button-next {
-  display: flex;
-  @include simple-btn-with-hover(18px, 18px, 10px);
-}
-
-.swiper-button-disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-}

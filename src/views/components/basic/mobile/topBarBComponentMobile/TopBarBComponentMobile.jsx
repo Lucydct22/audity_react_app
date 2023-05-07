@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './topBarBComponentMobile.scss';
 import Theme from '../../../../UI/theme/Theme';
-// import { CiSearch } from 'react-icons/ci';
+import Language from 'views/UI/language/Language';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
-
 
 const TopBarBComponentMobile = () => {
   const { t } = useTranslation();
@@ -45,24 +44,30 @@ const TopBarBComponentMobile = () => {
               <GoTriangleUp />
             </div>
 
-            { isAuthenticated ? (
-            <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            </Link>) 
-            : (
-              <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            )
+            {isAuthenticated ? (
+              <Link to="/settings"><div className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer'>
+                <span>Account Settings</span>
+                <FiChevronRight size='1.4rem' />
+              </div>
+              </Link>)
+              : (
+                <div className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+                  <span>Account Settings</span>
+                  <FiChevronRight size='1.4rem' />
+                </div>
+              )
             }
-            
-            <div className='page-topbar-action__popper--wrapper__content'>
+
+            <div className='page-topbar-mobile-action__popper--wrapper__content'>
               <span className='cursor-default'>System theme</span>
               <Theme />
             </div>
+
+            <div className='page-topbar-mobile-action__popper--wrapper__content'>
+              <span className='cursor-default'>Language</span>
+              <Language />
+            </div>
+
             {isAuthenticated ? (
               <span className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
                 Log out

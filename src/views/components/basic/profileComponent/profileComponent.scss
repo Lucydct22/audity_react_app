@@ -16,6 +16,7 @@
       width: 125px;
       height: 125px;
       border-radius: 50%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         width: 60px;

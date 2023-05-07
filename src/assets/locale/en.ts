@@ -53,8 +53,14 @@ const englishTranslation = {
   library_header_profile_btn: 'Shuffle my music',
 
   library_header_navbar_highlights: 'Highlights',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Albums',
+  library_highlights_artists: 'Artists',
+
   library_header_navbar_favorite: 'Favorite tracks',
+
   library_header_navbar_playlist: 'My Playlists',
+  
   library_header_navbar_upload: 'Upload songs',
 
   library_header_body_highlights_playlist_title: 'Playlists',
