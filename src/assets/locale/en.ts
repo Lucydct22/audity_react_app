@@ -40,6 +40,7 @@ const englishTranslation = {
   profile_btn_save: 'Save',
   profile_btn_change: 'Change',
   profile_btn_delete: 'Delete profile',
+  profile_btn_password: 'Change password',
   profile_select_country_one: 'Spain',
   profile_select_country_two: 'Canada',
   profile_select_country_three: 'United States',

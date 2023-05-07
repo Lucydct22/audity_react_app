@@ -40,6 +40,7 @@ const spanishTranslation = {
   profile_language: 'Idioma',
   profile_btn_save: 'Guardar',
   profile_btn_change: 'Modificar',
+  profile_btn_password: 'Cambiar contraseña',
   profile_btn_delete: 'Eliminar perfil',
   profile_select_country_one: 'España',
   profile_select_country_two: 'Canadá',
