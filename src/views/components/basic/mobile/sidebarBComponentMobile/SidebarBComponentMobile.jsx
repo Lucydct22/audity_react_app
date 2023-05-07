@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./sidebarBComponentMobile.scss";
 import { FiMusic, FiSearch } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
-import { CgBrowser } from "react-icons/cg";
-import { BsMusicPlayer } from "react-icons/bs";
+import { VscLibrary } from "react-icons/vsc";
+import { SlCompass } from "react-icons/sl";
+// import { BsMusicPlayer } from "react-icons/bs";
 
 const SidebarBComponentMobile = () => {
   const { t } = useTranslation();
@@ -23,14 +22,14 @@ const SidebarBComponentMobile = () => {
           </NavLink>
 
           <NavLink
-            to={"/browser"}
+            to={"/explore"}
             className="side-bar-mobile-header__sections--options"
           >
-            <CgBrowser
+            <SlCompass
               size={20}
               className="side-bar-mobile-header__sections--options__icon"
             />
-            <p>{t("sidebar_browser")}</p>
+            <p>{t("sidebar_explore")}</p>
           </NavLink>
 
           <NavLink
@@ -45,18 +44,18 @@ const SidebarBComponentMobile = () => {
           </NavLink>
           
           <NavLink
-            to={"/favorites"}
+            to={"/library"}
             className="side-bar-mobile-header__sections--options"
           >
             <div className="side-bar-mobile-header__sections--options__decoration"></div>
-            <AiOutlineHeart
+            <VscLibrary
               size={20}
               className="side-bar-mobile-header__sections--options__icon"
             />
-            <p>{t("sidebar_favorites")}</p>
+            <p>{t("sidebar_library")}</p>
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to={"/studio"}
             className="side-bar-mobile-header__sections--options"
           >
@@ -65,7 +64,7 @@ const SidebarBComponentMobile = () => {
               className="side-bar-mobile-header__sections--options__icon"
             />
             <p>{t("sidebar_studio")}</p>
-          </NavLink>
+          </NavLink> */}
 
           {/* <NavLink to={"/radio"} className="side-bar-mobile-header__sections--options">
             <div className="side-bar-mobile-header__sections--options__decoration"></div>

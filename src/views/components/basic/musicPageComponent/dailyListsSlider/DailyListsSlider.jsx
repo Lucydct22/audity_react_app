@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { getPlaylistApi } from '../../../../../api/music/playlists';
+import { getPlaylistApi } from 'api/music/playlists';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { FaPlay } from 'react-icons/fa';
+// import { Link } from 'react-router-dom';
+// import { FaPlay } from 'react-icons/fa';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import './dailyListsSlider.scss';
-import AlbumImg2 from '../../../../../assets/img/albums/2.jpg';
-import GreyDailyLogo from '../../../../../assets/img/png/grey-daily-icon.png'
+import RenderPlaylist from './renderPlaylist/RenderPlaylist';
 
 export default function DailyListsSlider() {
   let slider = new Slider();
@@ -18,7 +17,7 @@ export default function DailyListsSlider() {
   useEffect(() => {
     let isMounted = true;
     getPlaylistApi().then(res => {
-      isMounted && res && setPlaylists(res);
+      isMounted && res && setPlaylists(res.playlist);
     })
     return () => { isMounted = false }
   }, [])
@@ -52,7 +51,7 @@ export default function DailyListsSlider() {
         breakpoint: 1175,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           initialSlide: 2
         }
       }
@@ -72,10 +71,10 @@ export default function DailyListsSlider() {
         </span>
       </div>
       <div className='daily-carousel__container'>
-        {playlists && (
+        {playlists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {playlists.map(playlist => {
-              return <RenderPlaylist key={playlist.id} playlist={playlist} />
+            {playlists?.map(playlist => {
+              return <RenderPlaylist key={playlist._id} playlist={playlist} />
             })}
           </Slider>
         )}
@@ -84,7 +83,14 @@ export default function DailyListsSlider() {
   );
 }
 
-const RenderPlaylist = ({ playlist }) => {
+
+const TranslateTitle = () => {
+  const { t } = useTranslation();
+
+  return <h2 className='daily-carousel__head--title'>{t("musicpage_dailytitle")}</h2>;
+}
+
+/* const RenderPlaylist = ({ playlist }) => {
   return (
     <section className='daily-carousel__container--section'>
       <div className='daily-carousel__container--section__thumbnail'>
@@ -103,10 +109,4 @@ const RenderPlaylist = ({ playlist }) => {
       <Link className='daily-carousel__container--section__description' to={'#'}>{playlist.name}</Link>
     </section>
   )
-}
-
-const TranslateTitle = () => {
-  const { t } = useTranslation();
-
-  return <h2 className='daily-carousel__head--title'>{t("musicpage_dailytitle")}</h2>;
-}
+} */

@@ -1,108 +1,112 @@
 @mixin titleH1() {
-    color: $font-primary-dark;
-    font-weight: bold;
-    font-size: 1.6em;
+  color: $font-primary-dark;
+  font-weight: bold;
+  font-size: 1.6em;
 
-    @media (min-width: $media-breakpoint-up-sm) {
-        font-size: 1.7em;
-    }
+  @media (min-width: $media-breakpoint-desktop-up-sm) {
+    font-size: 1.7em;
+  }
 
-    @media (min-width: $media-breakpoint-up-md) {
-        font-size: 1.9em;
-    }
+  @media (min-width: $media-breakpoint-desktop-up-md) {
+    font-size: 1.9em;
+  }
 }
 
 @mixin anchorText() {
-    color: $color-main;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
+  color: $color-main;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
 
-    &:hover {
-        color: $color-main-hover;
-    }
+  &:hover {
+    color: $color-main-hover;
+  }
 }
 
-@mixin carousel-responsive() {
+@mixin web-responsive() {
+  @media (min-width: $media-breakpoint-desktop-up-xl) {width: 1300px;}
+  @media (max-width: $media-breakpoint-desktop-up-xl) {width: 1150px;}
+  @media (max-width: $media-breakpoint-desktop-up-lg) {width: 1000px;}
+  @media (max-width: $media-breakpoint-desktop-up-md) {width: 900px;}
+  @media (max-width: $media-breakpoint-desktop-up-sm) {width: 800px;}
+  @media (max-width: $media-breakpoint-desktop-up-xs) {width: 700px;}
+  @media (max-width: $media-breakpoint-desktop-up-xxs) {width: 560px;}
 
-    @media (min-width: $media-breakpoint-up-xl) {
-        width: 1300px;
-    }
-
-    @media (max-width: $media-breakpoint-up-xl) {
-        width: 1100px;
-    }
-
-    @media (max-width: $media-breakpoint-up-lg) {
-        width: 900px;
-    }
-
-    @media (max-width: $media-breakpoint-up-md) {
-        width: 700px;
-    }
-
-    @media (max-width: $media-breakpoint-up-sm) {
-        width: 500px;
-    }
+  @media (max-width: $media-breakpoint-mobile-up-xxl) {width: 700px;}
+  @media (max-width: $media-breakpoint-mobile-up-xl) {width: 600px;}
+  @media (max-width: $media-breakpoint-mobile-up-lg) {width: 520px;}
+  @media (max-width: $media-breakpoint-mobile-up-md) {width: 435px;}
+  @media (max-width: $media-breakpoint-mobile-up-sm) {width: 370px;}
+  @media (max-width: $media-breakpoint-mobile-up-xs) {width: 340px;}
+  @media (max-width: $media-breakpoint-mobile-up-xxs) {width: 320px;}
+  @media (max-width: $media-breakpoint-mobile-up-3xs) {width: 280px;}
+  @media (max-width: $media-breakpoint-mobile-up-4xs) {width: 200px;}
 }
 
 @mixin carousel-thumbnail-btn() {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-primary);
-    background: none;
-    border: 0;
-    margin: 0;
-    padding: 12px;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.500);
-    border-radius: 50%;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 12px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.500);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-    svg {
-        height: 17px;
-        width: 17px;
-    }
+  svg {
+    height: 17px;
+    width: 17px;
+  }
 
-    &:hover {
-        background-color: #f4f4f4;
-        border-radius: 100%;
-    }
+  &:hover {
+    background-color: #f4f4f4;
+    border-radius: 100%;
+  }
 }
 
-@mixin buttonPrimary() {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 220px;
-    border: 0px;
-    margin: 0px;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 15px;
-    color: white;
-    background-color: $color-main;
+@mixin buttonPrimary($width: 220px) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+  border: 0px;
+  margin: 0px;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background-color: $color-main;
+
+  span {
+    text-transform: uppercase;
+    padding: 0px 10px;
+    padding-top: 2px;
+  }
 }
 
 @mixin simple-btn-with-hover($height: 18px, $width: 18px, $padding: 0.4rem) {
-    color: var(--color-primary);
-    background: none;
-    border: 0;
-    margin: 0;
-    padding: $padding;
-    cursor: pointer;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: $padding;
+  cursor: pointer;
 
-    svg {
-        height: $height;
-        width: $width;
-    }
+  svg {
+    height: $height;
+    width: $width;
+  }
 
-    &:hover {
-        background-color: var(--background-on-hover);
-        border-radius: 100%;
-    }
+  &:hover {
+    background-color: var(--background-on-hover);
+    border-radius: 100%;
+  }
 }

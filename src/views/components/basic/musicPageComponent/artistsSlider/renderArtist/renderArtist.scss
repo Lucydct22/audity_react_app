@@ -35,8 +35,8 @@
   }
 
   &__description {
+    margin: 3px;
     margin-top: 5px;
-    display: block;
     font-weight: 700;
     color: var(--color-primary);
     text-decoration: none;
@@ -44,10 +44,10 @@
   }
 
   &__details {
-    display: block;
     font-weight: 400;
     color: var(--color-primary);
     text-decoration: none;
     text-align: center;
+    margin: 0;
   }
 }

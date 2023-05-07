@@ -2,8 +2,8 @@ import { useReducer } from "react";
 import {
 	initCurrentTracklistAction,
 	shuffleTracklistAction
-} from "../../reducers/currentTracklist/currentTracklistActions";
-import currentTrackReducer from "../../reducers/currentTracklist/currentTracklistReducer";
+} from "reducers/currentTracklist/currentTracklistActions";
+import currentTrackReducer from "reducers/currentTracklist/currentTracklistReducer";
 import CurrentTracklistContext from "./CurrentTracklistContext";
 import initialTracklistState from "./initialTracklistState";
 

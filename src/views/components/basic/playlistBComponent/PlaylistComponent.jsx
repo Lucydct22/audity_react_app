@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaPlay, FaHeart, FaRegHeart, FaUserPlus, FaUserMinus, FaPause } from "react-icons/fa";
-import Spinner from '../../../UI/spinner/Spinner';
-import PlaylistImg from '../../../../assets/img/albums/summer-playlist.png';
+import Spinner from 'views/UI/spinner';
+import PlaylistImg from 'assets/img/albums/summer-playlist.png';
 
 const PlaylistComponent = ({ playlistname, playlistQuantity }) => {
   const { t } = useTranslation();

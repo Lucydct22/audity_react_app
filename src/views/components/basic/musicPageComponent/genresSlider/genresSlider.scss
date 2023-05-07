@@ -3,12 +3,13 @@
 .slick-track {
   display: flex !important;
   justify-content: center;
+  cursor: pointer;
 }
 
 .genres-carousel {
   margin: 0 auto;
 
-  @include carousel-responsive();
+  @include web-responsive();
 
   &__head {
     display: flex;

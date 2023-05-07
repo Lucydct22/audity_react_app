@@ -1,16 +1,23 @@
-@import "../../../../sass/variables";
-@import "../../../../sass/animation";
+@import "../../../../sass/";
 
 .albums-page-content {
+  width: fit-content;
+  margin: 0 auto;
+  padding-top: 24px;
 
 	h1 {
 		font-size: 25px;
+    padding: 0 20px;
 	}
 
 	&__grid {
 		display: grid !important;
 		grid-template-columns: repeat(5, 1fr);
 		@include fadeIn();
-	}
+    @include web-responsive();
 
+		@media (max-width: 1300px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
 }

@@ -1,4 +1,4 @@
-import HelmetSEO from "../../utils/HelmetSEO";
+import HelmetSEO from "views/utils/HelmetSEO";
 
 export default function Error() {
   return (

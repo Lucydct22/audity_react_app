@@ -8,7 +8,7 @@
 .carousel-component {
   margin: 0 auto;
 
-  @include carousel-responsive();
+  @include web-responsive();
 
   &__head {
     display: flex;

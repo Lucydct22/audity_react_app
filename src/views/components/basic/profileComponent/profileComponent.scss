@@ -2,21 +2,20 @@
 @import "../../../../sass/mixins";
 
 .user-settings {
-  width: 60%;
+  margin: 0 auto;
+  padding-top: 24px;
+  @include web-responsive();
+  max-width: 685px;
 
-  @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-    width: 70%;
-  }
-
-  &__image {
+  &__profile {
     display: flex;
-    flex-direction: row;
-    padding-right: 15px;
-    margin-left: 20px;
+    align-items: center;
+    gap: 24px;
 
-    .user-settings-profile-foto {
-      border-radius: 100%;
-      max-width: 100px;
+    &--image {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         width: 60px;
@@ -24,15 +23,31 @@
       }
 
     }
-    p {
-      margin-left: 15px;
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__name {
+        font-family: 'Anek Gujarati', sans-serif;
+        font-size: 18px;
+        line-height: 16px;
+        margin: 0;
+        color: var(--color-primary);
+      }
+
+      &__desc {
+        color: $color-secondary;
+        margin: 12px 0;
+      }
     }
   }
 
   &__account {
     display: flex;
     flex-direction: column;
-    margin: 15px;
+    margin-top: 40px;
 
     div {
       height: 40px;
@@ -40,8 +55,9 @@
     }
 
     span {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       font-size: 2rem;
+      padding-bottom: 10px;
       border-bottom: var(--color-border-1px);
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
@@ -62,16 +78,16 @@
     }
 
     input {
-      background-color: var(--background-secundary);
+      background-color: var(--background-secondary);
       border: var(--color-border-1px);
       border-radius: 5px;
       padding: 12px;
       outline: none;
-      width: 80%;
+      width: calc(100% - 27px);
       color: var(--color-primary);
 
       &::placeholder {
-        color: $color-secundary;
+        color: $color-secondary;
       }
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
@@ -81,7 +97,7 @@
   }
 
   &__private-info {
-    margin-left: 1rem;
+    margin-top: 40px;
 
     label {
       margin: 5px 0;
@@ -93,7 +109,7 @@
     }
 
     input {
-      background-color: var(--background-secundary);
+      background-color: var(--background-secondary);
       border: var(--color-border-1px);
       outline: none;
       border-radius: 5px;
@@ -102,7 +118,7 @@
       color: var(--color-primary);
 
       &::placeholder {
-        color: $color-secundary;
+        color: $color-secondary;
       }
     }
 
@@ -114,7 +130,7 @@
 
   &__select-container {
     display: flex;
-    flex-direction: row;
+    gap: 35px;
 
     @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
       flex-direction: column;
@@ -127,37 +143,34 @@
   }
 
   &__select-item {
-    margin-top: 30px;
-    margin-right: 50px;
+    width: 100%;
   }
 
   .input-group {
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
 
     input {
-      width: 220px;
+      width: calc(100% - 18px);
       height: 30px;
     }
 
     .dropdown-input {
 
       &__control {
-        background-color: var(--background-secundary);
+        background-color: var(--background-secondary);
         border: var(--color-border-1px);
         color: var(--color-primary);
-        width: 220px;
+        width: 100%;
       }
 
       &__menu {
-        background-color: var(--background-secundary);
+        background-color: var(--background-secondary);
+        color: var(--color-primary);
       }
 
       &__option {
-        background-color: var(--background-secundary);
+        background-color: var(--background-secondary);
+        color: var(--color-primary);
 
         &--is-focused {
           background-color: var(--background-on-hover);

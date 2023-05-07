@@ -9,8 +9,11 @@ const englishTranslation = {
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Music',
   sidebar_radio: 'Radio',
-  sidebar_browser: 'Browser',
-  sidebar_favorites: 'Favorites',
+  sidebar_explore: 'Explore',
+  sidebar_explore_artist: 'Artists',
+  sidebar_explore_album: 'Albums',
+  sidebar_explore_playlist: 'Playlists',
+  sidebar_library: 'My Library',
   sidebar_studio: 'Studio',
   sidebar_search: 'Search',
   sidebar_account: 'Account',
@@ -42,6 +45,19 @@ const englishTranslation = {
   profile_select_country_three: 'United States',
   profile_select_language_one: 'Spanish',
   profile_select_language_two: 'English',
+  profile_name: "Your name",
+  profile_lastname: "Your lastname",
+
+  /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
+  library_header_profile_desc: 'Your favorite artists, albums and playlists all in one place',
+  library_header_profile_btn: 'Shuffle my music',
+
+  library_header_navbar_highlights: 'Highlights',
+  library_header_navbar_favorite: 'Favorite tracks',
+  library_header_navbar_playlist: 'My Playlists',
+  library_header_navbar_upload: 'Upload songs',
+
+  library_header_body_highlights_playlist_title: 'Playlists',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',
@@ -59,10 +75,10 @@ const englishTranslation = {
   followingbutton: 'Following',
 
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
-track_item_playlist: 'Add to playlist',
-track_item_download: 'Download',
-track_item_ranking: 'Ranking: ',
-track_item_duration: 'Duration: ',
+  track_item_playlist: 'Add to playlist',
+  track_item_download: 'Download',
+  track_item_ranking: 'Ranking: ',
+  track_item_duration: 'Duration: ',
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',

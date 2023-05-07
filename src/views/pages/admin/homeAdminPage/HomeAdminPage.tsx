@@ -1,4 +1,4 @@
-import HomeAdminComponent from '../../../components/admin/homeAdminComponent/HomeAdminComponent';
+import HomeAdminComponent from 'views/components/admin/homeAdminComponent/HomeAdminComponent';
 
 const HomeAdmin = () => {
   return (

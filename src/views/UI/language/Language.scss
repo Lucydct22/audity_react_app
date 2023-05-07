@@ -1,0 +1,40 @@
+@import '../../../sass/variables';
+
+.language-switcher {
+  display: inline-block;
+
+  &__section {
+    display: flex;
+
+    &--container {
+      
+      padding: 1px;
+      border-right: 2px solid $color-secondary;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &__btn {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: 0;
+        height: 30px;
+        cursor: pointer;
+
+        &--img {
+          height: 100%;
+          border-bottom: 3px solid transparent;
+          padding: 0 5px;
+        }
+
+        &--imgActive {
+          height: 100%;
+          border-bottom: 3px solid $color-main;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}

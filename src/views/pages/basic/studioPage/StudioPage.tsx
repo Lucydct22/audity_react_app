@@ -1,5 +1,5 @@
-import HelmetSEO from "../../../utils/HelmetSEO";
-import StudioBComponent from "../../../components/basic/studioBComponent/StudioBComponent";
+import HelmetSEO from "views/utils/HelmetSEO";
+import StudioBComponent from "views/components/basic/studioBComponent/StudioBComponent";
 
 function StudioPage() {
 	return (

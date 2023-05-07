@@ -1,1 +1,1 @@
-export { default } from './TopBarBComponentDesktop';
+export { default } from './TopBarBComponentDesktop.jsx';

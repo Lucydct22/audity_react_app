@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAlbumsApi } from '../../../../../api/music/albums';
+import { getAlbumsApi } from 'api/music/albums';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,7 +18,7 @@ export default function AlbumsSlider() {
   useEffect(() => {
     let isMounted = true;
     getAlbumsApi().then(res => {
-      isMounted && res && setAlbums(res);
+      isMounted && res && setAlbums(res.albums);
     })
     return () => { isMounted = false }
   }, []);
@@ -52,7 +52,7 @@ export default function AlbumsSlider() {
         breakpoint: 1175,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           initialSlide: 2
         }
       }
@@ -73,10 +73,10 @@ export default function AlbumsSlider() {
         </span>
       </div>
       <div className='album-carousel__container'>
-        {albums && (
+        {albums?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {albums.map(album => {
-              return <RenderAlbum key={album.id} album={album} />
+            {albums?.map(album => {
+              return <RenderAlbum key={album._id} album={album} />
             })}
           </Slider>
         )}

@@ -5,28 +5,37 @@ import { ThemeProvider } from "./context/theme/ThemeContext";
 import CurrentTracklistProvider from "./context/currentTracklist/CurrentTracklistProvider";
 import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
 import { isLocalhost } from './utils/isLocalhost';
+import UserProvider from "./context/user/UserProvider";
+import { LanguageProvider } from "context/language/LanguageContext";
 
 const App = () => {
   return (
     <Auth0Provider
-      domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      domain={process.env.REACT_APP_AUTH0_DOMAIN as string}
       clientId={
         isLocalhost
-          ? import.meta.env.VITE_DEVELOPMENT_AUTH0_CLIENT_ID as string
-          : import.meta.env.VITE_PRODUCTION_AUTH0_CLIENT_ID as string
+          ? process.env.REACT_APP_DEVELOPMENT_AUTH0_CLIENT_ID as string
+          : process.env.REACT_APP_PRODUCTION_AUTH0_CLIENT_ID as string
       }
-      authorizationParams={{ redirect_uri: window.location.origin + '/' }}
+      authorizationParams={{
+        redirect_uri: window.location.origin + '/',
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE
+      }}
     >
-      <ThemeProvider>
-        <CurrentTracklistProvider>
-          <CurrentTrackProvider>
-            <RouterProvider
-              router={router}
-              fallbackElement={<></>}
-            />
-          </CurrentTrackProvider>
-        </CurrentTracklistProvider>
-      </ThemeProvider>
+      <UserProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <CurrentTracklistProvider>
+              <CurrentTrackProvider>
+                <RouterProvider
+                  router={router}
+                  fallbackElement={<></>}
+                />
+              </CurrentTrackProvider>
+            </CurrentTracklistProvider>
+          </ThemeProvider>
+        </LanguageProvider>
+      </UserProvider>
     </Auth0Provider>
   );
 }

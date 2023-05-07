@@ -10,5 +10,5 @@ const isLocalhost = Boolean(
 );
 
 export const basePath = isLocalhost ?
-    `${window.location.protocol}//${window.location.hostname}:3000` :
-    `${window.location.origin}`;
+    `${window.location.protocol}//${window.location.hostname}:4000/api/v1` :
+    `${window.location.origin}/api/v1`;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getArtistApi } from '../../../../../api/music/artists';
+import { getArtistApi } from 'api/music/artists';
 import RenderArtist from './renderArtist';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
@@ -15,7 +15,7 @@ export default function ArtistsSlider() {
   useEffect(() => {
     let isMounted = true;
     getArtistApi().then(res => {
-      isMounted && res && setArtists(res);
+      isMounted && res && setArtists(res.artists);
     })
     return () => { isMounted = false }
   }, [])
@@ -48,7 +48,7 @@ export default function ArtistsSlider() {
         breakpoint: 1175,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           initialSlide: 2
         }
       }
@@ -69,10 +69,10 @@ export default function ArtistsSlider() {
         </span>
       </div>
       <div className='carousel-component__container'>
-        {artists && (
+        {artists?.length > 0 && (
           <Slider ref={c => (slider = c)} {...settings}>
-            {artists.map(artist => {
-              return <RenderArtist key={artist.id} artist={artist} />
+            {artists?.map(artist => {
+              return <RenderArtist key={artist._id} artist={artist} />
             })}
           </Slider>
         )}
@@ -81,7 +81,6 @@ export default function ArtistsSlider() {
   );
 }
 
-//const RenderArtist = ({ artist }) => {
 const TranslateTitle = () => {
   const { t } = useTranslation();
 

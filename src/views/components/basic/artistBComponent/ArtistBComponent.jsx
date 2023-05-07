@@ -11,6 +11,7 @@ export default function ArtistBComponent({ artist }) {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	console.log(artist);
 
 	const handlePlayClick = () => {
 		setIsPlaying((prevState) => !prevState);
@@ -24,7 +25,7 @@ export default function ArtistBComponent({ artist }) {
 		<>
 			<div className="artist-page">
 				<div className="artist-page__image">
-					<img src={artist?.photoUrl} alt="Image description" />
+					<img src={artist?.imageUrl} alt="Image description" />
 				</div>
 				<section className="artist-page__section">
 					<div className="artist-page__section--details">
