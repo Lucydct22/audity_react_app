@@ -1,6 +1,6 @@
-@import '../../../../sass/variables';
+@import '../../../../../sass';
 
-.music-page {
+.library-highlights {
   margin: 0 auto;
   padding: 34px;
   padding-top: 10px;
@@ -9,5 +9,12 @@
   @media (max-width: $media-breakpoint-desktop-mobile) {
     padding: 18px;
     padding-top: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
   }
 }

@@ -19,7 +19,7 @@ const englishTranslation = {
   sidebar_account: 'Account',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist you\'ll love',
+  musicpage_albumtitle: 'Albums you\'ll love',
   musicpage_albumtitle2: 'New release for you',
   musicpage_albumtracks: 'Tracks',
   musicpage_dailytitle: 'Your dailylist',
@@ -59,9 +59,17 @@ const englishTranslation = {
   library_header_profile_btn: 'Shuffle my music',
 
   library_header_navbar_highlights: 'Highlights',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Albums',
+  library_highlights_artists: 'Artists',
+
   library_header_navbar_favorite: 'Favorite tracks',
+
   library_header_navbar_playlist: 'My Playlists',
+  
   library_header_navbar_upload: 'Upload songs',
+
+  library_header_body_highlights_playlist_title: 'Playlists',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',

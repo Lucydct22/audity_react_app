@@ -1,0 +1,29 @@
+@import '../../../sass/';
+
+
+.swiper-component {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    &--title {
+      text-transform: capitalize;
+      display: inline;
+      margin: 0;
+      font-size: 24px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+    }
+  }
+
+  &__container {
+    margin: 0;
+  }
+}

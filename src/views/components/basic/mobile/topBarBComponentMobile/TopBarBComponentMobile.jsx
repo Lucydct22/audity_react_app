@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './topBarBComponentMobile.scss';
 import Theme from '../../../../UI/theme/Theme';
-// import { CiSearch } from 'react-icons/ci';
+import Language from 'views/UI/language/Language';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
-
+import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
 
 const TopBarBComponentMobile = () => {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ const TopBarBComponentMobile = () => {
     <header className='page-topbar-mobile'>
       <div className='page-topbar-mobile-action' ref={popperRef}>
         <button className='page-topbar-mobile-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
-          <img src={user?.picture ? user.picture : 'https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg'} alt="avatar" />
+          <img src={user?.picture ? user.picture : PersonPlaceholder32} alt="avatar" />
         </button>
         <div className={`page-topbar-mobile-action__popper ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
           <div className='page-topbar-mobile-action__popper--wrapper'>
@@ -44,24 +44,30 @@ const TopBarBComponentMobile = () => {
               <GoTriangleUp />
             </div>
 
-            { isAuthenticated ? (
-            <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            </Link>) 
-            : (
-              <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
-              <span>Account Settings</span>
-              <FiChevronRight size='1.4rem' />
-            </div>
-            )
+            {isAuthenticated ? (
+              <Link to="/settings"><div className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer'>
+                <span>Account Settings</span>
+                <FiChevronRight size='1.4rem' />
+              </div>
+              </Link>)
+              : (
+                <div className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+                  <span>Account Settings</span>
+                  <FiChevronRight size='1.4rem' />
+                </div>
+              )
             }
-            
-            <div className='page-topbar-action__popper--wrapper__content'>
+
+            <div className='page-topbar-mobile-action__popper--wrapper__content'>
               <span className='cursor-default'>System theme</span>
               <Theme />
             </div>
+
+            <div className='page-topbar-mobile-action__popper--wrapper__content'>
+              <span className='cursor-default'>Language</span>
+              <Language />
+            </div>
+
             {isAuthenticated ? (
               <span className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
                 Log out

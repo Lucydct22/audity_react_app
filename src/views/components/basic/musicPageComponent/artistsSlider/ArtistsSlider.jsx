@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
 import { getArtistApi } from 'api/music/artists';
 import RenderArtist from './renderArtist';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
 import './artistsSlider.scss';
+import { Navigation, FreeMode } from "swiper";
+import { responsiveBreak } from "utils/componentsConstants";
 
 export default function ArtistsSlider() {
-  let slider = new Slider();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
   const [artists, setArtists] = useState(undefined);
 
   useEffect(() => {
@@ -20,95 +24,117 @@ export default function ArtistsSlider() {
     return () => { isMounted = false }
   }, [])
 
-  function next() {
-    slider.slickNext();
-  }
-  function previous() {
-    slider.slickPrev();
-  }
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", changeWidth)
 
-  const settings = {
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1475,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 1175,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 2
-        }
-      }
-    ]
-  };
+    return () => {
+      window.removeEventListener("resize", changeWidth)
+    }
+  })
 
   return (
-    <div className='carousel-component'>
-      <div className='carousel-component__head'>
+    <Suspense fallback={<></>}>
+      {(screenWidth > responsiveBreak) ? (
+        <DesktopArtistsSlider artists={artists} />
+      ) : (
+        <MobileArtistsSlider artists={artists} />
+      )}
+    </Suspense>
+  )
+}
+
+const DesktopArtistsSlider = ({ artists }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="artists-carousel">
+      <div className="artists-carousel__head">
         <TranslateTitle />
-        <span className='carousel-component__head--btn'>
-          <button className='carousel-component__head--btn__prev' onClick={previous}>
+        <span className="artists-carousel__head--btn">
+          <button ref={prevRef} className="swiper-carousel-button-prev">
             <HiOutlineChevronLeft />
           </button>
-          <button className='carousel-component__head--btn__next' onClick={next}>
+          <button ref={nextRef} className="swiper-carousel-button-next">
             <HiOutlineChevronRight />
           </button>
         </span>
       </div>
-      <div className='carousel-component__container'>
-        {artists?.length > 0 && (
-          <Slider ref={c => (slider = c)} {...settings}>
-            {artists?.map(artist => {
-              return <RenderArtist key={artist._id} artist={artist} />
-            })}
-          </Slider>
-        )}
+      <div className='artists-carousel__container'>
+        <Swiper
+          slidesPerView={5}
+          spaceBetween={32}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            815: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1300: {
+              slidesPerView: 5,
+            }
+          }}
+          modules={[Navigation]}
+          className="swiper-carousel">
+          {artists?.map(artist => {
+            return (
+              <SwiperSlide key={artist._id}>
+                <RenderArtist artist={artist} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
     </div>
-  );
+  )
 }
 
-//const RenderArtist = ({ artist }) => {
+const MobileArtistsSlider = ({ artists }) => {
+  return (
+    <div className="artists-carousel">
+      <div className="artists-carousel__head">
+        <TranslateTitle />
+      </div>
+      <div className='artists-carousel__container'>
+        <Swiper
+          slidesPerView={3.2}
+          spaceBetween={15}
+          freeMode={true}
+          breakpoints={{
+            150: {
+              slidesPerView: 2.2,
+            },
+            515: {
+              slidesPerView: 3.2,
+            },
+          }}
+          modules={[FreeMode]}
+          className="swiper-carousel">
+          {artists?.map(artist => {
+            return (
+              <SwiperSlide key={artist._id}>
+                <RenderArtist artist={artist} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
+      </div>
+    </div>
+  )
+}
+
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
-  return <h2 className='carousel-component__head--title'>{t("musicpage_artirstitle")}</h2>;
+  return <h2 className='artists-carousel__head--title'>{t("musicpage_artirstitle")}</h2>;
 }
-
-// const RenderArtist = ({ artist }) => {
-//   return (
-//     <section className='artist-carousel__container--section'>
-//       <div className='artist-carousel__container--section__thumbnail'>
-//         <img src={artist.photoUrl} alt={artist.name} />
-//       </div>
-//       <Link className='artist-carousel__container--section__description' to={'#'}>{artist.name}</Link>
-//       <Link className='artist-carousel__container--section__details' to={'#'}>80,165,532 fans</Link>
-//     </section>
-//   )
-// }
-
-/* export const RenderArtist = () => {
-
-  return (
-    <section className='carousel-component__container--section'>
-      <div className='carousel-component__container--section__thumbnail'>
-        <img src={AlbumImg4} alt="IMG" />
-      </div>
-      <Link className='carousel-component__container--section__description' to={'#'}>La Rosalia</Link>
-      <Link className='carousel-component__container--section__details' to={'#'}>80,165,532 fans</Link>
-    </section>
-  )
-} */

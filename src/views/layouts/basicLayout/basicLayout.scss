@@ -9,14 +9,12 @@
   padding-bottom: 81px;
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
-    position: relative;
-    display: flex;
-    justify-content: center;
     margin: 0;
     padding-bottom: 120px;
   }
 
   &--content {
+    width: 100%;
     color: var(--color-primary);
   }
 }

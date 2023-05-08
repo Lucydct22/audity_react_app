@@ -19,7 +19,7 @@ const spanishTranslation = {
   sidebar_account: 'Cuanta',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist que te encantarán',
+  musicpage_albumtitle: 'Álbumes que te encantarán',
   musicpage_albumtitle2: 'Nuevos lanzamientos para ti',
   musicpage_albumtracks: 'Canciones',
   musicpage_dailytitle: 'Tu lista de hoy',
@@ -35,7 +35,7 @@ const spanishTranslation = {
   profile_email: 'Tu correo electrónico',
   profile_password: 'Tu contraseña',
   profile_username: 'Tu nombre de usuario',
-  profile_birthday: 'Fecha de nacimiento',
+  profile_birthday: 'Nacimiento',
   profile_country: 'País',
   profile_language: 'Idioma',
   profile_btn_save: 'Guardar',
@@ -59,9 +59,17 @@ const spanishTranslation = {
   library_header_profile_btn: 'Mi música en modo aleatorio',
 
   library_header_navbar_highlights: 'Destacados',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Álbumes',
+  library_highlights_artists: 'Artistas',
+
   library_header_navbar_favorite: 'Canciones favoritas',
+
   library_header_navbar_playlist: 'Playlists',
+
   library_header_navbar_upload: 'Mis canciones',
+
+  library_header_body_highlights_playlist_title: 'Playlists',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',

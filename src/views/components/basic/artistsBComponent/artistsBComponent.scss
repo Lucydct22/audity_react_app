@@ -1,21 +1,31 @@
 @import "../../../../sass/";
 
 .artists-page-content {
-  padding-top: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
 
-	h1 {
-		font-size: 25px;
-    padding: 0 20px;
-	}
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 18px;
+    padding-top: 0;
+  }
 
-	&__grid {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		@include fadeIn();
-    @include web-responsive();
+  h1 {
+    font-size: 25px;
+    padding: 0px;
+  }
 
-		@media (max-width: 1300px) {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    @include fadeIn();
+
+
+    @media (max-width: 1300px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }

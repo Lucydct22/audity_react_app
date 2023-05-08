@@ -1,11 +1,12 @@
 import Select from 'react-select';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import UserContext from 'context/user/UserContext';
 import { LanguageContext, languages } from 'context/language/LanguageContext';
+import PersonPlaceholder160 from 'assets/img/webp/profile-placeholder-160x160.webp'
 import moment from 'react-moment'
 
 export default function ProfileComponent() {

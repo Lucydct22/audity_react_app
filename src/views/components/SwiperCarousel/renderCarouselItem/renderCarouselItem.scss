@@ -1,25 +1,36 @@
-@import "../../../../../../sass/variables";
-@import "../../../../../../sass/mixins";
+@import "../../../../sass/variables";
+@import "../../../../sass/mixins";
 
 
-.render-album {
+.render-carousel-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   text-decoration: none;
+  width: 100%;
 
   &__thumbnail {
     display: inline-block;
     position: relative;
     cursor: pointer;
+    width: 100%;
 
     &:hover {
-      img {
+      &--img {
         opacity: 0.7;
+      }
+
+      &--imgArtist {
+        opacity: 0.7;
+      }
+
+      .render-carousel-item__thumbnail--btnArtist {
+        display: flex;
       }
     }
 
-    img {
+    &--img {
       line-height: 0;
       text-indent: -999em;
       width: 100%;
@@ -31,7 +42,27 @@
         display: block;
         width: 100%;
         box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
-        background-image: url('../../../../../../assets/img/webp/disc250.webp');
+        background-image: url('../../../../assets/img/webp/disc250.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
+      }
+    }
+
+    &--imgArtist {
+      line-height: 0;
+      text-indent: -999em;
+      width: 100%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      border-radius: 50%;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../assets/img/webp/profile-placeholder-160x160.webp');
         background-position: center;
         background-size: cover;
         padding: 50% 0;
@@ -54,17 +85,26 @@
         @include carousel-thumbnail-btn();
       }
     }
+
+    &--btnArtist {
+      display: none;
+      position: absolute;
+      bottom: 40%;
+      left: 40%;
+
+      &__like {
+        @include carousel-thumbnail-btn();
+      }
+    }
   }
 
   &__description {
+    font-size: 12px;
     margin: 0;
     margin-top: 5px;
-    font-size: 14px;
     font-weight: 700;
     color: var(--color-primary);
     text-decoration: none;
-    height: 20px;
-    overflow-y: hidden;
   }
 
   &__details {

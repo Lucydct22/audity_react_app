@@ -1,20 +1,12 @@
 @import '../../../../../sass';
 
-.slick-track {
-  display: flex !important;
-  justify-content: center;
-}
-
 .album-carousel {
   margin: 0 auto;
-
-  @include web-responsive();
 
   &__head {
     display: flex;
     justify-content: space-between;
-    margin: 0;
-    padding: 0 20px;
+    margin-bottom: 15px;
 
     &--title {
       display: inline;
@@ -43,6 +35,8 @@
   &__container {
     margin-bottom: 2rem;
 
-
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin-bottom: 3rem;
+    }
   }
 }

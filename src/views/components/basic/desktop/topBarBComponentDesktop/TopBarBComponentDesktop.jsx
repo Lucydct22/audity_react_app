@@ -8,6 +8,7 @@ import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import Language from 'views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
+import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
 
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const TopBarBComponentDesktop = () => {
       </div>
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
-          <img src={user?.picture ? user.picture : 'https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg'} alt="avatar" />
+          <img src={user?.picture ? user.picture : PersonPlaceholder32} alt="avatar" />
         </button>
         <div className={`page-topbar-action__popper ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
           <div className='page-topbar-action__popper--wrapper'>
