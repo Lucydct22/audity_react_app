@@ -1,5 +1,5 @@
 import Select from 'react-select';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect  } from 'react';
 import Spinner from '../../../UI/spinner/Spinner';
 import './profileComponent.scss';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -57,10 +57,13 @@ export default function ProfileComponent() {
   return (
     <>
       <div className='user-settings'>
-        <div className="user-settings__image">
-          <img src={dbUser.picture} alt="your photo" className="user-settings__image--profile" />
-          <p>{t("profile_intro")}</p>
+      <div className="user-settings__profile">
+        <img src={dbUser?.picture} alt="your photo" className="user-settings__profile--image" />
+        <div className="user-settings__profile--info">
+          <p className="user-settings__profile--info__name">{dbUser.name}</p>
+          <p className="user-settings__profile--info__desc">{t("profile_intro")}</p>
         </div>
+      </div>
         <div className="user-settings__account" >
           <span>{t('profile_account')}</span>
           <label >{t("profile_email")}</label>
