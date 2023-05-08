@@ -14,7 +14,8 @@ const initialUserState = {
 		following: [],
 	},
 	updateUserLanguage: (lang: string) => { },
-	updateUserCountry: (count: string) => { }
+	updateUserCountry: (count: string) => { },
+	updateUserSettings: (name: string , lastname: string , nickname: string , dateOfBirth: string ) => { },
 }
 
 export default initialUserState

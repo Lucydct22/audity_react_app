@@ -19,7 +19,7 @@ export default function UserProvider(props: ChildrenProps) {
 			const token = await getAccessTokenSilently()			
 			if (token) {
 				action.registerLoginUserAction(dispatch, user, token)
-				//	console.log(token)
+				//console.log(token)
 			}
 		}
 		registerLoginUser()
@@ -35,17 +35,22 @@ export default function UserProvider(props: ChildrenProps) {
 		action.updateUserCountryAction(dispatch, token, count)
 	 }, []);
 
-
+	 const updateUserSettings = useCallback(async (name: string, lastname: string, nickname: string, dateOfBirth: string) => {
+		const token = await getAccessTokenSilently()
+		action.updateUserSettingsAction(dispatch, token, name, lastname, nickname, dateOfBirth)
+	 }, []);
 
 	const memoProvider = useMemo(
 		() => ({
 			...userState,
 			updateUserLanguage,
-			updateUserCountry
+			updateUserCountry,
+			updateUserSettings
 		}), [
 			userState,
 			updateUserLanguage,
-			updateUserCountry
+			updateUserCountry,
+			updateUserSettings
 		]
 	);
 

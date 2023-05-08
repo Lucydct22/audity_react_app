@@ -28,6 +28,7 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   title_admin_home: 'Admin Home',
+
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'You are inside your personal details',
   profile_account: 'Audity account',
@@ -48,6 +49,10 @@ const englishTranslation = {
   profile_select_language_two: 'English',
   profile_name: "Your name",
   profile_lastname: "Your lastname",
+  profile_placeholder_name: 'Put your name please',
+  profile_placeholder_lastname: 'Put your lastname please',
+  profile_placeholder_nickname: 'Put your nickname please',
+  profile_placeholder_birth_day: 'Put your date of birth please',
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Your favorite artists, albums and playlists all in one place',

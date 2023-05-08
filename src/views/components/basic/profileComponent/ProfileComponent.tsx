@@ -6,18 +6,32 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import UserContext from 'context/user/UserContext';
 import { LanguageContext, languages } from 'context/language/LanguageContext';
-
+import moment from 'react-moment'
 
 export default function ProfileComponent() {
   const { t } = useTranslation();
   const { isLoading, getIdTokenClaims } = useAuth0();
   const [editMode, setEditMode] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState();
-  //const [selectedLanguage, setSelectedLanguage] = useState();
-  const { dbUser, updateUserCountry } = useContext(UserContext)
   const { language, setLanguageAction } = useContext(LanguageContext)
 
+  const { dbUser, updateUserCountry, updateUserSettings } = useContext(UserContext)
 
+  const [name, setName] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [dateOfBirth, setDateOfBirth] = useState('')
+
+  /*const dateString = dbUser.dateOfBirth;
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});*/
+
+  useEffect(() => {
+    setName(dbUser.name),
+      setLastname(dbUser.lastname)
+    setNickname(dbUser.nickname)
+    setDateOfBirth(dbUser.dateOfBirth)
+  }, [dbUser.name, dbUser.lastname, dbUser.nickname, dbUser.dateOfBirth]);
 
   if (isLoading) {
     return <Spinner />
@@ -30,20 +44,13 @@ export default function ProfileComponent() {
   ];
 
 
-  const handleInputChange = (e: any) => {
-    /*const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value
-    });*/
-  }
-
   const handleChange = () => {
     setEditMode(true);
   }
 
   const handleSave = () => {
     setEditMode(false);
+    updateUserSettings(name, lastname, nickname, dateOfBirth)
   }
 
   return (
@@ -57,19 +64,19 @@ export default function ProfileComponent() {
           <span>{t('profile_account')}</span>
           <label >{t("profile_email")}</label>
           <div>
-            <input type="email" value={dbUser.email} name="email" readOnly={!editMode} placeholder={dbUser.email} onChange={handleInputChange} />
+            <input type="email" value={dbUser.email} name="email" readOnly placeholder={dbUser.email} />
           </div>
           <label >{t("profile_name")}</label>
           <div>
-            <input type="text" value={dbUser.name} name="username" readOnly={!editMode} placeholder={dbUser.name} onChange={handleInputChange} />
+            <input type="text" value={name} name="username" readOnly={!editMode} placeholder={t('profile_placeholder_name') || ''} onChange={(e: any) => setName(e.target.value)} />
           </div>
           <label >{t("profile_lastname")}</label>
           <div>
-            <input type="text" value={dbUser.lastname} name="username" readOnly={!editMode} placeholder={dbUser.lastname} onChange={handleInputChange} />
+            <input type="text" value={lastname} name="username" readOnly={!editMode} placeholder={t('profile_placeholder_lastname') || ''} onChange={(e: any) => setLastname(e.target.value)} />
           </div>
           <label >{t("profile_username")}</label>
           <div>
-            <input type="text" value={dbUser.nickname} name="username" readOnly={!editMode} placeholder={dbUser.nickname} onChange={handleInputChange} />
+            <input type="text" value={nickname} name="username" readOnly={!editMode} placeholder={t('profile_placeholder_nickname') || ''} onChange={(e: any) => setNickname(e.target.value)} />
           </div>
         </div>
         <div className="user-settings__private-info" >
@@ -77,7 +84,14 @@ export default function ProfileComponent() {
             <div className='user-settings__select-item'>
               <label >{t("profile_birthday")}</label>
               <div className="input-group">
-                <input type="date" className="input-group__bthd" value={dbUser.dateOfBirth || ''} name="birth_day" placeholder={dbUser.dateOfBirth || ''} readOnly={!editMode} onChange={handleInputChange} />
+                <input
+                  type="date"
+                  className="input-group__bthd"
+                  value={dateOfBirth || ''}
+                  name="birth_day"
+                  placeholder={t('profile_placeholder_birth_day') || ''}
+                  readOnly={!editMode}
+                  onChange={(e: any) => setDateOfBirth(e.target.value)} />
               </div>
             </div>
             <div className='user-settings__select-item'>
@@ -100,8 +114,6 @@ export default function ProfileComponent() {
 
                 <Select
                   options={languages}
-                  //value={languages}
-                  //defaultValue={dbUser.language}
                   placeholder={language === 'es' ? t("profile_select_language_one") : t("profile_select_language_two")}
                   isDisabled={!editMode}
                   onChange={(e: any) => setLanguageAction(e.code)}
@@ -112,10 +124,10 @@ export default function ProfileComponent() {
             </div>
           </div>
           {editMode ? <button onClick={handleSave} className='user-settings__btn--save'>{t("profile_btn_save")}</button> : <button onClick={handleChange} className='user-settings__btn--modify'>{t("profile_btn_change")}</button>}
+          <button className='user-settings__btn--password'>{t('profile_btn_password')}</button>
           <button className='user-settings__btn--delete'>{t('profile_btn_delete')}</button>
         </div>
       </div>
     </>
   )
 }
-// export default ProfileComponent;
