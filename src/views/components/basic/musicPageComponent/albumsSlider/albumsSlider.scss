@@ -6,7 +6,12 @@
   &__head {
     display: flex;
     justify-content: space-between;
+    margin: 15px 0;
     margin-bottom: 15px;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 15px 18px;
+    }
 
     &--title {
       display: inline;

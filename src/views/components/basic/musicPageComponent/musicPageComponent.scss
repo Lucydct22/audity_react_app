@@ -7,7 +7,6 @@
   max-width: 1504px;
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
-    padding: 18px;
-    padding-top: 0;
+    padding: 0;
   }
 }

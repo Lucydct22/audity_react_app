@@ -8,6 +8,10 @@
     justify-content: space-between;
     margin: 15px 0;
 
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 15px 18px;
+    }
+
     &--title {
       text-transform: capitalize;
       display: inline;
