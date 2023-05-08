@@ -16,13 +16,12 @@ export default function GenresSlider() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
   const [genres, setGenres] = useState(undefined)
-  const { user, getAccessTokenSilently } = useAuth0()
+  const { user } = useAuth0()
 
   useEffect(() => {
     let isMounted = true;
     const getGenres = async () => {
-      const token = await getAccessTokenSilently()
-      token && getGenresApi(token).then(async res => {
+      getGenresApi().then(async res => {
         isMounted && res && setGenres(res.genres);
       })
     }
@@ -141,6 +140,5 @@ const MobileGenresSlider = ({ genres }) => {
 
 const TranslateTitle = () => {
   const { t } = useTranslation();
-
   return <h2 className='genres-carousel__head--title'>{t("musicpage_genres")}</h2>;
 }
