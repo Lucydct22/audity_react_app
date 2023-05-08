@@ -8,18 +8,18 @@ import './playerBComponentMobile.scss'
 
 const PlayerBComponentMobile = () => {
   const [songLike, setSongLike] = useState(false);
-  const [songVolume, setSongVolume] = useState(false);
   const {
     trackData,
     currentTrack,
     playCurrentTrack,
     pauseCurrentTrack,
+    nextTrack
   } = useContext(CurrentTrackContext);
+  const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
 
   return (
     <div className='page-player-mobile'>
       <div className='player-bottom-mobile'>
-
         <div className='player-bottom-controls-mobile'>
           <button
             onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
@@ -34,7 +34,7 @@ const PlayerBComponentMobile = () => {
             {currentTrack.name}
           </div>
           <div className='player-bottom-track-mobile__artist'>
-            {currentTrack.artist}
+            {artists}
           </div>
         </div>
 
@@ -42,11 +42,10 @@ const PlayerBComponentMobile = () => {
           <button className='player-bottom-controls-mobile__btn' onClick={() => setSongLike(!songLike)}>
             {songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
           </button>
-          <button className='player-bottom-controls-mobile__controls-action'>
+          <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>
             <MdSkipNext />
           </button>
         </div>
-
       </div>
     </div>
   )

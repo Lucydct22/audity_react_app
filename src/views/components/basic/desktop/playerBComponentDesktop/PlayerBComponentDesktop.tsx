@@ -20,10 +20,8 @@ const PlayerBComponentDesktop = () => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-  const {
-    shuffle,
-    shuffleTracklist
-  } = useContext(CurrentTracklistContext);
+  const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
+  const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
 
   return (
     <div className='page-player'>
@@ -49,7 +47,7 @@ const PlayerBComponentDesktop = () => {
           <div className='player-bottom-track__container'>
             <div className='player-bottom-track__container--heading'>
               <div className='player-bottom-track__container--heading__title'>
-                {`${currentTrack.name} - ${currentTrack.artist}`}
+                {`${currentTrack.name} - ${artists}`}
               </div>
               <div className='player-bottom-track__container--heading__actions'>
                 <button className='page-player-bottom__btn'>
