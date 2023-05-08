@@ -19,7 +19,9 @@ const App = () => {
       }
       authorizationParams={{
         redirect_uri: window.location.origin + '/',
-        audience: process.env.REACT_APP_AUTH0_AUDIENCE
+        audience: isLocalhost 
+          ? process.env.REACT_APP_AUTH0_AUDIENCE_DEVELOPMENT
+          : process.env.REACT_APP_AUTH0_AUDIENCE_PRODUCTION
       }}
     >
       <UserProvider>
