@@ -1,5 +1,5 @@
 import { registerLoginUserAPI } from 'api/user.api';
-import { updateUserLanguageAPI, updateUserCountryAPI } from 'api/user.api';
+import { updateUserLanguageAPI, updateUserCountryAPI, updateUserSettingsAPI } from 'api/user.api';
 import * as UserTypes from './user.types'
 
 export async function registerLoginUserAction(dispatch: any, user: any, token: any) {
@@ -33,7 +33,6 @@ export async function updateUserLanguageAction(dispatch: any, token: any, lang: 
 	}
 }
 
-
 export async function updateUserCountryAction(dispatch: any, token: any, count: any) {
 	try {
 		await updateUserCountryAPI(token, { country: count })
@@ -42,6 +41,24 @@ export async function updateUserCountryAction(dispatch: any, token: any, count: 
 			payload: count
 		})
 
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+export async function updateUserSettingsAction(dispatch: any, token: any, name: string, lastname: string, nickname: string, dateOfBirth: string) {
+	try {		
+		const response = await updateUserSettingsAPI(token, name, lastname, nickname, dateOfBirth )
+		//console.log(name, lastname, nickname, dateOfBirth);
+			return dispatch({
+				type: UserTypes.UPDATE_USER_SETTINGS,
+				payload: {
+					name: name, 
+					lastname: lastname, 
+					nickname: nickname, 
+					dateOfBirth: dateOfBirth
+				}
+			})
 	} catch (err) {
 		console.log(err);
 	}

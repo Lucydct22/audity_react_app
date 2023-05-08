@@ -33,16 +33,23 @@ export default function UserProvider(props: ChildrenProps) {
 		action.updateUserCountryAction(dispatch, token, count)
 	}, []);
 
+	 const updateUserSettings = useCallback(async (name: string, lastname: string, nickname: string, dateOfBirth: string) => {
+		const token = await getAccessTokenSilently()
+		action.updateUserSettingsAction(dispatch, token, name, lastname, nickname, dateOfBirth)
+	 }, []);
+
 	const memoProvider = useMemo(
 		() => ({
 			...userState,
 			updateUserLanguage,
-			updateUserCountry
+			updateUserCountry,
+			updateUserSettings
 		}), [
-		userState,
-		updateUserLanguage,
-		updateUserCountry
-	]
+			userState,
+			updateUserLanguage,
+			updateUserCountry,
+			updateUserSettings
+		]
 	);
 
 	return (

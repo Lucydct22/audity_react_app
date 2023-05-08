@@ -40,6 +40,7 @@ const spanishTranslation = {
   profile_language: 'Idioma',
   profile_btn_save: 'Guardar',
   profile_btn_change: 'Modificar',
+  profile_btn_password: 'Cambiar contraseña',
   profile_btn_delete: 'Eliminar perfil',
   profile_select_country_one: 'España',
   profile_select_country_two: 'Canadá',
@@ -48,6 +49,10 @@ const spanishTranslation = {
   profile_select_language_two: 'Inglés',
   profile_name: "Tu nombre",
   profile_lastname: "Tu apellido",
+  profile_placeholder_name: 'Escribe tu nombre, por favor',
+  profile_placeholder_lastname: 'Escribe tu apellido, por favor',
+  profile_placeholder_nickname: 'Escribe tu nombre de usuario, por favor',
+  profile_placeholder_birth_day: 'Escribe tu fecha de nacimiento, por favor',
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
