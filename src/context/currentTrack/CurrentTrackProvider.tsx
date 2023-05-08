@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext, useEffect, useMemo, useReducer } from "react";
 import CurrentTracklistContext from "../currentTracklist/CurrentTracklistContext";
 import CurrentTrackContext from "./CurrentTrackContext";
 import initialCurrentTrackState from "./initialCurrentTrackState";
@@ -16,17 +16,17 @@ export default function CurrentTrackProvider({ children }: any) {
 	const { trackData } = currentTrackState;
 	const { audio } = trackData;
 
-	const initCurrentTrack = function () {
+	useEffect(() => {
 		initCurrentTrackAction(dispatch);
-	}
+	}, []);
 
 	const playCurrentTrack = function () {
-		audio.play();
+		audio?.play();
 		dispatch({ type: CurrentTrackTypes.PLAY_CURRENT_TRACK })
 	}
 
 	const pauseCurrentTrack = function () {
-		audio.pause();
+		audio?.pause();
 		dispatch({ type: CurrentTrackTypes.PAUSE_CURRENT_TRACK })
 	}
 
@@ -70,10 +70,9 @@ export default function CurrentTrackProvider({ children }: any) {
 		})
 	}
 
-	return (
-		<CurrentTrackContext.Provider value={{
+	const memoProvider = useMemo(
+		() => ({
 			...currentTrackState,
-			initCurrentTrack,
 			playCurrentTrack,
 			pauseCurrentTrack,
 			updateCurrentTime,
@@ -82,7 +81,21 @@ export default function CurrentTrackProvider({ children }: any) {
 			muteTrack,
 			loopTrack,
 			changeCurrentTime,
-		}}>
+		}), [
+			currentTrackState,
+			playCurrentTrack,
+			pauseCurrentTrack,
+			updateCurrentTime,
+			nextTrack,
+			previousTrack,
+			muteTrack,
+			loopTrack,
+			changeCurrentTime,
+	]
+	);
+
+	return (
+		<CurrentTrackContext.Provider value={memoProvider}>
 			{children}
 		</CurrentTrackContext.Provider>
 	)

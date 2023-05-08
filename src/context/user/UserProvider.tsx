@@ -10,32 +10,28 @@ export interface ChildrenProps {
 }
 
 export default function UserProvider(props: ChildrenProps) {
-
 	const [userState, dispatch] = useReducer(userReducer, initialUserState)
-	const { user, isAuthenticated, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
-	
+	const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
+
 	useEffect(() => {
 		const registerLoginUser = async () => {
-			const token = await getAccessTokenSilently()			
-			if (token) {
+			const token = await getAccessTokenSilently()
+			if (!isLoading && isAuthenticated && token) {
 				action.registerLoginUserAction(dispatch, user, token)
-				//	console.log(token)
 			}
 		}
 		registerLoginUser()
-	}, [isAuthenticated, user])
+	}, [isAuthenticated, user, isLoading])
 
 	const updateUserLanguage = useCallback(async (lang: string) => {
 		const token = await getAccessTokenSilently()
 		action.updateUserLanguageAction(dispatch, token, lang)
-	 }, []);
+	}, []);
 
-	 const updateUserCountry = useCallback(async (count: string) => {
+	const updateUserCountry = useCallback(async (count: string) => {
 		const token = await getAccessTokenSilently()
 		action.updateUserCountryAction(dispatch, token, count)
-	 }, []);
-
-
+	}, []);
 
 	const memoProvider = useMemo(
 		() => ({
@@ -43,10 +39,10 @@ export default function UserProvider(props: ChildrenProps) {
 			updateUserLanguage,
 			updateUserCountry
 		}), [
-			userState,
-			updateUserLanguage,
-			updateUserCountry
-		]
+		userState,
+		updateUserLanguage,
+		updateUserCountry
+	]
 	);
 
 	return (

@@ -9,7 +9,7 @@ export const getTracksApi = async (): Promise<Track> => {
 }
 
 export const getTrackByIdApi = async (trackId: string): Promise<Track> => {
-	const response = await fetch(`${basePath}/tracks/${trackId}`)
+	const response = await fetch(`${basePath}/track/${trackId}`)
 	const data = await response.json()
 	return data as Track
 }
