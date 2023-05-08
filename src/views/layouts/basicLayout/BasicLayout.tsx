@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useContext } from "react";
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
-import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
 import { Outlet } from 'react-router-dom'
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
@@ -23,19 +22,10 @@ const PlayerBComponentMobile = lazy(() => import('views/components/basic/mobile/
 const TopBarBComponentMobile = lazy(() => import('views/components/basic/mobile/topBarBComponentMobile'));
 
 const BasicLayout = () => {
-  const { trackData, initCurrentTrack, updateCurrentTime } = useContext(CurrentTrackContext);
-  const { initCurrentTracklist } = useContext(CurrentTracklistContext);
+  const { trackData, updateCurrentTime } = useContext(CurrentTrackContext);
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
   const [innerWidth] = useWindowSizeReport();
-
-  useEffect(() => {
-    initCurrentTrack()
-  }, []);
-
-  useEffect(() => {
-    initCurrentTracklist()
-  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -46,8 +36,7 @@ const BasicLayout = () => {
       clearInterval(interval);
       isMounted = false;
     };
-  }, [trackData]);
-
+  }, [trackData.duration]);
   return (
     <Suspense fallback={<></>}>
       {(innerWidth > responsiveBreak) ? (
