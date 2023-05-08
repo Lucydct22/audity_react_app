@@ -9,7 +9,9 @@
   padding-bottom: 81px;
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
+    top: 0;
     margin: 0;
+    padding: 0;
     padding-bottom: 120px;
   }
 

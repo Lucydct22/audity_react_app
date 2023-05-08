@@ -107,15 +107,15 @@ const MobileArtistsSlider = ({ artists }) => {
       </div>
       <div className='artists-carousel__container'>
         <Swiper
-          slidesPerView={3.2}
+          slidesPerView={3.3}
           spaceBetween={15}
           freeMode={true}
           breakpoints={{
             150: {
-              slidesPerView: 2.2,
+              slidesPerView: 2.3,
             },
             515: {
-              slidesPerView: 3.2,
+              slidesPerView: 3.3,
             },
           }}
           modules={[FreeMode]}

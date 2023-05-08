@@ -8,5 +8,13 @@
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
     padding: 0;
+    padding-top: 4px;
+  }
+
+  h1 {
+    display: inline;
+    margin: 0 18px;
+    font-size: 32px;
+    font-family: 'Anek Gujarati', sans-serif;
   }
 }
