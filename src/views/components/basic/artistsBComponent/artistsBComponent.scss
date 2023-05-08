@@ -1,9 +1,16 @@
 @import "../../../../sass/";
 
 .artists-page-content {
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
-  padding-top: 24px;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 18px;
+    padding-top: 0;
+  }
 
   h1 {
     font-size: 25px;

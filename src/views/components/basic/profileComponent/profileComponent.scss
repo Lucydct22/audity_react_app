@@ -3,9 +3,14 @@
 
 .user-settings {
   margin: 0 auto;
-  padding-top: 24px;
-
+  padding: 34px;
+  padding-top: 10px;
   max-width: 685px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) { 
+    padding: 18px;
+    padding-top: 0;
+  }
 
   &__profile {
     display: flex;
@@ -63,7 +68,7 @@
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         font-size: 1.5rem;
-        width: 80vw;
+        width: calc(100% - 18px);
         padding-bottom: 5px;
       }
 
@@ -84,15 +89,11 @@
       border-radius: 5px;
       padding: 12px;
       outline: none;
-      width: calc(100% - 27px);
+      width: calc(100% - 18px);
       color: var(--color-primary);
 
       &::placeholder {
         color: $color-secondary;
-      }
-
-      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        width: 75vw;
       }
     }
   }

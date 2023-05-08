@@ -17,7 +17,6 @@ const ArtistPage = lazy(() => import('views/pages/basic/artistPage'));
 const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
 const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
-const StudioPage = lazy(() => import('views/pages/basic/studioPage'))
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
@@ -87,10 +86,6 @@ const router = createBrowserRouter([
             element: <Suspense fallback={<></>}><LibraryHighlights /></Suspense>
           }
         ]
-      },
-      {
-        path: "studio",
-        element: <Suspense fallback={<></>}><StudioPage /></Suspense>
       },
       {
         path: "search",
