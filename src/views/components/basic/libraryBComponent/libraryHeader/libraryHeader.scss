@@ -10,6 +10,10 @@
   border-width: 2px;
   width: 100%;
 
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    border-bottom: 0;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -17,6 +21,8 @@
     padding: 0 34px;
     padding-top: 10px;
     max-width: 1504px;
+    width: 100%;
+    margin: 0 auto;
 
     @media (max-width: $media-breakpoint-desktop-mobile) {
       padding: 18px;
@@ -54,6 +60,7 @@
 
         &--btn {
           @include buttonPrimary(fit-content);
+          margin: 20px 0;
         }
       }
     }
@@ -61,6 +68,10 @@
     &--navbar {
       display: flex;
       gap: 30px;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        border-bottom: var(--color-border-1px);
+      }
 
       &__options {
         display: flex;
@@ -70,6 +81,10 @@
         font-weight: 400;
         font-size: 17px;
         gap: 10px;
+
+        @media (max-width: $media-breakpoint-desktop-mobile) {
+          font-size: 15px;
+        }
 
         &--label {
           margin: 0;
