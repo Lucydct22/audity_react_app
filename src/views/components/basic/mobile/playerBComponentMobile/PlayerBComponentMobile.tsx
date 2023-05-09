@@ -1,12 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 // import formatToSeconds from 'utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 // import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentMobile.scss'
+import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
 
 const PlayerBComponentMobile = () => {
+
   const [songLike, setSongLike] = useState(false);
   const {
     trackData,
@@ -17,8 +19,12 @@ const PlayerBComponentMobile = () => {
   } = useContext(CurrentTrackContext);
   const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
 
+  const [showPopUp, setShowPopUp] = useState(false);
+ 
+//Cambiar posicion setShowPopUp
   return (
-    <div className='page-player-mobile'>
+    <>
+    <div className='page-player-mobile' onClick={() => setShowPopUp(!showPopUp)}>
       <div className='player-bottom-mobile'>
         <div className='player-bottom-controls-mobile'>
           <button
@@ -29,7 +35,7 @@ const PlayerBComponentMobile = () => {
           </button>
         </div>
 
-        <div className='player-bottom-track-mobile'>
+        <div className='player-bottom-track-mobile' >
           <div className='player-bottom-track-mobile__title'>
             {currentTrack.name}
           </div>
@@ -48,6 +54,10 @@ const PlayerBComponentMobile = () => {
         </div>
       </div>
     </div>
+
+    {showPopUp && <PlayerTrackDetailsComponentMobile/>}
+
+    </>
   )
 }
 
