@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { IoChevronDownOutline, IoArrowRedoOutline, IoEllipsisVerticalCircle, IoHeart, IoAdd, IoHeartOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
+import { IoChevronDownOutline, IoAdd, IoHeartOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
@@ -9,7 +9,7 @@ import img from 'assets/img/albums/summer-playlist.png'
 
 
 
-const PlayerTrackDetailsComponentMobile = () => {
+const PlayerTrackDetailsComponentMobile = ({onClose}: any) => {
 
   const {
     trackData,
@@ -23,14 +23,12 @@ const PlayerTrackDetailsComponentMobile = () => {
   } = useContext(CurrentTrackContext);
 
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-  const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
-
-
+  
   return (
     <div className='player-track-details-container'>
       <div className='player-track-details-container__track-info'>
         <div className='player-track-details-container__track-info__close'>
-        <button ><IoChevronDownOutline /></button>
+        <button onClick={onClose}><IoChevronDownOutline /></button>
         <p>Name playlist{currentTrack.album}</p>
       </div>
         <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
@@ -38,7 +36,7 @@ const PlayerTrackDetailsComponentMobile = () => {
         <div className='player-track-details-container__track-info__data'>
           <p className='player-track-details-container__track-info__data__nameBig'>Track name{currentTrack.name}</p>
           <div className='player-track-details-container__track-info__data__info'>
-          <p >Artist name - {artists}</p>
+          <p >Artist name - {}</p>
           <p > Track name{currentTrack.name}</p>
         </div>
         </div>
