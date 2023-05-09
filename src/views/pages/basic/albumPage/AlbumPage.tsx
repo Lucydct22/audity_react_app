@@ -23,7 +23,7 @@ export default function AlbumPage() {
 			description='Audity Album Page'
 		>
 			<AlbumBComponent album={album} />
-			<TrackListComponent />
+			{/* <TrackListComponent /> */}
 		</HelmetSEO>
 	)
 }
