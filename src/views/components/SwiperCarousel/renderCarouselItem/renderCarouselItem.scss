@@ -99,10 +99,10 @@
   }
 
   &__description {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     margin-top: 5px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--color-primary);
     text-decoration: none;
   }
@@ -110,8 +110,66 @@
   &__details {
     font-size: 12px;
     font-weight: 400;
-    color: var(--color-primary);
+    color: $color-secondary;
     text-decoration: none;
     margin: 0;
   }
+
+  &__descriptionArtist {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.render-carousel-add-one-playlist {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-color: var(--background-on-hover)
+  }
+
+  &__details {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+}
+
+.render-carousel-add-one-artist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-color: var(--background-on-hover)
+  }
+
+  &__details {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
 }
