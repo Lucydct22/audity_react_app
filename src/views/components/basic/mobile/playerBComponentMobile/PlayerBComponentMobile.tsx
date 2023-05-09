@@ -1,9 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
-// import formatToSeconds from 'utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-// import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentMobile.scss'
 import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
 
