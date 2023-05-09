@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 // import formatToSeconds from 'utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
@@ -15,7 +15,14 @@ const PlayerBComponentMobile = () => {
     pauseCurrentTrack,
     nextTrack
   } = useContext(CurrentTrackContext);
-  const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
+  const [artists, setArtists] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    isMounted && setArtists(artists)
+    return () => { isMounted = false }
+  }, [])
 
   return (
     <div className='page-player-mobile'>
