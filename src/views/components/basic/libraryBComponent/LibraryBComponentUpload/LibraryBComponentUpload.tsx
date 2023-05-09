@@ -1,4 +1,4 @@
-import SwiperCarousel from 'views/components/SwiperCarousel/SwiperCarousel';
+
 //import './libraryBComponentHighlights.scss';
 
 export default function LibraryBComponentUpload() {
