@@ -5,17 +5,18 @@ import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
 export const initCurrentTrackAction = async function (dispatch: any) {
-	await getTrackByIdApi('1').then(async res => {
-		if (res) {
-			const audio: HTMLAudioElement = initAudio(res);
+	await getTrackByIdApi('64593592a08af8008aaa164b').then(async (res: any) => {
+	// await getTrackByIdApi('645946f0fd55e38d3359bec2').then(async (res: any) => {
+		if (res.track) {
+			const audio: HTMLAudioElement = initAudio(res.track);
 			const duration: any = await getDuration(audio);
 
 			return dispatch({
 				type: CurrentTrackTypes.INIT_CURRENT_TRACK,
 				payload: {
-					currentTrack: res,
+					currentTrack: res.track,
 					trackData: {
-						url: res.url,
+						url: res.track.audioUrl,
 						audio: audio,
 						duration: Math.round(duration),
 						currentTime: audio.currentTime,
@@ -32,12 +33,12 @@ export const initCurrentTrackAction = async function (dispatch: any) {
 
 export const nextTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
 	const { currentTrack, trackData } = trackState;
-	const trackId = tracksCycle(tracklist.tracks, currentTrack.id);
+	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;
 
-	await getTrackByIdApi(trackId).then(async res => {
-		const audio: HTMLAudioElement = initAudio(res);
+	await getTrackByIdApi(trackId).then(async (res: any) => {
+		const audio: HTMLAudioElement = initAudio(res.track);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 		trackData.isMuted && (audio.muted = true);
@@ -46,9 +47,9 @@ export const nextTrackAction = async function (dispatch: any, trackState: any, t
 		return dispatch({
 			type: CurrentTrackTypes.NEXT_TRACK,
 			payload: {
-				currentTrack: res,
+				currentTrack: res.track,
 				trackData: {
-					url: res.url,
+					url: res.track.audioUrl,
 					audio: audio,
 					duration: Math.round(duration),
 					currentTime: audio.currentTime,
@@ -65,12 +66,12 @@ export const nextTrackAction = async function (dispatch: any, trackState: any, t
 export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
 	const { currentTrack, trackData } = trackState;
 	const tracksReverse = [...tracklist.tracks].reverse();
-	const trackId = tracksCycle(tracksReverse, currentTrack.id);
+	const trackId = tracksCycle(tracksReverse, currentTrack._id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;
 
-	await getTrackByIdApi(trackId).then(async res => {
-		const audio: HTMLAudioElement = initAudio(res);
+	await getTrackByIdApi(trackId).then(async (res: any) => {
+		const audio: HTMLAudioElement = initAudio(res.track);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 		trackData.isMuted && (audio.muted = true);
@@ -79,9 +80,9 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 		return dispatch({
 			type: CurrentTrackTypes.PREV_TRACK,
 			payload: {
-				currentTrack: res,
+				currentTrack: res.track,
 				trackData: {
-					url: res.url,
+					url: res.track.audioUrl,
 					audio: audio,
 					duration: Math.round(duration),
 					currentTime: audio.currentTime,

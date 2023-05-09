@@ -19,7 +19,7 @@ const englishTranslation = {
   sidebar_account: 'Account',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist you\'ll love',
+  musicpage_albumtitle: 'Albums you\'ll love',
   musicpage_albumtitle2: 'New release for you',
   musicpage_albumtracks: 'Tracks',
   musicpage_dailytitle: 'Your dailylist',
@@ -28,6 +28,7 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   title_admin_home: 'Admin Home',
+
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'You are inside your personal details',
   profile_account: 'Audity account',
@@ -40,6 +41,7 @@ const englishTranslation = {
   profile_btn_save: 'Save',
   profile_btn_change: 'Change',
   profile_btn_delete: 'Delete profile',
+  profile_btn_password: 'Change password',
   profile_select_country_one: 'Spain',
   profile_select_country_two: 'Canada',
   profile_select_country_three: 'United States',
@@ -47,14 +49,26 @@ const englishTranslation = {
   profile_select_language_two: 'English',
   profile_name: "Your name",
   profile_lastname: "Your lastname",
+  profile_placeholder_name: 'Put your name please',
+  profile_placeholder_lastname: 'Put your lastname please',
+  profile_placeholder_nickname: 'Put your nickname please',
+  profile_placeholder_birth_day: 'Put your date of birth please',
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Your favorite artists, albums and playlists all in one place',
   library_header_profile_btn: 'Shuffle my music',
 
   library_header_navbar_highlights: 'Highlights',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Albums',
+  library_highlights_artists: 'Artists',
+  library_create_playlist_text: 'Create a playlist',
+  library_create_artist_text: 'Add Artist',
+  
   library_header_navbar_favorite: 'Favorite tracks',
+
   library_header_navbar_playlist: 'My Playlists',
+  
   library_header_navbar_upload: 'Upload songs',
 
   library_header_body_highlights_playlist_title: 'Playlists',

@@ -42,4 +42,16 @@ export const updateUserCountryAPI = async ( token: string, count: any): Promise<
 	return dataCountry
 }
 
-
+export const updateUserSettingsAPI = async ( token: string, name: string, lastname: string, nickname: string, dateOfBirth: string): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+      Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({name, lastname, nickname, dateOfBirth}),
+	}
+	const response = await fetch(`${basePath}/update-user-settings`, params)
+	const dataUserSettings = await response.json()
+	return dataUserSettings
+}

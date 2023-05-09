@@ -1,29 +1,19 @@
-import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import { useLongPress, LongPressDetectEvents } from "use-long-press";
 import './renderArtist.scss';
 
 export default function RenderArtist({ artist }: any) {
-  const [isLongPressed, setIsLongPressed] = useState(false);
-
-  const callback = React.useCallback(() => {
-    setIsLongPressed(true)
-  }, []);
-  const bind = useLongPress(callback, {
-    onCancel: e => setIsLongPressed(false),
-    threshold: 260,
-    captureEvent: true,
-    cancelOnMovement: false,
-    detect: LongPressDetectEvents.BOTH
-  });
+  const { _id, name, imageUrl } = artist;
+  const fans = Math.floor(Math.random() * (95000000 - 120000 + 1)) + 12000;
+  let totalFans = fans.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+  
 
   return (
-    <Link to={!isLongPressed ? `/artists/${artist._id}` : '#'} {...bind()} className='render-artist'>
+    <Link to={`/artists/${artist._id}`} className='render-artist'>
       <div className='render-artist__thumbnail'>
-        <img src={artist.imageUrl} alt={artist.name} />
+        <img src={imageUrl} alt={name} />
       </div>
-      <p className='render-artist__description'>{artist?.name}</p>
-      <p className='render-artist__details'>80,165,532 fans</p>
+      <p className='render-artist__description'>{name}</p>
+      <p className='render-artist__details'>{totalFans} fans</p>
     </Link>
   )
 }

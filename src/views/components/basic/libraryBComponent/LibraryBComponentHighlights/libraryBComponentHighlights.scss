@@ -1,53 +1,19 @@
 @import '../../../../../sass';
 
-.slick-track {
-  display: flex !important;
-  justify-content: center;
-}
+.library-highlights {
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
 
-.library-highlights-carousel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 24px;
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0;
+  }
 
   &__content {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
-    @include web-responsive();
-
-    &--head {
-      display: flex;
-      justify-content: space-between;
-      margin: 0;
-
-      &__title {
-        display: inline;
-        margin: 0;
-        font-size: 24px;
-        font-family: 'Anek Gujarati', sans-serif;
-      }
-
-      &__btn {
-        display: flex;
-        justify-content: space-between;
-        width: 80px;
-
-        &--prev {
-          display: flex;
-          @include simple-btn-with-hover(18px, 18px, 10px);
-        }
-
-        &--next {
-          display: flex;
-          @include simple-btn-with-hover(18px, 18px, 10px);
-        }
-      }
-    }
-
-    &--container {
-      margin-bottom: 2rem;
-    }
+    width: 100%;
   }
 }

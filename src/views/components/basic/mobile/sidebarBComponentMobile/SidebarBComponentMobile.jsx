@@ -74,8 +74,6 @@ const SidebarBComponentMobile = () => {
             />
             <p>{t("sidebar_radio")}</p>
           </NavLink> */}
-
-          
         </div>
       </div>
     </nav>

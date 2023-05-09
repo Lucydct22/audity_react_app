@@ -11,7 +11,7 @@ export default function userReducer(state: any, action: any) {
 			}
 
 		case UserTypes.UPDATE_USER_LANGUAGE:
-			console.log(payload);
+			//console.log(payload);
 			return {
 				...state,
 				dbUser: {
@@ -21,7 +21,7 @@ export default function userReducer(state: any, action: any) {
 			}
 
 		case UserTypes.UPDATE_USER_COUNTRY:
-			console.log(payload);
+			//console.log(payload);
 			return {
 				...state,
 				dbUser: {
@@ -29,7 +29,18 @@ export default function userReducer(state: any, action: any) {
 					country: payload
 				}
 			}
-
+			case UserTypes.UPDATE_USER_SETTINGS:
+			//console.log(payload);
+			return {
+				...state,
+				dbUser: {
+					...state.dbUser,
+					name: payload.name,
+					lastname: payload.lastname,
+					nickname: payload.nickname,
+					dateOfBirth: payload.dateOfBirth,
+				}
+			}
 		default:
 			return state
 	}

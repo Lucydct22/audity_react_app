@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { MdPause, MdPlayArrow } from "react-icons/md";
+import { SlUserFollowing, SlUserUnfollow } from "react-icons/sl";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './artistBComponent.scss';
 
@@ -43,12 +43,12 @@ export default function ArtistBComponent({ artist }) {
 								<button className="artist-page__section--buttons__container--play__btn" onClick={handlePlayClick}>
 									{isPlaying ? (
 										<>
-											<FontAwesomeIcon icon={faPause} />
+											<MdPause size={20} />
 											<span>{t('pausebutton')}</span>
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faPlay} />
+											<MdPlayArrow size={20} />
 											<span>{t('playbutton')}</span>
 										</>
 									)}
@@ -63,11 +63,11 @@ export default function ArtistBComponent({ artist }) {
 								<button className="artist-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
 									{isFollowing ? (
 										<>
-											<FontAwesomeIcon icon={faUserCheck} />
+											<SlUserUnfollow />
 										</>
 									) : (
 										<>
-											<FontAwesomeIcon icon={faUserPlus} />
+											<SlUserFollowing />
 										</>
 									)}
 								</button>

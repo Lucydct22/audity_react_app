@@ -19,7 +19,7 @@ const spanishTranslation = {
   sidebar_account: 'Cuanta',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Playlist que te encantarán',
+  musicpage_albumtitle: 'Álbumes que te encantarán',
   musicpage_albumtitle2: 'Nuevos lanzamientos para ti',
   musicpage_albumtracks: 'Canciones',
   musicpage_dailytitle: 'Tu lista de hoy',
@@ -40,6 +40,7 @@ const spanishTranslation = {
   profile_language: 'Idioma',
   profile_btn_save: 'Guardar',
   profile_btn_change: 'Modificar',
+  profile_btn_password: 'Cambiar contraseña',
   profile_btn_delete: 'Eliminar perfil',
   profile_select_country_one: 'España',
   profile_select_country_two: 'Canadá',
@@ -48,14 +49,26 @@ const spanishTranslation = {
   profile_select_language_two: 'Inglés',
   profile_name: "Tu nombre",
   profile_lastname: "Tu apellido",
+  profile_placeholder_name: 'Escribe tu nombre, por favor',
+  profile_placeholder_lastname: 'Escribe tu apellido, por favor',
+  profile_placeholder_nickname: 'Escribe tu nombre de usuario, por favor',
+  profile_placeholder_birth_day: 'Escribe tu fecha de nacimiento, por favor',
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
   library_header_profile_btn: 'Mi música en modo aleatorio',
 
   library_header_navbar_highlights: 'Destacados',
+  library_highlights_playlists: 'Playlists',
+  library_highlights_albums: 'Álbumes',
+  library_highlights_artists: 'Artistas',
+  library_create_playlist_text: 'Crear una playlist',
+  library_create_artist_text: 'Añadir artistas',
+
   library_header_navbar_favorite: 'Canciones favoritas',
+
   library_header_navbar_playlist: 'Playlists',
+
   library_header_navbar_upload: 'Mis canciones',
 
   library_header_body_highlights_playlist_title: 'Playlists',

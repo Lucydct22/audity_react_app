@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px;
   text-decoration: none;
 
   &__thumbnail {
@@ -22,19 +21,25 @@
 
     &--picture {
       img {
+        filter: brightness(90%);
         width: 100%;
         box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
         border-radius: 4px;
-      }
+        line-height: 0;
+        text-indent: -999em;
 
-      &__fade {
-        background: rgba(25, 25, 25, 0) linear-gradient(to bottom, rgba(25, 25, 25, .1) 40%, rgba(25, 25, 25, .5) 75%, rgb(25, 25, 25) 100%) repeat scroll 0 0;
-        position: relative;
-        margin-top: -120px;
-        height: 120px;
-        border-radius: 4px;
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+          background-image: url('../../../../../../assets/img/webp/disc250.webp');
+          background-position: center;
+          background-size: cover;
+          padding: 50% 0;
+          position: relative;
+        }
       }
-
     }
 
     &--btn {
@@ -94,9 +99,21 @@
   }
 
   &__description {
-    display: block;
-    font-weight: 700;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 400;
     color: var(--color-primary);
     text-decoration: none;
+    height: 20px;
+    overflow-y: hidden;
+  }
+
+  &__details {
+    font-size: 12px;
+    font-weight: 400;
+    color: $color-secondary;
+    text-decoration: none;
+    margin: 0;
   }
 }

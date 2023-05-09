@@ -3,7 +3,6 @@ const initialTracklistState = {
 	listId: '',
 	tracks: [],
 	shuffle: false,
-	initCurrentTracklist: () => { },
 	shuffleTracklist: () => { }
 }
 

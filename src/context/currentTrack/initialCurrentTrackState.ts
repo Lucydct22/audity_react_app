@@ -2,7 +2,9 @@ const initialCurrentTrackState = {
 	currentTrack: {
 		id: '',
 		name: '',
-		artist: '',
+		artists: [{
+			name: ''
+		}],
 		url: '',
 		thumbnail: '',
 		genre: '',
@@ -21,7 +23,6 @@ const initialCurrentTrackState = {
 		hasLoop: false,
 		volume: 0,
 	},
-	initCurrentTrack: () => { },
 	playCurrentTrack: () => { },
 	pauseCurrentTrack: () => { },
 	updateCurrentTime: () => { },

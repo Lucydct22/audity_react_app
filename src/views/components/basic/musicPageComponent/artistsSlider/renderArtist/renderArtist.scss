@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px;
   text-decoration: none;
 
   &__thumbnail {
@@ -31,21 +30,39 @@
       object-fit: cover;
       box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
       border-radius: 50%;
+      line-height: 0;
+      text-indent: -999em;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../../../assets/img/webp/profile-placeholder-160x160.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
+      }
     }
   }
 
   &__description {
-    margin: 3px;
+    margin: 0;
     margin-top: 5px;
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 14px;
     color: var(--color-primary);
     text-decoration: none;
     text-align: center;
+    height: 20px;
+    overflow-y: hidden;
   }
 
   &__details {
     font-weight: 400;
-    color: var(--color-primary);
+    font-size: 12px;
+    color: $color-secondary;
     text-decoration: none;
     text-align: center;
     margin: 0;

@@ -10,13 +10,13 @@ export interface Playlist {
 }
 
 export interface Track {  
-  id: string;
+  _id: string;
   name: string;
   artist: string;
   url: string;
   thumbnail: string;
   genre: string[];
-  likes: string[];//changed 
+  likes: string[];
   album: string;
   createdAt: Date | number;
   updatedAt: Date | number;

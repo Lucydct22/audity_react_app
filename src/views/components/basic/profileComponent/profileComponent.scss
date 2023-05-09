@@ -3,9 +3,14 @@
 
 .user-settings {
   margin: 0 auto;
-  padding-top: 24px;
-  @include web-responsive();
+  padding: 34px;
+  padding-top: 10px;
   max-width: 685px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) { 
+    padding: 18px;
+    padding-top: 0;
+  }
 
   &__profile {
     display: flex;
@@ -16,10 +21,25 @@
       width: 125px;
       height: 125px;
       border-radius: 50%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      line-height: 0;
+      text-indent: -999em;
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         width: 60px;
         height: 60px;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../assets/img/webp/profile-placeholder-160x160.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
       }
 
     }
@@ -62,7 +82,7 @@
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         font-size: 1.5rem;
-        width: 80vw;
+        width: calc(100% - 18px);
         padding-bottom: 5px;
       }
 
@@ -83,15 +103,11 @@
       border-radius: 5px;
       padding: 12px;
       outline: none;
-      width: calc(100% - 27px);
+      width: calc(100% - 18px);
       color: var(--color-primary);
 
       &::placeholder {
         color: $color-secondary;
-      }
-
-      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        width: 75vw;
       }
     }
   }

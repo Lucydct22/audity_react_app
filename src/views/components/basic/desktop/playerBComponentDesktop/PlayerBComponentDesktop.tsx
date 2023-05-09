@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import formatToSeconds from 'utils/tracks/formatToSeconds';
@@ -20,10 +20,15 @@ const PlayerBComponentDesktop = () => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-  const {
-    shuffle,
-    shuffleTracklist
-  } = useContext(CurrentTracklistContext);
+  const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
+  const [artists, setArtists] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    isMounted && setArtists(artists)
+    return () => { isMounted = false }
+  }, [])
 
   return (
     <div className='page-player'>
@@ -49,7 +54,7 @@ const PlayerBComponentDesktop = () => {
           <div className='player-bottom-track__container'>
             <div className='player-bottom-track__container--heading'>
               <div className='player-bottom-track__container--heading__title'>
-                {`${currentTrack.name} - ${currentTrack.artist}`}
+                {`${currentTrack.name} - ${artists}`}
               </div>
               <div className='player-bottom-track__container--heading__actions'>
                 <button className='page-player-bottom__btn'>

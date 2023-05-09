@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react';
 import { getPlaylistApi } from 'api/music/playlists';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from 'react-i18next';
-// import { Link } from 'react-router-dom';
-// import { FaPlay } from 'react-icons/fa';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
-import './dailyListsSlider.scss';
 import RenderPlaylist from './renderPlaylist/RenderPlaylist';
+import { useState, useEffect, useRef, Suspense } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import './dailyListsSlider.scss';
+import { Navigation, FreeMode } from "swiper";
+import { responsiveBreak } from "utils/componentsConstants";
 
 export default function DailyListsSlider() {
-  let slider = new Slider();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
   const [playlists, setPlaylists] = useState(undefined)
 
   useEffect(() => {
@@ -22,91 +24,116 @@ export default function DailyListsSlider() {
     return () => { isMounted = false }
   }, [])
 
-  function next() {
-    slider.slickNext();
-  }
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", changeWidth)
 
-  function previous() {
-    slider.slickPrev();
-  }
+    return () => {
+      window.removeEventListener("resize", changeWidth)
+    }
+  })
 
-  const settings = {
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1475,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 1175,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 2
-        }
-      }
-    ]
-  };
   return (
-    <div className='daily-carousel'>
-      <div className='daily-carousel__head'>
+    <Suspense fallback={<></>}>
+      {(screenWidth > responsiveBreak) ? (
+        <DesktopPlaylistsSlider playlists={playlists} />
+      ) : (
+        <MobilePlaylistsSlider playlists={playlists} />
+      )}
+    </Suspense>
+  )
+}
+
+const DesktopPlaylistsSlider = ({ playlists }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="daily-carousel">
+      <div className="daily-carousel__head">
         <TranslateTitle />
-        <span className='daily-carousel__head--btn'>
-          <button className='daily-carousel__head--btn__prev' onClick={previous}>
+        <span className="daily-carousel__head--btn">
+          <button ref={prevRef} className="swiper-carousel-button-prev">
             <HiOutlineChevronLeft />
           </button>
-          <button className='daily-carousel__head--btn__next' onClick={next}>
+          <button ref={nextRef} className="swiper-carousel-button-next">
             <HiOutlineChevronRight />
           </button>
         </span>
       </div>
       <div className='daily-carousel__container'>
-        {playlists?.length > 0 && (
-          <Slider ref={c => (slider = c)} {...settings}>
-            {playlists?.map(playlist => {
-              return <RenderPlaylist key={playlist._id} playlist={playlist} />
-            })}
-          </Slider>
-        )}
+        <Swiper
+          slidesPerView={5}
+          spaceBetween={32}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            815: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1300: {
+              slidesPerView: 5,
+            }
+          }}
+          modules={[Navigation]}
+          className="swiper-carousel">
+          {playlists?.map(playlist => {
+            return (
+              <SwiperSlide key={playlist._id}>
+                <RenderPlaylist playlist={playlist} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
     </div>
-  );
+  )
 }
-
+const MobilePlaylistsSlider = ({ playlists }) => {
+  return (
+    <div className="daily-carousel">
+      <div className="daily-carousel__head">
+        <TranslateTitle />
+      </div>
+      <div className='daily-carousel__container'>
+        <Swiper
+          slidesPerView={3.3}
+          spaceBetween={15}
+          freeMode={true}
+          breakpoints={{
+            150: {
+              slidesPerView: 2.3,
+            },
+            515: {
+              slidesPerView: 3.3,
+            },
+          }}
+          modules={[FreeMode]}
+          className="swiper-carousel">
+          {playlists?.map(playlist => {
+            return (
+              <SwiperSlide key={playlist._id}>
+                <RenderPlaylist playlist={playlist} />
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
+      </div>
+    </div>
+  )
+}
 
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
   return <h2 className='daily-carousel__head--title'>{t("musicpage_dailytitle")}</h2>;
 }
-
-/* const RenderPlaylist = ({ playlist }) => {
-  return (
-    <section className='daily-carousel__container--section'>
-      <div className='daily-carousel__container--section__thumbnail'>
-        <div className='daily-carousel__container--section__thumbnail--picture'>
-          <img src={AlbumImg2} alt="IMG" />
-          <div className='daily-carousel__container--section__thumbnail--picture__fade'></div>
-        </div>
-        <div className='daily-carousel__container--section__thumbnail--btn'>
-          <button className='daily-carousel__container--section__thumbnail--btn__play' type='button'><FaPlay size='14px' color='#191919' /></button>
-        </div>
-        <div className='daily-carousel__container--section__thumbnail--logo-daily'>
-          <img src={GreyDailyLogo} alt="Grey Daily Logo Audity" />
-          <p className='daily-carousel__container--section__thumbnail--logo-daily__description'>daily</p>
-        </div>
-      </div>
-      <Link className='daily-carousel__container--section__description' to={'#'}>{playlist.name}</Link>
-    </section>
-  )
-} */
