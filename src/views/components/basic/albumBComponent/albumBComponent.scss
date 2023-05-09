@@ -2,7 +2,10 @@
 @import '../../../../sass/mixins.scss';
 
 .album-page {
+	max-width: 1504px;
+	padding: 0 32px;
 	display: flex;
+	flex-wrap: wrap;
 
 	&__image {
 		margin-left: 100px;
@@ -17,13 +20,12 @@
 
 	&__section {
 		margin-top: 50px;
+		flex: 1 1 100%;
 
 		&--details {
-
 			&__title {
 				display: inline;
 				margin: 0;
-
 
 				h1 {
 					font-family: 'Anek Gujarati', sans-serif;
@@ -35,7 +37,6 @@
 			}
 
 			&__songs {
-
 				p {
 					margin-left: 50px;
 					margin-bottom: 40px;
@@ -44,42 +45,44 @@
 		}
 
 		&--buttons {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			margin-top: 20px;
+			margin-left: 50px;
 
 			&__container {
 				display: flex;
-				flex-direction: row;
-				justify-content: center;
+				flex-wrap: wrap;
 				align-items: center;
-				margin-left: 50px;
+				margin-right: 50px;
+			}
 
+			&--play {
+				margin-right: 30px;
 
-				&--play {
-					margin-right: 30px;
-
-					&__btn {
-						@include buttonPrimary();
-					}
-
-					span {
-						padding: 0px 10px;
-						padding-top: 2px;
-					}
+				&__btn {
+					@include buttonPrimary();
 				}
 
-				&--like {
-					margin-right: 20px;
-
-					&__btn {
-						@include carousel-thumbnail-btn();
-					}
-
+				span {
+					padding: 0px 10px;
+					padding-top: 2px;
 				}
+			}
 
-				&--follow {
+			&--like {
+				margin-right: 20px;
 
-					&__btn {
-						@include carousel-thumbnail-btn();
-					}
+				&__btn {
+					@include carousel-thumbnail-btn();
+				}
+			}
+
+			&--follow {
+
+				&__btn {
+					@include carousel-thumbnail-btn();
 				}
 			}
 		}
@@ -89,14 +92,14 @@
 		display: flex;
 		margin-top: 20px;
 		margin-left: 100px;
-
+		flex: 1 1 100%;
 
 		&__input {
-			width: 400px;
+			width: 100%;
+			max-width: 400px;
 			height: 25px;
 			border: 1px solid rgba(128, 128, 128, 0.505);
 			border-radius: 4px;
 		}
 	}
-
 }

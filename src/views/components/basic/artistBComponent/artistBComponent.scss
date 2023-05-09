@@ -4,6 +4,11 @@
 .artist-page {
 	display: flex;
 
+	@media (max-width: 1504px) {
+		flex-direction: column;
+		padding: 32px;
+	}
+
 	&__image {
 		margin-left: 100px;
 
@@ -12,9 +17,9 @@
 			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
 			width: 250px;
 			height: 250px;
-
 		}
 	}
+
 
 	&__section {
 		margin-top: 50px;
@@ -24,6 +29,7 @@
 			&__title {
 				display: inline;
 				margin: 0;
+
 
 				h1 {
 					font-family: 'Anek Gujarati', sans-serif;
@@ -58,6 +64,11 @@
 					&__btn {
 						@include buttonPrimary();
 					}
+
+					@media (max-width: 1504px) {
+						margin-right: 0;
+						margin-bottom: 16px;
+					}
 				}
 
 				&--like {
@@ -67,6 +78,11 @@
 					&__btn {
 						@include carousel-thumbnail-btn();
 					}
+
+					@media (max-width: 1504px) {
+						margin-right: 0;
+						margin-bottom: 16px;
+					}
 				}
 
 				&--follow {
@@ -74,6 +90,10 @@
 					&__btn {
 						@include carousel-thumbnail-btn();
 					}
+				}
+
+				@media (max-width: 1504px) {
+					flex-direction: column;
 				}
 			}
 		}
@@ -89,6 +109,12 @@
 			height: 25px;
 			border: 1px solid rgba(128, 128, 128, 0.505);
 			border-radius: 4px;
+		}
+
+		@media (max-width: 1504px) {
+			margin-left: 0;
+			margin-top: 16px;
+			align-self: center;
 		}
 	}
 
