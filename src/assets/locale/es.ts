@@ -56,8 +56,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
-  library_header_profile_btn: 'Mi música en modo aleatorio',
-
+  library_header_profile_btn: 'Mi música en modo aleatorio', 
   library_header_navbar_highlights: 'Destacados',
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Álbumes',
@@ -70,6 +69,9 @@ const spanishTranslation = {
   library_header_navbar_upload: 'Mis canciones',
 
   library_header_body_highlights_playlist_title: 'Playlists',
+
+  library_upload_h1: 'Canciones',
+  library_upload_btn: 'SUBIR MP3',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',

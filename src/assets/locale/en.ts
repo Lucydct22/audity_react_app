@@ -71,6 +71,9 @@ const englishTranslation = {
 
   library_header_body_highlights_playlist_title: 'Playlists',
 
+  library_upload_h1: 'Songs',
+  library_upload_btn: 'UPLOAD MP3',
+
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',
   track_list_artist: 'ARTIST',
