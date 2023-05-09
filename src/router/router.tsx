@@ -26,7 +26,7 @@ const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
 const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/favoritePage'))
 // const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
-// const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages'))
+const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
           {
             path: "favorites",
             element: <Suspense fallback={<></>}><LibraryFavorites /></Suspense>,
+          },
+          {
+            path: "uploads",
+            element: <Suspense fallback={<></>}><LibraryUploads /></Suspense>,
           },
           {
             path: "*",
