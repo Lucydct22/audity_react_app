@@ -21,7 +21,7 @@ export default function UserProvider(props: ChildrenProps) {
 			}
 		}
 		registerLoginUser()
-	}, [isAuthenticated, user, isLoading])
+	}, [isAuthenticated])
 
 	const updateUserLanguage = useCallback(async (lang: string) => {
 		const token = await getAccessTokenSilently()
