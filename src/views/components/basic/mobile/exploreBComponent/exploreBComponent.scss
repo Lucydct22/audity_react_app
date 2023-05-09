@@ -25,11 +25,11 @@
 
       &__grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
 
-        @media (max-width: $media-breakpoint-desktop-mobile) {
-          grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 450px) {
+          grid-template-columns: repeat(2, 1fr);
         }
 
         &--item {
