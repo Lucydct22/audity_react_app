@@ -42,11 +42,11 @@ const PlayerTrackDetailsComponentMobile = ({onClose}: any) => {
         </div>
 
         <div className='player-track-details-container__track-info__track-time'>
-          <ProgressBar />
           <div className='player-track-details-container__track-info__track-time__timedata'>
             <p>{trackData.currentTime}</p>
             <p>{trackData.duration}</p>
           </div>
+          <ProgressBar />
         </div>
 
         <div className='player-track-details-container__track-info__player-bottom-controls'>
