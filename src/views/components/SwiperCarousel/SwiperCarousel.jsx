@@ -45,8 +45,21 @@ const DesktopSwiperCarousel = ({ data }) => {
   const [playlists, setPlaylists] = useState(undefined)
   const [albums, setAlbums] = useState(undefined)
   const [artists, setArtists] = useState(undefined);
+  const [addNewPlaylist, setAddNewPlaylist] = useState({
+    "add": {
+      _id: "AddOnePlaylist",
+      "add": "Function of new add slider carousel",
+    },
+  })
+  const [addNewArtist, setAddNewArtist] = useState({
+    "add": {
+      _id: "AddOneArtist",
+      "add": "Function of new add slider carousel",
+    },
+  })
 
   function dataCarousel() {
+
     if (data === "playlists") {
       useEffect(() => {
         let isMounted = true;
@@ -55,7 +68,13 @@ const DesktopSwiperCarousel = ({ data }) => {
         })
         return () => { isMounted = false }
       }, [])
-      return playlists;
+
+      const result = Object.values(playlists ? playlists : "");
+      const addResult = Object.values(addNewPlaylist ? addNewPlaylist : "");
+
+      const finalPlaylist = [...addResult, ...result];
+
+      return finalPlaylist;
     }
 
     if (data === "albums") {
@@ -77,7 +96,13 @@ const DesktopSwiperCarousel = ({ data }) => {
         })
         return () => { isMounted = false }
       }, [])
-      return artists;
+
+      const result = Object.values(artists ? artists : "");
+      const addResult = Object.values(addNewArtist ? addNewArtist : "");
+
+      const finalArtist = [...addResult, ...result];
+
+      return finalArtist;
     }
   }
 

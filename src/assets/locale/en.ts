@@ -62,7 +62,9 @@ const englishTranslation = {
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Albums',
   library_highlights_artists: 'Artists',
-
+  library_create_playlist_text: 'Create a playlist',
+  library_create_artist_text: 'Add Artist',
+  
   library_header_navbar_favorite: 'Favorite tracks',
 
   library_header_navbar_playlist: 'My Playlists',
