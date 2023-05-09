@@ -5,8 +5,8 @@ import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
 export const initCurrentTrackAction = async function (dispatch: any) {
-	// await getTrackByIdApi('645504c7b5284cab3c1f9e00').then(async (res: any) => {
-	await getTrackByIdApi('645655f871cc620b18522b65').then(async (res: any) => {
+	await getTrackByIdApi('64593592a08af8008aaa164b').then(async (res: any) => {
+	// await getTrackByIdApi('645946f0fd55e38d3359bec2').then(async (res: any) => {
 		if (res.track) {
 			const audio: HTMLAudioElement = initAudio(res.track);
 			const duration: any = await getDuration(audio);

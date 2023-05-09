@@ -2,7 +2,7 @@ const initialCurrentTrackState = {
 	currentTrack: {
 		id: '',
 		name: '',
-		artist: [{
+		artists: [{
 			name: ''
 		}],
 		url: '',

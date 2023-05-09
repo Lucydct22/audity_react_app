@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useState, useEffect, useRef } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 // import formatToSeconds from 'utils/tracks/formatToSeconds';
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";

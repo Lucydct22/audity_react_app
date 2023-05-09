@@ -1,0 +1,52 @@
+@import '../../../../../sass/variables';
+
+.mobile-explore-page {
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0;
+    padding-top: 4px;
+  }
+
+  h1 {
+    display: inline;
+    margin: 0 18px;
+    font-size: 32px;
+    font-family: 'Anek Gujarati', sans-serif;
+  }
+
+  &__content {
+    &--head {
+      margin: 0 18px;
+      margin-bottom: 3rem;
+
+      &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+
+        @media (max-width: 450px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        &--item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding-top: 12%;
+          padding-bottom: 12%;
+          border-radius: 4px;
+          font-size: 24px;
+          font-family: 'Anek Gujarati', sans-serif;
+          background-color: var(--background-on-hover);
+          text-decoration: none;
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

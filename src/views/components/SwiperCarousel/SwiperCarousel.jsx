@@ -182,10 +182,10 @@ const MobileSwiperCarousel = ({ data }) => {
           freeMode={true}
           breakpoints={{
             150: {
-              slidesPerView: 2.2,
+              slidesPerView: 2.3,
             },
             515: {
-              slidesPerView: 3.2,
+              slidesPerView: 3.3,
             },
           }}
           modules={[FreeMode]}

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import formatToSeconds from 'utils/tracks/formatToSeconds';
@@ -21,7 +21,14 @@ const PlayerBComponentDesktop = () => {
     loopTrack,
   } = useContext(CurrentTrackContext);
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-  const artists = currentTrack.artist.map(artist => artist.name).join(' & ');
+  const [artists, setArtists] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    isMounted && setArtists(artists)
+    return () => { isMounted = false }
+  }, [])
 
   return (
     <div className='page-player'>

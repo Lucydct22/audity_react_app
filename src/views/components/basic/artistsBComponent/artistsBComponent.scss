@@ -1,7 +1,6 @@
 @import "../../../../sass/";
 
 .artists-page-content {
-  width: 100%;
   margin: 0 auto;
   padding: 34px;
   padding-top: 10px;
@@ -26,6 +25,20 @@
 
     @media (max-width: 1300px) {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    height: 56px;
+    text-decoration: none;
+    color: var(--color-primary);
+
+    span {
+      font-size: 18px;
+      font-weight: 500;
     }
   }
 }
