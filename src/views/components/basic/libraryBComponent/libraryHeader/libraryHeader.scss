@@ -21,12 +21,13 @@
     padding: 0 34px;
     padding-top: 10px;
     max-width: 1504px;
-    width: 100%;
+    width: calc(100% - 68px);
     margin: 0 auto;
 
     @media (max-width: $media-breakpoint-desktop-mobile) {
       padding: 18px;
       padding-top: 0;
+      width: calc(100% - 36px);
     }
 
     &--profile {
