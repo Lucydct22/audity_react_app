@@ -4,7 +4,7 @@ import LibraryBComponentUpload from "views/components/basic/libraryBComponent/Li
 function UploadPage() {
   return (
     <HelmetSEO
-      title='Your Highlight | Audity'
+      title='My songs | Audity'
       description='Audity Upload songs Page'
     >
       <LibraryBComponentUpload />
