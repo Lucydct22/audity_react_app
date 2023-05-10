@@ -24,7 +24,7 @@ const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
 
 // LIBRARY PAGES
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
-const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/favoritePage'))
+const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/FavTracksPage'))
 // const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
 const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
 
