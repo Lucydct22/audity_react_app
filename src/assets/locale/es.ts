@@ -73,6 +73,8 @@ const spanishTranslation = {
   library_upload_h1: 'Canciones',
   library_upload_btn: 'SUBIR MP3',
 
+  library_favtracks_h1: 'canciones favoritas',
+
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',
   library_header_artist: 'ARTISTA',
