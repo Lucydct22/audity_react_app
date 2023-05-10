@@ -88,3 +88,9 @@ export const likeDislikeTrackApi = async (trackId: string, data: any): Promise<T
 	const resultPut = await responsePut.json()
 	return resultPut as Track
 }
+
+export const getRandomTrackApi = async (): Promise<Track> => {
+	const response = await fetch(`${basePath}/random-track`)
+	const data = await response.json()
+	return data as Track
+}

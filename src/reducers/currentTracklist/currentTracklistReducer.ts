@@ -8,6 +8,7 @@ export default function currentTracklistReducer(state: any, action: any) {
 			return {
 				listType: payload.listType,
 				listId: payload.listId,
+				listName: payload.listName,
 				tracks: payload.tracks,
 				shuffle: false
 			}
@@ -17,6 +18,15 @@ export default function currentTracklistReducer(state: any, action: any) {
 				...state,
 				tracks: payload.tracks,
 				shuffle: !state.shuffle,
+			}
+
+		case CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST:
+			return {
+				...state,
+				listType: payload.listType,
+				listId: payload.listId,
+				listName: payload.listName,
+				tracks: payload.tracks
 			}
 
 		default:

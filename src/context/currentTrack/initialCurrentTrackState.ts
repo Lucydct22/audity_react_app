@@ -31,6 +31,7 @@ const initialCurrentTrackState = {
 	muteTrack: () => { },
 	loopTrack: () => { },
 	changeCurrentTime: () => { },
+	selectCurrentTrack: (track: any) => { },
 }
 
 export default initialCurrentTrackState;
