@@ -45,13 +45,13 @@ const DesktopSwiperCarousel = ({ data }) => {
   const [playlists, setPlaylists] = useState(undefined)
   const [albums, setAlbums] = useState(undefined)
   const [artists, setArtists] = useState(undefined);
-  const [addNewPlaylist, setAddNewPlaylist] = useState({
+  const [addNewPlaylist] = useState({
     "add": {
       _id: "AddOnePlaylist",
       "add": "Function of new add slider carousel",
     },
   })
-  const [addNewArtist, setAddNewArtist] = useState({
+  const [addNewArtist] = useState({
     "add": {
       _id: "AddOneArtist",
       "add": "Function of new add slider carousel",
@@ -159,6 +159,18 @@ const MobileSwiperCarousel = ({ data }) => {
   const [playlists, setPlaylists] = useState(undefined)
   const [albums, setAlbums] = useState(undefined)
   const [artists, setArtists] = useState(undefined);
+  const [addNewPlaylist] = useState({
+    "add": {
+      _id: "AddOnePlaylist",
+      "add": "Function of new add slider carousel",
+    },
+  })
+  const [addNewArtist] = useState({
+    "add": {
+      _id: "AddOneArtist",
+      "add": "Function of new add slider carousel",
+    },
+  })
 
   function dataCarousel() {
     if (data === "playlists") {
@@ -169,7 +181,13 @@ const MobileSwiperCarousel = ({ data }) => {
         })
         return () => { isMounted = false }
       }, [])
-      return playlists;
+
+      const result = Object.values(playlists ? playlists : "");
+      const addResult = Object.values(addNewPlaylist ? addNewPlaylist : "");
+
+      const finalPlaylist = [...addResult, ...result];
+
+      return finalPlaylist;
     }
 
     if (data === "albums") {
@@ -191,7 +209,13 @@ const MobileSwiperCarousel = ({ data }) => {
         })
         return () => { isMounted = false }
       }, [])
-      return artists;
+
+      const result = Object.values(artists ? artists : "");
+      const addResult = Object.values(addNewArtist ? addNewArtist : "");
+
+      const finalArtist = [...addResult, ...result];
+
+      return finalArtist;
     }
   }
 

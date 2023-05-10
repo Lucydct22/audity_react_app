@@ -64,6 +64,10 @@ const spanishTranslation = {
   library_highlights_artists: 'Artistas',
   library_create_playlist_text: 'Crear una playlist',
   library_create_artist_text: 'Añadir artistas',
+  library_modal_artist_label_name: 'Nombre',
+  library_modal_artist_placeholder_name: 'Nombre de la playlist',
+  library_modal_artist_label_desc: 'Descriptión',
+  library_modal_artist_placeholder_desc: 'Descriptión de la playlist',
 
   library_header_navbar_favorite: 'Canciones favoritas',
 
