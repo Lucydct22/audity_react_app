@@ -95,6 +95,9 @@ const englishTranslation = {
   likedbutton: 'Fav',
   followingbutton: 'Following',
 
+/*~~~~~~~~~~~~~ GENRE PAGE~~~~~~~~~~~~~*/
+genrespage_title: 'Genre of:',
+
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Add to playlist',
   track_item_download: 'Download',

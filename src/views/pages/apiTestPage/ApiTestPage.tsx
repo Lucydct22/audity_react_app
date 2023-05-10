@@ -3,7 +3,7 @@ import { getTracksApi, getTrackByIdApi, deleteTrackByIdApi, updateTrackApi, addT
 import { getAlbumsApi, getAlbumByIdApi, deleteAlbumsByIdApi, updateAlbumApi, addAlbumApi } from '../../../api/music/albums';
 import { getArtistApi, getArtistByIdApi, deleteArtistByIdApi, updateArtistApi, addArtistApi } from '../../../api/music/artists';
 import { getPlaylistApi, getPlaylistByIdApi, deletePlaylistByIdApi, updatePlaylistApi, addPlaylistApi } from '../../../api/music/playlists';
-import { getGenresApi, getGenresByIdApi, deleteGenresByIdApi, updateGenresApi, addGenresApi } from '../../../api/music/genres';
+import { getGenresApi, getGenreByIdApi, deleteGenresByIdApi, updateGenresApi, addGenresApi } from '../../../api/music/genres';
 import { Albums, Track, Genres, Playlist, Artist } from '../../../interfaces/music';
 export default function ApiTestPage() {
 	// TRACKS

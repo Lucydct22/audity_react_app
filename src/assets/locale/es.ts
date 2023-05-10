@@ -93,6 +93,9 @@ const spanishTranslation = {
   followbutton: 'Seguir',
   followingbutton: 'Siguiendo',
 
+  /*~~~~~~~~~~~~~ GENRE PAGE~~~~~~~~~~~~~*/
+  genrespage_title: 'Genero de:',
+
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Añadir a playlist',
   track_item_download: 'Descargar',

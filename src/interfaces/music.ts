@@ -43,7 +43,14 @@ export interface Artist {
 }
 
 export interface Genres {
-  id: string;
+  _id: string;
+  name: string;
+  createdAt: Date | number;
+  updatedAt: Date | number;
+}
+
+export interface Genre {
+  _id: string;
   name: string;
   createdAt: Date | number;
   updatedAt: Date | number;

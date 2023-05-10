@@ -19,6 +19,9 @@ const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
 const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
 
+const GenresPage = lazy(() => import('views/pages/basic/genresPage/GenresPage'));
+const GenrePage = lazy(() => import('views/pages/basic/genrePage/GenrePage'));
+
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
 
@@ -67,6 +70,16 @@ const router = createBrowserRouter([
           {
             path: ":playlistId",
             element: <Suspense fallback={<></>}><PlaylistPage /></Suspense>,
+          },
+        ]
+      },
+      {
+        path: "genres",
+        element: <Suspense fallback={<></>}><GenresPage /></Suspense>,
+        children: [
+          {
+            path: ":genreId",
+            element: <Suspense fallback={<></>}><GenrePage /></Suspense>,
           },
         ]
       },
