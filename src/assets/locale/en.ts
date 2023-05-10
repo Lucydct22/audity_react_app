@@ -5,6 +5,8 @@ const englishTranslation = {
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
   search_placeholder: 'Search',
+  search_placeholder_mobile: 'Artist, tracks, albums...',
+
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Music',
