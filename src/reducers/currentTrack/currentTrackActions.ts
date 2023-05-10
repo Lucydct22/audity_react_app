@@ -93,3 +93,22 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 		})
 	})
 }
+
+export const selectCurrentTrackAction = async function (dispatch: any, track: any, currentTrackState: any) {
+	currentTrackState.trackData.audio.pause()
+	const audio: HTMLAudioElement = initAudio(track);
+	const duration: any = await getDuration(audio);
+	dispatch({
+		type: CurrentTrackTypes.SELECT_CURRENT_TRACK,
+		payload: {
+			currentTrack: track,
+			trackData: {
+				url: track.audioUrl,
+				audio: audio,
+				duration: Math.round(duration),
+				currentTime: audio.currentTime,
+			}
+		}
+	})
+	return audio.play()
+}

@@ -1,11 +1,13 @@
-import { useCallback, useEffect, useMemo, useReducer } from "react";
+import { useCallback, useContext, useEffect, useMemo, useReducer } from "react";
 import * as action from "reducers/currentTracklist/currentTracklistActions";
 import currentTracklistReducer from "reducers/currentTracklist/currentTracklistReducer";
 import CurrentTracklistContext from "./CurrentTracklistContext";
 import initialTracklistState from "./initialTracklistState";
+import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 
 export default function CurrentTracklistProvider({ children }: any) {
 	const [tracklistState, dispatch] = useReducer(currentTracklistReducer, initialTracklistState);
+	const { selectCurrentTrack } = useContext(CurrentTrackContext)
 
 	useEffect(() => {
 		action.initCurrentTracklistAction(dispatch);
@@ -16,8 +18,8 @@ export default function CurrentTracklistProvider({ children }: any) {
 	}, []);
 
 	const selectAlbum = useCallback((albumId: any) => {
-		action.selectAlbumAction(dispatch, albumId)
-	}, []);
+		action.selectAlbumAction(dispatch, albumId, selectCurrentTrack)
+	}, [selectCurrentTrack]);
 
 	const selectArtist = useCallback((artistId: any) => {
 		action.selectArtistAction(dispatch, artistId)

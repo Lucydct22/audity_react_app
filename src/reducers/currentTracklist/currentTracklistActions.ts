@@ -33,16 +33,16 @@ export const shuffleTracklistAction = function (dispatch: any, tracklistState: a
 	})
 }
 
-export const selectAlbumAction = async function (dispatch: any, albumId: any) {
+export const selectAlbumAction = async function (dispatch: any, albumId: any, selectCurrentTrack: any) {
 	const response: any = await getAlbumByIdApi(albumId)
 	return dispatch({
 		type: CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST,
-		payload: { 
+		payload: {
 			listType: 'album',
 			listId: response.album._id,
 			listName: response.album.name,
 			tracks: response.album.tracks
-			 }
+		}
 	})
 
 }

@@ -8,6 +8,7 @@ import {
 	initCurrentTrackAction,
 	nextTrackAction,
 	previousTrackAction,
+	selectCurrentTrackAction,
 } from "reducers/currentTrack/currentTrackActions";
 
 export default function CurrentTrackProvider({ children }: any) {
@@ -71,7 +72,7 @@ export default function CurrentTrackProvider({ children }: any) {
 	}
 
 	const selectCurrentTrack = function (track: any) {
-		
+		selectCurrentTrackAction(dispatch, track, currentTrackState)
 	}
 
 	const memoProvider = useMemo(
@@ -87,16 +88,16 @@ export default function CurrentTrackProvider({ children }: any) {
 			changeCurrentTime,
 			selectCurrentTrack
 		}), [
-			currentTrackState,
-			playCurrentTrack,
-			pauseCurrentTrack,
-			updateCurrentTime,
-			nextTrack,
-			previousTrack,
-			muteTrack,
-			loopTrack,
-			changeCurrentTime,
-			selectCurrentTrack
+		currentTrackState,
+		playCurrentTrack,
+		pauseCurrentTrack,
+		updateCurrentTime,
+		nextTrack,
+		previousTrack,
+		muteTrack,
+		loopTrack,
+		changeCurrentTime,
+		selectCurrentTrack
 	]
 	);
 
