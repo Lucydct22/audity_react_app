@@ -5,6 +5,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
   search_placeholder: 'Buscar',
+  search_placeholder_mobile: 'Artistas, canciones, albums...',
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Musica',
