@@ -5,7 +5,7 @@ import ProfileComponent from "views/components/basic/profileComponent";
 const ProfilePage = () => {
   return (
     <HelmetSEO
-      title='Music | Audity'
+      title='My profile | Audity'
       description='Audity Profile Page'
     >
 

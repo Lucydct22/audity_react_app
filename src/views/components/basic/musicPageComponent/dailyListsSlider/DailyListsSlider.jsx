@@ -3,17 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import RenderPlaylist from './renderPlaylist/RenderPlaylist';
 import { useState, useEffect, useRef, Suspense } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import './dailyListsSlider.scss';
-import { Navigation, FreeMode } from "swiper";
+import SwiperDesktop from 'views/UI/swiperSettings/swiperDesktop/SwiperDesktop';
+import SwiperMobile from 'views/UI/swiperSettings/swiperMobile/SwiperMobile';
 import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 
 export default function DailyListsSlider() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
+  const [screenWidth] = useWindowSizeReport()
   const [playlists, setPlaylists] = useState(undefined)
 
   useEffect(() => {
@@ -23,17 +24,6 @@ export default function DailyListsSlider() {
     })
     return () => { isMounted = false }
   }, [])
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
 
   return (
     <Suspense fallback={<></>}>
@@ -64,28 +54,7 @@ const DesktopPlaylistsSlider = ({ playlists }) => {
         </span>
       </div>
       <div className='daily-carousel__container'>
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={32}
-          onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
-          breakpoints={{
-            815: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-            1300: {
-              slidesPerView: 5,
-            }
-          }}
-          modules={[Navigation]}
-          className="swiper-carousel">
+        <SwiperDesktop>
           {playlists?.map(playlist => {
             return (
               <SwiperSlide key={playlist._id}>
@@ -93,7 +62,7 @@ const DesktopPlaylistsSlider = ({ playlists }) => {
               </SwiperSlide>
             )
           })}
-        </Swiper>
+        </SwiperDesktop>
       </div>
     </div>
   )
@@ -105,20 +74,7 @@ const MobilePlaylistsSlider = ({ playlists }) => {
         <TranslateTitle />
       </div>
       <div className='daily-carousel__container'>
-        <Swiper
-          slidesPerView={3.3}
-          spaceBetween={15}
-          freeMode={true}
-          breakpoints={{
-            150: {
-              slidesPerView: 2.3,
-            },
-            515: {
-              slidesPerView: 3.3,
-            },
-          }}
-          modules={[FreeMode]}
-          className="swiper-carousel">
+        <SwiperMobile>
           {playlists?.map(playlist => {
             return (
               <SwiperSlide key={playlist._id}>
@@ -126,7 +82,7 @@ const MobilePlaylistsSlider = ({ playlists }) => {
               </SwiperSlide>
             )
           })}
-        </Swiper>
+        </SwiperMobile>
       </div>
     </div>
   )

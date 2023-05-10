@@ -6,7 +6,7 @@
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
-  color: var($color-secondary);
+  color: $color-secondary;
 
   color-scheme: light dark;
   background-color: var(--background-primary);
@@ -17,6 +17,28 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--background-on-hover);
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 body {
@@ -68,5 +90,66 @@ body {
     .swiper-slide:first-child {
       margin-left: 18px !important;
     }
+  }
+}
+
+.anticon-exclamation-circle,
+.ant-btn-default {
+  display: none;
+}
+
+.ant-modal-close {
+  color: var(--color-primary) !important;
+}
+
+.ant-modal-confirm-btns {
+  display: flex;
+  justify-content: center;
+
+  .ant-btn-primary {
+    @include buttonPrimary;
+    outline: none !important;
+    height: 35px;
+    margin-bottom: 28px !important;
+  }
+}
+
+.ant-modal-confirm-content {
+  width: 100%;
+}
+
+.ant-modal-content {
+  background-color: var(--background-secondary) !important;
+  border-radius: 8 !important;
+
+  @media (max-width: 600px) {
+    border-radius: 0 !important;
+  }
+}
+
+.ant-popover-arrow {
+  --antd-arrow-background-color: var(--background-secondary) !important;
+}
+
+.ant-popover-inner {
+  background-color: var(--background-secondary) !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .ant-modal {
+    &:where(.css-dev-only-do-not-override-ed5zg0).ant-modal {
+      max-width: 100%;
+    }
+  }
+
+  [role=dialog] {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .ant-modal-content {
+    height: 100vh;
+    width: 100vw;
   }
 }

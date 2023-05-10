@@ -1,0 +1,32 @@
+@import '../../../../../sass/variables';
+@import '../../../../../sass/mixins';
+
+.library-favtracks{
+  &__content {
+  margin: 2rem;
+
+  button {
+    @include buttonPrimary(fit-content);
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .library-favtracks__content {
+    margin: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .library-favtracks__comp {
+    margin-left: 0.1rem;
+  }
+}
+
+&__comp {
+  margin-left: 2rem;
+}
+}
+
+
+
+

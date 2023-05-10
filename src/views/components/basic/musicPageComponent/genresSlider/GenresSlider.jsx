@@ -10,11 +10,13 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import './genresSlider.scss';
 import { Navigation, FreeMode } from "swiper";
+import SwiperDesktop from 'views/UI/swiperSettings/swiperDesktop/SwiperDesktop';
+import SwiperMobile from 'views/UI/swiperSettings/swiperMobile/SwiperMobile';
 import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 
 export default function GenresSlider() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
+  const [screenWidth] = useWindowSizeReport()
   const [genres, setGenres] = useState(undefined)
   const { user } = useAuth0()
 
@@ -28,17 +30,6 @@ export default function GenresSlider() {
     getGenres()
     return () => { isMounted = false }
   }, [user])
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
 
   return (
     <Suspense fallback={<></>}>
@@ -69,28 +60,7 @@ const DesktopGenresSlider = ({ genres }) => {
         </span>
       </div>
       <div className='genres-carousel__container'>
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={32}
-          onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
-          breakpoints={{
-            815: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-            1300: {
-              slidesPerView: 5,
-            }
-          }}
-          modules={[Navigation]}
-          className="swiper-carousel">
+        <SwiperDesktop>
           {genres?.map(genre => {
             return (
               <SwiperSlide key={genre._id}>
@@ -98,7 +68,7 @@ const DesktopGenresSlider = ({ genres }) => {
               </SwiperSlide>
             )
           })}
-        </Swiper>
+        </SwiperDesktop>
       </div>
     </div>
   )
@@ -111,20 +81,7 @@ const MobileGenresSlider = ({ genres }) => {
         <TranslateTitle />
       </div>
       <div className='genres-carousel__container'>
-        <Swiper
-          slidesPerView={3.3}
-          spaceBetween={15}
-          freeMode={true}
-          breakpoints={{
-            150: {
-              slidesPerView: 2.3,
-            },
-            515: {
-              slidesPerView: 3.3,
-            },
-          }}
-          modules={[FreeMode]}
-          className="swiper-carousel">
+        <SwiperMobile>
           {genres?.map(genre => {
             return (
               <SwiperSlide key={genre._id}>
@@ -132,7 +89,7 @@ const MobileGenresSlider = ({ genres }) => {
               </SwiperSlide>
             )
           })}
-        </Swiper>
+        </SwiperMobile>
       </div>
     </div>
   )
