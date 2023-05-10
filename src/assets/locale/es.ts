@@ -5,6 +5,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
   search_placeholder: 'Buscar',
+  search_placeholder_mobile: 'Artistas, canciones, albums...',
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Musica',
@@ -61,6 +62,8 @@ const spanishTranslation = {
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Álbumes',
   library_highlights_artists: 'Artistas',
+  library_create_playlist_text: 'Crear una playlist',
+  library_create_artist_text: 'Añadir artistas',
 
   library_header_navbar_favorite: 'Canciones favoritas',
 

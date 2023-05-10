@@ -3,39 +3,57 @@
 .mobile-search {
 
   &__title {
-    font-size: 20px;
+    display: flex;
+    font-size: 35px;
     font: bold;
     margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 25px;
+    font-weight: 700;
   }
 
   &__input {
     display: flex;
+    position: relative;
+    margin-left: 25px;
+    width: 100%;
 
     input {
-      border: 1px solid black;
+      width: calc(100vw - 140px);
+      border: none;
       border-radius: 20px;
-      padding: 12px 30px;
-      width: 200px;
+      -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+      padding: 15px 40px;
+      font-size: 20px;
+
     }
 
     span {
       display: flex;
       position: absolute;
+      align-items: center;
       color: black;
-      margin-top: 10px;
-      margin-left: 5px;
+      top: 0px;
+      bottom: 0px;
+      left: 10px;
     }
   }
 
   &__genres {
+    font-size: 25px;
     padding: 0;
     margin-top: 15px;
+    margin-left: 25px;
 
     &--section {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      width: 100%;
-      
+      width: 90%;
+      padding: 15px;
+      gap: 10px;
+
     }
   }
 }
