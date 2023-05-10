@@ -36,7 +36,6 @@ export default function SwiperCarousel({ data }) {
   })
 
   function dataCarousel() {
-
     if (data === "playlists") {
       useEffect(() => {
         let isMounted = true;

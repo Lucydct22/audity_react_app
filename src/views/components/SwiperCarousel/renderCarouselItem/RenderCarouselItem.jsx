@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaPlay } from 'react-icons/fa';
-import { AiFillHeart } from 'react-icons/ai';
 import './renderCarouselItem.scss';
 import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp'
-import SongPlaceholder from 'assets/img/webp/music-placeholder-300.webp'
 import { TfiPlus } from "react-icons/tfi";
 import { Modal } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
+import RenderAlbum from 'views/components/basic/musicPageComponent/albumsSlider/renderAlbum/RenderAlbum';
+import RenderArtist from 'views/components/basic/musicPageComponent/artistsSlider/renderArtist/RenderArtist';
+import RenderPlaylist from 'views/components/basic/musicPageComponent/dailyListsSlider/renderPlaylist/RenderPlaylist';
 
 export default function RenderCarouselItem({ list, type }) {
   const { t } = useTranslation();
-  const { _id, cover, name, imageUrl } = list;
+  const { _id, name } = list;
   const [open, setOpen] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
 
@@ -57,28 +57,27 @@ export default function RenderCarouselItem({ list, type }) {
     )
   }
 
+  if (type === "playlists") {
+    return <RenderPlaylist playlist={list} />
+  }
+
+  if (type === "albums") {
+    return <RenderAlbum album={list} />
+  }
+
+  if (type === "artists") {
+    return <RenderArtist artist={list} />
+  }
+
   return (
-    <Link to={`/${type}/${_id}`} className={type !== "artists" ? 'render-carousel-item' : 'render-carousel-item render-carousel-itemArtist'}>
+    <div className='render-carousel-item'>
       <div className='render-carousel-item__thumbnail'>
         <img
-          src={cover ? cover : imageUrl ? imageUrl : GrayPerson}
-          alt="IMG"
-          className={type !== "artists" ? 'render-carousel-item__thumbnail--img' : 'render-carousel-item__thumbnail--imgArtist'} />
-        <div className={type !== "artists" ? 'render-carousel-item__thumbnail--btn' : 'render-carousel-item__thumbnail--btnArtist'}>
-          {type !== "artists" ?
-            <div className='render-carousel-item__thumbnail--btn__play'>
-              <FaPlay size='14px' color='#191919' />
-            </div>
-            : null}
-          <div className='render-carousel-item__thumbnail--btn__like'>
-            <AiFillHeart size='14px' color='#ca2a36' />
-          </div>
-        </div>
+          src={GrayPerson}
+          alt="404 Category not found"
+          className='render-carousel-item__thumbnail--img' />
       </div>
-      <p className={type !== "artists" ? 'render-carousel-item__description' : 'render-carousel-item__description render-carousel-item__descriptionArtist'}>{name}</p>
-      <p className={type !== "artists" ? 'render-carousel-item__details' : 'display-none'}>
-        30 {t("musicpage_albumtracks")} - 4,165 fans
-      </p>
-    </Link>
+      <p className='render-carousel-item__description'>404 Category not found</p>
+    </div>
   )
 }
