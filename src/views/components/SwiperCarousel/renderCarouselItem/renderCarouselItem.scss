@@ -146,36 +146,6 @@
 
 }
 
-.anticon-exclamation-circle,
-.ant-btn-default {
-  display: none;
-}
-
-.ant-modal-close {
-  color: var(--color-primary) !important;
-}
-
-.ant-modal-confirm-btns {
-  display: flex;
-  justify-content: center;
-
-  .ant-btn-primary {
-    @include buttonPrimary;
-    outline: none !important;
-    height: 35px;
-    margin-bottom: 28px !important;
-  }
-}
-
-.ant-modal-confirm-content {
-  width: 100%;
-}
-
-.ant-modal-content {
-  background-color: var(--background-secondary) !important;
-  border-radius: 0 !important;
-}
-
 .render-carousel-add-one-artist {
   display: flex;
   flex-direction: column;

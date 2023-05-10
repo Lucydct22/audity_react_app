@@ -92,3 +92,46 @@ body {
     }
   }
 }
+
+.anticon-exclamation-circle,
+.ant-btn-default {
+  display: none;
+}
+
+.ant-modal-close {
+  color: var(--color-primary) !important;
+}
+
+.ant-modal-confirm-btns {
+  display: flex;
+  justify-content: center;
+
+  .ant-btn-primary {
+    @include buttonPrimary;
+    outline: none !important;
+    height: 35px;
+    margin-bottom: 28px !important;
+  }
+}
+
+.ant-modal-confirm-content {
+  width: 100%;
+}
+
+.ant-modal-content {
+  background-color: var(--background-secondary) !important;
+  border-radius: 8 !important;
+
+  @media (max-width: 600px) {
+    border-radius: 0 !important;
+  }
+}
+
+.ant-popover-arrow {
+  --antd-arrow-background-color: var(--background-secondary) !important;
+}
+
+.ant-popover-inner {
+  background-color: var(--background-secondary) !important;
+  padding: 0 !important;
+}

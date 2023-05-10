@@ -7,7 +7,7 @@ import './renderCarouselItem.scss';
 import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp'
 import SongPlaceholder from 'assets/img/webp/music-placeholder-300.webp'
 import { TfiPlus } from "react-icons/tfi";
-import { Modal, Space } from 'antd';
+import { Modal } from 'antd';
 
 export default function RenderCarouselItem({ list, type }) {
   const { t } = useTranslation();
@@ -39,9 +39,7 @@ export default function RenderCarouselItem({ list, type }) {
           </div>
           <p className='render-carousel-add-one-playlist__details'>{t("library_create_playlist_text")}</p>
         </Link>
-        <Space>
-          <Modal title="Basic Modal" open={open} onOk={hideModal} onCancel={hideModal} />
-        </Space>
+        <Modal title="Basic Modal" open={open} onOk={hideModal} onCancel={hideModal} />
         {contextHolder}
       </>
     )

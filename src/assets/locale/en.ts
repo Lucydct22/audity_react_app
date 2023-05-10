@@ -7,7 +7,6 @@ const englishTranslation = {
   search_placeholder: 'Search',
   search_placeholder_mobile: 'Artist, tracks, albums...',
 
-
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Music',
   sidebar_radio: 'Radio',
@@ -71,11 +70,11 @@ const englishTranslation = {
   library_modal_artist_placeholder_name: 'Name of the playlist',
   library_modal_artist_label_desc: 'Description',
   library_modal_artist_placeholder_desc: 'Description of the playlist',
-  
+
   library_header_navbar_favorite: 'Favorite tracks',
 
   library_header_navbar_playlist: 'My Playlists',
-  
+
   library_header_navbar_upload: 'Upload songs',
 
   library_header_body_highlights_playlist_title: 'Playlists',
@@ -106,8 +105,14 @@ const englishTranslation = {
   track_item_ranking: 'Ranking: ',
   track_item_duration: 'Duration: ',
 
+  /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
+  player_component_popover_add_playlist: 'New playlist',
+
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',
 
+  /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
+  back: 'Go back',
 }
+
 export default englishTranslation;

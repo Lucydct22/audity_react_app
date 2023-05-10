@@ -57,7 +57,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
-  library_header_profile_btn: 'Mi música en modo aleatorio', 
+  library_header_profile_btn: 'Mi música en modo aleatorio',
   library_header_navbar_highlights: 'Destacados',
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Álbumes',
@@ -103,8 +103,14 @@ const spanishTranslation = {
   track_item_ranking: 'Ranking: ',
   track_item_duration: 'Duración: ',
 
+    /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
+    player_component_popover_add_playlist: 'Nueva playlist',
+
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
-  error_message: 'Lamentamos las molestias, seguimos trabajando en ello...'
+  error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',
+
+  /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
+  back: 'Volver',
 }
 
 export default spanishTranslation;
