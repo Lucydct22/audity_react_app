@@ -52,6 +52,10 @@
           line-height: 28px;
           margin: 0;
           color: var(--color-primary);
+
+          @media (max-width: 440px) {
+            width: calc(100% - 38px);
+          }
         }
 
         &--desc {

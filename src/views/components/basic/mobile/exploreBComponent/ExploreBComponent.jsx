@@ -1,22 +1,12 @@
-import { useState, useEffect, Suspense } from 'react'
+import { Suspense } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import './exploreBComponent.scss'
 import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 import SwiperCarousel from 'views/components/SwiperCarousel/SwiperCarousel';
 
 export default function ExploreBComponent() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
+  const [screenWidth] = useWindowSizeReport()
 
   return (
     <Suspense fallback={<></>}>
