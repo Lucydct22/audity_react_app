@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   pointer-events: none;
+  margin: 5px;
 
   &__thumbnail {
     display: inline-block;
@@ -46,7 +47,7 @@
       left: 0;
       bottom: 0;
       right: 0;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       color: #fff;
       text-decoration: none;
