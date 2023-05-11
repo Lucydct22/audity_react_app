@@ -52,6 +52,10 @@
           line-height: 28px;
           margin: 0;
           color: var(--color-primary);
+
+          @media (max-width: 440px) {
+            width: calc(100% - 38px);
+          }
         }
 
         &--desc {
@@ -72,6 +76,8 @@
 
       @media (max-width: $media-breakpoint-desktop-mobile) {
         border-bottom: var(--color-border-1px);
+        overflow-x: auto;
+        gap: 0;
       }
 
       &__options {
@@ -85,10 +91,20 @@
 
         @media (max-width: $media-breakpoint-desktop-mobile) {
           font-size: 15px;
+          gap: 0;
+          justify-content: space-between;
+        }
+
+        @media (max-width: $media-breakpoint-desktop-mobile) {
+          p {
+            width: max-content;
+            padding: 0 10px;
+          }
         }
 
         &--label {
           margin: 0;
+          margin-bottom: 8px;
         }
 
         &--decoration {

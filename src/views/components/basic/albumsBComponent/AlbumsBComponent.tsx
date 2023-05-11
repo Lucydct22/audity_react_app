@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { Artist } from "interfaces/music";
-import RenderAlbum from "../musicPageComponent/albumsSlider/renderAlbum/RenderAlbum";
+import RenderAlbum from "../renders/renderAlbum/RenderAlbum";
 import './albumsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 
 export default function AlbumsBComponent({ albums }: any) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
+  const [screenWidth] = useWindowSizeReport()
 
   return (
     <div className="albums-page-content">

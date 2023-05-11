@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { responsiveBreak } from "utils/componentsConstants";
+import { ProtectedAdminRoute } from "./router.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -24,9 +24,9 @@ const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
 
 // LIBRARY PAGES
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
-const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/favoritePage'))
+const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/FavTracksPage'))
 // const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
-// const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages'))
+const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
@@ -83,6 +83,10 @@ const router = createBrowserRouter([
             element: <Suspense fallback={<></>}><LibraryFavorites /></Suspense>,
           },
           {
+            path: "uploads",
+            element: <Suspense fallback={<></>}><LibraryUploads /></Suspense>,
+          },
+          {
             path: "*",
             element: <Suspense fallback={<></>}><LibraryHighlights /></Suspense>
           }
@@ -110,11 +114,23 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <Suspense fallback={<></>}><AdminLayout /></Suspense>,
+    element: (
+      <Suspense fallback={<></>}>
+        <ProtectedAdminRoute>
+          <AdminLayout />
+        </ProtectedAdminRoute>
+      </Suspense>
+    ),
     children: [
       {
         path: "home",
-        element: <Suspense fallback={<></>}><HomeAdminPage /></Suspense>
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <HomeAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        )
       },
       {
         path: "*",

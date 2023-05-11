@@ -1,16 +1,14 @@
-import { getTrackByIdApi } from "api/music/tracks";
+import { getRandomTrackApi, getTrackByIdApi } from "api/music/tracks";
 import getDuration from "utils/tracks/getDuration";
 import initAudio from "utils/tracks/initAudio";
 import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
-export const initCurrentTrackAction = async function (dispatch: any) {
-	await getTrackByIdApi('64593592a08af8008aaa164b').then(async (res: any) => {
-	// await getTrackByIdApi('645946f0fd55e38d3359bec2').then(async (res: any) => {
+export const initCurrentTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
+	await getRandomTrackApi().then(async (res: any) => {
 		if (res.track) {
 			const audio: HTMLAudioElement = initAudio(res.track);
 			const duration: any = await getDuration(audio);
-
 			return dispatch({
 				type: CurrentTrackTypes.INIT_CURRENT_TRACK,
 				payload: {
@@ -94,4 +92,23 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 			}
 		})
 	})
+}
+
+export const selectCurrentTrackAction = async function (dispatch: any, track: any, currentTrackState: any) {
+	currentTrackState.trackData.audio.pause()
+	const audio: HTMLAudioElement = initAudio(track);
+	const duration: any = await getDuration(audio);
+	dispatch({
+		type: CurrentTrackTypes.SELECT_CURRENT_TRACK,
+		payload: {
+			currentTrack: track,
+			trackData: {
+				url: track.audioUrl,
+				audio: audio,
+				duration: Math.round(duration),
+				currentTime: audio.currentTime,
+			}
+		}
+	})
+	return audio.play()
 }

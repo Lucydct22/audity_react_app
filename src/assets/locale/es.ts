@@ -5,6 +5,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
   search_placeholder: 'Buscar',
+  search_placeholder_mobile: 'Artistas, canciones, albums...',
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Musica',
@@ -57,13 +58,17 @@ const spanishTranslation = {
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
   library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
   library_header_profile_btn: 'Mi música en modo aleatorio',
-
   library_header_navbar_highlights: 'Destacados',
+  library_highlights_genres: 'Géneros',
+  library_highlights_artists: 'Artistas',
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Álbumes',
-  library_highlights_artists: 'Artistas',
   library_create_playlist_text: 'Crear una playlist',
   library_create_artist_text: 'Añadir artistas',
+  library_modal_artist_label_name: 'Nombre',
+  library_modal_artist_placeholder_name: 'Nombre de la playlist',
+  library_modal_artist_label_desc: 'Descriptión',
+  library_modal_artist_placeholder_desc: 'Descriptión de la playlist',
 
   library_header_navbar_favorite: 'Canciones favoritas',
 
@@ -72,6 +77,11 @@ const spanishTranslation = {
   library_header_navbar_upload: 'Mis canciones',
 
   library_header_body_highlights_playlist_title: 'Playlists',
+
+  library_upload_h1: 'Canciones',
+  library_upload_btn: 'SUBIR MP3',
+
+  library_favtracks_h1: 'canciones favoritas',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',
@@ -94,8 +104,14 @@ const spanishTranslation = {
   track_item_ranking: 'Ranking: ',
   track_item_duration: 'Duración: ',
 
+    /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
+    player_component_popover_add_playlist: 'Nueva playlist',
+
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
-  error_message: 'Lamentamos las molestias, seguimos trabajando en ello...'
+  error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',
+
+  /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
+  back: 'Volver',
 }
 
 export default spanishTranslation;

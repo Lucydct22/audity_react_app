@@ -5,6 +5,7 @@ const englishTranslation = {
 
   /*~~~~~~~~~ TOPBAR ~~~~~~~~~*/
   search_placeholder: 'Search',
+  search_placeholder_mobile: 'Artist, tracks, albums...',
 
   /*~~~~~~~~~ SIDEBAR ~~~~~~~~~*/
   sidebar_music: 'Music',
@@ -59,19 +60,30 @@ const englishTranslation = {
   library_header_profile_btn: 'Shuffle my music',
 
   library_header_navbar_highlights: 'Highlights',
+  library_highlights_genres: 'Genres',
+  library_highlights_artists: 'Artists',
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Albums',
-  library_highlights_artists: 'Artists',
   library_create_playlist_text: 'Create a playlist',
   library_create_artist_text: 'Add Artist',
-  
+  library_modal_artist_title: 'Create playlist',
+  library_modal_artist_label_name: 'Name',
+  library_modal_artist_placeholder_name: 'Name of the playlist',
+  library_modal_artist_label_desc: 'Description',
+  library_modal_artist_placeholder_desc: 'Description of the playlist',
+
   library_header_navbar_favorite: 'Favorite tracks',
 
   library_header_navbar_playlist: 'My Playlists',
-  
+
   library_header_navbar_upload: 'Upload songs',
 
   library_header_body_highlights_playlist_title: 'Playlists',
+
+  library_upload_h1: 'Songs',
+  library_upload_btn: 'UPLOAD MP3',
+
+  library_favtracks_h1: 'favorite tracks',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',
@@ -94,8 +106,14 @@ const englishTranslation = {
   track_item_ranking: 'Ranking: ',
   track_item_duration: 'Duration: ',
 
+  /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
+  player_component_popover_add_playlist: 'New playlist',
+
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',
 
+  /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
+  back: 'Go back',
 }
+
 export default englishTranslation;

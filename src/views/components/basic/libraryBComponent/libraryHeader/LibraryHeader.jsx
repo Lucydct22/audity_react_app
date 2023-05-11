@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import './libraryHeader.scss'
 import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from "react-i18next";
@@ -8,20 +8,9 @@ import { TiArrowShuffle } from "react-icons/ti";
 import PersonPlaceholder160 from 'assets/img/webp/profile-placeholder-160x160.webp'
 
 const LibraryHeader = () => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth] = useWindowSizeReport()
   const { t } = useTranslation();
   const { user } = useAuth0();
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
 
   return (
     <header className="library-header">

@@ -1,0 +1,1 @@
+export const INIT_MY_LIBRARY = 'INIT_MY_LIBRARY'

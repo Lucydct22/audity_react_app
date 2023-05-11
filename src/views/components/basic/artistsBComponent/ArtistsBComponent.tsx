@@ -1,23 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
-import RenderArtist from "../musicPageComponent/artistsSlider/renderArtist";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
+import RenderArtist from "../renders/renderArtist";
 import './artistsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 
 export default function ArtistsBComponent({ artists }: any) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
+  const [screenWidth] = useWindowSizeReport()
 
   return (
     <div className="artists-page-content">

@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
 export default function useWindowSizeReport() {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", changeWidth)
 
-  const reportWindowSize = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    let isMounted = true;
-    isMounted && (window.onresize = reportWindowSize);
-    return () => { isMounted = false }
+    return () => {
+      window.removeEventListener("resize", changeWidth)
+    }
   }, [])
 
-  return [innerWidth];
+  return [screenWidth];
 }
