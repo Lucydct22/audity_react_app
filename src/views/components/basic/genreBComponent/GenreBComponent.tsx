@@ -19,28 +19,52 @@ const GenreBComponent = ({ genre }: any) => {
   useEffect(() => {
     let isMounted = true;
 
-    getGenrePlaylistById(genre?._id).then(res => {
-      if (isMounted && res && res.playlists) {
-        setPlaylists(res.playlists);
-      }
-    });
-
-    getGenreAlbumById(genre?._id).then(res => {
-      if (isMounted && res && res.albums) {
-        setAlbums(res.albums);
-      }
-    });
-
-    getGenreArtistById(genre?._id).then(res => {
-      if (isMounted && res && res.artists) {
-        setArtists(res.artists);
-      }
-    });
-
+    if (genre?._id) {
+      getGenrePlaylistById(genre._id).then(res => {
+        if (isMounted && res && res.playlists) {
+          setPlaylists(res.playlists);
+        }
+      });
+    }
     return () => {
       isMounted = false;
     };
   }, [genre]);
+
+
+
+  useEffect(() => {
+    let isMounted = true;
+    if (genre?._id) {
+
+      getGenreAlbumById(genre._id).then(res => {
+        if (isMounted && res && res.albums) {
+          setAlbums(res.albums);
+        }
+      });
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [genre]);
+
+
+  useEffect(() => {
+    let isMounted = true;
+    if (genre?._id) {
+      getGenreArtistById(genre._id).then(res => {
+        if (isMounted && res && res.artists) {
+          setArtists(res.artists);
+        }
+      });
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [genre]);
+
+
+
 
   return (
     <div className="genre-page">

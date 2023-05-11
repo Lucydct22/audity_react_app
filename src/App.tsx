@@ -7,6 +7,7 @@ import CurrentTrackProvider from "./context/currentTrack/CurrentTrackProvider";
 import { isLocalhost } from './utils/isLocalhost';
 import UserProvider from "./context/user/UserProvider";
 import { LanguageProvider } from "context/language/LanguageContext";
+import MyLibraryProvider from "context/myLibrary/MyLibraryProvider";
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
       }
       authorizationParams={{
         redirect_uri: window.location.origin + '/',
-        audience: isLocalhost 
+        audience: isLocalhost
           ? process.env.REACT_APP_AUTH0_AUDIENCE_DEVELOPMENT
           : process.env.REACT_APP_AUTH0_AUDIENCE_PRODUCTION
       }}
@@ -29,10 +30,12 @@ const App = () => {
           <ThemeProvider>
             <CurrentTracklistProvider>
               <CurrentTrackProvider>
-                <RouterProvider
-                  router={router}
-                  fallbackElement={<></>}
-                />
+                <MyLibraryProvider>
+                  <RouterProvider
+                    router={router}
+                    fallbackElement={<></>}
+                  />
+                </MyLibraryProvider>
               </CurrentTrackProvider>
             </CurrentTracklistProvider>
           </ThemeProvider>

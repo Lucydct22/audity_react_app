@@ -11,9 +11,7 @@ export default function GenrePage() {
 	useEffect(() => {
 		let isMounted = true;
 		genreId && getGenreByIdApi(genreId.toString()).then((res: any) => {
-			console.log(genreId);
 			isMounted && res && setGenre(res.genre);
-			console.log(res);
 		})
 		return () => { isMounted = false }
 	}, [genreId])
