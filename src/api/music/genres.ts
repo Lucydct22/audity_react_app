@@ -1,5 +1,5 @@
 import { basePath } from "../utils/config";
-import { Genres, Genre } from "interfaces/music";
+import { Genres, Genre, Playlist, Albums, Artist } from "interfaces/music";
 
 
 export const getGenresApi = async (): Promise<Genres> => {	
@@ -13,6 +13,25 @@ export const getGenreByIdApi = async (genreId: string): Promise<Genre> => {
 	const data = await response.json()
 	return data as Genre
 }
+
+export const getGenrePlaylistById = async (genreId: string): Promise<{ genre: Genre; playlists: Playlist[] }> => {
+	const response = await fetch(`${basePath}/genre/${genreId}/playlists`)
+	const data = await response.json()
+	return data as { genre: Genre; playlists: Playlist[] }
+}
+
+export const getGenreAlbumById = async (genreId: string): Promise<{ genre: Genre; albums: Albums[] }> => {
+	const response = await fetch(`${basePath}/genre/${genreId}/albums`)
+	const data = await response.json()
+	return data as { genre: Genre; albums: Albums[] }
+}
+
+export const getGenreArtistById = async (genreId: string): Promise<{ genre: Genre; artists: Artist[] }> => {
+	const response = await fetch(`${basePath}/genre/${genreId}/artists`)
+	const data = await response.json()
+	return data as { genre: Genre; artists: Artist[] }
+}
+
 
 export const deleteGenresByIdApi = async (genresId: string): Promise<Genres> => {
 	const params = {

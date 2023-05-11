@@ -1,0 +1,26 @@
+@import "../../../../sass/variables";
+
+.genre-page {
+  margin: 2rem;
+
+  &__title {
+    font-size: 2rem;
+    color: $color-main;
+  }
+
+  &__sectiont {
+    &__title {
+      margin-bottom: 3rem;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 1rem;
+      margin-bottom: 5rem;
+      width: 100rem;
+      gap: 3rem;
+    }
+  }
+
+}

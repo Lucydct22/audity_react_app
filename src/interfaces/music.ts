@@ -1,5 +1,5 @@
 export interface Playlist {
-  id: string;
+  _id: string;
   name: string;
   thumbnail: string;
   description: string;
