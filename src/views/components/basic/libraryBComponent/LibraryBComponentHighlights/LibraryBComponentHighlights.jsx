@@ -1,4 +1,4 @@
-import SwiperCarousel from 'views/components/SwiperCarousel/SwiperCarousel';
+import SwiperLibraryPage from 'views/components/SwiperCarousel/carouselLibraryPage/SwiperLibraryPage';
 import './libraryBComponentHighlights.scss';
 
 export default function LibraryBComponentHighlights() {
@@ -6,9 +6,9 @@ export default function LibraryBComponentHighlights() {
   return (
     <div className='library-highlights'>
       <div className='library-highlights__content'>
-        <SwiperCarousel data={"playlists"} />
-        <SwiperCarousel data={"albums"} />
-        <SwiperCarousel data={"artists"} />
+        <SwiperLibraryPage data={"playlists"} />
+        <SwiperLibraryPage data={"albums"} />
+        <SwiperLibraryPage data={"artists"} />
       </div>
     </div >
   );

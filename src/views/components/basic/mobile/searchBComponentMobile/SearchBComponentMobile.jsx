@@ -1,13 +1,13 @@
 import './searchBComponentMobile.scss'
 import { useTranslation } from 'react-i18next';
-import GenresRenderComponent from 'views/components/basic/musicPageComponent/genresSlider/genresRender/RenderGenres';
+import GenresRenderComponent from 'views/components/basic/renders/genresRender/RenderGenres';
 import { CiSearch } from 'react-icons/ci';
 import { getGenresApi } from 'api/music/genres';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from "react";
 
 export default function SearchBComponentMobile() {
-  
+
   const { t } = useTranslation();
   const [genres, setGenres] = useState(undefined);
   const { user } = useAuth0();
@@ -34,12 +34,12 @@ export default function SearchBComponentMobile() {
         <span><CiSearch size={25} /></span>
       </div>
       <h1 className='mobile-search__genres'>{t("musicpage_genres")}</h1>
-      <div  className='mobile-search__genres--section'>
-      {genres?.map(genre => {
-      return(
-        <GenresRenderComponent genre={genre} key={genre._id}/>
-      )
-      })}  
+      <div className='mobile-search__genres--section'>
+        {genres?.map(genre => {
+          return (
+            <GenresRenderComponent genre={genre} key={genre._id} />
+          )
+        })}
       </div>
     </div>
   )

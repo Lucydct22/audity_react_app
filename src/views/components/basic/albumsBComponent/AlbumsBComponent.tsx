@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { Artist } from "interfaces/music";
-import RenderAlbum from "../musicPageComponent/albumsSlider/renderAlbum/RenderAlbum";
+import RenderAlbum from "../renders/renderAlbum/RenderAlbum";
 import './albumsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 

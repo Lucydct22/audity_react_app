@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
-import RenderArtist from "../musicPageComponent/artistsSlider/renderArtist";
+import RenderArtist from "../renders/renderArtist";
 import './artistsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 
