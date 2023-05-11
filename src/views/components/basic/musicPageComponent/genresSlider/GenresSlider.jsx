@@ -60,7 +60,7 @@ const DesktopGenresSlider = ({ genres }) => {
         </span>
       </div>
       <div className='genres-carousel__container'>
-        <SwiperDesktop>
+        <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {genres?.map(genre => {
             return (
               <SwiperSlide key={genre._id}>

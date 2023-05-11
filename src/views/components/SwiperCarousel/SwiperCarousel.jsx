@@ -111,7 +111,7 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
         </span>
       </div>
       <div className='swiper-component__container'>
-        <SwiperDesktop>
+        <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {dataCarousel()?.map(list => {
             return (
               <SwiperSlide key={list._id}>

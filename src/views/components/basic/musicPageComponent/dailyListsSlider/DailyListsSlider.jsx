@@ -54,7 +54,7 @@ const DesktopPlaylistsSlider = ({ playlists }) => {
         </span>
       </div>
       <div className='daily-carousel__container'>
-        <SwiperDesktop>
+        <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {playlists?.map(playlist => {
             return (
               <SwiperSlide key={playlist._id}>
