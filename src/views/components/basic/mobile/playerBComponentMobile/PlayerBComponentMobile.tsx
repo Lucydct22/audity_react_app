@@ -31,10 +31,9 @@ const PlayerBComponentMobile = () => {
     setShowPopUp(false);
   };
  
-//Cambiar posicion setShowPopUp
   return (
     <>
-    <div className='page-player-mobile' onClick={() => setShowPopUp(!showPopUp)}>
+    <div className='page-player-mobile' >
       <div className='player-bottom-mobile'>
         <div className='player-bottom-controls-mobile'>
           <button
@@ -45,7 +44,7 @@ const PlayerBComponentMobile = () => {
           </button>
         </div>
 
-        <div className='player-bottom-track-mobile' >
+        <div className='player-bottom-track-mobile' onClick={() => setShowPopUp(!showPopUp)} >
           <div className='player-bottom-track-mobile__title'>
             {currentTrack.name}
           </div>
