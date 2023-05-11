@@ -1,7 +1,7 @@
 import { getAlbumsLikedByUserApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
 import { getArtistsLikedByUserApi } from 'api/music/artists';
-import { getPlaylistsLikedByUserApi } from 'api/music/playlists';
+import { getPlaylistByUserApi, getPlaylistsLikedByUserApi } from 'api/music/playlists';
 import { getTracksLikedByUserApi } from 'api/music/tracks';
 
 export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: any) {
@@ -10,6 +10,8 @@ export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: a
 		const artistsFetch = await getArtistsLikedByUserApi(dbUserId, token)
 		const playlistsFetch = await getPlaylistsLikedByUserApi(dbUserId, token)
 		const tracksFetch = await getTracksLikedByUserApi(dbUserId, token)
+		const playlistsByUserFetch = await getPlaylistByUserApi(dbUserId, token)
+		
 		return dispatch({
 			type: MyLibraryTypes.INIT_MY_LIBRARY,
 			payload: {
@@ -17,8 +19,9 @@ export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: a
 				albumsContent: albumsFetch.content,
 				artistsInfo: artistsFetch.content?.length,
 				artistsContent: artistsFetch.content,
-				playlistsInfo: playlistsFetch.content?.length,
+				playlistsInfo: playlistsFetch.content?.length + playlistsByUserFetch.content?.length,
 				playlistsContent: playlistsFetch.content,
+				playlistsUserContent: playlistsByUserFetch.content,
 				tracksInfo: tracksFetch.content?.length,
 				tracksContent: tracksFetch.content,
 			}

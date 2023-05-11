@@ -22,7 +22,8 @@ export default function myLibraryReducer(state: any, action: any) {
 					info: {
 						length: payload.playlistsInfo,
 					},
-					content: payload.playlistsContent
+					content: payload.playlistsContent,
+					userContent: payload.playlistsUserContent
 				},
 				tracks: {
 					info: {

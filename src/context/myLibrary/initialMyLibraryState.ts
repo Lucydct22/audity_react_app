@@ -15,7 +15,8 @@ const initialMyLibraryState = {
 		info: {
 			length: 0,
 		},
-		content: []
+		content: [],
+		userContent: [],
 	},
 	tracks: {
 		info: {

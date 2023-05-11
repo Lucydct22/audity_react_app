@@ -1,6 +1,7 @@
 import { getContentLikedByUserId } from "api/utils/methods";
 import { basePath } from "../utils/config";
 import { Playlist } from "interfaces/music";
+import { params } from "api/utils/utils";
 
 
 export const getPlaylistApi = async (): Promise<Playlist> => {
@@ -17,6 +18,12 @@ export const getPlaylistByIdApi = async (playlistId: string): Promise<Playlist> 
 
 export const getPlaylistsLikedByUserApi = async (userId: any, token: string): Promise<any> => {
 	return await getContentLikedByUserId(userId, 'playlists', token)
+}
+
+export const getPlaylistByUserApi = async (userId: string, token: any): Promise<any> => {
+	const response = await fetch(`${basePath}/playlists-by-user/${userId}`, params(token))
+	const data = await response.json()
+	return data
 }
 
 // export const deletePlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
