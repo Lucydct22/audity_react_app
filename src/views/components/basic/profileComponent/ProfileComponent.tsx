@@ -6,8 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import UserContext from 'context/user/UserContext';
 import { LanguageContext, languages } from 'context/language/LanguageContext';
-import PersonPlaceholder160 from 'assets/img/webp/profile-placeholder-160x160.webp'
-import moment from 'react-moment'
+import moment from 'moment'
 
 export default function ProfileComponent() {
   const { t } = useTranslation();
@@ -54,6 +53,7 @@ export default function ProfileComponent() {
     updateUserSettings(name, lastname, nickname, dateOfBirth)
   }
 
+
   return (
     <>
       <div className='user-settings'>
@@ -91,7 +91,7 @@ export default function ProfileComponent() {
                 <input
                   type="date"
                   className="input-group__bthd"
-                  value={dateOfBirth || ''}
+                  value={moment(dateOfBirth).format('yyyy-MM-DD') }
                   name="birth_day"
                   placeholder={t('profile_placeholder_birth_day') || ''}
                   readOnly={!editMode}
