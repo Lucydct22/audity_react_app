@@ -54,7 +54,7 @@ const DesktopAlbumsSlider = ({ albums }) => {
         </span>
       </div>
       <div className='album-carousel__container'>
-        <SwiperDesktop>
+        <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {albums?.map(album => {
             return (
               <SwiperSlide key={album._id}>

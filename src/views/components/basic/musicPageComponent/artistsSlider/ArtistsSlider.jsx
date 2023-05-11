@@ -54,7 +54,7 @@ const DesktopArtistsSlider = ({ artists }) => {
         </span>
       </div>
       <div className='artists-carousel__container'>
-        <SwiperDesktop>
+        <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {artists?.map(artist => {
             return (
               <SwiperSlide key={artist._id}>

@@ -1,13 +1,10 @@
-import { useRef } from "react";
 import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 
-export default function SwiperDesktop({ children }) {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+export default function SwiperDesktop({ children, prevRef, nextRef }) {
 
   return (
     <Swiper
