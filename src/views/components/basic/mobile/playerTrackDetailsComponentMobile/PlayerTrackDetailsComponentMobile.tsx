@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { IoChevronDownOutline, IoAdd, IoHeartOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
@@ -9,7 +9,7 @@ import img from 'assets/img/albums/summer-playlist.png'
 
 
 
-const PlayerTrackDetailsComponentMobile = ({onClose}: any) => {
+const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any) => {
 
   const {
     trackData,
@@ -23,22 +23,33 @@ const PlayerTrackDetailsComponentMobile = ({onClose}: any) => {
   } = useContext(CurrentTrackContext);
 
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-  
+
+  const [artists, setArtists] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    isMounted && setArtists(artists)
+    return () => { isMounted = false }
+  }, [])
+
+
+
   return (
-    <div className='player-track-details-container'>
+    <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
       <div className='player-track-details-container__track-info'>
         <div className='player-track-details-container__track-info__close'>
-        <button onClick={onClose}><IoChevronDownOutline /></button>
-        <p>Name playlist{currentTrack.album}</p>
-      </div>
-        <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
-        
-        <div className='player-track-details-container__track-info__data'>
-          <p className='player-track-details-container__track-info__data__nameBig'>Track name{currentTrack.name}</p>
-          <div className='player-track-details-container__track-info__data__info'>
-          <p >Artist name - {}</p>
-          <p > Track name{currentTrack.name}</p>
+          <button onClick={handleClosePopUp}><IoChevronDownOutline /></button>
+          <p>{currentTrack.name}</p>
         </div>
+        <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
+
+        <div className='player-track-details-container__track-info__data'>
+          <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
+          <div className='player-track-details-container__track-info__data__info'>
+            <p>{artists}</p>
+            <p>{currentTrack.name}</p>
+          </div>
         </div>
 
         <div className='player-track-details-container__track-info__track-time'>

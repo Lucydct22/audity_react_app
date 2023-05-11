@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useEffect, useContext } from 'react'
+import { useReducer, useMemo, useEffect, useContext, useCallback } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import MyLibraryContext from './MyLibraryContext'
 import UserContext from 'context/user/UserContext';
@@ -10,7 +10,7 @@ import { ChildrenProps } from 'interfaces/global';
 export default function MyLibraryProvider(props: ChildrenProps) {
 	const [userState, dispatch] = useReducer(myLibraryReducer, initialMyLibraryState)
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
-	const {dbUser} = useContext(UserContext)
+	const { dbUser } = useContext(UserContext)
 
 	useEffect(() => {
 		const initMyLibrary = async () => {
@@ -20,13 +20,20 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 			}
 		}
 		initMyLibrary()
-	}, [isAuthenticated, dbUser])
+	}, [isAuthenticated, dbUser, getAccessTokenSilently])
+
+	const postPlaylist = useCallback(async (name: string, description: string) => {
+		const token = await getAccessTokenSilently()
+		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
+	}, [isAuthenticated, dbUser]);
 
 	const memoProvider = useMemo(
 		() => ({
-			...userState
+			...userState,
+			postPlaylist
 		}), [
-		userState
+		userState,
+		postPlaylist
 	]
 	);
 

@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedAdminRoute } from "./router.middelware";
+import { ProtectedUserSettings } from "./user.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -18,6 +19,9 @@ const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
 const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
 const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
+
+const GenresPage = lazy(() => import('views/pages/basic/genresPage/GenresPage'));
+const GenrePage = lazy(() => import('views/pages/basic/genrePage/GenrePage'));
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
@@ -71,6 +75,16 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: "genres",
+        element: <Suspense fallback={<></>}><GenresPage /></Suspense>,
+        children: [
+          {
+            path: ":genreId",
+            element: <Suspense fallback={<></>}><GenrePage /></Suspense>,
+          },
+        ]
+      },
+      {
         path: "library",
         element: <Suspense fallback={<></>}><LibraryLayout /></Suspense>,
         children: [
@@ -104,8 +118,13 @@ const router = createBrowserRouter([
       },
       {
         path: "settings",
-        element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
-      },
+        element: (
+        <Suspense fallback={<></>}>
+          <ProtectedUserSettings>
+            <ProfilePage />
+            </ProtectedUserSettings>
+          </Suspense>
+      )},
       {
         path: "*",
         element: <Suspense fallback={<></>}><ErrorPage /></Suspense>

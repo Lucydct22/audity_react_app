@@ -23,7 +23,8 @@ const initialMyLibraryState = {
 			length: 0,
 		},
 		content: []
-	}
+	},
+	postPlaylist: (name: string, description: string) => { }
 }
 
 export default initialMyLibraryState

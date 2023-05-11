@@ -3,6 +3,7 @@ import './renderGenres.scss'
 
 export default function RenderGenres({ genre }: any) {
   const { _id, name, imageUrl } = genre;
+  
 
   return (
     <Link to={`/genres/${_id}`} className='render-genre'>
@@ -13,3 +14,4 @@ export default function RenderGenres({ genre }: any) {
     </Link>
   )
 }
+  
