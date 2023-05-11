@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
-import RenderGenres from "../musicPageComponent/genresSlider/genresRender/RenderGenres";
+import RenderGenres from "../renders/genresRender/RenderGenres";
 import './genresBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 
