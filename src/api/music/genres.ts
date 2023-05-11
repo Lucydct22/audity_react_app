@@ -3,22 +3,10 @@ import { Genres, Genre } from "interfaces/music";
 
 
 export const getGenresApi = async (): Promise<Genres> => {	
-	/*const params = {
-		method: "GET",
-		headers: {
-      Authorization: `Bearer ${token}`,
-		},
-	}*/
 	const response = await fetch(`${basePath}/genres`)
 	const data = await response.json()
 	return data as Genres
 }
-
-/*export const getGenresByIdApi = async (genresId: string): Promise<Genres> => {
-	const response = await fetch(`${basePath}/genres/${genresId}`)
-	const data = await response.json()
-	return data as Genre
-}*/
 
 export const getGenreByIdApi = async (genreId: string): Promise<Genre> => {
 	const response = await fetch(`${basePath}/genre/${genreId}`)
