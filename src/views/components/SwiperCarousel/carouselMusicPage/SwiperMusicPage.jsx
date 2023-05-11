@@ -3,39 +3,54 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
-import './swiperCarousel.scss'
+import './swiperMusicPage.scss';
 import { useTranslation } from 'react-i18next';
+import { getGenresApi } from "api/music/genres";
 import { getPlaylistApi } from 'api/music/playlists';
 import { getAlbumsApi } from 'api/music/albums';
 import { getArtistApi } from 'api/music/artists';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import { responsiveBreak } from "utils/componentsConstants";
-import RenderCarouselItem from "./renderCarouselItem/RenderCarouselItem";
+import RenderMusicItem from "./renderMusicItem/RenderMusicItem";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import SwiperDesktop from 'views/UI/swiperSettings/swiperDesktop/SwiperDesktop';
 import SwiperMobile from 'views/UI/swiperSettings/swiperMobile/SwiperMobile';
 
 
-export default function SwiperCarousel({ data }) {
+export default function SwiperMusicPage({ data }) {
   const [screenWidth] = useWindowSizeReport()
 
+  const [genres, setGenres] = useState(undefined)
   const [playlists, setPlaylists] = useState(undefined)
   const [albums, setAlbums] = useState(undefined)
   const [artists, setArtists] = useState(undefined);
-  const [addNewPlaylist] = useState({
-    "add": {
-      _id: "AddOnePlaylist",
-      "add": "Function of new add slider carousel",
-    },
-  })
-  const [addNewArtist] = useState({
-    "add": {
-      _id: "AddOneArtist",
-      "add": "Function of new add slider carousel",
-    },
-  })
 
   function dataCarousel() {
+    if (data === "genres") {
+      useEffect(() => {
+        let isMounted = true;
+        const getGenres = async () => {
+          getGenresApi().then(async res => {
+            isMounted && res && setGenres(res.genres);
+          })
+        }
+        getGenres()
+        return () => { isMounted = false }
+      }, [])
+      return genres;
+    }
+    
+    if (data === "artists") {
+      useEffect(() => {
+        let isMounted = true;
+        getArtistApi().then(res => {
+          isMounted && res && setArtists(res.artists);
+        })
+        return () => { isMounted = false }
+      }, [])
+      return artists;
+    }
+
     if (data === "playlists") {
       useEffect(() => {
         let isMounted = true;
@@ -44,13 +59,7 @@ export default function SwiperCarousel({ data }) {
         })
         return () => { isMounted = false }
       }, [])
-
-      const result = Object.values(playlists ? playlists : "");
-      const addResult = Object.values(addNewPlaylist ? addNewPlaylist : "");
-
-      const finalPlaylist = [...addResult, ...result];
-
-      return finalPlaylist;
+      return playlists;
     }
 
     if (data === "albums") {
@@ -64,22 +73,6 @@ export default function SwiperCarousel({ data }) {
       return albums;
     }
 
-    if (data === "artists") {
-      useEffect(() => {
-        let isMounted = true;
-        getArtistApi().then(res => {
-          isMounted && res && setArtists(res.artists);
-        })
-        return () => { isMounted = false }
-      }, [])
-
-      const result = Object.values(artists ? artists : "");
-      const addResult = Object.values(addNewArtist ? addNewArtist : "");
-
-      const finalArtist = [...addResult, ...result];
-
-      return finalArtist;
-    }
   }
 
   return (
@@ -98,10 +91,10 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
   const nextRef = useRef(null);
 
   return (
-    <div className="swiper-component">
-      <div className="swiper-component__header">
+    <div className="swiper-music-component">
+      <div className="swiper-music-component__header">
         <TranslateTitle data={data} />
-        <span className="swiper-component__header--btn">
+        <span className="swiper-music-component__header--btn">
           <button ref={prevRef} className="swiper-carousel-button-prev">
             <HiOutlineChevronLeft />
           </button>
@@ -110,12 +103,12 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
           </button>
         </span>
       </div>
-      <div className='swiper-component__container'>
+      <div className='swiper-music-component__container'>
         <SwiperDesktop prevRef={prevRef} nextRef={nextRef} >
           {dataCarousel()?.map(list => {
             return (
               <SwiperSlide key={list._id}>
-                <RenderCarouselItem list={list} type={data} />
+                <RenderMusicItem list={list} type={data} />
               </SwiperSlide>
             )
           })}
@@ -128,16 +121,16 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
 
 const MobileSwiperCarousel = ({ data, dataCarousel }) => {
   return (
-    <div className="swiper-component">
-      <div className="swiper-component__header">
+    <div className="swiper-music-component">
+      <div className="swiper-music-component__header">
         <TranslateTitle data={data} />
       </div>
-      <div className='swiper-component__container'>
+      <div className='swiper-music-component__container'>
         <SwiperMobile>
           {dataCarousel()?.map(list => {
             return (
               <SwiperSlide key={list._id}>
-                <RenderCarouselItem list={list} type={data} />
+                <RenderMusicItem list={list} type={data} />
               </SwiperSlide>
             )
           })}
@@ -150,5 +143,5 @@ const MobileSwiperCarousel = ({ data, dataCarousel }) => {
 const TranslateTitle = ({ data }) => {
   const { t } = useTranslation();
 
-  return <h2 className='swiper-component__header--title'>{t(`library_highlights_${data}`)}</h2>;
+  return <h2 className='swiper-music-component__header--title'>{t(`library_highlights_${data}`)}</h2>;
 }

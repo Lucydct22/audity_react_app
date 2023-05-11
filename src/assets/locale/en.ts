@@ -60,9 +60,10 @@ const englishTranslation = {
   library_header_profile_btn: 'Shuffle my music',
 
   library_header_navbar_highlights: 'Highlights',
+  library_highlights_genres: 'Genres',
+  library_highlights_artists: 'Artists',
   library_highlights_playlists: 'Playlists',
   library_highlights_albums: 'Albums',
-  library_highlights_artists: 'Artists',
   library_create_playlist_text: 'Create a playlist',
   library_create_artist_text: 'Add Artist',
   library_modal_artist_title: 'Create playlist',

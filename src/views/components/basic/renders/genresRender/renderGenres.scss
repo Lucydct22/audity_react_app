@@ -1,4 +1,4 @@
-@import '../../../../../../sass/';
+@import '../../../../../sass/';
 
 .render-genre {
   display: flex;
@@ -29,7 +29,7 @@
         display: block;
         width: 100%;
         box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
-        background-image: url('../../../../../../assets/img/webp/brown-placeholder.webp');
+        background-image: url('../../../../../assets/img/webp/brown-placeholder.webp');
         background-position: center;
         background-size: cover;
         padding: 25.4% 0;

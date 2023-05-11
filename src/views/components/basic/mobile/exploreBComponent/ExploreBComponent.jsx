@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import './exploreBComponent.scss'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
-import SwiperCarousel from 'views/components/SwiperCarousel/SwiperCarousel';
+import SwiperMusicPage from 'views/components/SwiperCarousel/carouselMusicPage/SwiperMusicPage';
 
 export default function ExploreBComponent() {
   const [screenWidth] = useWindowSizeReport()
@@ -33,9 +33,9 @@ function MobileExplorePage() {
           </div>
         </div>
         <div className="mobile-explore-page__content--body">
-          <SwiperCarousel data={"artists"} />
-          <SwiperCarousel data={"albums"} />
-          <SwiperCarousel data={"playlists"} />
+          <SwiperMusicPage data={"artists"} />
+          <SwiperMusicPage data={"albums"} />
+          <SwiperMusicPage data={"playlists"} />
         </div>
       </div>
     </section>
