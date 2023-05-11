@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { responsiveBreak } from "utils/componentsConstants";
+import { ProtectedAdminRoute } from "./router.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -127,11 +127,23 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <Suspense fallback={<></>}><AdminLayout /></Suspense>,
+    element: (
+      <Suspense fallback={<></>}>
+        <ProtectedAdminRoute>
+          <AdminLayout />
+        </ProtectedAdminRoute>
+      </Suspense>
+    ),
     children: [
       {
         path: "home",
-        element: <Suspense fallback={<></>}><HomeAdminPage /></Suspense>
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <HomeAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        )
       },
       {
         path: "*",

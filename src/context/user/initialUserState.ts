@@ -11,6 +11,7 @@ const initialUserState = {
 		country: '',
 		language: '',
 		picture: '',
+		role: '',
 		following: [],
 	},
 	updateUserLanguage: (lang: string) => { },

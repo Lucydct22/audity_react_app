@@ -55,3 +55,15 @@ export const updateUserSettingsAPI = async ( token: string, name: string, lastna
 	const dataUserSettings = await response.json()
 	return dataUserSettings
 }
+
+export const getUserRole = async (token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+	const response = await fetch(`${basePath}/user-role`, params)
+	const data = await response.json()
+	return data
+}
