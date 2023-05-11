@@ -1,7 +1,15 @@
 @import "../../../../sass/variables";
 
 .genre-page {
-  margin: 2rem;
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 18px;
+    padding-top: 0;
+  }
 
   &__title {
     font-size: 2rem;
