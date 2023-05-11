@@ -1,5 +1,5 @@
-@import "../../../../../../sass/variables";
-@import "../../../../../../sass/mixins";
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
 
 
 .render-playlist {
@@ -33,7 +33,7 @@
           display: block;
           width: 100%;
           box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
-          background-image: url('../../../../../../assets/img/webp/disc250.webp');
+          background-image: url('../../../../../assets/img/webp/disc250.webp');
           background-position: center;
           background-size: cover;
           padding: 50% 0;

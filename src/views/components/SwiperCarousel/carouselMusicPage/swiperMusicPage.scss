@@ -1,0 +1,34 @@
+@import '../../../../sass/';
+
+
+.swiper-music-component {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 15px 18px;
+    }
+
+    &--title {
+      text-transform: capitalize;
+      display: inline;
+      margin: 0;
+      font-size: 24px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+    }
+  }
+
+  &__container {
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+}

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
-import RenderPlaylist from '../musicPageComponent/dailyListsSlider/renderPlaylist/RenderPlaylist';
+import RenderPlaylist from '../renders/renderPlaylist/RenderPlaylist';
 import './playlistsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
 
