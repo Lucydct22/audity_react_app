@@ -10,6 +10,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@types/auth0": "^2.35.11",
+    "antd": "^5.4.7",
     "i18next": "^22.4.11",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.2.0",
@@ -39,6 +40,7 @@
     "workbox-streams": "^6.5.4"
   },
   "devDependencies": {
+    "@types/antd": "^1.0.0",
     "@types/node": "^16.18.16",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
