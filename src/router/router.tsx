@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedAdminRoute } from "./router.middelware";
+import { ProtectedUserSettings } from "./user.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -117,8 +118,13 @@ const router = createBrowserRouter([
       },
       {
         path: "settings",
-        element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
-      },
+        element: (
+        <Suspense fallback={<></>}>
+          <ProtectedUserSettings>
+            <ProfilePage />
+            </ProtectedUserSettings>
+          </Suspense>
+      )},
       {
         path: "*",
         element: <Suspense fallback={<></>}><ErrorPage /></Suspense>
