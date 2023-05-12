@@ -19,10 +19,10 @@ export default function LibraryBComponentUpload() {
   return (
     <div className='library-upload'>
       <div className='library-upload__content'>
-        <h1>{ } {t('library_upload_h1')}</h1>
+        <h1>{t('library_upload_h1')}</h1>
         <button onClick={handleFileUpload}>{t('library_upload_btn')}</button>
       </div>
-      <div className='library-upload__compt'>
+      <div>
         <TrackListComponent />
       </div>
     </div >

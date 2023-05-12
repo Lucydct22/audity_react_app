@@ -68,6 +68,10 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  if (dataCarousel().length <= 0) {
+    return;
+  }
+
   return (
     <div className="swiper-library-component">
       <div className="swiper-library-component__header">
