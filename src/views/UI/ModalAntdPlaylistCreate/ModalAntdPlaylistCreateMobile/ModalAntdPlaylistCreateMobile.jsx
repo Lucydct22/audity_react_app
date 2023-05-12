@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import SongPlaceholder from 'assets/img/webp/music-placeholder-300.webp'
-import { IoChevronBackOutline, IoAdd } from "react-icons/io5"
+import { IoChevronBackOutline } from "react-icons/io5"
 import './modalAntdPlaylistCreateMobile.scss'
+
+
 
 export default function ModalPlaylistMobile({ onClose }) {
   const { t } = useTranslation();
