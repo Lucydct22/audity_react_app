@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
@@ -9,13 +9,18 @@ import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCre
 import RenderAlbum from 'views/components/basic/renders/renderAlbum/RenderAlbum';
 import RenderArtist from 'views/components/basic/renders/renderArtist/RenderArtist';
 import RenderPlaylist from 'views/components/basic/renders/renderPlaylist/RenderPlaylist';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 export default function RenderLibraryItem({ list, type }) {
+  const { postPlaylist } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const { _id } = list;
   const [open, setOpen] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
-
+  const [name, setName] = useState('')
+  // const [description, setDescription] = useState('')
+  // console.log(contextHolder);
+  
   const hideModal = () => {
     setOpen(false);
   };
@@ -26,8 +31,14 @@ export default function RenderLibraryItem({ list, type }) {
       closable: true,
       icon: 0,
       width: 800,
-      content: <ModalPlaylist />,
+      content: (
+        <ModalPlaylist
+          name={name}
+          setName={setName}
+        />
+      ),
       okText: 'CREATE',
+      onOk: () => postPlaylist('Name', 'Description')
     });
   };
 
