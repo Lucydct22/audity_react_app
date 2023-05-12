@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { SlUserFollowing, SlUserUnfollow } from "react-icons/sl";
 import './albumBComponent.scss';
+import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 
 export default function AlbumBComponent({ album }) {
+	const { selectAlbum } = useContext(CurrentTracklistContext)
+	const { selectCurrentTrack } = useContext(CurrentTrackContext)
 	const { t } = useTranslation();
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 
 	const handlePlayClick = () => {
+		selectAlbum(album._id)
+		selectCurrentTrack(album.tracks[0])
 		setIsPlaying((prevState) => !prevState);
 	};
 

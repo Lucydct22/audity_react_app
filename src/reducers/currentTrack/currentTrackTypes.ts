@@ -7,3 +7,4 @@ export const NEXT_TRACK = "NEXT_TRACK";
 export const MUTE_TRACK = "MUTE_TRACK";
 export const LOOP_TRACK = "LOOP_TRACK";
 export const CHANGE_CURRENT_TIME = "CHANGE_CURRENT_TIME";
+export const SELECT_CURRENT_TRACK = "SELECT_CURRENT_TRACK";

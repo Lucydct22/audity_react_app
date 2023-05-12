@@ -26,23 +26,69 @@
 }
 
 @mixin web-responsive() {
-  @media (min-width: $media-breakpoint-desktop-up-xl) {width: 1300px;}
-  @media (max-width: $media-breakpoint-desktop-up-xl) {width: 1150px;}
-  @media (max-width: $media-breakpoint-desktop-up-lg) {width: 1000px;}
-  @media (max-width: $media-breakpoint-desktop-up-md) {width: 900px;}
-  @media (max-width: $media-breakpoint-desktop-up-sm) {width: 800px;}
-  @media (max-width: $media-breakpoint-desktop-up-xs) {width: 700px;}
-  @media (max-width: $media-breakpoint-desktop-up-xxs) {width: 560px;}
+  @media (min-width: $media-breakpoint-desktop-up-xl) {
+    width: 1300px;
+  }
 
-  @media (max-width: $media-breakpoint-mobile-up-xxl) {width: 700px;}
-  @media (max-width: $media-breakpoint-mobile-up-xl) {width: 600px;}
-  @media (max-width: $media-breakpoint-mobile-up-lg) {width: 520px;}
-  @media (max-width: $media-breakpoint-mobile-up-md) {width: 435px;}
-  @media (max-width: $media-breakpoint-mobile-up-sm) {width: 370px;}
-  @media (max-width: $media-breakpoint-mobile-up-xs) {width: 340px;}
-  @media (max-width: $media-breakpoint-mobile-up-xxs) {width: 320px;}
-  @media (max-width: $media-breakpoint-mobile-up-3xs) {width: 280px;}
-  @media (max-width: $media-breakpoint-mobile-up-4xs) {width: 200px;}
+  @media (max-width: $media-breakpoint-desktop-up-xl) {
+    width: 1150px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-up-lg) {
+    width: 1000px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-up-md) {
+    width: 900px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-up-sm) {
+    width: 800px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-up-xs) {
+    width: 700px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-up-xxs) {
+    width: 560px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-xxl) {
+    width: 700px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-xl) {
+    width: 600px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-lg) {
+    width: 520px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-md) {
+    width: 435px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-sm) {
+    width: 370px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-xs) {
+    width: 340px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-xxs) {
+    width: 320px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-3xs) {
+    width: 280px;
+  }
+
+  @media (max-width: $media-breakpoint-mobile-up-4xs) {
+    width: 200px;
+  }
 }
 
 @mixin carousel-thumbnail-btn() {
@@ -90,15 +136,24 @@
     padding: 0px 10px;
     padding-top: 2px;
   }
+
+  &:hover {
+    background-color: $color-main-hover;
+  }
 }
 
 @mixin simple-btn-with-hover($height: 18px, $width: 18px, $padding: 0.4rem) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--color-primary);
   background: none;
   border: 0;
   margin: 0;
   padding: $padding;
   cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.4s;
 
   svg {
     height: $height;
@@ -107,6 +162,6 @@
 
   &:hover {
     background-color: var(--background-on-hover);
-    border-radius: 100%;
+
   }
 }

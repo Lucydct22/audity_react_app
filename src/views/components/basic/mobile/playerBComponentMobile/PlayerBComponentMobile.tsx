@@ -6,7 +6,6 @@ import './playerBComponentMobile.scss'
 import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
 
 const PlayerBComponentMobile = () => {
-
   const [songLike, setSongLike] = useState(false);
   const {
     trackData,
@@ -16,7 +15,7 @@ const PlayerBComponentMobile = () => {
     nextTrack
   } = useContext(CurrentTrackContext);
 
-   const [artists, setArtists] = useState('')
+  const [artists, setArtists] = useState('')
 
   useEffect(() => {
     let isMounted = true
@@ -28,44 +27,43 @@ const PlayerBComponentMobile = () => {
   const [showPopUp, setShowPopUp] = useState(false);
 
   const handleClosePopUp = () => {
-    setShowPopUp(false);
+    setShowPopUp(!showPopUp);
   };
  
-//Cambiar posicion setShowPopUp
   return (
     <>
-    <div className='page-player-mobile' onClick={() => setShowPopUp(!showPopUp)}>
-      <div className='player-bottom-mobile'>
-        <div className='player-bottom-controls-mobile'>
-          <button
-            onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
-            className='player-bottom-controls-mobile__controls-action'
-          >
-            {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
-          </button>
-        </div>
-
-        <div className='player-bottom-track-mobile' >
-          <div className='player-bottom-track-mobile__title'>
-            {currentTrack.name}
+      <div className='page-player-mobile' >
+        <div className='player-bottom-mobile'>
+          <div className='player-bottom-controls-mobile'>
+            <button
+              onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
+              className='player-bottom-controls-mobile__controls-action'
+            >
+              {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
+            </button>
           </div>
-          <div className='player-bottom-track-mobile__artist'>
-            {artists}
-          </div>
-        </div>
 
-        <div className='player-bottom-controls-mobile'>
-          <button className='player-bottom-controls-mobile__btn' onClick={() => setSongLike(!songLike)}>
-            {songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
-          </button>
-          <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>
-            <MdSkipNext />
-          </button>
+          <div className='player-bottom-track-mobile' onClick={handleClosePopUp} >
+            <div className='player-bottom-track-mobile__title'>
+              {currentTrack.name}
+            </div>
+            <div className='player-bottom-track-mobile__artist'>
+              {artists}
+            </div>
+          </div>
+
+          <div className='player-bottom-controls-mobile'>
+            <button className='player-bottom-controls-mobile__btn' onClick={() => setSongLike(!songLike)}>
+              {songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
+            </button>
+            <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>
+              <MdSkipNext />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    {showPopUp && <PlayerTrackDetailsComponentMobile onClose={handleClosePopUp}/>}
+      <PlayerTrackDetailsComponentMobile showPopUp={showPopUp} handleClosePopUp={handleClosePopUp} />
 
     </>
   )

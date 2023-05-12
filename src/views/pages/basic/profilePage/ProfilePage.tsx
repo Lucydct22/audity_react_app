@@ -1,15 +1,19 @@
 import HelmetSEO from "views/utils/HelmetSEO";
 import ProfileComponent from "views/components/basic/profileComponent";
-
+import Spinner from "views/UI/spinner/Spinner";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ProfilePage = () => {
+
+  const { isAuthenticated } = useAuth0()
+
   return (
     <HelmetSEO
-      title='Music | Audity'
+      title='My profile | Audity'
       description='Audity Profile Page'
     >
+      {isAuthenticated ? <ProfileComponent /> : <Spinner />}
 
-      <ProfileComponent />
     </HelmetSEO>
   )
 }

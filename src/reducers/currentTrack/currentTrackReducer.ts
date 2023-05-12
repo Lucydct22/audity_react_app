@@ -76,6 +76,20 @@ export default function currentTrackReducer(state: any, action: any) {
 				}
 			}
 
+		case CurrentTrackTypes.SELECT_CURRENT_TRACK:
+			const { trackData, currentTrack } = payload
+			return {
+				currentTrack: currentTrack,
+				trackData: {
+					...state.trackData,
+					url: trackData.url,
+					audio: trackData.audio,
+					duration: trackData.duration,
+					currentTime: trackData.currentTime,
+					isPlaying: true
+				},
+			}
+
 		default:
 			return state;
 	}

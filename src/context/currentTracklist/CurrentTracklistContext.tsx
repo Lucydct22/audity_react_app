@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import initialTracklistState from "./initialTracklistState";
 
-const CurrentTracklistProvider = createContext(initialTracklistState);
+const CurrentTracklistContext = createContext(initialTracklistState);
 
-export default CurrentTracklistProvider;
+export default CurrentTracklistContext;

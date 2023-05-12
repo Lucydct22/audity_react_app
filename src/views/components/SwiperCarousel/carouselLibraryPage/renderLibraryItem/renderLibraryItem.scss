@@ -1,0 +1,106 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+
+.render-carousel-library-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-decoration: none;
+  width: 100%;
+
+  &__thumbnail {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+      &--img {
+        opacity: 0.7;
+      }
+    }
+
+    &--img {
+      line-height: 0;
+      text-indent: -999em;
+      width: 100%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      border-radius: 4px;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../../assets/img/webp/disc250.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+}
+
+.render-carousel-library-add-one-playlist {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-color: var(--background-on-hover)
+  }
+
+  &__details {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+}
+
+.render-carousel-library-add-one-artist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-color: var(--background-on-hover)
+  }
+
+  &__details {
+    font-size: 14px;
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+}

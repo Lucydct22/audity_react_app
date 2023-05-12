@@ -1,22 +1,12 @@
-import { useState, useEffect, Suspense } from 'react'
+import { Suspense } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import './exploreBComponent.scss'
 import { responsiveBreak } from "utils/componentsConstants";
-import SwiperCarousel from 'views/components/SwiperCarousel/SwiperCarousel';
+import useWindowSizeReport from "hooks/useWindowSizeReport";
+import SwiperMusicPage from 'views/components/SwiperCarousel/carouselMusicPage/SwiperMusicPage';
 
 export default function ExploreBComponent() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
+  const [screenWidth] = useWindowSizeReport()
 
   return (
     <Suspense fallback={<></>}>
@@ -43,9 +33,9 @@ function MobileExplorePage() {
           </div>
         </div>
         <div className="mobile-explore-page__content--body">
-          <SwiperCarousel data={"artists"} />
-          <SwiperCarousel data={"albums"} />
-          <SwiperCarousel data={"playlists"} />
+          <SwiperMusicPage data={"artists"} />
+          <SwiperMusicPage data={"albums"} />
+          <SwiperMusicPage data={"playlists"} />
         </div>
       </div>
     </section>

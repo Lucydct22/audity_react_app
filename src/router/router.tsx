@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { responsiveBreak } from "utils/componentsConstants";
+import { ProtectedAdminRoute } from "./router.middelware";
+import { ProtectedUserSettings } from "./user.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -19,14 +20,17 @@ const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
 const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
 
+const GenresPage = lazy(() => import('views/pages/basic/genresPage/GenresPage'));
+const GenrePage = lazy(() => import('views/pages/basic/genrePage/GenrePage'));
+
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
 
 // LIBRARY PAGES
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
-const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/favoritePage'))
+const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/FavTracksPage'))
 // const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
-// const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages'))
+const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
@@ -71,6 +75,16 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: "genres",
+        element: <Suspense fallback={<></>}><GenresPage /></Suspense>,
+        children: [
+          {
+            path: ":genreId",
+            element: <Suspense fallback={<></>}><GenrePage /></Suspense>,
+          },
+        ]
+      },
+      {
         path: "library",
         element: <Suspense fallback={<></>}><LibraryLayout /></Suspense>,
         children: [
@@ -81,6 +95,10 @@ const router = createBrowserRouter([
           {
             path: "favorites",
             element: <Suspense fallback={<></>}><LibraryFavorites /></Suspense>,
+          },
+          {
+            path: "uploads",
+            element: <Suspense fallback={<></>}><LibraryUploads /></Suspense>,
           },
           {
             path: "*",
@@ -100,8 +118,13 @@ const router = createBrowserRouter([
       },
       {
         path: "settings",
-        element: <Suspense fallback={<></>}><ProfilePage /></Suspense>
-      },
+        element: (
+        <Suspense fallback={<></>}>
+          <ProtectedUserSettings>
+            <ProfilePage />
+            </ProtectedUserSettings>
+          </Suspense>
+      )},
       {
         path: "*",
         element: <Suspense fallback={<></>}><ErrorPage /></Suspense>
@@ -110,11 +133,23 @@ const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <Suspense fallback={<></>}><AdminLayout /></Suspense>,
+    element: (
+      <Suspense fallback={<></>}>
+        <ProtectedAdminRoute>
+          <AdminLayout />
+        </ProtectedAdminRoute>
+      </Suspense>
+    ),
     children: [
       {
         path: "home",
-        element: <Suspense fallback={<></>}><HomeAdminPage /></Suspense>
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <HomeAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        )
       },
       {
         path: "*",

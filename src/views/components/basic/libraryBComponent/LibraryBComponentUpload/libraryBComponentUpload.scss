@@ -1,0 +1,28 @@
+@import '../../../../../sass/variables.scss';
+@import '../../../../../sass/mixins.scss';
+
+  .library-upload{
+    &__content {
+    margin: 2rem;
+  
+    button {
+      @include buttonPrimary(fit-content);
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .library-upload__content {
+      margin: 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .library-upload__compt {
+      margin-left: 0.1rem;
+    }
+  }
+  
+  &__compt{
+    margin-left: 2rem;
+  }
+  }

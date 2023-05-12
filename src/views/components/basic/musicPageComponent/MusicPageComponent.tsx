@@ -1,32 +1,18 @@
-import { useState, useEffect } from "react";
 import { responsiveBreak } from "utils/componentsConstants";
-import DailyListComponent from './dailyListsSlider';
-import ArtistComponent from './artistsSlider';
-import AlbumComponent from './albumsSlider';
-import GenresComponent from './genresSlider';
+import useWindowSizeReport from "hooks/useWindowSizeReport";
+import SwiperMusicPage from "views/components/SwiperCarousel/carouselMusicPage/SwiperMusicPage";
 import './musicPageComponent.scss'
 
 const MusicPageComponent = () => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  })
+  const [screenWidth] = useWindowSizeReport()
 
   return (
     <section className="music-page">
       {(screenWidth > responsiveBreak) ? null : <h1>Music</h1>}
-      <GenresComponent />
-      <ArtistComponent />
-      <DailyListComponent />
-      <AlbumComponent />
+      <SwiperMusicPage data={"genres"} />
+      <SwiperMusicPage data={"artists"} />
+      <SwiperMusicPage data={"playlists"} />
+      <SwiperMusicPage data={"albums"} />
     </section>
   )
 }
