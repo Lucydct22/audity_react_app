@@ -15,7 +15,7 @@ const LibraryLayout = () => {
 
   return (
     <Suspense fallback={<></>}>
-      <section className="library-page">
+      <section className="library-layout">
         <LibraryHeader />
         <Outlet />
       </section>

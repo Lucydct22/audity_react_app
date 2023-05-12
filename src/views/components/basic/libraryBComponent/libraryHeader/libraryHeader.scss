@@ -11,7 +11,7 @@
   width: 100%;
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
-    border-bottom: 0;
+    border-width: 3px;
   }
 
   &__content {
@@ -25,15 +25,21 @@
     margin: 0 auto;
 
     @media (max-width: $media-breakpoint-desktop-mobile) {
-      padding: 18px;
-      padding-top: 0;
-      width: calc(100% - 36px);
+      padding: 0;
+      padding-top: 4px;
+      width: 100%;
+      background-color: var(--library-header-background);
+      gap: 0;
     }
 
     &--profile {
       display: flex;
       align-items: center;
       gap: 24px;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        padding: 0 18px;
+      }
 
       img {
         width: 160px;
@@ -49,7 +55,6 @@
         &--name {
           font-family: 'Anek Gujarati', sans-serif;
           font-size: 32px;
-          line-height: 28px;
           margin: 0;
           color: var(--color-primary);
 
@@ -60,12 +65,17 @@
 
         &--desc {
           color: $color-secondary;
-          margin: 12px 0;
+          margin: 0;
+          margin-bottom: 12px;
         }
 
         &--btn {
           @include buttonPrimary(fit-content);
           margin: 20px 0;
+
+          @media (max-width: $media-breakpoint-desktop-mobile) {
+            display: none;
+          }
         }
       }
     }
@@ -75,9 +85,13 @@
       gap: 30px;
 
       @media (max-width: $media-breakpoint-desktop-mobile) {
-        border-bottom: var(--color-border-1px);
         overflow-x: auto;
-        gap: 0;
+        gap: 8px;
+        margin-bottom: 8px;
+
+        &::-webkit-scrollbar {
+          height: 7px;
+        }
       }
 
       &__options {
@@ -88,17 +102,39 @@
         font-weight: 400;
         font-size: 17px;
         gap: 10px;
-
+        
         @media (max-width: $media-breakpoint-desktop-mobile) {
-          font-size: 15px;
-          gap: 0;
-          justify-content: space-between;
-        }
+          padding: 8px 24px;
+          margin: 0;
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--text-library-header-btn);
+          background-color: var(--background-library-header-btn);
+          border: 2px solid var(--background-library-header-btn);
+          border-radius: 999px;
+          cursor: pointer;
+          transition: all 0.4s;
 
-        @media (max-width: $media-breakpoint-desktop-mobile) {
+          &:first-child {
+            margin-left: 18px;
+          }
+
+          &:last-child {
+            margin-right: 18px;
+          }
+
+          &:hover {
+            border: 2px solid var(--text-active-library-header-btn);
+          }
+
           p {
             width: max-content;
-            padding: 0 10px;
+            padding: 0;
+            margin: 0;
+          }
+
+          .library-header__content--navbar__options--decoration {
+            display: none;
           }
         }
 
@@ -117,16 +153,23 @@
     }
 
     .active {
-      color: $color-main !important;
+      color: $color-main;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        color: var(--text-active-library-header-btn);
+        background-color: var(--background-active-library-header-btn);
+        border: 2px solid var(--background-active-library-header-btn);
+      }
 
       .library-header__content--navbar__options--decoration {
         visibility: visible;
       }
 
       .library-header__content--navbar__options--label {
-        color: var(--color-primary);
+        @media (min-width: $media-breakpoint-desktop-mobile) {
+          color: var(--color-primary);
+        }
       }
     }
   }
-
 }

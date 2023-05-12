@@ -1,3 +1,9 @@
-.library-page {
+@import '../../../sass/variables.scss';
+
+.library-layout {
   padding-top: 24px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding-top: 0;
+  }
 }

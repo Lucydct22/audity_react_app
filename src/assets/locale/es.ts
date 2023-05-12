@@ -32,7 +32,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'Estás dentro de tus datos personales',
-  profile_account: 'Cuenta Audity',
+  profile_account: 'Ajustes',
   profile_email: 'Tu correo electrónico',
   profile_password: 'Tu contraseña',
   profile_username: 'Tu nombre de usuario',

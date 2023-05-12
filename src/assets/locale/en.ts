@@ -32,7 +32,7 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'You are inside your personal details',
-  profile_account: 'Audity account',
+  profile_account: 'Settings',
   profile_email: 'Your email',
   profile_password: 'Your password',
   profile_username: 'Your username',
