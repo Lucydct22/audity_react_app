@@ -17,7 +17,6 @@ export default function ProgressBar() {
     return setSliderEl(sliderValue);
 
   }, [trackData])
-  console.log(theme);
 
   return (
     <div className="progress-bar">
