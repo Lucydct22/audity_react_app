@@ -1,8 +1,9 @@
+import makeRequest from "api/utils/makeRequest";
 import { basePath } from "../utils/config";
 import { Genres, Genre, Playlist, Albums, Artist } from "interfaces/music";
 
 
-export const getGenresApi = async (): Promise<Genres> => {	
+export const getGenresApi = async (): Promise<Genres> => {
 	const response = await fetch(`${basePath}/genres`)
 	const data = await response.json()
 	return data as Genres
@@ -59,16 +60,23 @@ export const updateGenresApi = async (genresId: string, data: Partial<Genres>): 
 	return result as Genres
 }
 
-//ADD
-export const addGenresApi = async (newGenres: Partial<Genres>): Promise<Genres> => {
+export const postGenreApi = async (genre: any, token: any): Promise<any> => {
 	const params = {
 		method: "POST",
 		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(newGenres),
+		body: JSON.stringify(genre),
 	}
-	const response = await fetch(`${basePath}/genres`, params)
+	const response = await fetch(`${basePath}/genre`, params)
 	const data = await response.json()
 	return data as Genres
+}
+
+export const postGenreImageApi = async (genreId: string, image: any, token: any): Promise<any> => {
+	const url = `${basePath}/genre-image/${genreId}`;
+	const formData = new FormData();
+	formData.append("image", image);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
 }
