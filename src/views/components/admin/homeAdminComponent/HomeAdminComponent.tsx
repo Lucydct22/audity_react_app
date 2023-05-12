@@ -1,17 +1,7 @@
-import { useTranslation } from 'react-i18next';
-import Language from 'views/UI/language';
-import Theme from 'views/UI/theme/Theme';
-
-const HomeAdminComponent = () => {
-  const { t } = useTranslation();
-
+export default function HomeAdminComponent() {
   return (
     <div>
-      <Theme />
-      <Language />
-      {t("home_title_admin")}
+      Home Admin Component
     </div>
   )
 }
-
-export default HomeAdminComponent;
