@@ -52,48 +52,37 @@
 				flex-wrap: wrap;
 				align-items: center;
 				margin-right: 50px;
-			}
 
-			&--play {
-				margin-right: 30px;
+				&--play {
+					margin-right: 30px;
 
-				&__btn {
-					@include buttonPrimary();
-					display: inline-flex;
-					justify-content: center;
-					align-items: center;
-					width: 220px;
-					border: 0px;
-					margin: 0px;
-					padding: 10px 30px;
-					cursor: pointer;
-					border-radius: 20px;
-					font-size: 15px;
-					font-weight: 700;
-					color: white;
-					background-color: #ef5466;
+					&__btn {
+						@include buttonPrimary();
+					}
+
+					span {
+						padding: 0px 10px;
+						padding-top: 2px;
+					}
 				}
 
-				span {
-					padding: 0px 10px;
-					padding-top: 2px;
+				&--like {
+					margin-right: 20px;
+
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 				}
-			}
 
-			&--like {
-				margin-right: 20px;
+				&--follow {
 
-				&__btn {
-					@include carousel-thumbnail-btn();
+					&__btn {
+						@include carousel-thumbnail-btn();
+					}
 				}
 			}
 
-			&--follow {
 
-				&__btn {
-					@include carousel-thumbnail-btn();
-				}
-			}
 		}
 	}
 
