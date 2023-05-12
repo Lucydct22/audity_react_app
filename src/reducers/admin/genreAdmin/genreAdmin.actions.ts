@@ -23,7 +23,7 @@ export async function postGenreAction(dispatch: any, data: any, token: any, mess
 		const postGenre: any = await api.postGenreApi({ name: data.name }, token)
 		const postGenreImage: any = await api.postGenreImageApi(postGenre.genre._id, data.image.file.originFileObj, token)
 		if (postGenreImage.status === 200) {
-			message.success('Genre db created')
+			message.success(`Genre '${data.name}' created`)
 			messageApi.destroy
 			return dispatch({
 				type: GenreAdmin.POST_GENRE,

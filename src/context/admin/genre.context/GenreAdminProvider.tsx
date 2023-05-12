@@ -19,7 +19,8 @@ export default function GenreAdminProvider(props: ChildrenProps) {
 		initGenres()
 	}, [isLoading, isAuthenticated])
 
-	const postGenre = useCallback(async (genre: string, messageApi: any) => {
+	const postGenre = useCallback(async (genre: any, messageApi: any) => {
+		messageApi.open({	type: 'loading', content: `Creating genre '${genre.name}'` })
 		const token = await getAccessTokenSilently()
 		action.postGenreAction(dispatch, genre, token, messageApi)
 	}, []);
