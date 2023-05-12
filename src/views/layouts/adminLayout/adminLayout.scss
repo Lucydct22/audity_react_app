@@ -1,0 +1,37 @@
+.layout-admin {
+	&__header {
+		height: 64px;
+
+		&--logo {
+			position: absolute;
+			left: 15px;
+			color: #fff;
+			font-size: 1.2rem;
+			font-weight: 600;
+		}
+
+		&--menu {
+			padding-left: 20px;
+		}
+
+		&--exit {
+			position: absolute;
+			right: 20px;
+			top: 0;
+			color: #fff;
+			font-size: 1.2rem;
+		}
+	}
+
+	&__content {
+		min-height: calc(100vh - 124px);
+		padding: 20px;
+	}
+
+	&__footer {
+		height: 60px;
+		color: #fff;
+		background-color: #001529;
+		text-align: center;
+	}
+}
