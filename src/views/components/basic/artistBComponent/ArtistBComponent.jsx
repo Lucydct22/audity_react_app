@@ -54,24 +54,26 @@ export default function ArtistBComponent({ artist }) {
 									)}
 								</button>
 							</div>
-							<div className="artist-page__section--buttons__container--like">
-								<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
-									{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
-								</button>
-							</div>
-							<div className="artist-page__section--buttons__container--follow">
-								<button className="artist-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
-									{isFollowing ? (
-										<>
-											<SlUserUnfollow />
-										</>
-									) : (
-										<>
-											<SlUserFollowing />
-										</>
-									)}
-								</button>
-							</div>
+							<span className='artist-page__section--buttons__container__btncontainer'>
+								<div className="artist-page__section--buttons__container--like">
+									<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
+										{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
+									</button>
+								</div>
+								<div className="artist-page__section--buttons__container--follow">
+									<button className="artist-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
+										{isFollowing ? (
+											<>
+												<SlUserUnfollow />
+											</>
+										) : (
+											<>
+												<SlUserFollowing />
+											</>
+										)}
+									</button>
+								</div>
+							</span>
 						</div>
 					</div>
 				</section>

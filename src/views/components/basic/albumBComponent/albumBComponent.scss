@@ -2,14 +2,11 @@
 @import '../../../../sass/mixins.scss';
 
 .album-page {
-	max-width: 1504px;
 	padding: 0 32px;
 	display: flex;
 	flex-wrap: wrap;
 
 	&__image {
-		margin-left: 100px;
-
 		img {
 			border-radius: 4px;
 			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
@@ -20,7 +17,6 @@
 
 	&__section {
 		margin-top: 50px;
-		flex: 1 1 100%;
 
 		&--details {
 			&__title {
@@ -63,6 +59,19 @@
 
 				&__btn {
 					@include buttonPrimary();
+					display: inline-flex;
+					justify-content: center;
+					align-items: center;
+					width: 220px;
+					border: 0px;
+					margin: 0px;
+					padding: 10px 30px;
+					cursor: pointer;
+					border-radius: 20px;
+					font-size: 15px;
+					font-weight: 700;
+					color: white;
+					background-color: #ef5466;
 				}
 
 				span {
