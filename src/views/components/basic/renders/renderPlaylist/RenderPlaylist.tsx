@@ -7,8 +7,8 @@ import './renderPlaylist.scss';
 export default function RenderPlaylist({ playlist }: any) {
   const { t } = useTranslation();
   const { _id, name, cover } = playlist;
-  const fans = Math.floor(Math.random() * (980000 - 1340 + 1)) + 1340;
-  let totalFans = fans.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+  // const fans = Math.floor(Math.random() * (980000 - 1340 + 1)) + 1340;
+  // let totalFans = fans.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 
   return (
     <Link to={`/playlists/${_id}`} className='render-playlist'>
@@ -26,7 +26,7 @@ export default function RenderPlaylist({ playlist }: any) {
       </div>
       <p className='render-playlist__description'>{name}</p>
       <p className='render-playlist__details'>
-        30 {t("musicpage_albumtracks")} - {totalFans} fans
+        30 {t("musicpage_albumtracks")} - 103.456 fans
       </p>
     </Link>
   )

@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { IoChevronDownOutline, IoAdd, IoHeartOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
+import { IoChevronDownOutline, IoAdd, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext, MdOutlineQueueMusic } from "react-icons/md";
 import './playerTrackDetailsComponentMobile.scss'
 import img from 'assets/img/albums/summer-playlist.png'
-
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useTranslation } from 'react-i18next';
+import { TfiPlus } from "react-icons/tfi";
+import PopupAddPlaylistBComponent from '../../mobile/popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
 
 
 const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
-
+  const { t } = useTranslation();
+  const [songLike, setSongLike] = useState(false);
   const {
     trackData,
     currentTrack,
@@ -21,10 +25,9 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-
   const [artists, setArtists] = useState('')
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
 
   useEffect(() => {
     let isMounted = true
@@ -32,6 +35,14 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     isMounted && setArtists(artists)
     return () => { isMounted = false }
   }, [])
+
+
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const handleClosePopUp = () => {
+    setShowPopUp(false);
+  };
+
 
 
 
@@ -47,8 +58,8 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
         <div className='player-track-details-container__track-info__data'>
           <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
           <div className='player-track-details-container__track-info__data__info'>
-            <p >{artists}</p>
-            <p >{currentTrack.name}</p>
+            <p >{artists} </p>
+            <p > {currentTrack.album}</p>
           </div>
         </div>
 
@@ -61,9 +72,11 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
         </div>
 
         <div className='player-track-details-container__track-info__player-bottom-controls'>
-          <div className='player-track-details-container__track-info__player-bottom-controls__like'>
-            <IoHeartOutline className='' />
-          </div>
+
+          <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => setSongLike(!songLike)}>
+            {songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
+          </button>
+
           <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={previousTrack}>
             <MdSkipPrevious />
           </button>
@@ -73,9 +86,11 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
           <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={nextTrack}>
             <MdSkipNext />
           </button>
-          <div className='player-track-details-container__track-info__player-bottom-controls__add'>
-            <IoAdd className='' />
-          </div>
+
+          <button className='player-track-details-container__track-info__player-bottom-controls__add' onClick={() => setShowPopUp(!showPopUp)} >
+            <IoAddOutline />
+          </button>
+
         </div>
 
         <div className='player-track-details-container__track-info__add-bottom'>
@@ -96,6 +111,9 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
           </div>
         </div>
       </div>
+      {showPopUp && (
+        <PopupAddPlaylistBComponent onClose={handleClosePopUp} />
+      )}
     </div>
   )
 }
