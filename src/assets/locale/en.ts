@@ -93,10 +93,10 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
   page_pnumber: 'Songs',
-  playbutton: 'Play',
+  playbutton: 'Mix',
   likebutton: 'Like',
   followbutton: 'Follow',
-  pausebutton: 'Playing',
+  pausebutton: 'Mix',
   likedbutton: 'Fav',
   followingbutton: 'Following',
 

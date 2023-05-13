@@ -11,12 +11,11 @@ export default function AlbumsBComponent({ albums }: any) {
 
   return (
     <div className="albums-page-content">
-      {(screenWidth > responsiveBreak) ?
-        null :
+      {(screenWidth < responsiveBreak) &&
         <Link to={"/explore"} className="albums-page-content__mobile">
           <MdArrowBack size={27} />
-          <span>Explore page</span>
-        </Link>}
+        </Link>
+      }
       <h1>Album Page</h1>
       <div className='albums-page-content__grid'>
         {albums.map((album: Artist) => {

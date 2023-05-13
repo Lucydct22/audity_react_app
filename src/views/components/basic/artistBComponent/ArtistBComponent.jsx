@@ -1,82 +1,64 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { MdPause, MdPlayArrow } from "react-icons/md";
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
+import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
+import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
 import { SlUserFollowing, SlUserUnfollow } from "react-icons/sl";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import './artistBComponent.scss';
 
 
 export default function ArtistBComponent({ artist }) {
-	const { t } = useTranslation();
-	const [isPlaying, setIsPlaying] = useState(false);
-	const [isFollowing, setIsFollowing] = useState(false);
-	const [isLiked, setIsLiked] = useState(false);
+  const { t } = useTranslation();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [screenWidth] = useWindowSizeReport()
 
-	const handlePlayClick = () => {
-		setIsPlaying((prevState) => !prevState);
-	};
+  const handlePlayClick = () => {
+    setIsPlaying((prevState) => !prevState);
+  };
 
-	const handleFollowClick = () => {
-		setIsFollowing((prevState) => !prevState);
-	};
+  const handleFollowClick = () => {
+    setIsFollowing((prevState) => !prevState);
+  };
 
-	return (
-		<>
-			<div className="artist-page">
-				<div className="artist-page__image">
-					<img src={artist?.imageUrl} alt="Image description" />
-				</div>
-				<section className="artist-page__section">
-					<div className="artist-page__section--details">
-						<div className="artist-page__section--details__title">
-							<h1>{artist?.name}</h1>
-						</div>
-						<div className="artist-page__section--details__songs">
-							<p>500.655 Fans</p>
-						</div>
-					</div>
-
-					<div className="artist-page__section--buttons">
-						<div className="artist-page__section--buttons__container">
-							<div className="artist-page__section--buttons__container--play">
-								<button className="artist-page__section--buttons__container--play__btn" onClick={handlePlayClick}>
-									{isPlaying ? (
-										<>
-											<MdPause size={20} />
-											<span>{t('pausebutton')}</span>
-										</>
-									) : (
-										<>
-											<MdPlayArrow size={20} />
-											<span>{t('playbutton')}</span>
-										</>
-									)}
-								</button>
-							</div>
-							<span className='artist-page__section--buttons__container__btncontainer'>
-								<div className="artist-page__section--buttons__container--like">
-									<button className="artist-page__section--buttons__container--like__btn" onClick={() => setIsLiked(!isLiked)}>
-										{isLiked ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
-									</button>
-								</div>
-								<div className="artist-page__section--buttons__container--follow">
-									<button className="artist-page__section--buttons__container--follow__btn" onClick={handleFollowClick}>
-										{isFollowing ? (
-											<>
-												<SlUserUnfollow />
-											</>
-										) : (
-											<>
-												<SlUserFollowing />
-											</>
-										)}
-									</button>
-								</div>
-							</span>
-						</div>
-					</div>
-				</section>
-			</div>
-		</>
-	);
+  return (
+    <>
+      {(screenWidth < responsiveBreak) &&
+        <Link to={"/explore"} className="artist-page-back">
+          <MdArrowBack size={27} />
+        </Link>
+      }
+      <div className="artist-page">
+        <img src={artist?.imageUrl} alt="Image description" />
+        <section className="artist-page__section">
+          <h1>{artist?.name}</h1>
+          <p>500.655 Fans</p>
+          <div className="artist-page__section--buttons">
+            <button className="artist-page__section--buttons__play" onClick={handlePlayClick}>
+              {isPlaying ? (
+                <>
+                  <MdPause size={20} />
+                  <span>{t('pausebutton')}</span>
+                </>
+              ) : (
+                <>
+                  <MdPlayArrow size={20} />
+                  <span>{t('playbutton')}</span>
+                </>
+              )}
+            </button>
+            <button className="artist-page__section--buttons__like" onClick={() => setIsLiked(!isLiked)}>
+              {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
+            </button>
+            <button className="artist-page__section--buttons__follow" onClick={handleFollowClick}>
+              {isFollowing ? <SlUserUnfollow /> : <SlUserFollowing color='#ef5466' />}
+            </button>
+          </div>
+        </section>
+      </div>
+    </>
+  );
 }

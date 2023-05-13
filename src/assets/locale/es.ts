@@ -91,8 +91,8 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
   page_pnumber: 'Canciones',
-  playbutton: 'Reproducir',
-  pausebutton: 'Reproduciendo',
+  playbutton: 'Mix',
+  pausebutton: 'Mix',
   likebutton: 'Me gusta',
   likedbutton: 'Fav',
   followbutton: 'Seguir',
