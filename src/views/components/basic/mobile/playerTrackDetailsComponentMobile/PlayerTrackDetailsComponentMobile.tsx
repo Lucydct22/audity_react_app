@@ -47,10 +47,10 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
 
 
   return (
-    <div className='player-track-details-container'>
+    <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
       <div className='player-track-details-container__track-info'>
         <div className='player-track-details-container__track-info__close'>
-          <button onClick={onClose}><IoChevronDownOutline /></button>
+          <button onClick={handleClosePopUp}><IoChevronDownOutline /></button>
           <p>{currentTrack.name}</p>
         </div>
         <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />

@@ -33,6 +33,15 @@ export default function myLibraryReducer(state: any, action: any) {
 				}
 			}
 
+		case MyLibraryTypes.POST_PLAYLIST:
+			return {
+				...state,
+				playlists: {
+					...state.playlists,
+					userContent: [...state.playlists.userContent, payload.playlist]
+				}
+			}
+
 		default:
 			return state
 	}

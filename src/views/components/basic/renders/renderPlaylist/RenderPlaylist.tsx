@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa';
@@ -5,6 +6,7 @@ import GreyDailyLogo from 'assets/img/png/grey-daily-icon.png'
 import './renderPlaylist.scss';
 
 export default function RenderPlaylist({ playlist }: any) {
+  const [totalFans, setTotalFans] = useState("")
   const { t } = useTranslation();
   const { _id, name, cover } = playlist;
   // const fans = Math.floor(Math.random() * (980000 - 1340 + 1)) + 1340;

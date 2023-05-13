@@ -1,7 +1,7 @@
-@import '../../../../sass/variables';
-@import '../../../../sass/mixins';
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
 
-.artist-page {
+.playlist-page {
   display: flex;
   margin-bottom: 34px;
 
@@ -115,9 +115,24 @@
       }
     }
   }
+
+  &__search-bar {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 100px;
+    flex: 1 1 100%;
+
+    &__input {
+      width: 100%;
+      max-width: 400px;
+      height: 25px;
+      border: 1px solid rgba(128, 128, 128, 0.505);
+      border-radius: 4px;
+    }
+  }
 }
 
-.artist-page-back {
+.playlist-page-back {
   display: flex;
   align-items: center;
   height: 56px;

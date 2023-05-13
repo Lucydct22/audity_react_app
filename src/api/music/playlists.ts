@@ -3,12 +3,26 @@ import { basePath } from "../utils/config";
 import { Playlist } from "interfaces/music";
 import { params } from "api/utils/utils";
 
+export const postPlaylistApi = async (playlistData: any, token: string): Promise<any> => {
+	const params = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(playlistData),
+	}
+	const response = await fetch(`${basePath}/playlist`, params)
+	const data = await response.json()
+	return data
+}
 
 export const getPlaylistApi = async (): Promise<Playlist> => {
 	const response = await fetch(`${basePath}/playlists`)
 	const data = await response.json()
 	return data as Playlist
 }
+
 
 export const getPlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
 	const response = await fetch(`${basePath}/playlist/${playlistId}`)

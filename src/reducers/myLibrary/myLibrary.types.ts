@@ -1,1 +1,2 @@
 export const INIT_MY_LIBRARY = 'INIT_MY_LIBRARY'
+export const POST_PLAYLIST = 'POST_PLAYLIST'

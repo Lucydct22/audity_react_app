@@ -1,0 +1,11 @@
+@import '../../../../sass/variables';
+
+.playlist-layout {
+  margin: 0 auto;
+  padding: 34px;
+  max-width: 1504px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0;
+  }
+}

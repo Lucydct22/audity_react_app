@@ -1,75 +1,86 @@
+@import '../../../../../../sass/variables';
+
 .progress-bar {
-	&__range {
-		width: 100%;
-		cursor: pointer;
-	}
-
-	@media screen and (max-width: 768px) {
-		&__range {
-			width: 80vw;
-			cursor: pointer;
-			background: white;
-			color: white;
-		}
-	}
+  &__range {
+    width: 100%;
+    cursor: pointer;
+  }
 }
 
-//Below setters for input-range 
-
-input[type='range'],
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-webkit-slider-thumb {
-	-webkit-appearance: none;
-}
-
-input[type=range]::-webkit-slider-thumb {
-	background-color: #ffffff;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	margin-top: -5.2px;
-}
-
-input[type=range]::-moz-range-thumb {
-	background-color: #ffffff;
-	width: 15px;
-	height: 15px;
-	border: 3px solid #333;
-	border-radius: 50%;
-}
-
-input[type=range]::-ms-thumb {
-	background-color: #ffffff;
-	width: 20px;
-	height: 20px;
-	border: 3px solid #ffffff;
-	border-radius: 50%;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-	background-color: #dbdada;
-	height: 3px;
-}
-
-/*
-input[type=range]:focus::-webkit-slider-runnable-track {
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
   outline: none;
+  border-radius: 15px;
+  height: 2px;
+  background: #52525d;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    height: 4px;
+    border-radius: 0;
+  }
 }
 
-input[type=range]::-moz-range-track {
-  background-color: #777;
-  height: 3px;
+input[type="range"]:hover {
+  height: 5px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    height: 4px;
+  }
 }
 
-input[type=range]::-ms-track {
-  background-color: #777;
-  height: 3px;
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 0 1px gray;
+  transition: .2s ease-in-out;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    height: 0;
+    width: 0;
+    box-shadow: none;
+  }
 }
 
-input[type=range]::-ms-fill-lower {
-  background-color: HotPink
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 0 1px gray;
+  transition: .2s ease-in-out;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    height: 0;
+    width: 0;
+    box-shadow: none;
+  }
 }
 
-input[type=range]::-ms-fill-upper {
-  background-color: black;
-} */
+input[type="range"]:focus::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 0 1px gray;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 0 1px gray;
+}

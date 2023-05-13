@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
+import '../../../../UI/ModalAntdPlaylistCreate/modalAntdPlaylistCreate.scss'
 import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp'
 import { TfiPlus } from "react-icons/tfi";
 import { Modal } from 'antd';
@@ -9,16 +10,24 @@ import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCre
 import RenderAlbum from 'views/components/basic/renders/renderAlbum/RenderAlbum';
 import RenderArtist from 'views/components/basic/renders/renderArtist/RenderArtist';
 import RenderPlaylist from 'views/components/basic/renders/renderPlaylist/RenderPlaylist';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 export default function RenderLibraryItem({ list, type }) {
+  const { postPlaylist } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const { _id } = list;
   const [open, setOpen] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
+  const nameRef = useRef("");
+  const descRef = useRef("");
 
   const hideModal = () => {
     setOpen(false);
   };
+
+  function handleClick() {
+    postPlaylist(nameRef.current.value, descRef.current.value);
+  }
 
   const confirm = () => {
     modal.confirm({
@@ -26,8 +35,11 @@ export default function RenderLibraryItem({ list, type }) {
       closable: true,
       icon: 0,
       width: 800,
-      content: <ModalPlaylist />,
+      content: (
+        <ModalPlaylist nameRef={nameRef} descRef={descRef} />
+      ),
       okText: 'CREATE',
+      onOk: handleClick
     });
   };
 
@@ -81,3 +93,4 @@ export default function RenderLibraryItem({ list, type }) {
     </div>
   )
 }
+

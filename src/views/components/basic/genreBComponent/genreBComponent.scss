@@ -7,35 +7,32 @@
   max-width: 1504px;
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
-    padding: 18px;
-    padding-top: 0;
+    padding: 0 18px;
   }
 
   &__title {
-    font-size: 2rem;
     color: $color-main;
   }
 
-  &__sectiont {
-    &__title {
+  &__section {
+    &--title {
       margin-bottom: 3rem;
     }
 
-    &__content {
+    &--content {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      grid-gap: 1rem;
       margin-bottom: 5rem;
-      width: 100rem;
-      gap: 3rem;
-    }
-
-   @media screen and (max-width: 768px) {
-    &__content {
-      grid-template-columns: repeat(2, 1fr);
       width: 100%;
-    }
-  } 
-  }
+      gap: 30px;
 
+      @media (max-width: 1300px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+  
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
 }

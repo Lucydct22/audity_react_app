@@ -53,6 +53,10 @@
       display: flex;
       justify-content: space-between;
       font-weight: 400;
+
+      &__actions {
+        display: flex;
+      }
     }
 
     &--seekbar {

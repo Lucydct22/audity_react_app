@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,7 @@ import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, I
 import './playerBComponentDesktop.scss'
 import { Popover, Modal } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
@@ -27,6 +28,7 @@ const PlayerBComponentDesktop = () => {
   } = useContext(CurrentTrackContext);
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
+  const { playlists, postPlaylist } = useContext(MyLibraryContext)
   const [open, setOpen] = useState(false);
   const hide = () => {
     setOpen(false);
@@ -35,8 +37,14 @@ const PlayerBComponentDesktop = () => {
     setOpen(newOpen);
   };
 
+  function handleClick() {
+    postPlaylist(nameRef.current.value, descRef.current.value);
+  }
+
   const [openModal, setOpenModal] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
+  const nameRef = useRef("");
+  const descRef = useRef("");
 
   const hideModal = () => {
     setOpenModal(false);
@@ -48,8 +56,9 @@ const PlayerBComponentDesktop = () => {
       closable: true,
       icon: 0,
       width: 800,
-      content: <ModalPlaylist />,
+      content: <ModalPlaylist nameRef={nameRef} descRef={descRef} />,
       okText: 'CREATE',
+      onOk: handleClick
     });
   };
 
@@ -62,17 +71,16 @@ const PlayerBComponentDesktop = () => {
 
   const popoverContent = (
     <div className="player-add-to-playlist">
-      <div className="player-add-to-playlist__add" onClick={() => { confirm(); hide();}}>
+      <div className="player-add-to-playlist__add" onClick={() => { confirm(); hide(); }}>
         <TfiPlus size={26} />
         <span>{t("player_component_popover_add_playlist")}</span>
       </div>
       <div className="player-add-to-playlist__results">
-        <p>Playlist</p>
-        <p>Favorites</p>
-        <p>Favorites</p>
-        <p>Favorites</p>
-        <p>Favorites</p>
-        <p>Favorites</p>
+        {playlists.userContent &&
+          playlists.userContent?.map((playlist) => {
+            return <p>{playlist.name}</p>
+          })
+        }
       </div>
       <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
       {contextHolder}
@@ -123,13 +131,13 @@ const PlayerBComponentDesktop = () => {
 
         <div className='player-bottom-options'>
           <button className='page-player-bottom__btn' onClick={shuffleTracklist}>
-            {shuffle ? <IoShuffleOutline /> : <IoShuffleOutline color='#C1C1C1' />}
+            {shuffle ? <IoShuffleOutline color='#ef5466' /> : <IoShuffleOutline />}
           </button>
           <button className='page-player-bottom__btn' onClick={loopTrack}>
-            {trackData.hasLoop ? <IoRepeatOutline /> : <IoRepeatOutline color='#C1C1C1' />}
+            {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
           </button>
           <button className='page-player-bottom__btn' onClick={muteTrack}>
-            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline color='#C1C1C1' />}
           </button>
         </div>
 
