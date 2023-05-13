@@ -18,7 +18,7 @@ export default function CurrentTrackProvider({ children }: any) {
 	const { audio } = trackData;
 
 	useEffect(() => {
-		initCurrentTrackAction(dispatch, currentTrackState, currentTracklist);
+		initCurrentTrackAction(dispatch);
 	}, []);
 
 	const playCurrentTrack = function () {

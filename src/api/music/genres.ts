@@ -34,19 +34,20 @@ export const getGenreArtistById = async (genreId: string): Promise<{ genre: Genr
 }
 
 
-export const deleteGenresByIdApi = async (genresId: string): Promise<Genres> => {
+export const deleteGenreByIdApi = async (genre: any, token: any): Promise<any> => {
 	const params = {
 		method: "DELETE",
 		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
-		}
+		},
+		body: JSON.stringify({imagePublicId: genre.imagePublicId}),
 	}
-	const response = await fetch(`${basePath}/genres/${genresId.toString()}`, params)
-	const data = await response.json()
-	return data as Genres
+	const response = await fetch(`${basePath}/delete-genre/${genre._id}`, params)
+	const result = await response.json()
+	return result as Genres
 }
 
-//UPDATE
 export const updateGenresApi = async (genresId: string, data: Partial<Genres>): Promise<Genres> => {
 	const params = {
 		method: "PUT",

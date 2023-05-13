@@ -20,18 +20,28 @@ export default function GenreAdminProvider(props: ChildrenProps) {
 	}, [isLoading, isAuthenticated])
 
 	const postGenre = useCallback(async (genre: any, messageApi: any) => {
-		messageApi.open({	type: 'loading', content: `Creating genre '${genre.name}'` })
+		messageApi.open({ type: 'loading', content: `Creating genre '${genre.name}'` })
 		const token = await getAccessTokenSilently()
 		action.postGenreAction(dispatch, genre, token, messageApi)
 	}, []);
 
+	const deleteGenre = useCallback(async (genre: any, messageApi: any) => {
+		messageApi.open({ type: 'loading', content: `Removing genre`, duration: 5 })
+		const token = await getAccessTokenSilently()
+		if (isAuthenticated && token && genre) {
+			action.deleteGenreAction(dispatch, genre, token, genresState, messageApi)
+		}
+	}, [genresState]);
+
 	const memoProvider = useMemo(
 		() => ({
 			...genresState,
-			postGenre
+			postGenre,
+			deleteGenre
 		}), [
 		genresState,
-			postGenre
+		postGenre,
+		deleteGenre
 	]
 	);
 

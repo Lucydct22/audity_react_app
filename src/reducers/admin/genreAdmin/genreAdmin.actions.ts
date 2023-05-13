@@ -14,7 +14,7 @@ export async function initGenresAction(dispatch: any) {
 			throw new Error()
 		}
 	} catch (err) {
-		console.log(err);
+		message.error('Server error')
 	}
 }
 
@@ -23,17 +23,39 @@ export async function postGenreAction(dispatch: any, data: any, token: any, mess
 		const postGenre: any = await api.postGenreApi({ name: data.name }, token)
 		const postGenreImage: any = await api.postGenreImageApi(postGenre.genre._id, data.image.file.originFileObj, token)
 		if (postGenreImage.status === 200) {
-			message.success(`Genre '${data.name}' created`)
-			messageApi.destroy
+			messageApi.destroy()
+			messageApi.success(`Genre '${data.name}' created`)
 			return dispatch({
 				type: GenreAdmin.POST_GENRE,
 				payload: postGenreImage.genre
 			})
 		} else {
-			message.success('Server error')
-			messageApi.destroy
+			messageApi.destroy()
+			messageApi.error('Server error')
 		}
 	} catch (err) {
-		console.log(err);
+		messageApi.destroy()
+		message.error('Server error')
+	}
+}
+
+export async function deleteGenreAction(dispatch: any, genre: any, token: any, genresState: any, messageApi: any) {
+	try {
+		const genreToDelete: any = await api.deleteGenreByIdApi(genre, token)
+		if (genresState.genres.length > 0 || genreToDelete.status === 200) {
+			const filteredGenres = genresState.genres.filter((item: any) => item._id !== genre._id)
+			messageApi.destroy()
+			message.success(`Genre deleted`)
+			return dispatch({
+				type: GenreAdmin.DELETE_GENRE,
+				payload: filteredGenres
+			})
+		} else {
+			messageApi.destroy()
+			message.error('Server error')
+		}
+	} catch (err) {
+		messageApi.destroy()
+		message.error('Server error')
 	}
 }

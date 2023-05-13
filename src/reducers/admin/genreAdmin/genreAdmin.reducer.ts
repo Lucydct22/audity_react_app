@@ -16,6 +16,12 @@ export default function genreAdminReducer(state: any, action: any) {
 				genres: [...state.genres, payload]
 			}
 
+		case GenreAdminTypes.DELETE_GENRE:
+			return {
+				...state,
+				genres: payload
+			}
+
 		default:
 			return state
 	}
