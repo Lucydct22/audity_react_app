@@ -24,7 +24,7 @@
   padding: 16px;
   border-radius: 4px;
   width: 70vw;
-  height: 60vh;
+  height: 70vh;
 
   .player-mobile-add-to-playlist {
 
@@ -82,4 +82,10 @@
       font-weight: bold;
     }
   }
+}
+
+.render-playlist-mini-container{
+  height: 500px; /* set the height to your desired value */
+  overflow: scroll;
+  overflow-x: hidden;
 }

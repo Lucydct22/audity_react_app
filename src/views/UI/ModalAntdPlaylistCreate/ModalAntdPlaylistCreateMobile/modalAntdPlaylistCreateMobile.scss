@@ -13,7 +13,7 @@
   padding: 16px;
   border-radius: 4px;
   width: 70vw;
-  height: 60vh;
+  height: 70vh;
 
 
   &__header {
@@ -51,8 +51,8 @@
       width: 220px;
       border-radius: 4px;
       box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
 
       @media (max-width: 600px) {
         width: 160px;
@@ -125,7 +125,7 @@
   }
   &__footer-btn{
     @include buttonPrimary(fit-content);
-    margin-top: 1.5rem;
+    margin-top: 4rem;
     margin-left: 30%;
   }
 }
