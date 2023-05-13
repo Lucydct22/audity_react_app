@@ -91,7 +91,7 @@ const englishTranslation = {
   track_list_album: 'ALBUM',
   track_list_rating: 'RATING',
 
-  /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
+  /*~~~~~~~~~~~~~ INDIVIDUAL PAGES ~~~~~~~~~~~~~*/
   page_pnumber: 'Songs',
   playbutton: 'Mix',
   likebutton: 'Like',

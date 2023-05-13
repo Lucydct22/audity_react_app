@@ -131,13 +131,13 @@ const PlayerBComponentDesktop = () => {
 
         <div className='player-bottom-options'>
           <button className='page-player-bottom__btn' onClick={shuffleTracklist}>
-            {shuffle ? <IoShuffleOutline /> : <IoShuffleOutline color='#C1C1C1' />}
+            {shuffle ? <IoShuffleOutline color='#ef5466' /> : <IoShuffleOutline />}
           </button>
           <button className='page-player-bottom__btn' onClick={loopTrack}>
-            {trackData.hasLoop ? <IoRepeatOutline /> : <IoRepeatOutline color='#C1C1C1' />}
+            {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
           </button>
           <button className='page-player-bottom__btn' onClick={muteTrack}>
-            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline color='#C1C1C1' />}
           </button>
         </div>
 

@@ -89,7 +89,7 @@ const spanishTranslation = {
   library_header_album: 'ÁLBUM',
   library_header_rating: 'RATING',
 
-  /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
+  /*~~~~~~~~~~~~~ INDIVIDUAL PAGES ~~~~~~~~~~~~~*/
   page_pnumber: 'Canciones',
   playbutton: 'Mix',
   pausebutton: 'Mix',

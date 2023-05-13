@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
+import { responsiveBreak } from "utils/componentsConstants";
 import { useTranslation } from 'react-i18next';
+import { AiOutlineHeart } from "react-icons/ai";
 import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
 import { SlUserFollowing, SlUserFollow } from "react-icons/sl";
-import { AiOutlineHeart } from "react-icons/ai";
-import './artistBComponent.scss';
+import './playlistBComponent.scss';
 
-export default function ArtistBComponent({ artist }) {
+export default function PlaylistBComponent({ playlist }) {
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -31,19 +31,19 @@ export default function ArtistBComponent({ artist }) {
   return (
     <>
       {(screenWidth < responsiveBreak) &&
-        <div className="artist-page-back">
+        <div className="playlist-page-back">
           <button onClick={() => navigate(-1)}>
             <MdArrowBack size={27} />
           </button>
         </div>
       }
-      <div className="artist-page">
-        <img src={artist?.imageUrl} alt="Image description" />
-        <section className="artist-page__section">
-          <h1>{artist?.name}</h1>
-          <p>500.655 Fans</p>
-          <div className="artist-page__section--buttons">
-            <button className="artist-page__section--buttons__play" onClick={handlePlayClick}>
+      <div className="playlist-page">
+        <img src={playlist?.imageUrl} alt="Image description" />
+        <section className="playlist-page__section">
+          <h1>{playlist?.name}</h1>
+          <p>15 {t('page_pnumber')}</p>
+          <div className="playlist-page__section--buttons">
+            <button className="playlist-page__section--buttons__play" onClick={handlePlayClick}>
               {isPlaying ? (
                 <>
                   <MdPause size={20} />
@@ -56,10 +56,10 @@ export default function ArtistBComponent({ artist }) {
                 </>
               )}
             </button>
-            <button className="artist-page__section--buttons__follow" onClick={handleFollowClick}>
+            <button className="playlist-page__section--buttons__follow" onClick={handleFollowClick}>
               {isFollowing ? <SlUserFollowing color='#ef5466' /> : <SlUserFollow />}
             </button>
-            <button className="artist-page__section--buttons__like" onClick={handleLikeClick}>
+            <button className="playlist-page__section--buttons__like" onClick={handleLikeClick}>
               {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
             </button>
           </div>

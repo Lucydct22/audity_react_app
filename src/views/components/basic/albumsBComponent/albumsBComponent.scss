@@ -35,8 +35,10 @@
   &__mobile {
     display: inline-flex;
     align-items: center;
-    gap: 18px;
     height: 56px;
     color: var(--color-primary);
+    background: none;
+    border: 0;
+    cursor: pointer;
   }
 }
