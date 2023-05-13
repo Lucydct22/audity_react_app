@@ -16,7 +16,7 @@
   }
 
   img {
-    border-radius: 50%;
+    border-radius: 4px;
     box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
     width: 175px;
     height: 175px;
@@ -105,10 +105,7 @@
         }
       }
 
-      &__follow {
-        @include btn-secondary();
-        background-color: var(--library-header-background);
-
+      &__copy-url {
         @media (max-width: 500px) {
           order: 1;
         }

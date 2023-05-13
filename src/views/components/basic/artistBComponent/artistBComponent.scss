@@ -96,7 +96,7 @@
         }
       }
 
-      &__like {
+      &__follow {
         @include btn-secondary();
         background-color: var(--library-header-background);
 
@@ -105,10 +105,7 @@
         }
       }
 
-      &__follow {
-        @include btn-secondary();
-        background-color: var(--library-header-background);
-
+      &__copy-url {
         @media (max-width: 500px) {
           order: 1;
         }
