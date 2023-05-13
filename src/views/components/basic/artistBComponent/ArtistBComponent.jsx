@@ -11,7 +11,6 @@ export default function ArtistBComponent({ artist }) {
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
-	console.log(artist);
 
 	const handlePlayClick = () => {
 		setIsPlaying((prevState) => !prevState);

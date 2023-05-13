@@ -2,14 +2,8 @@
 
 .mobile-explore-page {
   margin: 0 auto;
-  padding: 34px;
-  padding-top: 10px;
-  max-width: 1504px;
-
-  @media (max-width: $media-breakpoint-desktop-mobile) {
-    padding: 0;
-    padding-top: 4px;
-  }
+  padding: 0;
+  padding-top: 4px;
 
   h1 {
     display: inline;
