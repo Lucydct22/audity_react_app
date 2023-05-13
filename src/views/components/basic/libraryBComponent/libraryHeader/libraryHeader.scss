@@ -115,14 +115,6 @@
           cursor: pointer;
           transition: all 0.4s;
 
-          &:first-child {
-            margin-left: 18px;
-          }
-
-          &:last-child {
-            margin-right: 18px;
-          }
-
           &:hover {
             border: 2px solid var(--text-active-library-header-btn);
           }
@@ -149,6 +141,14 @@
           margin: 0;
           width: 100%;
         }
+      }
+
+      .swiper {
+        margin: 0;
+      }
+
+      .swiper-slide {
+        width: auto;
       }
     }
 
