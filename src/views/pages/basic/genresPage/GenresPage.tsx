@@ -11,8 +11,6 @@ const GenresPage = ({ }) => {
 	useEffect(() => {
 		const getGenres = async () => {
 			const response: any = await getGenresApi() 
-			// console.log(response);
-			
 			setGenres(response.genres)
 		}
 		getGenres()
