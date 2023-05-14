@@ -10,14 +10,13 @@ export default function ProgressBar() {
   const [sliderEl, setSliderEl] = useState();
   const { theme } = useContext(ThemeContext);
   const [screenWidth] = useWindowSizeReport()
-  
 
   useEffect(() => {
     const sliderValue = Math.round((trackData.currentTime/trackData.duration)*100);
-    return setSliderEl(sliderValue);
-
-  }, [trackData])
-  console.log(theme);
+    let isMounted = true
+    isMounted && setSliderEl(sliderValue);
+    return () => { isMounted = false }
+  }, [trackData.currentTime, trackData.duration])
 
   return (
     <div className="progress-bar">
