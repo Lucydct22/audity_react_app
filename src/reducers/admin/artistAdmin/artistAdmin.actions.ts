@@ -20,7 +20,12 @@ export async function initArtistsAction(dispatch: any) {
 
 export async function postArtistAction(dispatch: any, data: any, token: any, messageApi: any) {
 	try {
-		const postArtist: any = await api.postArtistApi({ name: data.name, genres: data.genres }, token)
+		const postArtist: any = await api.postArtistApi({
+			name: data.name,
+			genres: data?.genres,
+			albums: data?.albums,
+			tracks: data?.tracks
+		}, token)
 		const postArtistImage: any = await api.putArtistImageApi(postArtist.artist._id, data.image.file.originFileObj, token)
 		if (postArtistImage.status === 200) {
 			messageApi.destroy()
@@ -66,6 +71,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 		let values = {
 			name: data?.name,
 			genres: data?.genres,
+			albums: data?.albums,
 			tracks: data?.tracks,
 			imagePublicId: null
 		}
@@ -74,7 +80,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 			newArtist = artistImageToUpdate
 			values.imagePublicId = artist.imagePublicId
 		}
-		if (data?.name || data?.genres || data?.tracks) {
+		if (data?.name || data?.genres || data?.albums || data?.tracks) {
 			const artistToUpdate = await api.updateArtistApi(artist._id, values, token)
 			newArtist = artistToUpdate
 		}
@@ -84,6 +90,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 		} else {
 			artist.name = data?.name
 			artist.genres = data?.genres
+			artist.albums = data?.albums
 			artist.tracks = data?.tracks
 			artistsState.artists[findIndexArtist] = artist
 		}
