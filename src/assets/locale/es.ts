@@ -112,6 +112,9 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',
+  error_message_h1: '¡Ups! Parece que te has equivocado de nota...',
+  error_message_p: 'La página que estás buscando no parece existir en nuestra aplicación de música',
+  error_message_btn: 'Ir a la página de inicio',
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',

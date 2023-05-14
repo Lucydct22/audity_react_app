@@ -114,6 +114,9 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',
+  error_message_h1: 'Oops! It seems like you have hit a wrong note ...',
+  error_message_p: 'The page you are looking for does not seem to exist in our music app',
+  error_message_btn: 'Go to Home page',
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Go back',
