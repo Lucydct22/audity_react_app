@@ -137,7 +137,7 @@ const PlayerBComponentDesktop = () => {
             {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
           </button>
           <button className='page-player-bottom__btn' onClick={muteTrack}>
-            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline color='#C1C1C1' />}
+            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
           </button>
         </div>
 

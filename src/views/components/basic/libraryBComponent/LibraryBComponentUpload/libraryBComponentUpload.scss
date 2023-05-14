@@ -7,12 +7,31 @@
   padding-top: 10px;
   max-width: 1504px;
 
-  button {
-    @include buttonPrimary(fit-content);
+  &__buttons {
+    display: flex;
+    gap: 1rem;
     margin-bottom: 1rem;
+
+    &--play {
+      @include buttonPrimary(fit-content);
+    }
+
+    &--upload {
+      @include buttonPrimary(fit-content);
+      color: var(--color-primary);
+      background-color: var(--background-button-gray);
+
+      &:hover {
+        background-color: $color-secondary;
+      }
+    }
   }
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
     padding: 0 18px;
   }
+}
+
+.ant-upload-list {
+  display: none;
 }
