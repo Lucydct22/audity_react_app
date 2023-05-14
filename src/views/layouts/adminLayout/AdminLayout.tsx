@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import GenreAdminProvider from 'context/admin/genre.context/GenreAdminProvider'
+import ArtistAdminProvider from 'context/admin/artist.context/ArtistAdminProvider'
 import UserContext from 'context/user/UserContext'
 import { useMenuItems } from './useMenuItems'
 import Spinner from 'views/UI/spinner/Spinner'
@@ -25,28 +26,30 @@ const AdminLayout = () => {
   return (
     dbUser.role === 'admin' ? (
       <GenreAdminProvider>
-        <Layout className="layout-admin">
-          <Header className="layout-admin__header">
-            <div className="layout-admin__header--logo">
-              Logo
-            </div>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              items={menuItems}
-              className="layout-admin__header--menu"
-            />
-            <Link to={'/'} className="layout-admin__header--exit">
-              <LogoutOutlined />
-            </Link>
-          </Header>
-          <Content className="layout-admin__content">
-            <Outlet />
-          </Content>
-          <Footer className="layout-admin__footer">
-            Audity Music ©2023
-          </Footer>
-        </Layout>
+        <ArtistAdminProvider>
+          <Layout className="layout-admin">
+            <Header className="layout-admin__header">
+              <div className="layout-admin__header--logo">
+                Logo
+              </div>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                items={menuItems}
+                className="layout-admin__header--menu"
+              />
+              <Link to={'/'} className="layout-admin__header--exit">
+                <LogoutOutlined />
+              </Link>
+            </Header>
+            <Content className="layout-admin__content">
+              <Outlet />
+            </Content>
+            <Footer className="layout-admin__footer">
+              Audity Music ©2023
+            </Footer>
+          </Layout>
+        </ArtistAdminProvider>
       </GenreAdminProvider>
     ) : (
       <Spinner />
