@@ -75,8 +75,9 @@ const englishTranslation = {
   library_header_navbar_favorite: 'Favorite tracks',
 
   library_header_navbar_playlist: 'My Playlists',
-
+  
   library_header_navbar_upload: 'Upload songs',
+  library_upload_song_title: 'Upload your MP3s',
 
   library_header_body_highlights_playlist_title: 'Playlists',
 

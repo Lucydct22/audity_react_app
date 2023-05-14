@@ -75,6 +75,7 @@ const spanishTranslation = {
   library_header_navbar_playlist: 'Playlists',
 
   library_header_navbar_upload: 'Mis canciones',
+  library_upload_song_title: 'Subir tus MP3s',
 
   library_header_body_highlights_playlist_title: 'Playlists',
 
