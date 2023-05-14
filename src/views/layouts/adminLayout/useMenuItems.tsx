@@ -6,43 +6,43 @@ export function useMenuItems() {
 	return [
 		{
 			label: 'Home',
-			key: 'home',
+			key: '/admin/home',
 			icon: <MailOutlined />,
 			onClick: () => navigate('/admin/home')
 		},
 		{
 			label: 'Users',
-			key: 'users',
+			key: '/admin/users',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/users')
 		},
 		{
 			label: 'Tracks',
-			key: 'tracks',
+			key: '/admin/tracks',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/tracks')
 		},
 		{
 			label: 'Playlists',
-			key: 'playlists',
+			key: '/admin/playlists',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/playlists')
 		},
 		{
 			label: 'Albums',
-			key: 'albums',
+			key: '/admin/albums',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/albums')
 		},
 		{
 			label: 'Artists',
-			key: 'artists',
+			key: '/admin/artists',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/artists')
 		},
 		{
 			label: 'Genres',
-			key: 'genres',
+			key: '/admin/genres/',
 			icon: <AppstoreOutlined />,
 			onClick: () => navigate('/admin/genres/')
 		},

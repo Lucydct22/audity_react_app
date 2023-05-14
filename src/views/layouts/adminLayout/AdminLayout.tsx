@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import GenreAdminProvider from 'context/admin/genre.context/GenreAdminProvider'
 import ArtistAdminProvider from 'context/admin/artist.context/ArtistAdminProvider'
@@ -18,6 +18,7 @@ const AdminLayout = () => {
   const { user, isLoading } = useAuth0()
   const navigate = useNavigate()
   const menuItems = useMenuItems()
+  const location = useLocation()
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -41,6 +42,7 @@ const AdminLayout = () => {
                     mode="horizontal"
                     items={menuItems}
                     className="layout-admin__header--menu"
+                    defaultSelectedKeys={[location.pathname]}
                   />
                   <Link to={'/'} className="layout-admin__header--exit">
                     <LogoutOutlined />
