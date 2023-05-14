@@ -24,7 +24,7 @@ export default function GenreForm() {
 				onFinishFailed={(errorInfo) => console.log('Failed:', errorInfo)}
 			>
 				<Form.Item
-					label="Genre Name"
+					label="Name"
 					name="name"
 					rules={[{ required: !genreId ? true : false, message: 'Please input genre name!' }]}
 				>
@@ -32,7 +32,7 @@ export default function GenreForm() {
 				</Form.Item>
 
 				<Form.Item
-					label="Genre Image"
+					label="Image"
 					name="image"
 					rules={[{ required: !genreId ? true : false, message: 'Please upload an image!' }]}
 				>
