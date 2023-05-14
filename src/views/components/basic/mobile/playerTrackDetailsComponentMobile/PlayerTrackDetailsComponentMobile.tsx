@@ -27,7 +27,6 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
   } = useContext(CurrentTrackContext);
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
-  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
 
   useEffect(() => {
     let isMounted = true
@@ -43,8 +42,15 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     setShowPopUp(false);
   };
 
+  const currentTime = trackData.currentTime
+  const minutesCr = Math.floor(currentTime / 60);
+  const secondsCr = currentTime % 60;
+  const formattedTimeCr = `${minutesCr.toString().padStart(2, '0')}:${secondsCr.toFixed(0).padStart(2, '0')}`;
 
-
+  const duration = trackData.duration;
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toFixed(0).padStart(2, '0')}`;
 
   return (
     <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
@@ -65,8 +71,8 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
 
         <div className='player-track-details-container__track-info__track-time'>
           <div className='player-track-details-container__track-info__track-time__timedata'>
-            <p>{trackData.currentTime}</p>
-            <p>{trackData.duration}</p>
+            <p>{formattedTimeCr}</p>
+            <p>{formattedTime}</p>
           </div>
           <ProgressBar />
         </div>
