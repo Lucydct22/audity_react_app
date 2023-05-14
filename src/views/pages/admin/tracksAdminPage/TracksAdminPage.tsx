@@ -1,5 +1,7 @@
+import TracksAdminComponent from "views/components/admin/tracksAdminComponent/TracksAdminComponent";
+
 export default function TracksAdminPage() {
 	return (
-		<div>Tracks Admin Page</div>
+		<TracksAdminComponent />
 	)
 }

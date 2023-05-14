@@ -1,4 +1,4 @@
-import AlbumsAdminComponent from "views/components/admin/albumsAdminComponent copy/AlbumsAdminComponent";
+import AlbumsAdminComponent from "views/components/admin/albumsAdminComponent";
 
 export default function AlbumsAdminPage() {
 	return (
