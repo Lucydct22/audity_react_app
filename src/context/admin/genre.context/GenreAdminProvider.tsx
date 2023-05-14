@@ -33,15 +33,25 @@ export default function GenreAdminProvider(props: ChildrenProps) {
 		}
 	}, [genresState]);
 
+	const updateGenre = useCallback(async (data: any, genre: any, messageApi: any) => {
+		messageApi.open({ type: 'loading', content: `Updating genre`, duration: 5 })
+		const token = await getAccessTokenSilently()
+		if (isAuthenticated && token && data && genre) {
+			action.updateGenreAction(dispatch, data, genre, token, genresState, messageApi)
+		}
+	}, [genresState]);
+
 	const memoProvider = useMemo(
 		() => ({
 			...genresState,
 			postGenre,
-			deleteGenre
+			deleteGenre,
+			updateGenre
 		}), [
 		genresState,
 		postGenre,
-		deleteGenre
+		deleteGenre,
+		updateGenre
 	]
 	);
 

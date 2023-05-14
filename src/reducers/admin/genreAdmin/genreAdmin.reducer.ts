@@ -22,6 +22,12 @@ export default function genreAdminReducer(state: any, action: any) {
 				genres: payload
 			}
 
+		case GenreAdminTypes.UPDATE_GENRE:
+			return {
+				...state,
+				genres: payload.genres
+			}
+
 		default:
 			return state
 	}

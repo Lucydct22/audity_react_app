@@ -21,7 +21,7 @@ export async function initGenresAction(dispatch: any) {
 export async function postGenreAction(dispatch: any, data: any, token: any, messageApi: any) {
 	try {
 		const postGenre: any = await api.postGenreApi({ name: data.name }, token)
-		const postGenreImage: any = await api.postGenreImageApi(postGenre.genre._id, data.image.file.originFileObj, token)
+		const postGenreImage: any = await api.putGenreImageApi(postGenre.genre._id, data.image.file.originFileObj, token)
 		if (postGenreImage.status === 200) {
 			messageApi.destroy()
 			messageApi.success(`Genre '${data.name}' created`)
@@ -57,5 +57,40 @@ export async function deleteGenreAction(dispatch: any, genre: any, token: any, g
 	} catch (err) {
 		messageApi.destroy()
 		message.error('Server error')
+	}
+}
+
+export async function updateGenreAction(dispatch: any, data: any, genre: any, token: any, genresState: any, messageApi: any) {
+	try {
+		let newGenre;
+		if (data.name !== genre.name) {
+			const genreToUpdate = await api.updateGenreApi(genre._id, { name: data.name }, token)
+			newGenre = genreToUpdate
+		}
+		if (data.image?.file.originFileObj) {
+			const genreImageToUpdate = await api.putGenreImageApi(genre._id, data.image.file.originFileObj, token)
+			newGenre = genreImageToUpdate
+		}
+		const findIndexGenre = genresState.genres.findIndex((item: any) => item._id === genre._id)
+		if (newGenre.genre) {
+			genresState.genres[findIndexGenre] = newGenre.genre
+		} else {
+			genre.name = data.name
+			genresState.genres[findIndexGenre] = genre
+		}
+		if (newGenre.status === 200) {
+			messageApi.destroy()
+			message.success(`Genre updated`)
+			return dispatch({
+				type: GenreAdmin.UPDATE_GENRE,
+				payload: genresState
+			})
+		} else {
+			messageApi.destroy()
+			message.info(`Nothing to update`)
+		}
+	} catch (err) {
+		messageApi.destroy()
+		message.info('Server error')
 	}
 }

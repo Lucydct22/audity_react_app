@@ -48,15 +48,16 @@ export const deleteGenreByIdApi = async (genre: any, token: any): Promise<any> =
 	return result as Genres
 }
 
-export const updateGenresApi = async (genresId: string, data: Partial<Genres>): Promise<Genres> => {
+export const updateGenreApi = async (genreId: string, data: any, token: any): Promise<Genres> => {
 	const params = {
 		method: "PUT",
 		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(data),
 	}
-	const response = await fetch(`${basePath}/genres/${genresId}`, params)
+	const response = await fetch(`${basePath}/update-genre/${genreId}`, params)
 	const result = await response.json()
 	return result as Genres
 }
@@ -75,7 +76,7 @@ export const postGenreApi = async (genre: any, token: any): Promise<any> => {
 	return data as Genres
 }
 
-export const postGenreImageApi = async (genreId: string, image: any, token: any): Promise<any> => {
+export const putGenreImageApi = async (genreId: string, image: any, token: any): Promise<any> => {
 	const url = `${basePath}/genre-image/${genreId}`;
 	const formData = new FormData();
 	formData.append("image", image);
