@@ -28,8 +28,8 @@ export default function AlbumsAdminComponent() {
 					<List.Item
 						actions={[
 							<Popconfirm
-								title="Delete the task"
-								description="Are you sure to delete this task?"
+								title="Delete the album"
+								description="Are you sure to delete this album?"
 								placement="bottom"
 								onConfirm={() => deleteAlbum(item, messageApi)}
 								okText="Remove"
