@@ -63,19 +63,21 @@ export async function deleteAlbumAction(dispatch: any, album: any, token: any, a
 export async function updateAlbumAction(dispatch: any, data: any, album: any, token: any, albumsState: any, messageApi: any) {
 	try {
 		let newAlbum;
-		const values = {
+		let values = {
 			name: data?.name,
 			genres: data?.genres,
 			artists: data?.artists,
-			tracks: data?.tracks
-		}
-		if (data?.name || data?.genres || data?.tracks || data?.artists) {
-			const albumToUpdate = await api.updateAlbumApi(album._id, values, token)
-			newAlbum = albumToUpdate
+			tracks: data?.tracks,
+			imagePublicId: null
 		}
 		if (data.image?.file.originFileObj) {
 			const albumImageToUpdate = await api.putAlbumImageApi(album._id, data.image.file.originFileObj, token)
 			newAlbum = albumImageToUpdate
+			values.imagePublicId = album.imagePublicId
+		}
+		if (data?.name || data?.genres || data?.tracks || data?.artists) {
+			const albumToUpdate = await api.updateAlbumApi(album._id, values, token)
+			newAlbum = albumToUpdate
 		}
 		const findIndexAlbum = albumsState.albums.findIndex((item: any) => item._id === album._id)
 		if (newAlbum.album) {

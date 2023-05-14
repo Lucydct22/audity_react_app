@@ -70,24 +70,28 @@ export async function deleteTrackAction(dispatch: any, track: any, token: any, t
 export async function updateTrackAction(dispatch: any, data: any, track: any, token: any, tracksState: any, messageApi: any) {
 	try {
 		let newTrack;
-		const values = {
+		let values = {
 			name: data.name,
 			genres: data.genres,
 			album: data.album,
 			artists: data.artists,
-			playlists: data.playlists
-		}
-		if (data?.name || data?.genres || data?.artists || data?.album || data?.playlists) {
-			const trackToUpdate = await api.updateTrackApi(track._id, values, token)
-			newTrack = trackToUpdate
+			playlists: data.playlists,
+			imagePublicId: null,
+			audioPublicId: null
 		}
 		if (data.image?.file.originFileObj) {
 			const trackImageToUpdate = await api.updateTrackImageApi(track._id, data.image.file.originFileObj, token)
 			newTrack = trackImageToUpdate
+			values.imagePublicId = track.imagePublicId
 		}
 		if (data.audio?.file.originFileObj) {
 			const trackAudioToUpdate = await api.updateTrackAudioApi(track._id, data.audio.file.originFileObj, token)
 			newTrack = trackAudioToUpdate
+			values.audioPublicId = track.audioPublicId
+		}
+		if (data?.name || data?.genres || data?.artists || data?.album || data?.playlists) {
+			const trackToUpdate = await api.updateTrackApi(track._id, values, token)
+			newTrack = trackToUpdate
 		}
 		const findIndexTrack = tracksState.tracks.findIndex((item: any) => item._id === track._id)
 		if (newTrack.track) {

@@ -63,18 +63,20 @@ export async function deleteArtistAction(dispatch: any, artist: any, token: any,
 export async function updateArtistAction(dispatch: any, data: any, artist: any, token: any, artistsState: any, messageApi: any) {
 	try {
 		let newArtist;
-		const values = {
+		let values = {
 			name: data?.name,
 			genres: data?.genres,
-			tracks: data?.tracks
-		}
-		if (data?.name || data?.genres || data?.tracks) {
-			const artistToUpdate = await api.updateArtistApi(artist._id, values, token)
-			newArtist = artistToUpdate
+			tracks: data?.tracks,
+			imagePublicId: null
 		}
 		if (data.image?.file.originFileObj) {
 			const artistImageToUpdate = await api.putArtistImageApi(artist._id, data.image.file.originFileObj, token)
 			newArtist = artistImageToUpdate
+			values.imagePublicId = artist.imagePublicId
+		}
+		if (data?.name || data?.genres || data?.tracks) {
+			const artistToUpdate = await api.updateArtistApi(artist._id, values, token)
+			newArtist = artistToUpdate
 		}
 		const findIndexArtist = artistsState.artists.findIndex((item: any) => item._id === artist._id)
 		if (newArtist.artist) {

@@ -63,13 +63,15 @@ export async function deleteGenreAction(dispatch: any, genre: any, token: any, g
 export async function updateGenreAction(dispatch: any, data: any, genre: any, token: any, genresState: any, messageApi: any) {
 	try {
 		let newGenre;
-		if (data.name !== genre.name) {
-			const genreToUpdate = await api.updateGenreApi(genre._id, { name: data.name }, token)
-			newGenre = genreToUpdate
-		}
+		let imagePublicId = null
 		if (data.image?.file.originFileObj) {
 			const genreImageToUpdate = await api.putGenreImageApi(genre._id, data.image.file.originFileObj, token)
 			newGenre = genreImageToUpdate
+			imagePublicId = data.imagePublicId
+		}
+		if (data.name !== genre.name) {
+			const genreToUpdate = await api.updateGenreApi(genre._id, { name: data.name, imagePublicId }, token)
+			newGenre = genreToUpdate
 		}
 		const findIndexGenre = genresState.genres.findIndex((item: any) => item._id === genre._id)
 		if (newGenre.genre) {
