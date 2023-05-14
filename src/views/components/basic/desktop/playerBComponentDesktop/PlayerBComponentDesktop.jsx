@@ -30,7 +30,7 @@ const PlayerBComponentDesktop = () => {
   const [artists, setArtists] = useState('')
   const { playlists, postPlaylist } = useContext(MyLibraryContext)
   const [open, setOpen] = useState(false);
-  const hide = () => {
+  const hidePopover = () => {
     setOpen(false);
   };
   const handleOpenChange = (newOpen) => {
@@ -71,7 +71,7 @@ const PlayerBComponentDesktop = () => {
 
   const popoverContent = (
     <div className="player-add-to-playlist">
-      <div className="player-add-to-playlist__add" onClick={() => { confirm(); hide(); }}>
+      <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
         <TfiPlus size={26} />
         <span>{t("player_component_popover_add_playlist")}</span>
       </div>

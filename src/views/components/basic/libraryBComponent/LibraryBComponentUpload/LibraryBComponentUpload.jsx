@@ -1,5 +1,5 @@
-import { useState, useReducer } from 'react';
-import { message, Upload } from 'antd';
+import { useState } from 'react';
+import { Modal } from 'antd';
 import './libraryBComponentUpload.scss';
 import TrackListComponent from '../../trackListComponent/TrackListComponent'
 import { MdPause, MdPlayArrow } from "react-icons/md";
@@ -8,55 +8,61 @@ import { useTranslation } from "react-i18next";
 export default function LibraryBComponentUpload() {
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioFile, setAudioFile] = useState([]);
+  const [modal, contextHolder] = Modal.useModal();
+  const [openModal, setOpenModal] = useState(false);
 
   const handlePlayClick = () => {
     setIsPlaying((prevState) => !prevState);
   };
 
-  const props = {
-    name: 'userUploadedAudio',
-    action: 'http://localhost:4000/api/v1/track',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    beforeUpload: (file) => {
-      const isAudio = file.type.indexOf('audio') > -1;
-      if (!isAudio) {
-        message.error(`${file.name} is not a audio file`);
-      }
-      return isAudio || Upload.LIST_IGNORE;
-    },
-    onChange: (info) => {
-      setAudioFile(info.fileList);
-    },
+  const hideModal = () => {
+    setOpenModal(false);
   };
-  console.log(audioFile.pop());
+
+  const confirm = () => {
+    modal.confirm({
+      centered: true,
+      closable: true,
+      icon: 0,
+      width: 800,
+      content: "Hello There",
+      okText: 'CREATE',
+      onOk: handleClick
+    });
+  };
+
+  function handleClick() {
+    console.log("nice");
+  }
 
   return (
-    <div className='library-upload'>
-      <h1>{t('library_upload_h1')}</h1>
-      <div className="library-upload__buttons">
-        <button className="library-upload__buttons--play" onClick={handlePlayClick}>
-          {isPlaying ? (
-            <>
-              <MdPause size={20} />
-              <span>{t('pausebutton')}</span>
-            </>
-          ) : (
-            <>
-              <MdPlayArrow size={20} />
-              <span>{t('playbutton')}</span>
-            </>
-          )}
-        </button>
-        <Upload {...props} className="library-upload__buttons--upload">
-          {t('library_upload_btn')}
-        </Upload>
+    <>
+      <div className='library-upload'>
+        <h1>{t('library_upload_h1')}</h1>
+        <div className="library-upload__buttons">
+          <button className="library-upload__buttons--play" onClick={handlePlayClick}>
+            {isPlaying ? (
+              <>
+                <MdPause size={20} />
+                <span>{t('pausebutton')}</span>
+              </>
+            ) : (
+              <>
+                <MdPlayArrow size={20} />
+                <span>{t('playbutton')}</span>
+              </>
+            )}
+          </button>
+          <button className="library-upload__buttons--upload" onClick={confirm}>
+            {t('library_upload_btn')}
+          </button>
+        </div>
+        <div>
+          <TrackListComponent />
+        </div>
       </div>
-      <div>
-        <TrackListComponent />
-      </div>
-    </div >
+      <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
+      {contextHolder}
+    </>
   );
 }
