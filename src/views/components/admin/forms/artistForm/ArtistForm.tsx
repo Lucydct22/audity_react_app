@@ -5,19 +5,39 @@ import GenreAdminContext from 'context/admin/genre.context/GenreAdminContext'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import ArtistAdminContext from 'context/admin/artist.context/ArtistAdminContext'
 import type { SelectProps } from 'antd';
+import AlbumAdminContext from 'context/admin/album.context/AlbumAdminContext'
+import TrackAdminContext from 'context/admin/track.context/TrackAdminContext'
 
 export default function ArtistForm() {
 	const { artistId } = useParams()
 	const { artists, postArtist, updateArtist } = useContext(ArtistAdminContext)
 	const { genres } = useContext(GenreAdminContext)
+	const { albums } = useContext(AlbumAdminContext)
+	const { tracks } = useContext(TrackAdminContext)
 	const [messageApi, contextHolder] = message.useMessage()
 	const findArtist: any = artists.find((artist: any) => artist._id === artistId)
 
-	const options: SelectProps['options'] = [];
+	const genresOptions: SelectProps['options'] = [];
 	genres.forEach((genre: any) => {
-		options.push({
+		genresOptions.push({
 			label: genre.name,
 			value: genre._id,
+		});
+	});
+
+	const albumsOptions: SelectProps['options'] = [];
+	albums.forEach((album: any) => {
+		albumsOptions.push({
+			label: album.name,
+			value: album._id,
+		});
+	});
+
+	const tracksOptions: SelectProps['options'] = [];
+	tracks.forEach((track: any) => {
+		tracksOptions.push({
+			label: track.name,
+			value: track._id,
 		});
 	});
 
@@ -53,7 +73,37 @@ export default function ArtistForm() {
 						style={{ width: '100%' }}
 						placeholder="Select genres"
 						defaultValue={findArtist?.genres}
-						options={options}
+						options={genresOptions}
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label="Albums"
+					name="albums"
+					rules={[{ required: !artistId ? true : false, message: 'Please input artist albums!' }]}
+				>
+					<Select
+						mode="multiple"
+						allowClear
+						style={{ width: '100%' }}
+						placeholder="Select albums"
+						defaultValue={findArtist?.albums}
+						options={albumsOptions}
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label="Tracks"
+					name="tracks"
+					rules={[{ required: !artistId ? true : false, message: 'Please input artist tracks!' }]}
+				>
+					<Select
+						mode="multiple"
+						allowClear
+						style={{ width: '100%' }}
+						placeholder="Select tracks"
+						defaultValue={findArtist?.tracks}
+						options={tracksOptions}
 					/>
 				</Form.Item>
 
