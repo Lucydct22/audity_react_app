@@ -9,7 +9,7 @@
     margin: 15px 0;
 
     @media (max-width: $media-breakpoint-desktop-mobile) {
-      margin: 15px 18px;
+      margin: 0 18px;
     }
 
     &--title {
@@ -29,6 +29,5 @@
 
   &__container {
     margin: 0;
-    margin-bottom: 3rem;
   }
 }

@@ -1,32 +1,18 @@
 @import '../../../../../sass/variables';
 @import '../../../../../sass/mixins';
 
-.library-favtracks{
-  &__content {
-  margin: 2rem;
+.library-favTracks {
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
 
   button {
     @include buttonPrimary(fit-content);
     margin-bottom: 1rem;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .library-favtracks__content {
-    margin: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .library-favtracks__comp {
-    margin-left: 0.1rem;
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0 18px;
   }
 }
-
-&__comp {
-  margin-left: 2rem;
-}
-}
-
-
-
-

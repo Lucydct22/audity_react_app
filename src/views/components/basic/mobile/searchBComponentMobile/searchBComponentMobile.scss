@@ -1,25 +1,24 @@
 @import '../../../../../sass/variables';
 
 .mobile-search {
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 4px;
 
   &__title {
-    display: flex;
-    font-size: 35px;
-    font: bold;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 25px;
-    font-weight: 700;
+    display: inline;
+    margin: 0 18px;
+    font-size: 32px;
+    font-family: 'Anek Gujarati', sans-serif;
   }
 
   &__input {
     display: flex;
     position: relative;
-    margin-left: 25px;
-    width: 100%;
+    margin: 0 18px;
 
     input {
-      width: calc(100vw - 140px);
+      width: 100%;
       border: none;
       border-radius: 20px;
       -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
@@ -27,7 +26,6 @@
       box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
       padding: 15px 40px;
       font-size: 20px;
-
     }
 
     span {
@@ -41,19 +39,18 @@
     }
   }
 
-  &__genres {
-    font-size: 25px;
-    padding: 0;
-    margin-top: 15px;
-    margin-left: 25px;
-
-    &--section {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      width: 90%;
-      padding: 15px;
-      gap: 10px;
-
-    }
+  h1 {
+    margin: 18px;
+    margin-bottom: 8px;
   }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 0 18px;
+    margin-bottom: 3rem;
+
+  }
+
 }

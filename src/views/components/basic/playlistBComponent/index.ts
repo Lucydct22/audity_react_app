@@ -1,1 +1,1 @@
-export { default } from './PlaylistComponent';
+export { default } from './PlaylistBComponent';

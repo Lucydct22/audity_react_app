@@ -1,28 +1,37 @@
 @import '../../../../../sass/variables.scss';
 @import '../../../../../sass/mixins.scss';
 
-  .library-upload{
-    &__content {
-    margin: 2rem;
-  
-    button {
+.library-upload {
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    &--play {
       @include buttonPrimary(fit-content);
-      margin-bottom: 1rem;
+    }
+
+    &--upload {
+      @include buttonPrimary(fit-content);
+      color: var(--color-primary);
+      background-color: var(--background-button-gray);
+
+      &:hover {
+        background-color: $color-secondary;
+      }
     }
   }
-  
-  @media screen and (max-width: 768px) {
-    .library-upload__content {
-      margin: 1rem;
-      font-size: 0.9rem;
-    }
-  
-    .library-upload__compt {
-      margin-left: 0.1rem;
-    }
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0 18px;
   }
-  
-  &__compt{
-    margin-left: 2rem;
-  }
-  }
+}
+
+.ant-upload-list {
+  display: none;
+}

@@ -30,6 +30,20 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
+      line-height: 0;
+      text-indent: -999em;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../../assets/img/webp/profile-placeholder-160x160.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
+      }
     }
   }
 

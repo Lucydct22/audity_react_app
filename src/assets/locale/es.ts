@@ -32,7 +32,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'Estás dentro de tus datos personales',
-  profile_account: 'Cuenta Audity',
+  profile_account: 'Ajustes',
   profile_email: 'Tu correo electrónico',
   profile_password: 'Tu contraseña',
   profile_username: 'Tu nombre de usuario',
@@ -81,7 +81,7 @@ const spanishTranslation = {
   library_upload_h1: 'Canciones',
   library_upload_btn: 'SUBIR MP3',
 
-  library_favtracks_h1: 'canciones favoritas',
+  library_favTracks_h1: 'Canciones favoritas',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   library_header_track: 'CANCIÓN',
@@ -89,10 +89,10 @@ const spanishTranslation = {
   library_header_album: 'ÁLBUM',
   library_header_rating: 'RATING',
 
-  /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
+  /*~~~~~~~~~~~~~ INDIVIDUAL PAGES ~~~~~~~~~~~~~*/
   page_pnumber: 'Canciones',
-  playbutton: 'Reproducir',
-  pausebutton: 'Reproduciendo',
+  playbutton: 'Mix',
+  pausebutton: 'Mix',
   likebutton: 'Me gusta',
   likedbutton: 'Fav',
   followbutton: 'Seguir',
@@ -107,8 +107,8 @@ const spanishTranslation = {
   track_item_ranking: 'Ranking: ',
   track_item_duration: 'Duración: ',
 
-    /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
-    player_component_popover_add_playlist: 'Nueva playlist',
+  /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
+  player_component_popover_add_playlist: 'Nueva playlist',
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',

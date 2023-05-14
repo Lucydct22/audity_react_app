@@ -1,13 +1,10 @@
-import { useState, useEffect, useRef, Suspense, useContext } from "react";
+import { useState, useRef, Suspense, useContext } from "react";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import './swiperLibraryPage.scss'
 import { useTranslation } from 'react-i18next';
-import { getPlaylistApi } from 'api/music/playlists';
-import { getAlbumsApi } from 'api/music/albums';
-import { getArtistApi } from 'api/music/artists';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import { responsiveBreak } from "utils/componentsConstants";
 import RenderLibraryItem from "./renderLibraryItem/RenderLibraryItem";
@@ -16,14 +13,9 @@ import SwiperDesktop from 'views/UI/swiperSettings/swiperDesktop/SwiperDesktop';
 import SwiperMobile from 'views/UI/swiperSettings/swiperMobile/SwiperMobile';
 import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 
-
 export default function SwiperLibraryPage({ data }) {
   const { artists, albums, playlists } = useContext(MyLibraryContext)
   const [screenWidth] = useWindowSizeReport()
-  console.log(artists, albums, playlists);
-  // const [playlists, setPlaylists] = useState(undefined)
-  // const [albums, setAlbums] = useState(undefined)
-  // const [artists, setArtists] = useState(undefined);
   const [addNewPlaylist] = useState({
     "add": {
       _id: "AddOnePlaylist",
@@ -39,46 +31,23 @@ export default function SwiperLibraryPage({ data }) {
 
   function dataCarousel() {
     if (data === "playlists") {
-      // useEffect(() => {
-      //   let isMounted = true;
-      //   getPlaylistApi().then(res => {
-      //     isMounted && res && setPlaylists(res.playlist);
-      //   })
-      //   return () => { isMounted = false }
-      // }, [])
+      const result = Object.values(playlists ? [...playlists.userContent, ...playlists.content] : "");
+      const addPlaylist = Object.values(addNewPlaylist ? addNewPlaylist : "");
 
-      const result = Object.values(playlists ? playlists.content : "");
-      const addResult = Object.values(addNewPlaylist ? addNewPlaylist : "");
-
-      const finalPlaylist = [...addResult, ...result];
+      const finalPlaylist = [...addPlaylist, ...result];
 
       return finalPlaylist;
     }
 
     if (data === "albums") {
-      // useEffect(() => {
-      //   let isMounted = true;
-      //   getAlbumsApi().then(res => {
-      //     isMounted && res && setAlbums(res.albums);
-      //   })
-      //   return () => { isMounted = false }
-      // }, [])
       return albums.content;
     }
 
     if (data === "artists") {
-      // useEffect(() => {
-      //   let isMounted = true;
-      //   getArtistApi().then(res => {
-      //     isMounted && res && setArtists(res.artists);
-      //   })
-      //   return () => { isMounted = false }
-      // }, [])
-
       const result = Object.values(artists ? artists.content : "");
-      const addResult = Object.values(addNewArtist ? addNewArtist : "");
+      const addArtist = Object.values(addNewArtist ? addNewArtist : "");
 
-      const finalArtist = [...addResult, ...result];
+      const finalArtist = [...addArtist, ...result];
 
       return finalArtist;
     }
@@ -98,6 +67,10 @@ export default function SwiperLibraryPage({ data }) {
 const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  if (dataCarousel().length <= 0) {
+    return;
+  }
 
   return (
     <div className="swiper-library-component">
@@ -126,7 +99,6 @@ const DesktopSwiperCarousel = ({ data, dataCarousel }) => {
     </div>
   )
 }
-
 
 const MobileSwiperCarousel = ({ data, dataCarousel }) => {
   return (

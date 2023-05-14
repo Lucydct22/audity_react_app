@@ -8,7 +8,7 @@ export default function SwiperMobile({ children }) {
   return (
     <Swiper
       slidesPerView={3.3}
-      spaceBetween={15}
+      spaceBetween={20}
       freeMode={true}
       breakpoints={{
         150: {
