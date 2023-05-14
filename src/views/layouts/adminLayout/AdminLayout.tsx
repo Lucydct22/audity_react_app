@@ -9,6 +9,7 @@ import Spinner from 'views/UI/spinner/Spinner'
 import { Layout, Menu } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons'
 import './adminLayout.scss'
+import AlbumAdminProvider from 'context/admin/album.context/AlbumAdminProvider'
 const { Header, Footer, Content } = Layout;
 
 const AdminLayout = () => {
@@ -27,28 +28,30 @@ const AdminLayout = () => {
     dbUser.role === 'admin' ? (
       <GenreAdminProvider>
         <ArtistAdminProvider>
-          <Layout className="layout-admin">
-            <Header className="layout-admin__header">
-              <div className="layout-admin__header--logo">
-                Logo
-              </div>
-              <Menu
-                theme="dark"
-                mode="horizontal"
-                items={menuItems}
-                className="layout-admin__header--menu"
-              />
-              <Link to={'/'} className="layout-admin__header--exit">
-                <LogoutOutlined />
-              </Link>
-            </Header>
-            <Content className="layout-admin__content">
-              <Outlet />
-            </Content>
-            <Footer className="layout-admin__footer">
-              Audity Music ©2023
-            </Footer>
-          </Layout>
+          <AlbumAdminProvider>
+            <Layout className="layout-admin">
+              <Header className="layout-admin__header">
+                <div className="layout-admin__header--logo">
+                  Logo
+                </div>
+                <Menu
+                  theme="dark"
+                  mode="horizontal"
+                  items={menuItems}
+                  className="layout-admin__header--menu"
+                />
+                <Link to={'/'} className="layout-admin__header--exit">
+                  <LogoutOutlined />
+                </Link>
+              </Header>
+              <Content className="layout-admin__content">
+                <Outlet />
+              </Content>
+              <Footer className="layout-admin__footer">
+                Audity Music ©2023
+              </Footer>
+            </Layout>
+          </AlbumAdminProvider>
         </ArtistAdminProvider>
       </GenreAdminProvider>
     ) : (
