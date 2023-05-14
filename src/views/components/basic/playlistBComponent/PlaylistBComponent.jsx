@@ -51,7 +51,7 @@ export default function PlaylistBComponent({ playlist }) {
                 </>
               )}
             </button>
-            <CopyUrl className="playlist-page__section--buttons__copy-url" />
+            {playlist?.publicAccessible && <CopyUrl className="playlist-page__section--buttons__copy-url" />}
             <button className="playlist-page__section--buttons__like" onClick={handleLikeClick}>
               {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
             </button>
