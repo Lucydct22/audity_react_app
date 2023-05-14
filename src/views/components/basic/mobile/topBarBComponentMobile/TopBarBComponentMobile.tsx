@@ -1,38 +1,35 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import './topBarBComponentMobile.scss';
+import UserContext from 'context/user/UserContext';
 import Theme from '../../../../UI/theme/Theme';
 import Language from 'views/UI/language/Language';
 import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
-import UserContext from 'context/user/UserContext';
+import './topBarBComponentMobile.scss';
 
 const TopBarBComponentMobile = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const { dbUser } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const [popperOpen, setPopperOpen] = useState(false);
-  let popperRef = useRef();
+  let popperRef: any = useRef();
 
   useEffect(() => {
-    let handler = (e) => {
+    let handler = (e: any) => {
       if (!popperRef.current.contains(e.target)) {
         setPopperOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handler);
-
-
     return () => {
       document.removeEventListener("mousedown", handler);
     }
-
-  });
+  }, [popperRef.current]);
 
   return (
     <header className='page-topbar-mobile'>
@@ -81,7 +78,7 @@ const TopBarBComponentMobile = () => {
             )}
 
             {dbUser.role === 'admin' && (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => navigate('/admin/home')}>
+              <span className='page-topbar-mobile-action__popper--wrapper__content cursor-pointer' onClick={() => navigate('/admin/home')}>
                 Admin
               </span>
             )}
