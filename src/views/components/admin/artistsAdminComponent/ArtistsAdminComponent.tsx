@@ -4,22 +4,10 @@ import { Avatar, List, Skeleton, Modal, FloatButton, message, Popconfirm, Button
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import ArtistAdminContext from 'context/admin/artist.context/ArtistAdminContext';
 
-interface DataType {
-	_id: string,
-	name: string,
-	imageUrl: string,
-	tracks: [],
-	artists: [],
-	albums: [],
-	playlists: [],
-	createdAt: string,
-	updatedAt: string,
-}
-
 export default function ArtistsAdminComponent() {
 	const { artists, deleteArtist } = useContext(ArtistAdminContext)
 	const [initLoading, setInitLoading] = useState(true);
-	const [list, setList] = useState<DataType[]>([]);
+	const [list, setList] = useState([]);
 	const navigate = useNavigate()
 	const [messageApi, contextHolder] = message.useMessage();
 
