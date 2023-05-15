@@ -9,6 +9,7 @@ import { getGenresApi } from "api/music/genres";
 import { getPlaylistApi } from 'api/music/playlists';
 import { getAlbumsApi } from 'api/music/albums';
 import { getArtistApi } from 'api/music/artists';
+import { getTracksApi } from "api/music/tracks";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi'
 import { responsiveBreak } from "utils/componentsConstants";
 import RenderMusicItem from "./renderMusicItem/RenderMusicItem";
@@ -24,6 +25,7 @@ export default function SwiperMusicPage({ data }) {
   const [playlists, setPlaylists] = useState(undefined)
   const [albums, setAlbums] = useState(undefined)
   const [artists, setArtists] = useState(undefined);
+  const [tracks, setTracks] = useState(undefined)
 
   function dataCarousel() {
     if (data === "genres") {
@@ -71,6 +73,17 @@ export default function SwiperMusicPage({ data }) {
         return () => { isMounted = false }
       }, [])
       return albums;
+    }
+
+    if (data === "tracks") {
+      useEffect(() => {
+        let isMounted = true;
+        getTracksApi().then(res => {
+          isMounted && res && setTracks(res.tracks);
+        })
+        return () => { isMounted = false }
+      }, [])
+      return tracks;
     }
 
   }

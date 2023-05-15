@@ -1,0 +1,99 @@
+@import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
+
+
+.render-track {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  background-color: rgb(51, 51, 51);
+  text-decoration: none;
+  margin: 0px;
+  border-radius: 5px;
+
+  &:hover {
+
+    .render-track__thumbnail--btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &__play {
+      @include carousel-thumbnail-btn();
+    }
+
+  }
+
+  &__thumbnail {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      img {
+        opacity: 0.7;
+      }
+    }
+
+    &--picture {
+      img {
+        filter: brightness(90%);
+        width: 70px;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        border-radius: 4px;
+        line-height: 0;
+        text-indent: -999em;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+          background-image: url('../../../../../assets/img/webp/disc250.webp');
+          background-position: center;
+          background-size: cover;
+          padding: 50% 0;
+          position: relative;
+        }
+      }
+    }
+
+    &--btn {
+      display: none;
+    }
+
+
+  }
+
+  &__name {
+    display: flex;
+    margin: 0;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+    overflow-y: hidden;
+    white-space: pre;
+  }
+  &__artist {
+    display: flex;
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-primary);
+    text-decoration: none;
+    height: 20px;
+    overflow-y: hidden;
+  }
+}
