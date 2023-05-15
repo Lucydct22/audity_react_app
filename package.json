@@ -8,6 +8,7 @@
     "build": "react-scripts build"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@auth0/auth0-react": "^2.0.1",
     "@types/auth0": "^2.35.11",
     "antd": "^5.4.7",

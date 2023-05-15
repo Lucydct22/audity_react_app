@@ -1,6 +1,7 @@
 import { getContentLikedByUserId } from "api/utils/methods";
 import { basePath } from "../utils/config";
 import { Track } from "interfaces/music";
+import makeRequest from "api/utils/makeRequest";
 
 
 export const getTracksApi = async (): Promise<Track> => {
@@ -25,77 +26,61 @@ export const getTracksLikedByUserApi = async (userId: any, token: string): Promi
 	return await getContentLikedByUserId(userId, 'playlists', token)
 }
 
-// //DELETE
-// export const deleteTrackByIdApi = async (trackId: string): Promise<Track> => {
-// 	const params = {
-// 		method: "DELETE",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		}
-// 	}
-// 	const response = await fetch(`${basePath}/tracks/${trackId.toString()}`, params)
-// 	const data = await response.json()
-// 	return data as Track
-// }
+export const postTrackApi = async (track: any, token: any): Promise<any> => {
+	const params = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(track),
+	}
+	const response = await fetch(`${basePath}/track`, params)
+	const data = await response.json()
+	return data
+}
 
-// //UPDATE 
-// export const updateTrackApi = async (trackId: string, data: Partial<Track>): Promise<Track> => {
-// 	const params = {
-// 		method: "PUT",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(data),
-// 	}
-// 	const response = await fetch(`${basePath}/tracks/${trackId}`, params)
-// 	const result = await response.json()
-// 	return result as Track
-// }
+export const updateTrackApi = async (trackId: string, data: any, token: any): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	}
+	const response = await fetch(`${basePath}/track/${trackId}`, params)
+	const result = await response.json()
+	return result
+}
 
-// //ADD
-// export const addTrackApi = async (newTrack: Partial<Track>): Promise<Track> => {
-// 	const params = {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(newTrack),
-// 	}
-// 	const response = await fetch(`${basePath}/track`, params)
-// 	const data = await response.json()
-// 	return data as Track
-// }
+export const deleteTrackByIdApi = async (track: any, token: any): Promise<any> => {
+	const params = {
+		method: "DELETE",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			imagePublicId: track.imagePublicId,
+			audioPublicId: track.audioPublicId
+		}),
+	}
+	const response = await fetch(`${basePath}/track/${track._id}`, params)
+	const result = await response.json()
+	return result
+}
 
-// //LIKE TRACK API
-// export const likeDislikeTrackApi = async (trackId: string, data: any): Promise<Track> => {
-// 	const response = await fetch(`${basePath}/tracks/${trackId}`);
-// 	const result = await response.json();
+export const updateTrackImageApi = async (trackId: string, image: any, token: any): Promise<any> => {
+	const url = `${basePath}/track-image/${trackId}`;
+	const formData = new FormData();
+	formData.append("image", image);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
+}
 
-// 	let oldLikes = result.likes;
-// 	const haveLike = oldLikes.includes(data.likeuserId);
-
-// 	if (!haveLike) {
-// 		oldLikes.push(data.likeuserId)
-// 	} else {
-// 		oldLikes.forEach((like: string, index: number) => {
-// 			if (like == data.likeuserId)
-// 				oldLikes.splice(index, 1)
-// 		});
-// 	}
-
-// 	const newLikes = {
-// 		...result,
-// 		likes: oldLikes
-// 	}
-
-// 	const params = {
-// 		method: "PUT",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(newLikes),
-// 	}
-// 	const responsePut = await fetch(`${basePath}/tracks/${trackId}`, params)
-// 	const resultPut = await responsePut.json()
-// 	return resultPut as Track
-// }
+export const updateTrackAudioApi = async (trackId: string, audio: any, token: any): Promise<any> => {
+	const url = `${basePath}/track-audio/${trackId}`;
+	const formData = new FormData();
+	formData.append("audio", audio);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
+}
