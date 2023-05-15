@@ -18,10 +18,11 @@ export async function initPlaylistsAction(dispatch: any) {
 	}
 }
 
-export async function postPlaylistAction(dispatch: any, data: any, token: any, messageApi: any) {
+export async function postPlaylistAction(dispatch: any, userId: any, data: any, token: any, messageApi: any) {
+
 	try {
 		const postPlaylist: any = await api.postPlaylistApi({
-			userId: data.userId,
+			userId: userId,
 			name: data.name,
 			description: data.description,
 			tracks: data.tracks,
@@ -44,9 +45,9 @@ export async function postPlaylistAction(dispatch: any, data: any, token: any, m
 	}
 }
 
-export async function deletePlaylistAction(dispatch: any, playlist: any, token: any, playlistsState: any, messageApi: any) {
+export async function deletePlaylistAction(dispatch: any, playlist: any, userId: string, token: any, playlistsState: any, messageApi: any) {
 	try {
-		const playlistToDelete: any = await api.deletePlaylistByIdApi(playlist, token)
+		const playlistToDelete: any = await api.deletePlaylistByIdApi(playlist, userId, token)
 		if (playlistsState.playlists.length > 0 || playlistToDelete.status === 200) {
 			const filteredPlaylists = playlistsState.playlists.filter((item: any) => item._id !== playlist._id)
 			messageApi.destroy()
@@ -88,15 +89,15 @@ export async function updatePlaylistAction(dispatch: any, data: any, playlist: a
 		if (newPlaylist.playlist) {
 			playlistsState.playlists[findIndexPlaylist] = newPlaylist.playlist
 		} else {
-			playlist.name = data?.name
-			playlist.description = data?.description
-			playlist.tracks = data?.tracks
-			playlist.publicAccessible = data?.publicAccessible
+			if (data.name) playlist.name = data.name
+			if (data.description) playlist.description = data.description
+			if (data.tracks) playlist.tracks = data.tracks
+			if (data.publicAccessible) playlist.publicAccessible = data.publicAccessible
 			playlistsState.playlists[findIndexPlaylist] = playlist
 		}
 		if (newPlaylist.status === 200) {
 			messageApi.destroy()
-			message.success(`playlist updated`)
+			message.success(`Playlist updated`)
 			return dispatch({
 				type: PlaylistAdminTypes.UPDATE_PLAYLIST,
 				payload: playlistsState

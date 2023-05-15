@@ -97,11 +97,11 @@ export async function updateTrackAction(dispatch: any, data: any, track: any, to
 		if (newTrack.track) {
 			tracksState.tracks[findIndexTrack] = newTrack.track
 		} else {
-			track.name = data?.name
-			track.genres = data?.genres
-			track.artists = data?.artists
-			track.album = data?.album
-			track.playlists = data?.playlists
+			if (data.name) track.name = data.name
+			if (data.genres) track.genres = data.genres
+			if (data.artists) track.artists = data.artists
+			if (data.album) track.album = data.album
+			if (data.playlists) track.playlists = data.playlists
 			tracksState.tracks[findIndexTrack] = track
 		}
 		if (newTrack.status === 200) {

@@ -88,10 +88,10 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 		if (newArtist.artist) {
 			artistsState.artists[findIndexArtist] = newArtist.artist
 		} else {
-			artist.name = data?.name
-			artist.genres = data?.genres
-			artist.albums = data?.albums
-			artist.tracks = data?.tracks
+			if (data.name) artist.name = data.name
+			if (data.genres) artist.genres = data.genres
+			if (data.albums) artist.albums = data.albums
+			if (data.tracks) artist.tracks = data.tracks
 			artistsState.artists[findIndexArtist] = artist
 		}
 		if (newArtist.status === 200) {

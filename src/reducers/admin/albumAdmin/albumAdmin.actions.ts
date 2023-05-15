@@ -83,10 +83,10 @@ export async function updateAlbumAction(dispatch: any, data: any, album: any, to
 		if (newAlbum.album) {
 			albumsState.albums[findIndexAlbum] = newAlbum.album
 		} else {
-			album.name = data?.name
-			album.genres = data?.genres
-			album.artists = data?.artists
-			album.tracks = data?.tracks
+			if (data.name) album.name = data.name
+			if (data.genres) album.genres = data.genres
+			if (data.artists) album.artists = data.artists
+			if (data.tracks) album.tracks = data.tracks
 			albumsState.albums[findIndexAlbum] = album
 		}
 		if (newAlbum.status === 200) {

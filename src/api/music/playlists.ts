@@ -69,7 +69,7 @@ export const updatePlaylistAdminApi = async (playlistId: string, data: any, toke
 	return result
 }
 
-export const deletePlaylistByIdApi = async (playlist: any, token: any): Promise<any> => {
+export const deletePlaylistByIdApi = async (playlist: any, userId: string, token: any): Promise<any> => {
 	const params = {
 		method: "DELETE",
 		headers: {
@@ -77,6 +77,7 @@ export const deletePlaylistByIdApi = async (playlist: any, token: any): Promise<
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
+			userId,
 			imagePublicId: playlist.imagePublicId,
 		}),
 	}

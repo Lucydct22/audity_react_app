@@ -77,7 +77,7 @@ export async function updateGenreAction(dispatch: any, data: any, genre: any, to
 		if (newGenre.genre) {
 			genresState.genres[findIndexGenre] = newGenre.genre
 		} else {
-			genre.name = data.name
+			if (data.name) genre.name = data.name
 			genresState.genres[findIndexGenre] = genre
 		}
 		if (newGenre.status === 200) {
