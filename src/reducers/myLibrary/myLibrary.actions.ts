@@ -75,7 +75,7 @@ export async function postPrivateTrackAction(dispatch: any, token: any, data: an
 		}
 		return
 	} catch (err) {
-		message.error(`Server error`)
+		message.error(`Server error ${err}`)
 	}
 }
 
