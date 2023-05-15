@@ -4,15 +4,17 @@ import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
 import { useTranslation } from 'react-i18next';
 import { AiOutlineHeart } from "react-icons/ai";
-import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
+import { MdArrowBack } from "react-icons/md";
+import { IoShuffleOutline } from "react-icons/io5";
 import CopyUrl from 'views/UI/copyUrl/CopyUrl';
 import './albumBComponent.scss';
+import { Player } from '@lottiefiles/react-lottie-player';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 
 export default function AlbumBComponent({ album }) {
   const { selectAlbum } = useContext(CurrentTracklistContext)
-  const { selectCurrentTrack } = useContext(CurrentTrackContext)
+  const { trackData, selectCurrentTrack } = useContext(CurrentTrackContext)
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -22,7 +24,7 @@ export default function AlbumBComponent({ album }) {
   const handlePlayClick = () => {
     selectAlbum(album._id)
     selectCurrentTrack(album.tracks[0])
-    setIsPlaying((prevState) => !prevState);
+    setIsPlaying(true);
   };
 
   const handleLikeClick = () => {
@@ -45,17 +47,22 @@ export default function AlbumBComponent({ album }) {
           <p>15 {t('page_pnumber')}</p>
           <div className="album-page__section--buttons">
             <button className="album-page__section--buttons__play" onClick={handlePlayClick}>
-              {isPlaying ? (
-                <>
-                  <MdPause size={20} />
-                  <span>{t('pausebutton')}</span>
-                </>
-              ) : (
-                <>
-                  <MdPlayArrow size={20} />
-                  <span>{t('playbutton')}</span>
-                </>
-              )}
+              {(screenWidth < responsiveBreak) && <Player
+                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
+                loop
+                autoplay
+                style={{ height: '40px', width: '27px' }}
+                className={isPlaying && trackData.isPlaying ? "album-page-show-playing" : "album-page__section--buttons__play--playing"}
+              />}
+              {(screenWidth > responsiveBreak) && <Player
+                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
+                loop
+                autoplay
+                style={{ height: '40px', width: '27px' }}
+                className={isPlaying && trackData.isPlaying ? "album-page-show-playing" : "album-page__section--buttons__play--playing"}
+              />}
+              <IoShuffleOutline size={22} className={isPlaying && trackData.isPlaying ? "album-page__section--buttons__play--onBtn album-page-show-onBtn" : "album-page__section--buttons__play--onBtn"} />
+              <span>{t('pausebutton')}</span>
             </button>
             <CopyUrl className="album-page__section--buttons__copy-url" />
             <button className="album-page__section--buttons__like" onClick={handleLikeClick}>

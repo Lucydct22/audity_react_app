@@ -1,22 +1,26 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { useTranslation } from 'react-i18next';
 import CopyUrl from 'views/UI/copyUrl/CopyUrl';
-import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
+import { MdArrowBack } from "react-icons/md";
 import { SlUserFollowing, SlUserFollow } from "react-icons/sl";
+import { IoShuffleOutline } from "react-icons/io5";
 import './artistBComponent.scss';
+import { Player } from '@lottiefiles/react-lottie-player';
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 
 export default function ArtistBComponent({ artist }) {
   const { t } = useTranslation();
+  const { trackData } = useContext(CurrentTrackContext)
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
-    setIsPlaying((prevState) => !prevState);
+    setIsPlaying(true);
   };
 
   const handleFollowClick = () => {
@@ -39,19 +43,24 @@ export default function ArtistBComponent({ artist }) {
           <p>500.655 Fans</p>
           <div className="artist-page__section--buttons">
             <button className="artist-page__section--buttons__play" onClick={handlePlayClick}>
-              {isPlaying ? (
-                <>
-                  <MdPause size={20} />
-                  <span>{t('pausebutton')}</span>
-                </>
-              ) : (
-                <>
-                  <MdPlayArrow size={20} />
-                  <span>{t('playbutton')}</span>
-                </>
-              )}
+              {(screenWidth < responsiveBreak) && <Player
+                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
+                loop
+                autoplay
+                style={{ height: '40px', width: '27px' }}
+                className={isPlaying && trackData.isPlaying ? "artist-page-show-playing" : "artist-page__section--buttons__play--playing"}
+              />}
+              {(screenWidth > responsiveBreak) && <Player
+                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
+                loop
+                autoplay
+                style={{ height: '40px', width: '27px' }}
+                className={isPlaying && trackData.isPlaying ? "artist-page-show-playing" : "artist-page__section--buttons__play--playing"}
+              />}
+              <IoShuffleOutline size={22} className={isPlaying && trackData.isPlaying ? "artist-page__section--buttons__play--onBtn artist-page-show-onBtn" : "artist-page__section--buttons__play--onBtn"} />
+              <span>{t('pausebutton')}</span>
             </button>
-            <CopyUrl className="artist-page__section--buttons__copy-url"/>
+            <CopyUrl className="artist-page__section--buttons__copy-url" />
             <button className="artist-page__section--buttons__follow" onClick={handleFollowClick}>
               {isFollowing ? <SlUserFollowing color='#ef5466' /> : <SlUserFollow />}
             </button>

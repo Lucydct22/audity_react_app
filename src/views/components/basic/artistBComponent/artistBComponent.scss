@@ -90,9 +90,38 @@
 
       &__play {
         @include buttonPrimary(fit-content);
-
+        justify-content: space-between;
+        padding: 0 15px;
+        min-width: 105px;
+        
         @media (max-width: 500px) {
           order: 2;
+        }
+
+        span {
+          padding-left: 0;
+        }
+
+        &--playing {
+          display: none
+        }
+
+        &--onBtn {
+          display: block
+        }
+
+        .artist-page-show-onBtn {
+          display: none
+        }
+
+        &:hover {
+          .artist-page-show-playing {
+            display: none
+          }
+
+          .artist-page-show-onBtn {
+            display: block
+          }
         }
       }
 
