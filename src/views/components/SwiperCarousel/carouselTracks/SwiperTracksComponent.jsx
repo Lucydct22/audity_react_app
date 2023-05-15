@@ -62,6 +62,7 @@ const SwiperDesktopTracks = ({ tracks }) => {
           slidesPerView={3}
           grid={{
             rows: 3,
+            fill: "row",
           }}
           spaceBetween={30}
           onInit={(swiper) => {
@@ -84,7 +85,7 @@ const SwiperDesktopTracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.map((track) => {
+          {tracks?.slice(0, 8).map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
