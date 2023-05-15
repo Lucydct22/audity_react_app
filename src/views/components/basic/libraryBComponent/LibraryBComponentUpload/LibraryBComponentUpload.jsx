@@ -38,25 +38,6 @@ export default function LibraryBComponentUpload() {
     });
   };
 
-  /*
-    const handleClick = () => {
-      // songData.audio.play();
-      console.log(songData);
-    };
-  
-    const uploadSong = () => {
-      console.log(songData);
-      // onUpload();
-    };
-
-    const addFile = (e) => {
-      if (e.target.files[0]) {
-        setAudio(URL.createObjectURL(e.target.files[0]));
-      }
-    }; */
-
-  
-
   return (
     <>
       <div className='library-upload'>
