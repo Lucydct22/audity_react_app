@@ -2,6 +2,7 @@ import './trackListStyle.scss';
 import { useState, useEffect, useRef } from 'react';
 import { IoAddOutline, IoEllipsisVerticalSharp } from "react-icons/io5";
 import { AiFillHeart, AiOutlineDownload } from "react-icons/ai";
+import { SlOptionsVertical } from "react-icons/sl"
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { MdPlayArrow } from "react-icons/md";
@@ -44,6 +45,7 @@ const TrackItemComponent = ({ id, name, artist, thumbnail, likes, album, time })
             <td>{album}</td>
             <td>{time}</td>
             <td className='track-list-item__td-icon'><AiFillHeart className='track-list-item__td-icon-heart' />{likes}</td>
+            <td className='track-list-item__td-icon'><SlOptionsVertical className='track-list-item__td-icon-options' /></td>
           </tr>
         ) : (
           <>

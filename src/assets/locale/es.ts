@@ -26,6 +26,7 @@ const spanishTranslation = {
   musicpage_dailytitle: 'Tu lista de hoy',
   musicpage_artirstitle: 'Artista',
   musicpage_genres: 'Géneros',
+  musicpage_besthits: 'Mejores 8 hits del momento...',
 
   /*~~~~~~~~~ ADMIN ~~~~~~~~~*/
   title_admin_home: 'Inicio Administrador',

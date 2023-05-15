@@ -1,41 +1,62 @@
 import TrackItemComponent from "./TrackItemComponent";
-import './trackListStyle.scss'; 
+import "./trackListStyle.scss";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { useTranslation } from 'react-i18next';
-import image from 'assets/img/png/beyonce.png'
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import { getTracksApi } from "api/music/tracks";
+import { joinArtistsName } from "views/utils/joinArtistsName";
+import formatToSeconds from "utils/tracks/formatToSeconds";
 
-const  TrackListDisplayComponent = () => {
+
+export default function TrackListDisplayComponent() {
+  const [tracks, setTracks] = useState(undefined);
   const { t } = useTranslation();
+  useEffect(() => {
+    let isMounted = true;
+    getTracksApi().then((res) => {
+      isMounted && res && setTracks(res.tracks);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <>
-    <table>
+      <table>
         <thead>
-        <tr>
-          <td>{t("track_list_track")}</td>
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td>
-          <td>{t("track_list_artist")}</td>
-          <td>{t("track_list_album")}</td>
-          <td><AiOutlineClockCircle className='track-list-item__td-icon' /></td>
-          <td>{t("track_list_rating")}</td>
-        </tr>
+          <tr>
+            <td>{t("track_list_track")}</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>{t("track_list_artist")}</td>
+            <td>{t("track_list_album")}</td>
+            <td>
+              <AiOutlineClockCircle className="track-list-item__td-icon" />
+            </td>
+            <td>{t("track_list_rating")}</td>
+          </tr>
         </thead>
         <tbody>
-        <TrackItemComponent
-              id={"1"}
-              name={"Run the World"}
-              artist={"Beyonce"}
-              thumbnail={image}
-              likes= {" 1000"}
-              time={"3:54"}
-              album={"Number 4"}
-              />
-
+          {tracks &&
+            tracks.map((track) => {
+              const { _id, name, artists, imageUrl, likedBy, duration, album } = track;
+              const artistsName = joinArtistsName(artists);
+              return (
+                <TrackItemComponent
+                  key={_id}
+                  id={_id}
+                  name={name}
+                  artist={artistsName}
+                  thumbnail={imageUrl}
+                  likes={likedBy.length}
+                  time={formatToSeconds(duration)}
+                  album={album?.name}
+                />
+              );
+            })}
         </tbody>
       </table>
-      </>
-  )
+    </>
+  );
 }
-export default TrackListDisplayComponent;
-

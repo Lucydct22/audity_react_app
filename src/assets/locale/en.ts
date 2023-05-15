@@ -26,6 +26,7 @@ const englishTranslation = {
   musicpage_dailytitle: 'Your dailylist',
   musicpage_artirstitle: 'Artist',
   musicpage_genres: 'Genres',
+  musicpage_besthits: 'Best 8 hits of the moment...',
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   title_admin_home: 'Admin Home',

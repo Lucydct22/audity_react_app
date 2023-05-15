@@ -4,10 +4,13 @@ import { MdPause, MdPlayArrow } from "react-icons/md";
 import { SlUserFollowing, SlUserUnfollow } from "react-icons/sl";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './artistBComponent.scss';
+import useWindowSizeReport from 'hooks/useWindowSizeReport';
+import { responsiveBreak } from 'utils/componentsConstants';
 
 
 export default function ArtistBComponent({ artist }) {
 	const { t } = useTranslation();
+  const [screenWidth] = useWindowSizeReport()
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFollowing, setIsFollowing] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
@@ -23,6 +26,7 @@ export default function ArtistBComponent({ artist }) {
 
 	return (
 		<>
+    {(screenWidth > responsiveBreak) ? null : <h1>Artist</h1>}
 			<div className="artist-page">
 				<div className="artist-page__image">
 					<img src={artist?.imageUrl} alt="Image description" />
