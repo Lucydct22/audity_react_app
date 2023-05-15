@@ -10,6 +10,19 @@ export const getTracksApi = async (): Promise<Track> => {
 	return data as Track
 }
 
+export const getPrivateTracksApi = async (userId: string, token: any): Promise<Track> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/tracks-private/${userId}`, params)
+	const data = await response.json()
+	return data as Track
+}
+
 export const getTrackByIdApi = async (trackId: string): Promise<Track> => {
 	const response = await fetch(`${basePath}/track/${trackId}`)
 	const data = await response.json()
@@ -83,4 +96,18 @@ export const updateTrackAudioApi = async (trackId: string, audio: any, token: an
 	const formData = new FormData();
 	formData.append("audio", audio);
 	return makeRequest(url, true, true, "PUT", token, formData, '');
+}
+
+export const postPrivateTrackApi = async (trackData: any, token: any): Promise<any> => {
+	const params = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(trackData),
+	}
+	const response = await fetch(`${basePath}/track-private`, params)
+	const data = await response.json()
+	return data
 }

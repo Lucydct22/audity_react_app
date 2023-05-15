@@ -2,7 +2,8 @@ import { getAlbumsLikedByUserApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
 import { getArtistsLikedByUserApi } from 'api/music/artists';
 import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi } from 'api/music/playlists';
-import { getTracksLikedByUserApi } from 'api/music/tracks';
+import { getPrivateTracksApi, getTracksLikedByUserApi, postPrivateTrackApi, updateTrackAudioApi } from 'api/music/tracks';
+import { message } from 'antd';
 
 export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: any) {
 	try {
@@ -11,6 +12,9 @@ export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: a
 		const playlistsFetch = await getPlaylistsLikedByUserApi(dbUserId, token)
 		const tracksFetch = await getTracksLikedByUserApi(dbUserId, token)
 		const playlistsByUserFetch = await getPlaylistByUserApi(dbUserId, token)
+		const privateTracksFetch: any = await getPrivateTracksApi(dbUserId, token)
+		console.log(privateTracksFetch);
+
 
 		return dispatch({
 			type: MyLibraryTypes.INIT_MY_LIBRARY,
@@ -24,6 +28,7 @@ export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: a
 				playlistsUserContent: playlistsByUserFetch.content,
 				tracksInfo: tracksFetch.content?.length,
 				tracksContent: tracksFetch.content,
+				tracksUserContent: privateTracksFetch.tracks,
 			}
 		})
 	} catch (err) {
@@ -49,3 +54,28 @@ export async function postPlaylistAction(dispatch: any, token: any, name: any, d
 		console.log(err);
 	}
 }
+
+export async function postPrivateTrackAction(dispatch: any, token: any, data: any, userId: string) {
+	const trackData = {
+		userId: userId.toString(),
+		name: data.name,
+		artists: data?.artists
+	}
+	try {
+		const postTrack = await postPrivateTrackApi(trackData, token)
+		const putAudio = await updateTrackAudioApi(postTrack.track._id, data.audio, token)
+		if (putAudio.status === 200) {
+			message.success(`Artist updated`)
+			return dispatch({
+				type: MyLibraryTypes.POST_PRIVATE_TRACK,
+				payload: putAudio.track
+			})
+		} else {
+			message.error(`Server error`)
+		}
+		return
+	} catch (err) {
+		message.error(`Server error`)
+	}
+}
+

@@ -1,13 +1,22 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import { useTranslation } from "react-i18next";
 import SongPlaceholder from 'assets/img/webp/music-placeholder-300.webp'
 import './userSongUploaderModal.scss'
 import { VscChromeClose } from 'react-icons/vsc'
+import { postPrivateTrackApi } from 'api/music/tracks';
+import { useAuth0 } from '@auth0/auth0-react';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
-const UserSongUploaderModal = ({ audio, isOpened, onClose, setUploadedAudio }) => {
+const UserSongUploaderModal = ({ audio, isOpened, onClose, setUploadedAudio }: any) => {
+  // const { getAccessTokenSilently } = useAuth0()
+  const { postPrivateTrack } = useContext(MyLibraryContext)
   const { t } = useTranslation();
-  const [songData, setSongData] = useState({});
-  const ref = useRef(null);
+  const [songData, setSongData] = useState({
+    audio: '',
+    name: '',
+    artists: ''
+  });
+  const ref: any = useRef(null);
 
   useEffect(() => {
     if (isOpened) {
@@ -21,16 +30,29 @@ const UserSongUploaderModal = ({ audio, isOpened, onClose, setUploadedAudio }) =
     }
   }, [isOpened]);
 
-  const proceedAndClose = () => {
-    setUploadedAudio(songData)
-    setSongData({})
+  const proceedAndClose = async () => {
+    // console.log(songData.audio);
+    // console.log(songData.name);
+    // console.log(songData.artists);
+    // const token = await getAccessTokenSilently()
+    // const postPrivateTrack = await postPrivateTrackApi({
+    //   name: songData.name,
+    //   artists: songData.artists
+    // }, token)
+    // // setUploadedAudio(songData)
+    postPrivateTrack(songData)
+    setSongData({ audio: '', name: '', artists: '' })
     onClose();
   };
 
-  const preventAutoClose = (e) => e.stopPropagation();
+  const preventAutoClose = (e: any) => e.stopPropagation();
 
   useEffect(() => {
-    setSongData({ ...songData, audio: audio, name: audio.name, artists: "" });
+    let isMounted = true
+    if (isMounted && audio && audio.name) {
+      setSongData({ audio: audio, name: audio.name, artists: '' });
+    }
+    return () => { isMounted = false }
   }, [audio])
 
   return (
