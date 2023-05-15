@@ -22,7 +22,6 @@ export default function SwiperTracksComponent() {
     let isMounted = true;
     getTracksApi().then((res) => {
       isMounted && res && setTracks(res.tracks);
-      console.log(res)
     });
     return () => {
       isMounted = false;
@@ -108,6 +107,10 @@ const SwiperMobileTracks = ({ tracks }) => {
         <Swiper
           slidesPerView={1.3}
           spaceBetween={15}
+          grid={{
+            rows: 3,
+            fill: "row",
+          }}
           freeMode={true}
           breakpoints={{
             150: {

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import "./renderTrack.scss";
 import { joinArtistsName } from "views/utils/joinArtistsName";
@@ -5,7 +6,6 @@ import { joinArtistsName } from "views/utils/joinArtistsName";
 export default function RenderTrack({ track }: any) {
   const { name, imageUrl, artists } = track;
   const artistsName = joinArtistsName(artists);
-  console.log(track);
 
   return (
     <div className="render-track">
