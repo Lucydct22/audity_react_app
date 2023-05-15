@@ -39,9 +39,11 @@
   @media (max-width: $media-breakpoint-desktop-mobile) {
     &:after {
       position: absolute;
+      top: 0;
+      left: -15px;
       z-index: -1;
-      width: 100%;
-      height: 95%;
+      width: calc(100% + 40px);
+      height: calc(95% + 20px);
       margin: 0 auto;
       transform: scale($size);
       -webkit-filter: blur($spread);
@@ -90,9 +92,9 @@
     text-align: center;
     color: #252B37;
     border-radius: 15px;
-    background-color: #151823;
+    background-color: var(--library-header-background);
     animation: textColor 10s ease infinite;
-    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @include backlight(0, 5vw, 5vw, 0.75, #759fe0, #7e0fff, 10s);
 
     @keyframes textColor {
       0% {
@@ -100,7 +102,7 @@
       }
 
       50% {
-        color: #0fffc1;
+        color: #457ed3;
       }
 
       100% {
@@ -115,11 +117,27 @@
       text-align: center;
       color: #252B37;
       border-radius: 15px;
-      background-color: #151823;
+      background-color: var(--library-header-background);
       animation: textColor 10s ease infinite;
       padding: 1rem;
       padding-top: 5rem;
-    
+      @include backlight(0, 5vw, 5vw, 0.70, #759fe0, #7e0fff, 10s);
+
+      @keyframes textColor {
+        0% {
+          color: #e3298a;
+        }
+
+        50% {
+          color: #457ed3;
+        }
+
+        100% {
+          color: #e3298a;
+        }
+      }
+
+
 
     }
 
