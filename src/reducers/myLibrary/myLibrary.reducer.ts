@@ -42,6 +42,15 @@ export default function myLibraryReducer(state: any, action: any) {
 				}
 			}
 
+			case MyLibraryTypes.PUT_TRACK_TO_PLAYLIST:
+			return {
+				...state,
+				tracks: {
+					...state.tracks,
+					userContent: [...state.playlists.userContent, payload.playlist]
+				}
+			}
+
 		default:
 			return state
 	}

@@ -29,13 +29,20 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
+	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string ) => {
+		const token = await getAccessTokenSilently()
+		isAuthenticated && action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId )
+	}, [isAuthenticated, dbUser]);
+
 	const memoProvider = useMemo(
 		() => ({
 			...userState,
-			postPlaylist
+			postPlaylist,
+			putTrackToPlaylist
 		}), [
 		userState,
-		postPlaylist
+		postPlaylist,
+		putTrackToPlaylist
 	]
 	);
 

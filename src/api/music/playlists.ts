@@ -40,6 +40,25 @@ export const getPlaylistByUserApi = async (userId: string, token: any): Promise<
 	return data
 }
 
+export const putTrackToPlaylist = async (token: any, playlistId: string, trackId: string ): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		}
+	}
+	const response = await fetch(`${basePath}/playlist-add-track/playlists/${playlistId}/tracks/${trackId}`, params)
+	const data = await response.json()
+	return data
+}
+
+export const deleteTrackFromPlaylist = async (token: any, trackId: string, playlistId: string ): Promise<any> => {
+	const response = await fetch(`${basePath}/delete-track-from-playlist/${playlistId}/tracks/${trackId}`, params(token))
+	const data = await response.json()
+	return data
+}
+
 // export const deletePlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
 // 	const params = {
 // 		method: "DELETE",

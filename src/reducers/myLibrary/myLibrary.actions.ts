@@ -1,7 +1,7 @@
 import { getAlbumsLikedByUserApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
 import { getArtistsLikedByUserApi } from 'api/music/artists';
-import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi } from 'api/music/playlists';
+import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi, putTrackToPlaylist } from 'api/music/playlists';
 import { getTracksLikedByUserApi } from 'api/music/tracks';
 
 export async function initMyLibraryAction(dispatch: any, token: any, dbUserId: any) {
@@ -41,6 +41,20 @@ export async function postPlaylistAction(dispatch: any, token: any, name: any, d
 		const response = await postPlaylistApi(data, token)
 		return dispatch({
 			type: MyLibraryTypes.POST_PLAYLIST,
+			payload: {
+				playlist: response.playlist
+			}
+		})
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+export async function putTrackToPlaylistAction(dispatch: any, token: any, playlistId: string, trackId: string ) {
+	try {
+		const response = await putTrackToPlaylist(token, playlistId, trackId)
+		return dispatch({
+			type: MyLibraryTypes.PUT_TRACK_TO_PLAYLIST,
 			payload: {
 				playlist: response.playlist
 			}

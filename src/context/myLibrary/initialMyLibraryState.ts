@@ -24,7 +24,8 @@ const initialMyLibraryState = {
 		},
 		content: []
 	},
-	postPlaylist: (name: string, description: string) => { }
+	postPlaylist: (name: string, description: string) => { },
+	putTrackToPlaylist: (playlistId: string, trackId: string ) => { }
 }
 
 export default initialMyLibraryState
