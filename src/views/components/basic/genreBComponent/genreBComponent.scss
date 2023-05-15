@@ -11,12 +11,23 @@
   }
 
   &__title {
+    display: inline;
+    font-size: 32px;
+    font-family: 'Anek Gujarati', sans-serif;
     color: $color-main;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin-top: 0;
+    }
   }
 
   &__section {
     &--title {
       margin-bottom: 3rem;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        margin-bottom: 0.8rem;
+      }
     }
 
     &--content {
@@ -29,10 +40,27 @@
       @media (max-width: 1300px) {
         grid-template-columns: repeat(3, 1fr);
       }
-  
+
       @media (max-width: 480px) {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
+  }
+
+  &__mobile {
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+    color: var(--color-primary);
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    span {
+      display: inline;
+      margin: 0 18px;
+      font-size: 20px;
+      font-family: 'Anek Gujarati', sans-serif;
     }
   }
 }

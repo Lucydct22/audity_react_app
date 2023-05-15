@@ -1,12 +1,11 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
 import { useTranslation } from 'react-i18next';
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
-import { SlUserFollowing, SlUserFollow } from "react-icons/sl";
-import { RxShare1 } from "react-icons/rx";
+import CopyUrl from 'views/UI/copyUrl/CopyUrl';
 import './albumBComponent.scss';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
@@ -16,12 +15,9 @@ export default function AlbumBComponent({ album }) {
   const { selectCurrentTrack } = useContext(CurrentTrackContext)
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFollowing, setIsFollowing] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
-  const [copySuccess, setCopySuccess] = useState("")
-  const textAreaRef = useRef(null)
 
   const handlePlayClick = () => {
     selectAlbum(album._id)
@@ -31,11 +27,6 @@ export default function AlbumBComponent({ album }) {
 
   const handleLikeClick = () => {
     setIsLiked((prevState) => !prevState);
-  }
-
-  async function copyToClip() {
-    await navigator.clipboard.writeText(location.href);
-    setCopySuccess("Copied");
   }
 
   return (
@@ -66,9 +57,7 @@ export default function AlbumBComponent({ album }) {
                 </>
               )}
             </button>
-            <button className="album-page__section--buttons__follow" onClick={() => copyToClip()}>
-              <RxShare1 />
-            </button>
+            <CopyUrl className="album-page__section--buttons__copy-url" />
             <button className="album-page__section--buttons__like" onClick={handleLikeClick}>
               {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
             </button>

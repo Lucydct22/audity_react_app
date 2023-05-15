@@ -1,6 +1,7 @@
 import { getContentLikedByUserId } from "api/utils/methods";
 import { basePath } from "../utils/config";
 import { Artist } from "interfaces/music";
+import makeRequest from "api/utils/makeRequest";
 
 
 export const getArtistApi = async (): Promise<Artist> => {
@@ -19,40 +20,51 @@ export const getArtistsLikedByUserApi = async (userId: any, token: string): Prom
 	return await getContentLikedByUserId(userId, 'artists', token)
 }
 
-// export const deleteArtistByIdApi = async (artistId: string): Promise<Artist> => {
-// 	const params = {
-// 		method: "DELETE",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		}
-// 	}
-// 	const response = await fetch(`${basePath}/artists/${artistId.toString()}`, params)
-// 	const data = await response.json()
-// 	return data as Artist
-// }
+export const postArtistApi = async (artist: any, token: any): Promise<any> => {
+	const params = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(artist),
+	}
+	const response = await fetch(`${basePath}/artist`, params)
+	const data = await response.json()
+	return data
+}
 
-// export const updateArtistApi = async (artistId: string, data: Partial<Artist>): Promise<Artist> => {
-// 	const params = {
-// 		method: "PUT",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(data),
-// 	}
-// 	const response = await fetch(`${basePath}/s/${artistId}`, params)
-// 	const result = await response.json()
-// 	return result as Artist
-// }
+export const putArtistImageApi = async (artistId: string, image: any, token: any): Promise<any> => {
+	const url = `${basePath}/artist-image/${artistId}`;
+	const formData = new FormData();
+	formData.append("image", image);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
+}
 
-// export const addArtistApi = async (newArtist: Partial<Artist>): Promise<Artist> => {
-// 	const params = {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(newArtist),
-// 	}
-// 	const response = await fetch(`${basePath}/artists`, params)
-// 	const data = await response.json()
-// 	return data as Artist
-// }
+export const updateArtistApi = async (artistId: string, data: any, token: any): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	}
+	const response = await fetch(`${basePath}/artist/${artistId}`, params)
+	const result = await response.json()
+	return result
+}
+
+export const deleteArtistByIdApi = async (artist: any, token: any): Promise<any> => {
+	const params = {
+		method: "DELETE",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ imagePublicId: artist.imagePublicId }),
+	}
+	const response = await fetch(`${basePath}/artist/${artist._id}`, params)
+	const result = await response.json()
+	return result
+}

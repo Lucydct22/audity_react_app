@@ -1,15 +1,20 @@
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import './genreBComponent.scss';
-import { useState, useEffect } from 'react';
+import { responsiveBreak } from "utils/componentsConstants";
+import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { getGenrePlaylistById, getGenreAlbumById, getGenreArtistById } from 'api/music/genres';
 import { Playlist, Albums, Artist } from 'interfaces/music';
 import RenderPlaylist from '../renders/renderPlaylist/RenderPlaylist';
 import RenderAlbum from '../renders/renderAlbum/RenderAlbum';
 import RenderArtist from '../renders/renderArtist/RenderArtist';
-import { Link } from 'react-router-dom';
+import { MdArrowBack } from 'react-icons/md'
 
 const GenreBComponent = ({ genre }: any) => {
   const { t } = useTranslation();
+  const [screenWidth] = useWindowSizeReport()
+  const navigate = useNavigate();
 
   const [playlists, setPlaylists] = useState([])
   const [albums, setAlbums] = useState([])
@@ -61,7 +66,14 @@ const GenreBComponent = ({ genre }: any) => {
 
   return (
     <div className="genre-page">
-      <h1 className='genre-page__title'> {genre?.name}</h1>
+      {(screenWidth > responsiveBreak) ?
+        <h1 className='genre-page__title'> {genre?.name}</h1>
+        :
+        <button onClick={() => navigate(-1)} className="genre-page__mobile">
+          <MdArrowBack size={27} />
+          <span>{genre?.name}</span>
+        </button>
+      }
       {playlists.length > 0 &&
         <div className='genre-page__section'>
           <h2 className='genre-page__section--title'>{t("sidebar_explore_playlist")}</h2>

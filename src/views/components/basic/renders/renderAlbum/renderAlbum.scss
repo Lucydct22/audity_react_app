@@ -37,6 +37,10 @@
         padding: 50% 0;
         position: relative;
       }
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        border-radius: 8%;
+      }
     }
 
     &--btn {

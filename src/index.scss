@@ -157,3 +157,17 @@ body {
     width: 100vw;
   }
 }
+
+.ant-message-notice-content {
+  background: var(--background-on-hover) !important;
+}
+
+.ant-message {
+  color: var(--color-primary);
+}
+
+@media (max-width: $media-breakpoint-desktop-mobile) {
+  .ant-message-top {
+    top: 0 !important;
+  }
+}

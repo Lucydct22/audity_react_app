@@ -1,0 +1,7 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.copy-url-button {
+  @include btn-secondary();
+  background-color: var(--library-header-background);
+}

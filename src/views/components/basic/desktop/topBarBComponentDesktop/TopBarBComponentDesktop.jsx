@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import Theme from 'views/UI/theme/Theme';
@@ -9,11 +9,13 @@ import { FiChevronRight } from 'react-icons/fi';
 import Language from 'views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
 import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
+import UserContext from 'context/user/UserContext';
 
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
+  const { dbUser } = useContext(UserContext)
+  const navigate = useNavigate()
   const [popperOpen, setPopperOpen] = useState(false);
   let popperRef = useRef();
 
@@ -79,6 +81,12 @@ const TopBarBComponentDesktop = () => {
             ) : (
               <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
                 Login
+              </span>
+            )}
+
+            {dbUser.role === 'admin' && (
+              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => navigate('/admin/home')}>
+                Admin
               </span>
             )}
           </div>

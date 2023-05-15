@@ -1,8 +1,9 @@
+import makeRequest from "api/utils/makeRequest";
 import { basePath } from "../utils/config";
 import { Genres, Genre, Playlist, Albums, Artist } from "interfaces/music";
 
 
-export const getGenresApi = async (): Promise<Genres> => {	
+export const getGenresApi = async (): Promise<Genres> => {
 	const response = await fetch(`${basePath}/genres`)
 	const data = await response.json()
 	return data as Genres
@@ -33,42 +34,51 @@ export const getGenreArtistById = async (genreId: string): Promise<{ genre: Genr
 }
 
 
-export const deleteGenresByIdApi = async (genresId: string): Promise<Genres> => {
+export const deleteGenreByIdApi = async (genre: any, token: any): Promise<any> => {
 	const params = {
 		method: "DELETE",
 		headers: {
-			"Content-Type": "application/json",
-		}
-	}
-	const response = await fetch(`${basePath}/genres/${genresId.toString()}`, params)
-	const data = await response.json()
-	return data as Genres
-}
-
-//UPDATE
-export const updateGenresApi = async (genresId: string, data: Partial<Genres>): Promise<Genres> => {
-	const params = {
-		method: "PUT",
-		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify({imagePublicId: genre.imagePublicId}),
 	}
-	const response = await fetch(`${basePath}/genres/${genresId}`, params)
+	const response = await fetch(`${basePath}/delete-genre/${genre._id}`, params)
 	const result = await response.json()
 	return result as Genres
 }
 
-//ADD
-export const addGenresApi = async (newGenres: Partial<Genres>): Promise<Genres> => {
+export const updateGenreApi = async (genreId: string, data: any, token: any): Promise<Genres> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	}
+	const response = await fetch(`${basePath}/update-genre/${genreId}`, params)
+	const result = await response.json()
+	return result as Genres
+}
+
+export const postGenreApi = async (genre: any, token: any): Promise<any> => {
 	const params = {
 		method: "POST",
 		headers: {
+			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(newGenres),
+		body: JSON.stringify(genre),
 	}
-	const response = await fetch(`${basePath}/genres`, params)
+	const response = await fetch(`${basePath}/genre`, params)
 	const data = await response.json()
 	return data as Genres
+}
+
+export const putGenreImageApi = async (genreId: string, image: any, token: any): Promise<any> => {
+	const url = `${basePath}/genre-image/${genreId}`;
+	const formData = new FormData();
+	formData.append("image", image);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
 }
