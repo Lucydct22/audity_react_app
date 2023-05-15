@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Modal } from 'antd';
+import { useState, useEffect } from 'react';
+import { message } from 'antd';
 import './libraryBComponentUpload.scss';
+import UserSongUploaderModal from './UserSongUploaderModal/UserSongUploaderModal';
 import TrackListComponent from '../../trackListComponent/TrackListComponent'
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
@@ -8,32 +9,34 @@ import { useTranslation } from "react-i18next";
 export default function LibraryBComponentUpload() {
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [modal, contextHolder] = Modal.useModal();
-  const [openModal, setOpenModal] = useState(false);
-
+  const [isOpened, setIsOpened] = useState(false);
+  const [audio, setAudio] = useState({});
+  const [uploadedAudio, setUploadedAudio] = useState({});
+  const [messageApi, contextHolder] = message.useMessage();
   const handlePlayClick = () => {
     setIsPlaying((prevState) => !prevState);
   };
 
-  const hideModal = () => {
-    setOpenModal(false);
+  const addFile = (e) => {
+    if (e.target.files[0].type.match('audio.*')) {
+      setAudio(e.target.files[0]);
+      setIsOpened(true)
+    } else {
+      error(`${e.target.files[0].name} is not a audio file`);
+    }
   };
 
-  const confirm = () => {
-    modal.confirm({
-      centered: true,
-      closable: true,
-      icon: 0,
-      width: 800,
-      content: "Hello There",
-      okText: 'CREATE',
-      onOk: handleClick
+  useEffect(() => {
+    console.log(uploadedAudio);
+
+  }, [uploadedAudio])
+
+  const error = (e) => {
+    messageApi.open({
+      type: 'error',
+      content: e,
     });
   };
-
-  function handleClick() {
-    console.log("nice");
-  }
 
   return (
     <>
@@ -53,15 +56,19 @@ export default function LibraryBComponentUpload() {
               </>
             )}
           </button>
-          <button className="library-upload__buttons--upload" onClick={confirm}>
-            {t('library_upload_btn')}
-          </button>
+          <label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>
+          <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
         <div>
           <TrackListComponent />
         </div>
       </div>
-      <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
+      <UserSongUploaderModal
+        audio={audio}
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
+        setUploadedAudio={setUploadedAudio}
+      />
       {contextHolder}
     </>
   );
