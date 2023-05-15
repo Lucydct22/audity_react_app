@@ -2,94 +2,133 @@
 @import '../../../../sass/mixins';
 
 .artist-page {
-	display: flex;
+  display: flex;
+  margin-bottom: 34px;
 
-	&__image {
-		margin-left: 100px;
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    background-color: var(--library-header-background);
+    border-bottom: var(--color-border-1px);
+  }
 
-		img {
-			border-radius: 50%;
-			box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
-			width: 250px;
-			height: 250px;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
-		}
-	}
+  img {
+    border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+    width: 175px;
+    height: 175px;
+    line-height: 0;
+    text-indent: -999em;
 
-	&__section {
-		margin-top: 50px;
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      border-radius: 8%;
+      margin: 18px;
+      margin-top: 0;
+    }
 
-		&--details {
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      background-image: url('../../../../assets/img/webp/disc250.webp');
+      background-position: center;
+      background-size: cover;
+      padding: 50% 0;
+      position: relative;
+    }
+  }
 
-			&__title {
-				display: inline;
-				margin: 0;
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 34px;
 
-				h1 {
-					font-family: 'Anek Gujarati', sans-serif;
-					font-size: 32px;
-					margin: 0;
-					color: var(--color-primary);
-					margin-left: 50px;
-				}
-			}
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 0;
+      margin-bottom: 18px;
+    }
 
-			&__songs {
+    @media (max-width: 500px) {
+      align-items: center;
+      margin-bottom: -20px;
+    }
 
-				p {
-					margin-left: 50px;
-					margin-bottom: 40px;
-				}
-			}
-		}
+    h1 {
+      font-family: 'Anek Gujarati', sans-serif;
+      font-size: 32px;
+      line-height: 26px;
+      margin: 0;
+      color: var(--color-primary);
 
-		&--buttons {
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        font-size: 24px;
+      }
 
-			&__container {
-				display: flex;
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				margin-left: 50px;
+      @media (max-width: 500px) {
+        text-align: center;
+      }
+    }
 
-				&--play {
-					margin-right: 30px;
+    p {
+      color: $color-secondary;
+      margin: 12px 0;
+      margin-top: 8px;
 
-					&__btn {
-						@include buttonPrimary();
-					}
-				}
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        color: var(--color-primary);
+      }
+    }
 
-				&--like {
+    &--buttons {
+      display: flex;
+      gap: 16px;
 
-					margin-right: 20px;
+      &__play {
+        @include buttonPrimary(fit-content);
 
-					&__btn {
-						@include carousel-thumbnail-btn();
-					}
-				}
+        @media (max-width: 500px) {
+          order: 2;
+        }
+      }
 
-				&--follow {
+      &__follow {
+        @include btn-secondary();
+        background-color: var(--library-header-background);
 
-					&__btn {
-						@include carousel-thumbnail-btn();
-					}
-				}
-			}
-		}
-	}
+        @media (max-width: 500px) {
+          order: 3;
+        }
+      }
 
-	&__search-bar {
-		display: flex;
-		margin-top: 20px;
-		margin-left: 100px;
+      &__copy-url {
+        @media (max-width: 500px) {
+          order: 1;
+        }
+      }
+    }
+  }
+}
 
-		&__input {
-			width: 400px;
-			height: 25px;
-			border: 1px solid rgba(128, 128, 128, 0.505);
-			border-radius: 4px;
-		}
-	}
+.artist-page-back {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: calc(100vw - 18px);
+  padding-left: 18px;
+  background-color: var(--library-header-background);
 
+  button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    svg {
+      color: var(--color-primary);
+    }
+  }
 }

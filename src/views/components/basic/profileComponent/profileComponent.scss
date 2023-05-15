@@ -4,18 +4,21 @@
 .user-settings {
   margin: 0 auto;
   padding: 34px;
-  padding-top: 10px;
   max-width: 685px;
 
-  @media (max-width: $media-breakpoint-desktop-mobile) { 
+  @media (max-width: $media-breakpoint-desktop-mobile) {
     padding: 18px;
-    padding-top: 0;
+    padding-top: 4px;
   }
 
   &__profile {
     display: flex;
     align-items: center;
     gap: 24px;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      display: none;
+    }
 
     &--image {
       width: 125px;
@@ -69,23 +72,70 @@
     flex-direction: column;
     margin-top: 40px;
 
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin-top: 0;
+    }
+
     div {
       height: 40px;
       margin-bottom: 10px;
     }
 
-    span {
-      margin-bottom: 20px;
-      font-size: 2rem;
+    &--title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding-bottom: 10px;
       border-bottom: var(--color-border-1px);
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         font-size: 1.5rem;
-        width: calc(100% - 18px);
-        padding-bottom: 5px;
+        padding-bottom: 4px;
+        margin-bottom: 6px;
       }
 
+      h1 {
+        font-size: 32px;
+        margin: 0;
+        font-family: "Anek Gujarati", sans-serif;
+      }
+
+      button {
+        padding: 12px 32px;
+        font-size: 14px;
+        border: 0;
+        border-radius: 999px;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s;
+        min-width: 130px;
+
+        @media (max-width: $media-breakpoint-desktop-mobile) {
+          padding: 8px 26px;
+          font-size: 12px;
+          min-width: 100px;
+          margin-right: 40px;
+        }
+      }
+
+      &__save {
+        color: $color-primary_dark;
+        background-color: $color-main;
+
+        &:hover {
+          background-color: $color-main-hover;
+        }
+      }
+
+      &__change {
+        color: var(--color-primary);
+        background-color: var(--background-button-gray);
+
+        &:hover {
+          background-color: $color-secondary;
+        }
+      }
     }
 
     label {
@@ -98,22 +148,29 @@
     }
 
     input {
-      background-color: var(--background-secondary);
+      background-color: var(--background-input);
       border: var(--color-border-1px);
       border-radius: 5px;
       padding: 12px;
       outline: none;
-      width: calc(100% - 18px);
+      width: calc(100% - 26px);
       color: var(--color-primary);
 
       &::placeholder {
         color: $color-secondary;
+      }
+
+      &:read-only {
+        cursor: not-allowed;
+        color: $color-secondary;
+        background-color: var(--background-input-disabled);
       }
     }
   }
 
   &__private-info {
-    margin-top: 40px;
+    margin-top: 5px;
+    margin-bottom: 100px;
 
     label {
       margin: 5px 0;
@@ -125,16 +182,21 @@
     }
 
     input {
-      background-color: var(--background-secondary);
+      background-color: var(--background-input);
       border: var(--color-border-1px);
       outline: none;
       border-radius: 5px;
-      padding: 6px;
-      padding-left: 12px;
+      padding: 6px 12px;
       color: var(--color-primary);
 
       &::placeholder {
         color: $color-secondary;
+      }
+
+      &:read-only {
+        cursor: not-allowed;
+        color: $color-secondary;
+        background-color: var(--background-input-disabled);
       }
     }
 
@@ -151,6 +213,7 @@
     @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
       flex-direction: column;
       justify-content: center;
+      gap: 15px;
     }
 
     button {
@@ -166,11 +229,18 @@
     margin-top: 10px;
 
     input {
-      width: calc(100% - 18px);
+      width: calc(100% - 26px);
       height: 30px;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
 
     .dropdown-input {
+      &:disabled {
+        cursor: not-allowed;
+      }
 
       &__control {
         background-color: var(--background-secondary);
@@ -226,20 +296,6 @@
       margin-left: 0;
       width: 100px;
 
-
-      @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
-        margin: 10px;
-        margin-top: 30px;
-      }
-    }
-
-    &--save {
-      background-color: rgb(24, 90, 12);
-      border-color: rgb(24, 90, 12);
-      display: block;
-      margin: 30px;
-      margin-left: 0;
-      width: 100px;
 
       @media only screen and (max-width: #{$media-breakpoint-down-sm}) {
         margin: 10px;

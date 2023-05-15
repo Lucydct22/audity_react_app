@@ -33,7 +33,7 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ PROFILE SETTINGS ~~~~~~~~~~~~~*/
   profile_intro: 'You are inside your personal details',
-  profile_account: 'Audity account',
+  profile_account: 'Settings',
   profile_email: 'Your email',
   profile_password: 'Your password',
   profile_username: 'Your username',
@@ -84,7 +84,7 @@ const englishTranslation = {
   library_upload_h1: 'Songs',
   library_upload_btn: 'UPLOAD MP3',
 
-  library_favtracks_h1: 'favorite tracks',
+  library_favTracks_h1: 'Favorite tracks',
 
   /*~~~~~~~~~~~~~ TRACK LIST COMPONENT ~~~~~~~~~~~~~*/
   track_list_track: 'TRACK',
@@ -92,17 +92,17 @@ const englishTranslation = {
   track_list_album: 'ALBUM',
   track_list_rating: 'RATING',
 
-  /*~~~~~~~~~~~~~ ALBUM PAGE~~~~~~~~~~~~~*/
+  /*~~~~~~~~~~~~~ INDIVIDUAL PAGES ~~~~~~~~~~~~~*/
   page_pnumber: 'Songs',
-  playbutton: 'Play',
+  playbutton: 'Mix',
   likebutton: 'Like',
   followbutton: 'Follow',
-  pausebutton: 'Playing',
+  pausebutton: 'Mix',
   likedbutton: 'Fav',
   followingbutton: 'Following',
 
-/*~~~~~~~~~~~~~ GENRE PAGE~~~~~~~~~~~~~*/
-genrespage_title: 'Genre of:',
+  /*~~~~~~~~~~~~~ GENRE PAGE~~~~~~~~~~~~~*/
+  genrespage_title: 'Genre of:',
 
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Add to playlist',

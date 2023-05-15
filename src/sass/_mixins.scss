@@ -121,6 +121,7 @@
   justify-content: center;
   align-items: center;
   width: $width;
+  height: 40px;
   border: 0px;
   margin: 0px;
   padding: 10px 30px;
@@ -130,6 +131,7 @@
   font-weight: 700;
   color: white;
   background-color: $color-main;
+  transition: all 0.4s;
 
   span {
     text-transform: uppercase;
@@ -162,6 +164,30 @@
 
   &:hover {
     background-color: var(--background-on-hover);
-
   }
 }
+
+@mixin btn-secondary() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid var(--background-button-gray);
+  transition: all 0.4s;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  &:hover {
+    background-color: var(--background-on-hover);
+  }
+}
+

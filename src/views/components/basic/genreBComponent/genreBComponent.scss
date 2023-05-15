@@ -1,33 +1,66 @@
 @import "../../../../sass/variables";
 
 .genre-page {
-  margin: 2rem;
+  margin: 0 auto;
+  padding: 34px;
+  padding-top: 10px;
+  max-width: 1504px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 0 18px;
+  }
 
   &__title {
-    font-size: 2rem;
+    display: inline;
+    font-size: 32px;
+    font-family: 'Anek Gujarati', sans-serif;
     color: $color-main;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin-top: 0;
+    }
   }
 
-  &__sectiont {
-    &__title {
+  &__section {
+    &--title {
       margin-bottom: 3rem;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        margin-bottom: 0.8rem;
+      }
     }
 
-    &__content {
+    &--content {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      grid-gap: 1rem;
       margin-bottom: 5rem;
-      width: 100rem;
-      gap: 3rem;
-    }
-
-   @media screen and (max-width: 768px) {
-    &__content {
-      grid-template-columns: repeat(2, 1fr);
       width: 100%;
+      gap: 30px;
+
+      @media (max-width: 1300px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-  } 
   }
 
+  &__mobile {
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+    color: var(--color-primary);
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    span {
+      display: inline;
+      margin: 0 18px;
+      font-size: 20px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+  }
 }

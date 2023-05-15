@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ProtectedAdminRoute = ({ children }: any) => {
-	const { getAccessTokenSilently } = useAuth0()
+	const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 	const navigate = useNavigate()
 	const { dbUser } = useContext(UserContext)
 	
@@ -14,12 +14,12 @@ export const ProtectedAdminRoute = ({ children }: any) => {
 		const userFetch = async () => {
 			const token = await getAccessTokenSilently()
 			const response = await getUserRole(token)
-			if (response.userRole !== 'admin') {
+			if (response.userRole !== 'admin' || !isAuthenticated || !user) {
 				navigate('/')
 			}
 		}
-		isMounted && userFetch()
+		userFetch()
 		return () => { isMounted = false }
-	}, [dbUser])
+	}, [dbUser, isAuthenticated, user])
 	return children;
 };

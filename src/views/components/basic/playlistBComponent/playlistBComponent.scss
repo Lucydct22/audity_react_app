@@ -1,0 +1,149 @@
+@import '../../../../sass/variables.scss';
+@import '../../../../sass/mixins.scss';
+
+.playlist-page {
+  display: flex;
+  margin-bottom: 34px;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    background-color: var(--library-header-background);
+    border-bottom: var(--color-border-1px);
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+    width: 175px;
+    height: 175px;
+    line-height: 0;
+    text-indent: -999em;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      border-radius: 8%;
+      margin: 18px;
+      margin-top: 0;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      background-image: url('../../../../assets/img/webp/disc250.webp');
+      background-position: center;
+      background-size: cover;
+      padding: 50% 0;
+      position: relative;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 34px;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 0;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 500px) {
+      align-items: center;
+      margin-bottom: -20px;
+    }
+
+    h1 {
+      font-family: 'Anek Gujarati', sans-serif;
+      font-size: 32px;
+      line-height: 26px;
+      margin: 0;
+      color: var(--color-primary);
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        font-size: 24px;
+      }
+
+      @media (max-width: 500px) {
+        text-align: center;
+      }
+    }
+
+    p {
+      color: $color-secondary;
+      margin: 12px 0;
+      margin-top: 8px;
+
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        color: var(--color-primary);
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+
+      &__play {
+        @include buttonPrimary(fit-content);
+
+        @media (max-width: 500px) {
+          order: 2;
+        }
+      }
+
+      &__like {
+        @include btn-secondary();
+        background-color: var(--library-header-background);
+
+        @media (max-width: 500px) {
+          order: 3;
+        }
+      }
+
+      &__copy-url {
+        @media (max-width: 500px) {
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &__search-bar {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 100px;
+    flex: 1 1 100%;
+
+    &__input {
+      width: 100%;
+      max-width: 400px;
+      height: 25px;
+      border: 1px solid rgba(128, 128, 128, 0.505);
+      border-radius: 4px;
+    }
+  }
+}
+
+.playlist-page-back {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: calc(100vw - 18px);
+  padding-left: 18px;
+  background-color: var(--library-header-background);
+
+  button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    svg {
+      color: var(--color-primary);
+    }
+  }
+}

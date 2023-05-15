@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import RenderArtist from "../renders/renderArtist";
@@ -7,15 +7,15 @@ import { MdArrowBack } from 'react-icons/md'
 
 export default function ArtistsBComponent({ artists }: any) {
   const [screenWidth] = useWindowSizeReport()
+  const navigate = useNavigate();
 
   return (
     <div className="artists-page-content">
-      {(screenWidth > responsiveBreak) ?
-        null :
-        <Link to={"/explore"} className="artists-page-content__mobile">
+      {(screenWidth < responsiveBreak) &&
+        <button onClick={() => navigate(-1)} className="artists-page-content__mobile">
           <MdArrowBack size={27} />
-          <span>Explore page</span>
-        </Link>}
+        </button>
+      }
       <h1>Artist Page</h1>
       <div className='artists-page-content__grid'>
         {artists &&

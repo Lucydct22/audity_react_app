@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { Artist } from "interfaces/music";
@@ -8,15 +8,15 @@ import { MdArrowBack } from 'react-icons/md'
 
 export default function AlbumsBComponent({ albums }: any) {
   const [screenWidth] = useWindowSizeReport()
+  const navigate = useNavigate();
 
   return (
     <div className="albums-page-content">
-      {(screenWidth > responsiveBreak) ?
-        null :
-        <Link to={"/explore"} className="albums-page-content__mobile">
+      {(screenWidth < responsiveBreak) &&
+        <button onClick={() => navigate(-1)} className="albums-page-content__mobile">
           <MdArrowBack size={27} />
-          <span>Explore page</span>
-        </Link>}
+        </button>
+      }
       <h1>Album Page</h1>
       <div className='albums-page-content__grid'>
         {albums.map((album: Artist) => {

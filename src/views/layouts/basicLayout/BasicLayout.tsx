@@ -25,7 +25,7 @@ const BasicLayout = () => {
   const { trackData, updateCurrentTime } = useContext(CurrentTrackContext);
   const theme = localStorage.getItem("theme");
   theme && document.documentElement.setAttribute("data-theme", theme);
-  const [innerWidth] = useWindowSizeReport();
+  const [screenWidth] = useWindowSizeReport();
 
   useEffect(() => {
     let isMounted = true;
@@ -39,7 +39,7 @@ const BasicLayout = () => {
   }, [trackData.duration]);
   return (
     <Suspense fallback={<></>}>
-      {(innerWidth > responsiveBreak) ? (
+      {(screenWidth > responsiveBreak) ? (
         <>
           <SidebarBComponentDesktop />
           <TopBarBComponentDesktop />
@@ -57,7 +57,7 @@ const BasicLayout = () => {
         </div>
       </main>
 
-      {(innerWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
+      {(screenWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
     </Suspense>
   )
 }

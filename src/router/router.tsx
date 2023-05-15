@@ -19,12 +19,22 @@ const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
 const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
 const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
-
 const GenresPage = lazy(() => import('views/pages/basic/genresPage/GenresPage'));
 const GenrePage = lazy(() => import('views/pages/basic/genrePage/GenrePage'));
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
+const UsersAdminPage = lazy(() => import('views/pages/admin/usersAdminPage'));
+const TracksAdminPage = lazy(() => import('views/pages/admin/tracksAdminPage'));
+const PlaylistsAdminPage = lazy(() => import('views/pages/admin/playlistsAdminPage'));
+const AlbumsAdminPage = lazy(() => import('views/pages/admin/albumsAdminPage'));
+const ArtistsAdminPage = lazy(() => import('views/pages/admin/artistsAdminPage'));
+const GenresAdminPage = lazy(() => import('views/pages/admin/genresAdminPage'));
+// Admin Forms
+const GenreForm = lazy(() => import('views/components/admin/forms/genreForm'));
+const ArtistForm = lazy(() => import('views/components/admin/forms/artistForm'));
+const AlbumForm = lazy(() => import('views/components/admin/forms/albumForm'));
+const TrackForm = lazy(() => import('views/components/admin/forms/trackForm'));
 
 // LIBRARY PAGES
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
@@ -119,12 +129,13 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: (
-        <Suspense fallback={<></>}>
-          <ProtectedUserSettings>
-            <ProfilePage />
+          <Suspense fallback={<></>}>
+            <ProtectedUserSettings>
+              <ProfilePage />
             </ProtectedUserSettings>
           </Suspense>
-      )},
+        )
+      },
       {
         path: "*",
         element: <Suspense fallback={<></>}><ErrorPage /></Suspense>
@@ -135,9 +146,7 @@ const router = createBrowserRouter([
     path: "admin",
     element: (
       <Suspense fallback={<></>}>
-        <ProtectedAdminRoute>
-          <AdminLayout />
-        </ProtectedAdminRoute>
+        <ProtectedAdminRoute><AdminLayout /></ProtectedAdminRoute>
       </Suspense>
     ),
     children: [
@@ -145,12 +154,138 @@ const router = createBrowserRouter([
         path: "home",
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute>
-              <HomeAdminPage />
-            </ProtectedAdminRoute>
+            <ProtectedAdminRoute><HomeAdminPage /></ProtectedAdminRoute>
           </Suspense>
         )
       },
+      {
+        path: "users",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><UsersAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "tracks",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><TracksAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "track-form",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><TrackForm /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ":trackId",
+            element: <Suspense fallback={<></>}><TrackForm /></Suspense>,
+          },
+        ]
+      },
+      {
+        path: "playlists",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><PlaylistsAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "albums",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><AlbumsAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "album-form",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><AlbumForm /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ":albumId",
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute><AlbumForm /></ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ]
+      },
+      {
+        path: "artists",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><ArtistsAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        )
+      },
+      {
+        path: "artist-form",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><ArtistForm /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ":artistId",
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute><ArtistForm /></ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ]
+      },
+      {
+        path: "genres",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><GenresAdminPage /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: "form",
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ]
+      },
+      {
+        path: "genre-form",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ":genreId",
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ]
+      },
+
+
       {
         path: "*",
         element: <Suspense fallback={<></>}><ErrorPage /></Suspense>

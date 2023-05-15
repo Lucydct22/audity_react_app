@@ -4,7 +4,7 @@ import initAudio from "utils/tracks/initAudio";
 import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
-export const initCurrentTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
+export const initCurrentTrackAction = async function (dispatch: any) {
 	await getRandomTrackApi().then(async (res: any) => {
 		if (res.track) {
 			const audio: HTMLAudioElement = initAudio(res.track);
