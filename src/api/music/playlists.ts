@@ -2,6 +2,7 @@ import { getContentLikedByUserId } from "api/utils/methods";
 import { basePath } from "../utils/config";
 import { Playlist } from "interfaces/music";
 import { params } from "api/utils/utils";
+import makeRequest from "api/utils/makeRequest";
 
 export const postPlaylistApi = async (playlistData: any, token: string): Promise<any> => {
 	const params = {
@@ -40,42 +41,53 @@ export const getPlaylistByUserApi = async (userId: string, token: any): Promise<
 	return data
 }
 
-// export const deletePlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
-// 	const params = {
-// 		method: "DELETE",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		}
-// 	}
-// 	const response = await fetch(`${basePath}/playlists/${playlistId.toString()}`, params)
-// 	const data = await response.json()
-// 	return data as Playlist
-// }
+export const postPlaylistAdminApi = async (playlistData: any, token: any): Promise<any> => {
+	const params = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(playlistData),
+	}
+	const response = await fetch(`${basePath}/playlist-admin`, params)
+	const data = await response.json()
+	return data
+}
 
-// //UPDATE
-// export const updatePlaylistApi = async (playlistId: string, data: Partial<Playlist>): Promise<Playlist> => {
-// 	const params = {
-// 		method: "PUT",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(data),
-// 	}
-// 	const response = await fetch(`${basePath}/playlists/${playlistId}`, params)
-// 	const result = await response.json()
-// 	return result as Playlist
-// }
+export const updatePlaylistAdminApi = async (playlistId: string, data: any, token: any): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	}
+	const response = await fetch(`${basePath}/playlist-admin/${playlistId}`, params)
+	const result = await response.json()
+	return result
+}
 
-// //ADD
-// export const addPlaylistApi = async (newPlaylist: Partial<Playlist>): Promise<Playlist> => {
-// 	const params = {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify(newPlaylist),
-// 	}
-// 	const response = await fetch(`${basePath}/playlists`, params)
-// 	const data = await response.json()
-// 	return data as Playlist
-// }
+export const deletePlaylistByIdApi = async (playlist: any, token: any): Promise<any> => {
+	const params = {
+		method: "DELETE",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			imagePublicId: playlist.imagePublicId,
+		}),
+	}
+	const response = await fetch(`${basePath}/playlist/${playlist._id}`, params)
+	const result = await response.json()
+	return result
+}
+
+export const updatePlaylistImageApi = async (playlistId: string, image: any, token: any): Promise<any> => {
+	const url = `${basePath}/playlist-image/${playlistId}`;
+	const formData = new FormData();
+	formData.append("image", image);
+	return makeRequest(url, true, true, "PUT", token, formData, '');
+}

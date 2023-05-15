@@ -4,12 +4,14 @@ import ArtistAdminContext from "context/admin/artist.context/ArtistAdminContext"
 import GenreAdminContext from "context/admin/genre.context/GenreAdminContext";
 import TrackAdminContext from "context/admin/track.context/TrackAdminContext";
 import { Col, Row, Statistic } from "antd";
+import PlaylistAdminContext from "context/admin/playlist.context/PlaylistAdminContext";
 
 export default function HomeAdminComponent() {
   const { albums } = useContext(AlbumAdminContext)
   const { artists } = useContext(ArtistAdminContext)
   const { genres } = useContext(GenreAdminContext)
   const { tracks } = useContext(TrackAdminContext)
+  const { playlists } = useContext(PlaylistAdminContext)
   return (
     <Row style={{
       display: 'flex',
@@ -21,7 +23,7 @@ export default function HomeAdminComponent() {
       <StatisticItem title='Artists' total={artists.length} />
       <StatisticItem title='Genres' total={genres.length} />
       <StatisticItem title='Tracks' total={tracks.length} />
-      <StatisticItem title='Playlists' total={815000} />
+      <StatisticItem title='Playlists' total={playlists.length} />
     </Row>
 
   )

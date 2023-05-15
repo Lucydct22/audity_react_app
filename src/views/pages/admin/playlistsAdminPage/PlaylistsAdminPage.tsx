@@ -1,5 +1,7 @@
+import PlaylistsAdminComponent from "views/components/admin/playlistsAdminComponent/PlaylistsAdminComponent";
+
 export default function PlaylistsAdminPage() {
 	return (
-		<div>Playlists Admin Page</div>
+		<PlaylistsAdminComponent />
 	)
 }

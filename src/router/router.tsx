@@ -35,6 +35,7 @@ const GenreForm = lazy(() => import('views/components/admin/forms/genreForm'));
 const ArtistForm = lazy(() => import('views/components/admin/forms/artistForm'));
 const AlbumForm = lazy(() => import('views/components/admin/forms/albumForm'));
 const TrackForm = lazy(() => import('views/components/admin/forms/trackForm'));
+const PlaylistForm = lazy(() => import('views/components/admin/forms/playlistForm'));
 
 // LIBRARY PAGES
 const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
@@ -195,6 +196,20 @@ const router = createBrowserRouter([
             <ProtectedAdminRoute><PlaylistsAdminPage /></ProtectedAdminRoute>
           </Suspense>
         )
+      },
+      {
+        path: "playlist-form",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute><PlaylistForm /></ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ":playlistId",
+            element: <Suspense fallback={<></>}><PlaylistForm /></Suspense>,
+          },
+        ]
       },
       {
         path: "albums",
