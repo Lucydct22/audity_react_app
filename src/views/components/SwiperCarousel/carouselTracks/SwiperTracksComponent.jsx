@@ -30,16 +30,22 @@ export default function SwiperTracksComponent() {
 
   return (
     <Suspense fallback={<></>}>
-      {screenWidth > responsiveBreak ? (
-        <SwiperDesktopTracks tracks={tracks} />
+      {screenWidth > 1200 ? (
+        <SwiperMaxTracks tracks={tracks} />
+      ) : screenWidth > 1024 ? (
+        <Swiper1024Tracks tracks={tracks} />
+      ) : screenWidth > 815 ? (
+        <Swiper815Tracks tracks={tracks} />
+      ) : screenWidth > 590 ? (
+        <Swiper560Tracks tracks={tracks} />
       ) : (
-        <SwiperMobileTracks tracks={tracks} />
+        <SwiperMinTracks tracks={tracks} />
       )}
     </Suspense>
   );
 }
 
-const SwiperDesktopTracks = ({ tracks }) => {
+const SwiperMaxTracks = ({ tracks }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -56,12 +62,11 @@ const SwiperDesktopTracks = ({ tracks }) => {
           </button>
         </span>
       </div>
-      <div className="swiper-tracks-component__container">
+      <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
         <Swiper
           slidesPerView={3}
           grid={{
             rows: 3,
-            fill: "row",
           }}
           spaceBetween={30}
           onInit={(swiper) => {
@@ -69,17 +74,6 @@ const SwiperDesktopTracks = ({ tracks }) => {
             swiper.params.navigation.nextEl = nextRef.current;
             swiper.navigation.init();
             swiper.navigation.update();
-          }}
-          breakpoints={{
-            815: {
-              slidesPerView: 1,
-            },
-            1024: {
-              slidesPerView: 2,
-            },
-            1300: {
-              slidesPerView: 3,
-            },
           }}
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
@@ -97,33 +91,146 @@ const SwiperDesktopTracks = ({ tracks }) => {
   );
 };
 
-const SwiperMobileTracks = ({ tracks }) => {
+const Swiper1024Tracks = ({ tracks }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="swiper-tracks-component">
+      <div className="swiper-tracks-component__header">
+        <TranslateTitle />
+        <span className="swiper-tracks-component__header--btn">
+          <button ref={prevRef} className="swiper-carousel-button-prev">
+            <HiOutlineChevronLeft />
+          </button>
+          <button ref={nextRef} className="swiper-carousel-button-next">
+            <HiOutlineChevronRight />
+          </button>
+        </span>
+      </div>
+      <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
+        <Swiper
+          slidesPerView={2}
+          grid={{
+            rows: 3,
+          }}
+          spaceBetween={30}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          modules={[Navigation, Grid]}
+          className="swiper-track-carousel"
+        >
+          {tracks?.slice(0, 8).map((track) => {
+            return (
+              <SwiperSlide key={track._id}>
+                <RenderTrack track={track} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </div>
+  );
+};
+
+const Swiper815Tracks = ({ tracks }) => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="swiper-tracks-component">
+      <div className="swiper-tracks-component__header">
+        <TranslateTitle />
+        <span className="swiper-tracks-component__header--btn">
+          <button ref={prevRef} className="swiper-carousel-button-prev">
+            <HiOutlineChevronLeft />
+          </button>
+          <button ref={nextRef} className="swiper-carousel-button-next">
+            <HiOutlineChevronRight />
+          </button>
+        </span>
+      </div>
+      <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
+        <Swiper
+          slidesPerView={1}
+          grid={{
+            rows: 3,
+          }}
+          spaceBetween={30}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          modules={[Navigation, Grid]}
+          className="swiper-track-carousel"
+        >
+          {tracks?.slice(0, 8).map((track) => {
+            return (
+              <SwiperSlide key={track._id}>
+                <RenderTrack track={track} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </div>
+  );
+};
+
+const Swiper560Tracks = ({ tracks }) => {
   return (
     <div className="swiper-tracks-component">
       <div className="swiper-tracks-component__header">
         <TranslateTitle />
       </div>
-      <div className="swiper-tracks-component__container">
+      <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
         <Swiper
-          slidesPerView={1.3}
-          spaceBetween={15}
+          slidesPerView={2.3}
+          spaceBetween={20}
           grid={{
             rows: 3,
-            fill: "row",
           }}
           freeMode={true}
-          breakpoints={{
-            150: {
-              slidesPerView: 1.3,
-            },
-            515: {
-              slidesPerView: 1.3,
-            },
-          }}
-          modules={[FreeMode]}
+          modules={[FreeMode, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.map((track) => {
+          {tracks?.slice(0, 8).map((track) => {
+            return (
+              <SwiperSlide key={track._id}>
+                <RenderTrack track={track} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </div>
+  );
+};
+
+const SwiperMinTracks = ({ tracks }) => {
+  return (
+    <div className="swiper-tracks-component">
+      <div className="swiper-tracks-component__header">
+        <TranslateTitle />
+      </div>
+      <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
+        <Swiper
+          slidesPerView={1.2}
+          spaceBetween={20}
+          grid={{
+            rows: 3,
+          }}
+          freeMode={true}
+          modules={[FreeMode, Grid]}
+          className="swiper-track-carousel"
+        >
+          {tracks?.slice(0, 8).map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
