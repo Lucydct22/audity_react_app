@@ -75,9 +75,13 @@ const englishTranslation = {
   library_header_navbar_favorite: 'Favorite tracks',
 
   library_header_navbar_playlist: 'My Playlists',
-  
+
   library_header_navbar_upload: 'Upload songs',
-  library_upload_song_title: 'Upload your MP3s',
+  library_upload_modal_title: 'Upload your MP3s',
+  library_upload_modal_label_name: 'Song',
+  library_upload_modal_placeholder_name: 'Name of song',
+  library_upload_modal_label_artist: 'Artist',
+  library_upload_modal_placeholder_artist: 'Name of artist',
 
   library_header_body_highlights_playlist_title: 'Playlists',
 
