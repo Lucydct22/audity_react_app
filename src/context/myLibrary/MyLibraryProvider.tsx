@@ -31,7 +31,9 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 
 	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string ) => {
 		const token = await getAccessTokenSilently()
-		isAuthenticated && action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId )
+		if (token && isAuthenticated) {
+			action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId )
+		}
 	}, [isAuthenticated, dbUser]);
 
 	const memoProvider = useMemo(

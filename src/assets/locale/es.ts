@@ -109,6 +109,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'Nueva playlist',
+  player_component_popover_playlist: 'You need to be logged in to add track to your playlist',
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',
