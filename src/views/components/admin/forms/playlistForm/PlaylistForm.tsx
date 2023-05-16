@@ -62,6 +62,7 @@ export default function PlaylistForm() {
 						placeholder="Select tracks"
 						defaultValue={playlist?.tracks}
 						options={trackOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
