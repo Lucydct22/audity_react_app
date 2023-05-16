@@ -9,7 +9,6 @@ import "./swiperTracksComponent.scss";
 import { useTranslation } from "react-i18next";
 import { getTracksApi } from "api/music/tracks";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import { responsiveBreak } from "utils/componentsConstants";
 import RenderTrack from "views/components/basic/renders/renderTrack/RenderTrack";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { FreeMode } from "swiper";
@@ -79,7 +78,6 @@ const SwiperMaxTracks = ({ tracks }) => {
           className="swiper-track-carousel"
         >
           {tracks?.slice(0, 8).map((track) => {
-            console.log(track)
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -126,7 +124,6 @@ const Swiper1024Tracks = ({ tracks }) => {
           className="swiper-track-carousel"
         >
           {tracks?.slice(0, 8).map((track) => {
-            console.log(track)
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />

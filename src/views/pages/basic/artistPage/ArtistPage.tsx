@@ -22,16 +22,18 @@ export default function ArtistPage() {
 
   useEffect(() => {
     let isMounted = true;
-    let tracksArray: any = []
+
     if (artist) {
-      artist.tracks.map((track:any) => {
+      artist.tracks.map((track: any) => {
         getTrackByIdApi(track._id.toString()).then((res: any) => {
-          tracksArray.push(res.track)
-          // isMounted && res && setTracksOfArtist([...tracksOfArtist, res.track]);
+          setTracksOfArtist((tracksOfArtist: any) => [
+            ...tracksOfArtist,
+            res.track,
+          ]);
         })
       })
-      setTracksOfArtist(tracksArray)
     }
+
     return () => { isMounted = false }
   }, [artist])
 
@@ -42,7 +44,7 @@ export default function ArtistPage() {
     >
       <div className='artist-layout'>
         <ArtistBComponent artist={artist} />
-        <TrackListBComponent tracksData={tracksOfArtist}/>
+        <TrackListBComponent tracksData={tracksOfArtist} />
       </div>
     </HelmetSEO>
   )

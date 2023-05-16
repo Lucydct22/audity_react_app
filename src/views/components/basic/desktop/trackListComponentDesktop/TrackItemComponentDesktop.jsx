@@ -14,7 +14,6 @@ const TrackListDesktopComponent = ({
   album
 }) => {
   const { t } = useTranslation();
-  console.log(`id ${id}, name ${name}, artist ${artist}, thumbnail ${thumbnail}, likes ${likes}, time ${time}, album ${album}`);
 
   return (
     <>
