@@ -12,10 +12,15 @@ import './playerBComponentDesktop.scss'
 import { Popover, Modal } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ThemeContext } from 'context/theme/ThemeContext';
 
 const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
   const [songLike, setSongLike] = useState(false);
+  const {isAuthenticated} = useAuth0();
   const {
     trackData,
     currentTrack,
@@ -28,7 +33,7 @@ const PlayerBComponentDesktop = () => {
   } = useContext(CurrentTrackContext);
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
-  const { playlists, postPlaylist } = useContext(MyLibraryContext)
+  const { playlists, postPlaylist, putTrackToPlaylist } = useContext(MyLibraryContext)
   const [open, setOpen] = useState(false);
   const hidePopover = () => {
     setOpen(false);
@@ -45,6 +50,7 @@ const PlayerBComponentDesktop = () => {
   const [modal, contextHolder] = Modal.useModal();
   const nameRef = useRef("");
   const descRef = useRef("");
+  const { theme } = useContext(ThemeContext)
 
   const hideModal = () => {
     setOpenModal(false);
@@ -69,7 +75,27 @@ const PlayerBComponentDesktop = () => {
     return () => { isMounted = false }
   }, [])
 
-  const popoverContent = (
+ 
+  const notify = (playlistName) => toast(`The track was added to ${playlistName}`, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    progress: undefined,
+    theme: theme,
+   
+  })
+
+
+  function handlePutTrackToPlaylist(playlistId, playlistName) {
+    // console.log('track:', currentTrack._id )
+    // console.log('playlistId:', playlistId )
+    putTrackToPlaylist(playlistId, currentTrack._id);
+    notify(playlistName)
+  }
+
+  const popoverContent = isAuthenticated ? (
+    <>
+    <ToastContainer />
     <div className="player-add-to-playlist">
       <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
         <TfiPlus size={26} />
@@ -78,13 +104,16 @@ const PlayerBComponentDesktop = () => {
       <div className="player-add-to-playlist__results">
         {playlists.userContent &&
           playlists.userContent?.map((playlist) => {
-            return <p>{playlist.name}</p>
+            return <p onClick={() => handlePutTrackToPlaylist( playlist._id, playlist.name )}>{playlist.name}</p>
           })
         }
       </div>
       <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
       {contextHolder}
     </div>
+    </>
+  ) : (
+    <div className="player-add-to-playlist-sinlogin">{t('player_component_popover_playlist')}</div>
   );
 
   return (

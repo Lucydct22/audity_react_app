@@ -10,6 +10,7 @@
     margin: 0 18px;
     font-size: 32px;
     font-family: 'Anek Gujarati', sans-serif;
+    line-height: 56px;
   }
 
   &__content {
@@ -17,10 +18,19 @@
       margin: 0 18px;
       margin-bottom: 3rem;
 
+      h2 {
+        text-transform: capitalize;
+        display: inline;
+        margin: 0;
+        font-size: 24px;
+        font-family: 'Anek Gujarati', sans-serif;
+      }
+
       &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
+        margin-top: 4px;
 
         @media (max-width: 450px) {
           grid-template-columns: repeat(2, 1fr);
@@ -31,9 +41,9 @@
           justify-content: center;
           align-items: center;
           margin: 0;
-          padding-top: 8%;
-          padding-bottom: 8%;
-          border-radius: 4px;
+          padding-top: 12%;
+          padding-bottom: 12%;
+          border-radius: 15px;
           font-size: 24px;
           font-family: 'Anek Gujarati', sans-serif;
           background-color: var(--background-on-hover);

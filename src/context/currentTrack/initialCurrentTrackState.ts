@@ -1,6 +1,6 @@
 const initialCurrentTrackState = {
 	currentTrack: {
-		id: '',
+		_id: '',
 		name: '',
 		artists: [{
 			name: ''

@@ -77,6 +77,11 @@ const englishTranslation = {
   library_header_navbar_playlist: 'My Playlists',
 
   library_header_navbar_upload: 'Upload songs',
+  library_upload_modal_title: 'Upload your MP3s',
+  library_upload_modal_label_name: 'Song',
+  library_upload_modal_placeholder_name: 'Name of song',
+  library_upload_modal_label_artist: 'Artist',
+  library_upload_modal_placeholder_artist: 'Name of artist',
 
   library_header_body_highlights_playlist_title: 'Playlists',
 
@@ -111,9 +116,14 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'New playlist',
+  player_component_popover_playlist: 'Debes iniciar sesión para agregar una canción a tu lista de reproducción',
+
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',
+  error_message_h1: 'Oops! It seems like you have hit a wrong note ...',
+  error_message_p: 'The page you are looking for does not seem to exist in our music app',
+  error_message_btn: 'Go to Home page',
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Go back',

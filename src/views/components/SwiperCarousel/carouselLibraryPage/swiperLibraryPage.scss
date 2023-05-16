@@ -5,6 +5,7 @@
 
   &__header {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
     margin: 15px 0;
 
@@ -29,5 +30,6 @@
 
   &__container {
     margin: 0;
+    margin-top: 5px;
   }
 }

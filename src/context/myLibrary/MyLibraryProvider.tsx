@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useEffect, useContext, useCallback } from 'react'
+import { useReducer, useMemo, useEffect, useContext, useCallback, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import MyLibraryContext from './MyLibraryContext'
 import UserContext from 'context/user/UserContext';
@@ -6,11 +6,14 @@ import initialMyLibraryState from './initialMyLibraryState'
 import myLibraryReducer from 'reducers/myLibrary/myLibrary.reducer'
 import * as action from "reducers/myLibrary/myLibrary.actions";
 import { ChildrenProps } from 'interfaces/global';
+import { message } from 'antd';
+import { Playlist } from 'interfaces/music';
 
 export default function MyLibraryProvider(props: ChildrenProps) {
 	const [userState, dispatch] = useReducer(myLibraryReducer, initialMyLibraryState)
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 	const { dbUser } = useContext(UserContext)
+	const [playlists, setPlaylists] = useState<Playlist[] | null>([])
 
 	useEffect(() => {
 		const initMyLibrary = async () => {
@@ -27,13 +30,30 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
+	const postPrivateTrack= useCallback(async (data: any) => {
+		message.loading(`Creating track`)
+		const token = await getAccessTokenSilently()
+		isAuthenticated && action.postPrivateTrackAction(dispatch, token, data, dbUser._id)
+	}, [isAuthenticated, dbUser]);
+
+	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string ) => {
+		const token = await getAccessTokenSilently()
+		if (token && isAuthenticated) {
+			action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId )
+		}
+	}, [isAuthenticated, dbUser]);
+
 	const memoProvider = useMemo(
 		() => ({
 			...userState,
-			postPlaylist
+			postPlaylist,
+			postPrivateTrack,
+			putTrackToPlaylist
 		}), [
 		userState,
-		postPlaylist
+		postPlaylist,
+		postPrivateTrack,
+		putTrackToPlaylist
 	]
 	);
 

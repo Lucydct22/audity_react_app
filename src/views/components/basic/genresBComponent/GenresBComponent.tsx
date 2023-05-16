@@ -31,7 +31,7 @@ export default function GenresBComponent({ genres }: any) {
       <h1>Genre Page</h1>
       <div className='genres-page-content__grid'>
         {genres &&
-        genres.map((genre: any) => <RenderGenres key={genre._id} genre={genre} />)
+          genres.map((genre: any) => <RenderGenres key={genre._id} genre={genre} />)
         }
       </div>
     </div>

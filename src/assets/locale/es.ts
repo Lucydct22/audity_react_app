@@ -75,6 +75,11 @@ const spanishTranslation = {
   library_header_navbar_playlist: 'Playlists',
 
   library_header_navbar_upload: 'Mis canciones',
+  library_upload_modal_title: 'Subir tus MP3s',
+  library_upload_modal_label_name: 'Canción',
+  library_upload_modal_placeholder_name: 'Nombre de canción',
+  library_upload_modal_label_artist: 'Artista',
+  library_upload_modal_placeholder_artist: 'Nombre de Artista',
 
   library_header_body_highlights_playlist_title: 'Playlists',
 
@@ -109,9 +114,13 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'Nueva playlist',
+  player_component_popover_playlist: 'You need to be logged in to add track to your playlist',
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'Lamentamos las molestias, seguimos trabajando en ello...',
+  error_message_h1: '¡Ups! Parece que te has equivocado de nota...',
+  error_message_p: 'La página que estás buscando no parece existir en nuestra aplicación de música',
+  error_message_btn: 'Ir a la página de inicio',
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',

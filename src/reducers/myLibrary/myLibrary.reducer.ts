@@ -29,7 +29,8 @@ export default function myLibraryReducer(state: any, action: any) {
 					info: {
 						length: payload.tracksInfo,
 					},
-					content: payload.tracksContent
+					content: payload.tracksContent,
+					userContent: payload.tracksUserContent
 				}
 			}
 
@@ -38,6 +39,24 @@ export default function myLibraryReducer(state: any, action: any) {
 				...state,
 				playlists: {
 					...state.playlists,
+					userContent: [...state.playlists.userContent, payload.playlist]
+				}
+			}
+
+		case MyLibraryTypes.POST_PRIVATE_TRACK:
+			return {
+				...state,
+				tracks: {
+					...state.tracks,
+					userContent: [...state.tracks.userContent, payload]
+				}
+			}
+
+			case MyLibraryTypes.PUT_TRACK_TO_PLAYLIST:
+			return {
+				...state,
+				tracks: {
+					...state.tracks,
 					userContent: [...state.playlists.userContent, payload.playlist]
 				}
 			}

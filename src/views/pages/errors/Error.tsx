@@ -1,4 +1,5 @@
 import HelmetSEO from "views/utils/HelmetSEO";
+import ErrorBComponent from "views/components/basic/errorBComponent/ErrorBComponent";
 
 export default function Error() {
   return (
@@ -6,7 +7,7 @@ export default function Error() {
       title='Error 404 | Audity'
       description='Audity Error Page'
     >
-      <div>Error 404</div>
+      <div><ErrorBComponent/></div>
     </HelmetSEO>
   )
 }

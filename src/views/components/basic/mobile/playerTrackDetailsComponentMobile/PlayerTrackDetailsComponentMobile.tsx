@@ -1,16 +1,20 @@
-import { useContext, useEffect, useState } from 'react'
-import { IoChevronDownOutline, IoAdd, IoHeartOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
+import React, { useContext, useEffect, useState } from 'react'
+import { IoChevronDownOutline, IoAdd, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext, MdOutlineQueueMusic } from "react-icons/md";
 import './playerTrackDetailsComponentMobile.scss'
 import img from 'assets/img/albums/summer-playlist.png'
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useTranslation } from 'react-i18next';
+import { TfiPlus } from "react-icons/tfi";
+import PopupAddPlaylistBComponent from '../../mobile/popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
 
 
-
-const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any) => {
-
+const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
+  const { t } = useTranslation();
+  const [songLike, setSongLike] = useState(false);
   const {
     trackData,
     currentTrack,
@@ -21,9 +25,7 @@ const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any)
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-
   const [artists, setArtists] = useState('')
 
   useEffect(() => {
@@ -34,12 +36,27 @@ const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any)
   }, [])
 
 
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const handleClosePopUp = () => {
+    setShowPopUp(false);
+  };
+
+  const currentTime = trackData.currentTime
+  const minutesCr = Math.floor(currentTime / 60);
+  const secondsCr = currentTime % 60;
+  const formattedTimeCr = `${minutesCr.toString().padStart(2, '0')}:${secondsCr.toFixed(0).padStart(2, '0')}`;
+
+  const duration = trackData.duration;
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toFixed(0).padStart(2, '0')}`;
 
   return (
     <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
       <div className='player-track-details-container__track-info'>
         <div className='player-track-details-container__track-info__close'>
-          <button onClick={handleClosePopUp}><IoChevronDownOutline /></button>
+          <button onClick={onClose}><IoChevronDownOutline /></button>
           <p>{currentTrack.name}</p>
         </div>
         <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
@@ -47,23 +64,25 @@ const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any)
         <div className='player-track-details-container__track-info__data'>
           <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
           <div className='player-track-details-container__track-info__data__info'>
-            <p>{artists}</p>
-            <p>{currentTrack.name}</p>
+            <p >{artists} </p>
+            <p > {currentTrack.album}</p>
           </div>
         </div>
 
         <div className='player-track-details-container__track-info__track-time'>
           <div className='player-track-details-container__track-info__track-time__timedata'>
-            <p>{trackData.currentTime}</p>
-            <p>{trackData.duration}</p>
+            <p>{formattedTimeCr}</p>
+            <p>{formattedTime}</p>
           </div>
           <ProgressBar />
         </div>
 
         <div className='player-track-details-container__track-info__player-bottom-controls'>
-          <div className='player-track-details-container__track-info__player-bottom-controls__like'>
-            <IoHeartOutline className='' />
-          </div>
+
+          <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => setSongLike(!songLike)}>
+            {songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
+          </button>
+
           <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={previousTrack}>
             <MdSkipPrevious />
           </button>
@@ -73,9 +92,11 @@ const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any)
           <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={nextTrack}>
             <MdSkipNext />
           </button>
-          <div className='player-track-details-container__track-info__player-bottom-controls__add'>
-            <IoAdd className='' />
-          </div>
+
+          <button className='player-track-details-container__track-info__player-bottom-controls__add' onClick={() => setShowPopUp(!showPopUp)} >
+            <IoAddOutline />
+          </button>
+
         </div>
 
         <div className='player-track-details-container__track-info__add-bottom'>
@@ -96,6 +117,9 @@ const PlayerTrackDetailsComponentMobile = ({ showPopUp, handleClosePopUp }: any)
           </div>
         </div>
       </div>
+      {showPopUp && (
+        <PopupAddPlaylistBComponent onClose={handleClosePopUp} />
+      )}
     </div>
   )
 }
