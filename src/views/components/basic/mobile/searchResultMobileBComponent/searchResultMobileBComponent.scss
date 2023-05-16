@@ -13,6 +13,11 @@
   }
 
   &__type {
+    .active{
+      color: $color-main;
+      font-weight: bolder;
+      border-color: $color-main;
+    }
 
     button {
 
@@ -200,8 +205,6 @@
     }
   }
 
-  
-
   a:-webkit-any-link {
     text-decoration: none;
   }
@@ -213,21 +216,17 @@
 
 
 
-
-
-
-
-
 .render-track {
   display: flex;
   flex-direction: row;
   gap: 1rem;
- 
+  align-items: center;
+  margin-right: 2rem;
 
   &__thumbnail {
     img {
       @media (max-width: $media-breakpoint-desktop-mobile) {
-        width: 100px;
+        width: 80px;
         border-radius: 15px;
       }
     }
@@ -238,6 +237,7 @@
     @media (max-width: $media-breakpoint-desktop-mobile) {
       display: flex;
       flex-direction: column;
+      margin-top: 0.5rem;
     }
 
     &__name {
@@ -246,6 +246,7 @@
         font-size: 1rem;
         color: var(--color-primary);
         font-weight: bold;
+        margin: 0;
       }
     }
 
@@ -256,5 +257,10 @@
         color: var(--color-primary);
       }
     }
+  }
+
+  &__heart{
+    color: red; 
+    margin-left: auto;
   }
 }
