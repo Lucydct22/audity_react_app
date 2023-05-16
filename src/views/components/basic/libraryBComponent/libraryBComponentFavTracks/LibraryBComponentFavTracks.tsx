@@ -1,4 +1,4 @@
-import TrackListComponent from '../../trackListComponent/TrackListComponent'
+import TrackListBComponent from "../../trackListBComponent/TrackListBComponent";
 import { useTranslation } from "react-i18next";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useContext } from 'react';
@@ -16,7 +16,7 @@ const LibraryBComponentFavTracks = () => {
         <button> {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />} PLAY</button>
       </div>
       <div>
-        <TrackListComponent />
+        <TrackListBComponent tracksData={trackData} />
       </div>
     </div >
   )

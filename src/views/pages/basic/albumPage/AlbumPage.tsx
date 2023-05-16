@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getAlbumByIdApi } from 'api/music/albums';
 import AlbumBComponent from 'views/components/basic/albumBComponent';
-import TrackListComponent from 'views/components/basic/trackListComponent/TrackListComponent'
+import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import HelmetSEO from 'views/utils/HelmetSEO';
 import './albumPage.scss'
 
@@ -25,7 +25,7 @@ export default function AlbumPage() {
     >
       <div className='album-layout'>
         <AlbumBComponent album={album} />
-        <TrackListComponent />
+        {/* <TrackListBComponent trackData={trackData} /> */}
       </div>
     </HelmetSEO>
   )

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { message } from 'antd';
 import './libraryBComponentUpload.scss';
 import UserSongUploaderModal from './UserSongUploaderModal/UserSongUploaderModal';
-import TrackListComponent from '../../trackListComponent/TrackListComponent'
+import TrackListBComponent from '../../trackListBComponent/TrackListBComponent';
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
@@ -60,7 +60,7 @@ export default function LibraryBComponentUpload() {
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
         <div>
-          <TrackListComponent />
+          <TrackListBComponent tracksData={tracksData} />
         </div>
       </div>
       <UserSongUploaderModal

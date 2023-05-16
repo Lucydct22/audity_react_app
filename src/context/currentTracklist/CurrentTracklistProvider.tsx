@@ -17,9 +17,9 @@ export default function CurrentTracklistProvider({ children }: any) {
 		action.shuffleTracklistAction(dispatch, tracklistState)
 	}, []);
 
-  const selectTrack = useCallback((trackId: any) => {
-		action.selectTrackAction(dispatch, trackId)
-	}, []);
+  // const selectTrack = useCallback((trackId: any) => {
+	// 	action.selectTrackAction(dispatch, trackId)
+	// }, []);
 
 	const selectAlbum = useCallback((albumId: any) => {
 		action.selectAlbumAction(dispatch, albumId)
@@ -45,7 +45,7 @@ export default function CurrentTracklistProvider({ children }: any) {
 			selectArtist,
 			selectPlaylist,
 			selectGenre,
-      selectTrack
+      // selectTrack
 		}), [
 		tracklistState,
 		shuffleTracklist,
@@ -53,7 +53,7 @@ export default function CurrentTracklistProvider({ children }: any) {
 		selectArtist,
 		selectPlaylist,
 		selectGenre,
-    selectTrack
+    // selectTrack
 	]
 	);
 
