@@ -124,6 +124,16 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',
+
+   /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
+   search_result_h2: 'Resultado',
+   search_result_type_all: 'Todos',
+   search_result_type_tracks: 'Canciones',
+   search_result_type_albums: 'Álbumes',
+   search_result_type_artists: 'Artistas',
+   search_result_type_playlists: 'Playlists',
+   search_result_type_btn_all: 'VER TODO',
+
 }
 
 export default spanishTranslation;
