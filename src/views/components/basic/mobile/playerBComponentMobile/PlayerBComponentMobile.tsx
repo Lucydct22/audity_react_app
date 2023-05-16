@@ -27,7 +27,7 @@ const PlayerBComponentMobile = () => {
   const [showPopUp, setShowPopUp] = useState(false);
 
   const handleClosePopUp = () => {
-    setShowPopUp(!showPopUp);
+    setShowPopUp(false);
   };
  
   return (
@@ -43,7 +43,7 @@ const PlayerBComponentMobile = () => {
             </button>
           </div>
 
-          <div className='player-bottom-track-mobile' onClick={handleClosePopUp} >
+          <div className='player-bottom-track-mobile' onClick={()=> setShowPopUp(true)} >
             <div className='player-bottom-track-mobile__title'>
               {currentTrack.name}
             </div>
@@ -62,9 +62,9 @@ const PlayerBComponentMobile = () => {
           </div>
         </div>
       </div>
-
-      <PlayerTrackDetailsComponentMobile showPopUp={showPopUp} handleClosePopUp={handleClosePopUp} />
-
+{showPopUp && <PlayerTrackDetailsComponentMobile onClose={handleClosePopUp} />
+}
+      
     </>
   )
 }
