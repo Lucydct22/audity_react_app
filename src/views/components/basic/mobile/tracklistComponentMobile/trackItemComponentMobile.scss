@@ -1,65 +1,58 @@
 @import "../../../../../sass/variables";
+@import "../../../../../sass/mixins";
 
 .track-list-item-mobile {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: var(----color-primary);
-  width: 95vw;
   justify-content: space-between;
-  margin-left: 1rem;
-
-  &__dropbox {
-    
-    &--wrapper {
-      margin: 0 auto;
-
-      &__icon {
-        display: flex;
-        gap: 15px;
-        margin: 5px;
-        align-items: center;
-      }
-    } 
-  }
-
-  &__icons-mobile{
-    margin-left: 55px;
-  }
-
+  padding: 10px 18px;
+  height: 95px;
   
-  .track-list-item-mobile-div {
+  &__content {
     display: flex;
-    flex-direction: row;
+    cursor: pointer;
 
     img {
-      width: 50px;
-      margin-right: 5px;
+      border-radius: 12px;
     }
 
-    &__track {
-      margin-top: 3%;
-      font-weight: bold;
-      font-family: 14px;
+    &--text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      margin-left: 8px;
 
       div {
-        font-weight: lighter;
-        font-size: 12px;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      span {
+        color: $color-secondary;
+        font-weight: 400;
       }
     }
   }
 
-  &__icons-mobile {
+  &__icons {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    padding: 10px;
-    font-size: 18px;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 75px;
+    margin-left: 15px;
 
-    &__td-icon-arrow {
-      border: 1px solid rgb(136, 136, 136);
-      fill:rgb(136, 136, 136);
-      border-radius: 100%;
+    &--play {
+      color: $color-secondary;
+      cursor: pointer;
+      height: 32px;
+      width: 32px;
+    }
+
+    &--dots {
+      color: $color-secondary;
+      cursor: pointer;
+      height: 32px;
+      width: 32px;
     }
   }
 }

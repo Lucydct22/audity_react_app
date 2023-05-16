@@ -69,7 +69,7 @@ const TrackListMobileComponent = ({ tracksData }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="page-content__track-list">
+    <main className="mobile-track-component">
       {tracksData &&
         tracksData.map((track) => {
           const { _id, name, artists, imageUrl, likedBy, duration, album } =
@@ -88,6 +88,6 @@ const TrackListMobileComponent = ({ tracksData }) => {
             />
           );
         })}
-    </div>
+    </main>
   );
 };

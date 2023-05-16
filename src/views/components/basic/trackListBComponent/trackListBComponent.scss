@@ -21,3 +21,9 @@
     fill: rgb(231, 59, 59);
   }
 }
+
+.mobile-track-component {
+  .track-list-item-mobile:not(:last-child) {
+    border-bottom: var(--color-border-1px);
+  }
+}
