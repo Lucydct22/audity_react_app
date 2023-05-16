@@ -1,5 +1,4 @@
 import "./TrackItemComponentDesktop.scss";
-import { useState, useEffect, useRef } from "react";
 import { IoAddOutline } from "react-icons/io5";
 import { AiFillHeart, AiOutlineDownload } from "react-icons/ai";
 import { SlOptionsVertical } from "react-icons/sl";

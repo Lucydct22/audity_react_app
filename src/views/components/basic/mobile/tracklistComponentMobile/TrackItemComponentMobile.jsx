@@ -1,10 +1,6 @@
 import "./trackItemComponentMobile.scss";
-import { useState, useEffect, useRef } from "react";
-import { IoAddOutline, IoEllipsisVerticalSharp } from "react-icons/io5";
-import { AiFillHeart, AiOutlineDownload } from "react-icons/ai";
-import { SlOptionsVertical } from "react-icons/sl";
-import { responsiveBreak } from "utils/componentsConstants";
-import useWindowSizeReport from "hooks/useWindowSizeReport";
+import { useState, useRef } from "react";
+import { IoEllipsisVerticalSharp } from "react-icons/io5";
 import { MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import TrackSideBarMobile from "./TrackSidebarMobile/TrackSideBarMobile";
@@ -19,7 +15,6 @@ const TrackListMobileComponent = ({
   time,
 }) => {
   const { t } = useTranslation();
-  const windowWidth = useWindowSizeReport();
 
   const [popOpen, setPopperOpen] = useState(false);
   let popperRef = useRef();
@@ -27,18 +22,6 @@ const TrackListMobileComponent = ({
   const handleClose = () => {
     setPopperOpen(false);
   };
-
-  /* useEffect(() => {
-    let handler = (e) => {
-      if (!popperRef?.current?.contains(e.target)) {
-        setPopperOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    }
-  });*/
 
   return (
     <>

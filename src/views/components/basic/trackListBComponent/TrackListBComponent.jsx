@@ -8,11 +8,9 @@ import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { joinArtistsName } from "views/utils/joinArtistsName";
 import formatToSeconds from "utils/tracks/formatToSeconds";
-import { getArtistByIdApi } from 'api/music/artists';
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
-  
 
   return (
     <Suspense fallback={<></>}>
@@ -27,8 +25,6 @@ export default function TrackListBComponent({ tracksData }) {
 
 const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
-  const data = Array.from(tracksData);
-  console.log(data);
 
   return (
     <table>
@@ -46,8 +42,8 @@ const TrackListDesktopComponent = ({ tracksData }) => {
         </tr>
       </thead>
       <tbody>
-        {data ?
-          data.map((track) => {
+        {tracksData ?
+          tracksData.map((track) => {
             const { _id, name, artists, imageUrl, likedBy, duration, album } =
               track;
             const artistsName = joinArtistsName(artists);
@@ -63,48 +59,35 @@ const TrackListDesktopComponent = ({ tracksData }) => {
               />
             );
           })
-        : null}
+          : null}
       </tbody>
     </table>
   );
 };
 
 const TrackListMobileComponent = ({ tracksData }) => {
+  const { t } = useTranslation();
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>{t("track_list_track")}</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>{t("track_list_artist")}</td>
-          <td>{t("track_list_album")}</td>
-          <td>
-            <AiOutlineClockCircle className="track-list-item__td-icon" />
-          </td>
-          <td>{t("track_list_rating")}</td>
-        </tr>
-      </thead>
-      <tbody>
-        {tracksData &&
-          tracksData.map((track) => {
-            const { _id, name, artists, imageUrl, likedBy, duration, album } =
-              track;
-            const artistsName = joinArtistsName(artists);
-            return (
-              <TrackItemComponentMobile
-                key={_id}
-                id={_id}
-                name={name}
-                artist={artistsName}
-                thumbnail={imageUrl}
-                likes={likedBy.length}
-                time={formatToSeconds(duration)}
-                album={album?.name}
-              />
-            );
-          })}
-      </tbody>
-    </table>
+    <div className="page-content__track-list">
+      {tracksData &&
+        tracksData.map((track) => {
+          const { _id, name, artists, imageUrl, likedBy, duration, album } =
+            track;
+          const artistsName = joinArtistsName(artists);
+          return (
+            <TrackItemComponentMobile
+              key={_id}
+              id={_id}
+              name={name}
+              artist={artistsName}
+              thumbnail={imageUrl}
+              likes={likedBy.length}
+              time={formatToSeconds(duration)}
+              album={album?.name}
+            />
+          );
+        })}
+    </div>
   );
 };
