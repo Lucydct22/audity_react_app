@@ -79,6 +79,7 @@ const SwiperMaxTracks = ({ tracks }) => {
           className="swiper-track-carousel"
         >
           {tracks?.slice(0, 8).map((track) => {
+            console.log(track)
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -125,6 +126,7 @@ const Swiper1024Tracks = ({ tracks }) => {
           className="swiper-track-carousel"
         >
           {tracks?.slice(0, 8).map((track) => {
+            console.log(track)
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />

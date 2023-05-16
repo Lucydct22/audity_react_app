@@ -1,4 +1,4 @@
-import './trackSidebarMobileStyle.scss';
+import './trackSidebarMobile.scss';
 import { IoAddOutline } from "react-icons/io5";
 import { AiFillHeart, AiOutlineDownload, AiOutlineClockCircle } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';

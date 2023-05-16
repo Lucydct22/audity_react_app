@@ -17,9 +17,7 @@ export default function RenderTrack({ track }: any) {
   const { t } = useTranslation();
 
   const handlePlayClick = () => {
-    console.log(track._id)
-    selectTrack(track._id);
-    selectCurrentTrack(track._id);
+    selectCurrentTrack(track);
   };
 
   return (

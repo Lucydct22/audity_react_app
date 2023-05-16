@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPlaylistByIdApi } from 'api/music/playlists';
 import PlaylistBComponent from 'views/components/basic/playlistBComponent/PlaylistBComponent';
-import TrackListComponent from 'views/components/basic/trackListComponent/TrackListComponent'
+import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import HelmetSEO from 'views/utils/HelmetSEO';
 import './playlistPage.scss'
 
@@ -25,7 +25,7 @@ export default function PlaylistPage() {
     >
       <div className='playlist-layout'>
         <PlaylistBComponent playlist={playlist} />
-        <TrackListComponent />
+        {/* <TrackListBComponent /> */}
       </div>
     </HelmetSEO>
   )
