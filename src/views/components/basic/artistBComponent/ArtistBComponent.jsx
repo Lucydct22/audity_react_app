@@ -10,16 +10,21 @@ import { IoShuffleOutline } from "react-icons/io5";
 import './artistBComponent.scss';
 import { Player } from '@lottiefiles/react-lottie-player';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 
 export default function ArtistBComponent({ artist }) {
+  const { listId, selectArtist } = useContext(CurrentTracklistContext);
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
   const { t } = useTranslation();
-  const { trackData } = useContext(CurrentTrackContext)
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
+    selectArtist(artist._id)
+    selectCurrentTrack(artist.tracks[0])
     setIsPlaying(true);
   };
 

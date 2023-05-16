@@ -5,6 +5,7 @@ const initialTracklistState = {
 	tracks: [],
 	shuffle: false,
 	shuffleTracklist: () => { },
+  selectTrack: (trackId: string) => { },
 	selectAlbum: (albumId: string) => { },
 	selectArtist: (artistId: string) => { },
 	selectPlaylist: (playlistId: string) => { },

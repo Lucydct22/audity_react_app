@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdArrowBack } from "react-icons/md";
 import { IoShuffleOutline } from "react-icons/io5";
@@ -13,12 +13,12 @@ import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistCo
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 
 export default function AlbumBComponent({ album }) {
-  const { selectAlbum } = useContext(CurrentTracklistContext)
-  const { trackData, selectCurrentTrack } = useContext(CurrentTrackContext)
+  const { listId, selectAlbum } = useContext(CurrentTracklistContext);
+  const { trackData, trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
   const { t } = useTranslation();
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [screenWidth] = useWindowSizeReport()
+  const [screenWidth] = useWindowSizeReport();
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
@@ -29,22 +29,22 @@ export default function AlbumBComponent({ album }) {
 
   const handleLikeClick = () => {
     setIsLiked((prevState) => !prevState);
-  }
+  };
 
   return (
     <>
-      {(screenWidth < responsiveBreak) &&
+      {screenWidth < responsiveBreak && (
         <div className="album-page-back">
           <button onClick={() => navigate(-1)}>
             <MdArrowBack size={27} />
           </button>
         </div>
-      }
+      )}
       <div className="album-page">
         <img src={album?.imageUrl} alt="Image description" />
         <section className="album-page__section">
           <h1>{album?.name}</h1>
-          <p>15 {t('page_pnumber')}</p>
+          <p>15 {t("page_pnumber")}</p>
           <div className="album-page__section--buttons">
             <button className="album-page__section--buttons__play" onClick={handlePlayClick}>
               {(screenWidth < responsiveBreak) && <Player
@@ -65,8 +65,15 @@ export default function AlbumBComponent({ album }) {
               <span>{t('pausebutton')}</span>
             </button>
             <CopyUrl className="album-page__section--buttons__copy-url" />
-            <button className="album-page__section--buttons__like" onClick={handleLikeClick}>
-              {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
+            <button
+              className="album-page__section--buttons__like"
+              onClick={handleLikeClick}
+            >
+              {isLiked ? (
+                <AiOutlineHeart color="#ef5466" />
+              ) : (
+                <AiOutlineHeart />
+              )}
             </button>
           </div>
         </section>

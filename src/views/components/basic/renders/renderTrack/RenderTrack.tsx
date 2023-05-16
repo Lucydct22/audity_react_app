@@ -1,11 +1,26 @@
 import { useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import "./renderTrack.scss";
+import { MdPause, MdPlayArrow, MdArrowBack } from "react-icons/md";
 import { joinArtistsName } from "views/utils/joinArtistsName";
+import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
+import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function RenderTrack({ track }: any) {
+  const { listId, selectTrack } = useContext(CurrentTracklistContext);
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
   const { name, imageUrl, artists } = track;
   const artistsName = joinArtistsName(artists);
+  const { t } = useTranslation();
+
+  const handlePlayClick = () => {
+    console.log(track._id)
+    selectTrack(track._id);
+    selectCurrentTrack(track._id);
+  };
 
   return (
     <div className="render-track">
@@ -15,7 +30,28 @@ export default function RenderTrack({ track }: any) {
         </div>
         <div className="render-track__thumbnail--btn">
           <div className="render-track__thumbnail--btn__play">
-            <FaPlay size="14px" color="#191919" />
+            <button>
+              {listId !== track?._id ? (
+                <div onClick={handlePlayClick}>
+                  <MdPlayArrow size={20} />
+                  <span>{t("playbutton")}</span>
+                </div>
+              ) : (
+                <>
+                  {trackData.isPlaying ? (
+                    <div onClick={pauseCurrentTrack}>
+                      <MdPause size={20} />
+                      <span>{t("pausebutton")}</span>
+                    </div>
+                  ) : (
+                    <div onClick={playCurrentTrack}>
+                      <MdPlayArrow size={20} />
+                      <span>{t("playbutton")}</span>
+                    </div>
+                  )}
+                </>
+              )}
+            </button>
           </div>
         </div>
       </div>

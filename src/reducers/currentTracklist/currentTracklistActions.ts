@@ -3,6 +3,8 @@ import makeArrayOfTrackIds from "utils/tracks/makeArrayOfTrackIds";
 import shuffleArray from "utils/tracks/shuffleArray";
 import * as CurrentTracklistReducer from './currentTracklistTypes';
 import { getAlbumByIdApi } from "api/music/albums";
+import { getArtistByIdApi } from "api/music/artists";
+import { getTrackByIdApi } from "api/music/tracks";
 
 export const initCurrentTracklistAction = function (dispatch: any) {
 	getTracksApi().then(async (tracksResponse: any) => {
@@ -16,6 +18,19 @@ export const initCurrentTracklistAction = function (dispatch: any) {
 				tracks: tracklist
 			}
 		})
+	})
+}
+
+export const selectTrackAction = async function (dispatch: any, trackId: any) {
+	const response: any = await getTrackByIdApi(trackId)
+	return dispatch({
+		type: CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST,
+		payload: {
+			listType: 'track',
+			listId: response.track._id,
+			listName: response.track.name,
+      tracks: response.track.tracks,
+		}
 	})
 }
 
@@ -33,7 +48,7 @@ export const shuffleTracklistAction = function (dispatch: any, tracklistState: a
 	})
 }
 
-export const selectAlbumAction = async function (dispatch: any, albumId: any, selectCurrentTrack: any) {
+export const selectAlbumAction = async function (dispatch: any, albumId: any) {
 	const response: any = await getAlbumByIdApi(albumId)
 	return dispatch({
 		type: CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST,
@@ -44,11 +59,19 @@ export const selectAlbumAction = async function (dispatch: any, albumId: any, se
 			tracks: response.album.tracks
 		}
 	})
-
 }
 
-export const selectArtistAction = function (dispatch: any, artistId: any) {
-
+export const selectArtistAction = async function (dispatch: any, artistId: any) {
+const response: any = await getArtistByIdApi(artistId);
+return dispatch({
+  type: CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST,
+  payload: {
+    listType: "artist",
+    listId: response.artist._id,
+    listName: response.artist.name,
+    tracks: response.artist.tracks,
+  },
+});
 }
 
 export const selectPlaylistAction = function (dispatch: any, playlistId: any) {
