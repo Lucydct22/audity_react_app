@@ -6,6 +6,7 @@ import initialMyLibraryState from './initialMyLibraryState'
 import myLibraryReducer from 'reducers/myLibrary/myLibrary.reducer'
 import * as action from "reducers/myLibrary/myLibrary.actions";
 import { ChildrenProps } from 'interfaces/global';
+import { message } from 'antd';
 import { Playlist } from 'interfaces/music';
 
 export default function MyLibraryProvider(props: ChildrenProps) {
@@ -29,6 +30,12 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
+	const postPrivateTrack= useCallback(async (data: any) => {
+		message.loading(`Creating track`)
+		const token = await getAccessTokenSilently()
+		isAuthenticated && action.postPrivateTrackAction(dispatch, token, data, dbUser._id)
+	}, [isAuthenticated, dbUser]);
+
 	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string ) => {
 		const token = await getAccessTokenSilently()
 		if (token && isAuthenticated) {
@@ -40,10 +47,12 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		() => ({
 			...userState,
 			postPlaylist,
+			postPrivateTrack,
 			putTrackToPlaylist
 		}), [
 		userState,
 		postPlaylist,
+		postPrivateTrack,
 		putTrackToPlaylist
 	]
 	);

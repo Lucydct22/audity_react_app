@@ -64,7 +64,11 @@
     border-radius: 4px;
     aspect-ratio: 1 / 1;
     width: 100%;
-    background-color: var(--background-on-hover)
+    background-color: var(--background-on-hover);
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      border-radius: 8%;
+    }
   }
 
   &__details {

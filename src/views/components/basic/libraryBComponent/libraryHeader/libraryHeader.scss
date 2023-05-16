@@ -21,7 +21,7 @@
     padding: 0 34px;
     padding-top: 10px;
     max-width: 1504px;
-    width: calc(100% - 68px);
+    width: 100%;
     margin: 0 auto;
 
     @media (max-width: $media-breakpoint-desktop-mobile) {
@@ -55,6 +55,7 @@
         &--name {
           font-family: 'Anek Gujarati', sans-serif;
           font-size: 32px;
+          line-height: 56px;
           margin: 0;
           color: var(--color-primary);
 
@@ -102,7 +103,7 @@
         font-weight: 400;
         font-size: 17px;
         gap: 10px;
-        
+
         @media (max-width: $media-breakpoint-desktop-mobile) {
           padding: 8px 24px;
           margin: 0;
