@@ -24,7 +24,8 @@ export async function postArtistAction(dispatch: any, data: any, token: any, mes
 			name: data.name,
 			genres: data?.genres,
 			albums: data?.albums,
-			tracks: data?.tracks
+			tracks: data?.tracks,
+			playlists: data?.playlists
 		}, token)
 		const postArtistImage: any = await api.putArtistImageApi(postArtist.artist._id, data.image.file.originFileObj, token)
 		if (postArtistImage.status === 200) {
@@ -73,6 +74,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 			genres: data?.genres,
 			albums: data?.albums,
 			tracks: data?.tracks,
+			playlists: data?.playlists,
 			imagePublicId: null
 		}
 		if (data.image?.file.originFileObj) {
@@ -80,7 +82,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 			newArtist = artistImageToUpdate
 			values.imagePublicId = artist.imagePublicId
 		}
-		if (data?.name || data?.genres || data?.albums || data?.tracks) {
+		if (data?.name || data?.genres || data?.albums || data?.tracks || data?.playlists) {
 			const artistToUpdate = await api.updateArtistApi(artist._id, values, token)
 			newArtist = artistToUpdate
 		}
@@ -92,6 +94,7 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 			if (data.genres) artist.genres = data.genres
 			if (data.albums) artist.albums = data.albums
 			if (data.tracks) artist.tracks = data.tracks
+			if (data.playlists) artist.playlists = data.playlists
 			artistsState.artists[findIndexArtist] = artist
 		}
 		if (newArtist.status === 200) {

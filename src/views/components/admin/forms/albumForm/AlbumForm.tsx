@@ -6,12 +6,14 @@ import ArtistAdminContext from 'context/admin/artist.context/ArtistAdminContext'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Button, Form, Image, Input, Select, Upload, message } from 'antd'
 import type { SelectProps } from 'antd';
+import TrackAdminContext from 'context/admin/track.context/TrackAdminContext'
 
 export default function AlbumForm() {
 	const { albumId } = useParams()
 	const { albums, postAlbum, updateAlbum } = useContext(AlbumAdminContext)
 	const { genres } = useContext(GenreAdminContext)
 	const { artists } = useContext(ArtistAdminContext)
+	const { tracks } = useContext(TrackAdminContext)
 	const [messageApi, contextHolder] = message.useMessage()
 	const album: any = albums.find((album: any) => album._id === albumId)
 
@@ -28,6 +30,14 @@ export default function AlbumForm() {
 		artistOptions.push({
 			label: artist.name,
 			value: artist._id,
+		});
+	});
+
+	const trackOptions: SelectProps['options'] = [];
+	tracks.forEach((track: any) => {
+		trackOptions.push({
+			label: track.name,
+			value: track._id,
 		});
 	});
 
@@ -64,6 +74,7 @@ export default function AlbumForm() {
 						placeholder="Select genres"
 						defaultValue={album?.genres}
 						options={genreOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
@@ -79,6 +90,23 @@ export default function AlbumForm() {
 						placeholder="Select artists"
 						defaultValue={album?.artists}
 						options={artistOptions}
+						optionFilterProp='label'
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label="Tracks"
+					name="tracks"
+					rules={[{ required: !albumId ? true : false, message: 'Please input tracks genres!' }]}
+				>
+					<Select
+						mode="multiple"
+						allowClear
+						style={{ width: '100%' }}
+						placeholder="Select tracks"
+						defaultValue={album?.tracks}
+						options={trackOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 

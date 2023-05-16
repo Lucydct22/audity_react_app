@@ -2,11 +2,12 @@ import { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Button, Form, Image, Input, Select, Upload, message } from 'antd'
 import GenreAdminContext from 'context/admin/genre.context/GenreAdminContext'
-import { ArrowLeftOutlined } from '@ant-design/icons'
-import ArtistAdminContext from 'context/admin/artist.context/ArtistAdminContext'
-import type { SelectProps } from 'antd';
 import AlbumAdminContext from 'context/admin/album.context/AlbumAdminContext'
+import ArtistAdminContext from 'context/admin/artist.context/ArtistAdminContext'
 import TrackAdminContext from 'context/admin/track.context/TrackAdminContext'
+import PlaylistAdminContext from 'context/admin/playlist.context/PlaylistAdminContext'
+import { ArrowLeftOutlined } from '@ant-design/icons'
+import type { SelectProps } from 'antd';
 
 export default function ArtistForm() {
 	const { artistId } = useParams()
@@ -14,6 +15,7 @@ export default function ArtistForm() {
 	const { genres } = useContext(GenreAdminContext)
 	const { albums } = useContext(AlbumAdminContext)
 	const { tracks } = useContext(TrackAdminContext)
+	const { playlists } = useContext(PlaylistAdminContext)
 	const [messageApi, contextHolder] = message.useMessage()
 	const findArtist: any = artists.find((artist: any) => artist._id === artistId)
 
@@ -38,6 +40,14 @@ export default function ArtistForm() {
 		tracksOptions.push({
 			label: track.name,
 			value: track._id,
+		});
+	});
+
+	const playlistsOptions: SelectProps['options'] = [];
+	playlists.forEach((playlist: any) => {
+		playlistsOptions.push({
+			label: playlist.name,
+			value: playlist._id,
 		});
 	});
 
@@ -74,6 +84,7 @@ export default function ArtistForm() {
 						placeholder="Select genres"
 						defaultValue={findArtist?.genres}
 						options={genresOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
@@ -89,6 +100,7 @@ export default function ArtistForm() {
 						placeholder="Select albums"
 						defaultValue={findArtist?.albums}
 						options={albumsOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
@@ -104,6 +116,23 @@ export default function ArtistForm() {
 						placeholder="Select tracks"
 						defaultValue={findArtist?.tracks}
 						options={tracksOptions}
+						optionFilterProp='label'
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label="Playlists"
+					name="playlists"
+					rules={[{ required: !artistId ? true : false, message: 'Please input artist playlists!' }]}
+				>
+					<Select
+						mode="multiple"
+						allowClear
+						style={{ width: '100%' }}
+						placeholder="Select playlists"
+						defaultValue={findArtist?.playlists}
+						options={playlistsOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
