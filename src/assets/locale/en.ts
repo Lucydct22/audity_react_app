@@ -136,6 +136,7 @@ const englishTranslation = {
   search_result_type_artists: 'Artists',
   search_result_type_playlists: 'Playlists',
   search_result_type_btn_all: 'VIEW ALL',
+  search_result_null: 'Oops, there is no match at this moment',
 
 }
 

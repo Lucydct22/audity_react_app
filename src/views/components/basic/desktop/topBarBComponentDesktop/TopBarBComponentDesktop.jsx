@@ -10,6 +10,8 @@ import Language from 'views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
 import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
 import UserContext from 'context/user/UserContext';
+import { searchContentApi } from 'api/music/music.api';
+import SearchResultDesktopBComponent from '../../searchResultDesktopBComponent/SearchResultDesktopBComponent';
 
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
@@ -34,11 +36,38 @@ const TopBarBComponentDesktop = () => {
 
   }, []);
 
+  const [searchInput, setSearchInput] = useState('')
+  const [content, setContent] = useState('')
+
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value)
+  }
+
+  useEffect(() => {
+    let isMounted = true
+    const searchFetch = async () => {
+      const result = await searchContentApi(searchInput)
+      result && isMounted && setContent(result.content)
+    }
+    searchFetch()
+     console.log(content)
+    return () => { isMounted = false }
+  }, [searchInput])
+
+
   return (
     <header className='page-topbar'>
       <div className='page-topbar-search'>
         <CiSearch color='#a2a2ad' size={'1.6rem'} />
-        <input type="text" className='page-topbar-search__input' placeholder={t("search_placeholder") || ""} />
+        <input 
+        type="text" 
+        className='page-topbar-search__input'
+         placeholder={t("search_placeholder") || ""} 
+         onChange={(e) => handleSearch(e)}
+         />
+         { content && 
+         <div className='page-topbar-search__result'><SearchResultDesktopBComponent content={content} />
+         </div>}
       </div>
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>

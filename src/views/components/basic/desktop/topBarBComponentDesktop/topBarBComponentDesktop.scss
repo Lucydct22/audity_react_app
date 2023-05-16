@@ -48,6 +48,24 @@
       color: $color-secondary;
     }
   }
+
+  &__result{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 70%;
+    //height: 200px;
+    margin-left: 2rem;
+    border: var(--color-border-1px);
+    background: var(--library-header-background);
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--color-primary);
+    font-size: 15px;
+  }
 }
 
 .page-topbar-action {

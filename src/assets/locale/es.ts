@@ -133,6 +133,7 @@ const spanishTranslation = {
    search_result_type_artists: 'Artistas',
    search_result_type_playlists: 'Playlists',
    search_result_type_btn_all: 'VER TODO',
+   search_result_null: 'Vaya, no hay ninguna coincidencia en este momento',
 
 }
 
