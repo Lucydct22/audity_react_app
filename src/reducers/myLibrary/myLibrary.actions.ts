@@ -1,7 +1,7 @@
 import { getAlbumsLikedByUserApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
 import { getArtistsLikedByUserApi } from 'api/music/artists';
-import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi } from 'api/music/playlists';
+import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi, putTrackToPlaylistApi } from 'api/music/playlists';
 import { getPrivateTracksApi, getTracksLikedByUserApi, postPrivateTrackApi, updateTrackAudioApi } from 'api/music/tracks';
 import { message } from 'antd';
 
@@ -76,6 +76,24 @@ export async function postPrivateTrackAction(dispatch: any, token: any, data: an
 		return
 	} catch (err) {
 		message.error(`Server error ${err}`)
+	}
+}
+
+export async function putTrackToPlaylistAction(dispatch: any, token: any, playlistId: string, trackId: string ) {
+	try {
+		const response = await putTrackToPlaylistApi(token, playlistId, trackId)
+		console.log(response);
+		
+		if (response.status === 200) {
+			return dispatch({
+				type: MyLibraryTypes.PUT_TRACK_TO_PLAYLIST,
+				payload: {
+					playlist: response.playlist
+				}
+			})
+		}
+	} catch (err) {
+		console.log(err);
 	}
 }
 
