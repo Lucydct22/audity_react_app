@@ -4,7 +4,7 @@ import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
 import { useTranslation } from "react-i18next";
 import { AiOutlineHeart } from "react-icons/ai";
-import { MdArrowBack } from "react-icons/md";
+import { MdArrowBack, MdPlayArrow, MdPause } from "react-icons/md";
 import { IoShuffleOutline } from "react-icons/io5";
 import CopyUrl from "views/UI/copyUrl/CopyUrl";
 import "./albumBComponent.scss";
@@ -22,9 +22,12 @@ export default function AlbumBComponent({ album }) {
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
-    selectAlbum(album._id);
-    selectCurrentTrack(album.tracks[0]);
-    setIsPlaying(true);
+    if (trackData.url !== album.tracks[0].audioUrl) {
+      selectAlbum(album._id);
+      selectCurrentTrack(album.tracks[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
   };
 
   const handleLikeClick = () => {
@@ -49,27 +52,17 @@ export default function AlbumBComponent({ album }) {
             <button
               className="album-page__section--buttons__play" /* onClick={handlePlayClick} */
             >
-              {listId !== album?._id ? (
+              {trackData.isPlaying ? (
+                <div onClick={handlePlayClick}>
+                  <MdPause size={20} />
+                  <span>{t("pausebutton")}</span>
+                </div>
+              ) : (
                 <div onClick={handlePlayClick}>
                   <MdPlayArrow size={20} />
                   <span>{t("playbutton")}</span>
                 </div>
-              ) : (
-                <>
-                  {trackData.isPlaying ? (
-                    <div onClick={pauseCurrentTrack}>
-                      <MdPause size={20} />
-                      <span>{t("pausebutton")}</span>
-                    </div>
-                  ) : (
-                    <div onClick={playCurrentTrack}>
-                      <MdPlayArrow size={20} />
-                      <span>{t("playbutton")}</span>
-                    </div>
-                  )}
-                </>
               )}
-
               {/* {(screenWidth < responsiveBreak) && <Player
                 src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
                 loop

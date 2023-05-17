@@ -23,10 +23,13 @@ export default function ArtistBComponent({ artist }) {
   const navigate = useNavigate();
 
   const handlePlayClick = () => {
-    selectArtist(artist._id);
-    selectCurrentTrack(artist.tracks[0]);
-    setIsPlaying(true);
-  };
+    if (trackData.url !== artist.tracks[0].audioUrl) {
+      selectArtist(artist._id);
+      selectCurrentTrack(artist.tracks[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
+  }
 
   const handleFollowClick = () => {
     setIsFollowing((prevState) => !prevState);
@@ -48,30 +51,19 @@ export default function ArtistBComponent({ artist }) {
           <p>500.655 Fans</p>
           <div className="artist-page__section--buttons">
             <button
-              className="artist-page__section--buttons__play" onClick={handlePlayClick}
-            >
-              {/* {listId !== artist?._id ? (
+              className="artist-page__section--buttons__play">
+              {trackData.isPlaying ? (
+                <div onClick={handlePlayClick}>
+                  <MdPause size={20} />
+                  <span>{t("pausebutton")}</span>
+                </div>
+              ) : (
                 <div onClick={handlePlayClick}>
                   <MdPlayArrow size={20} />
                   <span>{t("playbutton")}</span>
                 </div>
-              ) : (
-                <>
-                  {trackData.isPlaying ? (
-                    <div onClick={pauseCurrentTrack}>
-                      <MdPause size={20} />
-                      <span>{t("pausebutton")}</span>
-                    </div>
-                  ) : (
-                    <div onClick={playCurrentTrack}>
-                      <MdPlayArrow size={20} />
-                      <span>{t("playbutton")}</span>
-                    </div>
-                  )}
-                </>
-              )} */}
-
-              {(screenWidth < responsiveBreak) && <Player
+              )}
+              {/* {(screenWidth < responsiveBreak) && <Player
                 src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
                 loop
                 autoplay
@@ -86,7 +78,7 @@ export default function ArtistBComponent({ artist }) {
                 className={isPlaying && trackData.isPlaying ? "artist-page-show-playing" : "artist-page__section--buttons__play--playing"}
               />}
               <IoShuffleOutline size={22} className={isPlaying && trackData.isPlaying ? "artist-page__section--buttons__play--onBtn artist-page-show-onBtn" : "artist-page__section--buttons__play--onBtn"} />
-              <span>{t('pausebutton')}</span>
+              <span>{t('pausebutton')}</span> */}
             </button>
             <CopyUrl className="artist-page__section--buttons__copy-url" />
             <button
