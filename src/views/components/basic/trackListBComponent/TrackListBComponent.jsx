@@ -44,7 +44,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
       <div className="tracklist-component__tracks">
         {tracksData &&
           tracksData.map((track, index) => {
-            const { _id, name, artists, imageUrl, likedBy, duration, album } =
+            const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
               track;
             const artistsName = joinArtistsName(artists);
             return (
@@ -56,7 +56,9 @@ const TrackListDesktopComponent = ({ tracksData }) => {
                 thumbnail={imageUrl}
                 likes={likedBy.length}
                 time={duration ? formatToSeconds(duration) : "-"}
+                audioUrl={audioUrl}
                 album={album?.name}
+                track={track}
               />
             );
           })}

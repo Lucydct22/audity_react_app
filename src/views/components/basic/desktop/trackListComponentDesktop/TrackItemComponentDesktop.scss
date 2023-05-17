@@ -12,8 +12,12 @@
     .track-list--item {
       border-radius: 5px;
       background:
-        /* rgba(128, 128, 128, 0.259) */
         var(--background-on-hover);
+    }
+
+    .track-list--item__track--img__btn {
+      display: flex;
+      cursor: pointer;
     }
 
     .track-list--item__icons {
@@ -21,32 +25,75 @@
     }
   }
 
-
   &--item {
     display: grid;
-    grid-template-columns: repeat(4, 1fr) 80px;
+    grid-template-columns: 1.5fr 145px 1fr 1fr 80px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     font-size: 17px;
 
     img {
-      border-radius: 5px;
+      filter: brightness(90%);
       width: 50px;
+      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      border-radius: 4px;
+      line-height: 0;
+      text-indent: -999em;
+      transition: all 0.4s;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        background-image: url('../../../../../assets/img/webp/disc250.webp');
+        background-position: center;
+        background-size: cover;
+        padding: 50% 0;
+        position: relative;
+      }
     }
 
     &__track {
+      cursor: pointer;
 
+      &--img {
+        position: relative;
+
+        &__btn {
+          display: none;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+          position: absolute;
+          top: 5px;
+          left: 0;
+          bottom: 0;
+          right: 0;
+
+          button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border: 0;
+            border-radius: 50%;
+            background-color: var(--background-secondary);
+            cursor: pointer;
+            transition: all 0.4s;
+
+            svg {
+              height: 20px;
+              width: 20px;
+            }
+          }
+        }
+      }
 
       span {
         margin: 6px;
       }
-
-      &--index {}
-
-      &--img {}
-
-      &--name {}
     }
 
     &__icons {
@@ -64,16 +111,6 @@
       &--download {
         margin-right: 20px;
       }
-    }
-
-    &__artist {
-      // display: flex;
-      // justify-content: end;
-    }
-
-    &__album {
-      // display: flex;
-      // justify-content: end;
     }
 
     &__time {
