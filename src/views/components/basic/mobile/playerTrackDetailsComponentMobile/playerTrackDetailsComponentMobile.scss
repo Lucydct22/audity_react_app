@@ -11,9 +11,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(+100%);
+  //transform: translateY(+100%);
   transition: all 0.4s;
   background-color: #9F4D44;
+  color: rgb(226, 226, 226);
   background-image: linear-gradient(to bottom, rgba(209, 87, 86, 1), #1f0f0d);
 
   &__track-info {
