@@ -30,9 +30,9 @@ const TrackListDesktopComponent = ({
   };
 
   return (
-    <div className="track-list">
-      {id && name && time ? (
-        <div key={id} className="track-list--item">
+    <div key={id} className="track-list">
+      {id && name && time && 
+        <div  className="track-list--item">
           <div className="track-list--item__track" onClick={handleClick}>
             <span className="track-list--item__track--index">{index + 1}</span>
             <span className="track-list--item__track--img">
@@ -67,11 +67,7 @@ const TrackListDesktopComponent = ({
           <span className="track-list--item__album">{album ? album : "-"}</span>
           <span className="track-list--item__time">{time}</span>
         </div>
-      ) : (
-        <p>
-          This playlist looks empty... Find some tracks to add to your playlist
-        </p>
-      )}
+      }
     </div>
   );
 };

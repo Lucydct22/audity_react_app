@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { joinArtistsName } from "views/utils/joinArtistsName";
 import formatToSeconds from "utils/tracks/formatToSeconds";
-import { redirect } from "react-router-dom";
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
@@ -28,7 +27,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <>
       <div className="tracklist-component">
         <div className="tracklist-component__sections">
           <span>{t("track_list_track")}</span>
@@ -47,6 +46,9 @@ const TrackListDesktopComponent = ({ tracksData }) => {
             const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
               track;
             const artistsName = joinArtistsName(artists);
+
+            if (!audioUrl) return;
+
             return (
               <TrackItemComponentDesktop
                 id={_id}
@@ -63,7 +65,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
             );
           })}
       </div>
-    </div>
+    </>
   );
 };
 
@@ -72,9 +74,12 @@ const TrackListMobileComponent = ({ tracksData }) => {
     <main className="mobile-track-component">
       {tracksData &&
         tracksData.map((track) => {
-          const { _id, name, artists, imageUrl, likedBy, duration, album } =
+          const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
             track;
           const artistsName = joinArtistsName(artists);
+
+          if (!audioUrl) return;
+
           return (
             <TrackItemComponentMobile
               id={_id}
@@ -83,7 +88,9 @@ const TrackListMobileComponent = ({ tracksData }) => {
               thumbnail={imageUrl}
               likes={likedBy.length}
               time={duration ? formatToSeconds(duration) : "-"}
+              audioUrl={audioUrl}
               album={album?.name}
+              track={track}
             />
           );
         })}
