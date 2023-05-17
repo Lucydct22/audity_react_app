@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: 10px 18px;
   height: 95px;
-  
+
   &__content {
     display: flex;
     width: 100%;
@@ -63,5 +63,20 @@
       height: 32px;
       width: 32px;
     }
+  }
+
+  &__backdropOn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-color: rgba(#000000, 0.4);
+    z-index: 10;
+  }
+
+  &__backdropOff {
+    display: none;
   }
 }

@@ -40,9 +40,21 @@ const TrackListMobileComponent = ({
     haveLike === undefined ? setSongLike(true) : setSongLike(false)
   }, [track, tracks])
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (!popperRef.current.contains(e.target)) {
+        setPopperOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  }, []);
+
   return (
     <>
-      <div key={id} className="track-list-item-mobile" ref={popperRef}>
+      <div key={id} className="track-list-item-mobile">
         <div className="track-list-item-mobile__content" onClick={handleClick}>
           <img src={thumbnail ? thumbnail : SongPlaceholder} alt={name} />
           <div className="track-list-item-mobile__content--text">
@@ -50,7 +62,7 @@ const TrackListMobileComponent = ({
             <span>{artist}</span>
           </div>
         </div>
-        <div className="track-list-item-mobile__icons">
+        <div className="track-list-item-mobile__icons" ref={popperRef}>
           <button onClick={() => likeDislikeTrack(track)} className="track-list-item-mobile__icons--play" >
             {!songLike ? <AiFillHeart color='#ef5466' /> : <CiHeart />}
           </button>
@@ -59,6 +71,8 @@ const TrackListMobileComponent = ({
             onClick={() => setPopperOpen(!popOpen)}
           />
         </div>
+        <TrackSideBarMobile track={track} popOpen={popOpen} />
+        <div className={`track-list-item-mobile${popOpen ? '__backdropOn' : '__backdropOff'}`} />
       </div>
     </>
   );
