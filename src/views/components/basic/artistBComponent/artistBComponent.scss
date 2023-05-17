@@ -98,30 +98,10 @@
           order: 2;
         }
 
-        span {
-          padding-left: 0;
-        }
-
-        &--playing {
-          display: none
-        }
-
-        &--onBtn {
-          display: block
-        }
-
-        .artist-page-show-onBtn {
-          display: none
-        }
-
-        &:hover {
-          .artist-page-show-playing {
-            display: none
-          }
-
-          .artist-page-show-onBtn {
-            display: block
-          }
+        div {
+          display: flex;
+          align-items: center;
+          width: 100%;
         }
       }
 

@@ -98,30 +98,10 @@
           order: 2;
         }
 
-        span {
-          padding-left: 0;
-        }
-
-        &--playing {
-          display: none
-        }
-
-        &--onBtn {
-          display: block
-        }
-
-        .album-page-show-onBtn {
-          display: none
-        }
-
-        &:hover {
-          .album-page-show-playing {
-            display: none
-          }
-
-          .album-page-show-onBtn {
-            display: block
-          }
+        div {
+          display: flex;
+          align-items: center;
+          width: 100%;
         }
       }
 

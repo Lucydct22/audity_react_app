@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
+import { message } from 'antd';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +24,7 @@ const PlayerBComponentDesktop = () => {
   const { isAuthenticated } = useAuth0();
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
-  const { playlists, tracks, postPlaylist, putTrackToPlaylist , likeDislikeTrack} = useContext(MyLibraryContext)
+  const { playlists, tracks, postPlaylist, putTrackToPlaylist, likeDislikeTrack } = useContext(MyLibraryContext)
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
@@ -49,7 +50,11 @@ const PlayerBComponentDesktop = () => {
   };
 
   function handleClick() {
-    postPlaylist(nameRef.current.value, descRef.current.value);
+    if (nameRef.current.value == "" || descRef.current.value == "") {
+      message.error("Sorry could not create Playlist. Both inputs are required")
+    } else {
+      postPlaylist(nameRef.current.value, descRef.current.value);
+    }
   }
 
   const hideModal = () => {

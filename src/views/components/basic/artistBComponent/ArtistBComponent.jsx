@@ -63,22 +63,6 @@ export default function ArtistBComponent({ artist }) {
                   <span>{t("playbutton")}</span>
                 </div>
               )}
-              {/* {(screenWidth < responsiveBreak) && <Player
-                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
-                loop
-                autoplay
-                style={{ height: '40px', width: '27px' }}
-                className={isPlaying && trackData.isPlaying ? "artist-page-show-playing" : "artist-page__section--buttons__play--playing"}
-              />}
-              {(screenWidth > responsiveBreak) && <Player
-                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
-                loop
-                autoplay
-                style={{ height: '40px', width: '27px' }}
-                className={isPlaying && trackData.isPlaying ? "artist-page-show-playing" : "artist-page__section--buttons__play--playing"}
-              />}
-              <IoShuffleOutline size={22} className={isPlaying && trackData.isPlaying ? "artist-page__section--buttons__play--onBtn artist-page-show-onBtn" : "artist-page__section--buttons__play--onBtn"} />
-              <span>{t('pausebutton')}</span> */}
             </button>
             <CopyUrl className="artist-page__section--buttons__copy-url" />
             <button

@@ -50,7 +50,7 @@ export default function AlbumBComponent({ album }) {
           <p>15 {t("page_pnumber")}</p>
           <div className="album-page__section--buttons">
             <button
-              className="album-page__section--buttons__play" /* onClick={handlePlayClick} */
+              className="album-page__section--buttons__play"
             >
               {trackData.isPlaying ? (
                 <div onClick={handlePlayClick}>
@@ -63,22 +63,6 @@ export default function AlbumBComponent({ album }) {
                   <span>{t("playbutton")}</span>
                 </div>
               )}
-              {/* {(screenWidth < responsiveBreak) && <Player
-                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
-                loop
-                autoplay
-                style={{ height: '40px', width: '27px' }}
-                className={isPlaying && trackData.isPlaying ? "album-page-show-playing" : "album-page__section--buttons__play--playing"}
-              />}
-              {(screenWidth > responsiveBreak) && <Player
-                src='https://assets8.lottiefiles.com/private_files/lf30_oMQCYI.json'
-                loop
-                autoplay
-                style={{ height: '40px', width: '27px' }}
-                className={isPlaying && trackData.isPlaying ? "album-page-show-playing" : "album-page__section--buttons__play--playing"}
-              />}
-              <IoShuffleOutline size={22} className={isPlaying && trackData.isPlaying ? "album-page__section--buttons__play--onBtn album-page-show-onBtn" : "album-page__section--buttons__play--onBtn"} />
-              <span>{t('pausebutton')}</span> */}
             </button>
             <CopyUrl className="album-page__section--buttons__copy-url" />
             <button
