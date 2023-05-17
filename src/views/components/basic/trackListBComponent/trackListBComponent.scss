@@ -1,29 +1,26 @@
 @import "../../../../sass/variables";
 
-.track-list-item {
-  font-size: 17px;
+.tracklist-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: var(--color-border-1px);
+  border-width: 2px;
 
-  img {
-    width: 50px;
-  }
 
-  &__td-track {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+  &__sections {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 80px;
+    align-items: center;  
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 12px;
+    margin-bottom: 20px;
 
-  &__td-icon-item {
-    font-size: 20px;
-  }
-
-  &__td-icon-heart {
-    fill: rgb(231, 59, 59);
-  }
-}
-
-.mobile-track-component {
-  .track-list-item-mobile:not(:last-child) {
-    border-bottom: var(--color-border-1px);
+    &--icontime {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

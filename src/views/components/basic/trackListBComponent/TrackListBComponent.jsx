@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { joinArtistsName } from "views/utils/joinArtistsName";
 import formatToSeconds from "utils/tracks/formatToSeconds";
+import { redirect } from "react-router-dom";
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
@@ -27,29 +28,29 @@ const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>{t("track_list_track")}</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>{t("track_list_artist")}</td>
-          <td>{t("track_list_album")}</td>
-          <td>
-            <AiOutlineClockCircle className="track-list-item__td-icon" />
-          </td>
-          <td>{t("track_list_rating")}</td>
-        </tr>
-      </thead>
-      <tbody>
+    <div>
+      <div className="tracklist-component">
+        <div className="tracklist-component__sections">
+          <span>{t("track_list_track")}</span>
+          <span>&nbsp;</span>
+          <span>{t("track_list_artist")}</span>
+          <span>{t("track_list_album")}</span>
+          <span className="tracklist-component__sections--icontime">
+            <AiOutlineClockCircle className="tracklist-component__sections--td-icon" />
+          </span>
+        </div>
+        <div className="tracklist-component__line"></div>
+      </div>
+      <div className="tracklist-component__tracks">
         {tracksData &&
-          tracksData.map((track) => {
+          tracksData.map((track, index) => {
             const { _id, name, artists, imageUrl, likedBy, duration, album } =
               track;
             const artistsName = joinArtistsName(artists);
             return (
               <TrackItemComponentDesktop
                 id={_id}
+                index={index}
                 name={name ? name : track.uploadByUser.name}
                 artist={artistsName ? artistsName : track.uploadByUser.artists}
                 thumbnail={imageUrl}
@@ -59,8 +60,8 @@ const TrackListDesktopComponent = ({ tracksData }) => {
               />
             );
           })}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 };
 
