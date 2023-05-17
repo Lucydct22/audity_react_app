@@ -1,22 +1,5 @@
 @import "../../../../sass/variables";
 
-.page-content__track-list {
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    thead {
-      font-weight: bold;
-      font-size: 18px;
-      border-bottom: var(--color-border-1px);
-    }
-  }
-
-  td {
-    padding: 10px;
-  }
-}
-
 .track-list-item {
   font-size: 17px;
 
@@ -36,5 +19,11 @@
 
   &__td-icon-heart {
     fill: rgb(231, 59, 59);
+  }
+}
+
+.mobile-track-component {
+  .track-list-item-mobile:not(:last-child) {
+    border-bottom: var(--color-border-1px);
   }
 }
