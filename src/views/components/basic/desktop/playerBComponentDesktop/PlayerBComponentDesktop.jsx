@@ -77,8 +77,8 @@ const PlayerBComponentDesktop = () => {
       </div>
       <div className="player-add-to-playlist__results">
         {playlists.userContent &&
-          playlists.userContent?.map((playlist) => {
-            return <p>{playlist.name}</p>
+          playlists.userContent?.map(({ name, _id }) => {
+            return <p key={_id}>{name}</p>
           })
         }
       </div>
