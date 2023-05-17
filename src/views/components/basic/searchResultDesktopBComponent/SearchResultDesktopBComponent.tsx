@@ -25,7 +25,7 @@ const Render = ({ data, url }: any) => {
           <img src={imageUrl} alt={name} />
         </div>
         <div className='render-item__data'>
-          <p className='render-item__p'>{name} - Artist</p>
+          <p className='render-item__p'>{name}</p>
         </div>
       </div>
     </Link>
@@ -34,10 +34,10 @@ const Render = ({ data, url }: any) => {
 
 const SearchResultDesktopBComponent = ({ content }: any) => {
 
-  const { albums, artists, tracks } = content
+  const { albums, artists, tracks, playlists } = content
   const { t } = useTranslation();
 
-  
+
 
   return (
     <div className='results-container'>
@@ -62,9 +62,16 @@ const SearchResultDesktopBComponent = ({ content }: any) => {
         </div>
       }
 
-      {artists.length < 1 && albums.length < 1 && tracks.length < 1 && <span>{t('search_result_null')}</span>}
+      {playlists.length > 0 &&
+        <div className='results-container__playlists'>
+          <span>Playlists</span>
+          {playlists.slice(0, 2).map((playlist: any) => <Render key={playlist._id} data={playlist} url={'playlists'} />)}
+        </div>
+      }
 
-      
+      {artists.length < 1 && albums.length < 1 && tracks.length < 1 && playlists.length < 1 && <span>{t('search_result_null')}</span>}
+
+
 
     </div>
   )
