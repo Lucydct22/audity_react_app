@@ -5,16 +5,20 @@ import { Artist } from "interfaces/music";
 import RenderAlbum from "../renders/renderAlbum/RenderAlbum";
 import './albumsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
+import { useTranslation } from 'react-i18next';
+
 
 export default function AlbumsBComponent({ albums }: any) {
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const albumsQuery = searchParams.get('albums');
+  const {t} = useTranslation(); 
 
   const filterAlbums = (albums: any) => albums.filter((album: any) => new RegExp(`.*${albumsQuery}.*`, 'i').test(album.name))
 
   const renderAlbums = () => (
+    
     albumsQuery ? (
       filterAlbums(albums)
         .map((album: any) => <RenderAlbum key={album._id} album={album} />)

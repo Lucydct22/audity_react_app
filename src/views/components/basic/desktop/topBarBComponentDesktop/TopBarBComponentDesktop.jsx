@@ -61,7 +61,7 @@ const TopBarBComponentDesktop = () => {
     setSearchInput('');
     setContent('')
   }
-    
+
   useEffect(() => {
     let isMounted = true
     const searchFetch = async () => {
@@ -77,7 +77,6 @@ const TopBarBComponentDesktop = () => {
     const artistsParam = searchParams.get('artist');
     const albumsParam = searchParams.get('albums');
     const playlistsParam = searchParams.get('playlists');
-
 
     if (artistsParam) {
       searchParams.delete('artist');
@@ -108,34 +107,39 @@ const TopBarBComponentDesktop = () => {
     if (pathname === '/playlists') {
       setSearchParams({ playlists: query })
     }
-
   }
 
   return (
     <header className='page-topbar'>
       <div className='page-topbar-search' ref={searchRef}>
         <CiSearch color='#a2a2ad' size={'1.6rem'} />
-        <input
-          type="text"
-          className='page-topbar-search__input'
-          placeholder={t("search_placeholder") || ""}
-          onChange={(e) => handleSearch(e)}
-          value={searchInput}
-        />
 
-{/* <input
-          type="text"
-          value={query}
-          className='page-topbar-search__input'
-          placeholder={t("search_placeholder") || ""}
-          onChange={handleChange}
-        /> */}
-        {searchInput && (
-          <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
+        {pathname !== '/artists' && pathname !== '/albums' && pathname !== '/playlists' ? (
+          <>
+            <input
+              type="text"
+              className='page-topbar-search__input'
+              placeholder={t("search_placeholder") || ""}
+              onChange={(e) => handleSearch(e)}
+              value={searchInput}
+            />
+            {searchInput && (
+              <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
+            )}
+            {content &&
+              <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
+              </div>}
+          </>
+          
+        ) : (
+          <input
+            type="text"
+            value={query}
+            className='page-topbar-search__input'
+            placeholder={t("search_placeholder") || ""}
+            onChange={handleChange}
+          />
         )}
-        {content &&
-          <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
-          </div>}
       </div>
 
       <div className='page-topbar-action' ref={popperRef}>
