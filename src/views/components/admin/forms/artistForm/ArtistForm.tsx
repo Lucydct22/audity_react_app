@@ -75,7 +75,6 @@ export default function ArtistForm() {
 				<Form.Item
 					label="Genres"
 					name="genres"
-					rules={[{ required: !artistId ? true : false, message: 'Please input artist genres!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -91,7 +90,6 @@ export default function ArtistForm() {
 				<Form.Item
 					label="Albums"
 					name="albums"
-					rules={[{ required: !artistId ? true : false, message: 'Please input artist albums!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -107,7 +105,6 @@ export default function ArtistForm() {
 				<Form.Item
 					label="Tracks"
 					name="tracks"
-					rules={[{ required: !artistId ? true : false, message: 'Please input artist tracks!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -123,7 +120,6 @@ export default function ArtistForm() {
 				<Form.Item
 					label="Playlists"
 					name="playlists"
-					rules={[{ required: !artistId ? true : false, message: 'Please input artist playlists!' }]}
 				>
 					<Select
 						mode="multiple"

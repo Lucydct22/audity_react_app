@@ -13,8 +13,6 @@ export default function UserAdminProvider(props: ChildrenProps) {
 	useEffect(() => {
 		const getUsersFetch = async () => {
 			const token = await getAccessTokenSilently()
-			console.log(token);
-			
 			if (!isLoading && isAuthenticated && token) {
 				action.initUsersAction(dispatch, token)
 			}
@@ -23,7 +21,7 @@ export default function UserAdminProvider(props: ChildrenProps) {
 	}, [isLoading, isAuthenticated])
 
 	const deleteUser = useCallback(async (userId: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Removing user` })
+		messageApi.open({ type: 'loading', content: `Removing user`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && userId) {
 			action.deleteUserAction(dispatch, userId, token, userState, messageApi)
@@ -31,7 +29,7 @@ export default function UserAdminProvider(props: ChildrenProps) {
 	}, [userState]);
 
 	const updateUserRole = useCallback(async (role: any, userId: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Updating user` })
+		messageApi.open({ type: 'loading', content: `Updating user`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && role && userId) {
 			action.updateUserRoleAction(dispatch, role, userId, token, userState, messageApi)

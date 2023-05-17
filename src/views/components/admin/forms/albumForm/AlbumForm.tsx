@@ -65,7 +65,6 @@ export default function AlbumForm() {
 				<Form.Item
 					label="Genres"
 					name="genres"
-					rules={[{ required: !albumId ? true : false, message: 'Please input album genres!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -81,7 +80,6 @@ export default function AlbumForm() {
 				<Form.Item
 					label="Artists"
 					name="artists"
-					rules={[{ required: !albumId ? true : false, message: 'Please input artists genres!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -97,7 +95,6 @@ export default function AlbumForm() {
 				<Form.Item
 					label="Tracks"
 					name="tracks"
-					rules={[{ required: !albumId ? true : false, message: 'Please input tracks genres!' }]}
 				>
 					<Select
 						mode="multiple"

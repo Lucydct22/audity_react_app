@@ -11,7 +11,7 @@ export async function initAlbumsAction(dispatch: any) {
 				payload: response.albums
 			})
 		} else {
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		message.error('Server error')
@@ -31,7 +31,7 @@ export async function postAlbumAction(dispatch: any, data: any, token: any, mess
 			})
 		} else {
 			messageApi.destroy()
-			messageApi.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
@@ -52,7 +52,7 @@ export async function deleteAlbumAction(dispatch: any, album: any, token: any, a
 			})
 		} else {
 			messageApi.destroy()
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
@@ -68,37 +68,30 @@ export async function updateAlbumAction(dispatch: any, data: any, album: any, to
 			genres: data?.genres,
 			artists: data?.artists,
 			tracks: data?.tracks,
-			imagePublicId: null
 		}
 		if (data.image?.file.originFileObj) {
 			const albumImageToUpdate = await api.putAlbumImageApi(album._id, data.image.file.originFileObj, token)
 			newAlbum = albumImageToUpdate
-			values.imagePublicId = album.imagePublicId
 		}
 		if (data?.name || data?.genres || data?.tracks || data?.artists) {
 			const albumToUpdate = await api.updateAlbumApi(album._id, values, token)
 			newAlbum = albumToUpdate
 		}
-		const findIndexAlbum = albumsState.albums.findIndex((item: any) => item._id === album._id)
-		if (newAlbum.album) {
+		if (newAlbum.status === 200 && newAlbum.album) {
+			const findIndexAlbum = albumsState.albums.findIndex((item: any) => item._id === album._id)
 			albumsState.albums[findIndexAlbum] = newAlbum.album
-		} else {
-			if (data.name) album.name = data.name
-			if (data.genres) album.genres = data.genres
-			if (data.artists) album.artists = data.artists
-			if (data.tracks) album.tracks = data.tracks
-			albumsState.albums[findIndexAlbum] = album
-		}
-		if (newAlbum.status === 200) {
 			messageApi.destroy()
 			message.success(`Album updated`)
 			return dispatch({
 				type: AlbumAdminTypes.UPDATE_ALBUM,
 				payload: albumsState
 			})
+		} else {
+			messageApi.destroy()
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
-		message.info(`Nothing to update`)
+		message.error(`Server error`)
 	}
 }

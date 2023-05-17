@@ -75,7 +75,6 @@ export default function TrackForm() {
 				<Form.Item
 					label="Genres"
 					name="genres"
-					rules={[{ required: !trackId ? true : false, message: 'Please input track genres!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -91,7 +90,6 @@ export default function TrackForm() {
 				<Form.Item
 					label="Artists"
 					name="artists"
-					rules={[{ required: !trackId ? true : false, message: 'Please input track artists!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -121,7 +119,6 @@ export default function TrackForm() {
 				<Form.Item
 					label="Playlists"
 					name="playlists"
-					rules={[{ required: !trackId ? true : false, message: 'Please some tracks to playlists!' }]}
 				>
 					<Select
 						mode="multiple"

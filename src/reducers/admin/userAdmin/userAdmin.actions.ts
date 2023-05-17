@@ -11,7 +11,7 @@ export async function initUsersAction(dispatch: any, token: any) {
 				payload: response.users
 			})
 		} else {
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		message.error('Server error')
@@ -31,7 +31,7 @@ export async function deleteUserAction(dispatch: any, userId: string, token: any
 			})
 		} else {
 			messageApi.destroy()
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
@@ -53,10 +53,11 @@ export async function updateUserRoleAction(dispatch: any, role: string, userId: 
 				payload: userState
 			})
 		} else {
-			message.warning(`Server error`)
+			messageApi.destroy()
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
-		message.info(`Nothing to update`)
+		message.error(`Server error`)
 	}
 }

@@ -10,6 +10,7 @@ const initialCurrentTrackState = {
 		genre: '',
 		likes: '',
 		album: '',
+		likedBy: [],
 		createdAt: 0,
 		updatedAt: 0
 	},

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Avatar, List, Skeleton, message, Popconfirm, Button, Select } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, HeartOutlined } from '@ant-design/icons';
 import UserAdminContext from 'context/admin/user.context/UserAdminContext';
 
 export default function UsersAdminComponent() {
@@ -25,6 +25,14 @@ export default function UsersAdminComponent() {
 				renderItem={(item: any) => (
 					<List.Item
 						actions={[
+							<div>
+								<HeartOutlined /> {
+									item.likesTo.albums.length +
+									item.likesTo.artists.length +
+									item.likesTo.playlists.length +
+									item.likesTo.tracks.length
+								}
+							</div>,
 							<Popconfirm
 								title="Delete the user"
 								description="Are you sure to delete this user?"
@@ -52,14 +60,6 @@ export default function UsersAdminComponent() {
 								avatar={<Avatar src={item.picture} />}
 								title={<p style={{ paddingTop: 6 }}>{item.email}</p>}
 							/>
-							<div>
-								Likes: {
-									item.likesTo.albums.length +
-									item.likesTo.artists.length +
-									item.likesTo.playlists.length +
-									item.likesTo.tracks.length
-								}
-							</div>
 						</Skeleton>
 					</List.Item>
 				)}

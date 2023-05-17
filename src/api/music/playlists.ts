@@ -24,7 +24,6 @@ export const getPlaylistApi = async (): Promise<Playlist> => {
 	return data as Playlist
 }
 
-
 export const getPlaylistByIdApi = async (playlistId: string): Promise<Playlist> => {
 	const response = await fetch(`${basePath}/playlist/${playlistId}`)
 	const data = await response.json()
@@ -93,7 +92,7 @@ export const updatePlaylistAdminApi = async (playlistId: string, data: any, toke
 	return result
 }
 
-export const deletePlaylistByIdApi = async (playlist: any, userId: string, token: any): Promise<any> => {
+export const deletePlaylistByIdApi = async (playlistId: any, userId: string, token: any): Promise<any> => {
 	const params = {
 		method: "DELETE",
 		headers: {
@@ -102,10 +101,9 @@ export const deletePlaylistByIdApi = async (playlist: any, userId: string, token
 		},
 		body: JSON.stringify({
 			userId,
-			imagePublicId: playlist.imagePublicId,
 		}),
 	}
-	const response = await fetch(`${basePath}/playlist/${playlist._id}`, params)
+	const response = await fetch(`${basePath}/playlist/${playlistId}`, params)
 	const result = await response.json()
 	return result
 }
@@ -115,4 +113,31 @@ export const updatePlaylistImageApi = async (playlistId: string, image: any, tok
 	const formData = new FormData();
 	formData.append("image", image);
 	return makeRequest(url, true, true, "PUT", token, formData, '');
+}
+
+export const updatePlaylistPublicAccessibleApi = async (playlistId: string, publicAccessible: any, token: any): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ publicAccessible: publicAccessible }),
+	}
+	const response = await fetch(`${basePath}/update-public-accessible/${playlistId}`, params)
+	const result = await response.json()
+	return result
+}
+
+export const getAllPlaylistsApi = async (token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/all-playlists`, params)
+	const data = await response.json()
+	return data
 }

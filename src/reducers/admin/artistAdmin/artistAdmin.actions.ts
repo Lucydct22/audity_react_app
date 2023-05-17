@@ -11,7 +11,7 @@ export async function initArtistsAction(dispatch: any) {
 				payload: response.artists
 			})
 		} else {
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		message.error('Server error')
@@ -37,7 +37,7 @@ export async function postArtistAction(dispatch: any, data: any, token: any, mes
 			})
 		} else {
 			messageApi.destroy()
-			messageApi.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
@@ -58,7 +58,7 @@ export async function deleteArtistAction(dispatch: any, artist: any, token: any,
 			})
 		} else {
 			messageApi.destroy()
-			message.error('Server error')
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
@@ -75,38 +75,30 @@ export async function updateArtistAction(dispatch: any, data: any, artist: any, 
 			albums: data?.albums,
 			tracks: data?.tracks,
 			playlists: data?.playlists,
-			imagePublicId: null
 		}
 		if (data.image?.file.originFileObj) {
 			const artistImageToUpdate = await api.putArtistImageApi(artist._id, data.image.file.originFileObj, token)
 			newArtist = artistImageToUpdate
-			values.imagePublicId = artist.imagePublicId
 		}
 		if (data?.name || data?.genres || data?.albums || data?.tracks || data?.playlists) {
 			const artistToUpdate = await api.updateArtistApi(artist._id, values, token)
 			newArtist = artistToUpdate
 		}
-		const findIndexArtist = artistsState.artists.findIndex((item: any) => item._id === artist._id)
-		if (newArtist.artist) {
+		if (newArtist.status === 200 && newArtist.artist) {
+			const findIndexArtist = artistsState.artists.findIndex((item: any) => item._id === artist._id)
 			artistsState.artists[findIndexArtist] = newArtist.artist
-		} else {
-			if (data.name) artist.name = data.name
-			if (data.genres) artist.genres = data.genres
-			if (data.albums) artist.albums = data.albums
-			if (data.tracks) artist.tracks = data.tracks
-			if (data.playlists) artist.playlists = data.playlists
-			artistsState.artists[findIndexArtist] = artist
-		}
-		if (newArtist.status === 200) {
 			messageApi.destroy()
 			message.success(`Artist updated`)
 			return dispatch({
 				type: ArtistAdminTypes.UPDATE_ARTIST,
 				payload: artistsState
 			})
+		} else {
+			messageApi.destroy()
+			message.warning(`Something went wrong`)
 		}
 	} catch (err) {
 		messageApi.destroy()
-		message.info(`Nothing to update`)
+		message.error(`Server error`)
 	}
 }

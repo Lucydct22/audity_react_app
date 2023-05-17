@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Avatar, List, Skeleton, FloatButton, message, Popconfirm, Button } from 'antd';
+import { Avatar, List, Skeleton, FloatButton, message, Popconfirm, Button, Select } from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import PlaylistAdminContext from 'context/admin/playlist.context/PlaylistAdminContext';
 
 export default function PlaylistsAdminComponent() {
-	const { playlists, deletePlaylist } = useContext(PlaylistAdminContext)
+	const { playlists, deletePlaylist, updatePlaylistPublicAccessible } = useContext(PlaylistAdminContext)
 	const [initLoading, setInitLoading] = useState(true);
 	const [list, setList] = useState([]);
 	const navigate = useNavigate()
@@ -27,6 +27,15 @@ export default function PlaylistsAdminComponent() {
 				renderItem={(item: any) => (
 					<List.Item
 						actions={[
+							<Select
+								defaultValue={item.publicAccessible}
+								style={{ width: 90 }}
+								options={[
+									{ value: true, label: 'Public' },
+									{ value: false, label: 'Private' },
+								]}
+								onChange={(publiAccessible) => updatePlaylistPublicAccessible(item, publiAccessible, messageApi)}
+							/>,
 							<Popconfirm
 								title="Delete the playlist"
 								description="Are you sure to delete this playlist?"
@@ -44,9 +53,7 @@ export default function PlaylistsAdminComponent() {
 							<List.Item.Meta
 								avatar={<Avatar src={item.imageUrl} />}
 								title={<p>{item.name}</p>}
-							// description="Ant Design, a design language for background applications, is refined by Ant UED Team"
 							/>
-							{/* <div>content</div> */}
 						</Skeleton>
 					</List.Item>
 				)}

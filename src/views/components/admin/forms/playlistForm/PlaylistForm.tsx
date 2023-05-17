@@ -43,17 +43,15 @@ export default function PlaylistForm() {
 				</Form.Item>
 
 				<Form.Item
-					label="description"
+					label="Description"
 					name="description"
-					// rules={[{ required: !playlistId ? true : false, message: 'Please input playlist name!' }]}
 				>
-					<Input placeholder='Introduce playlist name' defaultValue={playlist?.name} />
+					<Input placeholder='Introduce playlist name' defaultValue={playlist?.description} />
 				</Form.Item>
 
 				<Form.Item
 					label="Tracks"
 					name="tracks"
-					rules={[{ required: !playlistId ? true : false, message: 'Please input playlist tracks!' }]}
 				>
 					<Select
 						mode="multiple"
