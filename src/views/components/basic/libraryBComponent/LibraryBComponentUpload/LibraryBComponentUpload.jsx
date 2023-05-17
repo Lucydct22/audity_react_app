@@ -60,7 +60,7 @@ export default function LibraryBComponentUpload() {
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
         <div>
-          <TrackListBComponent tracksData={tracksData} />
+          {/* <TrackListBComponent tracksData={tracksData} /> */}
         </div>
       </div>
       <UserSongUploaderModal

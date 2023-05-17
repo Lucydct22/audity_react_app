@@ -15,13 +15,12 @@
   width: 80vw;
   height: 70vh;
 
-
   &__header {
     display: flex;
     flex-direction: row;
     align-content: center;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 2rem;
 
     &__btn-close {
@@ -30,7 +29,7 @@
       font-size: 1.5rem;
       color: inherit;
       cursor: pointer;
-      justify-content: start;
+      justify-content: flex-start;
 
     }
   }
