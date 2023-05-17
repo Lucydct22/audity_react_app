@@ -7,53 +7,60 @@ import myLibraryReducer from 'reducers/myLibrary/myLibrary.reducer'
 import * as action from "reducers/myLibrary/myLibrary.actions";
 import { ChildrenProps } from 'interfaces/global';
 import { message } from 'antd';
-import { Playlist } from 'interfaces/music';
 
 export default function MyLibraryProvider(props: ChildrenProps) {
-	const [userState, dispatch] = useReducer(myLibraryReducer, initialMyLibraryState)
+	const [myLibraryState, dispatch] = useReducer(myLibraryReducer, initialMyLibraryState)
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 	const { dbUser } = useContext(UserContext)
-	const [playlists, setPlaylists] = useState<Playlist[] | null>([])
 
 	useEffect(() => {
 		const initMyLibrary = async () => {
 			const token = await getAccessTokenSilently()
-			if (!isLoading && isAuthenticated && token && dbUser) {
+			if (!isLoading && isAuthenticated && token && dbUser._id) {
 				action.initMyLibraryAction(dispatch, token, dbUser._id)
 			}
 		}
 		initMyLibrary()
-	}, [isAuthenticated, dbUser, getAccessTokenSilently])
+	}, [isAuthenticated, dbUser._id, getAccessTokenSilently])
 
 	const postPlaylist = useCallback(async (name: string, description: string) => {
 		const token = await getAccessTokenSilently()
 		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
-	const postPrivateTrack= useCallback(async (data: any) => {
+	const postPrivateTrack = useCallback(async (data: any) => {
 		message.loading(`Creating track`)
 		const token = await getAccessTokenSilently()
 		isAuthenticated && action.postPrivateTrackAction(dispatch, token, data, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
-	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string ) => {
+	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string) => {
 		const token = await getAccessTokenSilently()
 		if (token && isAuthenticated) {
-			action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId )
+			action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId)
 		}
 	}, [isAuthenticated, dbUser]);
 
+	const likeDislikeTrack = useCallback(async (trackId: string) => {
+		const token = await getAccessTokenSilently()
+		if (token && isAuthenticated) {
+			action.likeDislikeTrackAction(dispatch, trackId, dbUser._id, myLibraryState, token)
+		}
+	}, [isAuthenticated, dbUser, myLibraryState]);
+
 	const memoProvider = useMemo(
 		() => ({
-			...userState,
+			...myLibraryState,
 			postPlaylist,
 			postPrivateTrack,
-			putTrackToPlaylist
+			putTrackToPlaylist,
+			likeDislikeTrack
 		}), [
-		userState,
+		myLibraryState,
 		postPlaylist,
 		postPrivateTrack,
-		putTrackToPlaylist
+		putTrackToPlaylist,
+		likeDislikeTrack
 	]
 	);
 

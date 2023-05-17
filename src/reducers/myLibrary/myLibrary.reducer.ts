@@ -52,12 +52,32 @@ export default function myLibraryReducer(state: any, action: any) {
 				}
 			}
 
-			case MyLibraryTypes.PUT_TRACK_TO_PLAYLIST:
+		case MyLibraryTypes.PUT_TRACK_TO_PLAYLIST:
 			return {
 				...state,
 				tracks: {
 					...state.tracks,
 					userContent: [...state.playlists.userContent, payload.playlist]
+				}
+			}
+
+		case MyLibraryTypes.LIKE_TRACK:
+			return {
+				...state,
+				tracks: {
+					...state.tracks,
+					info: state.tracks.content.length + 1,
+					content: [...state.tracks.content, payload]
+				}
+			}
+
+		case MyLibraryTypes.DISLIKE_TRACK:
+			return {
+				...state,
+				tracks: {
+					...state.tracks,
+					info: state.tracks.content.length - 1,
+					content: payload
 				}
 			}
 

@@ -9,6 +9,7 @@ import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { getGenresApi } from 'api/music/genres';
 import { useAuth0 } from '@auth0/auth0-react';
 import { searchContentApi } from 'api/music/music.api';
+import SearchResultBComponent from "../searchResultMobileBComponent/SearchResultMobileBComponent";
 
 export default function SearchBComponentMobile() {
   const [screenWidth] = useWindowSizeReport()
@@ -39,6 +40,7 @@ export default function SearchBComponentMobile() {
       result && isMounted && setContent(result.content)
     }
     searchFetch()
+    // console.log(content)
     return () => { isMounted = false }
   }, [searchInput])
 
@@ -47,14 +49,16 @@ export default function SearchBComponentMobile() {
       {(screenWidth > responsiveBreak) ? (
         <Navigate to={"/"} />
       ) : (
-        <MobileSearchPage genres={genres} handleSearch={handleSearch} />
+        <MobileSearchPage genres={genres} handleSearch={handleSearch} content={content} />
       )}
     </Suspense>
   )
 }
 
-function MobileSearchPage({genres, handleSearch}) {
+function MobileSearchPage({ genres, handleSearch, content }) {
   const { t } = useTranslation();
+
+  const hasSearchResults = !!content
 
   return (
     <div className='mobile-search'>
@@ -70,14 +74,21 @@ function MobileSearchPage({genres, handleSearch}) {
         />
         <span><CiSearch size={25} /></span>
       </div>
-      <h1>{t("musicpage_genres")}</h1>
-      <div className='mobile-search__grid'>
-        {genres?.map(genre => {
-          return (
-            <RenderGenres genre={genre} key={genre._id} />
-          )
-        })}
-      </div>
+      {hasSearchResults ? (
+        <SearchResultBComponent content={content} />
+      ) : (
+        <>
+          <h1>{t("musicpage_genres")}</h1>
+          <div className='mobile-search__grid'>
+            {genres?.map(genre => {
+              return (
+                <RenderGenres genre={genre} key={genre._id} />
+              )
+            })}
+          </div>
+        </>
+      )
+      }
     </div>
   )
 }

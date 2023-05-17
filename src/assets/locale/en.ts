@@ -128,6 +128,17 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Go back',
+
+  /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
+  search_result_h2: 'Result',
+  search_result_type_all: 'All',
+  search_result_type_tracks: 'Tracks',
+  search_result_type_albums: 'Albums',
+  search_result_type_artists: 'Artists',
+  search_result_type_playlists: 'Playlists',
+  search_result_type_btn_all: 'VIEW ALL',
+  search_result_null: 'Oops, there is no match at this moment',
+
 }
 
 export default englishTranslation;

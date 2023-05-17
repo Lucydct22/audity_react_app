@@ -17,13 +17,13 @@ export default function ArtistAdminProvider(props: ChildrenProps) {
 	}, [isLoading, isAuthenticated])
 
 	const postArtist = useCallback(async (artist: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Creating artist '${artist.name}'` })
+		messageApi.open({ type: 'loading', content: `Creating artist '${artist.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		action.postArtistAction(dispatch, artist, token, messageApi)
 	}, []);
 
 	const deleteArtist = useCallback(async (artist: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Removing artist` })
+		messageApi.open({ type: 'loading', content: `Removing artist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && artist) {
 			action.deleteArtistAction(dispatch, artist, token, artistsState, messageApi)
@@ -31,7 +31,7 @@ export default function ArtistAdminProvider(props: ChildrenProps) {
 	}, [artistsState]);
 
 	const updateArtist = useCallback(async (data: any, artist: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Updating artist` })
+		messageApi.open({ type: 'loading', content: `Updating artist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && artist) {
 			action.updateArtistAction(dispatch, data, artist, token, artistsState, messageApi)

@@ -41,7 +41,6 @@ export const deleteGenreByIdApi = async (genre: any, token: any): Promise<any> =
 			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({imagePublicId: genre.imagePublicId}),
 	}
 	const response = await fetch(`${basePath}/delete-genre/${genre._id}`, params)
 	const result = await response.json()

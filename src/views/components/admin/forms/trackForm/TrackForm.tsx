@@ -7,6 +7,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Button, Form, Image, Input, Select, Upload, message } from 'antd'
 import type { SelectProps } from 'antd';
 import TrackAdminContext from 'context/admin/track.context/TrackAdminContext'
+import PlaylistAdminContext from 'context/admin/playlist.context/PlaylistAdminContext'
 
 export default function TrackForm() {
 	const { trackId } = useParams()
@@ -14,6 +15,7 @@ export default function TrackForm() {
 	const { genres } = useContext(GenreAdminContext)
 	const { artists } = useContext(ArtistAdminContext)
 	const { albums } = useContext(AlbumAdminContext)
+	const { playlists } = useContext(PlaylistAdminContext)
 	const [messageApi, contextHolder] = message.useMessage()
 	const track: any = tracks.find((track: any) => track._id === trackId)
 
@@ -41,6 +43,14 @@ export default function TrackForm() {
 		});
 	});
 
+	const playlistOptions: SelectProps['options'] = [];
+	playlists.forEach((playlist: any) => {
+		playlistOptions.push({
+			label: playlist.name,
+			value: playlist._id,
+		});
+	});
+
 	return (
 		<div style={{ maxWidth: 600, margin: '0 auto' }} >
 			{contextHolder}
@@ -65,7 +75,6 @@ export default function TrackForm() {
 				<Form.Item
 					label="Genres"
 					name="genres"
-					rules={[{ required: !trackId ? true : false, message: 'Please input track genres!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -74,13 +83,13 @@ export default function TrackForm() {
 						placeholder="Select genres"
 						defaultValue={track?.genres}
 						options={genreOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
 				<Form.Item
 					label="Artists"
 					name="artists"
-					rules={[{ required: !trackId ? true : false, message: 'Please input track artists!' }]}
 				>
 					<Select
 						mode="multiple"
@@ -89,6 +98,7 @@ export default function TrackForm() {
 						placeholder="Select artists"
 						defaultValue={track?.artists}
 						options={artistOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
@@ -102,6 +112,22 @@ export default function TrackForm() {
 						placeholder="Select album"
 						defaultValue={track?.album}
 						options={albumOptions}
+						optionFilterProp='label'
+					/>
+				</Form.Item>
+
+				<Form.Item
+					label="Playlists"
+					name="playlists"
+				>
+					<Select
+						mode="multiple"
+						allowClear
+						style={{ width: '100%' }}
+						placeholder="Select playlists"
+						defaultValue={track?.playlists}
+						options={playlistOptions}
+						optionFilterProp='label'
 					/>
 				</Form.Item>
 
