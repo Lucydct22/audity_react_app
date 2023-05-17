@@ -66,6 +66,16 @@
     color: var(--color-primary);
     font-size: 15px;
   }
+
+  &__btn{
+    background-color: none;
+    background: none;
+    margin-left: 55%;
+    border: 1px solid $color-main;
+    border-radius: 100%;
+    color: $color-main;
+
+  }
 }
 
 .page-topbar-action {

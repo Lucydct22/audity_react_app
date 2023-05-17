@@ -43,6 +43,11 @@ const TopBarBComponentDesktop = () => {
     setSearchInput(e.target.value)
   }
 
+  const handleClearInput = () => {
+    setContent('')
+    setSearchInput('')
+  }
+
   useEffect(() => {
     let isMounted = true
     const searchFetch = async () => {
@@ -50,7 +55,7 @@ const TopBarBComponentDesktop = () => {
       result && isMounted && setContent(result.content)
     }
     searchFetch()
-     console.log(content)
+    console.log(content)
     return () => { isMounted = false }
   }, [searchInput])
 
@@ -59,15 +64,18 @@ const TopBarBComponentDesktop = () => {
     <header className='page-topbar'>
       <div className='page-topbar-search'>
         <CiSearch color='#a2a2ad' size={'1.6rem'} />
-        <input 
-        type="text" 
-        className='page-topbar-search__input'
-         placeholder={t("search_placeholder") || ""} 
-         onChange={(e) => handleSearch(e)}
-         />
-         { content && 
-         <div className='page-topbar-search__result'><SearchResultDesktopBComponent content={content} />
-         </div>}
+        <input
+          type="text"
+          className='page-topbar-search__input'
+          placeholder={t("search_placeholder") || ""}
+          onChange={(e) => handleSearch(e)}
+        />
+        {searchInput && (
+          <button className='page-topbar-search__btn'onClick={handleClearInput}>x</button>
+        )}
+        {content &&
+          <div className='page-topbar-search__result'><SearchResultDesktopBComponent content={content} />
+          </div>}
       </div>
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
