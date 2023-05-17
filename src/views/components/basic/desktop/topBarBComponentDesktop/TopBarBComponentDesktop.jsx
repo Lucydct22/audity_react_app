@@ -24,6 +24,8 @@ const TopBarBComponentDesktop = () => {
   let popperRef = useRef();
   const searchRef = useRef();
   const { pathname } = useLocation()
+  const [searchInput, setSearchInput] = useState('')
+  const [content, setContent] = useState('')
 
   useEffect(() => {
     const handler = (e) => {
@@ -50,26 +52,15 @@ const TopBarBComponentDesktop = () => {
     }
   }, []);
 
-  const [searchInput, setSearchInput] = useState('')
-  const [content, setContent] = useState('')
-
-  const handleSearch = (e) => {
-    setSearchInput(e.target.value)
-  }
-
-  const handleClearInput = () => {
-    setSearchInput('');
-    setContent('')
-  }
-
   useEffect(() => {
     let isMounted = true
     const searchFetch = async () => {
-      const result = await searchContentApi(searchInput)
-      result && isMounted && setContent(result.content)
+      if (searchInput.length > 1) {
+        const result = await searchContentApi(searchInput)
+        result && isMounted && setContent(result.content)
+      }
     }
     searchFetch()
-    console.log(content)
     return () => { isMounted = false }
   }, [searchInput])
 
@@ -93,6 +84,16 @@ const TopBarBComponentDesktop = () => {
 
     setQuery('')
   }, [pathname])
+
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value)
+  }
+
+  const handleClearInput = () => {
+    setSearchInput('');
+    setContent('')
+  }
+
 
   const handleChange = (event) => {
     const query = event.target.value
@@ -123,14 +124,14 @@ const TopBarBComponentDesktop = () => {
               onChange={(e) => handleSearch(e)}
               value={searchInput}
             />
-            {searchInput && (
+            {searchInput.length > 0 && (
               <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
             )}
             {content &&
               <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
               </div>}
           </>
-          
+
         ) : (
           <input
             type="text"

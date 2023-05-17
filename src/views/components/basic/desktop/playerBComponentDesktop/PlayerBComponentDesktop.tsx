@@ -21,6 +21,15 @@ const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
   const [songLike, setSongLike] = useState(false);
   const { isAuthenticated } = useAuth0();
+  const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
+  const [artists, setArtists] = useState('')
+  const { playlists, tracks, postPlaylist, putTrackToPlaylist , likeDislikeTrack} = useContext(MyLibraryContext)
+  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [modal, contextHolder] = Modal.useModal();
+  const nameRef: any = useRef("");
+  const descRef: any = useRef("");
+  const { theme } = useContext(ThemeContext)
   const {
     trackData,
     currentTrack,
@@ -31,26 +40,17 @@ const PlayerBComponentDesktop = () => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
-  const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-  const [artists, setArtists] = useState('')
-  const { playlists, postPlaylist, putTrackToPlaylist } = useContext(MyLibraryContext)
-  const [open, setOpen] = useState(false);
+
   const hidePopover = () => {
     setOpen(false);
   };
-  const handleOpenChange = (newOpen) => {
+  const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
   };
 
   function handleClick() {
     postPlaylist(nameRef.current.value, descRef.current.value);
   }
-
-  const [openModal, setOpenModal] = useState(false);
-  const [modal, contextHolder] = Modal.useModal();
-  const nameRef = useRef("");
-  const descRef = useRef("");
-  const { theme } = useContext(ThemeContext)
 
   const hideModal = () => {
     setOpenModal(false);
@@ -75,20 +75,20 @@ const PlayerBComponentDesktop = () => {
     return () => { isMounted = false }
   }, [])
 
+  useEffect(() => {
+    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
+    haveLike === undefined ? setSongLike(true) : setSongLike(false)
+  }, [currentTrack, tracks])
 
-  const notify = (playlistName) => toast(`The track was added to ${playlistName}`, {
+  const notify = (playlistName: string) => toast(`The track was added to ${playlistName}`, {
     position: "top-center",
     autoClose: 2000,
     hideProgressBar: false,
     progress: undefined,
     theme: theme,
-
   })
 
-
-  function handlePutTrackToPlaylist(playlistId, playlistName) {
-    // console.log('track:', currentTrack._id )
-    // console.log('playlistId:', playlistId )
+  function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
     putTrackToPlaylist(playlistId, currentTrack._id);
     notify(playlistName)
   }
@@ -103,7 +103,7 @@ const PlayerBComponentDesktop = () => {
         </div>
         <div className="player-add-to-playlist__results">
           {playlists.userContent &&
-            playlists.userContent?.map((playlist) => {
+            playlists.userContent?.map((playlist: any) => {
               return <p key={playlist._id} onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>{playlist.name}</p>
             })
           }
@@ -148,8 +148,8 @@ const PlayerBComponentDesktop = () => {
                     <IoAddOutline />
                   </button>
                 </Popover>
-                <button className='page-player-bottom__btn' onClick={() => setSongLike(!songLike)}>
-                  {songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
+                <button className='page-player-bottom__btn' onClick={() => likeDislikeTrack(currentTrack)}>
+                  {!songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
                 </button>
               </div>
             </div>

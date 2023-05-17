@@ -1,5 +1,7 @@
+import UsersAdminComponent from "views/components/admin/usersAdminComponent/UsersAdminComponent";
+
 export default function UsersAdminPage() {
 	return (
-		<div>Users Admin Page</div>
+		<UsersAdminComponent />
 	)
 }

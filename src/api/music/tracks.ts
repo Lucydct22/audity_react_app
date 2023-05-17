@@ -36,7 +36,7 @@ export const getRandomTrackApi = async (): Promise<Track> => {
 }
 
 export const getTracksLikedByUserApi = async (userId: any, token: string): Promise<any> => {
-	return await getContentLikedByUserId(userId, 'playlists', token)
+	return await getContentLikedByUserId(userId, 'tracks', token)
 }
 
 export const postTrackApi = async (track: any, token: any): Promise<any> => {
@@ -67,19 +67,15 @@ export const updateTrackApi = async (trackId: string, data: any, token: any): Pr
 	return result
 }
 
-export const deleteTrackByIdApi = async (track: any, token: any): Promise<any> => {
+export const deleteTrackByIdApi = async (trackId: any, token: any): Promise<any> => {
 	const params = {
 		method: "DELETE",
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			imagePublicId: track.imagePublicId,
-			audioPublicId: track.audioPublicId
-		}),
+		}
 	}
-	const response = await fetch(`${basePath}/track/${track._id}`, params)
+	const response = await fetch(`${basePath}/track/${trackId}`, params)
 	const result = await response.json()
 	return result
 }
@@ -110,4 +106,17 @@ export const postPrivateTrackApi = async (trackData: any, token: any): Promise<a
 	const response = await fetch(`${basePath}/track-private`, params)
 	const data = await response.json()
 	return data
+}
+
+export const likeDislikeTrackApi = async (trackId: string, userId: any, token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/like-dislike-track/${trackId}/${userId}`, params)
+	const result = await response.json()
+	return result
 }

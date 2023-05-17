@@ -17,13 +17,13 @@ export default function TrackAdminProvider(props: ChildrenProps) {
 	}, [isLoading, isAuthenticated])
 
 	const postTrack = useCallback(async (track: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Creating track '${track.name}'` })
+		messageApi.open({ type: 'loading', content: `Creating track '${track.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		action.postTrackAction(dispatch, track, token, messageApi)
 	}, []);
 
 	const deleteTrack = useCallback(async (track: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Removing track` })
+		messageApi.open({ type: 'loading', content: `Removing track`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && track) {
 			action.deleteTrackAction(dispatch, track, token, tracksState, messageApi)
@@ -31,7 +31,7 @@ export default function TrackAdminProvider(props: ChildrenProps) {
 	}, [tracksState]);
 
 	const updateTrack = useCallback(async (data: any, track: any, messageApi: any) => {
-		messageApi.open({ type: 'loading', content: `Updating track` })
+		messageApi.open({ type: 'loading', content: `Updating track`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && track) {
 			action.updateTrackAction(dispatch, data, track, token, tracksState, messageApi)

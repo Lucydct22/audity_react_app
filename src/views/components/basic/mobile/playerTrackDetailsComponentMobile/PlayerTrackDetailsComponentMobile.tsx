@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IoChevronDownOutline, IoAdd, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext, MdOutlineQueueMusic } from "react-icons/md";
 import './playerTrackDetailsComponentMobile.scss'
 import img from 'assets/img/albums/summer-playlist.png'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
-import { TfiPlus } from "react-icons/tfi";
 import PopupAddPlaylistBComponent from '../../mobile/popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
-
 
 const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
   const { t } = useTranslation();
+  const [showPopUp, setShowPopUp] = useState(false);
   const [songLike, setSongLike] = useState(false);
   const {
     trackData,
@@ -25,6 +25,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     muteTrack,
     loopTrack,
   } = useContext(CurrentTrackContext);
+  const { tracks, likeDislikeTrack } = useContext(MyLibraryContext)
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
 
@@ -35,8 +36,10 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     return () => { isMounted = false }
   }, [])
 
-
-  const [showPopUp, setShowPopUp] = useState(false);
+  useEffect(() => {
+    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
+    haveLike === undefined ? setSongLike(true) : setSongLike(false)
+  }, [currentTrack, tracks])
 
   const handleClosePopUp = () => {
     setShowPopUp(false);
@@ -79,8 +82,8 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
 
         <div className='player-track-details-container__track-info__player-bottom-controls'>
 
-          <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => setSongLike(!songLike)}>
-            {songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
+          <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => likeDislikeTrack(currentTrack)}>
+            {!songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
           </button>
 
           <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={previousTrack}>

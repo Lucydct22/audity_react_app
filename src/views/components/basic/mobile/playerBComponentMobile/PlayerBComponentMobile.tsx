@@ -1,11 +1,14 @@
 import { useContext, useState, useEffect } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
-import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
+import { MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './playerBComponentMobile.scss'
 import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
+import UserContext from 'context/user/UserContext';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 const PlayerBComponentMobile = () => {
+  const { dbUser } = useContext(UserContext)
   const [songLike, setSongLike] = useState(false);
   const {
     trackData,
@@ -14,7 +17,8 @@ const PlayerBComponentMobile = () => {
     pauseCurrentTrack,
     nextTrack
   } = useContext(CurrentTrackContext);
-
+  const { tracks, likeDislikeTrack } = useContext(MyLibraryContext)
+  const [showPopUp, setShowPopUp] = useState(false);
   const [artists, setArtists] = useState('')
 
   useEffect(() => {
@@ -24,12 +28,15 @@ const PlayerBComponentMobile = () => {
     return () => { isMounted = false }
   }, [])
 
-  const [showPopUp, setShowPopUp] = useState(false);
+  useEffect(() => {
+    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
+    haveLike === undefined ? setSongLike(true) : setSongLike(false)
+  }, [currentTrack, tracks])
 
   const handleClosePopUp = () => {
     setShowPopUp(false);
   };
- 
+
   return (
     <>
       <div className='page-player-mobile' >
@@ -43,7 +50,7 @@ const PlayerBComponentMobile = () => {
             </button>
           </div>
 
-          <div className='player-bottom-track-mobile' onClick={()=> setShowPopUp(true)} >
+          <div className='player-bottom-track-mobile' onClick={() => setShowPopUp(true)} >
             <div className='player-bottom-track-mobile__title'>
               {currentTrack.name}
             </div>
@@ -53,8 +60,8 @@ const PlayerBComponentMobile = () => {
           </div>
 
           <div className='player-bottom-controls-mobile'>
-            <button className='player-bottom-controls-mobile__btn' onClick={() => setSongLike(!songLike)}>
-              {songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
+            <button className='player-bottom-controls-mobile__btn' onClick={() => likeDislikeTrack(currentTrack)}>
+              {!songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
             </button>
             <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>
               <MdSkipNext />
@@ -62,9 +69,8 @@ const PlayerBComponentMobile = () => {
           </div>
         </div>
       </div>
-{showPopUp && <PlayerTrackDetailsComponentMobile onClose={handleClosePopUp} />
-}
-      
+      {showPopUp && <PlayerTrackDetailsComponentMobile onClose={handleClosePopUp} />}
+
     </>
   )
 }

@@ -62,7 +62,6 @@ export const deleteArtistByIdApi = async (artist: any, token: any): Promise<any>
 			Authorization: `Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ imagePublicId: artist.imagePublicId }),
 	}
 	const response = await fetch(`${basePath}/artist/${artist._id}`, params)
 	const result = await response.json()
