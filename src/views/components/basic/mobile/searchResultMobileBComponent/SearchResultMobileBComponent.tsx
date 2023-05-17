@@ -100,7 +100,7 @@ const SearchResultBComponent = ({ content }: any) => {
               </div>
             }
 
-            {artists.length > 0 &&
+            {playlists.length > 0 &&
               <div className='search-result__results--playlists'>
                 <NavLink to='/playlists'>
                   <div className='search-result__results--playlists--titul'>
@@ -109,7 +109,7 @@ const SearchResultBComponent = ({ content }: any) => {
                   </div>
                 </NavLink>
                 <div className='search-result__results--playlists--content'>
-                  {/* {playlists.slice(0, 2).map((playlist: any) => <RenderPlaylist key={playlist._id} data={playlist} url={'playlists'}/>)} */}
+                {playlists.slice(0, 2).map((playlist: any) => <RenderTrack key={playlist._id} data={playlist} url={'playlists'} />)}
                   <button className='search-result__results--playlists--bnt'>{t('search_result_type_btn_all')}</button>
                 </div>
               </div>
