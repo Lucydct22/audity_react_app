@@ -51,6 +51,11 @@ export default function TrackForm() {
 		});
 	});
 
+	let artistsIds: any = []
+	track?.artists?.forEach((artist: any) => {
+		artistsIds.push(artist._id)
+	});
+
 	return (
 		<div style={{ maxWidth: 600, margin: '0 auto' }} >
 			{contextHolder}
@@ -78,8 +83,6 @@ export default function TrackForm() {
 				>
 					<Select
 						mode="multiple"
-						allowClear
-						style={{ width: '100%' }}
 						placeholder="Select genres"
 						defaultValue={track?.genres}
 						options={genreOptions}
@@ -93,10 +96,8 @@ export default function TrackForm() {
 				>
 					<Select
 						mode="multiple"
-						allowClear
-						style={{ width: '100%' }}
 						placeholder="Select artists"
-						defaultValue={track?.artists}
+						defaultValue={artistsIds}
 						options={artistOptions}
 						optionFilterProp='label'
 					/>
@@ -108,9 +109,8 @@ export default function TrackForm() {
 				>
 					<Select
 						allowClear
-						style={{ width: '100%' }}
 						placeholder="Select album"
-						defaultValue={track?.album}
+						defaultValue={track?.album?.name}
 						options={albumOptions}
 						optionFilterProp='label'
 					/>
@@ -123,7 +123,6 @@ export default function TrackForm() {
 					<Select
 						mode="multiple"
 						allowClear
-						style={{ width: '100%' }}
 						placeholder="Select playlists"
 						defaultValue={track?.playlists}
 						options={playlistOptions}
