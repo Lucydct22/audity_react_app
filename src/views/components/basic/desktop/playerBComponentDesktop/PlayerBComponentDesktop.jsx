@@ -104,7 +104,7 @@ const PlayerBComponentDesktop = () => {
       <div className="player-add-to-playlist__results">
         {playlists.userContent &&
           playlists.userContent?.map((playlist) => {
-            return <p onClick={() => handlePutTrackToPlaylist( playlist._id, playlist.name )}>{playlist.name}</p>
+            return <p key={playlist._id} onClick={() => handlePutTrackToPlaylist( playlist._id, playlist.name )}>{playlist.name}</p>
           })
         }
       </div>

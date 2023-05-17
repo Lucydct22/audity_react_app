@@ -19,7 +19,7 @@ const Render = ({ data, url }: any) => {
   const { _id, name, imageUrl } = data;
 
   return (
-    <Link to={`/${url}/${_id}`} >
+    <Link to={`/${url}/${_id}`}>
       <div className='render-item'>
         <div className='render-item__thumbnail'>
           <img src={imageUrl} alt={name} />

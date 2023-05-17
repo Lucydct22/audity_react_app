@@ -20,6 +20,7 @@ const TopBarBComponentDesktop = () => {
   const navigate = useNavigate()
   const [popperOpen, setPopperOpen] = useState(false);
   let popperRef = useRef();
+  const searchRef = useRef();
 
   useEffect(() => {
     const handler = (e) => {
@@ -27,13 +28,25 @@ const TopBarBComponentDesktop = () => {
         setPopperOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handler);
 
     return () => {
       document.removeEventListener("mousedown", handler);
     }
+  }, []);
 
+  useEffect(() => {
+    const handlerClickOut = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setContent('');
+        setSearchInput('')
+      }
+    };
+
+    document.addEventListener("mousedown", handlerClickOut);
+    return () => {
+      document.removeEventListener("mousedown", handlerClickOut);
+    }
   }, []);
 
   const [searchInput, setSearchInput] = useState('')
@@ -44,10 +57,10 @@ const TopBarBComponentDesktop = () => {
   }
 
   const handleClearInput = () => {
+    setSearchInput('');
     setContent('')
-    setSearchInput('')
   }
-
+    
   useEffect(() => {
     let isMounted = true
     const searchFetch = async () => {
@@ -59,24 +72,25 @@ const TopBarBComponentDesktop = () => {
     return () => { isMounted = false }
   }, [searchInput])
 
-
   return (
     <header className='page-topbar'>
-      <div className='page-topbar-search'>
+      <div className='page-topbar-search' ref={searchRef}>
         <CiSearch color='#a2a2ad' size={'1.6rem'} />
         <input
           type="text"
           className='page-topbar-search__input'
           placeholder={t("search_placeholder") || ""}
           onChange={(e) => handleSearch(e)}
+          value={searchInput}
         />
         {searchInput && (
-          <button className='page-topbar-search__btn'onClick={handleClearInput}>x</button>
+          <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
         )}
         {content &&
-          <div className='page-topbar-search__result'><SearchResultDesktopBComponent content={content} />
+          <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
           </div>}
       </div>
+
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
           <img src={user?.picture ? user.picture : PersonPlaceholder32} alt="avatar" />
