@@ -42,7 +42,7 @@ const RenderTrack = ({ data, url }: any) => {
 const SearchResultBComponent = ({ content }: any) => {
 
   const { t } = useTranslation()
-  const { albums, artists, tracks } = content
+  const { albums, artists, tracks, playlists } = content
 
   const [selectedType, SetSelectedType] = useState('all')
 
