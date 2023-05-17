@@ -8,10 +8,19 @@ import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import './libraryBComponentFavTracks.scss';
 
 const LibraryBComponentFavTracks = () => {
-  const { tracks } = useContext(MyLibraryContext)
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
+  const { tracks }: any = useContext(MyLibraryContext)
   const { t } = useTranslation();
-  const { trackData } = useContext(CurrentTrackContext);
   const [tracksOfFavTracks, setTracksOfFavTracks]: any = useState([]);
+
+  const handlePlayClick = () => {
+    if (trackData.url !== tracks.content[0].audioUrl) {
+      selectCurrentTrack(tracks.content[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -36,7 +45,19 @@ const LibraryBComponentFavTracks = () => {
     <div className='library-favTracks'>
       <div className='library-favTracks__head'>
         <h1>{t('library_favTracks_h1')}</h1>
-        <button> {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />} PLAY</button>
+        <button>
+          {trackData.isPlaying ? (
+            <div onClick={handlePlayClick}>
+              <MdPause size={20} />
+              <span>{t("pausebutton")}</span>
+            </div>
+          ) : (
+            <div onClick={handlePlayClick}>
+              <MdPlayArrow size={20} />
+              <span>{t("playbutton")}</span>
+            </div>
+          )}
+        </button>
       </div>
       <span>
         <TrackListBComponent tracksData={tracksOfFavTracks} />

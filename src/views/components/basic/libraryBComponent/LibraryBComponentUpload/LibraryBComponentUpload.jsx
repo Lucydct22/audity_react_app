@@ -6,8 +6,11 @@ import UserSongUploaderModal from './UserSongUploaderModal/UserSongUploaderModal
 import TrackListBComponent from '../../trackListBComponent/TrackListBComponent';
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 
 export default function LibraryBComponentUpload() {
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
   const { tracks } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -16,8 +19,13 @@ export default function LibraryBComponentUpload() {
   const [tracksData, setTracksData] = useState([]);
   const [uploadedAudio, setUploadedAudio] = useState({});
   const [messageApi, contextHolder] = message.useMessage();
+
   const handlePlayClick = () => {
-    setIsPlaying((prevState) => !prevState);
+    if (trackData.url !== tracks.userContent[0].audioUrl) {
+      selectCurrentTrack(tracks.userContent[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
   };
 
   const addFile = (e) => {
@@ -45,17 +53,17 @@ export default function LibraryBComponentUpload() {
       <div className='library-upload'>
         <h1>{t('library_upload_h1')}</h1>
         <div className="library-upload__buttons">
-          <button className="library-upload__buttons--play" onClick={handlePlayClick}>
-            {isPlaying ? (
-              <>
+          <button className="library-upload__buttons--play">
+            {trackData.isPlaying ? (
+              <div onClick={handlePlayClick}>
                 <MdPause size={20} />
-                <span>{t('pausebutton')}</span>
-              </>
+                <span>{t("pausebutton")}</span>
+              </div>
             ) : (
-              <>
+              <div onClick={handlePlayClick}>
                 <MdPlayArrow size={20} />
-                <span>{t('playbutton')}</span>
-              </>
+                <span>{t("playbutton")}</span>
+              </div>
             )}
           </button>
           <label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>

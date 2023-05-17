@@ -9,6 +9,7 @@
   
   &__content {
     display: flex;
+    width: 100%;
     cursor: pointer;
 
     img {
@@ -42,10 +43,18 @@
     margin-left: 15px;
 
     &--play {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: $color-secondary;
+      background: none;
+      border: 0;
       cursor: pointer;
-      height: 32px;
-      width: 32px;
+
+      svg {
+        height: 32px;
+        width: 32px;
+      }
     }
 
     &--dots {

@@ -7,18 +7,32 @@
   padding-top: 10px;
   max-width: 1504px;
 
-  h1 {
-    text-transform: capitalize;
-    font-size: 24px;
-    font-family: "Anek Gujarati", sans-serif;
-    margin: 15px 0;
-  }
+  &__head {
+    h1 {
+      text-transform: capitalize;
+      font-size: 24px;
+      font-family: "Anek Gujarati", sans-serif;
+      margin: 15px 0;
+    }
 
-  button {
-    @include buttonPrimary(fit-content);
-    margin-bottom: 1rem;
-  }
+    button {
+      @include buttonPrimary(fit-content);
+      justify-content: space-between;
+      padding: 0 15px;
+      min-width: 105px;
+      margin-bottom: 1rem;
 
+      @media (max-width: 500px) {
+        order: 2;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+    }
+  }
 
 
   @media (max-width: $media-breakpoint-desktop-mobile) {
