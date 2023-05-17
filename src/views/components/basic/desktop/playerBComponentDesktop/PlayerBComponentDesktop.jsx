@@ -20,7 +20,7 @@ import { ThemeContext } from 'context/theme/ThemeContext';
 const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
   const [songLike, setSongLike] = useState(false);
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const {
     trackData,
     currentTrack,
@@ -75,14 +75,14 @@ const PlayerBComponentDesktop = () => {
     return () => { isMounted = false }
   }, [])
 
- 
+
   const notify = (playlistName) => toast(`The track was added to ${playlistName}`, {
     position: "top-center",
     autoClose: 2000,
     hideProgressBar: false,
     progress: undefined,
     theme: theme,
-   
+
   })
 
 
@@ -95,22 +95,24 @@ const PlayerBComponentDesktop = () => {
 
   const popoverContent = isAuthenticated ? (
     <>
-    <ToastContainer />
-    <div className="player-add-to-playlist">
-      <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
-        <TfiPlus size={26} />
-        <span>{t("player_component_popover_add_playlist")}</span>
+      <ToastContainer />
+      <div className="player-add-to-playlist">
+        <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
+          <TfiPlus size={26} />
+          <span>{t("player_component_popover_add_playlist")}</span>
+        </div>
+        <div className="player-add-to-playlist__results">
+          {playlists.userContent &&
+            // playlists.userContent?.map(({ name, _id }) => {
+            //   return <p key={_id}>{name}</p>
+            playlists.userContent?.map((playlist) => {
+              return <p key={playlist._id} onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>{playlist.name}</p>
+            })
+          }
+        </div>
+        <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
+        {contextHolder}
       </div>
-      <div className="player-add-to-playlist__results">
-        {playlists.userContent &&
-          playlists.userContent?.map((playlist) => {
-            return <p key={playlist._id} onClick={() => handlePutTrackToPlaylist( playlist._id, playlist.name )}>{playlist.name}</p>
-          })
-        }
-      </div>
-      <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
-      {contextHolder}
-    </div>
     </>
   ) : (
     <div className="player-add-to-playlist-sinlogin">{t('player_component_popover_playlist')}</div>

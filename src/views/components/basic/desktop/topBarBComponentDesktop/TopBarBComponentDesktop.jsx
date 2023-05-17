@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from 'react-i18next';
 import Theme from 'views/UI/theme/Theme';
@@ -17,10 +17,13 @@ const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const { dbUser } = useContext(UserContext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  let [searchParams, setSearchParams] = useSearchParams();
   const [popperOpen, setPopperOpen] = useState(false);
+  const [query, setQuery] = useState('')
   let popperRef = useRef();
   const searchRef = useRef();
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const handler = (e) => {
@@ -29,7 +32,6 @@ const TopBarBComponentDesktop = () => {
       }
     };
     document.addEventListener("mousedown", handler);
-
     return () => {
       document.removeEventListener("mousedown", handler);
     }
@@ -42,7 +44,6 @@ const TopBarBComponentDesktop = () => {
         setSearchInput('')
       }
     };
-
     document.addEventListener("mousedown", handlerClickOut);
     return () => {
       document.removeEventListener("mousedown", handlerClickOut);
@@ -72,6 +73,44 @@ const TopBarBComponentDesktop = () => {
     return () => { isMounted = false }
   }, [searchInput])
 
+  useEffect(() => {
+    const artistsParam = searchParams.get('artist');
+    const albumsParam = searchParams.get('albums');
+    const playlistsParam = searchParams.get('playlists');
+
+
+    if (artistsParam) {
+      searchParams.delete('artist');
+      setSearchParams(searchParams);
+    }
+    if (albumsParam) {
+      searchParams.delete('albums');
+      setSearchParams(searchParams);
+    }
+    if (playlistsParam) {
+      searchParams.delete('playlists');
+      setSearchParams(searchParams);
+    }
+
+    setQuery('')
+  }, [pathname])
+
+  const handleChange = (event) => {
+    const query = event.target.value
+    setQuery(query)
+
+    if (pathname === '/artists') {
+      setSearchParams({ artist: query })
+    }
+    if (pathname === '/albums') {
+      setSearchParams({ albums: query })
+    }
+    if (pathname === '/playlists') {
+      setSearchParams({ playlists: query })
+    }
+
+  }
+
   return (
     <header className='page-topbar'>
       <div className='page-topbar-search' ref={searchRef}>
@@ -83,6 +122,14 @@ const TopBarBComponentDesktop = () => {
           onChange={(e) => handleSearch(e)}
           value={searchInput}
         />
+
+{/* <input
+          type="text"
+          value={query}
+          className='page-topbar-search__input'
+          placeholder={t("search_placeholder") || ""}
+          onChange={handleChange}
+        /> */}
         {searchInput && (
           <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
         )}
