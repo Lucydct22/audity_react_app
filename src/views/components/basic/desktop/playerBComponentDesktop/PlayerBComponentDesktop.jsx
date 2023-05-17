@@ -87,8 +87,6 @@ const PlayerBComponentDesktop = () => {
 
 
   function handlePutTrackToPlaylist(playlistId, playlistName) {
-    // console.log('track:', currentTrack._id )
-    // console.log('playlistId:', playlistId )
     putTrackToPlaylist(playlistId, currentTrack._id);
     notify(playlistName)
   }

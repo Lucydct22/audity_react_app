@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 import { message } from 'antd';
 import './libraryBComponentUpload.scss';
 import UserSongUploaderModal from './UserSongUploaderModal/UserSongUploaderModal';
@@ -7,10 +8,12 @@ import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
 export default function LibraryBComponentUpload() {
+  const { tracks } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [audio, setAudio] = useState({});
+  const [tracksData, setTracksData] = useState([]);
   const [uploadedAudio, setUploadedAudio] = useState({});
   const [messageApi, contextHolder] = message.useMessage();
   const handlePlayClick = () => {
@@ -27,9 +30,8 @@ export default function LibraryBComponentUpload() {
   };
 
   useEffect(() => {
-    console.log(uploadedAudio);
-
-  }, [uploadedAudio])
+    setTracksData(Object.values(tracks.userContent))
+  }, [tracks])
 
   const error = (e) => {
     messageApi.open({
@@ -60,7 +62,7 @@ export default function LibraryBComponentUpload() {
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
         <div>
-          {/* <TrackListBComponent tracksData={tracksData} /> */}
+          <TrackListBComponent tracksData={tracksData} />
         </div>
       </div>
       <UserSongUploaderModal

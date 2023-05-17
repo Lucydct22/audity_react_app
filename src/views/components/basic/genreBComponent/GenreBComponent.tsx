@@ -55,7 +55,6 @@ const GenreBComponent = ({ genre }: any) => {
     if (genre?._id) {
       getGenreArtistById(genre._id).then((res: any) => {
         if (isMounted && res && res.artists) {
-          console.log(res.artists);
           setArtists(res.artists);
         }
       });

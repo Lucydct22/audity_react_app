@@ -25,7 +25,7 @@ export default function ArtistPage() {
 
     if (artist) {
       artist.tracks.map((track: any) => {
-        getTrackByIdApi(track._id.toString()).then((res: any) => {
+        getTrackByIdApi(track.toString()).then((res: any) => {
           setTracksOfArtist((tracksOfArtist: any) => [
             ...tracksOfArtist,
             res.track,
@@ -36,6 +36,10 @@ export default function ArtistPage() {
 
     return () => { isMounted = false }
   }, [artist])
+
+  console.log(artist);
+  console.log(tracksOfArtist);
+  
 
   return (
     <HelmetSEO

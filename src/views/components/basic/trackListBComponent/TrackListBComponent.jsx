@@ -42,7 +42,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
         </tr>
       </thead>
       <tbody>
-        {tracksData ?
+        {tracksData &&
           tracksData.map((track) => {
             const { _id, name, artists, imageUrl, likedBy, duration, album } =
               track;
@@ -50,24 +50,21 @@ const TrackListDesktopComponent = ({ tracksData }) => {
             return (
               <TrackItemComponentDesktop
                 id={_id}
-                name={name}
-                artist={artistsName}
+                name={name ? name : track.uploadByUser.name}
+                artist={artistsName ? artistsName : track.uploadByUser.artists}
                 thumbnail={imageUrl}
                 likes={likedBy.length}
-                time={formatToSeconds(duration)}
+                time={duration ? formatToSeconds(duration) : "-"}
                 album={album?.name}
               />
             );
-          })
-          : null}
+          })}
       </tbody>
     </table>
   );
 };
 
 const TrackListMobileComponent = ({ tracksData }) => {
-  const { t } = useTranslation();
-
   return (
     <main className="mobile-track-component">
       {tracksData &&
@@ -77,13 +74,12 @@ const TrackListMobileComponent = ({ tracksData }) => {
           const artistsName = joinArtistsName(artists);
           return (
             <TrackItemComponentMobile
-              key={_id}
               id={_id}
-              name={name}
-              artist={artistsName}
+              name={name ? name : track.uploadByUser.name}
+              artist={artistsName ? artistsName : track.uploadByUser.artists}
               thumbnail={imageUrl}
               likes={likedBy.length}
-              time={formatToSeconds(duration)}
+              time={duration ? formatToSeconds(duration) : "-"}
               album={album?.name}
             />
           );
