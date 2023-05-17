@@ -16,20 +16,7 @@
 
     .render-track__thumbnail--btn {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
     }
-
-    &__play {
-      @include carousel-thumbnail-btn();
-    }
-
   }
 
   &__thumbnail {
@@ -41,6 +28,12 @@
       img {
         opacity: 0.7;
       }
+
+      .render-track__thumbnail--btn {
+        button {
+          background-color: var(--background-on-hover);
+        }
+      }
     }
 
     &--picture {
@@ -51,6 +44,7 @@
         border-radius: 4px;
         line-height: 0;
         text-indent: -999em;
+        transition: all 0.4s;
 
         &::after {
           content: '';
@@ -68,33 +62,55 @@
 
     &--btn {
       display: none;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border: 0;
+        border-radius: 50%;
+        background-color: var(--background-secondary);
+        cursor: pointer;
+        transition: all 0.4s;
+
+        svg {
+          height: 35px;
+          width: 35px;
+        }
+      }
     }
-
-
   }
 
   &__name {
     display: flex;
-    margin: 0;
-    margin-top: 15px;
-    margin-left: 10px;
+    margin: 15px 10px 0;
     font-size: 14px;
     font-weight: 400;
     color: var(--color-primary);
     text-decoration: none;
+    text-align: left;
+    height: 18px;
     overflow-y: hidden;
-    white-space: pre;
   }
+
   &__artist {
     display: flex;
-    margin: 0;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin: 5px 10px 0;
     font-size: 14px;
     font-weight: 400;
+    text-align: left;
     color: var(--color-primary);
     text-decoration: none;
-    height: 20px;
+    height: 18px;
     overflow-y: hidden;
   }
 }
