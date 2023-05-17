@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { Artist } from "interfaces/music";
@@ -9,6 +9,19 @@ import { MdArrowBack } from 'react-icons/md'
 export default function AlbumsBComponent({ albums }: any) {
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const albumsQuery = searchParams.get('albums');
+
+  const filterAlbums = (albums: any) => albums.filter((album: any) => new RegExp(`.*${albumsQuery}.*`, 'i').test(album.name))
+
+  const renderAlbums = () => (
+    albumsQuery ? (
+      filterAlbums(albums)
+        .map((album: any) => <RenderAlbum key={album._id} album={album} />)
+    ) : (
+      albums.map((album: Artist) => <RenderAlbum key={album._id} album={album} />)
+    )
+  )
 
   return (
     <div className="albums-page-content">
@@ -19,9 +32,7 @@ export default function AlbumsBComponent({ albums }: any) {
       }
       <h1>Album Page</h1>
       <div className='albums-page-content__grid'>
-        {albums.map((album: Artist) => {
-          return <RenderAlbum key={album._id} album={album} />
-        })}
+        {albums && renderAlbums()}
       </div>
     </div>
   )
