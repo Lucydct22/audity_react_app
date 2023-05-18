@@ -4,6 +4,8 @@ import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import imgDefault1 from 'assets/img/webp/6.webp'
+import { getTracksApi } from 'api/music/tracks';
+import { Track } from 'interfaces/music'
 
 const Render = ({ data, url }: any) => {
 
@@ -17,7 +19,7 @@ const Render = ({ data, url }: any) => {
     const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
-  }, [])
+  }, [currentTrack, artists])
 
   return (
     <Link to={`/${url}/${_id}`}>
@@ -33,19 +35,68 @@ const Render = ({ data, url }: any) => {
   )
 }
 
+const RenderTrack = ({ data }: any) => {
+
+  const { currentTrack } = useContext(CurrentTrackContext);
+  const [artists, setArtists] = useState('')
+  const { _id, name, imageUrl, audioUrl } = data;
+  const imageSource = imageUrl || imgDefault1
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
+  const [tracks, setTracks] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true
+    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    isMounted && setArtists(artists)
+    console.log(artists)
+    return () => { isMounted = false }
+  }, [currentTrack, artists])
+
+  useEffect(() => {
+    let isMounted = true;
+    getTracksApi().then((res: any) => {
+      isMounted && res && setTracks(res.tracks);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleClick = () => {
+
+    const track = (tracks as Track[]).find((track: any) => track._id === data._id)
+
+    if (trackData.url !== track?.url) {
+      selectCurrentTrack(track);
+     } else{
+       trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack(); 
+      }
+    }
+
+  return (
+    <div className='render-item' onClick={handleClick}>
+      <div className='render-item__thumbnail'>
+        <img src={imageSource} alt={name} />
+      </div>
+      <div className='render-item__data'>
+        <p className='render-item__p'>{name} - {artists}</p>
+      </div>
+    </div>
+  )
+}
+
 const SearchResultDesktopBComponent = ({ content }: any) => {
 
   const { albums, artists, tracks, playlists } = content
   const { t } = useTranslation();
-
-
 
   return (
     <div className='results-container'>
       {tracks.length > 0 &&
         <div className='results-container__tracks'>
           <span>Tracks</span>
-          {tracks.slice(0, 2).map((track: any) => <Render key={track._id} data={track} url={'tracks'} />)}
+          {tracks.slice(0, 2).map((track: any) => <RenderTrack key={track._id} data={track} url={'playlists'} />)}
         </div>
       }
 
@@ -71,8 +122,6 @@ const SearchResultDesktopBComponent = ({ content }: any) => {
       }
 
       {artists.length < 1 && albums.length < 1 && tracks.length < 1 && playlists.length < 1 && <span>{t('search_result_null')}</span>}
-
-
 
     </div>
   )
