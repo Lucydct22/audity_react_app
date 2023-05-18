@@ -110,8 +110,8 @@ const spanishTranslation = {
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Añadir a playlist',
   track_item_download: 'Descargar',
-  track_item_ranking: 'Ranking: ',
-  track_item_duration: 'Duración: ',
+  track_item_ranking: 'Ranking',
+  track_item_duration: 'Duración',
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'Nueva playlist',
