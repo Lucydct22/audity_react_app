@@ -1,30 +1,39 @@
 @import '../../../../../sass/variables';
 @import '../../../../../sass/mixins';
 
-.popupAddPlaylistBComponent {
+.popupAddPlaylist-backdrop {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 30;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 30;
 }
 
-.popupAddPlaylistBComponent-container {
+.popupAddPlaylistBComponent {
   position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 40;
-  background-color: var(--background-primary);
-  border: var(--color-border-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  border-radius: 4px;
-  width: 80vw;
-  height: 70vh;
+
+  &__container {
+    width: min(87%, 480px);
+    height: 70vh;
+    padding: 16px;
+    background-color: var(--background-primary);
+    border: var(--color-border-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
 
   .player-mobile-add-to-playlist {
 
@@ -55,7 +64,8 @@
         flex-direction: row;
         align-items: center;
       }
-      &__icon{
+
+      &__icon {
         font-size: 2rem;
       }
     }
@@ -66,9 +76,8 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin: 0.5rem;
+  padding: 0.5rem;
   gap: 1rem;
-  margin-top: 2rem;
   color: var(--color-primary);
   cursor: pointer;
 
@@ -86,8 +95,13 @@
   }
 }
 
-.render-playlist-mini-container{
-  height: 500px; 
-  overflow: scroll;
+.render-playlist-mini-container {
+  height: calc(70vh - 102px);
+  overflow: auto;
   overflow-x: hidden;
+  margin-top: 1rem;
+
+  .render-playlist-mini:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }

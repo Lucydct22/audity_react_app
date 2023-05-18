@@ -62,11 +62,10 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
     setShowPopUp(false);
   };
 
-  console.log(currentTrack?.imageUrl);
-
   return (
-    <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
+    <div className={'player-track-details-container'}>
       <div className='player-track-details-container__track-info'>
+
         <div className='player-track-details-container__track-info__close'>
           <button onClick={onClose}><IoChevronDownOutline /></button>
           <p>{currentTrack.name}</p>
@@ -82,9 +81,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
               <p > {album ? ' - ' + album : ''}</p>
             </div>
           </div>
-        </span>
-
-        <span>
+          
           <div className='player-track-details-container__track-info__track-time'>
             <div className='player-track-details-container__track-info__track-time__timedata'>
               <p>{formatToSeconds(trackData.currentTime)}</p>
@@ -110,6 +107,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
             </button>
           </div>
         </span>
+
         <div className='player-track-details-container__track-info__add-bottom'>
           <button className='player-track-details-container__track-info__add-bottom_right' onClick={muteTrack}>
             {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
@@ -127,6 +125,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
             </button>
           </div>
         </div>
+
       </div>
       {showPopUp && (
         <PopupAddPlaylistBComponent onClose={handleClosePopUp} />
