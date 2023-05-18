@@ -21,7 +21,7 @@ export default function LibraryBComponentUpload() {
   const [tracksData, setTracksData] = useState([]);
   const [uploadedAudio, setUploadedAudio] = useState({});
   const [messageApi, contextHolder] = message.useMessage();
-  const {isLoading} = useAuth0()
+  const { isLoading } = useAuth0()
 
   const handlePlayClick = () => {
     if (trackData.url !== tracks.userContent[0].audioUrl) {
@@ -60,26 +60,28 @@ export default function LibraryBComponentUpload() {
       <div className='library-upload'>
         <h1>{t('library_upload_h1')}</h1>
         <div className="library-upload__buttons">
-          <button className="library-upload__buttons--play">
-            {trackData.isPlaying ? (
-              <div onClick={handlePlayClick}>
-                <MdPause size={20} />
-                <span>{t("pausebutton")}</span>
-              </div>
-            ) : (
-              <div onClick={handlePlayClick}>
-                <MdPlayArrow size={20} />
-                <span>{t("playbutton")}</span>
-              </div>
-            )}
-          </button>
-          <label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>
+          {tracks.userContent?.length !== 0 &&
+            <button className="library-upload__buttons--play">
+              {trackData.isPlaying ? (
+                <div onClick={handlePlayClick}>
+                  <MdPause size={20} />
+                  <span>{t("pausebutton")}</span>
+                </div>
+              ) : (
+                <div onClick={handlePlayClick}>
+                  <MdPlayArrow size={20} />
+                  <span>{t("playbutton")}</span>
+                </div>
+              )}
+            </button>
+          }
+          < label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
         <span>
           <TrackListBComponent tracksData={tracksData} />
         </span>
-      </div>
+      </div >
       <UserSongUploaderModal
         audio={audio}
         isOpened={isOpened}

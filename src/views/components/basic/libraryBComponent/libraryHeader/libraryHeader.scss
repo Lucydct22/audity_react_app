@@ -72,11 +72,28 @@
 
         &--btn {
           @include buttonPrimary(fit-content);
-          margin: 20px 0;
+          justify-content: space-between;
+          padding: 0 25px;
+          min-width: 240px;
+          margin-bottom: 1rem;
 
-          @media (max-width: $media-breakpoint-desktop-mobile) {
-            display: none;
+          @media (max-width: 500px) {
+            order: 2;
           }
+
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          }
+        }
+
+        button:disabled,
+        button[disabled] {
+          background-color: #cccccc;
+          color: #666666;
+          cursor: no-drop
         }
       }
     }

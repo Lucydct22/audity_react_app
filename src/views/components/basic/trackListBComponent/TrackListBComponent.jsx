@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import TrackItemComponentDesktop from "../desktop/trackListComponentDesktop/TrackItemComponentDesktop";
 import TrackItemComponentMobile from "../mobile/tracklistComponentMobile/TrackItemComponentMobile";
 import "./trackListBComponent.scss";
+import Empty from 'assets/img/png/empty-error.png'
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -24,6 +25,8 @@ export default function TrackListBComponent({ tracksData }) {
 
 const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
+
+  console.log(tracksData);
 
   return (
     <>
@@ -68,12 +71,19 @@ const TrackListDesktopComponent = ({ tracksData }) => {
               </span>
             );
           })}
+        {tracksData?.length === 0 &&
+          <div className="empty-error-component">
+            <img src={Empty} />
+            <span>No songs found</span>
+          </div>
+        }
       </div>
     </>
   );
 };
 
 const TrackListMobileComponent = ({ tracksData }) => {
+
   return (
     <main className="mobile-track-component">
       {tracksData &&
@@ -81,8 +91,6 @@ const TrackListMobileComponent = ({ tracksData }) => {
           const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
             track;
           const artistsName = joinArtistsName(artists);
-
-          if (!audioUrl) return;
 
           return (
             <span key={_id}>
@@ -98,8 +106,14 @@ const TrackListMobileComponent = ({ tracksData }) => {
                 track={track}
               />
             </span>
-          );
+          )
         })}
+      {tracksData?.length === 0 &&
+        <div className="empty-error-component">
+          <img src={Empty} />
+          <span>No songs found</span>
+        </div>
+      }
     </main>
   );
 };

@@ -15,7 +15,7 @@ const LibraryBComponentFavTracks = () => {
   const { tracks }: any = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const [tracksOfFavTracks, setTracksOfFavTracks]: any = useState([]);
-  const {isLoading} = useAuth0()
+  const { isLoading } = useAuth0()
 
   const handlePlayClick = () => {
     if (trackData.url !== tracks.content[0].audioUrl) {
@@ -50,19 +50,20 @@ const LibraryBComponentFavTracks = () => {
     <div className='library-favTracks'>
       <div className='library-favTracks__head'>
         <h1>{t('library_favTracks_h1')}</h1>
-        <button>
-          {trackData.isPlaying ? (
-            <div onClick={handlePlayClick}>
-              <MdPause size={20} />
-              <span>{t("pausebutton")}</span>
-            </div>
-          ) : (
-            <div onClick={handlePlayClick}>
-              <MdPlayArrow size={20} />
-              <span>{t("playbutton")}</span>
-            </div>
-          )}
-        </button>
+        {tracks.content?.length !== 0 &&
+          <button>
+            {trackData.isPlaying ? (
+              <div onClick={handlePlayClick}>
+                <MdPause size={20} />
+                <span>{t("pausebutton")}</span>
+              </div>
+            ) : (
+              <div onClick={handlePlayClick}>
+                <MdPlayArrow size={20} />
+                <span>{t("playbutton")}</span>
+              </div>
+            )}
+          </button>}
       </div>
       <span>
         <TrackListBComponent tracksData={tracksOfFavTracks} />

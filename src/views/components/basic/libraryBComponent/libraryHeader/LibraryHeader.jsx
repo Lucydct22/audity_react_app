@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import './libraryHeader.scss'
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
@@ -9,12 +10,26 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useTranslation } from "react-i18next";
 import { TiArrowShuffle } from "react-icons/ti";
+import { MdPause } from "react-icons/md";
 import PersonPlaceholder160 from 'assets/img/webp/profile-placeholder-160x160.webp'
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 
 const LibraryHeader = () => {
   const [screenWidth] = useWindowSizeReport()
   const { t } = useTranslation();
   const { user } = useAuth0();
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
+  const { tracks } = useContext(MyLibraryContext)
+
+  const handlePlayClick = () => {
+    if (trackData.url !== tracks.content[0].audioUrl) {
+      selectCurrentTrack(tracks.content[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
+  };
 
   return (
     <header className="library-header">
@@ -30,10 +45,26 @@ const LibraryHeader = () => {
                 : user?.name ? `Hello, ${user.name}` : "Hello user"}
             </span>
             <span className="library-header__content--profile__info--desc">{t('library_header_profile_desc')}</span>
-            <button className="library-header__content--profile__info--btn">
-              <TiArrowShuffle size="20" />
-              <span>{t('library_header_profile_btn')}</span>
-            </button>
+            {tracks.content?.length !== 0 ?
+              <button className="library-header__content--profile__info--btn">
+                {trackData.isPlaying ? (
+                  <div onClick={handlePlayClick}>
+                    <MdPause size={20} />
+                    <span>{t('library_header_profile_btn')}</span>
+                  </div>
+                ) : (
+                  <div onClick={handlePlayClick}>
+                    <TiArrowShuffle size={20} />
+                    <span>{t('library_header_profile_btn')}</span>
+                  </div>
+                )}
+              </button>
+              :
+              <button className="library-header__content--profile__info--btn" disabled>
+                <TiArrowShuffle size={20} />
+                <span>{t('library_header_profile_btn')}</span>
+              </button>
+            }
           </div>
         </div>
         {(screenWidth > responsiveBreak) ?
