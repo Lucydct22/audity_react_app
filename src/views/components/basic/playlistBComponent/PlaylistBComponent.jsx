@@ -61,7 +61,7 @@ export default function PlaylistBComponent({ playlist }) {
         <img src={imgDefault} alt="Image description" />
         <section className="playlist-page__section">
           <h1>{playlist?.name}</h1>
-          <p>{tracks.length} {t('page_pnumber')}</p>
+          <p>{tracks?.length} {t('page_pnumber')}</p>
           <div className="playlist-page__section--buttons">
             <button className="playlist-page__section--buttons__play">
               {trackData.isPlaying ? (
