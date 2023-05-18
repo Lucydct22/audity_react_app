@@ -4,6 +4,6 @@ export default function initAudio(data: any, volume: number) {
 	audio.preload = 'auto';
 	audio.loop = false;
 	audio.muted = false;
-	audio.volume = volume ? volume : 0.5;
+	audio.volume = volume ? volume : 1;
 	return audio;
 }

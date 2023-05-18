@@ -1,6 +1,6 @@
 import { getAlbumsLikedByUserApi, likeDislikeAlbumApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
-import { getArtistsLikedByUserApi, likeDislikeArtistApi, postArtistsApi } from 'api/music/artists';
+import { getArtistsLikedByUserApi, likeDislikeArtistApi } from 'api/music/artists';
 import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, likeDislikePlaylistApi, postPlaylistApi, putTrackToPlaylistApi } from 'api/music/playlists';
 import { getPrivateTracksApi, getTracksLikedByUserApi, likeDislikeTrackApi, postPrivateTrackApi, updateTrackAudioApi } from 'api/music/tracks';
 import { message } from 'antd';
@@ -45,24 +45,6 @@ export async function postPlaylistAction(dispatch: any, token: any, name: any, d
 			type: MyLibraryTypes.POST_PLAYLIST,
 			payload: {
 				playlist: response.playlist
-			}
-		})
-	} catch (err) {
-		message.error(`Server error`)
-	}
-}
-
-export async function postArtistAction(dispatch: any, token: any, artists: string[], userId: string) {
-	const data = {
-		userId: userId.toString(),
-		artists
-	}
-	try {
-		const response = await postArtistsApi(data, token)
-		return dispatch({
-			// type: MyLibraryTypes.POST_PLAYLIST,
-			payload: {
-				// playlist: response.playlist
 			}
 		})
 	} catch (err) {
@@ -127,12 +109,10 @@ export async function likeDislikeTrackAction(
 				})
 			} else {
 				const filterUserState = userState.tracks.content.filter((trackF: any) => trackF._id !== track._id)
-				if (filterUserState.length > 0) {
-					return dispatch({
-						type: MyLibraryTypes.DISLIKE_TRACK,
-						payload: filterUserState
-					})
-				}
+				return dispatch({
+					type: MyLibraryTypes.DISLIKE_TRACK,
+					payload: filterUserState
+				})
 			}
 		}
 	} catch (err) {
@@ -140,7 +120,6 @@ export async function likeDislikeTrackAction(
 	}
 }
 
-//
 export async function likeDislikeArtistAction(
 	dispatch: any,
 	artist: any,

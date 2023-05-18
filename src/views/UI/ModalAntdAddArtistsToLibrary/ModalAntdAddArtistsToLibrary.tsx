@@ -1,18 +1,8 @@
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import { getArtistApi } from 'api/music/artists';
 import './modalAntdPlaylistCreate.scss'
-import { FC, forwardRef, useContext, useEffect, useState } from 'react';
-import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
-
-interface ModalAntdAddArtistsToLibraryProps {
-	//artistSelectionRef: number[];
-	// setArtistSelectionRef: (artists: number[]) => void;
-	artistSelectionRef: React.MutableRefObject<HTMLSelectElement>
-}
 
 export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
-	// const { t } = useTranslation();
-	const { postArtists } = useContext(MyLibraryContext);
 	const [artists, setArtists] = useState([]);
 	const [selectedArtists, setSelectedArtists] = useState<number[]>([]);
 

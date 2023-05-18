@@ -28,13 +28,6 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
 	}, [isAuthenticated, dbUser]);
 
-
-
-	const postArtists = useCallback(async (artistIds: string[]) => {
-		const token = await getAccessTokenSilently()
-		isAuthenticated && action.postArtistAction(dispatch, token, artistIds, dbUser._id)
-	}, [isAuthenticated, dbUser]);
-
 	const postPrivateTrack = useCallback(async (data: any) => {
 		message.loading(`Creating track`)
 		const token = await getAccessTokenSilently()
@@ -81,7 +74,7 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		() => ({
 			...myLibraryState,
 			postPlaylist,
-			postArtists,
+			// postArtists,
 			postPrivateTrack,
 			putTrackToPlaylist,
 			likeDislikeTrack,
@@ -91,7 +84,7 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		}), [
 		myLibraryState,
 		postPlaylist,
-		postArtists,
+		// postArtists,
 		postPrivateTrack,
 		putTrackToPlaylist,
 		likeDislikeTrack,

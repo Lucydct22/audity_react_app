@@ -1,5 +1,9 @@
 export default function tracksCycle(array: any[], str: string) {
-	const index = array.indexOf(str);
+	let idsArray: any = []
+	array.forEach(el => {
+		idsArray.push(el._id)
+	});
+	const index = idsArray.indexOf(str);
 	if (index === -1) return undefined;
-	return array[(index + 1) % array.length];
+	return idsArray[(index + 1) % idsArray.length];
 }

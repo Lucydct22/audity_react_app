@@ -34,20 +34,6 @@ export const postArtistApi = async (artist: any, token: any): Promise<any> => {
 	return data
 }
 
-export const postArtistsApi = async (artists: { userId: string, artists: string[] }, token: any): Promise<any> => {
-	const params = {
-		method: "POST",
-		headers: {
-			Authorization: `Bearer ${token}`,
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(artists),
-	}
-	const response = await fetch(`${basePath}/artist`, params)
-	const data = await response.json()
-	return data
-}
-
 export const putArtistImageApi = async (artistId: string, image: any, token: any): Promise<any> => {
 	const url = `${basePath}/artist-image/${artistId}`;
 	const formData = new FormData();

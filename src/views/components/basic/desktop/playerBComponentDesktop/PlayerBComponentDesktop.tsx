@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { message } from 'antd';
+import { ConfigProvider, message } from 'antd';
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { useTranslation } from 'react-i18next';
@@ -30,7 +30,6 @@ const PlayerBComponentDesktop = () => {
   const [modal, contextHolder] = Modal.useModal();
   const nameRef: any = useRef("");
   const descRef: any = useRef("");
-  const { theme } = useContext(ThemeContext)
   const [messageApi, contextHolderMessege] = message.useMessage();
   const key = 'updatable';
   const {
@@ -44,6 +43,7 @@ const PlayerBComponentDesktop = () => {
     loopTrack,
     updateVolume
   } = useContext(CurrentTrackContext);
+  const { theme } = useContext(ThemeContext);
 
   const hidePopover = () => {
     setOpen(false);
@@ -111,7 +111,7 @@ const PlayerBComponentDesktop = () => {
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
     putTrackToPlaylist(playlistId, currentTrack._id);
-    copyToClip(); 
+    copyToClip();
     openMessage();
   }
 
@@ -127,7 +127,7 @@ const PlayerBComponentDesktop = () => {
             playlists.userContent?.map((playlist: any) => (
               <div key={playlist._id}>
                 {contextHolderMessege}
-                <p onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name) }>
+                <p onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>
                   {playlist.name}
                 </p>
               </div>
@@ -143,9 +143,13 @@ const PlayerBComponentDesktop = () => {
   );
 
   const volumeSlider = (
-    <div style={{ display: 'inline-block', height: 150, padding: '10px 2px' }}>
-      <Slider onChange={(e) => updateVolume(e)} vertical defaultValue={30} />
-    </div>
+    <ConfigProvider
+      theme={{ token: { colorPrimary: '#E24834' } }}
+    >
+      <div style={{ display: 'inline-block', height: 150, padding: '10px 2px' }}>
+        <Slider railStyle={{ color: theme === 'light' ? '#4b4b5c' : '#a2a2ad' }} onChange={(e) => updateVolume(e)} vertical defaultValue={trackData.volume * 100} />
+      </div>
+    </ConfigProvider>
   )
 
   return (

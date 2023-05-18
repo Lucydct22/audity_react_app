@@ -22,27 +22,24 @@ export const initCurrentTracklistAction = function (dispatch: any) {
   })
 }
 
-export const selectTrackAction = async function (dispatch: any, trackId: any) {
-  const response: any = await getTrackByIdApi(trackId)
-  return dispatch({
-    type: CurrentTracklistReducer.SELECT_CURRENT_TRACKLIST,
-    payload: {
-      listType: 'track',
-      listId: response.track._id,
-      listName: response.track.name,
-      tracks: response.track.tracks,
-    }
-  })
-}
-
-export const shuffleTracklistAction = function (dispatch: any, tracklistState: any) {
+export const shuffleTracklistAction = async function (dispatch: any, tracklistState: any) {
   const orderedTracklist = function () {
     if (tracklistState.shuffle) {
-      return tracklistState.tracks.sort((a: number, b: number) => { return a - b });
+      const sortTracks = tracklistState.tracks.sort(function (a: any, b: any) {
+        if (a.name < b.name) { return -1 }
+        if (a.name > b.name) { return 1 }
+        return 0;
+      });
+      return sortTracks
     } else {
-      return shuffleArray(tracklistState.tracks);
+      const sortTracks = tracklistState.tracks.sort(function (a: any, b: any) {
+        if (a.name > b.name) { return -1 }
+        if (a.name < b.name) { return 1 }
+        return 0;
+      });
+      return sortTracks
     }
-  }
+  }  
   return dispatch({
     type: CurrentTracklistReducer.SHUFFLE_TRACKLIST,
     payload: { tracks: orderedTracklist() }
