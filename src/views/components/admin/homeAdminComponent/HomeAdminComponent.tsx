@@ -7,6 +7,7 @@ import TrackAdminContext from "context/admin/track.context/TrackAdminContext";
 import PlaylistAdminContext from "context/admin/playlist.context/PlaylistAdminContext";
 import UserAdminContext from "context/admin/user.context/UserAdminContext";
 import { Col, Row, Statistic } from "antd";
+import StatisticAdminContext from "context/admin/statistic.context/StatisticAdminContext";
 
 export default function HomeAdminComponent() {
   const { albums } = useContext(AlbumAdminContext)
@@ -15,6 +16,8 @@ export default function HomeAdminComponent() {
   const { tracks } = useContext(TrackAdminContext)
   const { playlists } = useContext(PlaylistAdminContext)
   const { users } = useContext(UserAdminContext)
+  const { totalLikes, totalTracksPlayed, tracksFailed } = useContext(StatisticAdminContext)
+  console.info({ tracksFailed: tracksFailed});
   return (
     <Row style={{
       display: 'flex',
@@ -28,12 +31,14 @@ export default function HomeAdminComponent() {
       <StatisticItem title='Genres' total={genres.length} link='/admin/genres' />
       <StatisticItem title='Tracks' total={tracks.length} link='/admin/tracks' />
       <StatisticItem title='Playlists' total={playlists.length} link='/admin/playlists' />
+      <StatisticItem title='Total likes' total={totalLikes} />
+      <StatisticItem title='Reproductions' total={totalTracksPlayed} />
+      <StatisticItem title='Tracks failed' total={tracksFailed.length} />
     </Row>
-
   )
 }
 
-function StatisticItem({ title, total, link }: { title: string, total: number, link: string }) {
+function StatisticItem({ title, total, link }: any) {
   return (
     <Col style={{ display: 'flex', justifyContent: 'center', paddingTop: 20 }} span={8} sm={6} md={4}>
       <Link to={link}>

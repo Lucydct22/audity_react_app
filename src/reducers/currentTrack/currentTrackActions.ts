@@ -3,33 +3,39 @@ import getDuration from "utils/tracks/getDuration";
 import initAudio from "utils/tracks/initAudio";
 import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
+import { reportErroredTrack } from "api/statistic.api";
 
-export const initCurrentTrackAction = async function (dispatch: any, trackData: any) {
+export const initCurrentTrackAction = async function (dispatch: any, trackData: any, token: string) {
 	await getRandomTrackApi().then(async (res: any) => {
 		if (res.track) {
-			const audio: HTMLAudioElement = initAudio(res.track, trackData.volume);
-			const duration: any = await getDuration(audio);
-			return dispatch({
-				type: CurrentTrackTypes.INIT_CURRENT_TRACK,
-				payload: {
-					currentTrack: res.track,
-					trackData: {
-						url: res.track.audioUrl,
-						audio: audio,
-						duration: Math.round(duration),
-						currentTime: audio.currentTime,
-						isPlaying: false,
-						isMuted: false,
-						hasLoop: false,
-						volume: 1,
+			const checkAudio = await fetch(res.track.audioUrl);
+			if (checkAudio.status === 200) {
+				const audio: HTMLAudioElement = initAudio(res.track, trackData.volume);
+				const duration: any = await getDuration(audio);
+				return dispatch({
+					type: CurrentTrackTypes.INIT_CURRENT_TRACK,
+					payload: {
+						currentTrack: res.track,
+						trackData: {
+							url: res.track.audioUrl,
+							audio: audio,
+							duration: Math.round(duration),
+							currentTime: audio.currentTime,
+							isPlaying: false,
+							isMuted: false,
+							hasLoop: false,
+							volume: 1,
+						}
 					}
-				}
-			})
+				})
+			} else {
+				await reportErroredTrack('global', res.track._id, token)
+			}
 		}
 	})
 }
 
-export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any) {
+export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any, token: string) {
 	const { currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
 	trackData.isPlaying && trackData.audio?.pause();
@@ -59,12 +65,14 @@ export async function nextTrackAction(dispatch: any, trackState: any, tracklist:
 						}
 					}
 				})
+			} else {
+				await reportErroredTrack('global', trackId, token)
 			}
 		}
 	})
 }
 
-export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
+export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any, token: string) {
 	const { currentTrack, trackData } = trackState;
 	const tracksReverse = [...tracklist.tracks].reverse();
 	const trackId = tracksCycle(tracksReverse, currentTrack._id);
@@ -95,6 +103,8 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 						}
 					}
 				})
+			} else {
+				await reportErroredTrack('global', trackId, token)
 			}
 		}
 	})
