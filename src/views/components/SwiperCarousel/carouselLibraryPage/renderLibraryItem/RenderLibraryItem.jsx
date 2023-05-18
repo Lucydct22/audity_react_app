@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -8,22 +8,34 @@ import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp'
 import { TfiPlus } from "react-icons/tfi";
 import { Modal } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
+import { ModalAntdAddArtistsToLibrary } from 'views/UI/ModalAntdAddArtistsToLibrary/ModalAntdAddArtistsToLibrary';
 import RenderAlbum from 'views/components/basic/renders/renderAlbum/RenderAlbum';
 import RenderArtist from 'views/components/basic/renders/renderArtist/RenderArtist';
 import RenderPlaylist from 'views/components/basic/renders/renderPlaylist/RenderPlaylist';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 export default function RenderLibraryItem({ list, type }) {
-  const { postPlaylist } = useContext(MyLibraryContext)
+  const { postPlaylist, postArtists } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const { _id } = list;
   const [open, setOpen] = useState(false);
+  const [openAddArtistsModal, setOpenAddArtistsModal] = useState(false);
+  const artistSelectionRef = useRef([]);
   const [modal, contextHolder] = Modal.useModal();
+  const [addArtistsModal, addArtistsContextHolder] = Modal.useModal();
   const nameRef = useRef("");
   const descRef = useRef("");
 
+  useEffect(() => {
+    console.log('type of function', postArtists)
+  })
+
   const hideModal = () => {
     setOpen(false);
+  };
+
+  const hideAddArtistsModal = () => {
+    setOpenAddArtistsModal(false);
   };
 
   function handleClick() {
@@ -48,6 +60,26 @@ export default function RenderLibraryItem({ list, type }) {
     });
   };
 
+  const handleAddArtistsClick = () => {
+    console.log('Artists IDs I want to add to backend', artistSelectionRef.current)
+    const artistIds = artistSelectionRef.current
+    return postArtists(artistIds)
+  }
+
+  const addArtistsModalConfirm = () => {
+    addArtistsModal.confirm({
+      centered: true,
+      closable: true,
+      icon: 0,
+      width: 800,
+      content: (
+        <ModalAntdAddArtistsToLibrary artistSelectionRef={artistSelectionRef} />
+      ),
+      okText: 'ADD ARTISTS TO LIBRARY',
+      onOk: handleAddArtistsClick
+    });
+  };
+
   if (_id === "AddOnePlaylist") {
     return (
       <>
@@ -65,12 +97,16 @@ export default function RenderLibraryItem({ list, type }) {
 
   if (_id === "AddOneArtist") {
     return (
-      <Link to={"/artists"} className='render-carousel-library-add-one-artist'>
-        <div className='render-carousel-library-add-one-artist__background'>
-          <TfiPlus size='35px' color='#72727d' />
-        </div>
-        <p className='render-carousel-library-add-one-artist__details'>{t("library_create_artist_text")}</p>
-      </Link>
+      <>
+        <Link to={"#"} className='render-carousel-library-add-one-artist'>
+          <div className='render-carousel-library-add-one-artist__background' onClick={addArtistsModalConfirm}>
+            <TfiPlus size='35px' color='#72727d' />
+          </div>
+          <p className='render-carousel-library-add-one-artist__details'>{t("library_create_artist_text")}</p>
+        </Link>
+        <Modal title="Basic Modal" open={openAddArtistsModal} onOk={hideAddArtistsModal} onCancel={hideAddArtistsModal} />
+        {addArtistsContextHolder}
+      </>
     )
   }
 
