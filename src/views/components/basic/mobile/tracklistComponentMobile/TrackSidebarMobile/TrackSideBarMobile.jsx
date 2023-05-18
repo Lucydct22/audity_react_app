@@ -1,32 +1,47 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './trackSidebarMobile.scss';
-import { IoAddOutline } from "react-icons/io5";
-import { AiFillHeart, AiOutlineDownload, AiOutlineClockCircle } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
+import formatToSeconds from "utils/tracks/formatToSeconds";
+import PopupAddPlaylistBComponent from '../../popupAddPlaylistBComponent/PopupAddPlaylistBComponent';
 
-const TrackSideBarMobile = ({ track, popOpen }) => {
+const TrackSideBarMobile = ({ track, artist, popOpen }) => {
+  const [showPopUp, setShowPopUp] = useState(false);
   const { t } = useTranslation();
-  const { id, imageUrl, name, artist, album, likes, time } = track;
+  const { id, imageUrl, name, album, rating, duration } = track;
+
+  const handleClosePopUp = () => {
+    setShowPopUp(false);
+  };
   
   return (
-    <div key={id} className={`track-list-modal-mobile ${popOpen ? 'active-track-modal-mobile' : 'off-track-modal-mobile'}`}>
-      <div className="track-list-modal-mobile__wrapper">
-        <img src={imageUrl} alt={name} />
-        <div className="track-list-item-mobile-pop-div__track">
-          <h1>Hello there</h1>
-          {/* <span>{name}</span>
-          <div className="track-list-item-mobile-pop-div__track-album">
-            <span>{artist} - </span>
-            <span>{album}</span>
-          </div> */}
-        </div>
-        <div className='track-list-item-mobile-pop-div__dropbox-wrapper'>
-          <div className='track-list-item-mobile-pop-div__dropbox-wrapper__line'><IoAddOutline />{t('track_item_playlist')}</div>
-          <div className='track-list-item-mobile-pop-div__dropbox-wrapper__line'><AiFillHeart />{t('track_item_ranking')}{likes}</div>
-          <div className='track-list-item-mobile-pop-div__dropbox-wrapper__line'><AiOutlineClockCircle />{t('track_item_duration')}{time}</div>
-          <div className='track-list-item-mobile-pop-div__dropbox-wrapper__line'><AiOutlineDownload />{t('track_item_download')}</div>
+    <>
+      <div key={id} className={`track-list-modal-mobile ${popOpen ? 'active-track-modal-mobile' : 'off-track-modal-mobile'}`}>
+        <div className="track-list-modal-mobile__wrapper">
+          <div className="track-list-modal-mobile__wrapper--song-info">
+            <img src={imageUrl} alt={name ? name : track.uploadByUser.name} />
+            <span>
+              <p>{name ? name : track.uploadByUser.name}</p>
+              <span>{artist ? artist : track.uploadByUser.artists}</span>
+              <span>{album?.name}</span>
+            </span>
+          </div>
+          <div className='track-list-modal-mobile__wrapper--dropbox-wrapper'>
+            <span>
+              {name && <div onClick={() => setShowPopUp(!showPopUp)}>{t('track_item_playlist')}</div>}
+              <Link to={track.audioUrl}>{t('track_item_download')}</Link>
+            </span>
+            <span>
+              <div>{t('track_item_ranking')}: {rating ? `${rating} likes` : `0 likes`}</div>
+              {duration && <div>{t('track_item_duration')}: {formatToSeconds(duration)}</div>}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+      {showPopUp && (
+        <PopupAddPlaylistBComponent onClose={handleClosePopUp} />
+      )}
+    </>
   )
 }
 

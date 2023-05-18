@@ -112,8 +112,8 @@ const englishTranslation = {
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Add to playlist',
   track_item_download: 'Download',
-  track_item_ranking: 'Ranking: ',
-  track_item_duration: 'Duration: ',
+  track_item_ranking: 'Ranking',
+  track_item_duration: 'Duration',
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'New playlist',
