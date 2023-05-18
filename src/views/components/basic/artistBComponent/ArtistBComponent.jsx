@@ -41,13 +41,12 @@ export default function ArtistBComponent({ artist }) {
   // };
 
   useEffect(() => {
-    const haveLike = artists.content.find((item) => item._id === artist._id)
-    haveLike === undefined ? setSongLike(true) : setSongLike(false)
+    if (artist) {
+      const haveLike = artists.content.find((item) => item._id === artist._id)
+      haveLike === undefined ? setSongLike(true) : setSongLike(false)
+    }
   }, [artist, artists])
 
-  // const showArtist = ()=>{
-  //   console.log(artist._id)
-  // }
 
   return (
     <>
@@ -81,15 +80,15 @@ export default function ArtistBComponent({ artist }) {
             <CopyUrl className="artist-page__section--buttons__copy-url" />
             <button
               className="artist-page__section--buttons__follow"
-              onClick={()=> likeDislikeArtist(artist._id)}>
-              {!songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart /> }
+              onClick={() => likeDislikeArtist(artist)}>
+              {!songLike ? (
+              <AiFillHeart size='1.5rem' color='#ef5466' />
+              ) : <AiOutlineHeart />}
               {/* {isFollowing ? (
                 <SlUserFollowing color="#ef5466" />
               ) : (
                 <SlUserFollow />
               )} */}
-
-
             </button>
           </div>
         </section>
