@@ -32,6 +32,7 @@ export const initCurrentTrackAction = async function (dispatch: any, trackData: 
 export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any) {
 	const { currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
+	trackData.isPlaying && trackData.audio?.pause();
 	trackData.audio = null;
 	await getTrackByIdApi(trackId).then(async (res: any) => {
 		if (res.status === 200) {
@@ -39,7 +40,7 @@ export async function nextTrackAction(dispatch: any, trackState: any, tracklist:
 			if (checkAudio.status === 200) {
 				const audio: HTMLAudioElement = initAudio(res.track, trackData?.volume);
 				const duration: any = await getDuration(audio);
-				trackData.isPlaying && audio.play();
+				audio.play();
 				trackData.isMuted && (audio.muted = true);
 				trackData.hasLoop && (audio.loop = true);
 				return dispatch({
@@ -51,7 +52,7 @@ export async function nextTrackAction(dispatch: any, trackState: any, tracklist:
 							audio: audio,
 							duration: Math.round(duration),
 							currentTime: audio.currentTime,
-							isPlaying: trackData.isPlaying,
+							isPlaying: true,
 							isMuted: trackData.isMuted,
 							hasLoop: trackData.hasLoop,
 							volume: trackData.volume,
@@ -67,6 +68,7 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 	const { currentTrack, trackData } = trackState;
 	const tracksReverse = [...tracklist.tracks].reverse();
 	const trackId = tracksCycle(tracksReverse, currentTrack._id);
+	trackData.isPlaying && trackData.audio?.pause();
 	trackData.audio = null;
 	await getTrackByIdApi(trackId).then(async (res: any) => {
 		if (res.status === 200) {
