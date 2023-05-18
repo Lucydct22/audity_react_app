@@ -16,58 +16,14 @@ function RenderPlaylistMini() {
   const { t } = useTranslation();
   const { playlists, putTrackToPlaylist } = useContext(MyLibraryContext);
   const { currentTrack } = useContext(CurrentTrackContext);
-  const { theme } = useContext(ThemeContext)
-  // const [messageApi, contextHolder] = message.useMessage();
-  // const key = 'updatable';
-
-
-  const notify = (playlistName: string) => toast(`The track was added to ${playlistName}`, {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    progress: undefined,
-    theme: theme,
-    style: {
-      width: '300px',
-      top: '-70px',
-    },
-  })
-
-  // const openMessage = () => {
-  //   messageApi.open({
-  //     type: 'loading',
-  //     content: 'Loading...',
-  //     style: {
-  //       zIndex: '999'
-  //     },
-  //   });
-  //   setTimeout(() => {
-  //     messageApi.open({
-  //       type: 'success',
-  //       content: 'Added to Playlist!',
-  //       duration: 3,
-  //       style: {
-  //         zIndex: '999'
-  //       },
-  //     });
-  //   }, 1000);
-  // };
-
-  // async function copyToClip() {
-  //   await navigator.clipboard.writeText(location.href);
-  // }
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
     putTrackToPlaylist(playlistId, currentTrack._id);
-    notify(playlistName)
-    // copyToClip();
-    // openMessage();
+    message.success(`Song added to selected playlist ${playlistName}`)
   }
 
   return (
     <>
-      <ToastContainer />
-      {/* {contextHolder} */}
       <div className="render-playlist-mini-container">
         {playlists.userContent.map((playlist: { _id: string, name: string, tracks: string[], cover: string }) => {
           return (

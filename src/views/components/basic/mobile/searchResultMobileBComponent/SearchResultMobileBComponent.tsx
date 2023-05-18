@@ -31,15 +31,15 @@ const RenderTrack = ({ data, url }: any) => {
 
   return (
     <Link to={`/${url}/${_id}`} >
-      <div className='render-track'>
-        <div className='render-track__thumbnail'>
+      <div className='render-track-search'>
+        <div className='render-track-search__thumbnail'>
           <img src={imageSource} alt={name} />
         </div>
-        <div className='render-track__data'>
-          <p className='render-track__data__name'>{name}</p>
-          <p className='render-track__data__artists'> {artists}</p>
+        <div className='render-track-search__data'>
+          <p className='render-track-search__data__name'>{name}</p>
+          <p className='render-track-search__data__artists'> {artists}</p>
         </div>
-        <div className='render-track__heart'  onClick={() => likeDislikeTrack(currentTrack)}>
+        <div className='render-track-search__heart'  onClick={() => likeDislikeTrack(currentTrack)}>
           {!songLike ? <IoHeartSharp size='1.5rem' color='#ef5466' /> : <IoHeartOutline />}
         </div>
       </div>
