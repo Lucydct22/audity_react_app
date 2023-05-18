@@ -90,6 +90,15 @@ export default function currentTrackReducer(state: any, action: any) {
 				},
 			}
 
+		case CurrentTrackTypes.UPDATE_VOLUME:
+			return {
+				...state,
+				trackData: {
+					...state.trackData,
+					volume: payload
+				}
+			}
+
 		default:
 			return state;
 	}

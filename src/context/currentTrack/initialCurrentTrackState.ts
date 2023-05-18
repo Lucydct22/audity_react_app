@@ -33,6 +33,7 @@ const initialCurrentTrackState = {
 	loopTrack: () => { },
 	changeCurrentTime: () => { },
 	selectCurrentTrack: (track: any) => { },
+	updateVolume: (volume: any) => { },
 }
 
 export default initialCurrentTrackState;

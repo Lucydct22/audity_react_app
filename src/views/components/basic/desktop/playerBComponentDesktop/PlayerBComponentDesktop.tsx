@@ -9,7 +9,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { TfiPlus } from "react-icons/tfi";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentDesktop.scss'
-import { Popover, Modal } from 'antd';
+import { Popover, Modal, Slider } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -23,7 +23,7 @@ const PlayerBComponentDesktop = () => {
   const { isAuthenticated } = useAuth0();
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
-  const { playlists, tracks, postPlaylist, putTrackToPlaylist , likeDislikeTrack} = useContext(MyLibraryContext)
+  const { playlists, tracks, postPlaylist, putTrackToPlaylist, likeDislikeTrack } = useContext(MyLibraryContext)
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
@@ -39,6 +39,7 @@ const PlayerBComponentDesktop = () => {
     previousTrack,
     muteTrack,
     loopTrack,
+    updateVolume
   } = useContext(CurrentTrackContext);
 
   const hidePopover = () => {
@@ -73,7 +74,7 @@ const PlayerBComponentDesktop = () => {
     const artists = currentTrack.artists.map((artist) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
-  }, [])
+  }, [currentTrack])
 
   useEffect(() => {
     const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
@@ -115,6 +116,12 @@ const PlayerBComponentDesktop = () => {
   ) : (
     <div className="player-add-to-playlist-sinlogin">{t('player_component_popover_playlist')}</div>
   );
+
+  const volumeSlider = (
+    <div style={{ display: 'inline-block', height: 150, padding: '10px 2px' }}>
+      <Slider onChange={(e) => updateVolume(e)} vertical defaultValue={30} />
+    </div>
+  )
 
   return (
     <div className='page-player'>
@@ -165,8 +172,10 @@ const PlayerBComponentDesktop = () => {
           <button className='page-player-bottom__btn' onClick={loopTrack}>
             {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
           </button>
-          <button className='page-player-bottom__btn' onClick={muteTrack}>
-            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+          <button className='page-player-bottom__btn'>
+            <Popover content={volumeSlider} placement="top" trigger="hover">
+              {trackData.isMuted ? <IoVolumeMuteOutline onClick={muteTrack} /> : <IoVolumeHighOutline onClick={muteTrack} />}
+            </Popover>
           </button>
         </div>
 

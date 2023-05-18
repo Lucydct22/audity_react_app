@@ -1,6 +1,7 @@
 import { message } from 'antd';
 import * as TrackAdminTypes from './trackAdmin.types'
 import * as api from 'api/music/tracks';
+import getDuration from 'utils/tracks/getDuration';
 
 export async function initTracksAction(dispatch: any) {
 	try {
@@ -27,14 +28,18 @@ export async function postTrackAction(dispatch: any, data: any, token: any, mess
 			album: data?.album,
 			playlists: data?.playlists
 		}, token)
-		const postTrackImage: any = await api.updateTrackImageApi(postTrack.track._id, data.image.file.originFileObj, token)
+		await api.updateTrackImageApi(postTrack.track._id, data.image.file.originFileObj, token)
 		const postTrackAudio: any = await api.updateTrackAudioApi(postTrack.track._id, data.audio.file.originFileObj, token)
-		if (postTrackImage.status === 200 && postTrackAudio.track) {
+		const audio = new Audio();
+		audio.src = postTrackAudio.track.audioUrl
+		const duration: any = await getDuration(audio);
+		const trackToUpdate = await api.updateTrackApi(postTrackAudio.track._id, { duration: Math.round(duration) } , token)
+		if (trackToUpdate.status === 200 && trackToUpdate.track) {
 			messageApi.destroy()
 			message.success(`Track '${data.name}' created`)
 			return dispatch({
 				type: TrackAdminTypes.POST_TRACK,
-				payload: postTrackAudio.track
+				payload: trackToUpdate.track
 			})
 		} else {
 			messageApi.destroy()
@@ -83,7 +88,11 @@ export async function updateTrackAction(dispatch: any, data: any, track: any, to
 		}
 		if (data.audio?.file.originFileObj) {
 			const trackAudioToUpdate = await api.updateTrackAudioApi(track._id, data.audio.file.originFileObj, token)
-			newTrack = trackAudioToUpdate
+			const audio = new Audio();
+			audio.src = trackAudioToUpdate.track.audioUrl
+			const duration: any = await getDuration(audio);
+			const trackToUpdate = await api.updateTrackApi(trackAudioToUpdate.track._id, { duration: Math.round(duration) }, token)
+			newTrack = trackToUpdate
 		}
 		if (data.name && data.name !== track.name || data.genres || data.album || data.artists || data.playlists) {
 			const trackToUpdate = await api.updateTrackApi(track._id, values, token)
