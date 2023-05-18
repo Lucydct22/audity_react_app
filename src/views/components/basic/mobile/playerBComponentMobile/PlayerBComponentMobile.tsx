@@ -61,7 +61,7 @@ const PlayerBComponentMobile = () => {
 
           <div className='player-bottom-controls-mobile'>
             <button className='player-bottom-controls-mobile__btn' onClick={() => likeDislikeTrack(currentTrack)}>
-              {!songLike ? <AiFillHeart size='1.5rem' color='#fff' /> : <AiOutlineHeart />}
+              {!songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
             </button>
             <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>
               <MdSkipNext />

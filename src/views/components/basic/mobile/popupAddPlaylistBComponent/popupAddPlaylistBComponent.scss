@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 30;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -17,7 +17,7 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 40;
   background-color: var(--background-primary);
   border: var(--color-border-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -65,11 +65,12 @@
 .render-playlist-mini {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   margin: 0.5rem;
   gap: 1rem;
   margin-top: 2rem;
   color: var(--color-primary);
+  cursor: pointer;
 
   &__thumbnail {
     &__img {

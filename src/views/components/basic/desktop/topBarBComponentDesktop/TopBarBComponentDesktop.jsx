@@ -10,6 +10,8 @@ import Language from 'views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
 import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
 import UserContext from 'context/user/UserContext';
+import { searchContentApi } from 'api/music/music.api';
+import SearchResultDesktopBComponent from '../../searchResultDesktopBComponent/SearchResultDesktopBComponent';
 
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
@@ -20,7 +22,10 @@ const TopBarBComponentDesktop = () => {
   const [popperOpen, setPopperOpen] = useState(false);
   const [query, setQuery] = useState('')
   let popperRef = useRef();
+  const searchRef = useRef();
   const { pathname } = useLocation()
+  const [searchInput, setSearchInput] = useState('')
+  const [content, setContent] = useState('')
 
   useEffect(() => {
     const handler = (e) => {
@@ -35,10 +40,34 @@ const TopBarBComponentDesktop = () => {
   }, []);
 
   useEffect(() => {
+    const handlerClickOut = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setContent('');
+        setSearchInput('')
+      }
+    };
+    document.addEventListener("mousedown", handlerClickOut);
+    return () => {
+      document.removeEventListener("mousedown", handlerClickOut);
+    }
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true
+    const searchFetch = async () => {
+      if (searchInput.length > 1) {
+        const result = await searchContentApi(searchInput)
+        result && isMounted && setContent(result.content)
+      }
+    }
+    searchFetch()
+    return () => { isMounted = false }
+  }, [searchInput])
+
+  useEffect(() => {
     const artistsParam = searchParams.get('artist');
     const albumsParam = searchParams.get('albums');
     const playlistsParam = searchParams.get('playlists');
-
 
     if (artistsParam) {
       searchParams.delete('artist');
@@ -56,6 +85,16 @@ const TopBarBComponentDesktop = () => {
     setQuery('')
   }, [pathname])
 
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value)
+  }
+
+  const handleClearInput = () => {
+    setSearchInput('');
+    setContent('')
+  }
+
+
   const handleChange = (event) => {
     const query = event.target.value
     setQuery(query)
@@ -69,21 +108,41 @@ const TopBarBComponentDesktop = () => {
     if (pathname === '/playlists') {
       setSearchParams({ playlists: query })
     }
-
   }
 
   return (
     <header className='page-topbar'>
-      <div className='page-topbar-search'>
+      <div className='page-topbar-search' ref={searchRef}>
         <CiSearch color='#a2a2ad' size={'1.6rem'} />
-        <input
-          type="text"
-          value={query}
-          className='page-topbar-search__input'
-          placeholder={t("search_placeholder") || ""}
-          onChange={handleChange}
-        />
+
+        {pathname !== '/artists' && pathname !== '/albums' && pathname !== '/playlists' ? (
+          <>
+            <input
+              type="text"
+              className='page-topbar-search__input'
+              placeholder={t("search_placeholder") || ""}
+              onChange={(e) => handleSearch(e)}
+              value={searchInput}
+            />
+            {searchInput.length > 0 && (
+              <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
+            )}
+            {content &&
+              <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
+              </div>}
+          </>
+
+        ) : (
+          <input
+            type="text"
+            value={query}
+            className='page-topbar-search__input'
+            placeholder={t("search_placeholder") || ""}
+            onChange={handleChange}
+          />
+        )}
       </div>
+
       <div className='page-topbar-action' ref={popperRef}>
         <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
           <img src={user?.picture ? user.picture : PersonPlaceholder32} alt="avatar" />

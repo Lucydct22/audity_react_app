@@ -1,0 +1,63 @@
+@import '../../../../sass/';
+
+
+.swiper-tracks-component {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      margin: 15px 18px;
+    }
+
+    &--title {
+      text-transform: capitalize;
+      display: inline;
+      margin: 0;
+      font-size: 24px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+    }
+  }
+
+  &__container {
+    margin: 0;
+    margin-bottom: 3rem;
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+    }
+
+    .swiper-wrapper {
+      @media (max-width: $media-breakpoint-desktop-mobile) {
+        .swiper-slide:nth-child(-n+3) {
+          margin-left: 18px !important;
+        }
+
+        .swiper-slide:nth-last-child(-n+2) {
+          padding-right: 36px !important;
+        }
+      }
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      height: calc((100% - 70px) / 3) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

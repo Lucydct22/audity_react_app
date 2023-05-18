@@ -9,13 +9,16 @@ import { Playlist, Albums, Artist } from 'interfaces/music';
 import RenderPlaylist from '../renders/renderPlaylist/RenderPlaylist';
 import RenderAlbum from '../renders/renderAlbum/RenderAlbum';
 import RenderArtist from '../renders/renderArtist/RenderArtist';
-import { MdArrowBack } from 'react-icons/md'
+import { MdArrowBack } from 'react-icons/md';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 const GenreBComponent = ({ genre }: any) => {
+  
   const { t } = useTranslation();
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
-
+  const {isLoading} = useAuth0()
   const [playlists, setPlaylists] = useState([])
   const [albums, setAlbums] = useState([])
   const [artists, setArtists] = useState([])
@@ -63,6 +66,10 @@ const GenreBComponent = ({ genre }: any) => {
       isMounted = false;
     };
   }, [genre]);
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <div className="genre-page">

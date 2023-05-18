@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { IoChevronDownOutline, IoAdd, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
+import { useContext, useEffect, useState } from 'react'
+import { IoChevronDownOutline, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
 import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext'
@@ -10,6 +10,7 @@ import img from 'assets/img/albums/summer-playlist.png'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
 import PopupAddPlaylistBComponent from '../../mobile/popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
+import { getAlbumsApi } from 'api/music/albums';
 
 const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
   const { t } = useTranslation();
@@ -28,18 +29,33 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
   const { tracks, likeDislikeTrack } = useContext(MyLibraryContext)
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
+  const [albums, setAlbums] = useState([]);
+  const [album, setAlbum] = useState<any>('')
 
   useEffect(() => {
     let isMounted = true
     const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
-  }, [])
+  }, [artists, currentTrack])
 
   useEffect(() => {
     const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
     haveLike === undefined ? setSongLike(true) : setSongLike(false)
   }, [currentTrack, tracks])
+
+  useEffect(() => {
+    const getAlbums = async () => {
+      const response: any = await getAlbumsApi()
+      const albumsData = response.albums
+      const albumData = albumsData.find((item: any) => item._id === currentTrack.album)
+      if(albumData){
+       setAlbum(albumData.name) 
+      }
+    };
+    getAlbums()
+  }, [currentTrack, albums, album])
+
 
   const handleClosePopUp = () => {
     setShowPopUp(false);
@@ -68,7 +84,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
           <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
           <div className='player-track-details-container__track-info__data__info'>
             <p >{artists} </p>
-            <p > {currentTrack.album}</p>
+            <p > {album ? ' - ' + album : ''}</p>
           </div>
         </div>
 

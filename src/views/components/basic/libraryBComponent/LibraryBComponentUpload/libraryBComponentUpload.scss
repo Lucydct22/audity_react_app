@@ -21,6 +21,19 @@
 
     &--play {
       @include buttonPrimary(fit-content);
+      justify-content: space-between;
+      padding: 0 15px;
+      min-width: 105px;
+
+      @media (max-width: 500px) {
+        order: 2;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
     }
 
     &--upload {
@@ -34,7 +47,35 @@
     }
   }
 
+  span {
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      padding: 0;
+
+      .mobile-track-component {
+        .track-list-item-mobile {
+          padding: 10px 18px !important;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .mobile-track-component {
+        .track-list-item-mobile {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+
   @media (max-width: $media-breakpoint-desktop-mobile) {
-    padding: 0 18px;
+    padding: 0;
+
+    h1 {
+      padding: 0 18px;
+    }
+
+    &__buttons {
+      padding: 0 18px;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
 import '../../../../UI/ModalAntdPlaylistCreate/modalAntdPlaylistCreate.scss'
@@ -26,7 +27,11 @@ export default function RenderLibraryItem({ list, type }) {
   };
 
   function handleClick() {
-    postPlaylist(nameRef.current.value, descRef.current.value);
+    if (nameRef.current.value == "" || descRef.current.value == "") {
+      message.error("Sorry could not create Playlist. Both inputs are required")
+    } else {
+      postPlaylist(nameRef.current.value, descRef.current.value);
+    }
   }
 
   const confirm = () => {

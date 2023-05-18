@@ -5,7 +5,6 @@ import playlistReducer from 'reducers/admin/playlistAdmin/playlistAdmin.reducer'
 import * as action from "reducers/admin/playlistAdmin/playlistAdmin.actions";
 import { ChildrenProps } from 'interfaces/global'
 import { useAuth0 } from '@auth0/auth0-react';
-import { message } from 'antd';
 import UserContext from 'context/user/UserContext';
 
 export default function PlaylistAdminProvider(props: ChildrenProps) {

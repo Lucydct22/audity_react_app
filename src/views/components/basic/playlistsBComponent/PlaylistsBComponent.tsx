@@ -4,12 +4,14 @@ import useWindowSizeReport from "hooks/useWindowSizeReport";
 import RenderPlaylist from '../renders/renderPlaylist/RenderPlaylist';
 import './playlistsBComponent.scss';
 import { MdArrowBack } from 'react-icons/md'
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function PlaylistsBComponent({ playlists }: any) {
   const [screenWidth] = useWindowSizeReport()
   const [searchParams] = useSearchParams();
   const playlistsQuery = searchParams.get('playlists');
-
+  const {isLoading} = useAuth0()
 
   const filterPlaylists = (playlist: any) => playlist.filter((playlist: any) => new RegExp(`.*${playlistsQuery}.*`, 'i').test(playlist.name))
 
@@ -23,6 +25,10 @@ export default function PlaylistsBComponent({ playlists }: any) {
       playlists.map((playlist: any) => <RenderPlaylist key={playlist._id} playlist={playlist} />)
     )
   )
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <div className="playlist-page-content">

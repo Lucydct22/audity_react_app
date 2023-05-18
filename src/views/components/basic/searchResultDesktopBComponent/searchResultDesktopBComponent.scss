@@ -1,0 +1,57 @@
+@import '../../../../sass/variables';
+
+.render-item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+
+  &__thumbnail {
+    margin-bottom: 2px;
+
+    img {
+      width: 40px;
+      border-radius: 7px;
+    }
+  }
+
+  &__data{
+    color: var(--color-primary)
+  }
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-content: center;
+
+  
+  span{
+    color: $color-main;
+    
+  }
+
+  &__tracks{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__albums{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__artists{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  a:-webkit-any-link {
+    text-decoration: none;
+  }
+}

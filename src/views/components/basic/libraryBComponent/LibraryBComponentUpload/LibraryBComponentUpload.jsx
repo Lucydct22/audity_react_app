@@ -1,20 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 import { message } from 'antd';
 import './libraryBComponentUpload.scss';
 import UserSongUploaderModal from './UserSongUploaderModal/UserSongUploaderModal';
-import TrackListComponent from '../../trackListComponent/TrackListComponent'
+import TrackListBComponent from '../../trackListBComponent/TrackListBComponent';
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function LibraryBComponentUpload() {
+  const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
+    useContext(CurrentTrackContext);
+  const { tracks } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [audio, setAudio] = useState({});
+  const [tracksData, setTracksData] = useState([]);
   const [uploadedAudio, setUploadedAudio] = useState({});
   const [messageApi, contextHolder] = message.useMessage();
+  const {isLoading} = useAuth0()
+
   const handlePlayClick = () => {
-    setIsPlaying((prevState) => !prevState);
+    if (trackData.url !== tracks.userContent[0].audioUrl) {
+      selectCurrentTrack(tracks.userContent[0]);
+    } else {
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+    }
   };
 
   const addFile = (e) => {
@@ -27,9 +41,8 @@ export default function LibraryBComponentUpload() {
   };
 
   useEffect(() => {
-    console.log(uploadedAudio);
-
-  }, [uploadedAudio])
+    setTracksData(Object.values(tracks.userContent))
+  }, [tracks])
 
   const error = (e) => {
     messageApi.open({
@@ -38,30 +51,34 @@ export default function LibraryBComponentUpload() {
     });
   };
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
     <>
       <div className='library-upload'>
         <h1>{t('library_upload_h1')}</h1>
         <div className="library-upload__buttons">
-          <button className="library-upload__buttons--play" onClick={handlePlayClick}>
-            {isPlaying ? (
-              <>
+          <button className="library-upload__buttons--play">
+            {trackData.isPlaying ? (
+              <div onClick={handlePlayClick}>
                 <MdPause size={20} />
-                <span>{t('pausebutton')}</span>
-              </>
+                <span>{t("pausebutton")}</span>
+              </div>
             ) : (
-              <>
+              <div onClick={handlePlayClick}>
                 <MdPlayArrow size={20} />
-                <span>{t('playbutton')}</span>
-              </>
+                <span>{t("playbutton")}</span>
+              </div>
             )}
           </button>
           <label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
-        <div>
-          <TrackListComponent />
-        </div>
+        <span>
+          <TrackListBComponent tracksData={tracksData} />
+        </span>
       </div>
       <UserSongUploaderModal
         audio={audio}

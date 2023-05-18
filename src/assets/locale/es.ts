@@ -26,6 +26,7 @@ const spanishTranslation = {
   musicpage_dailytitle: 'Tu lista de hoy',
   musicpage_artirstitle: 'Artista',
   musicpage_genres: 'Géneros',
+  musicpage_besthits: 'Mejores 8 hits del momento...',
 
   /*~~~~~~~~~ ADMIN ~~~~~~~~~*/
   title_admin_home: 'Inicio Administrador',
@@ -109,8 +110,8 @@ const spanishTranslation = {
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Añadir a playlist',
   track_item_download: 'Descargar',
-  track_item_ranking: 'Ranking: ',
-  track_item_duration: 'Duración: ',
+  track_item_ranking: 'Ranking',
+  track_item_duration: 'Duración',
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'Nueva playlist',
@@ -124,6 +125,17 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',
+
+   /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
+   search_result_h2: 'Resultado',
+   search_result_type_all: 'Todos',
+   search_result_type_tracks: 'Canciones',
+   search_result_type_albums: 'Álbumes',
+   search_result_type_artists: 'Artistas',
+   search_result_type_playlists: 'Playlists',
+   search_result_type_btn_all: 'VER TODO',
+   search_result_null: 'Vaya, no hay ninguna coincidencia en este momento',
+
 }
 
 export default spanishTranslation;

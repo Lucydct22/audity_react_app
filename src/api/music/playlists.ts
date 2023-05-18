@@ -41,10 +41,6 @@ export const getPlaylistByUserApi = async (userId: string, token: any): Promise<
 }
 
 export const putTrackToPlaylistApi = async (token: any, playlistId: string, trackId: string): Promise<any> => {
-	console.log(token);
-	console.log(playlistId);
-	console.log(trackId);
-
 	const params = {
 		method: "PUT",
 		headers: {
@@ -140,4 +136,17 @@ export const getAllPlaylistsApi = async (token: any): Promise<any> => {
 	const response = await fetch(`${basePath}/all-playlists`, params)
 	const data = await response.json()
 	return data
+}
+
+export const likeDislikePlaylistApi = async (playlistId: string, userId: any, token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/like-dislike-playlist/${playlistId}/${userId}`, params)
+	const result = await response.json()
+	return result
 }

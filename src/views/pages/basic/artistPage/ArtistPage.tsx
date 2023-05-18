@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArtistByIdApi } from 'api/music/artists';
+import { getTrackByIdApi } from 'api/music/tracks';
 import ArtistBComponent from 'views/components/basic/artistBComponent/ArtistBComponent'
-import TrackListComponent from 'views/components/basic/trackListComponent/TrackListComponent'
+import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import './artistPage.scss'
 import HelmetSEO from 'views/utils/HelmetSEO';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function ArtistPage() {
   const { artistId } = useParams();
   const [artist, setArtist]: any = useState(undefined);
+  const [tracksOfArtist, setTracksOfArtist]: any = useState([]);
+  const {isLoading} = useAuth0();
 
   useEffect(() => {
     let isMounted = true;
@@ -18,6 +23,25 @@ export default function ArtistPage() {
     return () => { isMounted = false }
   }, [artistId])
 
+  useEffect(() => {
+    let isMounted = true;
+    if (artist) {
+      artist.tracks.map((track: any) => {
+        getTrackByIdApi(track._id.toString()).then((res: any) => {
+          setTracksOfArtist((tracksOfArtist: any) => [
+            ...tracksOfArtist,
+            res.track,
+          ]);
+        })
+      })
+    }
+    return () => { isMounted = false }
+  }, [artist])
+
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
     <HelmetSEO
       title={`Artist | ${artist?.name}`}
@@ -25,7 +49,7 @@ export default function ArtistPage() {
     >
       <div className='artist-layout'>
         <ArtistBComponent artist={artist} />
-        <TrackListComponent />
+        <TrackListBComponent tracksData={tracksOfArtist} />
       </div>
     </HelmetSEO>
   )

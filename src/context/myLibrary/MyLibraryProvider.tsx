@@ -48,19 +48,47 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		}
 	}, [isAuthenticated, dbUser, myLibraryState]);
 
+	const likeDislikeArtist = useCallback(async (artistId: string) => {
+		const token = await getAccessTokenSilently()
+		if (token && isAuthenticated) {
+			action.likeDislikeArtistAction(dispatch, artistId, dbUser._id, myLibraryState, token)
+		}
+	}, [isAuthenticated, dbUser, myLibraryState]);
+
+	const likeDislikeAlbum = useCallback(async (albumId: string) => {
+		const token = await getAccessTokenSilently()
+		if (token && isAuthenticated) {
+			action.likeDislikeAlbumAction(dispatch, albumId, dbUser._id, myLibraryState, token)
+		}
+	}, [isAuthenticated, dbUser, myLibraryState]);
+
+	const likeDislikePlaylist = useCallback(async (playlistId: string) => {
+		const token = await getAccessTokenSilently()
+		if (token && isAuthenticated) {
+			action.likeDislikePlaylistAction(dispatch, playlistId, dbUser._id, myLibraryState, token)
+		}
+	}, [isAuthenticated, dbUser, myLibraryState]);
+
+
 	const memoProvider = useMemo(
 		() => ({
 			...myLibraryState,
 			postPlaylist,
 			postPrivateTrack,
 			putTrackToPlaylist,
-			likeDislikeTrack
+			likeDislikeTrack,
+			likeDislikeArtist,
+			likeDislikeAlbum,
+			likeDislikePlaylist
 		}), [
 		myLibraryState,
 		postPlaylist,
 		postPrivateTrack,
 		putTrackToPlaylist,
-		likeDislikeTrack
+		likeDislikeTrack,
+		likeDislikeArtist,
+		likeDislikeAlbum,
+		likeDislikePlaylist
 	]
 	);
 
@@ -69,4 +97,4 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 			{props.children}
 		</MyLibraryContext.Provider>
 	)
-}
+} 

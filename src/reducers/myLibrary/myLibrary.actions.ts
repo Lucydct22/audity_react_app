@@ -1,7 +1,7 @@
-import { getAlbumsLikedByUserApi } from 'api/music/albums';
+import { getAlbumsLikedByUserApi, likeDislikeAlbumApi } from 'api/music/albums';
 import * as MyLibraryTypes from './myLibrary.types'
-import { getArtistsLikedByUserApi } from 'api/music/artists';
-import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi, putTrackToPlaylistApi } from 'api/music/playlists';
+import { getArtistsLikedByUserApi, likeDislikeArtistApi } from 'api/music/artists';
+import { getPlaylistByUserApi, getPlaylistsLikedByUserApi, postPlaylistApi, putTrackToPlaylistApi, likeDislikePlaylistApi } from 'api/music/playlists';
 import { getPrivateTracksApi, getTracksLikedByUserApi, likeDislikeTrackApi, postPrivateTrackApi, updateTrackAudioApi } from 'api/music/tracks';
 import { message } from 'antd';
 
@@ -120,4 +120,95 @@ export async function likeDislikeTrackAction(
 	} catch (err) {
 		message.error(`Server error`)
 	}
+} 
+
+//
+export async function likeDislikeArtistAction(
+	dispatch: any,
+	artist: any,
+	userId: any,
+	userState: any,
+	token: string
+) {
+	try {
+		const response = await likeDislikeArtistApi(artist._id, userId, token)
+		if (response.status === 200) {
+			if (response.haveLike === true) {
+				return dispatch({
+					type: MyLibraryTypes.LIKE_ARTIST,
+					payload: artist
+				})
+			} else {
+				const filterUserState = userState.artists.content.filter((artistF: any) => artistF._id !== artist._id)
+				if (filterUserState.length > 0) {
+					return dispatch({
+						type: MyLibraryTypes.DISLIKE_ARTIST,
+						payload: filterUserState
+					})
+				}
+			}
+		}
+	} catch (err) {
+		message.error(`Server error`)
+	}
 }
+
+export async function likeDislikeAlbumAction(
+	dispatch: any,
+	album: any,
+	userId: any,
+	userState: any,
+	token: string
+) {
+	try {
+		const response = await likeDislikeAlbumApi(album._id, userId, token)
+		if (response.status === 200) {
+			if (response.haveLike === true) {
+				return dispatch({
+					type: MyLibraryTypes.LIKE_ALBUM,
+					payload: album
+				})
+			} else {
+				const filterUserState = userState.albums.content.filter((albumF: any) => albumF._id !== album._id)
+				if (filterUserState.length > 0) {
+					return dispatch({
+						type: MyLibraryTypes.DISLIKE_ALBUM,
+						payload: filterUserState
+					})
+				}
+			}
+		}
+	} catch (err) {
+		message.error(`Server error`)
+	}
+} 
+
+export async function likeDislikePlaylistAction(
+	dispatch: any,
+	playlist: any,
+	userId: any,
+	userState: any,
+	token: string
+) {
+	try {
+		const response = await likeDislikePlaylistApi(playlist._id, userId, token)
+		if (response.status === 200) {
+			if (response.haveLike === true) {
+				return dispatch({
+					type: MyLibraryTypes.LIKE_PLAYLIST,
+					payload: playlist
+				})
+			} else {
+				const filterUserState = userState.playlists.content.filter((playlistF: any) => playlistF._id !== playlist._id)
+				if (filterUserState.length > 0) {
+					return dispatch({
+						type: MyLibraryTypes.DISLIKE_PLAYLIST,
+						payload: filterUserState
+					})
+				}
+			}
+		}
+	} catch (err) {
+		message.error(`Server error`)
+	}
+} 

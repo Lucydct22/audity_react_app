@@ -4,6 +4,7 @@ import RenderGenres from 'views/components/basic/renders/genresRender/RenderGenr
 import RenderAlbum from 'views/components/basic/renders/renderAlbum/RenderAlbum';
 import RenderArtist from 'views/components/basic/renders/renderArtist/RenderArtist';
 import RenderPlaylist from 'views/components/basic/renders/renderPlaylist/RenderPlaylist';
+import RenderTrack from 'views/components/basic/renders/renderTrack/RenderTrack';
 
 export default function RenderMusicItem({ list, type }) {
 
@@ -21,6 +22,10 @@ export default function RenderMusicItem({ list, type }) {
 
   if (type === "albums") {
     return <RenderAlbum album={list} />
+  }
+
+  if (type === "tracks") {
+    return <RenderTrack track={list} />
   }
 
   return (

@@ -90,9 +90,18 @@
 
       &__play {
         @include buttonPrimary(fit-content);
-
+        justify-content: space-between;
+        padding: 0 15px;
+        min-width: 105px;
+        
         @media (max-width: 500px) {
           order: 2;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+          width: 100%;
         }
       }
 

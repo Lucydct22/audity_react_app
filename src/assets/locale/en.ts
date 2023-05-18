@@ -26,6 +26,7 @@ const englishTranslation = {
   musicpage_dailytitle: 'Your dailylist',
   musicpage_artirstitle: 'Artist',
   musicpage_genres: 'Genres',
+  musicpage_besthits: 'Best 8 hits of the moment...',
 
   /*~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~*/
   title_admin_home: 'Admin Home',
@@ -111,8 +112,8 @@ const englishTranslation = {
   /*~~~~~~~~~~~~~ TRACK ITEM ~~~~~~~~~~~~~*/
   track_item_playlist: 'Add to playlist',
   track_item_download: 'Download',
-  track_item_ranking: 'Ranking: ',
-  track_item_duration: 'Duration: ',
+  track_item_ranking: 'Ranking',
+  track_item_duration: 'Duration',
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'New playlist',
@@ -127,6 +128,17 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Go back',
+
+  /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
+  search_result_h2: 'Result',
+  search_result_type_all: 'All',
+  search_result_type_tracks: 'Tracks',
+  search_result_type_albums: 'Albums',
+  search_result_type_artists: 'Artists',
+  search_result_type_playlists: 'Playlists',
+  search_result_type_btn_all: 'VIEW ALL',
+  search_result_null: 'Oops, there is no match at this moment',
+
 }
 
 export default englishTranslation;

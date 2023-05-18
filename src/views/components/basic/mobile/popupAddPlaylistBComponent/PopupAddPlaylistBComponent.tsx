@@ -10,36 +10,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeContext } from 'context/theme/ThemeContext';
 import { useAuth0 } from '@auth0/auth0-react';
+import { message } from 'antd';
 
 function RenderPlaylistMini() {
   const { t } = useTranslation();
   const { playlists, putTrackToPlaylist } = useContext(MyLibraryContext);
   const { currentTrack } = useContext(CurrentTrackContext);
-  const { theme } = useContext(ThemeContext)
-
-
-  const notify = (playlistName: string) => toast(`The track was added to ${playlistName}`, {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    progress: undefined,
-    theme: theme,
-    style: {
-      width: '330px',
-      top: '-70px'
-    },
-  })
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
-    // console.log('track:', currentTrack._id )
-    // console.log('playlistId:', playlistId ) 
     putTrackToPlaylist(playlistId, currentTrack._id);
-    notify(playlistName)
+    message.success(`Song added to selected playlist ${playlistName}`)
   }
 
   return (
     <>
-      <ToastContainer />
       <div className="render-playlist-mini-container">
         {playlists.userContent.map((playlist: { _id: string, name: string, tracks: string[], cover: string }) => {
           return (
@@ -108,10 +92,7 @@ const PopupAddPlaylistBComponent = ({ onClose }: any) => {
           {isModalVisible && <ModalPlaylistMobile onClose={() => setIsModalVisual(false)} />}
         </div>
       ) : (
-        <>
-          <ToastContainer />
-          
-        </>
+        <ToastContainer />
       )}
     </div>
   )
