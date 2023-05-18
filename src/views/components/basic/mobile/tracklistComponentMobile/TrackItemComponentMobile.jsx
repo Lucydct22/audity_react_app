@@ -70,8 +70,8 @@ const TrackListMobileComponent = ({
             className="track-list-item-mobile__icons--dots"
             onClick={() => setPopperOpen(!popOpen)}
           />
+          <TrackSideBarMobile track={track} artist={artist} popOpen={popOpen} />
         </div>
-        <TrackSideBarMobile track={track} artist={artist} popOpen={popOpen} />
         <div className={`track-list-item-mobile${popOpen ? '__backdropOn' : '__backdropOff'}`} />
       </div>
     </>

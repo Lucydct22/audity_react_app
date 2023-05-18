@@ -41,10 +41,6 @@ export const getPlaylistByUserApi = async (userId: string, token: any): Promise<
 }
 
 export const putTrackToPlaylistApi = async (token: any, playlistId: string, trackId: string): Promise<any> => {
-	console.log(token);
-	console.log(playlistId);
-	console.log(trackId);
-
 	const params = {
 		method: "PUT",
 		headers: {

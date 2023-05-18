@@ -58,8 +58,6 @@ function RenderPlaylistMini() {
   // }
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
-    console.log('track:', currentTrack._id)
-    console.log('playlistId:', playlistId)
     putTrackToPlaylist(playlistId, currentTrack._id);
     notify(playlistName)
     // copyToClip();
@@ -138,10 +136,7 @@ const PopupAddPlaylistBComponent = ({ onClose }: any) => {
           {isModalVisible && <ModalPlaylistMobile onClose={() => setIsModalVisual(false)} />}
         </div>
       ) : (
-        <>
-          <ToastContainer />
-
-        </>
+        <ToastContainer />
       )}
     </div>
   )
