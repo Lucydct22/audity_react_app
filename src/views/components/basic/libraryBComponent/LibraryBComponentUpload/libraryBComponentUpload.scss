@@ -47,6 +47,26 @@
     }
   }
 
+  span {
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      padding: 0;
+
+      .mobile-track-component {
+        .track-list-item-mobile {
+          padding: 10px 18px !important;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .mobile-track-component {
+        .track-list-item-mobile {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+
   @media (max-width: $media-breakpoint-desktop-mobile) {
     padding: 0;
 

@@ -5,7 +5,6 @@
   align-items: center;
   margin: 5px;
   width: 100%;
-  margin-top: 10px;
 
   &:hover {
 
@@ -32,6 +31,7 @@
     justify-content: space-between;
     width: 100%;
     font-size: 17px;
+    padding: 10px 0;
 
     img {
       filter: brightness(90%);
@@ -57,6 +57,8 @@
 
     &__track {
       cursor: pointer;
+      height: 50px;
+      overflow-y: hidden;
 
       &--img {
         position: relative;
