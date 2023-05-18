@@ -74,7 +74,6 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		() => ({
 			...myLibraryState,
 			postPlaylist,
-			// postArtists,
 			postPrivateTrack,
 			putTrackToPlaylist,
 			likeDislikeTrack,
@@ -84,7 +83,6 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 		}), [
 		myLibraryState,
 		postPlaylist,
-		// postArtists,
 		postPrivateTrack,
 		putTrackToPlaylist,
 		likeDislikeTrack,

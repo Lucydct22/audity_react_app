@@ -137,12 +137,10 @@ export async function likeDislikeArtistAction(
 				})
 			} else {
 				const filterUserState = userState.artists.content.filter((artistF: any) => artistF._id !== artist._id)
-				if (filterUserState.length > 0) {
-					return dispatch({
-						type: MyLibraryTypes.DISLIKE_ARTIST,
-						payload: filterUserState
-					})
-				}
+				return dispatch({
+					type: MyLibraryTypes.DISLIKE_ARTIST,
+					payload: filterUserState
+				})
 			}
 		}
 	} catch (err) {
@@ -167,12 +165,10 @@ export async function likeDislikeAlbumAction(
 				})
 			} else {
 				const filterUserState = userState.albums.content.filter((albumF: any) => albumF._id !== album._id)
-				if (filterUserState.length > 0) {
-					return dispatch({
-						type: MyLibraryTypes.DISLIKE_ALBUM,
-						payload: filterUserState
-					})
-				}
+				return dispatch({
+					type: MyLibraryTypes.DISLIKE_ALBUM,
+					payload: filterUserState
+				})
 			}
 		}
 	} catch (err) {
@@ -197,12 +193,10 @@ export async function likeDislikePlaylistAction(
 				})
 			} else {
 				const filterUserState = userState.playlists.content.filter((playlistF: any) => playlistF._id !== playlist._id)
-				if (filterUserState.length > 0) {
-					return dispatch({
-						type: MyLibraryTypes.DISLIKE_PLAYLIST,
-						payload: filterUserState
-					})
-				}
+				return dispatch({
+					type: MyLibraryTypes.DISLIKE_PLAYLIST,
+					payload: filterUserState
+				})
 			}
 		}
 	} catch (err) {
