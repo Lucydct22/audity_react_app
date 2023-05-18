@@ -7,35 +7,38 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: 120;
   display: flex;
   justify-content: center;
   align-items: center;
-  //transform: translateY(+100%);
+  // transform: translateY(+100%);
   transition: all 0.4s;
   background-color: #9F4D44;
   color: rgb(226, 226, 226);
   background-image: linear-gradient(to bottom, rgba(209, 87, 86, 1), #1f0f0d);
 
   &__track-info {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
     width: calc(100vw - 2rem);
     height: 100vh;
-    max-width: 450px;
-    margin-top: 2rem;
+    max-width: 395px;
+    justify-content: space-between;
+    padding: 1rem 0 2rem;
+    gap: 8px;
 
     &__close {
-      display: flex;
-      justify-content: left;
+      display: grid;
+      grid-template-columns: 45px 1fr 45px;
       align-items: center;
       padding: 0.2rem;
       color: white;
-      gap: 25%;
-      margin-top: 1rem;
 
       p {
         font-size: 1.3rem;
-        margin: auto 0;
+        margin: 0;
+        text-align: center;
+        width: 100%;
       }
 
       button {
@@ -48,12 +51,12 @@
     }
 
     &__img {
-      width: 300px;
+      width: 260px;
       height: auto;
       display: block;
       margin: 0 auto;
-      margin-top: 3rem;
       margin-bottom: 1rem;
+      border-radius: 8%;
     }
 
     &__track-time {
@@ -61,13 +64,17 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
+      margin: 1rem;
 
       &__timedata {
-        font-size: 1rem;
         display: flex;
-        flex-direction: row;
-        gap: 20rem;
+        justify-content: space-between;
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      .progress-bar {
+        width: 100%;
       }
     }
 
@@ -77,24 +84,30 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 6px;
 
       &__nameBig {
         font-size: 1.3rem;
         font-weight: bold;
         margin-bottom: 0;
+        text-align: center;
       }
 
       &__info {
         font-size: 1rem;
         display: flex;
-        flex-direction: row;
+        gap: 5px;
+
+        p {
+          margin: 0;
+          text-align: center;
+        }
       }
     }
 
     &__player-bottom-controls {
       display: flex;
-      justify-content: center;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       margin-top: 1rem;
 
@@ -130,7 +143,6 @@
     }
 
     &__add-bottom {
-      margin-top: 5rem;
       display: flex;
       flex-direction: row;
       align-items: center;

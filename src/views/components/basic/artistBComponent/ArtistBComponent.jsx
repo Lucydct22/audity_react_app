@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
@@ -11,8 +11,11 @@ import "./artistBComponent.scss";
 import { Player } from "@lottiefiles/react-lottie-player";
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 
 export default function ArtistBComponent({ artist }) {
+
   const { listId, selectArtist } = useContext(CurrentTracklistContext);
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
     useContext(CurrentTrackContext);
@@ -20,7 +23,9 @@ export default function ArtistBComponent({ artist }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const [screenWidth] = useWindowSizeReport();
+  const [songLike, setSongLike] = useState(false);
   const navigate = useNavigate();
+  const { artists, likeDislikeArtist } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {
     if (trackData.url !== artist.tracks[0].audioUrl) {
@@ -31,9 +36,16 @@ export default function ArtistBComponent({ artist }) {
     }
   }
 
-  const handleFollowClick = () => {
-    setIsFollowing((prevState) => !prevState);
-  };
+  // const handleFollowClick = () => {
+  //   setIsFollowing((prevState) => !prevState);
+  // };
+
+  useEffect(() => {
+    if (artist) {
+      const haveLike = artists.content.find((item) => item._id === artist._id)
+      haveLike === undefined ? setSongLike(true) : setSongLike(false)
+    }
+  }, [artist, artists])
 
   return (
     <>
@@ -67,13 +79,15 @@ export default function ArtistBComponent({ artist }) {
             <CopyUrl className="artist-page__section--buttons__copy-url" />
             <button
               className="artist-page__section--buttons__follow"
-              onClick={handleFollowClick}
-            >
-              {isFollowing ? (
+              onClick={() => likeDislikeArtist(artist)}>
+              {!songLike ? (
+                <AiFillHeart size='1.5rem' color='#ef5466' />
+              ) : <AiOutlineHeart />}
+              {/* {isFollowing ? (
                 <SlUserFollowing color="#ef5466" />
               ) : (
                 <SlUserFollow />
-              )}
+              )} */}
             </button>
           </div>
         </section>

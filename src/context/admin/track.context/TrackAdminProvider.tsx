@@ -11,22 +11,25 @@ export default function TrackAdminProvider(props: ChildrenProps) {
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 
 	useEffect(() => {
-		if (!isLoading && isAuthenticated) {
-			action.initTracksAction(dispatch)
+		const initTracks = async () => {
+			if (!isLoading && isAuthenticated) {
+				await action.initTracksAction(dispatch)
+			}
 		}
+		initTracks()
 	}, [isLoading, isAuthenticated])
 
 	const postTrack = useCallback(async (track: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Creating track '${track.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
-		action.postTrackAction(dispatch, track, token, messageApi)
+		await action.postTrackAction(dispatch, track, token, messageApi)
 	}, []);
 
 	const deleteTrack = useCallback(async (track: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Removing track`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && track) {
-			action.deleteTrackAction(dispatch, track, token, tracksState, messageApi)
+			await action.deleteTrackAction(dispatch, track, token, tracksState, messageApi)
 		}
 	}, [tracksState]);
 
@@ -34,7 +37,7 @@ export default function TrackAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating track`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && track) {
-			action.updateTrackAction(dispatch, data, track, token, tracksState, messageApi)
+			await action.updateTrackAction(dispatch, data, track, token, tracksState, messageApi)
 		}
 	}, [tracksState]);
 

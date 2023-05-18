@@ -6,11 +6,14 @@ import ArtistBComponent from 'views/components/basic/artistBComponent/ArtistBCom
 import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import './artistPage.scss'
 import HelmetSEO from 'views/utils/HelmetSEO';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function ArtistPage() {
   const { artistId } = useParams();
   const [artist, setArtist]: any = useState(undefined);
   const [tracksOfArtist, setTracksOfArtist]: any = useState([]);
+  const {isLoading} = useAuth0();
 
   useEffect(() => {
     let isMounted = true;
@@ -34,6 +37,10 @@ export default function ArtistPage() {
     }
     return () => { isMounted = false }
   }, [artist])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <HelmetSEO

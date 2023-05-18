@@ -16,7 +16,7 @@ export default function PlaylistAdminProvider(props: ChildrenProps) {
 		const initFetch = async () => {
 			const token = await getAccessTokenSilently()
 			if (!isLoading && isAuthenticated && token) {
-				action.initPlaylistsAction(dispatch, token)
+				await action.initPlaylistsAction(dispatch, token)
 			}
 		}
 		initFetch()
@@ -25,14 +25,14 @@ export default function PlaylistAdminProvider(props: ChildrenProps) {
 	const postPlaylist = useCallback(async (playlist: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Creating playlist '${playlist.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
-		action.postPlaylistAction(dispatch, dbUser._id, playlist, token, messageApi)
+		await action.postPlaylistAction(dispatch, dbUser._id, playlist, token, messageApi)
 	}, []);
 
 	const deletePlaylist = useCallback(async (playlist: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Removing playlist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && playlist) {
-			action.deletePlaylistAction(dispatch, playlist, dbUser._id, token, playlistsState, messageApi)
+			await action.deletePlaylistAction(dispatch, playlist, dbUser._id, token, playlistsState, messageApi)
 		}
 	}, [playlistsState]);
 
@@ -40,7 +40,7 @@ export default function PlaylistAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating playlist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && playlist) {
-			action.updatePlaylistAction(dispatch, data, playlist, token, playlistsState, messageApi)
+			await action.updatePlaylistAction(dispatch, data, playlist, token, playlistsState, messageApi)
 		}
 	}, [playlistsState]);
 
@@ -49,7 +49,7 @@ export default function PlaylistAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating playlist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && playlist) {
-			action.updatePlaylistPublicAccessibleAction(playlist, publiAccessible, token, messageApi)
+			await action.updatePlaylistPublicAccessibleAction(playlist, publiAccessible, token, messageApi)
 		}
 	}, [playlistsState]);
 

@@ -4,6 +4,7 @@ import { IoChevronBackOutline } from "react-icons/io5"
 import './modalAntdPlaylistCreateMobile.scss'
 import { useContext, useRef } from 'react';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import { message } from 'antd';
 
 export default function ModalPlaylistMobile({ onClose }) {
 
@@ -13,10 +14,14 @@ export default function ModalPlaylistMobile({ onClose }) {
   const descRef = useRef("");
 
   function handleCreatePlaylist() {
-    postPlaylist(nameRef.current.value, descRef.current.value);
-    onClose();
+    if (nameRef.current.value == "" || descRef.current.value == "") {
+      message.error("Sorry could not create Playlist. Both inputs are required")
+    } else {
+      postPlaylist(nameRef.current.value, descRef.current.value);
+      onClose();
+    }
   }
- 
+
   return (
     <section className="modal-playlist-create-mobile">
       <div className="modal-playlist-create-mobile__header">

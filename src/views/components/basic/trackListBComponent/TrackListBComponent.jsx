@@ -2,20 +2,18 @@ import { Suspense } from "react";
 import TrackItemComponentDesktop from "../desktop/trackListComponentDesktop/TrackItemComponentDesktop";
 import TrackItemComponentMobile from "../mobile/tracklistComponentMobile/TrackItemComponentMobile";
 import "./trackListBComponent.scss";
-import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { joinArtistsName } from "views/utils/joinArtistsName";
 import formatToSeconds from "utils/tracks/formatToSeconds";
-import { redirect } from "react-router-dom";
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
 
   return (
     <Suspense fallback={<></>}>
-      {screenWidth > responsiveBreak ? (
+      {screenWidth > 1024 ? (
         <TrackListDesktopComponent tracksData={tracksData} />
       ) : (
         <TrackListMobileComponent tracksData={tracksData} />
@@ -28,10 +26,13 @@ const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <>
       <div className="tracklist-component">
         <div className="tracklist-component__sections">
-          <span>{t("track_list_track")}</span>
+          <span>
+            <p>#</p>
+            {t("track_list_track")}
+          </span>
           <span>&nbsp;</span>
           <span>{t("track_list_artist")}</span>
           <span>{t("track_list_album")}</span>
@@ -47,10 +48,46 @@ const TrackListDesktopComponent = ({ tracksData }) => {
             const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
               track;
             const artistsName = joinArtistsName(artists);
+
+            if (!audioUrl) return;
+
             return (
-              <TrackItemComponentDesktop
+              <span key={_id}>
+                <TrackItemComponentDesktop
+                  id={_id}
+                  index={index}
+                  name={name ? name : track.uploadByUser.name}
+                  artist={artistsName ? artistsName : track.uploadByUser.artists}
+                  thumbnail={imageUrl}
+                  likes={likedBy.length}
+                  time={duration ? formatToSeconds(duration) : "-"}
+                  audioUrl={audioUrl}
+                  album={album?.name}
+                  track={track}
+                />
+              </span>
+            );
+          })}
+      </div>
+    </>
+  );
+};
+
+const TrackListMobileComponent = ({ tracksData }) => {
+  return (
+    <main className="mobile-track-component">
+      {tracksData &&
+        tracksData.map((track) => {
+          const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
+            track;
+          const artistsName = joinArtistsName(artists);
+
+          if (!audioUrl) return;
+
+          return (
+            <span key={_id}>
+              <TrackItemComponentMobile
                 id={_id}
-                index={index}
                 name={name ? name : track.uploadByUser.name}
                 artist={artistsName ? artistsName : track.uploadByUser.artists}
                 thumbnail={imageUrl}
@@ -60,31 +97,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
                 album={album?.name}
                 track={track}
               />
-            );
-          })}
-      </div>
-    </div>
-  );
-};
-
-const TrackListMobileComponent = ({ tracksData }) => {
-  return (
-    <main className="mobile-track-component">
-      {tracksData &&
-        tracksData.map((track) => {
-          const { _id, name, artists, imageUrl, likedBy, duration, album } =
-            track;
-          const artistsName = joinArtistsName(artists);
-          return (
-            <TrackItemComponentMobile
-              id={_id}
-              name={name ? name : track.uploadByUser.name}
-              artist={artistsName ? artistsName : track.uploadByUser.artists}
-              thumbnail={imageUrl}
-              likes={likedBy.length}
-              time={duration ? formatToSeconds(duration) : "-"}
-              album={album?.name}
-            />
+            </span>
           );
         })}
     </main>

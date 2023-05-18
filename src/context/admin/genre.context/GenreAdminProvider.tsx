@@ -11,22 +11,25 @@ export default function GenreAdminProvider(props: ChildrenProps) {
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 
 	useEffect(() => {
-		if (!isLoading && isAuthenticated) {
-			action.initGenresAction(dispatch)
+		const initGenres = async () => {
+			if (!isLoading && isAuthenticated) {
+				await action.initGenresAction(dispatch)
+			}
 		}
+		initGenres()
 	}, [isLoading, isAuthenticated])
 
 	const postGenre = useCallback(async (genre: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Creating genre '${genre.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
-		action.postGenreAction(dispatch, genre, token, messageApi)
+		await action.postGenreAction(dispatch, genre, token, messageApi)
 	}, []);
 
 	const deleteGenre = useCallback(async (genre: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Removing genre`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && genre) {
-			action.deleteGenreAction(dispatch, genre, token, genresState, messageApi)
+			await action.deleteGenreAction(dispatch, genre, token, genresState, messageApi)
 		}
 	}, [genresState]);
 
@@ -34,7 +37,7 @@ export default function GenreAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating genre`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && genre) {
-			action.updateGenreAction(dispatch, data, genre, token, genresState, messageApi)
+			await action.updateGenreAction(dispatch, data, genre, token, genresState, messageApi)
 		}
 	}, [genresState]);
 

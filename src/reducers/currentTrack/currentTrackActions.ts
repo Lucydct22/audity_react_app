@@ -4,10 +4,10 @@ import initAudio from "utils/tracks/initAudio";
 import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
 
-export const initCurrentTrackAction = async function (dispatch: any) {
+export const initCurrentTrackAction = async function (dispatch: any, trackData: any) {
 	await getRandomTrackApi().then(async (res: any) => {
 		if (res.track) {
-			const audio: HTMLAudioElement = initAudio(res.track);
+			const audio: HTMLAudioElement = initAudio(res.track, trackData.volume);
 			const duration: any = await getDuration(audio);
 			return dispatch({
 				type: CurrentTrackTypes.INIT_CURRENT_TRACK,
@@ -34,9 +34,8 @@ export const nextTrackAction = async function (dispatch: any, trackState: any, t
 	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;
-
 	await getTrackByIdApi(trackId).then(async (res: any) => {
-		const audio: HTMLAudioElement = initAudio(res.track);
+		const audio: HTMLAudioElement = initAudio(res.track, trackData?.volume);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 		trackData.isMuted && (audio.muted = true);
@@ -67,14 +66,12 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 	const trackId = tracksCycle(tracksReverse, currentTrack._id);
 	trackData.isPlaying && trackData?.audio.pause();
 	trackData.audio = null;
-
 	await getTrackByIdApi(trackId).then(async (res: any) => {
-		const audio: HTMLAudioElement = initAudio(res.track);
+		const audio: HTMLAudioElement = initAudio(res.track, trackData.volume);
 		const duration: any = await getDuration(audio);
 		trackData.isPlaying && audio.play();
 		trackData.isMuted && (audio.muted = true);
 		trackData.hasLoop && (audio.loop = true);
-
 		return dispatch({
 			type: CurrentTrackTypes.PREV_TRACK,
 			payload: {
@@ -96,7 +93,7 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 
 export const selectCurrentTrackAction = async function (dispatch: any, track: any, currentTrackState: any) {
 	currentTrackState.trackData.audio.pause()
-	const audio: HTMLAudioElement = initAudio(track);
+	const audio: HTMLAudioElement = initAudio(track, currentTrackState.trackData.volume);
 	const duration: any = await getDuration(audio);
 	dispatch({
 		type: CurrentTrackTypes.SELECT_CURRENT_TRACK,

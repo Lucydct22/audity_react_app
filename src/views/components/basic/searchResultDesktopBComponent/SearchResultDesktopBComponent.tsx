@@ -3,11 +3,14 @@ import { useContext, useState, useEffect } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import imgDefault1 from 'assets/img/webp/6.webp'
 
 const Render = ({ data, url }: any) => {
 
   const { currentTrack } = useContext(CurrentTrackContext);
   const [artists, setArtists] = useState('')
+  const { _id, name, imageUrl } = data;
+  const imageSource = imageUrl || imgDefault1
 
   useEffect(() => {
     let isMounted = true
@@ -16,13 +19,11 @@ const Render = ({ data, url }: any) => {
     return () => { isMounted = false }
   }, [])
 
-  const { _id, name, imageUrl } = data;
-
   return (
     <Link to={`/${url}/${_id}`}>
       <div className='render-item'>
         <div className='render-item__thumbnail'>
-          <img src={imageUrl} alt={name} />
+          <img src={imageSource} alt={name} />
         </div>
         <div className='render-item__data'>
           <p className='render-item__p'>{name}</p>

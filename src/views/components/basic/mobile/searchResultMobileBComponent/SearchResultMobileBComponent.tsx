@@ -1,16 +1,19 @@
 import './searchResultMobileBComponent.scss'
 import { useTranslation } from 'react-i18next'
-import { IoChevronForwardSharp, IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { NavLink, Link } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
-import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
-
-// change navlink to 
+import { IoChevronForwardSharp, IoHeartOutline, IoHeartSharp } from "react-icons/io5"
+import { NavLink, Link } from 'react-router-dom'
+import { useEffect, useContext, useState } from 'react'
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext'
+import imgDefault1 from 'assets/img/webp/6.webp'
 
 const RenderTrack = ({ data, url }: any) => {
 
   const { currentTrack } = useContext(CurrentTrackContext);
+  const { tracks, likeDislikeTrack } = useContext(MyLibraryContext)
   const [artists, setArtists] = useState('')
+  const { _id, name, imageUrl } = data;
+  const [songLike, setSongLike] = useState(false);
 
   useEffect(() => {
     let isMounted = true
@@ -19,20 +22,25 @@ const RenderTrack = ({ data, url }: any) => {
     return () => { isMounted = false }
   }, [])
 
-  const { _id, name, imageUrl } = data;
+  useEffect(() => {
+    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
+    haveLike === undefined ? setSongLike(true) : setSongLike(false)
+  }, [currentTrack, tracks])
+  
+  const imageSource = imageUrl || imgDefault1
 
   return (
     <Link to={`/${url}/${_id}`} >
-      <div className='render-track'>
-        <div className='render-track__thumbnail'>
-          <img src={imageUrl} alt={name} />
+      <div className='render-track-search'>
+        <div className='render-track-search__thumbnail'>
+          <img src={imageSource} alt={name} />
         </div>
-        <div className='render-track__data'>
-          <p className='render-track__data__name'>{name}</p>
-          <p className='render-track__data__artists'> {artists}</p>
+        <div className='render-track-search__data'>
+          <p className='render-track-search__data__name'>{name}</p>
+          <p className='render-track-search__data__artists'> {artists}</p>
         </div>
-        <div className='render-track__heart'>
-          <IoHeartOutline />
+        <div className='render-track-search__heart'  onClick={() => likeDislikeTrack(currentTrack)}>
+          {!songLike ? <IoHeartSharp size='1.5rem' color='#ef5466' /> : <IoHeartOutline />}
         </div>
       </div>
     </Link>
@@ -45,6 +53,7 @@ const SearchResultBComponent = ({ content }: any) => {
   const { albums, artists, tracks, playlists } = content
 
   const [selectedType, SetSelectedType] = useState('all')
+  
 
   const handleTypeChange = (type: string) => {
     SetSelectedType(type)

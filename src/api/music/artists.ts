@@ -81,3 +81,16 @@ export const deleteArtistByIdApi = async (artist: any, token: any): Promise<any>
 	const result = await response.json()
 	return result
 }
+
+export const likeDislikeArtistApi = async (artistId: string, userId: any, token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/like-dislike-artist/${artistId}/${userId}`, params)
+	const result = await response.json()
+	return result
+} 

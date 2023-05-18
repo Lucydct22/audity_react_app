@@ -5,12 +5,15 @@ import { getTrackByIdApi } from 'api/music/tracks';
 import PlaylistBComponent from 'views/components/basic/playlistBComponent/PlaylistBComponent';
 import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import HelmetSEO from 'views/utils/HelmetSEO';
-import './playlistPage.scss'
+import './playlistPage.scss';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function PlaylistPage() {
   const { playlistId } = useParams();
   const [playlist, setPlaylist]: any = useState(undefined);
   const [tracksOfPlaylist, setTracksOfPlaylist]: any = useState([]);
+  const {isLoading} = useAuth0()
 
   useEffect(() => {
     let isMounted = true;
@@ -34,6 +37,10 @@ export default function PlaylistPage() {
     }
     return () => { isMounted = false }
   }, [playlist])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <HelmetSEO

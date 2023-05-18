@@ -11,22 +11,25 @@ export default function ArtistAdminProvider(props: ChildrenProps) {
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 
 	useEffect(() => {
-		if (!isLoading && isAuthenticated) {
-			action.initArtistsAction(dispatch)
+		const initArtists = async () => {
+			if (!isLoading && isAuthenticated) {
+				await action.initArtistsAction(dispatch)
+			}
 		}
+		initArtists()
 	}, [isLoading, isAuthenticated])
 
 	const postArtist = useCallback(async (artist: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Creating artist '${artist.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
-		action.postArtistAction(dispatch, artist, token, messageApi)
+		await action.postArtistAction(dispatch, artist, token, messageApi)
 	}, []);
 
 	const deleteArtist = useCallback(async (artist: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Removing artist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && artist) {
-			action.deleteArtistAction(dispatch, artist, token, artistsState, messageApi)
+			await action.deleteArtistAction(dispatch, artist, token, artistsState, messageApi)
 		}
 	}, [artistsState]);
 
@@ -34,7 +37,7 @@ export default function ArtistAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating artist`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && artist) {
-			action.updateArtistAction(dispatch, data, artist, token, artistsState, messageApi)
+			await action.updateArtistAction(dispatch, data, artist, token, artistsState, messageApi)
 		}
 	}, [artistsState]);
 

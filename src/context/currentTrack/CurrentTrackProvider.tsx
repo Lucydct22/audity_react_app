@@ -18,7 +18,22 @@ export default function CurrentTrackProvider({ children }: any) {
 	const { audio } = trackData;
 
 	useEffect(() => {
-		initCurrentTrackAction(dispatch);
+		let isMounted = true;
+		const interval = setInterval(() => {
+			isMounted && trackData.duration && updateCurrentTime()
+		}, 1000);
+		trackData.isPlaying === true && interval
+		return () => {
+			clearInterval(interval);
+			isMounted = false;
+		};
+	}, [trackData.duration]);
+
+	useEffect(() => {
+		const initCurrentTrack = async () => {
+			await initCurrentTrackAction(dispatch, trackData);
+		}
+		initCurrentTrack()
 	}, []);
 
 	const playCurrentTrack = function () {
@@ -47,12 +62,12 @@ export default function CurrentTrackProvider({ children }: any) {
 		})
 	}
 
-	const nextTrack = function () {
-		nextTrackAction(dispatch, currentTrackState, currentTracklist)
+	const nextTrack = async function () {
+		await nextTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
-	const previousTrack = function () {
-		previousTrackAction(dispatch, currentTrackState, currentTracklist)
+	const previousTrack = async function () {
+		await previousTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
 	const muteTrack = function () {
@@ -75,6 +90,15 @@ export default function CurrentTrackProvider({ children }: any) {
 		selectCurrentTrackAction(dispatch, track, currentTrackState)
 	}
 
+	const updateVolume = function (volume: number) {
+		const newVolume = Number((volume / 100).toFixed(1))
+		audio.volume = newVolume
+		dispatch({
+			type: CurrentTrackTypes.UPDATE_VOLUME,
+			payload: newVolume
+		})
+	}
+
 	const memoProvider = useMemo(
 		() => ({
 			...currentTrackState,
@@ -86,7 +110,8 @@ export default function CurrentTrackProvider({ children }: any) {
 			muteTrack,
 			loopTrack,
 			changeCurrentTime,
-			selectCurrentTrack
+			selectCurrentTrack,
+			updateVolume
 		}), [
 		currentTrackState,
 		playCurrentTrack,
@@ -97,7 +122,8 @@ export default function CurrentTrackProvider({ children }: any) {
 		muteTrack,
 		loopTrack,
 		changeCurrentTime,
-		selectCurrentTrack
+		selectCurrentTrack,
+		updateVolume
 	]
 	);
 

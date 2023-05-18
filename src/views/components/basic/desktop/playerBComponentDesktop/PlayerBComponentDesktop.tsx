@@ -10,13 +10,13 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { TfiPlus } from "react-icons/tfi";
 import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 import './playerBComponentDesktop.scss'
-import { Popover, Modal } from 'antd';
+import { Popover, Modal, Slider } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 import { useAuth0 } from '@auth0/auth0-react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeContext } from 'context/theme/ThemeContext';
+
 
 const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
@@ -31,6 +31,8 @@ const PlayerBComponentDesktop = () => {
   const nameRef: any = useRef("");
   const descRef: any = useRef("");
   const { theme } = useContext(ThemeContext)
+  const [messageApi, contextHolderMessege] = message.useMessage();
+  const key = 'updatable';
   const {
     trackData,
     currentTrack,
@@ -40,6 +42,7 @@ const PlayerBComponentDesktop = () => {
     previousTrack,
     muteTrack,
     loopTrack,
+    updateVolume
   } = useContext(CurrentTrackContext);
 
   const hidePopover = () => {
@@ -73,34 +76,47 @@ const PlayerBComponentDesktop = () => {
     });
   };
 
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Added to Playlist!',
+        duration: 3,
+      });
+    }, 1000);
+  };
+
+  async function copyToClip() {
+    await navigator.clipboard.writeText(location.href);
+  }
+
   useEffect(() => {
     let isMounted = true
     const artists = currentTrack.artists.map((artist) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
-  }, [])
+  }, [currentTrack])
 
   useEffect(() => {
     const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
     haveLike === undefined ? setSongLike(true) : setSongLike(false)
   }, [currentTrack, tracks])
 
-  const notify = (playlistName: string) => toast(`The track was added to ${playlistName}`, {
-    position: "top-center",
-    autoClose: 2000,
-    hideProgressBar: false,
-    progress: undefined,
-    theme: theme,
-  })
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
     putTrackToPlaylist(playlistId, currentTrack._id);
-    notify(playlistName)
+    copyToClip(); 
+    openMessage();
   }
 
   const popoverContent = isAuthenticated ? (
     <>
-      <ToastContainer />
       <div className="player-add-to-playlist">
         <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
           <TfiPlus size={26} />
@@ -108,9 +124,14 @@ const PlayerBComponentDesktop = () => {
         </div>
         <div className="player-add-to-playlist__results">
           {playlists.userContent &&
-            playlists.userContent?.map((playlist: any) => {
-              return <p key={playlist._id} onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>{playlist.name}</p>
-            })
+            playlists.userContent?.map((playlist: any) => (
+              <div key={playlist._id}>
+                {contextHolderMessege}
+                <p onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name) }>
+                  {playlist.name}
+                </p>
+              </div>
+            ))
           }
         </div>
         <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
@@ -118,21 +139,25 @@ const PlayerBComponentDesktop = () => {
       </div>
     </>
   ) : (
-    <div className="player-add-to-playlist-sinlogin">{t('player_component_popover_playlist')}</div>
+    <div className="player-add-to-playlist-without-login">{t('player_component_popover_playlist')}</div>
   );
+
+  const volumeSlider = (
+    <div style={{ display: 'inline-block', height: 150, padding: '10px 2px' }}>
+      <Slider onChange={(e) => updateVolume(e)} vertical defaultValue={30} />
+    </div>
+  )
 
   return (
     <div className='page-player'>
       <div className='player-bottom'>
-
         <div className='player-bottom-controls'>
           <button onClick={previousTrack} className='page-player-bottom__btn'>
             <MdSkipPrevious />
           </button>
           <button
             onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
-            className='page-player-bottom__btn'
-          >
+            className='page-player-bottom__btn'>
             {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
           </button>
           <button onClick={nextTrack} className='page-player-bottom__btn'>
@@ -170,11 +195,12 @@ const PlayerBComponentDesktop = () => {
           <button className='page-player-bottom__btn' onClick={loopTrack}>
             {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
           </button>
-          <button className='page-player-bottom__btn' onClick={muteTrack}>
-            {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
+          <button className='page-player-bottom__btn'>
+            <Popover content={volumeSlider} placement="top" trigger="hover">
+              {trackData.isMuted ? <IoVolumeMuteOutline onClick={muteTrack} /> : <IoVolumeHighOutline onClick={muteTrack} />}
+            </Popover>
           </button>
         </div>
-
       </div>
     </div>
   )

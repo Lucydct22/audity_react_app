@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
 import { useTranslation } from "react-i18next";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowBack, MdPlayArrow, MdPause } from "react-icons/md";
 import { IoShuffleOutline } from "react-icons/io5";
 import CopyUrl from "views/UI/copyUrl/CopyUrl";
@@ -11,15 +11,17 @@ import "./albumBComponent.scss";
 import { Player } from "@lottiefiles/react-lottie-player";
 import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
+import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 
 export default function AlbumBComponent({ album }) {
   const { listId, selectAlbum } = useContext(CurrentTracklistContext);
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
     useContext(CurrentTrackContext);
   const { t } = useTranslation();
-  const [isLiked, setIsLiked] = useState(false);
+  const [songLike, setSongLike] = useState(false);
   const [screenWidth] = useWindowSizeReport();
   const navigate = useNavigate();
+  const { albums, likeDislikeAlbum } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {
     if (trackData.url !== album.tracks[0].audioUrl) {
@@ -30,9 +32,12 @@ export default function AlbumBComponent({ album }) {
     }
   };
 
-  const handleLikeClick = () => {
-    setIsLiked((prevState) => !prevState);
-  };
+  useEffect(() => {
+    if (album) {
+      const haveLike = albums.content.find((item) => item._id === album._id)
+      haveLike === undefined ? setSongLike(true) : setSongLike(false)
+    }
+  }, [album, albums])
 
   return (
     <>
@@ -67,10 +72,10 @@ export default function AlbumBComponent({ album }) {
             <CopyUrl className="album-page__section--buttons__copy-url" />
             <button
               className="album-page__section--buttons__like"
-              onClick={handleLikeClick}
+              onClick={() => likeDislikeAlbum(album)}
             >
-              {isLiked ? (
-                <AiOutlineHeart color="#ef5466" />
+              {!songLike ? (
+                <AiFillHeart color="#ef5466" />
               ) : (
                 <AiOutlineHeart />
               )}

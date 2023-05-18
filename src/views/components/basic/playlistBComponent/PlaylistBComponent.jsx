@@ -1,15 +1,19 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { responsiveBreak } from "utils/componentsConstants";
 import CopyUrl from 'views/UI/copyUrl/CopyUrl';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowBack, MdPlayArrow, MdPause } from "react-icons/md";
 import './playlistBComponent.scss';
 import { Player } from '@lottiefiles/react-lottie-player';
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
+import img from 'assets/img/webp/6.webp';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function PlaylistBComponent({ playlist }) {
   const { listId, selectPlaylist } = useContext(CurrentTracklistContext);
@@ -17,9 +21,12 @@ export default function PlaylistBComponent({ playlist }) {
     useContext(CurrentTrackContext);
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [songLike, setSongLike] = useState(false);
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
+  const imgDefault = playlist?.imageUrl || img
+  const { isLoading } = useAuth0()
+  const { playlists, likeDislikePlaylist } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {
     if (trackData.url !== playlist.tracks[0].audioUrl) {
@@ -30,8 +37,15 @@ export default function PlaylistBComponent({ playlist }) {
     }
   };
 
-  const handleLikeClick = () => {
-    setIsLiked((prevState) => !prevState);
+  useEffect(() => {
+    if (playlist) {
+      const haveLike = playlists.content.find((item) => item._id === playlist._id)
+      haveLike === undefined ? setSongLike(true) : setSongLike(false)
+    }
+  }, [playlist, playlists])
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
@@ -44,7 +58,7 @@ export default function PlaylistBComponent({ playlist }) {
         </div>
       }
       <div className="playlist-page">
-        <img src={playlist?.imageUrl} alt="Image description" />
+        <img src={imgDefault} alt="Image description" />
         <section className="playlist-page__section">
           <h1>{playlist?.name}</h1>
           <p>15 {t('page_pnumber')}</p>
@@ -63,8 +77,12 @@ export default function PlaylistBComponent({ playlist }) {
               )}
             </button>
             {playlist?.publicAccessible && <CopyUrl className="playlist-page__section--buttons__copy-url" />}
-            <button className="playlist-page__section--buttons__like" onClick={handleLikeClick}>
-              {isLiked ? <AiOutlineHeart color='#ef5466' /> : <AiOutlineHeart />}
+            <button className="playlist-page__section--buttons__like" onClick={() => likeDislikePlaylist(playlist)}>
+              {!songLike ? (
+                <AiFillHeart color="#ef5466" />
+              ) : (
+                <AiOutlineHeart />
+              )}
             </button>
           </div>
         </section>

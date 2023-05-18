@@ -5,7 +5,6 @@
   align-items: center;
   margin: 5px;
   width: 100%;
-  margin-top: 10px;
 
   &:hover {
 
@@ -27,11 +26,12 @@
 
   &--item {
     display: grid;
-    grid-template-columns: 1.5fr 145px 1fr 1fr 80px;
+    grid-template-columns: 1.5fr 190px 1fr 1fr 80px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     font-size: 17px;
+    padding: 10px 0;
 
     img {
       filter: brightness(90%);
@@ -57,6 +57,13 @@
 
     &__track {
       cursor: pointer;
+      height: 50px;
+      overflow-y: hidden;
+
+      &--index {
+        color: $color-secondary;
+        font-weight: 400;
+      }
 
       &--img {
         position: relative;
@@ -102,21 +109,82 @@
       margin-right: 10px;
       gap: 20px;
       opacity: 0;
+      color: #a2a2ad;
 
       &--heart {
         display: flex;
-        align-items: center;
+        gap: 3px;
       }
 
       &--download {
         margin-right: 20px;
       }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: 0;
+        cursor: pointer;
+      }
     }
 
     &__time {
       display: flex;
-      justify-content: flex-end;
-      margin-right: 30px;
+      justify-content: center
     }
   }
+}
+
+.track-item-component-add-to-playlist {
+  width: 330px;
+  height: 233px;
+  color: var(--color-primary);
+
+  &__add {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    color: $color-main;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    svg {
+      margin-left: 16px;
+    }
+
+    span {
+      margin: 0 16px;
+    }
+
+    &:hover {
+      background-color: var(--background-on-hover);
+      cursor: pointer;
+    }
+  }
+
+  &__results {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 183px;
+
+    p {
+      margin: 0;
+      padding: 12px 16px;
+      font-weight: 700;
+
+      &:hover {
+        background-color: var(--background-on-hover);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.track-item-component-add-to-playlist-without-login {
+  padding: 20px;
+  width: 200px;
+  color: var(--color-primary);
 }
