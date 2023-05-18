@@ -80,7 +80,7 @@ const RenderTrack = ({ data }: any) => {
         <img src={imageSource} alt={name} />
       </div>
       <div className='render-item__data'>
-        <p className='render-item__p'>{name} - {artists}</p>
+        <p className='render-item__p'>{name}</p>
       </div>
     </div>
   )
