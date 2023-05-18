@@ -14,7 +14,7 @@ export default function UserAdminProvider(props: ChildrenProps) {
 		const getUsersFetch = async () => {
 			const token = await getAccessTokenSilently()
 			if (!isLoading && isAuthenticated && token) {
-				action.initUsersAction(dispatch, token)
+				await action.initUsersAction(dispatch, token)
 			}
 		}
 		getUsersFetch()
@@ -24,7 +24,7 @@ export default function UserAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Removing user`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && userId) {
-			action.deleteUserAction(dispatch, userId, token, userState, messageApi)
+			await action.deleteUserAction(dispatch, userId, token, userState, messageApi)
 		}
 	}, [userState]);
 
@@ -32,7 +32,7 @@ export default function UserAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating user`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && role && userId) {
-			action.updateUserRoleAction(dispatch, role, userId, token, userState, messageApi)
+			await action.updateUserRoleAction(dispatch, role, userId, token, userState, messageApi)
 		}
 	}, [userState]);
 

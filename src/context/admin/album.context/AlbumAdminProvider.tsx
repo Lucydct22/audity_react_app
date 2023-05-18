@@ -11,22 +11,25 @@ export default function AlbumAdminProvider(props: ChildrenProps) {
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0()
 
 	useEffect(() => {
-		if (!isLoading && isAuthenticated) {
-			action.initAlbumsAction(dispatch)
+		const initAlbums = async () => {
+			if (!isLoading && isAuthenticated) {
+				await action.initAlbumsAction(dispatch)
+			}
 		}
+		initAlbums()
 	}, [isLoading, isAuthenticated])
 
 	const postAlbum = useCallback(async (album: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Creating album '${album.name}'`, duration: 0 })
 		const token = await getAccessTokenSilently()
-		action.postAlbumAction(dispatch, album, token, messageApi)
+		await action.postAlbumAction(dispatch, album, token, messageApi)
 	}, []);
 
 	const deleteAlbum = useCallback(async (album: any, messageApi: any) => {
 		messageApi.open({ type: 'loading', content: `Removing album`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && album) {
-			action.deleteAlbumAction(dispatch, album, token, albumsState, messageApi)
+			await action.deleteAlbumAction(dispatch, album, token, albumsState, messageApi)
 		}
 	}, [albumsState]);
 
@@ -34,7 +37,7 @@ export default function AlbumAdminProvider(props: ChildrenProps) {
 		messageApi.open({ type: 'loading', content: `Updating album`, duration: 0 })
 		const token = await getAccessTokenSilently()
 		if (isAuthenticated && token && data && album) {
-			action.updateAlbumAction(dispatch, data, album, token, albumsState, messageApi)
+			await action.updateAlbumAction(dispatch, data, album, token, albumsState, messageApi)
 		}
 	}, [albumsState]);
 
