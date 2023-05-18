@@ -71,6 +71,36 @@ export default function myLibraryReducer(state: any, action: any) {
 				}
 			}
 
+			case MyLibraryTypes.LIKE_ALBUM:
+			return {
+				...state,
+				albums: {
+					...state.albums,
+					info: state.albums.content.length + 1,
+					content: [...state.albums.content, payload]
+				}
+			}
+
+			case MyLibraryTypes.LIKE_ARTIST:
+			return {
+				...state,
+				artists: {
+					...state.artists,
+					info: state.artists.content.length + 1,
+					content: [...state.artists.content, payload]
+				}
+			}
+
+			case MyLibraryTypes.LIKE_PLAYLIST:
+			return {
+				...state,
+				playlists: {
+					...state.playlists,
+					info: state.playlists.content.length + 1,
+					content: [...state.playlists.content, payload]
+				}
+			}
+
 		case MyLibraryTypes.DISLIKE_TRACK:
 			return {
 				...state,
@@ -81,7 +111,37 @@ export default function myLibraryReducer(state: any, action: any) {
 				}
 			}
 
+			case MyLibraryTypes.DISLIKE_ARTIST:
+			return {
+				...state,
+				artists: {
+					...state.artists,
+					info: state.artists.content.length - 1,
+					content: payload
+				}
+			}
+
+			case MyLibraryTypes.DISLIKE_ALBUM:
+			return {
+				...state,
+				albums: {
+					...state.albums,
+					info: state.albums.content.length - 1,
+					content: payload
+				}
+			}
+			
+			case MyLibraryTypes.DISLIKE_PLAYLIST:
+			return {
+				...state,
+				playlists: {
+					...state.playlists,
+					info: state.playlists.content.length - 1,
+					content: payload
+				}
+			}
+			
 		default:
 			return state
 	}
-}
+} 

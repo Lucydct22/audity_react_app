@@ -141,3 +141,16 @@ export const getAllPlaylistsApi = async (token: any): Promise<any> => {
 	const data = await response.json()
 	return data
 }
+
+export const likeDislikePlaylistApi = async (playlistId: string, userId: any, token: any): Promise<any> => {
+	const params = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+	}
+	const response = await fetch(`${basePath}/like-dislike-playlist/${playlistId}/${userId}`, params)
+	const result = await response.json()
+	return result
+}
