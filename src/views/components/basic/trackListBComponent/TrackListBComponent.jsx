@@ -29,7 +29,10 @@ const TrackListDesktopComponent = ({ tracksData }) => {
     <>
       <div className="tracklist-component">
         <div className="tracklist-component__sections">
-          <span>{t("track_list_track")}</span>
+          <span>
+            <p>#</p>
+            {t("track_list_track")}
+          </span>
           <span>&nbsp;</span>
           <span>{t("track_list_artist")}</span>
           <span>{t("track_list_album")}</span>
@@ -49,18 +52,20 @@ const TrackListDesktopComponent = ({ tracksData }) => {
             if (!audioUrl) return;
 
             return (
-              <TrackItemComponentDesktop
-                id={_id}
-                index={index}
-                name={name ? name : track.uploadByUser.name}
-                artist={artistsName ? artistsName : track.uploadByUser.artists}
-                thumbnail={imageUrl}
-                likes={likedBy.length}
-                time={duration ? formatToSeconds(duration) : "-"}
-                audioUrl={audioUrl}
-                album={album?.name}
-                track={track}
-              />
+              <span key={_id}>
+                <TrackItemComponentDesktop
+                  id={_id}
+                  index={index}
+                  name={name ? name : track.uploadByUser.name}
+                  artist={artistsName ? artistsName : track.uploadByUser.artists}
+                  thumbnail={imageUrl}
+                  likes={likedBy.length}
+                  time={duration ? formatToSeconds(duration) : "-"}
+                  audioUrl={audioUrl}
+                  album={album?.name}
+                  track={track}
+                />
+              </span>
             );
           })}
       </div>
@@ -80,17 +85,19 @@ const TrackListMobileComponent = ({ tracksData }) => {
           if (!audioUrl) return;
 
           return (
-            <TrackItemComponentMobile
-              id={_id}
-              name={name ? name : track.uploadByUser.name}
-              artist={artistsName ? artistsName : track.uploadByUser.artists}
-              thumbnail={imageUrl}
-              likes={likedBy.length}
-              time={duration ? formatToSeconds(duration) : "-"}
-              audioUrl={audioUrl}
-              album={album?.name}
-              track={track}
-            />
+            <span key={_id}>
+              <TrackItemComponentMobile
+                id={_id}
+                name={name ? name : track.uploadByUser.name}
+                artist={artistsName ? artistsName : track.uploadByUser.artists}
+                thumbnail={imageUrl}
+                likes={likedBy.length}
+                time={duration ? formatToSeconds(duration) : "-"}
+                audioUrl={audioUrl}
+                album={album?.name}
+                track={track}
+              />
+            </span>
           );
         })}
     </main>

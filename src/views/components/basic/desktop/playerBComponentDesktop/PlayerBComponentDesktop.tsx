@@ -139,7 +139,7 @@ const PlayerBComponentDesktop = () => {
       </div>
     </>
   ) : (
-    <div className="player-add-to-playlist-sinlogin">{t('player_component_popover_playlist')}</div>
+    <div className="player-add-to-playlist-without-login">{t('player_component_popover_playlist')}</div>
   );
 
   const volumeSlider = (
