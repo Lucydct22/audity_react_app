@@ -73,24 +73,26 @@ const PopupAddPlaylistBComponent = ({ onClose }: any) => {
   return (
     <div>
       {isAuthenticated ? (
-        <div className='popupAddPlaylistBComponent'>
-          <div className='popupAddPlaylistBComponent-container'>
-            <button onClick={onClose} className='player-mobile-add-to-playlist__btn'><IoChevronBackOutline /></button>
-            <div className="player-mobile-add-to-playlist">
-              <div className="player-mobile-add-to-playlist__add" >
-                <button onClick={handleModal}>
-                  <IoAdd className="player-mobile-add-to-playlist__add__icon" />
-                  <span className="player-mobile-add-to-playlist__add__text">{t("player_component_popover_add_playlist")}</span>
-                </button>
-              </div>
-
-              <div className="player-mobile-add-to-playlist__results">
-                <RenderPlaylistMini />
+        <>
+          <div className='popupAddPlaylistBComponent'>
+            <div className='popupAddPlaylistBComponent__container'>
+              <button onClick={onClose} className='player-mobile-add-to-playlist__btn'><IoChevronBackOutline /></button>
+              <div className="player-mobile-add-to-playlist">
+                <div className="player-mobile-add-to-playlist__add" >
+                  <button onClick={handleModal}>
+                    <IoAdd className="player-mobile-add-to-playlist__add__icon" />
+                    <span className="player-mobile-add-to-playlist__add__text">{t("player_component_popover_add_playlist")}</span>
+                  </button>
+                </div>
+                <div className="player-mobile-add-to-playlist__results">
+                  <RenderPlaylistMini />
+                </div>
               </div>
             </div>
+            {isModalVisible && <ModalPlaylistMobile onClose={() => setIsModalVisual(false)} />}
           </div>
-          {isModalVisible && <ModalPlaylistMobile onClose={() => setIsModalVisual(false)} />}
-        </div>
+          <div className='popupAddPlaylist-backdrop'></div>
+        </>
       ) : (
         <ToastContainer />
       )}

@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowBack, MdPlayArrow, MdPause } from "react-icons/md";
 import './playlistBComponent.scss';
-import { Player } from '@lottiefiles/react-lottie-player';
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
 import img from 'assets/img/webp/6.webp';
@@ -25,6 +24,7 @@ export default function PlaylistBComponent({ playlist }) {
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
   const imgDefault = playlist?.imageUrl || img
+  const tracks = playlist?.tracks
   const { isLoading } = useAuth0()
   const { playlists, likeDislikePlaylist } = useContext(MyLibraryContext)
 
@@ -61,7 +61,7 @@ export default function PlaylistBComponent({ playlist }) {
         <img src={imgDefault} alt="Image description" />
         <section className="playlist-page__section">
           <h1>{playlist?.name}</h1>
-          <p>15 {t('page_pnumber')}</p>
+          <p>{tracks?.length} {t('page_pnumber')}</p>
           <div className="playlist-page__section--buttons">
             <button className="playlist-page__section--buttons__play">
               {trackData.isPlaying ? (

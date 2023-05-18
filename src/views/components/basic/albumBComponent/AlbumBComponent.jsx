@@ -52,7 +52,7 @@ export default function AlbumBComponent({ album }) {
         <img src={album?.imageUrl} alt="Image description" />
         <section className="album-page__section">
           <h1>{album?.name}</h1>
-          <p>15 {t("page_pnumber")}</p>
+          <p>{album?.tracks.length} {t("page_pnumber")}</p>
           <div className="album-page__section--buttons">
             <button
               className="album-page__section--buttons__play"

@@ -70,7 +70,6 @@ const PlayerBComponentMobile = () => {
         </div>
       </div>
       {showPopUp && <PlayerTrackDetailsComponentMobile onClose={handleClosePopUp} />}
-
     </>
   )
 }
