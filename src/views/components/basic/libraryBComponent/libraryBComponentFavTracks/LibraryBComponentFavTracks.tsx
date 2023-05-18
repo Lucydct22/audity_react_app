@@ -6,6 +6,8 @@ import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import './libraryBComponentFavTracks.scss';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 const LibraryBComponentFavTracks = () => {
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
@@ -13,6 +15,7 @@ const LibraryBComponentFavTracks = () => {
   const { tracks }: any = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const [tracksOfFavTracks, setTracksOfFavTracks]: any = useState([]);
+  const {isLoading} = useAuth0()
 
   const handlePlayClick = () => {
     if (trackData.url !== tracks.content[0].audioUrl) {
@@ -39,7 +42,9 @@ const LibraryBComponentFavTracks = () => {
     return () => { isMounted = false }
   }, [tracks.content])
 
-  console.log(tracks.content);
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <div className='library-favTracks'>

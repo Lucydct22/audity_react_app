@@ -6,11 +6,14 @@ import AlbumBComponent from 'views/components/basic/albumBComponent';
 import TrackListBComponent from 'views/components/basic/trackListBComponent/TrackListBComponent';
 import './albumPage.scss'
 import HelmetSEO from 'views/utils/HelmetSEO';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function AlbumPage() {
   const { albumId } = useParams();
   const [album, setAlbum]: any = useState();
   const [tracksOfAlbum, setTracksOfAlbum]: any = useState([]);
+  const {isLoading} = useAuth0()
 
   useEffect(() => {
     let isMounted = true;
@@ -34,6 +37,10 @@ export default function AlbumPage() {
     }
     return () => { isMounted = false }
   }, [album])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <HelmetSEO

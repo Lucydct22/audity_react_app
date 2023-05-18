@@ -15,6 +15,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import MyLibraryContext from "context/myLibrary/MyLibraryContext";
 
 export default function ArtistBComponent({ artist }) {
+
   const { listId, selectArtist } = useContext(CurrentTracklistContext);
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
     useContext(CurrentTrackContext);
@@ -24,7 +25,6 @@ export default function ArtistBComponent({ artist }) {
   const [screenWidth] = useWindowSizeReport();
   const [songLike, setSongLike] = useState(false);
   const navigate = useNavigate();
-
   const { artists, likeDislikeArtist } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {
@@ -46,7 +46,6 @@ export default function ArtistBComponent({ artist }) {
       haveLike === undefined ? setSongLike(true) : setSongLike(false)
     }
   }, [artist, artists])
-
 
   return (
     <>
@@ -82,7 +81,7 @@ export default function ArtistBComponent({ artist }) {
               className="artist-page__section--buttons__follow"
               onClick={() => likeDislikeArtist(artist)}>
               {!songLike ? (
-              <AiFillHeart size='1.5rem' color='#ef5466' />
+                <AiFillHeart size='1.5rem' color='#ef5466' />
               ) : <AiOutlineHeart />}
               {/* {isFollowing ? (
                 <SlUserFollowing color="#ef5466" />

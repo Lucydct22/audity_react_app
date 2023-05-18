@@ -21,7 +21,6 @@ export default function AlbumBComponent({ album }) {
   const [songLike, setSongLike] = useState(false);
   const [screenWidth] = useWindowSizeReport();
   const navigate = useNavigate();
-
   const { albums, likeDislikeAlbum } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {

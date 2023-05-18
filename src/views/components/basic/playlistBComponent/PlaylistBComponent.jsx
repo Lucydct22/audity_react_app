@@ -12,6 +12,8 @@ import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
 import CurrentTracklistContext from "context/currentTracklist/CurrentTracklistContext";
 import img from 'assets/img/webp/6.webp';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function PlaylistBComponent({ playlist }) {
   const { listId, selectPlaylist } = useContext(CurrentTracklistContext);
@@ -22,7 +24,8 @@ export default function PlaylistBComponent({ playlist }) {
   const [songLike, setSongLike] = useState(false);
   const [screenWidth] = useWindowSizeReport()
   const navigate = useNavigate();
- const imgDefault = playlist?.imageUrl || img
+  const imgDefault = playlist?.imageUrl || img
+  const { isLoading } = useAuth0()
   const { playlists, likeDislikePlaylist } = useContext(MyLibraryContext)
 
   const handlePlayClick = () => {
@@ -40,9 +43,10 @@ export default function PlaylistBComponent({ playlist }) {
       haveLike === undefined ? setSongLike(true) : setSongLike(false)
     }
   }, [playlist, playlists])
-  
 
- 
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
@@ -74,7 +78,7 @@ export default function PlaylistBComponent({ playlist }) {
             </button>
             {playlist?.publicAccessible && <CopyUrl className="playlist-page__section--buttons__copy-url" />}
             <button className="playlist-page__section--buttons__like" onClick={() => likeDislikePlaylist(playlist)}>
-            {!songLike ? (
+              {!songLike ? (
                 <AiFillHeart color="#ef5466" />
               ) : (
                 <AiOutlineHeart />

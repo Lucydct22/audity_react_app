@@ -7,6 +7,8 @@ import TrackListBComponent from '../../trackListBComponent/TrackListBComponent';
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
+import { useAuth0 } from '@auth0/auth0-react';
+import Spinner from 'views/UI/spinner/Spinner';
 
 export default function LibraryBComponentUpload() {
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
@@ -19,6 +21,7 @@ export default function LibraryBComponentUpload() {
   const [tracksData, setTracksData] = useState([]);
   const [uploadedAudio, setUploadedAudio] = useState({});
   const [messageApi, contextHolder] = message.useMessage();
+  const {isLoading} = useAuth0()
 
   const handlePlayClick = () => {
     if (trackData.url !== tracks.userContent[0].audioUrl) {
@@ -47,6 +50,10 @@ export default function LibraryBComponentUpload() {
       content: e,
     });
   };
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
