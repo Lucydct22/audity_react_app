@@ -1,5 +1,5 @@
 import { useContext, useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
@@ -13,23 +13,23 @@ import RenderAlbum from 'views/components/basic/renders/renderAlbum/RenderAlbum'
 import RenderArtist from 'views/components/basic/renders/renderArtist/RenderArtist';
 import RenderPlaylist from 'views/components/basic/renders/renderPlaylist/RenderPlaylist';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import { getArtistApi } from 'api/music/artists';
 
 export default function RenderLibraryItem({ list, type }) {
-  const { postPlaylist, postArtists } = useContext(MyLibraryContext)
+  const { postPlaylist, likeDislikeArtist } = useContext(MyLibraryContext)
   const { t } = useTranslation();
   const { _id } = list;
   const [open, setOpen] = useState(false);
   const [openAddArtistsModal, setOpenAddArtistsModal] = useState(false);
   const artistSelectionRef = useRef([]);
+  const [artist, setArtist] = useState();
   const [modal, contextHolder] = Modal.useModal();
   const [addArtistsModal, addArtistsContextHolder] = Modal.useModal();
   const nameRef = useRef("");
   const descRef = useRef("");
+  const { pathname } = useLocation()
 
-  useEffect(() => {
-    console.log('type of function', postArtists)
-  })
-
+  console.log('pathname', pathname)
   const hideModal = () => {
     setOpen(false);
   };
@@ -60,10 +60,21 @@ export default function RenderLibraryItem({ list, type }) {
     });
   };
 
-  const handleAddArtistsClick = () => {
+  const handleAddArtistsClick = async () => {
+    // pedido de los artistas api
+    const { artists } = await getArtistApi()
+    console.log('artists', artists)
+    // los filtro por Id
+    console.log(artists.map(artist => artistSelectionRef.current.indexOf(artist._id)))
+    const selectedArtists = artists.filter(artist => artistSelectionRef.current.indexOf(artist._id) > -1)
+    console.log('selectedArtists', selectedArtists)
+    // los agrego 1 x 1 a la db like dislike function (promiseAll)
+    selectedArtists.forEach(artist => {
+      return likeDislikeArtist(artist)
+    });
     console.log('Artists IDs I want to add to backend', artistSelectionRef.current)
-    const artistIds = artistSelectionRef.current
-    return postArtists(artistIds)
+    // const artistIds = artistSelectionRef.current
+    // return likeDislikeArtist(artistIds)
   }
 
   const addArtistsModalConfirm = () => {

@@ -1,0 +1,23 @@
+@import '../../../../../sass/variables';
+
+.library-playlists {
+	margin: 0 auto;
+	padding: 34px;
+	padding-top: 10px;
+	max-width: 1504px;
+
+	@media (max-width: $media-breakpoint-desktop-mobile) {
+		padding: 0;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		width: 100%;
+
+		@media (max-width: $media-breakpoint-desktop-mobile) {
+			margin-top: 24px;
+		}
+	}
+}

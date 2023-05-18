@@ -42,6 +42,7 @@ const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/high
 const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/FavTracksPage'))
 // const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
 const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
+const LibraryPlaylists = lazy(() => import('views/pages/basic/libraryPages/playlistsPage/PlaylistPage'))
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
           {
             path: "favorites",
             element: <Suspense fallback={<></>}><LibraryFavorites /></Suspense>,
+          },
+          {
+            path: "playlists",
+            element: <Suspense fallback={<></>}><LibraryPlaylists /></Suspense>,
           },
           {
             path: "uploads",

@@ -45,6 +45,7 @@ export default function ArtistBComponent({ artist }) {
       const haveLike = artists.content.find((item) => item._id === artist._id)
       haveLike === undefined ? setSongLike(true) : setSongLike(false)
     }
+    console.log('artist like', artist)
   }, [artist, artists])
 
   return (

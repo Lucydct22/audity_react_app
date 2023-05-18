@@ -38,7 +38,7 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 
 	return (
 		<section className="modal-playlist-create">
-			<h2>add artists</h2>
+			<h2>Add artists</h2>
 			<div className="modal-playlist-create__main">
 				{artists && artists.map(artist => {
 					const { _id, name, imageUrl } = artist;
@@ -48,10 +48,10 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 							className={`render-artist ${selectedArtists.some((artistId: number) => artistId === _id) && 'selected-artist'}`}
 							onClick={() => handleSelectArtist(_id)}
 						>
-							<div className='render-artist__thumbnail'>
+							<div className='modal-playlist-create__main__thumbnail'>
 								<img src={imageUrl} alt={name} />
 							</div>
-							<p className='render-artist__description'>{name}</p>
+							<p className='modal-playlist-create__main__description'>{name}</p>
 						</div>
 					)
 				})}
