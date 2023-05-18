@@ -69,9 +69,9 @@ export default function LibraryBComponentUpload() {
           <label htmlFor="upload-input" className="library-upload__buttons--upload">{t('library_upload_btn')}</label>
           <input type="file" id="upload-input" onInput={(e) => addFile(e)} value='' hidden />
         </div>
-        <div>
+        <span>
           <TrackListBComponent tracksData={tracksData} />
-        </div>
+        </span>
       </div>
       <UserSongUploaderModal
         audio={audio}

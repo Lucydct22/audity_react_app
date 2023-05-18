@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import TrackItemComponentDesktop from "../desktop/trackListComponentDesktop/TrackItemComponentDesktop";
 import TrackItemComponentMobile from "../mobile/tracklistComponentMobile/TrackItemComponentMobile";
 import "./trackListBComponent.scss";
-import { responsiveBreak } from "utils/componentsConstants";
 import useWindowSizeReport from "hooks/useWindowSizeReport";
 import { useTranslation } from "react-i18next";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -14,7 +13,7 @@ export default function TrackListBComponent({ tracksData }) {
 
   return (
     <Suspense fallback={<></>}>
-      {screenWidth > responsiveBreak ? (
+      {screenWidth > 1024 ? (
         <TrackListDesktopComponent tracksData={tracksData} />
       ) : (
         <TrackListMobileComponent tracksData={tracksData} />
