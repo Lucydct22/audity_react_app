@@ -6,7 +6,7 @@ import './renderAlbum.scss';
 export default function RenderAlbum({ album }: any) {
   const [totalFans, setTotalFans] = useState("")
   const { t } = useTranslation();
-  const { _id, name, imageUrl } = album;
+  const { _id, name, imageUrl, tracks } = album;
 
   useEffect(() => {
     const fans = Math.floor(Math.random() * (980000 - 1340 + 1)) + 1340;
@@ -20,7 +20,7 @@ export default function RenderAlbum({ album }: any) {
       </div>
       <p className='render-album__description'>{name}</p>
       <p className='render-album__details'>
-        30 {t("musicpage_albumtracks")} - {totalFans} fans
+        {tracks.length} {t("musicpage_albumtracks")} - {totalFans} fans
       </p>
     </Link>
   )

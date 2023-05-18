@@ -6,7 +6,7 @@ import './renderPlaylist.scss';
 
 export default function RenderPlaylist({ playlist }: any) {
   const { t } = useTranslation();
-  const { _id, name, imageUrl } = playlist;
+  const { _id, name, imageUrl, tracks } = playlist;
 
   return (
     <Link to={`/playlists/${_id}`} className='render-playlist'>
@@ -24,7 +24,7 @@ export default function RenderPlaylist({ playlist }: any) {
       </div>
       <p className='render-playlist__description'>{name}</p>
       <p className='render-playlist__details'>
-        30 {t("musicpage_albumtracks")} - 103.456 fans
+        {tracks.length} {t("musicpage_albumtracks")} - 103.456 fans
       </p>
     </Link>
   )
