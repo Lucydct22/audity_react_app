@@ -11,7 +11,7 @@
 
   &__sections {
     display: grid;
-    grid-template-columns: 1.5fr 145px 1fr 1fr 80px;
+    grid-template-columns: 1.5fr 190px 1fr 1fr 80px;
     align-items: center;  
     justify-content: space-between;
     width: 100%;
@@ -21,6 +21,15 @@
     &--icontime {
       display: flex;
       justify-content: center;
+    }
+
+    p {
+      display: inline;
+      color: $color-secondary;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+      margin-right: 10px;
     }
   }
 }

@@ -54,7 +54,7 @@ const TrackListMobileComponent = ({
 
   return (
     <>
-      <div key={id} className="track-list-item-mobile">
+      <div className="track-list-item-mobile">
         <div className="track-list-item-mobile__content" onClick={handleClick}>
           <img src={thumbnail ? thumbnail : SongPlaceholder} alt={name} />
           <div className="track-list-item-mobile__content--text">
