@@ -6,13 +6,14 @@ import MyLibraryContext from 'context/myLibrary/MyLibraryContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
 import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext, MdOutlineQueueMusic } from "react-icons/md";
 import './playerTrackDetailsComponentMobile.scss'
-import img from 'assets/img/albums/summer-playlist.png'
+import formatToSeconds from 'utils/tracks/formatToSeconds';
+import SongPlaceholder from "assets/img/webp/music-placeholder-300.webp";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
-import PopupAddPlaylistBComponent from '../../mobile/popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
+import PopupAddPlaylistBComponent from '../popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
 import { getAlbumsApi } from 'api/music/albums';
 
-const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
+const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
   const { t } = useTranslation();
   const [showPopUp, setShowPopUp] = useState(false);
   const [songLike, setSongLike] = useState(false);
@@ -30,27 +31,27 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
   const [artists, setArtists] = useState('')
   const [albums, setAlbums] = useState([]);
-  const [album, setAlbum] = useState<any>('')
+  const [album, setAlbum] = useState('')
 
   useEffect(() => {
     let isMounted = true
-    const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
+    const artists = currentTrack.artists.map((artist) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
   }, [artists, currentTrack])
 
   useEffect(() => {
-    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
+    const haveLike = tracks.content.find((item) => item._id === currentTrack._id)
     haveLike === undefined ? setSongLike(true) : setSongLike(false)
   }, [currentTrack, tracks])
 
   useEffect(() => {
     const getAlbums = async () => {
-      const response: any = await getAlbumsApi()
+      const response = await getAlbumsApi()
       const albumsData = response.albums
-      const albumData = albumsData.find((item: any) => item._id === currentTrack.album)
-      if(albumData){
-       setAlbum(albumData.name) 
+      const albumData = albumsData.find((item) => item._id === currentTrack.album)
+      if (albumData) {
+        setAlbum(albumData.name)
       }
     };
     getAlbums()
@@ -61,15 +62,7 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
     setShowPopUp(false);
   };
 
-  const currentTime = trackData.currentTime
-  const minutesCr = Math.floor(currentTime / 60);
-  const secondsCr = currentTime % 60;
-  const formattedTimeCr = `${minutesCr.toString().padStart(2, '0')}:${secondsCr.toFixed(0).padStart(2, '0')}`;
-
-  const duration = trackData.duration;
-  const minutes = Math.floor(duration / 60);
-  const seconds = duration % 60;
-  const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toFixed(0).padStart(2, '0')}`;
+  console.log(currentTrack?.imageUrl);
 
   return (
     <div className={showPopUp ? 'player-track-details-container container--open' : 'player-track-details-container'}>
@@ -77,47 +70,46 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }: any) => {
         <div className='player-track-details-container__track-info__close'>
           <button onClick={onClose}><IoChevronDownOutline /></button>
           <p>{currentTrack.name}</p>
+          <span>&nbsp;</span>
         </div>
-        <img src={img} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
 
-        <div className='player-track-details-container__track-info__data'>
-          <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
-          <div className='player-track-details-container__track-info__data__info'>
-            <p >{artists} </p>
-            <p > {album ? ' - ' + album : ''}</p>
+        <span>
+          <img src={currentTrack.imageUrl ? currentTrack.imageUrl : SongPlaceholder} alt='Thumbnail of track' className='player-track-details-container__track-info__img' />
+          <div className='player-track-details-container__track-info__data'>
+            <p className='player-track-details-container__track-info__data__nameBig'>{currentTrack.name}</p>
+            <div className='player-track-details-container__track-info__data__info'>
+              <p >{artists} </p>
+              <p > {album ? ' - ' + album : ''}</p>
+            </div>
           </div>
-        </div>
+        </span>
 
-        <div className='player-track-details-container__track-info__track-time'>
-          <div className='player-track-details-container__track-info__track-time__timedata'>
-            <p>{formattedTimeCr}</p>
-            <p>{formattedTime}</p>
+        <span>
+          <div className='player-track-details-container__track-info__track-time'>
+            <div className='player-track-details-container__track-info__track-time__timedata'>
+              <p>{formatToSeconds(trackData.currentTime)}</p>
+              <p>{formatToSeconds(trackData.duration)}</p>
+            </div>
+            <ProgressBar />
           </div>
-          <ProgressBar />
-        </div>
-
-        <div className='player-track-details-container__track-info__player-bottom-controls'>
-
-          <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => likeDislikeTrack(currentTrack)}>
-            {!songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
-          </button>
-
-          <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={previousTrack}>
-            <MdSkipPrevious />
-          </button>
-          <button className='player-track-details-container__track-info__player-bottom-controls__play' onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}>
-            {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
-          </button>
-          <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={nextTrack}>
-            <MdSkipNext />
-          </button>
-
-          <button className='player-track-details-container__track-info__player-bottom-controls__add' onClick={() => setShowPopUp(!showPopUp)} >
-            <IoAddOutline />
-          </button>
-
-        </div>
-
+          <div className='player-track-details-container__track-info__player-bottom-controls'>
+            <button className='player-track-details-container__track-info__player-bottom-controls__like' onClick={() => likeDislikeTrack(currentTrack)}>
+              {!songLike ? <AiFillHeart size='2rem' color='#ef5466' /> : <AiOutlineHeart />}
+            </button>
+            <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={previousTrack}>
+              <MdSkipPrevious />
+            </button>
+            <button className='player-track-details-container__track-info__player-bottom-controls__play' onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}>
+              {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
+            </button>
+            <button className='player-track-details-container__track-info__player-bottom-controls__change' onClick={nextTrack}>
+              <MdSkipNext />
+            </button>
+            <button className='player-track-details-container__track-info__player-bottom-controls__add' onClick={() => setShowPopUp(!showPopUp)} >
+              <IoAddOutline />
+            </button>
+          </div>
+        </span>
         <div className='player-track-details-container__track-info__add-bottom'>
           <button className='player-track-details-container__track-info__add-bottom_right' onClick={muteTrack}>
             {trackData.isMuted ? <IoVolumeMuteOutline /> : <IoVolumeHighOutline />}
