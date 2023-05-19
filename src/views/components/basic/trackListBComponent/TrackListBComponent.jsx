@@ -11,7 +11,6 @@ import formatToSeconds from "utils/tracks/formatToSeconds";
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
-
   return (
     <Suspense fallback={<></>}>
       {screenWidth > 1024 ? (
@@ -25,9 +24,6 @@ export default function TrackListBComponent({ tracksData }) {
 
 const TrackListDesktopComponent = ({ tracksData }) => {
   const { t } = useTranslation();
-
-  console.log(tracksData);
-
   return (
     <>
       <div className="tracklist-component">
