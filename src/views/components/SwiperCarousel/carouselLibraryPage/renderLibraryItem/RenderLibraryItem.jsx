@@ -22,14 +22,13 @@ export default function RenderLibraryItem({ list, type }) {
   const [open, setOpen] = useState(false);
   const [openAddArtistsModal, setOpenAddArtistsModal] = useState(false);
   const artistSelectionRef = useRef([]);
-  const [artist, setArtist] = useState();
+  // const [artist, setArtist] = useState();
   const [modal, contextHolder] = Modal.useModal();
   const [addArtistsModal, addArtistsContextHolder] = Modal.useModal();
   const nameRef = useRef("");
   const descRef = useRef("");
-  const { pathname } = useLocation()
+  // const { pathname } = useLocation()
 
-  console.log('pathname', pathname)
   const hideModal = () => {
     setOpen(false);
   };
@@ -63,18 +62,12 @@ export default function RenderLibraryItem({ list, type }) {
   const handleAddArtistsClick = async () => {
     // pedido de los artistas api
     const { artists } = await getArtistApi()
-    console.log('artists', artists)
     // los filtro por Id
-    console.log(artists.map(artist => artistSelectionRef.current.indexOf(artist._id)))
     const selectedArtists = artists.filter(artist => artistSelectionRef.current.indexOf(artist._id) > -1)
-    console.log('selectedArtists', selectedArtists)
     // los agrego 1 x 1 a la db like dislike function (promiseAll)
     selectedArtists.forEach(artist => {
       return likeDislikeArtist(artist)
     });
-    console.log('Artists IDs I want to add to backend', artistSelectionRef.current)
-    // const artistIds = artistSelectionRef.current
-    // return likeDislikeArtist(artistIds)
   }
 
   const addArtistsModalConfirm = () => {

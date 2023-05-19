@@ -1,14 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 import { MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './playerBComponentMobile.scss'
 import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
-import UserContext from 'context/user/UserContext';
-import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 
 const PlayerBComponentMobile = () => {
-  const { dbUser } = useContext(UserContext)
   const [songLike, setSongLike] = useState(false);
   const {
     trackData,
@@ -26,7 +24,7 @@ const PlayerBComponentMobile = () => {
     const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
     isMounted && setArtists(artists)
     return () => { isMounted = false }
-  }, [])
+  }, [currentTrack])
 
   useEffect(() => {
     const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)

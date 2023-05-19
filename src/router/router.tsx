@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { ProtectedAdminRoute } from "./router.middelware";
-import { ProtectedUserSettings } from "./user.middelware";
+import { ProtectedUser, ProtectedUserSettings } from "./user.middelware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       },
       {
         path: "library",
-        element: <Suspense fallback={<></>}><LibraryLayout /></Suspense>,
+        element: <ProtectedUser><Suspense fallback={<></>}><LibraryLayout /></Suspense></ProtectedUser>,
         children: [
           {
             index: true,

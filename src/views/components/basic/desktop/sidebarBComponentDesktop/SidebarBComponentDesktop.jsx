@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link, NavLink } from "react-router-dom";
 import { ThemeContext } from "context/theme/ThemeContext";
 import { useTranslation } from "react-i18next";
@@ -11,12 +12,14 @@ import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaGuitar } from "react-icons/fa";
 import { SlCompass } from "react-icons/sl";
 // import { BsMusicPlayer } from "react-icons/bs";
+import { message } from "antd";
 import "./sidebarBComponentDesktop.scss";
 
 const SidebarBComponentDesktop = () => {
   const { t } = useTranslation();
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const { theme } = useContext(ThemeContext);
+  const { isAuthenticated } = useAuth0()
 
   return (
     <nav className="side-bar">
@@ -84,6 +87,9 @@ const SidebarBComponentDesktop = () => {
           <NavLink
             to={"/library"}
             className="side-bar-header__sections--options"
+            onClick={() => {
+              !isAuthenticated && message.info('Login required')
+            }}
             >
             <div className="side-bar-header__sections--options__decoration"></div>
             <VscLibrary

@@ -49,7 +49,6 @@ const RenderTrack = ({ data }: any) => {
     let isMounted = true
     const artists = currentTrack.artists.map((artist: any) => artist.name).join(' & ');
     isMounted && setArtists(artists)
-    console.log(artists)
     return () => { isMounted = false }
   }, [currentTrack, artists])
 

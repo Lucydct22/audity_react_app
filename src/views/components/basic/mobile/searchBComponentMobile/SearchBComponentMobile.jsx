@@ -40,7 +40,6 @@ export default function SearchBComponentMobile() {
       result && isMounted && setContent(result.content)
     }
     searchFetch()
-    // console.log(content)
     return () => { isMounted = false }
   }, [searchInput])
 
