@@ -39,3 +39,16 @@ export const removeReportErroredTrack = async (statisticName: string, trackId: a
 	const dataLanguage = await response.json()
 	return dataLanguage
 }
+
+export const updateTotalTrackPlayed = async (statisticName: string): Promise<any> => {
+	const params = {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ name: statisticName }),
+	}
+	const response = await fetch(`${basePath}/update-total-tracks-played`, params)
+	const dataLanguage = await response.json()
+	return dataLanguage
+}

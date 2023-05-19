@@ -1,9 +1,9 @@
-export default function tracksCycle(array: any[], str: string) {
+export default function tracksCycle(tracks: any[], id: string) {
 	let idsArray: any = []
-	array.forEach(el => {
+	tracks.forEach(el => {
 		idsArray.push(el._id)
 	});
-	const index = idsArray.indexOf(str);
+	const index = idsArray.indexOf(id);
 	if (index === -1) return undefined;
-	return idsArray[(index + 1) % idsArray.length];
+	return tracks[(index + 1) % idsArray.length];
 }

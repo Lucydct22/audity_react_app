@@ -11,6 +11,7 @@ import {
 	selectCurrentTrackAction,
 } from "reducers/currentTrack/currentTrackActions";
 import { useAuth0 } from "@auth0/auth0-react";
+import { updateTotalTrackPlayed } from "api/statistic.api";
 
 export default function CurrentTrackProvider({ children }: any) {
 	const [currentTrackState, dispatch] = useReducer(currentTrackReducer, initialCurrentTrackState);
@@ -41,12 +42,13 @@ export default function CurrentTrackProvider({ children }: any) {
 			}
 		}
 		initCurrentTrack()
-	}, [getAccessTokenSilently, isAuthenticated, isLoading, user]);
+	}, []);
 
-	const playCurrentTrack = useCallback(() => {
+	const playCurrentTrack = useCallback(async () => {
 		if (audio) {
 			audio.play();
 			dispatch({ type: CurrentTrackTypes.PLAY_CURRENT_TRACK })
+			await updateTotalTrackPlayed('global')
 		}
 	}, [audio]);
 
