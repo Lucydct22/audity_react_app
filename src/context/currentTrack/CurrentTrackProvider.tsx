@@ -1,22 +1,15 @@
 import { useCallback, useContext, useEffect, useMemo, useReducer } from "react";
 import CurrentTracklistContext from "../currentTracklist/CurrentTracklistContext";
 import CurrentTrackContext from "./CurrentTrackContext";
+import { updateTotalTrackPlayed } from "api/statistic.api";
 import initialCurrentTrackState from "./initialCurrentTrackState";
 import currentTrackReducer from "reducers/currentTrack/currentTrackReducer";
 import * as CurrentTrackTypes from 'reducers/currentTrack/currentTrackTypes';
-import {
-	initCurrentTrackAction,
-	nextTrackAction,
-	previousTrackAction,
-	selectCurrentTrackAction,
-} from "reducers/currentTrack/currentTrackActions";
-import { useAuth0 } from "@auth0/auth0-react";
-import { updateTotalTrackPlayed } from "api/statistic.api";
+import * as action from "reducers/currentTrack/currentTrackActions";
 
 export default function CurrentTrackProvider({ children }: any) {
 	const [currentTrackState, dispatch] = useReducer(currentTrackReducer, initialCurrentTrackState);
 	const currentTracklist = useContext(CurrentTracklistContext);
-	const { getAccessTokenSilently, isLoading, isAuthenticated, user } = useAuth0()
 	const { trackData } = currentTrackState;
 	const { audio } = trackData;
 
@@ -34,30 +27,24 @@ export default function CurrentTrackProvider({ children }: any) {
 
 	useEffect(() => {
 		const initCurrentTrack = async () => {
-			try {
-				const token = await getAccessTokenSilently()
-				initCurrentTrackAction(dispatch, trackData, token);
-			} finally {
-				initCurrentTrackAction(dispatch, trackData, null);
-			}
+			return await action.initCurrentTrackAction(dispatch, trackData);
 		}
 		initCurrentTrack()
 	}, []);
 
-	const playCurrentTrack = useCallback(async () => {
-		if (audio) {
+	const playCurrentTrack = async () => {
+		try {
 			audio.play();
-			dispatch({ type: CurrentTrackTypes.PLAY_CURRENT_TRACK })
-			await updateTotalTrackPlayed('global')
+			return dispatch({ type: CurrentTrackTypes.PLAY_CURRENT_TRACK })
+		} finally {
+			return await updateTotalTrackPlayed('global')
 		}
-	}, [audio]);
+	}
 
-	const pauseCurrentTrack = useCallback(() => {
-		if (audio) {
-			audio.pause();
-			dispatch({ type: CurrentTrackTypes.PAUSE_CURRENT_TRACK })
-		}
-	}, [audio]);
+	const pauseCurrentTrack = () => {
+		audio?.pause();
+		return dispatch({ type: CurrentTrackTypes.PAUSE_CURRENT_TRACK })
+	}
 
 	const changeCurrentTime = useCallback((currentTime: number) => {
 		audio.currentTime = currentTime;
@@ -68,11 +55,11 @@ export default function CurrentTrackProvider({ children }: any) {
 	}, [audio]);
 
 	const nextTrack = async () => {
-		await nextTrackAction(dispatch, currentTrackState, currentTracklist, null)
+		return await action.nextTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
 	const previousTrack = async () => {
-		await previousTrackAction(dispatch, currentTrackState, currentTracklist, null)
+		return await action.previousTrackAction(dispatch, currentTrackState, currentTracklist)
 	}
 
 	const updateCurrentTime = useCallback(() => {
@@ -88,7 +75,7 @@ export default function CurrentTrackProvider({ children }: any) {
 	const muteTrack = useCallback(() => {
 		if (audio) {
 			audio.muted = !audio.muted;
-			dispatch({
+			return dispatch({
 				type: CurrentTrackTypes.MUTE_TRACK,
 				payload: { isMuted: audio.muted }
 			})
@@ -97,14 +84,14 @@ export default function CurrentTrackProvider({ children }: any) {
 
 	const loopTrack = useCallback(() => {
 		audio.loop = !audio.loop;
-		dispatch({
+		return dispatch({
 			type: CurrentTrackTypes.LOOP_TRACK,
 			payload: { hasLoop: audio.loop }
 		})
 	}, [audio]);
 
 	const selectCurrentTrack = useCallback(async (track: any) => {
-		return await selectCurrentTrackAction(dispatch, track, currentTrackState)
+		return await action.selectCurrentTrackAction(dispatch, track, currentTrackState)
 	}, [currentTrackState]);
 
 	const updateVolume = useCallback((volume: number) => {

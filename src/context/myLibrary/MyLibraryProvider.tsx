@@ -24,20 +24,36 @@ export default function MyLibraryProvider(props: ChildrenProps) {
 	}, [isAuthenticated, dbUser._id, getAccessTokenSilently])
 
 	const postPlaylist = useCallback(async (name: string, description: string) => {
-		const token = await getAccessTokenSilently()
-		isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
+		try {
+			const token = await getAccessTokenSilently()
+			if (token && isAuthenticated) {
+				isAuthenticated && action.postPlaylistAction(dispatch, token, name, description, dbUser._id)
+			}
+		} catch (error) {
+			message.info('Login required')
+		}
 	}, [isAuthenticated, dbUser]);
 
 	const postPrivateTrack = useCallback(async (data: any) => {
 		message.loading(`Creating track`)
-		const token = await getAccessTokenSilently()
-		isAuthenticated && action.postPrivateTrackAction(dispatch, token, data, dbUser._id)
+		try {
+			const token = await getAccessTokenSilently()
+			if (token && isAuthenticated) {
+				isAuthenticated && action.postPrivateTrackAction(dispatch, token, data, dbUser._id)
+			}
+		} catch (error) {
+			message.info('Login required')
+		}
 	}, [isAuthenticated, dbUser]);
 
 	const putTrackToPlaylist = useCallback(async (playlistId: string, trackId: string) => {
-		const token = await getAccessTokenSilently()
-		if (token && isAuthenticated) {
-			action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId)
+		try {
+			const token = await getAccessTokenSilently()
+			if (token && isAuthenticated) {
+				action.putTrackToPlaylistAction(dispatch, token, playlistId, trackId)
+			}
+		} catch (error) {
+			message.info('Login required')
 		}
 	}, [isAuthenticated, dbUser]);
 
