@@ -107,7 +107,7 @@ Contributions of any kind are welcome!
 
 
 Project structure
-
+<pre>
 ├───node_modules
 ├───public
 ├───resources
@@ -266,7 +266,7 @@ Project structure
         │   └───theme
         └───utils
             └───HelmetSEO
-
+</pre>
 ## License <!-- omit in toc -->
 
 This project is licensed under the MIT License
