@@ -10,10 +10,12 @@ import {
 	previousTrackAction,
 	selectCurrentTrackAction,
 } from "reducers/currentTrack/currentTrackActions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function CurrentTrackProvider({ children }: any) {
 	const [currentTrackState, dispatch] = useReducer(currentTrackReducer, initialCurrentTrackState);
 	const currentTracklist = useContext(CurrentTracklistContext);
+	const { getAccessTokenSilently, isLoading, isAuthenticated, user } = useAuth0()
 	const { trackData } = currentTrackState;
 	const { audio } = trackData;
 
@@ -31,17 +33,11 @@ export default function CurrentTrackProvider({ children }: any) {
 
 	useEffect(() => {
 		const initCurrentTrack = async () => {
-			await initCurrentTrackAction(dispatch, trackData);
+			initCurrentTrackAction(dispatch, trackData);
 		}
 		initCurrentTrack()
-	}, []);
+	}, [getAccessTokenSilently, isAuthenticated, isLoading, user]);
 
-	// const playCurrentTrack = function () {
-	// 	if (audio) {
-	// 		audio.play();
-	// 		dispatch({ type: CurrentTrackTypes.PLAY_CURRENT_TRACK })
-	// 	}
-	// }
 	const playCurrentTrack = useCallback(() => {
 		if (audio) {
 			audio.play();
@@ -49,12 +45,6 @@ export default function CurrentTrackProvider({ children }: any) {
 		}
 	}, [audio]);
 
-	// const pauseCurrentTrack = function () {
-	// 	if (audio) {
-	// 		audio.pause();
-	// 		dispatch({ type: CurrentTrackTypes.PAUSE_CURRENT_TRACK })
-	// 	}
-	// }
 	const pauseCurrentTrack = useCallback(() => {
 		if (audio) {
 			audio.pause();
@@ -62,52 +52,22 @@ export default function CurrentTrackProvider({ children }: any) {
 		}
 	}, [audio]);
 
-	// const changeCurrentTime = function (currentTime: number) {
-	// 	if (audio) {
-	// 		audio.currentTime = currentTime;
-	// 		return dispatch({
-	// 			type: CurrentTrackTypes.CHANGE_CURRENT_TIME,
-	// 			payload: { currentTime: currentTime }
-	// 		})
-	// 	}
-	// }
 	const changeCurrentTime = useCallback((currentTime: number) => {
-		if (audio) {
-			audio.currentTime = currentTime;
-			return dispatch({
-				type: CurrentTrackTypes.CHANGE_CURRENT_TIME,
-				payload: { currentTime: currentTime }
-			})
-		}
+		audio.currentTime = currentTime;
+		return dispatch({
+			type: CurrentTrackTypes.CHANGE_CURRENT_TIME,
+			payload: { currentTime: currentTime }
+		})
 	}, [audio]);
 
-	// const nextTrack = async function () {
-	// 	audio?.pause();
-	// 	return await nextTrackAction(dispatch, currentTrackState, currentTracklist)
-	// }
 	const nextTrack = useCallback(async () => {
-		audio?.pause();
-		return await nextTrackAction(dispatch, currentTrackState, currentTracklist)
+		await nextTrackAction(dispatch, currentTrackState, currentTracklist)
 	}, [audio, currentTrackState]);
 
-	// const previousTrack = async function () {
-	// 	audio?.pause();
-	// 	return await previousTrackAction(dispatch, currentTrackState, currentTracklist)
-	// }
 	const previousTrack = useCallback(async () => {
-		audio?.pause();
-		return await previousTrackAction(dispatch, currentTrackState, currentTracklist)
+		await previousTrackAction(dispatch, currentTrackState, currentTracklist)
 	}, [audio, currentTrackState]);
 
-	// const updateCurrentTime = function () {
-	// 	if (audio) {
-	// 		audio.ended && nextTrack()
-	// 		return dispatch({
-	// 			type: CurrentTrackTypes.UPDATE_CURRENT_TIME,
-	// 			payload: Math.round(audio.currentTime)
-	// 		})
-	// 	}
-	// }
 	const updateCurrentTime = useCallback(() => {
 		if (audio) {
 			audio.ended && nextTrack()
@@ -116,17 +76,8 @@ export default function CurrentTrackProvider({ children }: any) {
 				payload: Math.round(audio.currentTime)
 			})
 		}
-	}, [audio]);
+	}, [audio, trackData.currentTime]);
 
-	// const muteTrack = function () {
-	// 	if (audio) {
-	// 		audio.muted = !audio.muted;
-	// 		dispatch({
-	// 			type: CurrentTrackTypes.MUTE_TRACK,
-	// 			payload: { isMuted: audio.muted }
-	// 		})
-	// 	}
-	// }
 	const muteTrack = useCallback(() => {
 		if (audio) {
 			audio.muted = !audio.muted;
@@ -137,13 +88,6 @@ export default function CurrentTrackProvider({ children }: any) {
 		}
 	}, [audio]);
 
-	// const loopTrack = function () {
-	// 	audio.loop = !audio.loop;
-	// 	dispatch({
-	// 		type: CurrentTrackTypes.LOOP_TRACK,
-	// 		payload: { hasLoop: audio.loop }
-	// 	})
-	// }
 	const loopTrack = useCallback(() => {
 		audio.loop = !audio.loop;
 		dispatch({
@@ -152,25 +96,14 @@ export default function CurrentTrackProvider({ children }: any) {
 		})
 	}, [audio]);
 
-	// const selectCurrentTrack = async function (track: any) {
-	// 	return await selectCurrentTrackAction(dispatch, track, currentTrackState)
-	// }
 	const selectCurrentTrack = useCallback(async (track: any) => {
 		return await selectCurrentTrackAction(dispatch, track, currentTrackState)
 	}, [currentTrackState]);
 
-	// const updateVolume = function (volume: number) {
-	// 	const newVolume = Number((volume / 100).toFixed(1))
-	// 	audio.volume = newVolume
-	// 	dispatch({
-	// 		type: CurrentTrackTypes.UPDATE_VOLUME,
-	// 		payload: newVolume
-	// 	})
-	// }
 	const updateVolume = useCallback((volume: number) => {
 		const newVolume = Number((volume / 100).toFixed(1))
 		audio.volume = newVolume
-		dispatch({
+		return dispatch({
 			type: CurrentTrackTypes.UPDATE_VOLUME,
 			payload: newVolume
 		})
