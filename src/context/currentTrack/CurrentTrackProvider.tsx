@@ -65,23 +65,13 @@ export default function CurrentTrackProvider({ children }: any) {
 		})
 	}, [audio]);
 
-	const nextTrack = useCallback(async () => {
-		try {
-			const token = await getAccessTokenSilently()
-			await nextTrackAction(dispatch, currentTrackState, currentTracklist, token)
-		} finally {
-			await nextTrackAction(dispatch, currentTrackState, currentTracklist, null)
-		}
-	}, [audio, currentTrackState]);
+	const nextTrack = async () => {
+		await nextTrackAction(dispatch, currentTrackState, currentTracklist, null)
+	}
 
-	const previousTrack = useCallback(async () => {
-		try {
-			const token = await getAccessTokenSilently()
-			await previousTrackAction(dispatch, currentTrackState, currentTracklist, token)
-		} finally {
-			await previousTrackAction(dispatch, currentTrackState, currentTracklist, null)
-		}
-	}, [audio, currentTrackState]);
+	const previousTrack = async () => {
+		await previousTrackAction(dispatch, currentTrackState, currentTracklist, null)
+	}
 
 	const updateCurrentTime = useCallback(() => {
 		if (audio) {

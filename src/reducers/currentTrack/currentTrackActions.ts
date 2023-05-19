@@ -40,7 +40,7 @@ export const initCurrentTrackAction = async function (dispatch: any, trackData: 
 export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any, token: any) {
 	const { currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
-	trackData.isPlaying && trackData.audio?.pause();
+	trackData.audio.pause();
 	trackData.audio = null;
 	await getTrackByIdApi(trackId).then(async (res: any) => {
 		if (res.status === 200) {
