@@ -3,9 +3,9 @@ import getDuration from "utils/tracks/getDuration";
 import initAudio from "utils/tracks/initAudio";
 import tracksCycle from "utils/tracks/tracksCycle";
 import * as CurrentTrackTypes from './currentTrackTypes'
-// import { reportErroredTrack } from "api/statistic.api";
+import { reportErroredTrack } from "api/statistic.api";
 
-export const initCurrentTrackAction = async function (dispatch: any, trackData: any) {
+export const initCurrentTrackAction = async function (dispatch: any, trackData: any, token: any) {
 	await getRandomTrackApi().then(async (res: any) => {
 		if (res.track) {
 			const checkAudio = await fetch(res.track.audioUrl);
@@ -29,13 +29,15 @@ export const initCurrentTrackAction = async function (dispatch: any, trackData: 
 					}
 				})
 			} else {
-				// await reportErroredTrack('global', res.track._id, token)
+				if (token) {
+					return await reportErroredTrack('global', res.track._id, token)
+				}
 			}
 		}
 	})
 }
 
-export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any) {
+export async function nextTrackAction(dispatch: any, trackState: any, tracklist: any, token: any) {
 	const { currentTrack, trackData } = trackState;
 	const trackId = tracksCycle(tracklist.tracks, currentTrack._id);
 	trackData.isPlaying && trackData.audio?.pause();
@@ -66,13 +68,15 @@ export async function nextTrackAction(dispatch: any, trackState: any, tracklist:
 					}
 				})
 			} else {
-				// await reportErroredTrack('global', trackId, token)
+				if (token) {
+					return await reportErroredTrack('global', trackId, token)
+				}
 			}
 		}
 	})
 }
 
-export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any) {
+export const previousTrackAction = async function (dispatch: any, trackState: any, tracklist: any, token: any) {
 	const { currentTrack, trackData } = trackState;
 	const tracksReverse = [...tracklist.tracks].reverse();
 	const trackId = tracksCycle(tracksReverse, currentTrack._id);
@@ -104,7 +108,9 @@ export const previousTrackAction = async function (dispatch: any, trackState: an
 					}
 				})
 			} else {
-				// await reportErroredTrack('global', trackId, token)
+				if (token) {
+					return await reportErroredTrack('global', trackId, token)
+				}
 			}
 		}
 	})

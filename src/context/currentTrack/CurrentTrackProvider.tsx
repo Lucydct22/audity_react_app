@@ -33,7 +33,12 @@ export default function CurrentTrackProvider({ children }: any) {
 
 	useEffect(() => {
 		const initCurrentTrack = async () => {
-			initCurrentTrackAction(dispatch, trackData);
+			try {
+				const token = await getAccessTokenSilently()
+				initCurrentTrackAction(dispatch, trackData, token);
+			} finally {
+				initCurrentTrackAction(dispatch, trackData, null);
+			}
 		}
 		initCurrentTrack()
 	}, [getAccessTokenSilently, isAuthenticated, isLoading, user]);
@@ -61,11 +66,21 @@ export default function CurrentTrackProvider({ children }: any) {
 	}, [audio]);
 
 	const nextTrack = useCallback(async () => {
-		await nextTrackAction(dispatch, currentTrackState, currentTracklist)
+		try {
+			const token = await getAccessTokenSilently()
+			await nextTrackAction(dispatch, currentTrackState, currentTracklist, token)
+		} finally {
+			await nextTrackAction(dispatch, currentTrackState, currentTracklist, null)
+		}
 	}, [audio, currentTrackState]);
 
 	const previousTrack = useCallback(async () => {
-		await previousTrackAction(dispatch, currentTrackState, currentTracklist)
+		try {
+			const token = await getAccessTokenSilently()
+			await previousTrackAction(dispatch, currentTrackState, currentTracklist, token)
+		} finally {
+			await previousTrackAction(dispatch, currentTrackState, currentTracklist, null)
+		}
 	}, [audio, currentTrackState]);
 
 	const updateCurrentTime = useCallback(() => {
