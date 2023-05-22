@@ -267,6 +267,10 @@ Project structure
         └───utils
             └───HelmetSEO
 </pre>
+## Google analitics
+Also this project has analitics implemented 
+![Google analitics](/public/analit.png)
+
 ## License <!-- omit in toc -->
 
 This project is licensed under the MIT License
