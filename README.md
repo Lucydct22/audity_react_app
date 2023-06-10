@@ -2,6 +2,8 @@
 
 This is the frontend project for a music streaming app similar to Spotify. The user can listen to music for free, but also has the option to subscribe to premium features. Also user can listen to music without logging in, but to create playlists and like songs, they must log in.
 
+*The project is deployed on*: https://audity.dtpf.es/
+
 ## Technologies Used
 
 - React with Vite,
