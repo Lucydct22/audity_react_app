@@ -27,6 +27,9 @@ $background-input-disabled_dark: #1C1C24;
 $background-gradient_light: linear-gradient(90deg, rgba(160, 54, 56, 1) 0%, rgba(209, 87, 86, 1) 100%);
 $background-gradient_dark: linear-gradient(90deg, rgba(34, 34, 34, 1) 0%, rgba(40, 45, 51, 1) 100%);
 
+$background-genre-gradient_light: linear-gradient(to bottom right, #FF6868, #FF68DE);
+$background-genre-gradient_dark: linear-gradient(to bottom right, #403F44, #1E1B32);
+
 
 /* BUTTON HOVER BACKGROUND COLORS */
 $background-on-hover_light: #eaeaea;
@@ -107,6 +110,7 @@ html[data-theme='light'] {
   --background-primary: #{$background-primary_light};
   --background-secondary: #{$background-secondary_light};
   --background-gradient: #{$background-gradient_light};
+  --background-genre-gradient: #{$background-genre-gradient_light};
   --background-input: #{$background-input_light};
   --background-input-disabled: #{$background-input-disabled_light};
   --popper-shadow: #{$popper-shadow_light};
@@ -126,6 +130,7 @@ html[data-theme='dark'] {
   --background-primary: #{$background-primary_dark};
   --background-secondary: #{$background-secondary_dark};
   --background-gradient: #{$background-gradient_dark};
+  --background-genre-gradient: #{$background-genre-gradient_dark};
   --background-input: #{$background-input_dark};
   --background-input-disabled: #{$background-input-disabled_dark};
   --popper-shadow: #{$popper-shadow_dark};

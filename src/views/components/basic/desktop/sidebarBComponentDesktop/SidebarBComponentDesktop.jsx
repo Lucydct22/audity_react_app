@@ -98,27 +98,6 @@ const SidebarBComponentDesktop = () => {
               />
             <p>{t("sidebar_library")}</p>
           </NavLink>
-          
-              {/* <NavLink to={"/radio"} className="side-bar-header__sections--options">
-                <div className="side-bar-header__sections--options__decoration"></div>
-                <RiRadioLine
-                  size={20}
-                  className="side-bar-header__sections--options__icon"
-                />
-                <p>{t("sidebar_radio")}</p>
-              </NavLink> */}
-
-          {/* <NavLink
-            to={"/studio"}
-            className="side-bar-header__sections--options"
-          >
-            <div className="side-bar-header__sections--options__decoration"></div>
-            <BsMusicPlayer
-              size={20}
-              className="side-bar-header__sections--options__icon"
-            />
-            <p>{t("sidebar_studio")}</p>
-          </NavLink> */}
         </div>
       </div>
     </nav>
