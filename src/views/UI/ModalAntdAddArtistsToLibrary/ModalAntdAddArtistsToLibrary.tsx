@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getArtistApi } from 'api/music/artists';
-import './modalAntdPlaylistCreate.scss'
+import './modalAntdAddArtistsToLibrary.scss'
 
 export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 	const [artists, setArtists] = useState([]);
@@ -27,9 +27,9 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 	}
 
 	return (
-		<section className="modal-playlist-create">
+		<section className="modal-artist-create">
 			<h2>Add artists</h2>
-			<div className="modal-playlist-create__main">
+			<div className="modal-artist-create__main">
 				{artists && artists.map(artist => {
 					const { _id, name, imageUrl } = artist;
 					return (
@@ -38,10 +38,10 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 							className={`render-artist ${selectedArtists.some((artistId: number) => artistId === _id) && 'selected-artist'}`}
 							onClick={() => handleSelectArtist(_id)}
 						>
-							<div className='modal-playlist-create__main__thumbnail'>
+							<div className='modal-artist-create__main__thumbnail'>
 								<img src={imageUrl} alt={name} />
 							</div>
-							<p className='modal-playlist-create__main__description'>{name}</p>
+							<p className='modal-artist-create__main__description'>{name}</p>
 						</div>
 					)
 				})}

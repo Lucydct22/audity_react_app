@@ -18,12 +18,12 @@ export const ProtectedUserSettings = ({ children }: any) => {
 };
 
 export const ProtectedUser = ({ children }: any) => {
-  const { isAuthenticated } = useAuth0()
+  const { isLoading, isAuthenticated } = useAuth0()
   const { dbUser } = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       navigate('/offers')
     }
   }, [dbUser]);

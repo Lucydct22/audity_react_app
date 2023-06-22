@@ -1,5 +1,5 @@
-import { useContext, useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useContext, useState, useRef } from 'react';
+import { Link, } from 'react-router-dom';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
@@ -22,12 +22,10 @@ export default function RenderLibraryItem({ list, type }) {
   const [open, setOpen] = useState(false);
   const [openAddArtistsModal, setOpenAddArtistsModal] = useState(false);
   const artistSelectionRef = useRef([]);
-  // const [artist, setArtist] = useState();
   const [modal, contextHolder] = Modal.useModal();
   const [addArtistsModal, addArtistsContextHolder] = Modal.useModal();
   const nameRef = useRef("");
   const descRef = useRef("");
-  // const { pathname } = useLocation()
 
   const hideModal = () => {
     setOpen(false);
@@ -75,7 +73,7 @@ export default function RenderLibraryItem({ list, type }) {
       centered: true,
       closable: true,
       icon: 0,
-      width: 800,
+      width: 600,
       content: (
         <ModalAntdAddArtistsToLibrary artistSelectionRef={artistSelectionRef} />
       ),
