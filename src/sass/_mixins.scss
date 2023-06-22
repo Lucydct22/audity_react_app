@@ -3,11 +3,11 @@
   font-weight: bold;
   font-size: 1.6em;
 
-  @media (min-width: $media-breakpoint-desktop-up-sm) {
+  @media (min-width: $media-breakpoint-up-sm) {
     font-size: 1.7em;
   }
 
-  @media (min-width: $media-breakpoint-desktop-up-md) {
+  @media (min-width: $media-breakpoint-up-md) {
     font-size: 1.9em;
   }
 }
@@ -22,72 +22,6 @@
 
   &:hover {
     color: $color-main-hover;
-  }
-}
-
-@mixin web-responsive() {
-  @media (min-width: $media-breakpoint-desktop-up-xl) {
-    width: 1300px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-xl) {
-    width: 1150px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-lg) {
-    width: 1000px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-md) {
-    width: 900px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-sm) {
-    width: 800px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-xs) {
-    width: 700px;
-  }
-
-  @media (max-width: $media-breakpoint-desktop-up-xxs) {
-    width: 560px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-xxl) {
-    width: 700px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-xl) {
-    width: 600px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-lg) {
-    width: 520px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-md) {
-    width: 435px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-sm) {
-    width: 370px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-xs) {
-    width: 340px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-xxs) {
-    width: 320px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-3xs) {
-    width: 280px;
-  }
-
-  @media (max-width: $media-breakpoint-mobile-up-4xs) {
-    width: 200px;
   }
 }
 
@@ -189,4 +123,3 @@
     background-color: var(--background-on-hover);
   }
 }
-

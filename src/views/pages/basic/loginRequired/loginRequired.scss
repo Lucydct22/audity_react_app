@@ -1,0 +1,14 @@
+@import '../../../../sass/';
+
+.offers-page {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 3rem;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    padding: 18px;
+    padding-top: 14px;
+  }
+}

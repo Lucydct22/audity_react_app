@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, NavLink } from "react-router-dom";
 import { ThemeContext } from "context/theme/ThemeContext";
+import UserContext from "context/user/UserContext";
 import { useTranslation } from "react-i18next";
 import LogoLightTheme from "assets/img/png/logoAudityBlackTransp.png";
 import LogoDarkTheme from "assets/img/png/logoAudityWhiteTransp.png";
@@ -11,8 +12,6 @@ import { IoHeadsetOutline } from "react-icons/io5";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { FaGuitar } from "react-icons/fa";
 import { SlCompass } from "react-icons/sl";
-// import { BsMusicPlayer } from "react-icons/bs";
-import { message } from "antd";
 import "./sidebarBComponentDesktop.scss";
 
 const SidebarBComponentDesktop = () => {
@@ -20,6 +19,15 @@ const SidebarBComponentDesktop = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const { theme } = useContext(ThemeContext);
   const { isAuthenticated } = useAuth0()
+  const { dbUser } = useContext(UserContext)
+  const [isGuest, setIsGuest] = useState(true)
+
+  useEffect(() => {
+    setIsGuest(false)
+    if (!isAuthenticated) {
+      setIsGuest(true)
+    }
+  }, [dbUser]);
 
   return (
     <nav className="side-bar">
@@ -85,11 +93,8 @@ const SidebarBComponentDesktop = () => {
           ) : null}
 
           <NavLink
-            to={"/library"}
+            to={isGuest ? "/offers" : "/library"}
             className="side-bar-header__sections--options"
-            onClick={() => {
-              !isAuthenticated && message.info('Login required')
-            }}
             >
             <div className="side-bar-header__sections--options__decoration"></div>
             <VscLibrary

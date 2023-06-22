@@ -24,7 +24,22 @@ export const ProtectedUser = ({ children }: any) => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/')
+      navigate('/offers')
+    }
+  }, [dbUser]);
+
+  return children;
+
+};
+
+export const ProtectedLoginRequired = ({ children }: any) => {
+  const { isAuthenticated } = useAuth0()
+  const { dbUser } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/library')
     }
   }, [dbUser]);
 

@@ -77,7 +77,7 @@ const SwiperMaxTracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).map((track) => {
+          {tracks?.slice(0, 8).reverse().map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -123,7 +123,7 @@ const Swiper1024Tracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).map((track) => {
+          {tracks?.slice(0, 8).reverse().map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -169,7 +169,7 @@ const Swiper815Tracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).map((track) => {
+          {tracks?.slice(0, 8).reverse().map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -190,7 +190,7 @@ const Swiper560Tracks = ({ tracks }) => {
       </div>
       <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
         <Swiper
-          slidesPerView={2.3}
+          slidesPerView={2.2}
           spaceBetween={20}
           grid={{
             rows: 3,
@@ -199,7 +199,7 @@ const Swiper560Tracks = ({ tracks }) => {
           modules={[FreeMode, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).map((track) => {
+          {tracks?.slice(0, 8).reverse().map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />
@@ -220,7 +220,7 @@ const SwiperMinTracks = ({ tracks }) => {
       </div>
       <div className="swiper-tracks-component__container" style={{ height: '280px' }}>
         <Swiper
-          slidesPerView={1.2}
+          slidesPerView={1.15}
           spaceBetween={20}
           grid={{
             rows: 3,
@@ -229,7 +229,7 @@ const SwiperMinTracks = ({ tracks }) => {
           modules={[FreeMode, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).map((track) => {
+          {tracks?.slice(0, 8).reverse().map((track) => {
             return (
               <SwiperSlide key={track._id}>
                 <RenderTrack track={track} />

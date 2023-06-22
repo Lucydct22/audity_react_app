@@ -1,10 +1,14 @@
 import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import UserContext from "context/user/UserContext";
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
+import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
 import { MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import './playerBComponentMobile.scss'
-import PlayerTrackDetailsComponentMobile from '../playerTrackDetailsComponentMobile/PlayerTrackDetailsComponentMobile';
+import { message } from 'antd';
 
 const PlayerBComponentMobile = () => {
   const [songLike, setSongLike] = useState(false);
@@ -16,8 +20,24 @@ const PlayerBComponentMobile = () => {
     nextTrack
   } = useContext(CurrentTrackContext);
   const { tracks, likeDislikeTrack } = useContext(MyLibraryContext)
+  const { isAuthenticated } = useAuth0()
+  const { dbUser } = useContext(UserContext)
+  const navigate = useNavigate()
   const [showPopUp, setShowPopUp] = useState(false);
   const [artists, setArtists] = useState('')
+  const [isGuest, setIsGuest] = useState(true)
+
+  const handleGuest = () => {
+    navigate('/offers')
+    message.info('Login or create an Audity account')
+  }
+
+  useEffect(() => {
+    setIsGuest(false)
+    if (!isAuthenticated) {
+      setIsGuest(true)
+    }
+  }, [dbUser]);
 
   useEffect(() => {
     let isMounted = true
@@ -58,7 +78,7 @@ const PlayerBComponentMobile = () => {
           </div>
 
           <div className='player-bottom-controls-mobile'>
-            <button className='player-bottom-controls-mobile__btn' onClick={() => likeDislikeTrack(currentTrack)}>
+            <button className='player-bottom-controls-mobile__btn' onClick={() => isGuest ? handleGuest() : likeDislikeTrack(currentTrack)}>
               {!songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
             </button>
             <button onClick={nextTrack} className='player-bottom-controls-mobile__controls-action'>

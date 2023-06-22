@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from 'react'
-import { IoChevronDownOutline, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
-import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
+import { useTranslation } from 'react-i18next';
 import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext'
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext'
 import CurrentTracklistContext from 'context/currentTracklist/CurrentTracklistContext'
-import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext, MdOutlineQueueMusic } from "react-icons/md";
-import './playerTrackDetailsComponentMobile.scss'
+import { getAlbumsApi } from 'api/music/albums';
+import ProgressBar from '../../desktop/playerBComponentDesktop/progressBar/ProgressBar'
+import PopupAddPlaylistBComponent from '../popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
 import formatToSeconds from 'utils/tracks/formatToSeconds';
 import SongPlaceholder from "assets/img/webp/music-placeholder-300.webp";
+import './playerTrackDetailsComponentMobile.scss'
+import { IoChevronDownOutline, IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5"
+import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { useTranslation } from 'react-i18next';
-import PopupAddPlaylistBComponent from '../popupAddPlaylistBComponent/PopupAddPlaylistBComponent'
-import { getAlbumsApi } from 'api/music/albums';
 
 const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
   const { t } = useTranslation();
@@ -118,12 +118,12 @@ const PlayerTrackDetailsComponentMobile = ({ onClose }) => {
           <button className='player-track-details-container__track-info__add-bottom_right' onClick={shuffleTracklist}>
             {shuffle ? <IoShuffleOutline /> : <IoShuffleOutline color='#C1C1C1' />}
           </button>
-          <div className='player-track-details-container__track-info__add-bottom__queue-list'>
+          {/* <div className='player-track-details-container__track-info__add-bottom__queue-list'>
             <p>Queue list</p>
             <button className=''>
               <MdOutlineQueueMusic />
             </button>
-          </div>
+          </div> */}
         </div>
 
       </div>

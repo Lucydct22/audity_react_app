@@ -1,1 +1,1 @@
-export { default as GenrePage } from './GenrePage';
+export { default } from './GenrePage';
