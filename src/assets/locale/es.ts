@@ -125,17 +125,34 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',
+  
+  /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
+  search_result_h2: 'Resultado',
+  search_result_type_all: 'Todos',
+  search_result_type_tracks: 'Canciones',
+  search_result_type_albums: 'Álbumes',
+  search_result_type_artists: 'Artistas',
+  search_result_type_playlists: 'Playlists',
+  search_result_type_btn_all: 'VER TODO',
+  search_result_null: 'Vaya, no hay ninguna coincidencia en este momento',
+  
+  /*~~~~~~~~~~~~~ AUDITY OFFERS ~~~~~~~~~~~~~*/
+  audity_offers_title: 'Experiencia ilimitada con la cuenta de Audity',
 
-   /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
-   search_result_h2: 'Resultado',
-   search_result_type_all: 'Todos',
-   search_result_type_tracks: 'Canciones',
-   search_result_type_albums: 'Álbumes',
-   search_result_type_artists: 'Artistas',
-   search_result_type_playlists: 'Playlists',
-   search_result_type_btn_all: 'VER TODO',
-   search_result_null: 'Vaya, no hay ninguna coincidencia en este momento',
+  audity_offers_header1: 'Visita',
+  audity_offers_header2: 'Cuenta',
 
+  audity_offers_body_p1: 'Acceso ilimitado a cientos de canciones',
+  audity_offers_body_p2: 'Escucha con la pantalla apagada',
+  audity_offers_body_p3: 'Experiencia sin anuncios',
+  audity_offers_body_p4: 'Control total: anterior, siguiente, aleatorio, bucle, volumen',
+  audity_offers_body_p5: 'Crear tus propias listas de reproducción',
+  audity_offers_body_p6: 'Dar me gusta a tus canciones favoritas',
+  audity_offers_body_p7: 'Sube tus propias canciones',
+  audity_offers_body_p8: 'Sigue a tus artistas y álbumes favoritos',
+
+  audity_offers_footer_p1: 'CREAR CUENTA AUDITY',
+  audity_offers_footer_p2: 'Sin compromiso',
 }
 
 export default spanishTranslation;

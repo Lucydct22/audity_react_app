@@ -139,6 +139,23 @@ const englishTranslation = {
   search_result_type_btn_all: 'VIEW ALL',
   search_result_null: 'Oops, there is no match at this moment',
 
+  /*~~~~~~~~~~~~~ AUDITY OFFERS ~~~~~~~~~~~~~*/
+  audity_offers_title: 'Limitless experience with Audity account',
+
+  audity_offers_header1: 'Guest',
+  audity_offers_header2: 'Account',
+
+  audity_offers_body_p1: 'Unlimited access to hundreds of tracks',
+  audity_offers_body_p2: 'Background listening',
+  audity_offers_body_p3: 'Ad-free experience',
+  audity_offers_body_p4: 'Song control like prev, next, shuffle, loop, volume',
+  audity_offers_body_p5: 'Create personal playlists',
+  audity_offers_body_p6: 'Like you favorite songs',
+  audity_offers_body_p7: 'Upload your own tracks',
+  audity_offers_body_p8: 'Follow you favorite artists and albums',
+
+  audity_offers_footer_p1: 'CREATE AUDITY ACCOUNT',
+  audity_offers_footer_p2: 'No commitment',
 }
 
 export default englishTranslation;

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { getArtistApi } from 'api/music/artists';
 import './modalAntdAddArtistsToLibrary.scss'
 
 export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
-	const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState([]);
 	const [selectedArtists, setSelectedArtists] = useState<number[]>([]);
+  const { t } = useTranslation()
 
 	useEffect(() => {
 		if (selectedArtists !== artistSelectionRef.current) artistSelectionRef.current = selectedArtists
@@ -28,7 +30,7 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 
 	return (
 		<section className="modal-artist-create">
-			<h2>Add artists</h2>
+			<h2>{t("library_create_artist_text")}</h2>
 			<div className="modal-artist-create__main">
 				{artists && artists.map(artist => {
 					const { _id, name, imageUrl } = artist;

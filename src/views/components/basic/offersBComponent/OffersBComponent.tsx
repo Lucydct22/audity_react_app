@@ -1,65 +1,67 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useTranslation } from "react-i18next";
 import { HiCheckCircle } from 'react-icons/hi'
 import './offersBComponent.scss'
 
 const OffersBComponent = () => {
+  const { t } = useTranslation()
   const { loginWithRedirect } = useAuth0()
 
   return (
     <div className="audity-offers">
-      <h2 className="audity-offers__title">Limitless experience with Audity account</h2>
+      <h2 className="audity-offers__title">{t("audity_offers_title")}</h2>
       <section className="audity-offers__content">
         <div className="audity-offers__content--header">
           <span>&nbsp;</span>
-          <span>Guest</span>
-          <span>Account</span>
+          <span>{t("audity_offers_header1")}</span>
+          <span>{t("audity_offers_header2")}</span>
         </div>
         <div className="audity-offers__content--body">
           <div className="audity-offers__content--body__wrapper">
-            <p>Unlimited access to hundreds of tracks</p>
+            <p>{t("audity_offers_body_p1")}</p>
             <span><HiCheckCircle /></span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Background listening</p>
+            <p>{t("audity_offers_body_p2")}</p>
             <span><HiCheckCircle /></span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Ad-free experience</p>
+            <p>{t("audity_offers_body_p3")}</p>
             <span><HiCheckCircle /></span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Song control like prev, next, shuffle, loop, volume</p>
+            <p>{t("audity_offers_body_p4")}</p>
             <span><HiCheckCircle /></span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Create personal playlists</p>
+            <p>{t("audity_offers_body_p5")}</p>
             <span>-</span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Like you favorite songs</p>
+            <p>{t("audity_offers_body_p6")}</p>
             <span>-</span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Upload your own tracks</p>
+            <p>{t("audity_offers_body_p7")}</p>
             <span>-</span>
             <span><HiCheckCircle /></span>
           </div>
           <div className="audity-offers__content--body__wrapper">
-            <p>Follow you favorite artists and albums</p>
+            <p>{t("audity_offers_body_p8")}</p>
             <span>-</span>
             <span><HiCheckCircle /></span>
           </div>
         </div>
         <div className="audity-offers__content--footer">
           <button className="audity-offers__content--footer__action" onClick={() => loginWithRedirect()}>
-            <p>CREATE AUDITY ACCOUNT</p>
-            <span>No commitment</span>
+            <p>{t("audity_offers_footer_p1")}</p>
+            <span>{t("audity_offers_footer_p2")}</span>
           </button>
         </div>
       </section>
