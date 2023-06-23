@@ -115,29 +115,30 @@
         border: none;
         color: inherit;
         cursor: pointer;
+        padding: 0;
         margin: 0 0.5rem;
       }
 
       &__like {
         font-size: 2rem;
-        margin-right: 0.5rem;
+        padding-left: 0.4rem !important;
       }
-
+      
       &__orden {
         font-size: 2rem;
       }
-
+      
       &__change {
         font-size: 3rem;
       }
-
+      
       &__play {
         font-size: 5rem;
       }
-
+      
       &__add {
         font-size: 2.3rem;
-        margin-left: 0.5rem;
+        padding-right: 0.4rem !important;
       }
     }
 
@@ -146,6 +147,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      padding: 0 0.4rem;
       background: none;
       border: none;
 

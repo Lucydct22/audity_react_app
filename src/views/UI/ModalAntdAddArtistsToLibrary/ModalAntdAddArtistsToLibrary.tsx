@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { getArtistApi } from 'api/music/artists';
-import './modalAntdPlaylistCreate.scss'
+import './modalAntdAddArtistsToLibrary.scss'
 
 export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
-	const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState([]);
 	const [selectedArtists, setSelectedArtists] = useState<number[]>([]);
+  const { t } = useTranslation()
 
 	useEffect(() => {
 		if (selectedArtists !== artistSelectionRef.current) artistSelectionRef.current = selectedArtists
@@ -27,9 +29,9 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 	}
 
 	return (
-		<section className="modal-playlist-create">
-			<h2>Add artists</h2>
-			<div className="modal-playlist-create__main">
+		<section className="modal-artist-create">
+			<h2>{t("library_create_artist_text")}</h2>
+			<div className="modal-artist-create__main">
 				{artists && artists.map(artist => {
 					const { _id, name, imageUrl } = artist;
 					return (
@@ -38,10 +40,10 @@ export const ModalAntdAddArtistsToLibrary = ({ artistSelectionRef }: any) => {
 							className={`render-artist ${selectedArtists.some((artistId: number) => artistId === _id) && 'selected-artist'}`}
 							onClick={() => handleSelectArtist(_id)}
 						>
-							<div className='modal-playlist-create__main__thumbnail'>
+							<div className='modal-artist-create__main__thumbnail'>
 								<img src={imageUrl} alt={name} />
 							</div>
-							<p className='modal-playlist-create__main__description'>{name}</p>
+							<p className='modal-artist-create__main__description'>{name}</p>
 						</div>
 					)
 				})}

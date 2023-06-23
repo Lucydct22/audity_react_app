@@ -1,5 +1,8 @@
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useTranslation } from "react-i18next";
+import UserContext from "context/user/UserContext";
 import "./sidebarBComponentMobile.scss";
 import { FiMusic, FiSearch } from "react-icons/fi";
 import { VscLibrary } from "react-icons/vsc";
@@ -8,6 +11,16 @@ import { SlCompass } from "react-icons/sl";
 
 const SidebarBComponentMobile = () => {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth0()
+  const { dbUser } = useContext(UserContext)
+  const [isGuest, setIsGuest] = useState(true)
+
+  useEffect(() => {
+    setIsGuest(false)
+    if (!isAuthenticated) {
+      setIsGuest(true)
+    }
+  }, [dbUser]);
 
   return (
     <nav className="side-bar-mobile">
@@ -44,7 +57,7 @@ const SidebarBComponentMobile = () => {
           </NavLink>
           
           <NavLink
-            to={"/library"}
+            to={isGuest ? "/offers" : "/library"}
             className="side-bar-mobile-header__sections--options"
           >
             <div className="side-bar-mobile-header__sections--options__decoration"></div>
@@ -54,26 +67,6 @@ const SidebarBComponentMobile = () => {
             />
             <p>{t("sidebar_library")}</p>
           </NavLink>
-
-          {/* <NavLink
-            to={"/studio"}
-            className="side-bar-mobile-header__sections--options"
-          >
-            <BsMusicPlayer
-              size={20}
-              className="side-bar-mobile-header__sections--options__icon"
-            />
-            <p>{t("sidebar_studio")}</p>
-          </NavLink> */}
-
-          {/* <NavLink to={"/radio"} className="side-bar-mobile-header__sections--options">
-            <div className="side-bar-mobile-header__sections--options__decoration"></div>
-            <RiRadioLine
-              size={20}
-              className="side-bar-mobile-header__sections--options__icon"
-            />
-            <p>{t("sidebar_radio")}</p>
-          </NavLink> */}
         </div>
       </div>
     </nav>

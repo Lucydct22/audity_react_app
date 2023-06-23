@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { ProtectedAdminRoute } from "./router.middelware";
-import { ProtectedUser, ProtectedUserSettings } from "./user.middelware";
+import { ProtectedAdminRoute } from "./router.middleware";
+import { ProtectedUser, ProtectedUserSettings, ProtectedLoginRequired } from "./user.middleware";
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -19,8 +19,9 @@ const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
 const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
 const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
 const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
-const GenresPage = lazy(() => import('views/pages/basic/genresPage/GenresPage'));
-const GenrePage = lazy(() => import('views/pages/basic/genrePage/GenrePage'));
+const GenresPage = lazy(() => import('views/pages/basic/genresPage'));
+const GenrePage = lazy(() => import('views/pages/basic/genrePage'));
+const LoginRequired = lazy(() => import('views/pages/basic/loginRequired'));
 
 // ADMIN PAGES
 const HomeAdminPage = lazy(() => import('views/pages/admin/homeAdminPage'));
@@ -38,11 +39,10 @@ const TrackForm = lazy(() => import('views/components/admin/forms/trackForm'));
 const PlaylistForm = lazy(() => import('views/components/admin/forms/playlistForm'));
 
 // LIBRARY PAGES
-const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage/HighlightPage'))
-const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage/FavTracksPage'))
-// const LibrarySelfPlaylists = lazy(() => import('views/pages/basic/libraryPages'))
-const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage/UploadPage'))
-const LibraryPlaylists = lazy(() => import('views/pages/basic/libraryPages/playlistsPage/PlaylistPage'))
+const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage'))
+const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage'))
+const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage'))
+const LibraryPlaylists = lazy(() => import('views/pages/basic/libraryPages/playlistsPage'))
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
@@ -141,6 +141,11 @@ const router = createBrowserRouter([
             </ProtectedUserSettings>
           </Suspense>
         )
+      },
+      {
+        path: "offers",
+        element:
+          <ProtectedLoginRequired><Suspense fallback={<></>}><LoginRequired /></Suspense></ProtectedLoginRequired>
       },
       {
         path: "*",

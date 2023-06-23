@@ -1,0 +1,90 @@
+@import '../../../../sass/';
+
+.audity-offers {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Anek Gujarati', sans-serif;
+
+    @media (max-width: $media-breakpoint-desktop-mobile) {
+      display: inline;
+      width: calc(100% - 40px);
+      font-size: 32px;
+      font-family: 'Anek Gujarati', sans-serif;
+    }
+  }
+
+  &__content {
+    &--header {
+      display: grid;
+      grid-template-columns: 1fr repeat(2, 65px);
+      grid-gap: 0.2rem;
+      margin-bottom: 1rem;
+
+      span {
+        display: flex;
+        justify-content: center;
+        font-weight: 700;
+      }
+    }
+
+    &--body {
+      &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr repeat(2, 65px);
+        align-items: center;
+        grid-gap: 0.2rem;
+        padding: 0.5rem 0;
+
+        &:not(:last-child) {
+          border-bottom: var(--color-border-1px);
+        }
+
+        p {
+          color: $color-secondary;
+          font-weight: 400;
+          margin: 0;
+        }
+
+        span {
+          display: flex;
+          justify-content: center;
+
+          svg {
+            color: $color-success;
+            width: 27px;
+            height: 27px;
+          }
+        }
+      }
+    }
+
+    &--footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+
+      &__action {
+        @include buttonPrimary(320px);
+        flex-direction: column;
+        padding: 16px 40px;
+        height: auto;
+        border-radius: 35px;
+        font-weight: 700;
+        
+        P {
+          margin: 0;
+        }
+        
+        span {
+          font-weight: 500;
+          text-transform: none;
+        }
+      }
+    }
+  }
+}

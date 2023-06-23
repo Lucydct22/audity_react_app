@@ -1,0 +1,78 @@
+@import '../../../sass/variables';
+
+.modal-artist-create {
+  width: 100%;
+
+  h2 {
+    font-family: 'Anek Gujarati', sans-serif;
+    font-size: 32px;
+    line-height: 24px;
+    margin: 0;
+    text-align: center;
+    color: var(--color-primary);
+    margin: 28px 0;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    h2 {
+      font-size: 28px;
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    padding: 10px;
+    height: calc(100dvh - 220px);
+    margin-bottom: 10px;
+    overflow-x: hidden;
+
+    @media (max-width: 600px) {
+      height: calc(100dvh - 145px);
+    }
+
+    @media (max-width: 450px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__thumbnail {
+      border-radius: 50%;
+    }
+  }
+}
+
+.selected-artist {
+  border: 2px solid $color-main !important;
+  border-radius: 1rem !important;
+}
+
+.modal-artist-create__main__thumbnail {
+  img {
+    border-radius: 50%;
+    width: 100%;
+  }
+}
+
+.modal-artist-create__main__description {
+  color: var(--color-primary);
+  margin: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 auto;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 600px) {
+  .ant-modal-wrap {
+    background-color: var(--background-secondary);
+  }
+}

@@ -7,6 +7,8 @@ $color-secondary: #a2a2ad;
 $color-main: #ef5466;
 $color-main-hover: #ca2a36;
 
+$color-success: #4AD079;
+
 
 /* BACKGROUND COLORS */
 $background-primary_light: #fff;
@@ -26,6 +28,9 @@ $background-input-disabled_dark: #1C1C24;
 
 $background-gradient_light: linear-gradient(90deg, rgba(160, 54, 56, 1) 0%, rgba(209, 87, 86, 1) 100%);
 $background-gradient_dark: linear-gradient(90deg, rgba(34, 34, 34, 1) 0%, rgba(40, 45, 51, 1) 100%);
+
+$background-genre-gradient_light: linear-gradient(to bottom right, #FF6868, #FF68DE);
+$background-genre-gradient_dark: linear-gradient(to bottom right, #403F44, #1E1B32);
 
 
 /* BUTTON HOVER BACKGROUND COLORS */
@@ -71,31 +76,11 @@ $popper-shadow_dark: 0 4px 20px 0 #0000003d;
 $media-breakpoint-desktop-mobile: 815px;
 
 // Responsive down size
-$media-breakpoint-down-xs: 413.98px;
 $media-breakpoint-down-sm: 573.98px;
-$media-breakpoint-down-md: 767.98px;
-$media-breakpoint-down-lg: 991.98px;
-$media-breakpoint-down-xl: 1199.98px;
-$media-breakpoint-down-xxl: 1699.98px;
 
 // Responsive up size
-$media-breakpoint-desktop-up-xxs: 970px;
-$media-breakpoint-desktop-up-xs: 1070px;
-$media-breakpoint-desktop-up-sm: 1175px;
-$media-breakpoint-desktop-up-md: 1270px;
-$media-breakpoint-desktop-up-lg: 1420px;
-$media-breakpoint-desktop-up-xl: 1570px;
-$media-breakpoint-desktop-up-xxl: 1800px;
-
-$media-breakpoint-mobile-up-4xs: 320px;
-$media-breakpoint-mobile-up-3xs: 360px;
-$media-breakpoint-mobile-up-xxs: 380px;
-$media-breakpoint-mobile-up-xs: 410px;
-$media-breakpoint-mobile-up-sm: 490px;
-$media-breakpoint-mobile-up-md: 575px;
-$media-breakpoint-mobile-up-lg: 650px;
-$media-breakpoint-mobile-up-xl: 750px;
-$media-breakpoint-mobile-up-xxl: 815px;
+$media-breakpoint-up-sm: 1175px;
+$media-breakpoint-up-md: 1270px;
 
 
 /* DATA THEME */
@@ -107,6 +92,7 @@ html[data-theme='light'] {
   --background-primary: #{$background-primary_light};
   --background-secondary: #{$background-secondary_light};
   --background-gradient: #{$background-gradient_light};
+  --background-genre-gradient: #{$background-genre-gradient_light};
   --background-input: #{$background-input_light};
   --background-input-disabled: #{$background-input-disabled_light};
   --popper-shadow: #{$popper-shadow_light};
@@ -126,6 +112,7 @@ html[data-theme='dark'] {
   --background-primary: #{$background-primary_dark};
   --background-secondary: #{$background-secondary_dark};
   --background-gradient: #{$background-gradient_dark};
+  --background-genre-gradient: #{$background-genre-gradient_dark};
   --background-input: #{$background-input_dark};
   --background-input-disabled: #{$background-input-disabled_dark};
   --popper-shadow: #{$popper-shadow_dark};
