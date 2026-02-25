@@ -1,279 +1,179 @@
-# Frontend Project Music | Audity
+# Audity - Frontend
 
-This is the frontend project for a music streaming app similar to Spotify. The user can listen to music for free, but also has the option to subscribe to premium features. Also user can listen to music without logging in, but to create playlists and like songs, they must log in.
+Frontend for **Audity**, a music streaming web platform built with React and TypeScript. Browse music, create playlists, like content, and manage tracks through an admin panel.
 
-*The project is deployed on*: https://audity.dtpf.es/
+**Live**: https://audity.dtpf.es/
 
-## Technologies Used
+## Tech Stack
 
-- React with Vite,
-- JSON-server for API simulation,
-- Auth0 for registration,
-- React reducer for music playback,
-- Sass for design,
-- TypeScript,
-- Figma for design project
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Create React App (react-scripts 5)
+- **State Management**: React Context API + useReducer
+- **Routing**: React Router v6 (lazy-loaded routes)
+- **Styling**: SCSS/Sass + Ant Design 5
+- **Authentication**: Auth0
+- **Internationalization**: i18next (English, Spanish)
+- **PWA**: Workbox service worker
+- **Carousels**: Swiper.js
+- **Analytics**: Google Analytics (via GTM)
+- **SEO**: react-helmet-async
 
-## Setup Instructions
+## Prerequisites
 
-1. Clone the repository to your local machine,
-2. Install dependencies by running npm install,
-3. In the root directory, create a .env file with the following contents:
+- Node.js (v16+)
+- npm
+- Backend API running (see [audity_node_app](https://github.com/Lucydct22/audity_node_app))
+- Auth0 tenant configured
+
+## Installation
+
+```bash
+git clone https://github.com/Lucydct22/audity_react_app.git
+cd audity_react_app
+npm install
 ```
-REACT_APP_AUTH0_DOMAIN=<your Auth0 domain>
-REACT_APP_AUTH0_CLIENT_ID=<your Auth0 client ID>
-REACT_APP_API_URL=http://localhost:5100
+
+## Environment Setup
+
+Create a `.env` file in the root directory based on the example:
+
+```bash
+cp .example.env .env
 ```
 
-4. Start the JSON server by running npm run server (in out case **NPM RUN JSON SERVER** --> see package.json)
-5. Start the React app by running npm start (in out case **NPM RUN DEV** --> see package.json)
-6. Navigate to http://localhost:5100 in your web browser to view the app.
+### Environment Variables
 
-## Usage
-+ As an unauthenticated user, you can browse and play songs from the home page or search for songs using the search bar,
-+ To create a playlist or like songs, you must register or log in using the Auth0 authentication,
-+ As a logged-in user, you can create playlists, like songs, albums, artists o playlists, and view/modify your profile,
-+ Premium features are not yet available, but the option to subscribe will be added in future updates.
+| Variable | Description |
+|---|---|
+| `REACT_APP_AUTH0_DOMAIN` | Auth0 tenant domain |
+| `REACT_APP_DEVELOPMENT_AUTH0_CLIENT_ID` | Auth0 client ID for local development |
+| `REACT_APP_PRODUCTION_AUTH0_CLIENT_ID` | Auth0 client ID for production |
+| `REACT_APP_AUTH0_AUDIENCE_DEVELOPMENT` | Auth0 audience for local dev (e.g., `http://localhost:4000`) |
+| `REACT_APP_AUTH0_AUDIENCE_PRODUCTION` | Auth0 audience for production (e.g., `http://localhost:4001`) |
+| `REACT_APP_PUBLIC_URL` | Public URL of the deployed app |
+| `PORT` | Dev server port (default: `5100`) |
 
-## Authors ✨
+The app automatically selects between development and production Auth0 credentials based on whether it is running on localhost.
 
-Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Available Scripts
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center">
-        <a href="https://github.com/DTPF">
-          <img src="https://avatars.githubusercontent.com/u/60478224" width="100px" alt="David T. Pizarro Frick"/>
-          <br />
-          <sub>
-          <b>David T. Pizarro Frick</b>
-          </sub>
-        </a>
-        <br />
-        <a href="#tools-dtpf" title="code-tools-maintenance-design">💻🔧🚧🎨</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/joejoyjoy">
-          <img src="https://avatars.githubusercontent.com/u/73751755" width="100px" alt="Joe Alt"/>
-          <br />
-          <sub>
-          <b>Joe Alt</b>
-          </sub>
-        </a>
-        <br />
-        <a href="#tools-joealt" title="code-tools-maintenance-design">💻🔧🚧🎨</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/IuliiaNova">
-          <img src="https://avatars.githubusercontent.com/u/115942758" width="100px" alt="Iuliia Shikhanova"/>
-          <br />
-          <sub>
-          <b>Iuliia Shikhanova</b>
-          </sub>
-        </a>
-        <br />
-        <a href="#code-luliianova" title="code-tools-maintenance-design">💻🔧🚧🎨</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Lucydct22">
-          <img src="https://avatars.githubusercontent.com/u/119544531" width="100px" alt="lucia del cacho"/>
-          <br />
-          <sub>
-          <b>lucia del cacho</b>
-          </sub>
-        </a>
-        <br />
-        <a href="#code-lucydct22" title="code-tools-maintenance-design">💻🔧🚧🎨</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Javier-jpt">
-          <img src="https://avatars.githubusercontent.com/u/119037601" width="100px" alt="Javier Pascual Tunez"/>
-          <br />
-          <sub>
-          <b>Javier Pascual Tunez</b>
-          </sub>
-        </a>
-        <br />
-        <a href="#code-javier-jpt" title="code-tools-maintenance-design">💻🔧🚧🎨</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server on port 5100 |
+| `npm run build` | Create production build (outputs to `build/`) |
 
-This project follows the [all-contributors](https://allcontributors.org) specification.
-Contributions of any kind are welcome!
+The backend API must be running separately on port 4000 for local development.
 
+## Project Structure
 
-Project structure
-<pre>
-├───node_modules
-├───public
-├───resources
-└───src
-    ├───api
-    │   ├───music
-    │   └───utils
-    ├───assets
-    │   ├───img
-    │   │   ├───albums
-    │   │   ├───gif
-    │   │   ├───gradients
-    │   │   ├───png
-    │   │   └───webp
-    │   └───locale
-    ├───context
-    │   ├───admin
-    │   │   ├───album.context
-    │   │   ├───artist.context
-    │   │   ├───genre.context
-    │   │   ├───playlist.context
-    │   │   ├───track.context
-    │   │   └───user.context
-    │   ├───currentTrack
-    │   ├───currentTracklist
-    │   ├───language
-    │   ├───myLibrary
-    │   ├───theme
-    │   └───user
-    ├───hooks
-    ├───interfaces
-    ├───reducers
-    │   ├───admin
-    │   │   ├───albumAdmin
-    │   │   ├───artistAdmin
-    │   │   ├───genreAdmin
-    │   │   ├───playlistAdmin
-    │   │   ├───trackAdmin
-    │   │   └───userAdmin
-    │   ├───currentTrack
-    │   ├───currentTracklist
-    │   ├───myLibrary
-    │   └───user
-    ├───router
-    ├───sass
-    ├───utils
-    │   └───tracks
-    └───views
-        ├───components
-        │   ├───admin
-        │   │   ├───albumsAdminComponent
-        │   │   ├───artistsAdminComponent
-        │   │   ├───forms
-        │   │   │   ├───albumForm
-        │   │   │   ├───artistForm
-        │   │   │   ├───genreForm
-        │   │   │   ├───playlistForm
-        │   │   │   └───trackForm
-        │   │   ├───genresAdminComponent
-        │   │   ├───homeAdminComponent
-        │   │   ├───playlistsAdminComponent
-        │   │   ├───tracksAdminComponent
-        │   │   └───usersAdminComponent
-        │   ├───basic
-        │   │   ├───albumBComponent
-        │   │   ├───albumsBComponent
-        │   │   ├───artistBComponent
-        │   │   ├───artistsBComponent
-        │   │   ├───desktop
-        │   │   │   ├───playerBComponentDesktop
-        │   │   │   │   └───progressBar
-        │   │   │   ├───sidebarBComponentDesktop
-        │   │   │   ├───topBarBComponentDesktop
-        │   │   │   └───trackListComponentDesktop
-        │   │   ├───errorBComponent
-        │   │   ├───genreBComponent
-        │   │   ├───genresBComponent
-        │   │   ├───libraryBComponent
-        │   │   │   ├───libraryBComponentFavTracks
-        │   │   │   ├───LibraryBComponentHighlights
-        │   │   │   ├───LibraryBComponentUpload
-        │   │   │   │   └───UserSongUploaderModal
-        │   │   │   └───libraryHeader
-        │   │   ├───mobile
-        │   │   │   ├───artistBComponentMobile
-        │   │   │   ├───exploreBComponent
-        │   │   │   ├───playerBComponentMobile
-        │   │   │   ├───playerTrackDetailsComponentMobile
-        │   │   │   ├───popupAddPlaylistBComponent
-        │   │   │   ├───searchBComponentMobile
-        │   │   │   ├───searchResultMobileBComponent
-        │   │   │   ├───sidebarBComponentMobile
-        │   │   │   ├───topBarBComponentMobile
-        │   │   │   └───tracklistComponentMobile
-        │   │   │       └───TrackSidebarMobile
-        │   │   ├───musicPageComponent
-        │   │   ├───playlistBComponent
-        │   │   ├───playlistsBComponent
-        │   │   ├───profileComponent
-        │   │   ├───renders
-        │   │   │   ├───genresRender
-        │   │   │   ├───renderAlbum
-        │   │   │   ├───renderArtist
-        │   │   │   ├───renderPlaylist
-        │   │   │   └───renderTrack
-        │   │   ├───searchResultDesktopBComponent
-        │   │   └───trackListBComponent
-        │   └───SwiperCarousel
-        │       ├───carouselLibraryPage
-        │       │   └───renderLibraryItem
-        │       ├───carouselMusicPage
-        │       │   └───renderMusicItem
-        │       └───carouselTracks
-        ├───layouts
-        │   ├───adminLayout
-        │   ├───basicLayout
-        │   └───libraryLayout
-        ├───pages
-        │   ├───admin
-        │   │   ├───albumsAdminPage
-        │   │   ├───artistsAdminPage
-        │   │   ├───genresAdminPage
-        │   │   ├───homeAdminPage
-        │   │   ├───playlistsAdminPage
-        │   │   ├───tracksAdminPage
-        │   │   └───usersAdminPage
-        │   ├───apiTestPage
-        │   ├───basic
-        │   │   ├───albumPage
-        │   │   ├───albumsPage
-        │   │   ├───artistPage
-        │   │   ├───artistsPage
-        │   │   ├───explorePage
-        │   │   ├───genrePage
-        │   │   ├───genresPage
-        │   │   ├───libraryPages
-        │   │   │   ├───favoritePage
-        │   │   │   ├───highlightPage
-        │   │   │   └───uploadPage
-        │   │   ├───musicPage
-        │   │   ├───playlistPage
-        │   │   ├───playlistsPage
-        │   │   ├───profilePage
-        │   │   └───searchPage
-        │   └───errors
-        ├───UI
-        │   ├───commingSoon
-        │   ├───copyUrl
-        │   ├───language
-        │   ├───ModalAntdPlaylistCreate
-        │   │   └───ModalAntdPlaylistCreateMobile
-        │   ├───spinner
-        │   ├───swiperSettings
-        │   │   ├───swiperDesktop
-        │   │   └───swiperMobile
-        │   └───theme
-        └───utils
-            └───HelmetSEO
-</pre>
+```
+src/
+  api/                     # API layer (plain fetch, no axios)
+    music/                 # Music resource APIs (tracks, albums, artists, playlists, genres)
+    utils/                 # API config, shared request helpers
+  assets/
+    img/                   # Images (albums, gradients, PNGs, WebPs, GIFs)
+    locale/                # i18n translation files (en, es)
+  context/                 # React Context providers
+    admin/                 # Admin-only contexts (album, artist, genre, playlist, statistic, track, user)
+    currentTrack/          # Currently playing track state
+    currentTracklist/      # Current tracklist/queue state
+    language/              # Language preference
+    myLibrary/             # User library state
+    theme/                 # Light/dark theme
+    user/                  # User profile and auth state
+  hooks/                   # Custom hooks (useWindowSizeReport)
+  interfaces/              # TypeScript interfaces (music, user, global)
+  reducers/                # Reducer logic per domain
+    admin/                 # Admin reducers (album, artist, genre, playlist, statistic, track, user)
+    currentTrack/          # Track playback reducer
+    currentTracklist/      # Tracklist queue reducer
+    myLibrary/             # Library reducer
+    user/                  # User reducer
+  router/                  # React Router config and middleware
+  sass/                    # Global styles (_variables, _mixins, _animation)
+  utils/                   # Utilities (i18n, isLocalhost, componentsConstants, track helpers)
+  views/
+    components/
+      admin/               # Admin CRUD components and forms
+      basic/
+        desktop/           # Desktop-only components (player, sidebar, top bar, track list)
+        mobile/            # Mobile-only components (player, sidebar, top bar, search, explore)
+        renders/           # Reusable render components (track, album, artist, playlist, genres)
+        ...                # Shared basic components
+      SwiperCarousel/      # Carousel components (music page, library, tracks)
+    layouts/               # Layout wrappers (basic, admin, library)
+    pages/
+      admin/               # Admin pages (home, users, tracks, playlists, albums, artists, genres)
+      basic/               # User pages (music, album, artist, playlist, genre, search, library, profile)
+      errors/              # Error page
+    UI/                    # Reusable UI components (spinner, theme, language, modals, swiper settings)
+    utils/                 # View utilities (HelmetSEO, joinArtistsName)
+public/                    # CRA public assets (favicon, manifest, index.html)
+```
 
-## Google analitics
-Also this project has analitics implemented 
-![Google analitics](/public/analit.png)
+## Application Routes
 
-## License <!-- omit in toc -->
+### Public Routes
 
-This project is licensed under the MIT License
+| Path | Page |
+|---|---|
+| `/` | Music home page |
+| `/albums` | All albums |
+| `/albums/:albumId` | Album detail |
+| `/artists` | All artists |
+| `/artists/:artistId` | Artist detail |
+| `/playlists` | All playlists |
+| `/playlists/:playlistId` | Playlist detail |
+| `/genres` | All genres |
+| `/genres/:genreId` | Genre detail |
+| `/search` | Search page |
+| `/explore` | Explore page (mobile) |
+
+### Protected Routes (requires authentication)
+
+| Path | Page |
+|---|---|
+| `/library` | Library highlights |
+| `/library/favorites` | Favorite tracks |
+| `/library/playlists` | User playlists |
+| `/library/uploads` | User uploaded tracks |
+| `/settings` | Profile settings |
+| `/offers` | Login required page |
+
+### Admin Routes (requires admin role)
+
+| Path | Page |
+|---|---|
+| `/admin/home` | Admin dashboard |
+| `/admin/users` | User management |
+| `/admin/tracks` | Track management |
+| `/admin/track-form/:trackId?` | Track create/edit form |
+| `/admin/albums` | Album management |
+| `/admin/album-form/:albumId?` | Album create/edit form |
+| `/admin/artists` | Artist management |
+| `/admin/artist-form/:artistId?` | Artist create/edit form |
+| `/admin/genres` | Genre management |
+| `/admin/genre-form/:genreId?` | Genre create/edit form |
+| `/admin/playlists` | Playlist management |
+| `/admin/playlist-form/:playlistId?` | Playlist create/edit form |
+
+## Responsive Design
+
+The app uses a breakpoint of **815px** to switch between desktop and mobile layouts. Components under `desktop/` and `mobile/` directories render entirely separate component trees based on window width (detected via `useWindowSizeReport()` hook).
+
+## Theming
+
+Supports light and dark themes via `html[data-theme='light|dark']` attribute with CSS custom properties defined in `src/sass/_variables.scss`. Primary accent color: `#ef5466`.
+
+## Authors
+
+- [David T. Pizarro](https://github.com/DTPF) - Fullstack Developer, Scrum Master
+- [Joe Joy Alt](https://github.com/joejoyjoy) - Fullstack Developer
+- [Iuliia Shikhanova](https://github.com/IuliiaNova) - Fullstack Developer
+- [Javier Pascual](https://github.com/Javier-jpt) - Fullstack Developer
+- [Lucia del Cacho](https://github.com/Lucydct22) - Fullstack Developer
+
+## License
+
+MIT
