@@ -12,6 +12,7 @@ Deployed at: https://audity.dtpf.es/
 
 - `npm run dev` -- Start development server (port 5100, uses react-scripts/CRA)
 - `npm run build` -- Production build (outputs to `build/`)
+- `npm run format` -- Prettier
 
 No test runner or linter is configured.
 

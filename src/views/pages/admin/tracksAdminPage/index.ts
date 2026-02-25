@@ -1,1 +1,1 @@
-export { default } from './TracksAdminPage'
+export { default } from './TracksAdminPage';

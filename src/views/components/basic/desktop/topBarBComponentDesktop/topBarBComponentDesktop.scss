@@ -38,7 +38,7 @@
     color: var(--color-primary);
 
     &:focus {
-      outline: none
+      outline: none;
     }
 
     &::placeholder {
@@ -49,7 +49,7 @@
     }
   }
 
-  &__result{
+  &__result {
     position: absolute;
     top: 100%;
     left: 0;
@@ -67,14 +67,13 @@
     font-size: 15px;
   }
 
-  &__btn{
+  &__btn {
     background-color: none;
     background: none;
     margin-left: 55%;
     border: 1px solid $color-main;
     border-radius: 100%;
     color: $color-main;
-
   }
 }
 
@@ -103,7 +102,7 @@
         content: '';
         display: block;
         width: 100%;
-        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
         background-image: url('../../../../../assets/img/webp/profile-placeholder-160x160.webp');
         background-position: center;
         background-size: cover;

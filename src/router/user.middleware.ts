@@ -1,48 +1,45 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import UserContext from "context/user/UserContext";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+import UserContext from 'context/user/UserContext';
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const ProtectedUserSettings = ({ children }: any) => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
-  const { dbUser } = useContext(UserContext)
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { dbUser } = useContext(UserContext);
 
   useEffect(() => {
     if (!isAuthenticated) {
-      loginWithRedirect()
+      loginWithRedirect();
     }
   }, [dbUser]);
 
-    return children;
-
+  return children;
 };
 
 export const ProtectedUser = ({ children }: any) => {
-  const { isLoading, isAuthenticated } = useAuth0()
-  const { dbUser } = useContext(UserContext)
-  const navigate = useNavigate()
+  const { isLoading, isAuthenticated } = useAuth0();
+  const { dbUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      navigate('/offers')
+      navigate('/offers');
     }
   }, [dbUser]);
 
   return children;
-
 };
 
 export const ProtectedLoginRequired = ({ children }: any) => {
-  const { isAuthenticated } = useAuth0()
-  const { dbUser } = useContext(UserContext)
-  const navigate = useNavigate()
+  const { isAuthenticated } = useAuth0();
+  const { dbUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/library')
+      navigate('/library');
     }
   }, [dbUser]);
 
   return children;
-
 };

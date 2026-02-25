@@ -9,7 +9,7 @@ export interface Playlist {
   updatedAt: Date | number;
 }
 
-export interface Track {  
+export interface Track {
   _id: string;
   name: string;
   artist: string;
@@ -26,7 +26,7 @@ export interface Albums {
   _id: string;
   name: string;
   genres: string[];
-  tracks: [string]
+  tracks: [string];
   imageUrl: string;
   artist: string;
   createdAt: Date | number;

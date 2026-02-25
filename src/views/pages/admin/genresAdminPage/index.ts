@@ -1,1 +1,1 @@
-export { default } from './GenresAdminPage'
+export { default } from './GenresAdminPage';

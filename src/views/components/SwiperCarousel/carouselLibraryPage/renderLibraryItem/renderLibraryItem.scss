@@ -1,6 +1,5 @@
-@import "../../../../../sass/variables";
-@import "../../../../../sass/mixins";
-
+@import '../../../../../sass/variables';
+@import '../../../../../sass/mixins';
 
 .render-carousel-library-item {
   display: flex;
@@ -26,14 +25,14 @@
       line-height: 0;
       text-indent: -999em;
       width: 100%;
-      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
       border-radius: 4px;
 
       &::after {
         content: '';
         display: block;
         width: 100%;
-        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
         background-image: url('../../../../../assets/img/webp/disc250.webp');
         background-position: center;
         background-size: cover;
@@ -79,7 +78,6 @@
     color: var(--color-primary);
     text-decoration: none;
   }
-
 }
 
 .render-carousel-library-add-one-artist {
@@ -96,7 +94,7 @@
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     width: 100%;
-    background-color: var(--background-on-hover)
+    background-color: var(--background-on-hover);
   }
 
   &__details {

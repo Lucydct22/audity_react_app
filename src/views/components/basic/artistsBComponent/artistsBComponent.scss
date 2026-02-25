@@ -1,4 +1,4 @@
-@import "../../../../sass/";
+@import '../../../../sass/';
 
 .artists-page-content {
   margin: 0 auto;
@@ -14,7 +14,7 @@
   h1 {
     text-transform: capitalize;
     font-size: 24px;
-    font-family: "Anek Gujarati", sans-serif;
+    font-family: 'Anek Gujarati', sans-serif;
     margin: 15px 0;
   }
 
@@ -23,7 +23,6 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     @include fadeIn();
-
 
     @media (max-width: 1300px) {
       grid-template-columns: repeat(3, 1fr);

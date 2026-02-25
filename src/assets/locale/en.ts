@@ -20,7 +20,7 @@ const englishTranslation = {
   sidebar_account: 'Account',
 
   /*~~~~~~~~~ MUSIC ~~~~~~~~~*/
-  musicpage_albumtitle: 'Albums you\'ll love',
+  musicpage_albumtitle: "Albums you'll love",
   musicpage_albumtitle2: 'New release for you',
   musicpage_albumtracks: 'Tracks',
   musicpage_dailytitle: 'Your dailylist',
@@ -49,8 +49,8 @@ const englishTranslation = {
   profile_select_country_three: 'United States',
   profile_select_language_one: 'Spanish',
   profile_select_language_two: 'English',
-  profile_name: "Your name",
-  profile_lastname: "Your lastname",
+  profile_name: 'Your name',
+  profile_lastname: 'Your lastname',
   profile_placeholder_name: 'Put your name please',
   profile_placeholder_lastname: 'Put your lastname please',
   profile_placeholder_nickname: 'Put your nickname please',
@@ -117,8 +117,8 @@ const englishTranslation = {
 
   /*~~~~~~~~~~~~~ PLAYER COMPONENT ~~~~~~~~~~~~~*/
   player_component_popover_add_playlist: 'New playlist',
-  player_component_popover_playlist: 'Debes iniciar sesión para agregar una canción a tu lista de reproducción',
-
+  player_component_popover_playlist:
+    'Debes iniciar sesión para agregar una canción a tu lista de reproducción',
 
   /*~~~~~~~~~~~~~ ERROR PAGE ~~~~~~~~~~~~~*/
   error_message: 'We are sorry for the inconvenience, we keep working on it ...',
@@ -156,6 +156,6 @@ const englishTranslation = {
 
   audity_offers_footer_p1: 'CREATE AUDITY ACCOUNT',
   audity_offers_footer_p2: 'No commitment',
-}
+};
 
 export default englishTranslation;

@@ -1,9 +1,9 @@
-import "./renderTrack.scss";
-import { MdPause, MdPlayArrow } from "react-icons/md";
-import { joinArtistsName } from "views/utils/joinArtistsName";
-import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
-import { useContext } from "react";
-import { useTranslation } from "react-i18next";
+import './renderTrack.scss';
+import { MdPause, MdPlayArrow } from 'react-icons/md';
+import { joinArtistsName } from 'views/utils/joinArtistsName';
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function RenderTrack({ track }: any) {
   const { trackData, selectCurrentTrack, playCurrentTrack, pauseCurrentTrack } =
@@ -16,7 +16,7 @@ export default function RenderTrack({ track }: any) {
     if (trackData.url !== track.audioUrl) {
       selectCurrentTrack(track);
     } else {
-      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack()
+      trackData.isPlaying ? pauseCurrentTrack() : playCurrentTrack();
     }
   };
 
@@ -28,9 +28,11 @@ export default function RenderTrack({ track }: any) {
         </div>
         <div className="render-track__thumbnail--btn">
           <button>
-            {trackData.url === track.audioUrl && trackData.isPlaying ?
-              <MdPause size={20} /> : <MdPlayArrow size={20} />
-            }
+            {trackData.url === track.audioUrl && trackData.isPlaying ? (
+              <MdPause size={20} />
+            ) : (
+              <MdPlayArrow size={20} />
+            )}
           </button>
         </div>
       </div>

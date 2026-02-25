@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import initialTracklistState from "./initialTracklistState";
+import { createContext } from 'react';
+import initialTracklistState from './initialTracklistState';
 
 const CurrentTracklistContext = createContext(initialTracklistState);
 

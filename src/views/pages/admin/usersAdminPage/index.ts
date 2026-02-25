@@ -1,1 +1,1 @@
-export { default } from './UsersAdminPage'
+export { default } from './UsersAdminPage';

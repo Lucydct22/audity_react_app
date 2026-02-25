@@ -1,24 +1,24 @@
-import { useContext } from "react";
-import { ThemeContext } from "context/theme/ThemeContext";
-import "./theme.scss";
+import { useContext } from 'react';
+import { ThemeContext } from 'context/theme/ThemeContext';
+import './theme.scss';
 
 const Theme = () => {
-  const { theme, setTheme } = useContext(ThemeContext)
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  if (!theme) localStorage.setItem("theme", "light");
-  theme && document.documentElement.setAttribute("data-theme", theme);
+  if (!theme) localStorage.setItem('theme', 'light');
+  theme && document.documentElement.setAttribute('data-theme', theme);
 
   const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      localStorage.setItem("theme", "dark");
-      document.documentElement.setAttribute("data-theme", "dark");
-      setTheme('dark')
+      localStorage.setItem('theme', 'dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+      setTheme('dark');
     } else {
-      localStorage.setItem("theme", "light");
-      document.documentElement.setAttribute("data-theme", "light");
-      setTheme('light')
+      localStorage.setItem('theme', 'light');
+      document.documentElement.setAttribute('data-theme', 'light');
+      setTheme('light');
     }
-  }
+  };
 
   return (
     <div className="layout__theme-switch">
@@ -26,7 +26,7 @@ const Theme = () => {
         type="checkbox"
         id="theme-switcher"
         name="theme-switcher"
-        defaultChecked={theme === "dark" ? true : false}
+        defaultChecked={theme === 'dark' ? true : false}
         onChange={handleCheckbox}
       />
       <label htmlFor="theme-switcher" aria-hidden="true">
@@ -34,6 +34,6 @@ const Theme = () => {
       </label>
     </div>
   );
-}
+};
 
 export default Theme;

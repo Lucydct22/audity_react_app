@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import initialArtistState from "./initialArtistState";
-const ArtistAdminContext = createContext(initialArtistState)
+import { createContext } from 'react';
+import initialArtistState from './initialArtistState';
+const ArtistAdminContext = createContext(initialArtistState);
 
-export default ArtistAdminContext
+export default ArtistAdminContext;

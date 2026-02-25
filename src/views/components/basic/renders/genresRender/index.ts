@@ -1,1 +1,1 @@
-export { default } from './RenderGenres'
+export { default } from './RenderGenres';

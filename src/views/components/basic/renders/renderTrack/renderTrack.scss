@@ -1,6 +1,5 @@
-@import "../../../../../sass/variables";
-@import "../../../../../sass/mixins";
-
+@import '../../../../../sass/variables';
+@import '../../../../../sass/mixins';
 
 .render-track {
   display: flex;
@@ -8,12 +7,11 @@
   height: 70px;
   background-color: var(--background-input);
   text-decoration: none;
-  box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+  box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
   margin: 0px;
   border-radius: 5px;
 
   &:hover {
-
     .render-track__thumbnail--btn {
       display: flex;
     }
@@ -38,10 +36,9 @@
 
     &--picture {
       img {
-
         filter: brightness(90%);
         width: 70px;
-        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
         border-radius: 4px;
         line-height: 0;
         text-indent: -999em;
@@ -51,7 +48,7 @@
           content: '';
           display: block;
           width: 100%;
-          box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+          box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
           background-image: url('../../../../../assets/img/webp/disc250.webp');
           background-position: center;
           background-size: cover;

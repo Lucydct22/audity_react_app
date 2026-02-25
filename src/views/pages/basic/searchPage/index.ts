@@ -1,1 +1,1 @@
-export { default } from './searchPage'
+export { default } from './searchPage';

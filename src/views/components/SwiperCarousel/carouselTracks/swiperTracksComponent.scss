@@ -1,8 +1,6 @@
 @import '../../../../sass/';
 
-
 .swiper-tracks-component {
-
   &__header {
     display: flex;
     justify-content: space-between;
@@ -41,11 +39,11 @@
 
     .swiper-wrapper {
       @media (max-width: $media-breakpoint-desktop-mobile) {
-        .swiper-slide:nth-child(-n+3) {
+        .swiper-slide:nth-child(-n + 3) {
           margin-left: 18px !important;
         }
 
-        .swiper-slide:nth-last-child(-n+2) {
+        .swiper-slide:nth-last-child(-n + 2) {
           padding-right: 36px !important;
         }
       }

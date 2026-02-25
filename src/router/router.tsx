@@ -1,7 +1,7 @@
-import { Suspense, lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
-import { ProtectedAdminRoute } from "./router.middleware";
-import { ProtectedUser, ProtectedUserSettings, ProtectedLoginRequired } from "./user.middleware";
+import { Suspense, lazy } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { ProtectedAdminRoute } from './router.middleware';
+import { ProtectedUser, ProtectedUserSettings, ProtectedLoginRequired } from './user.middleware';
 
 // LAYOUTS
 const BasicLayout = lazy(() => import('views/layouts/basicLayout'));
@@ -10,15 +10,15 @@ const LibraryLayout = lazy(() => import('views/layouts/libraryLayout'));
 
 // USER PAGES
 const MusicPage = lazy(() => import('views/pages/basic/musicPage'));
-const ProfilePage = lazy(() => import('views/pages/basic/profilePage'))
+const ProfilePage = lazy(() => import('views/pages/basic/profilePage'));
 const AlbumsPage = lazy(() => import('views/pages/basic/albumsPage'));
 const AlbumPage = lazy(() => import('views/pages/basic/albumPage'));
 const ArtistsPage = lazy(() => import('views/pages/basic/artistsPage'));
 const ArtistPage = lazy(() => import('views/pages/basic/artistPage'));
 const PlaylistsPage = lazy(() => import('views/pages/basic/playlistsPage'));
 const PlaylistPage = lazy(() => import('views/pages/basic/playlistPage'));
-const SearchPage = lazy(() => import('views/pages/basic/searchPage'))
-const ExplorePage = lazy(() => import('views/pages/basic/explorePage'))
+const SearchPage = lazy(() => import('views/pages/basic/searchPage'));
+const ExplorePage = lazy(() => import('views/pages/basic/explorePage'));
 const GenresPage = lazy(() => import('views/pages/basic/genresPage'));
 const GenrePage = lazy(() => import('views/pages/basic/genrePage'));
 const LoginRequired = lazy(() => import('views/pages/basic/loginRequired'));
@@ -39,284 +39,410 @@ const TrackForm = lazy(() => import('views/components/admin/forms/trackForm'));
 const PlaylistForm = lazy(() => import('views/components/admin/forms/playlistForm'));
 
 // LIBRARY PAGES
-const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage'))
-const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage'))
-const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage'))
-const LibraryPlaylists = lazy(() => import('views/pages/basic/libraryPages/playlistsPage'))
+const LibraryHighlights = lazy(() => import('views/pages/basic/libraryPages/highlightPage'));
+const LibraryFavorites = lazy(() => import('views/pages/basic/libraryPages/favoritePage'));
+const LibraryUploads = lazy(() => import('views/pages/basic/libraryPages/uploadPage'));
+const LibraryPlaylists = lazy(() => import('views/pages/basic/libraryPages/playlistsPage'));
 
 // MESSAGES PAGES
 const ErrorPage = lazy(() => import('views/pages/errors'));
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Suspense fallback={<></>}><BasicLayout /></Suspense>,
+    path: '/',
+    element: (
+      <Suspense fallback={<></>}>
+        <BasicLayout />
+      </Suspense>
+    ),
     children: [
       {
-        path: "/",
-        element: <Suspense fallback={<></>}><MusicPage /></Suspense>,
+        path: '/',
+        element: (
+          <Suspense fallback={<></>}>
+            <MusicPage />
+          </Suspense>
+        ),
       },
       {
-        path: "albums",
-        element: <Suspense fallback={<></>}><AlbumsPage /></Suspense>,
+        path: 'albums',
+        element: (
+          <Suspense fallback={<></>}>
+            <AlbumsPage />
+          </Suspense>
+        ),
         children: [
           {
-            path: ":albumId",
-            element: <Suspense fallback={<></>}><AlbumPage /></Suspense>,
+            path: ':albumId',
+            element: (
+              <Suspense fallback={<></>}>
+                <AlbumPage />
+              </Suspense>
+            ),
           },
-        ]
+        ],
       },
       {
-        path: "artists",
-        element: <Suspense fallback={<></>}><ArtistsPage /></Suspense>,
+        path: 'artists',
+        element: (
+          <Suspense fallback={<></>}>
+            <ArtistsPage />
+          </Suspense>
+        ),
         children: [
           {
-            path: ":artistId",
-            element: <Suspense fallback={<></>}><ArtistPage /></Suspense>,
+            path: ':artistId',
+            element: (
+              <Suspense fallback={<></>}>
+                <ArtistPage />
+              </Suspense>
+            ),
           },
-        ]
+        ],
       },
       {
-        path: "playlists",
-        element: <Suspense fallback={<></>}><PlaylistsPage /></Suspense>,
+        path: 'playlists',
+        element: (
+          <Suspense fallback={<></>}>
+            <PlaylistsPage />
+          </Suspense>
+        ),
         children: [
           {
-            path: ":playlistId",
-            element: <Suspense fallback={<></>}><PlaylistPage /></Suspense>,
+            path: ':playlistId',
+            element: (
+              <Suspense fallback={<></>}>
+                <PlaylistPage />
+              </Suspense>
+            ),
           },
-        ]
+        ],
       },
       {
-        path: "genres",
-        element: <Suspense fallback={<></>}><GenresPage /></Suspense>,
+        path: 'genres',
+        element: (
+          <Suspense fallback={<></>}>
+            <GenresPage />
+          </Suspense>
+        ),
         children: [
           {
-            path: ":genreId",
-            element: <Suspense fallback={<></>}><GenrePage /></Suspense>,
+            path: ':genreId',
+            element: (
+              <Suspense fallback={<></>}>
+                <GenrePage />
+              </Suspense>
+            ),
           },
-        ]
+        ],
       },
       {
-        path: "library",
-        element: <ProtectedUser><Suspense fallback={<></>}><LibraryLayout /></Suspense></ProtectedUser>,
+        path: 'library',
+        element: (
+          <ProtectedUser>
+            <Suspense fallback={<></>}>
+              <LibraryLayout />
+            </Suspense>
+          </ProtectedUser>
+        ),
         children: [
           {
             index: true,
-            element: <Suspense fallback={<></>}><LibraryHighlights /></Suspense>
+            element: (
+              <Suspense fallback={<></>}>
+                <LibraryHighlights />
+              </Suspense>
+            ),
           },
           {
-            path: "favorites",
-            element: <Suspense fallback={<></>}><LibraryFavorites /></Suspense>,
+            path: 'favorites',
+            element: (
+              <Suspense fallback={<></>}>
+                <LibraryFavorites />
+              </Suspense>
+            ),
           },
           {
-            path: "playlists",
-            element: <Suspense fallback={<></>}><LibraryPlaylists /></Suspense>,
+            path: 'playlists',
+            element: (
+              <Suspense fallback={<></>}>
+                <LibraryPlaylists />
+              </Suspense>
+            ),
           },
           {
-            path: "uploads",
-            element: <Suspense fallback={<></>}><LibraryUploads /></Suspense>,
+            path: 'uploads',
+            element: (
+              <Suspense fallback={<></>}>
+                <LibraryUploads />
+              </Suspense>
+            ),
           },
           {
-            path: "*",
-            element: <Suspense fallback={<></>}><LibraryHighlights /></Suspense>
-          }
-        ]
+            path: '*',
+            element: (
+              <Suspense fallback={<></>}>
+                <LibraryHighlights />
+              </Suspense>
+            ),
+          },
+        ],
       },
       {
-        path: "search",
-        element:
-          <Suspense fallback={<></>}><SearchPage /></Suspense>
+        path: 'search',
+        element: (
+          <Suspense fallback={<></>}>
+            <SearchPage />
+          </Suspense>
+        ),
       },
       {
-        path: "explore",
-        element:
-          <Suspense fallback={<></>}><ExplorePage /></Suspense>
+        path: 'explore',
+        element: (
+          <Suspense fallback={<></>}>
+            <ExplorePage />
+          </Suspense>
+        ),
       },
       {
-        path: "settings",
+        path: 'settings',
         element: (
           <Suspense fallback={<></>}>
             <ProtectedUserSettings>
               <ProfilePage />
             </ProtectedUserSettings>
           </Suspense>
-        )
+        ),
       },
       {
-        path: "offers",
-        element:
-          <ProtectedLoginRequired><Suspense fallback={<></>}><LoginRequired /></Suspense></ProtectedLoginRequired>
+        path: 'offers',
+        element: (
+          <ProtectedLoginRequired>
+            <Suspense fallback={<></>}>
+              <LoginRequired />
+            </Suspense>
+          </ProtectedLoginRequired>
+        ),
       },
       {
-        path: "*",
-        element: <Suspense fallback={<></>}><ErrorPage /></Suspense>
-      }
+        path: '*',
+        element: (
+          <Suspense fallback={<></>}>
+            <ErrorPage />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
-    path: "admin",
+    path: 'admin',
     element: (
       <Suspense fallback={<></>}>
-        <ProtectedAdminRoute><AdminLayout /></ProtectedAdminRoute>
+        <ProtectedAdminRoute>
+          <AdminLayout />
+        </ProtectedAdminRoute>
       </Suspense>
     ),
     children: [
       {
-        path: "home",
+        path: 'home',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><HomeAdminPage /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <HomeAdminPage />
+            </ProtectedAdminRoute>
           </Suspense>
-        )
+        ),
       },
       {
-        path: "users",
+        path: 'users',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><UsersAdminPage /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <UsersAdminPage />
+            </ProtectedAdminRoute>
           </Suspense>
-        )
+        ),
       },
       {
-        path: "tracks",
+        path: 'tracks',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><TracksAdminPage /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <TracksAdminPage />
+            </ProtectedAdminRoute>
           </Suspense>
-        )
+        ),
       },
       {
-        path: "track-form",
+        path: 'track-form',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><TrackForm /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <TrackForm />
+            </ProtectedAdminRoute>
           </Suspense>
         ),
         children: [
           {
-            path: ":trackId",
-            element: <Suspense fallback={<></>}><TrackForm /></Suspense>,
-          },
-        ]
-      },
-      {
-        path: "playlists",
-        element: (
-          <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><PlaylistsAdminPage /></ProtectedAdminRoute>
-          </Suspense>
-        )
-      },
-      {
-        path: "playlist-form",
-        element: (
-          <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><PlaylistForm /></ProtectedAdminRoute>
-          </Suspense>
-        ),
-        children: [
-          {
-            path: ":playlistId",
-            element: <Suspense fallback={<></>}><PlaylistForm /></Suspense>,
-          },
-        ]
-      },
-      {
-        path: "albums",
-        element: (
-          <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><AlbumsAdminPage /></ProtectedAdminRoute>
-          </Suspense>
-        )
-      },
-      {
-        path: "album-form",
-        element: (
-          <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><AlbumForm /></ProtectedAdminRoute>
-          </Suspense>
-        ),
-        children: [
-          {
-            path: ":albumId",
+            path: ':trackId',
             element: (
               <Suspense fallback={<></>}>
-                <ProtectedAdminRoute><AlbumForm /></ProtectedAdminRoute>
+                <TrackForm />
               </Suspense>
             ),
           },
-        ]
+        ],
       },
       {
-        path: "artists",
+        path: 'playlists',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><ArtistsAdminPage /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <PlaylistsAdminPage />
+            </ProtectedAdminRoute>
           </Suspense>
-        )
+        ),
       },
       {
-        path: "artist-form",
+        path: 'playlist-form',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><ArtistForm /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <PlaylistForm />
+            </ProtectedAdminRoute>
           </Suspense>
         ),
         children: [
           {
-            path: ":artistId",
+            path: ':playlistId',
             element: (
               <Suspense fallback={<></>}>
-                <ProtectedAdminRoute><ArtistForm /></ProtectedAdminRoute>
+                <PlaylistForm />
               </Suspense>
             ),
           },
-        ]
+        ],
       },
       {
-        path: "genres",
+        path: 'albums',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><GenresAdminPage /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <AlbumsAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: 'album-form',
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <AlbumForm />
+            </ProtectedAdminRoute>
           </Suspense>
         ),
         children: [
           {
-            path: "form",
+            path: ':albumId',
             element: (
               <Suspense fallback={<></>}>
-                <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+                <ProtectedAdminRoute>
+                  <AlbumForm />
+                </ProtectedAdminRoute>
               </Suspense>
             ),
           },
-        ]
+        ],
       },
       {
-        path: "genre-form",
+        path: 'artists',
         element: (
           <Suspense fallback={<></>}>
-            <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+            <ProtectedAdminRoute>
+              <ArtistsAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: 'artist-form',
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <ArtistForm />
+            </ProtectedAdminRoute>
           </Suspense>
         ),
         children: [
           {
-            path: ":genreId",
+            path: ':artistId',
             element: (
               <Suspense fallback={<></>}>
-                <ProtectedAdminRoute><GenreForm /></ProtectedAdminRoute>
+                <ProtectedAdminRoute>
+                  <ArtistForm />
+                </ProtectedAdminRoute>
               </Suspense>
             ),
           },
-        ]
+        ],
+      },
+      {
+        path: 'genres',
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <GenresAdminPage />
+            </ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: 'form',
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute>
+                  <GenreForm />
+                </ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ],
+      },
+      {
+        path: 'genre-form',
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedAdminRoute>
+              <GenreForm />
+            </ProtectedAdminRoute>
+          </Suspense>
+        ),
+        children: [
+          {
+            path: ':genreId',
+            element: (
+              <Suspense fallback={<></>}>
+                <ProtectedAdminRoute>
+                  <GenreForm />
+                </ProtectedAdminRoute>
+              </Suspense>
+            ),
+          },
+        ],
       },
 
-
       {
-        path: "*",
-        element: <Suspense fallback={<></>}><ErrorPage /></Suspense>
-      }
+        path: '*',
+        element: (
+          <Suspense fallback={<></>}>
+            <ErrorPage />
+          </Suspense>
+        ),
+      },
     ],
-  }
+  },
 ]);
 
 export default router;

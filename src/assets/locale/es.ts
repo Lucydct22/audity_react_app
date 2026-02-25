@@ -49,15 +49,16 @@ const spanishTranslation = {
   profile_select_country_three: 'Estados Unidos',
   profile_select_language_one: 'Español',
   profile_select_language_two: 'Inglés',
-  profile_name: "Tu nombre",
-  profile_lastname: "Tu apellido",
+  profile_name: 'Tu nombre',
+  profile_lastname: 'Tu apellido',
   profile_placeholder_name: 'Escribe tu nombre, por favor',
   profile_placeholder_lastname: 'Escribe tu apellido, por favor',
   profile_placeholder_nickname: 'Escribe tu nombre de usuario, por favor',
   profile_placeholder_birth_day: 'Escribe tu fecha de nacimiento, por favor',
 
   /*~~~~~~~~~~~~~ MY LIBRARY PAGE ~~~~~~~~~~~~~*/
-  library_header_profile_desc: 'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
+  library_header_profile_desc:
+    'Tus artistas, álbumes y listas de reproducción favoritos, todo en un solo lugar',
   library_header_profile_btn: 'Mi música en modo aleatorio',
   library_header_navbar_highlights: 'Destacados',
   library_highlights_genres: 'Géneros',
@@ -125,7 +126,7 @@ const spanishTranslation = {
 
   /*~~~~~~~~~~~~~ MULTI USAGE ~~~~~~~~~~~~~*/
   back: 'Volver',
-  
+
   /*~~~~~~~~~~~~~ SEARCH RESULT ~~~~~~~~~~~~~*/
   search_result_h2: 'Resultado',
   search_result_type_all: 'Todos',
@@ -135,7 +136,7 @@ const spanishTranslation = {
   search_result_type_playlists: 'Playlists',
   search_result_type_btn_all: 'VER TODO',
   search_result_null: 'Vaya, no hay ninguna coincidencia en este momento',
-  
+
   /*~~~~~~~~~~~~~ AUDITY OFFERS ~~~~~~~~~~~~~*/
   audity_offers_title: 'Experiencia ilimitada con la cuenta de Audity',
 
@@ -153,6 +154,6 @@ const spanishTranslation = {
 
   audity_offers_footer_p1: 'CREAR CUENTA AUDITY',
   audity_offers_footer_p2: 'Sin compromiso',
-}
+};
 
 export default spanishTranslation;

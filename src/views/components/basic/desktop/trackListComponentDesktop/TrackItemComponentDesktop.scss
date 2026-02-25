@@ -1,4 +1,4 @@
-@import "../../../../../sass/variables";
+@import '../../../../../sass/variables';
 
 .track-list {
   display: flex;
@@ -7,11 +7,9 @@
   width: 100%;
 
   &:hover {
-
     .track-list--item {
       border-radius: 5px;
-      background:
-        var(--background-on-hover);
+      background: var(--background-on-hover);
     }
 
     .track-list--item__track--img__btn {
@@ -36,7 +34,7 @@
     img {
       filter: brightness(90%);
       width: 50px;
-      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
       border-radius: 4px;
       line-height: 0;
       text-indent: -999em;
@@ -46,7 +44,7 @@
         content: '';
         display: block;
         width: 100%;
-        box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+        box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
         background-image: url('../../../../../assets/img/webp/disc250.webp');
         background-position: center;
         background-size: cover;
@@ -132,7 +130,7 @@
 
     &__time {
       display: flex;
-      justify-content: center
+      justify-content: center;
     }
   }
 }

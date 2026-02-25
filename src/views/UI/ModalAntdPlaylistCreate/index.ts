@@ -1,1 +1,1 @@
-export { default } from './ModalAntdPlaylistCreate'
+export { default } from './ModalAntdPlaylistCreate';

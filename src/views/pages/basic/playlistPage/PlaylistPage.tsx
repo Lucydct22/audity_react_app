@@ -13,44 +13,43 @@ export default function PlaylistPage() {
   const { playlistId } = useParams();
   const [playlist, setPlaylist]: any = useState(undefined);
   const [tracksOfPlaylist, setTracksOfPlaylist]: any = useState([]);
-  const {isLoading} = useAuth0()
+  const { isLoading } = useAuth0();
 
   useEffect(() => {
     let isMounted = true;
-    playlistId && getPlaylistByIdApi(playlistId.toString()).then((res: any) => {
-      isMounted && res && setPlaylist(res.playlist);
-    })
-    return () => { isMounted = false }
-  }, [playlistId])
+    playlistId &&
+      getPlaylistByIdApi(playlistId.toString()).then((res: any) => {
+        isMounted && res && setPlaylist(res.playlist);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, [playlistId]);
 
   useEffect(() => {
     let isMounted = true;
     if (playlist) {
       playlist.tracks.map((track: any) => {
         getTrackByIdApi(track._id.toString()).then((res: any) => {
-          setTracksOfPlaylist((tracksOfPlaylist: any) => [
-            ...tracksOfPlaylist,
-            res.track,
-          ]);
-        })
-      })
+          setTracksOfPlaylist((tracksOfPlaylist: any) => [...tracksOfPlaylist, res.track]);
+        });
+      });
     }
-    return () => { isMounted = false }
-  }, [playlist])
+    return () => {
+      isMounted = false;
+    };
+  }, [playlist]);
 
   if (isLoading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   return (
-    <HelmetSEO
-      title={`Artist | ${playlist?.name}`}
-      description='Audity Artist Page'
-    >
-      <div className='playlist-layout'>
+    <HelmetSEO title={`Artist | ${playlist?.name}`} description="Audity Artist Page">
+      <div className="playlist-layout">
         <PlaylistBComponent playlist={playlist} />
         <TrackListBComponent tracksData={tracksOfPlaylist} />
       </div>
     </HelmetSEO>
-  )
+  );
 }

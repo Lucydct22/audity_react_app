@@ -8,7 +8,7 @@ import { GoTriangleUp } from 'react-icons/go';
 import { FiChevronRight } from 'react-icons/fi';
 import Language from 'views/UI/language/Language';
 import './topBarBComponentDesktop.scss';
-import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp'
+import PersonPlaceholder32 from 'assets/img/webp/profile-placeholder-32x32.webp';
 import UserContext from 'context/user/UserContext';
 import { searchContentApi } from 'api/music/music.api';
 import SearchResultDesktopBComponent from '../../searchResultDesktopBComponent/SearchResultDesktopBComponent';
@@ -16,16 +16,16 @@ import SearchResultDesktopBComponent from '../../searchResultDesktopBComponent/S
 const TopBarBComponentDesktop = () => {
   const { t } = useTranslation();
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const { dbUser } = useContext(UserContext)
+  const { dbUser } = useContext(UserContext);
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
   const [popperOpen, setPopperOpen] = useState(false);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
   let popperRef = useRef();
   const searchRef = useRef();
-  const { pathname } = useLocation()
-  const [searchInput, setSearchInput] = useState('')
-  const [content, setContent] = useState('')
+  const { pathname } = useLocation();
+  const [searchInput, setSearchInput] = useState('');
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     const handler = (e) => {
@@ -33,36 +33,38 @@ const TopBarBComponentDesktop = () => {
         setPopperOpen(false);
       }
     };
-    document.addEventListener("mousedown", handler);
+    document.addEventListener('mousedown', handler);
     return () => {
-      document.removeEventListener("mousedown", handler);
-    }
+      document.removeEventListener('mousedown', handler);
+    };
   }, []);
 
   useEffect(() => {
     const handlerClickOut = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setContent('');
-        setSearchInput('')
+        setSearchInput('');
       }
     };
-    document.addEventListener("mousedown", handlerClickOut);
+    document.addEventListener('mousedown', handlerClickOut);
     return () => {
-      document.removeEventListener("mousedown", handlerClickOut);
-    }
+      document.removeEventListener('mousedown', handlerClickOut);
+    };
   }, []);
 
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
     const searchFetch = async () => {
       if (searchInput.length > 1) {
-        const result = await searchContentApi(searchInput)
-        result && isMounted && setContent(result.content)
+        const result = await searchContentApi(searchInput);
+        result && isMounted && setContent(result.content);
       }
-    }
-    searchFetch()
-    return () => { isMounted = false }
-  }, [searchInput])
+    };
+    searchFetch();
+    return () => {
+      isMounted = false;
+    };
+  }, [searchInput]);
 
   useEffect(() => {
     const artistsParam = searchParams.get('artist');
@@ -82,113 +84,127 @@ const TopBarBComponentDesktop = () => {
       setSearchParams(searchParams);
     }
 
-    setQuery('')
-  }, [pathname])
+    setQuery('');
+  }, [pathname]);
 
   const handleSearch = (e) => {
-    setSearchInput(e.target.value)
-  }
+    setSearchInput(e.target.value);
+  };
 
   const handleClearInput = () => {
     setSearchInput('');
-    setContent('')
-  }
-
+    setContent('');
+  };
 
   const handleChange = (event) => {
-    const query = event.target.value
-    setQuery(query)
+    const query = event.target.value;
+    setQuery(query);
 
     if (pathname === '/artists') {
-      setSearchParams({ artist: query })
+      setSearchParams({ artist: query });
     }
     if (pathname === '/albums') {
-      setSearchParams({ albums: query })
+      setSearchParams({ albums: query });
     }
     if (pathname === '/playlists') {
-      setSearchParams({ playlists: query })
+      setSearchParams({ playlists: query });
     }
-  }
+  };
 
   return (
-    <header className='page-topbar'>
-      <div className='page-topbar-search' ref={searchRef}>
-        <CiSearch color='#a2a2ad' size={'1.6rem'} />
+    <header className="page-topbar">
+      <div className="page-topbar-search" ref={searchRef}>
+        <CiSearch color="#a2a2ad" size={'1.6rem'} />
 
         {pathname !== '/artists' && pathname !== '/albums' && pathname !== '/playlists' ? (
           <>
             <input
               type="text"
-              className='page-topbar-search__input'
-              placeholder={t("search_placeholder") || ""}
+              className="page-topbar-search__input"
+              placeholder={t('search_placeholder') || ''}
               onChange={(e) => handleSearch(e)}
               value={searchInput}
             />
             {searchInput.length > 0 && (
-              <button className='page-topbar-search__btn' onClick={handleClearInput}>x</button>
+              <button className="page-topbar-search__btn" onClick={handleClearInput}>
+                x
+              </button>
             )}
-            {content &&
-              <div className='page-topbar-search__result' ><SearchResultDesktopBComponent content={content} />
-              </div>}
+            {content && (
+              <div className="page-topbar-search__result">
+                <SearchResultDesktopBComponent content={content} />
+              </div>
+            )}
           </>
-
         ) : (
           <input
             type="text"
             value={query}
-            className='page-topbar-search__input'
-            placeholder={t("search_placeholder") || ""}
+            className="page-topbar-search__input"
+            placeholder={t('search_placeholder') || ''}
             onChange={handleChange}
           />
         )}
       </div>
 
-      <div className='page-topbar-action' ref={popperRef}>
-        <button className='page-topbar-action__profile' onClick={() => setPopperOpen(!popperOpen)}>
+      <div className="page-topbar-action" ref={popperRef}>
+        <button className="page-topbar-action__profile" onClick={() => setPopperOpen(!popperOpen)}>
           <img src={user?.picture ? user.picture : PersonPlaceholder32} alt="avatar" />
         </button>
         <div className={`page-topbar-action__popper ${popperOpen ? 'popperActive' : 'popperInactive'}`}>
-          <div className='page-topbar-action__popper--wrapper'>
-            <div className='page-topbar-action__popper--wrapper__icon'>
+          <div className="page-topbar-action__popper--wrapper">
+            <div className="page-topbar-action__popper--wrapper__icon">
               <GoTriangleUp />
             </div>
 
             {isAuthenticated ? (
-              <Link to="/settings"><div className='page-topbar-action__popper--wrapper__content cursor-pointer'>
-                <span>Account Settings</span>
-                <FiChevronRight size='1.4rem' />
-              </div>
-              </Link>)
-              : (
-                <div className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+              <Link to="/settings">
+                <div className="page-topbar-action__popper--wrapper__content cursor-pointer">
                   <span>Account Settings</span>
-                  <FiChevronRight size='1.4rem' />
+                  <FiChevronRight size="1.4rem" />
                 </div>
-              )
-            }
+              </Link>
+            ) : (
+              <div
+                className="page-topbar-action__popper--wrapper__content cursor-pointer"
+                onClick={() => loginWithRedirect()}
+              >
+                <span>Account Settings</span>
+                <FiChevronRight size="1.4rem" />
+              </div>
+            )}
 
-            <div className='page-topbar-action__popper--wrapper__content'>
-              <span className='cursor-default'>System theme</span>
+            <div className="page-topbar-action__popper--wrapper__content">
+              <span className="cursor-default">System theme</span>
               <Theme />
             </div>
 
-            <div className='page-topbar-action__popper--wrapper__content'>
-              <span className='cursor-default'>Language</span>
+            <div className="page-topbar-action__popper--wrapper__content">
+              <span className="cursor-default">Language</span>
               <Language />
             </div>
 
             {isAuthenticated ? (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => logout()}>
+              <span
+                className="page-topbar-action__popper--wrapper__content cursor-pointer"
+                onClick={() => logout()}
+              >
                 Log out
               </span>
             ) : (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => loginWithRedirect()}>
+              <span
+                className="page-topbar-action__popper--wrapper__content cursor-pointer"
+                onClick={() => loginWithRedirect()}
+              >
                 Login
               </span>
             )}
 
             {dbUser.role === 'admin' && (
-              <span className='page-topbar-action__popper--wrapper__content cursor-pointer' onClick={() => navigate('/admin/home')}>
+              <span
+                className="page-topbar-action__popper--wrapper__content cursor-pointer"
+                onClick={() => navigate('/admin/home')}
+              >
                 Admin
               </span>
             )}
@@ -196,7 +212,7 @@ const TopBarBComponentDesktop = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
 export default TopBarBComponentDesktop;

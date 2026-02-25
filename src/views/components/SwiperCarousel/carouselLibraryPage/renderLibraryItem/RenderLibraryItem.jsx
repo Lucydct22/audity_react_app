@@ -1,11 +1,11 @@
 import { useContext, useState, useRef } from 'react';
-import { Link, } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import './renderLibraryItem.scss';
-import '../../../../UI/ModalAntdPlaylistCreate/modalAntdPlaylistCreate.scss'
-import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp'
-import { TfiPlus } from "react-icons/tfi";
+import '../../../../UI/ModalAntdPlaylistCreate/modalAntdPlaylistCreate.scss';
+import GrayPerson from 'assets/img/webp/profile-placeholder-160x160.webp';
+import { TfiPlus } from 'react-icons/tfi';
 import { Modal } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
 import { ModalAntdAddArtistsToLibrary } from 'views/UI/ModalAntdAddArtistsToLibrary/ModalAntdAddArtistsToLibrary';
@@ -16,7 +16,7 @@ import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
 import { getArtistApi } from 'api/music/artists';
 
 export default function RenderLibraryItem({ list, type }) {
-  const { postPlaylist, likeDislikeArtist } = useContext(MyLibraryContext)
+  const { postPlaylist, likeDislikeArtist } = useContext(MyLibraryContext);
   const { t } = useTranslation();
   const { _id } = list;
   const [open, setOpen] = useState(false);
@@ -24,8 +24,8 @@ export default function RenderLibraryItem({ list, type }) {
   const artistSelectionRef = useRef([]);
   const [modal, contextHolder] = Modal.useModal();
   const [addArtistsModal, addArtistsContextHolder] = Modal.useModal();
-  const nameRef = useRef("");
-  const descRef = useRef("");
+  const nameRef = useRef('');
+  const descRef = useRef('');
 
   const hideModal = () => {
     setOpen(false);
@@ -36,8 +36,8 @@ export default function RenderLibraryItem({ list, type }) {
   };
 
   function handleClick() {
-    if (nameRef.current.value == "" || descRef.current.value == "") {
-      message.error("Sorry could not create Playlist. Both inputs are required")
+    if (nameRef.current.value == '' || descRef.current.value == '') {
+      message.error('Sorry could not create Playlist. Both inputs are required');
     } else {
       postPlaylist(nameRef.current.value, descRef.current.value);
     }
@@ -49,24 +49,22 @@ export default function RenderLibraryItem({ list, type }) {
       closable: true,
       icon: 0,
       width: 800,
-      content: (
-        <ModalPlaylist nameRef={nameRef} descRef={descRef} />
-      ),
+      content: <ModalPlaylist nameRef={nameRef} descRef={descRef} />,
       okText: 'CREATE',
-      onOk: handleClick
+      onOk: handleClick,
     });
   };
 
   const handleAddArtistsClick = async () => {
     // pedido de los artistas api
-    const { artists } = await getArtistApi()
+    const { artists } = await getArtistApi();
     // los filtro por Id
-    const selectedArtists = artists.filter(artist => artistSelectionRef.current.indexOf(artist._id) > -1)
+    const selectedArtists = artists.filter((artist) => artistSelectionRef.current.indexOf(artist._id) > -1);
     // los agrego 1 x 1 a la db like dislike function (promiseAll)
-    selectedArtists.forEach(artist => {
-      return likeDislikeArtist(artist)
+    selectedArtists.forEach((artist) => {
+      return likeDislikeArtist(artist);
     });
-  }
+  };
 
   const addArtistsModalConfirm = () => {
     addArtistsModal.confirm({
@@ -74,66 +72,74 @@ export default function RenderLibraryItem({ list, type }) {
       closable: true,
       icon: 0,
       width: 600,
-      content: (
-        <ModalAntdAddArtistsToLibrary artistSelectionRef={artistSelectionRef} />
-      ),
+      content: <ModalAntdAddArtistsToLibrary artistSelectionRef={artistSelectionRef} />,
       okText: 'ADD ARTISTS TO LIBRARY',
-      onOk: handleAddArtistsClick
+      onOk: handleAddArtistsClick,
     });
   };
 
-  if (_id === "AddOnePlaylist") {
+  if (_id === 'AddOnePlaylist') {
     return (
       <>
-        <Link to={"#"} className='render-carousel-library-add-one-playlist'>
-          <div className='render-carousel-library-add-one-playlist__background' onClick={confirm}>
-            <TfiPlus size='35px' color='#72727d' />
+        <Link to={'#'} className="render-carousel-library-add-one-playlist">
+          <div className="render-carousel-library-add-one-playlist__background" onClick={confirm}>
+            <TfiPlus size="35px" color="#72727d" />
           </div>
-          <p className='render-carousel-library-add-one-playlist__details'>{t("library_create_playlist_text")}</p>
+          <p className="render-carousel-library-add-one-playlist__details">
+            {t('library_create_playlist_text')}
+          </p>
         </Link>
         <Modal title="Basic Modal" open={open} onOk={hideModal} onCancel={hideModal} />
         {contextHolder}
       </>
-    )
+    );
   }
 
-  if (_id === "AddOneArtist") {
+  if (_id === 'AddOneArtist') {
     return (
       <>
-        <Link to={"#"} className='render-carousel-library-add-one-artist'>
-          <div className='render-carousel-library-add-one-artist__background' onClick={addArtistsModalConfirm}>
-            <TfiPlus size='35px' color='#72727d' />
+        <Link to={'#'} className="render-carousel-library-add-one-artist">
+          <div
+            className="render-carousel-library-add-one-artist__background"
+            onClick={addArtistsModalConfirm}
+          >
+            <TfiPlus size="35px" color="#72727d" />
           </div>
-          <p className='render-carousel-library-add-one-artist__details'>{t("library_create_artist_text")}</p>
+          <p className="render-carousel-library-add-one-artist__details">{t('library_create_artist_text')}</p>
         </Link>
-        <Modal title="Basic Modal" open={openAddArtistsModal} onOk={hideAddArtistsModal} onCancel={hideAddArtistsModal} />
+        <Modal
+          title="Basic Modal"
+          open={openAddArtistsModal}
+          onOk={hideAddArtistsModal}
+          onCancel={hideAddArtistsModal}
+        />
         {addArtistsContextHolder}
       </>
-    )
+    );
   }
 
-  if (type === "playlists") {
-    return <RenderPlaylist playlist={list} />
+  if (type === 'playlists') {
+    return <RenderPlaylist playlist={list} />;
   }
 
-  if (type === "albums") {
-    return <RenderAlbum album={list} />
+  if (type === 'albums') {
+    return <RenderAlbum album={list} />;
   }
 
-  if (type === "artists") {
-    return <RenderArtist artist={list} />
+  if (type === 'artists') {
+    return <RenderArtist artist={list} />;
   }
 
   return (
-    <div className='render-carousel-library-item'>
-      <div className='render-carousel-library-item__thumbnail'>
+    <div className="render-carousel-library-item">
+      <div className="render-carousel-library-item__thumbnail">
         <img
           src={GrayPerson}
           alt="404 Category not found"
-          className='render-carousel-library-item__thumbnail--img' />
+          className="render-carousel-library-item__thumbnail--img"
+        />
       </div>
-      <p className='render-carousel-library-item__description'>404 Category not found</p>
+      <p className="render-carousel-library-item__description">404 Category not found</p>
     </div>
-  )
+  );
 }
-

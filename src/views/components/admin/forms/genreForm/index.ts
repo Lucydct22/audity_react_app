@@ -1,1 +1,1 @@
-export { default } from './GenreForm'
+export { default } from './GenreForm';

@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import initialTrackState from "./initialCurrentTrackState";
+import { createContext } from 'react';
+import initialTrackState from './initialCurrentTrackState';
 
 export const CurrentTrackContext = createContext(initialTrackState);
 

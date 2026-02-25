@@ -1,1 +1,1 @@
-export { default } from './GenresAdminComponent'
+export { default } from './GenresAdminComponent';

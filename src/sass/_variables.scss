@@ -7,8 +7,7 @@ $color-secondary: #a2a2ad;
 $color-main: #ef5466;
 $color-main-hover: #ca2a36;
 
-$color-success: #4AD079;
-
+$color-success: #4ad079;
 
 /* BACKGROUND COLORS */
 $background-primary_light: #fff;
@@ -20,26 +19,24 @@ $background-secondary_dark: #23232d;
 $background-button-gray_light: #d1d1d6;
 $background-button-gray_dark: #52525d;
 
-$background-input_light: #F8F8F9;
+$background-input_light: #f8f8f9;
 $background-input_dark: #23232d;
 
-$background-input-disabled_light: #FAFAFB;
-$background-input-disabled_dark: #1C1C24;
+$background-input-disabled_light: #fafafb;
+$background-input-disabled_dark: #1c1c24;
 
 $background-gradient_light: linear-gradient(90deg, rgba(160, 54, 56, 1) 0%, rgba(209, 87, 86, 1) 100%);
 $background-gradient_dark: linear-gradient(90deg, rgba(34, 34, 34, 1) 0%, rgba(40, 45, 51, 1) 100%);
 
-$background-genre-gradient_light: linear-gradient(to bottom right, #FF6868, #FF68DE);
-$background-genre-gradient_dark: linear-gradient(to bottom right, #403F44, #1E1B32);
-
+$background-genre-gradient_light: linear-gradient(to bottom right, #ff6868, #ff68de);
+$background-genre-gradient_dark: linear-gradient(to bottom right, #403f44, #1e1b32);
 
 /* BUTTON HOVER BACKGROUND COLORS */
 $background-on-hover_light: #eaeaea;
 $background-on-hover_dark: #42424c;
 
-
 /* LIBRARY HEADER PAGES */
-$library-header-background_light: #F8F8F8;
+$library-header-background_light: #f8f8f8;
 $library-header-background_dark: #23232d;
 
 $text-library-header-btn_light: #191919;
@@ -54,7 +51,6 @@ $text-active-library-header-btn_dark: #64a2ff;
 $background-active-library-header-btn_light: #d1e1ff;
 $background-active-library-header-btn_dark: #033464;
 
-
 /* BORDERS */
 $color-border-1px_light: 1px solid #eaeaea;
 $color-border-1px_dark: 1px solid #32323d;
@@ -65,11 +61,9 @@ $color-border-2px_dark: 2px solid #191919;
 $color-border-btn_light: 2px solid #d1d1d6;
 $color-border-btn_dark: 2px solid #52525d;
 
-
 /* Shadows */
 $popper-shadow_light: 0 4px 20px 0 #1919223d;
 $popper-shadow_dark: 0 4px 20px 0 #0000003d;
-
 
 /* MEDIA QUERY */
 // website media query mobile/desktop
@@ -81,7 +75,6 @@ $media-breakpoint-down-sm: 573.98px;
 // Responsive up size
 $media-breakpoint-up-sm: 1175px;
 $media-breakpoint-up-md: 1270px;
-
 
 /* DATA THEME */
 html[data-theme='light'] {

@@ -1,8 +1,8 @@
-import { Swiper } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import { FreeMode } from "swiper";
+import { Swiper } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import { FreeMode } from 'swiper';
 
 export default function SwiperMobile({ children }) {
   return (
@@ -23,5 +23,5 @@ export default function SwiperMobile({ children }) {
     >
       {children}
     </Swiper>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import initialAlbumState from "./initialAlbumState";
-const AlbumAdminContext = createContext(initialAlbumState)
+import { createContext } from 'react';
+import initialAlbumState from './initialAlbumState';
+const AlbumAdminContext = createContext(initialAlbumState);
 
-export default AlbumAdminContext
+export default AlbumAdminContext;

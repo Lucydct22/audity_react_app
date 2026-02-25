@@ -1,1 +1,1 @@
-export { default } from './MusicPage'
+export { default } from './MusicPage';

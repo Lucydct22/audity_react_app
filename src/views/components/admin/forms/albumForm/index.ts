@@ -1,1 +1,1 @@
-export { default } from './AlbumForm'
+export { default } from './AlbumForm';

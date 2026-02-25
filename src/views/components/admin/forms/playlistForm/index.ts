@@ -1,1 +1,1 @@
-export { default } from './PlaylistForm'
+export { default } from './PlaylistForm';

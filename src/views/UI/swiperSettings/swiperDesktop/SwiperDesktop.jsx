@@ -1,11 +1,10 @@
-import { Swiper } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import { Swiper } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper';
 
 export default function SwiperDesktop({ children, prevRef, nextRef }) {
-
   return (
     <Swiper
       slidesPerView={5}
@@ -25,12 +24,12 @@ export default function SwiperDesktop({ children, prevRef, nextRef }) {
         },
         1300: {
           slidesPerView: 5,
-        }
+        },
       }}
       modules={[Navigation]}
       className="swiper-carousel"
     >
       {children}
     </Swiper>
-  )
+  );
 }

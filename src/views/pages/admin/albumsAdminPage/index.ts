@@ -1,1 +1,1 @@
-export { default } from './AlbumsAdminPage'
+export { default } from './AlbumsAdminPage';

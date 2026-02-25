@@ -5,7 +5,7 @@ export default async function makeRequest(
   headerMethod = '',
   headerToken = null,
   bodyData = {},
-  contentType = "application/json"
+  contentType = 'application/json'
 ) {
   function getParam() {
     if (!contentType) {
@@ -21,7 +21,7 @@ export default async function makeRequest(
         method: headerMethod,
         headers: {
           Authorization: `Bearer ${headerToken}`,
-          "Content-type": contentType,
+          'Content-type': contentType,
         },
         body: bodyData,
       };

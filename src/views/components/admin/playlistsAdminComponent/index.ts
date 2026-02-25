@@ -1,1 +1,1 @@
-export { default } from './PlaylistsAdminComponent'
+export { default } from './PlaylistsAdminComponent';

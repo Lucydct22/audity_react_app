@@ -120,7 +120,7 @@ body {
 .ant-modal-content {
   background-color: var(--background-secondary) !important;
   border-radius: 8 !important;
-  
+
   @media (max-width: 600px) {
     border-radius: 0 !important;
     padding: 20px 0 !important;
@@ -143,7 +143,7 @@ body {
     }
   }
 
-  [role=dialog] {
+  [role='dialog'] {
     height: 100vh;
     width: 100vw;
   }

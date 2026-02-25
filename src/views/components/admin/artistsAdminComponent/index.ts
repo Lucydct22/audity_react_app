@@ -1,1 +1,1 @@
-export { default } from './ArtistsAdminComponent'
+export { default } from './ArtistsAdminComponent';

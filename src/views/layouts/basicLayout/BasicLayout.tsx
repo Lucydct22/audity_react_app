@@ -1,12 +1,14 @@
-import { Suspense, lazy, useContext } from "react";
-import CurrentTrackContext from "context/currentTrack/CurrentTrackContext";
-import { Outlet } from 'react-router-dom'
-import useWindowSizeReport from "hooks/useWindowSizeReport";
-import { responsiveBreak } from "utils/componentsConstants";
+import { Suspense, lazy, useContext } from 'react';
+import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
+import { Outlet } from 'react-router-dom';
+import useWindowSizeReport from 'hooks/useWindowSizeReport';
+import { responsiveBreak } from 'utils/componentsConstants';
 import './basicLayout.scss';
 
 // Desktop
-const SidebarBComponentDesktop = lazy(() => import('views/components/basic/desktop/sidebarBComponentDesktop'));
+const SidebarBComponentDesktop = lazy(
+  () => import('views/components/basic/desktop/sidebarBComponentDesktop')
+);
 const PlayerBComponentDesktop = lazy(() => import('views/components/basic/desktop/playerBComponentDesktop'));
 const TopBarBComponentDesktop = lazy(() => import('views/components/basic/desktop/topBarBComponentDesktop'));
 // Mobile
@@ -15,13 +17,13 @@ const PlayerBComponentMobile = lazy(() => import('views/components/basic/mobile/
 const TopBarBComponentMobile = lazy(() => import('views/components/basic/mobile/topBarBComponentMobile'));
 
 const BasicLayout = () => {
-  const theme = localStorage.getItem("theme");
-  theme && document.documentElement.setAttribute("data-theme", theme);
+  const theme = localStorage.getItem('theme');
+  theme && document.documentElement.setAttribute('data-theme', theme);
   const [screenWidth] = useWindowSizeReport();
-  
+
   return (
     <Suspense fallback={<></>}>
-      {(screenWidth > responsiveBreak) ? (
+      {screenWidth > responsiveBreak ? (
         <>
           <SidebarBComponentDesktop />
           <TopBarBComponentDesktop />
@@ -33,15 +35,15 @@ const BasicLayout = () => {
         </>
       )}
 
-      <main className='basic-layout__main'>
-        <div className='basic-layout__main--content'>
+      <main className="basic-layout__main">
+        <div className="basic-layout__main--content">
           <Outlet />
         </div>
       </main>
 
-      {(screenWidth > responsiveBreak) ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
+      {screenWidth > responsiveBreak ? <PlayerBComponentDesktop /> : <PlayerBComponentMobile />}
     </Suspense>
-  )
-}
+  );
+};
 
 export default BasicLayout;

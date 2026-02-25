@@ -1,37 +1,37 @@
 const initialMyLibraryState = {
-	albums: {
-		info: {
-			length: 0,
-		},
-		content: []
-	},
-	artists: {
-		info: {
-			length: 0,
-		},
-		content: []
-	},
-	playlists: {
-		info: {
-			length: 0,
-		},
-		content: [],
-		userContent: [],
-	},
-	tracks: {
-		info: {
-			length: 0,
-		},
-		content: [],
-		userContent: []
-	},
-	postPlaylist: (name: string, description: string) => { },
-	postPrivateTrack: (data: any) => { },
-	putTrackToPlaylist: (playlistId: string, trackId: string) => { },
-	likeDislikeTrack: (track: any) => { },
-	likeDislikeAlbum: (album: any) => { },
-	likeDislikeArtist: (artist: any) => { },
-	likeDislikePlaylistk: (playlist: any) => { },
-}
+  albums: {
+    info: {
+      length: 0,
+    },
+    content: [],
+  },
+  artists: {
+    info: {
+      length: 0,
+    },
+    content: [],
+  },
+  playlists: {
+    info: {
+      length: 0,
+    },
+    content: [],
+    userContent: [],
+  },
+  tracks: {
+    info: {
+      length: 0,
+    },
+    content: [],
+    userContent: [],
+  },
+  postPlaylist: (name: string, description: string) => {},
+  postPrivateTrack: (data: any) => {},
+  putTrackToPlaylist: (playlistId: string, trackId: string) => {},
+  likeDislikeTrack: (track: any) => {},
+  likeDislikeAlbum: (album: any) => {},
+  likeDislikeArtist: (artist: any) => {},
+  likeDislikePlaylistk: (playlist: any) => {},
+};
 
-export default initialMyLibraryState 
+export default initialMyLibraryState;

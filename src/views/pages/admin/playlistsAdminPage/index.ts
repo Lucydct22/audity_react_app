@@ -1,1 +1,1 @@
-export { default } from './PlaylistsAdminPage'
+export { default } from './PlaylistsAdminPage';

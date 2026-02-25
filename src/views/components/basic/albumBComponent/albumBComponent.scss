@@ -17,7 +17,7 @@
 
   img {
     border-radius: 4px;
-    box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+    box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
     width: 175px;
     height: 175px;
     line-height: 0;
@@ -33,7 +33,7 @@
       content: '';
       display: block;
       width: 100%;
-      box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+      box-shadow: 0 1px 6px rgba(25, 25, 34, 0.16);
       background-image: url('../../../../assets/img/webp/disc250.webp');
       background-position: center;
       background-size: cover;
@@ -93,7 +93,7 @@
         justify-content: space-between;
         padding: 0 15px;
         min-width: 105px;
-        
+
         @media (max-width: 500px) {
           order: 2;
         }

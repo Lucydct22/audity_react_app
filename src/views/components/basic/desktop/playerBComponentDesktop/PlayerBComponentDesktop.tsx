@@ -5,11 +5,17 @@ import CurrentTrackContext from 'context/currentTrack/CurrentTrackContext';
 import { useTranslation } from 'react-i18next';
 import formatToSeconds from 'utils/tracks/formatToSeconds';
 import ProgressBar from './progressBar/ProgressBar';
-import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from "react-icons/md";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { TfiPlus } from "react-icons/tfi";
-import { IoAddOutline, IoShuffleOutline, IoRepeatOutline, IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
-import './playerBComponentDesktop.scss'
+import { MdSkipPrevious, MdPause, MdPlayArrow, MdSkipNext } from 'react-icons/md';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { TfiPlus } from 'react-icons/tfi';
+import {
+  IoAddOutline,
+  IoShuffleOutline,
+  IoRepeatOutline,
+  IoVolumeHighOutline,
+  IoVolumeMuteOutline,
+} from 'react-icons/io5';
+import './playerBComponentDesktop.scss';
 import { Popover, Modal, Slider } from 'antd';
 import ModalPlaylist from 'views/UI/ModalAntdPlaylistCreate/ModalAntdPlaylistCreate';
 import MyLibraryContext from 'context/myLibrary/MyLibraryContext';
@@ -17,19 +23,19 @@ import { useAuth0 } from '@auth0/auth0-react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeContext } from 'context/theme/ThemeContext';
 
-
 const PlayerBComponentDesktop = () => {
   const { t } = useTranslation();
   const [songLike, setSongLike] = useState(false);
   const { isAuthenticated } = useAuth0();
   const { shuffle, shuffleTracklist } = useContext(CurrentTracklistContext);
-  const [artists, setArtists] = useState('')
-  const { playlists, tracks, postPlaylist, putTrackToPlaylist, likeDislikeTrack } = useContext(MyLibraryContext)
+  const [artists, setArtists] = useState('');
+  const { playlists, tracks, postPlaylist, putTrackToPlaylist, likeDislikeTrack } =
+    useContext(MyLibraryContext);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
-  const nameRef: any = useRef("");
-  const descRef: any = useRef("");
+  const nameRef: any = useRef('');
+  const descRef: any = useRef('');
   const [messageApi, contextHolderMessege] = message.useMessage();
   const key = 'updatable';
   const {
@@ -41,7 +47,7 @@ const PlayerBComponentDesktop = () => {
     previousTrack,
     muteTrack,
     loopTrack,
-    updateVolume
+    updateVolume,
   } = useContext(CurrentTrackContext);
   const { theme } = useContext(ThemeContext);
 
@@ -53,8 +59,8 @@ const PlayerBComponentDesktop = () => {
   };
 
   function handleClick() {
-    if (nameRef.current.value == "" || descRef.current.value == "") {
-      message.error("Sorry could not create Playlist. Both inputs are required")
+    if (nameRef.current.value == '' || descRef.current.value == '') {
+      message.error('Sorry could not create Playlist. Both inputs are required');
     } else {
       postPlaylist(nameRef.current.value, descRef.current.value);
     }
@@ -72,7 +78,7 @@ const PlayerBComponentDesktop = () => {
       width: 800,
       content: <ModalPlaylist nameRef={nameRef} descRef={descRef} />,
       okText: 'CREATE',
-      onOk: handleClick
+      onOk: handleClick,
     });
   };
 
@@ -97,17 +103,18 @@ const PlayerBComponentDesktop = () => {
   }
 
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
     const artists = currentTrack.artists.map((artist) => artist.name).join(' & ');
-    isMounted && setArtists(artists)
-    return () => { isMounted = false }
-  }, [currentTrack])
+    isMounted && setArtists(artists);
+    return () => {
+      isMounted = false;
+    };
+  }, [currentTrack]);
 
   useEffect(() => {
-    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id)
-    haveLike === undefined ? setSongLike(true) : setSongLike(false)
-  }, [currentTrack, tracks])
-
+    const haveLike = tracks.content.find((item: any) => item._id === currentTrack._id);
+    haveLike === undefined ? setSongLike(true) : setSongLike(false);
+  }, [currentTrack, tracks]);
 
   function handlePutTrackToPlaylist(playlistId: string, playlistName: string) {
     putTrackToPlaylist(playlistId, currentTrack._id);
@@ -118,21 +125,24 @@ const PlayerBComponentDesktop = () => {
   const popoverContent = isAuthenticated ? (
     <>
       <div className="player-add-to-playlist">
-        <div className="player-add-to-playlist__add" onClick={() => { confirm(); hidePopover(); }}>
+        <div
+          className="player-add-to-playlist__add"
+          onClick={() => {
+            confirm();
+            hidePopover();
+          }}
+        >
           <TfiPlus size={26} />
-          <span>{t("player_component_popover_add_playlist")}</span>
+          <span>{t('player_component_popover_add_playlist')}</span>
         </div>
         <div className="player-add-to-playlist__results">
           {playlists.userContent &&
             playlists.userContent?.map((playlist: any) => (
               <div key={playlist._id}>
                 {contextHolderMessege}
-                <p onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>
-                  {playlist.name}
-                </p>
+                <p onClick={() => handlePutTrackToPlaylist(playlist._id, playlist.name)}>{playlist.name}</p>
               </div>
-            ))
-          }
+            ))}
         </div>
         <Modal title="Basic Modal" open={openModal} onOk={hideModal} onCancel={hideModal} />
         {contextHolder}
@@ -143,47 +153,51 @@ const PlayerBComponentDesktop = () => {
   );
 
   const volumeSlider = (
-    <ConfigProvider
-      theme={{ token: { colorPrimary: '#E24834' } }}
-    >
+    <ConfigProvider theme={{ token: { colorPrimary: '#E24834' } }}>
       <div style={{ display: 'inline-block', height: 150, padding: '10px 2px' }}>
-        <Slider railStyle={{ color: theme === 'light' ? '#4b4b5c' : '#a2a2ad' }} onChange={(e) => updateVolume(e)} vertical defaultValue={trackData.volume * 100} />
+        <Slider
+          railStyle={{ color: theme === 'light' ? '#4b4b5c' : '#a2a2ad' }}
+          onChange={(e) => updateVolume(e)}
+          vertical
+          defaultValue={trackData.volume * 100}
+        />
       </div>
     </ConfigProvider>
-  )
+  );
 
   return (
-    <div className='page-player'>
-      <div className='player-bottom'>
-        <div className='player-bottom-controls'>
-          <button onClick={previousTrack} className='page-player-bottom__btn'>
+    <div className="page-player">
+      <div className="player-bottom">
+        <div className="player-bottom-controls">
+          <button onClick={previousTrack} className="page-player-bottom__btn">
             <MdSkipPrevious />
           </button>
           <button
             onClick={trackData.isPlaying ? pauseCurrentTrack : playCurrentTrack}
-            className='page-player-bottom__btn'>
+            className="page-player-bottom__btn"
+          >
             {trackData.isPlaying ? <MdPause /> : <MdPlayArrow />}
           </button>
-          <button onClick={nextTrack} className='page-player-bottom__btn'>
+          <button onClick={nextTrack} className="page-player-bottom__btn">
             <MdSkipNext />
           </button>
         </div>
 
-        <div className='player-bottom-track'>
+        <div className="player-bottom-track">
           {formatToSeconds(trackData.currentTime)}
-          <div className='player-bottom-track__container'>
-            <div className='player-bottom-track__container--heading'>
-              <div className='player-bottom-track__container--heading__title'>
+          <div className="player-bottom-track__container">
+            <div className="player-bottom-track__container--heading">
+              <div className="player-bottom-track__container--heading__title">
                 {`${currentTrack.name} - ${artists}`}
               </div>
-              <div className='player-bottom-track__container--heading__actions'>
+              <div className="player-bottom-track__container--heading__actions">
                 <Popover content={popoverContent} open={open} onOpenChange={handleOpenChange} trigger="click">
-                  <button className='page-player-bottom__btn' >
+                  <button className="page-player-bottom__btn">
                     <IoAddOutline />
                   </button>
                 </Popover>
-                <button className='page-player-bottom__btn' onClick={() => likeDislikeTrack(currentTrack)}>
-                  {!songLike ? <AiFillHeart size='1.5rem' color='#ef5466' /> : <AiOutlineHeart />}
+                <button className="page-player-bottom__btn" onClick={() => likeDislikeTrack(currentTrack)}>
+                  {!songLike ? <AiFillHeart size="1.5rem" color="#ef5466" /> : <AiOutlineHeart />}
                 </button>
               </div>
             </div>
@@ -192,22 +206,26 @@ const PlayerBComponentDesktop = () => {
           {formatToSeconds(trackData.duration)}
         </div>
 
-        <div className='player-bottom-options'>
-          <button className='page-player-bottom__btn' onClick={shuffleTracklist}>
-            {shuffle ? <IoShuffleOutline color='#ef5466' /> : <IoShuffleOutline />}
+        <div className="player-bottom-options">
+          <button className="page-player-bottom__btn" onClick={shuffleTracklist}>
+            {shuffle ? <IoShuffleOutline color="#ef5466" /> : <IoShuffleOutline />}
           </button>
-          <button className='page-player-bottom__btn' onClick={loopTrack}>
-            {trackData.hasLoop ? <IoRepeatOutline color='#ef5466' /> : <IoRepeatOutline />}
+          <button className="page-player-bottom__btn" onClick={loopTrack}>
+            {trackData.hasLoop ? <IoRepeatOutline color="#ef5466" /> : <IoRepeatOutline />}
           </button>
-          <button className='page-player-bottom__btn'>
+          <button className="page-player-bottom__btn">
             <Popover content={volumeSlider} placement="top" trigger="hover">
-              {trackData.isMuted ? <IoVolumeMuteOutline onClick={muteTrack} /> : <IoVolumeHighOutline onClick={muteTrack} />}
+              {trackData.isMuted ? (
+                <IoVolumeMuteOutline onClick={muteTrack} />
+              ) : (
+                <IoVolumeHighOutline onClick={muteTrack} />
+              )}
             </Popover>
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PlayerBComponentDesktop;

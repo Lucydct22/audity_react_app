@@ -1,1 +1,1 @@
-export { default } from './SwiperDesktop'
+export { default } from './SwiperDesktop';

@@ -1,13 +1,13 @@
-import { Suspense } from "react";
-import TrackItemComponentDesktop from "../desktop/trackListComponentDesktop/TrackItemComponentDesktop";
-import TrackItemComponentMobile from "../mobile/tracklistComponentMobile/TrackItemComponentMobile";
-import "./trackListBComponent.scss";
-import Empty from 'assets/img/png/empty-error.png'
-import useWindowSizeReport from "hooks/useWindowSizeReport";
-import { useTranslation } from "react-i18next";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { joinArtistsName } from "views/utils/joinArtistsName";
-import formatToSeconds from "utils/tracks/formatToSeconds";
+import { Suspense } from 'react';
+import TrackItemComponentDesktop from '../desktop/trackListComponentDesktop/TrackItemComponentDesktop';
+import TrackItemComponentMobile from '../mobile/tracklistComponentMobile/TrackItemComponentMobile';
+import './trackListBComponent.scss';
+import Empty from 'assets/img/png/empty-error.png';
+import useWindowSizeReport from 'hooks/useWindowSizeReport';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import { joinArtistsName } from 'views/utils/joinArtistsName';
+import formatToSeconds from 'utils/tracks/formatToSeconds';
 
 export default function TrackListBComponent({ tracksData }) {
   const screenWidth = useWindowSizeReport();
@@ -30,11 +30,11 @@ const TrackListDesktopComponent = ({ tracksData }) => {
         <div className="tracklist-component__sections">
           <span>
             <p>#</p>
-            {t("track_list_track")}
+            {t('track_list_track')}
           </span>
           <span>&nbsp;</span>
-          <span>{t("track_list_artist")}</span>
-          <span>{t("track_list_album")}</span>
+          <span>{t('track_list_artist')}</span>
+          <span>{t('track_list_album')}</span>
           <span className="tracklist-component__sections--icontime">
             <AiOutlineClockCircle className="tracklist-component__sections--td-icon" />
           </span>
@@ -44,8 +44,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
       <div className="tracklist-component__tracks">
         {tracksData &&
           tracksData.map((track, index) => {
-            const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
-              track;
+            const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } = track;
             const artistsName = joinArtistsName(artists);
 
             if (!audioUrl) return;
@@ -59,7 +58,7 @@ const TrackListDesktopComponent = ({ tracksData }) => {
                   artist={artistsName ? artistsName : track.uploadByUser.artists}
                   thumbnail={imageUrl}
                   likes={likedBy.length}
-                  time={duration ? formatToSeconds(duration) : "-"}
+                  time={duration ? formatToSeconds(duration) : '-'}
                   audioUrl={audioUrl}
                   album={album?.name}
                   track={track}
@@ -67,25 +66,23 @@ const TrackListDesktopComponent = ({ tracksData }) => {
               </span>
             );
           })}
-        {tracksData?.length === 0 &&
+        {tracksData?.length === 0 && (
           <div className="empty-error-component">
             <img src={Empty} />
             <span>No songs found</span>
           </div>
-        }
+        )}
       </div>
     </>
   );
 };
 
 const TrackListMobileComponent = ({ tracksData }) => {
-
   return (
     <main className="mobile-track-component">
       {tracksData &&
         tracksData.map((track) => {
-          const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } =
-            track;
+          const { _id, name, artists, imageUrl, likedBy, duration, album, audioUrl } = track;
           const artistsName = joinArtistsName(artists);
 
           return (
@@ -96,20 +93,20 @@ const TrackListMobileComponent = ({ tracksData }) => {
                 artist={artistsName ? artistsName : track.uploadByUser.artists}
                 thumbnail={imageUrl}
                 likes={likedBy.length}
-                time={duration ? formatToSeconds(duration) : "-"}
+                time={duration ? formatToSeconds(duration) : '-'}
                 audioUrl={audioUrl}
                 album={album?.name}
                 track={track}
               />
             </span>
-          )
+          );
         })}
-      {tracksData?.length === 0 &&
+      {tracksData?.length === 0 && (
         <div className="empty-error-component">
           <img src={Empty} />
           <span>No songs found</span>
         </div>
-      }
+      )}
     </main>
   );
 };

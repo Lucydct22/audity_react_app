@@ -4,7 +4,7 @@
 @mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
   &:after {
     position: absolute;
-    content: "";
+    content: '';
     top: $y;
     left: $x;
     right: 0;
@@ -23,15 +23,15 @@
 
     @keyframes animateGlow {
       0% {
-        background-position: 0% 50%
+        background-position: 0% 50%;
       }
 
       50% {
-        background-position: 100% 50%
+        background-position: 100% 50%;
       }
 
       100% {
-        background-position: 0% 50%
+        background-position: 0% 50%;
       }
     }
   }
@@ -55,15 +55,15 @@
 
       @keyframes animateGlow {
         0% {
-          background-position: 0% 50%
+          background-position: 0% 50%;
         }
 
         50% {
-          background-position: 100% 50%
+          background-position: 100% 50%;
         }
 
         100% {
-          background-position: 0% 50%
+          background-position: 0% 50%;
         }
       }
     }
@@ -83,14 +83,13 @@
     margin-top: 2rem;
   }
 
-
   &__context {
     margin-top: 5rem;
     padding-top: 3rem;
     width: 45vw;
     height: 30vw;
     text-align: center;
-    color: #252B37;
+    color: #252b37;
     border-radius: 15px;
     background-color: var(--library-header-background);
     animation: textColor 10s ease infinite;
@@ -115,13 +114,13 @@
       width: 70vw;
       height: 100vw;
       text-align: center;
-      color: #252B37;
+      color: #252b37;
       border-radius: 15px;
       background-color: var(--library-header-background);
       animation: textColor 10s ease infinite;
       padding: 1rem;
       padding-top: 5rem;
-      @include backlight(0, 5vw, 5vw, 0.70, #759fe0, #7e0fff, 10s);
+      @include backlight(0, 5vw, 5vw, 0.7, #759fe0, #7e0fff, 10s);
 
       @keyframes textColor {
         0% {
@@ -156,7 +155,6 @@
       @media (max-width: $media-breakpoint-desktop-mobile) {
         font-size: 2.5rem;
         font-weight: bold;
-
       }
     }
 
@@ -179,5 +177,4 @@
       }
     }
   }
-
 }

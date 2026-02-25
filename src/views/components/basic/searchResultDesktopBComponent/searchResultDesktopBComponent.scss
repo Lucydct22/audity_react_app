@@ -16,8 +16,8 @@
     }
   }
 
-  &__data{
-    color: var(--color-primary)
+  &__data {
+    color: var(--color-primary);
   }
 }
 
@@ -27,25 +27,23 @@
   gap: 10px;
   align-content: center;
 
-  
-  span{
+  span {
     color: $color-main;
-    
   }
 
-  &__tracks{
+  &__tracks {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
-  &__albums{
+  &__albums {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
-  &__artists{
+  &__artists {
     display: flex;
     flex-direction: column;
     gap: 5px;

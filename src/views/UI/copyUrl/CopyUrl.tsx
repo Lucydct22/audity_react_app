@@ -1,6 +1,6 @@
 import { message } from 'antd';
-import { RxShare1 } from "react-icons/rx";
-import './copyUrl.scss'
+import { RxShare1 } from 'react-icons/rx';
+import './copyUrl.scss';
 
 const CopyUrl: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -29,7 +29,13 @@ const CopyUrl: React.FC = () => {
   return (
     <>
       {contextHolder}
-      <div className="copy-url-button" onClick={() => { copyToClip(); openMessage(); }}>
+      <div
+        className="copy-url-button"
+        onClick={() => {
+          copyToClip();
+          openMessage();
+        }}
+      >
         <RxShare1 />
       </div>
     </>

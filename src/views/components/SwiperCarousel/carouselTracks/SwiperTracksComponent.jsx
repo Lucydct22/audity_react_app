@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef, Suspense } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Grid } from "swiper";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/grid";
-import "./swiperTracksComponent.scss";
-import { useTranslation } from "react-i18next";
-import { getTracksApi } from "api/music/tracks";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import RenderTrack from "views/components/basic/renders/renderTrack/RenderTrack";
-import useWindowSizeReport from "hooks/useWindowSizeReport";
-import { FreeMode } from "swiper";
+import { useState, useEffect, useRef, Suspense } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Grid } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/grid';
+import './swiperTracksComponent.scss';
+import { useTranslation } from 'react-i18next';
+import { getTracksApi } from 'api/music/tracks';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import RenderTrack from 'views/components/basic/renders/renderTrack/RenderTrack';
+import useWindowSizeReport from 'hooks/useWindowSizeReport';
+import { FreeMode } from 'swiper';
 
 export default function SwiperTracksComponent() {
   const [screenWidth] = useWindowSizeReport();
@@ -77,13 +77,16 @@ const SwiperMaxTracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).reverse().map((track) => {
-            return (
-              <SwiperSlide key={track._id}>
-                <RenderTrack track={track} />
-              </SwiperSlide>
-            );
-          })}
+          {tracks
+            ?.slice(0, 8)
+            .reverse()
+            .map((track) => {
+              return (
+                <SwiperSlide key={track._id}>
+                  <RenderTrack track={track} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>
@@ -123,13 +126,16 @@ const Swiper1024Tracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).reverse().map((track) => {
-            return (
-              <SwiperSlide key={track._id}>
-                <RenderTrack track={track} />
-              </SwiperSlide>
-            );
-          })}
+          {tracks
+            ?.slice(0, 8)
+            .reverse()
+            .map((track) => {
+              return (
+                <SwiperSlide key={track._id}>
+                  <RenderTrack track={track} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>
@@ -169,13 +175,16 @@ const Swiper815Tracks = ({ tracks }) => {
           modules={[Navigation, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).reverse().map((track) => {
-            return (
-              <SwiperSlide key={track._id}>
-                <RenderTrack track={track} />
-              </SwiperSlide>
-            );
-          })}
+          {tracks
+            ?.slice(0, 8)
+            .reverse()
+            .map((track) => {
+              return (
+                <SwiperSlide key={track._id}>
+                  <RenderTrack track={track} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>
@@ -199,13 +208,16 @@ const Swiper560Tracks = ({ tracks }) => {
           modules={[FreeMode, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).reverse().map((track) => {
-            return (
-              <SwiperSlide key={track._id}>
-                <RenderTrack track={track} />
-              </SwiperSlide>
-            );
-          })}
+          {tracks
+            ?.slice(0, 8)
+            .reverse()
+            .map((track) => {
+              return (
+                <SwiperSlide key={track._id}>
+                  <RenderTrack track={track} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>
@@ -229,13 +241,16 @@ const SwiperMinTracks = ({ tracks }) => {
           modules={[FreeMode, Grid]}
           className="swiper-track-carousel"
         >
-          {tracks?.slice(0, 8).reverse().map((track) => {
-            return (
-              <SwiperSlide key={track._id}>
-                <RenderTrack track={track} />
-              </SwiperSlide>
-            );
-          })}
+          {tracks
+            ?.slice(0, 8)
+            .reverse()
+            .map((track) => {
+              return (
+                <SwiperSlide key={track._id}>
+                  <RenderTrack track={track} />
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </div>
@@ -245,9 +260,5 @@ const SwiperMinTracks = ({ tracks }) => {
 const TranslateTitle = () => {
   const { t } = useTranslation();
 
-  return (
-    <h2 className="swiper-tracks-component__header--title">
-      {t("musicpage_besthits")}
-    </h2>
-  );
+  return <h2 className="swiper-tracks-component__header--title">{t('musicpage_besthits')}</h2>;
 };
